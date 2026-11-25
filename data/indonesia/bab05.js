@@ -11,7 +11,7 @@ TAMBAH_BAB({
     "Meneladani keberanian, keikhlasan, dan cinta tanah air para pejuang"
   ],
 
-  video: { src: "video/indonesia/bab05.mp4", judul: "Perlawanan rakyat dalam 2 menit", durasi: "± 2 menit", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/indonesia/bab05.mp4", judul: "Perlawanan rakyat dalam 1,5 menit", durasi: "1 menit 35 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Garis waktu perlawanan: klik setiap perang",

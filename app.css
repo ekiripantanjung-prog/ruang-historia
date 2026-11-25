@@ -1,12 +1,12 @@
 /* VOICE everyday learning: tenang, jelas, ramah siswa
    IDEA buku pelajaran bercampur penampang galian dan garis waktu
    PICTURE pita waktu 11 bab di beranda; lapisan tanah di Bab 1
-   COLOUR tanah cokelat tua, putih, aksen merah oker, warna tiap bab
+   COLOUR Hijau Historia #2F6B4F (warna khas), hijau malam, emas cahaya, krem, tanah
    TYPE Archivo Black judul + Source Sans 3 teks
    LAYOUT bar atas, isi maks 1100px; ponsel: satu kolom, menu bergulir */
 @font-face{font-family:"Archivo Black";src:url(fonts/ArchivoBlack.ttf) format("truetype");font-display:swap}
 @font-face{font-family:"Source Sans 3";src:url(fonts/SourceSans3.ttf) format("truetype");font-weight:200 900;font-display:swap}
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#16110d);--ink:light-dark(#2a1d14,#f1e9e1);--soft:light-dark(#6b5848,#b9a796);--line:light-dark(#e6ddd4,#3a2e25);--card:light-dark(#faf6f2,#211912);--accent:light-dark(#b23a1f,#ff8a6a);--earth:#3b2618;--ok:light-dark(#2f7a3c,#7fd18c);--bad:light-dark(#b23a1f,#ff8a6a)}
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#16110d);--ink:light-dark(#2a1d14,#f1e9e1);--soft:light-dark(#6b5848,#b9a796);--line:light-dark(#e6ddd4,#3a2e25);--card:light-dark(#faf6f2,#211912);--accent:light-dark(#2F6B4F,#8fd6b0);--brand:#2F6B4F;--brand-deep:#1D4232;--earth:#3b2618;--ok:light-dark(#2f7a3c,#7fd18c);--bad:light-dark(#b23a1f,#ff8a6a)}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
@@ -24,18 +24,18 @@ img{max-width:100%}
 table{border-collapse:collapse;width:100%;margin:0 0 1em;font-size:16px}
 th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
 th{background:var(--card);font-weight:700}
-.bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;background:var(--earth);color:#f6ede4;padding:8px max(4vw,16px);padding-top:calc(8px + env(safe-area-inset-top,0px))}
+.bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;background:var(--brand);color:#f6ede4;padding:8px max(4vw,16px);padding-top:calc(8px + env(safe-area-inset-top,0px))}
 .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:"Archivo Black",sans-serif;font-size:18px}
-.brand img{border-radius:8px}
+.brand img{border-radius:8px;background:#F6EDE4}
 .tabs{display:flex;gap:4px;overflow-x:auto;margin-left:auto}
-.tabs a{flex:none;color:#e9d9ca;text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600;font-size:15px}
-.tabs a.on,.tabs a:hover{background:#5a3e2b;color:#fff}
+.tabs a{flex:none;color:#e3f0e8;text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600;font-size:15px}
+.tabs a.on,.tabs a:hover{background:var(--brand-deep);color:#fff}
 .tabs a:focus-visible{outline:2px solid #fff}
 main{display:block;outline:none}
 .pad{padding:clamp(20px,4vw,48px) max(4vw,16px)}
 .wrap{max-width:1100px;margin:0 auto}
-.hero{background:var(--earth);color:#f6ede4}
-.hero p{color:#e3d3c4}
+.hero{background:var(--brand-deep);color:#f6ede4}
+.hero p{color:#dcebe2}
 .river{display:flex;height:150px;border-radius:12px;overflow:hidden;margin:22px 0 8px}
 .river a{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:10px 8px;color:#fff;text-decoration:none;position:relative;border-right:1px solid #00000030;transition:flex .3s}
 .river a:hover,.river a:focus-visible{flex:1.8;outline:none}
@@ -91,7 +91,7 @@ main{display:block;outline:none}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
 .gl div{border:1px solid var(--line);border-radius:10px;padding:10px 14px}
 .gl b{display:block}
-.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-weight:700;border-radius:10px;padding:12px 18px;min-height:20px;text-align:center}
+.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--brand);color:#fff;font-weight:700;border-radius:10px;padding:12px 18px;min-height:20px;text-align:center}
 .btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .btn[disabled]{opacity:.45;cursor:default}
@@ -112,7 +112,7 @@ main{display:block;outline:none}
 .opt.salah{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--bg))}
 .why{margin-top:12px;font-size:16px;border-top:1px solid var(--line);padding-top:10px}
 .lv{font-size:13px;font-weight:700;color:var(--soft);float:right}
-.hasil{text-align:center;padding:26px;border-radius:12px;background:var(--earth);color:#fff;margin-bottom:18px}
+.hasil{text-align:center;padding:26px;border-radius:12px;background:var(--brand-deep);color:#fff;margin-bottom:18px}
 .hasil big{display:block;font-family:"Archivo Black",sans-serif;font-size:clamp(48px,10vw,80px);line-height:1}
 .timer{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
 .sticky{position:sticky;top:58px;z-index:3;background:var(--bg);padding:10px 0}
@@ -132,7 +132,7 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .room:focus-visible .door{border-color:#fff}
 .room b{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:24px;line-height:1.1}
 .room span{color:#e9d9ca}
-.room small{color:#f2b98a;font-weight:700;font-size:14px}
+.room small{color:#E0B04A;font-weight:700;font-size:14px}
 .room.kunci .door{filter:saturate(.6)}
 .seg-bab{display:flex;gap:4px;width:100%}
 .seg-bab i{flex:1;height:8px;border-radius:4px;background:#ffffff40}

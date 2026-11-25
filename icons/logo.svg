@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 9 200 200" role="img" aria-label="Logo Ruang Historia">
+  <defs>
+    <clipPath id="rh-bawah"><path d="M70 166 Q70 128 96 116 L104 116 Q130 128 130 166 Z"/></clipPath>
+  </defs>
+  <!-- Lengkung mihrab: Hijau Historia -->
+  <path d="M34 188 V92 A66 66 0 0 1 166 92 V188 Z" fill="#2F6B4F"/>
+  <!-- Jam pasir -->
+  <path d="M66 60 H134 Q134 98 107 112 Q134 126 134 166 H66 Q66 126 93 112 Q66 98 66 60 Z" fill="#FFF8EC"/>
+  <!-- Cahaya ilmu -->
+  <circle cx="100" cy="80" r="11" fill="#F2C38F"/>
+  <!-- Butir yang mengalir -->
+  <path d="M100 96 V120" stroke="#E0B04A" stroke-width="3" stroke-dasharray="3 3"/>
+  <!-- Lima lapis Panca Cinta (atas ke bawah) -->
+  <g clip-path="url(#rh-bawah)">
+    <rect x="60" y="124" width="80" height="9" fill="#E0B04A"/>  <!-- Cinta Allah dan Rasul-Nya -->
+    <rect x="60" y="133" width="80" height="8.5" fill="#D9843A"/> <!-- Cinta ilmu -->
+    <rect x="60" y="141.5" width="80" height="8.5" fill="#B23A1F"/> <!-- Cinta diri dan sesama -->
+    <rect x="60" y="150" width="80" height="8" fill="#6E7F3A"/>  <!-- Cinta lingkungan -->
+    <rect x="60" y="158" width="80" height="10" fill="#4A2E1C"/> <!-- Cinta tanah air -->
+  </g>
+  <!-- Tutup jam pasir: masa lalu dan masa depan -->
+  <rect x="58" y="52" width="84" height="10" rx="4" fill="#E0B04A"/>
+  <rect x="58" y="164" width="84" height="10" rx="4" fill="#E0B04A"/>
+  <!-- Ambang pintu -->
+  <rect x="26" y="182" width="148" height="10" rx="3" fill="#E0B04A"/>
+</svg>

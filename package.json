@@ -1,0 +1,14 @@
+{
+  "name": "ruang-historia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ruang Historia: aplikasi belajar sejarah interaktif",
+  "scripts": {
+    "siapkan-www": "rm -rf www && mkdir www && cp -r index.html app.css app.js manifest.webmanifest sw.js data fonts icons video www/"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
+}

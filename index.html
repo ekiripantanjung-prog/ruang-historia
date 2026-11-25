@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3b2618">
+<meta name="description" content="Ruang Historia: ruang belajar sejarah interaktif untuk MA/SMA/SMK. Sejarah Indonesia, Sejarah Dunia, dan Sejarah Kebudayaan Islam, dengan video dan soal evaluasi.">
+<title>Ruang Historia</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="#beranda"><img src="icons/icon-192.png" alt="" width="32" height="32"><span>Ruang Historia</span></a>
+  <nav class="tabs" aria-label="Menu utama">
+    <a href="#beranda" data-v="beranda">Beranda</a>
+    <a href="#nilai" data-v="nilai">Nilaiku</a>
+    <a href="#tentang" data-v="tentang">Tentang</a>
+  </nav>
+</header>
+<main id="app" tabindex="-1"><p class="pad">Memuat…</p></main>
+<script src="data/koleksi.js"></script>
+<!-- Sejarah Indonesia -->
+<script src="data/indonesia/bab01.js"></script>
+<!-- Tambahkan bab berikutnya di sini, misalnya:
+<script src="data/indonesia/bab02.js"></script>
+<script src="data/dunia/bab01.js"></script>
+<script src="data/ski/bab01.js"></script> -->
+<script src="app.js"></script>
+</body>
+</html>

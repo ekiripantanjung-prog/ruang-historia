@@ -94,7 +94,11 @@ function bab(kid, id, tab) {
   const tampil = t => {
     app.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-selected', x.dataset.t === t));
     if (t === 'materi') isi.innerHTML = materi(b);
-    if (t === 'video') isi.innerHTML = b.video ? video(b) : '<p>Video bab ini segera hadir.</p>';
+    if (t === 'video') {
+      isi.innerHTML = b.video ? video(b) : '<p>Video bab ini segera hadir.</p>';
+      const v = isi.querySelector('video');
+      if (v) v.addEventListener('error', () => { v.outerHTML = '<div class="box"><b>Video sedang disiapkan.</b> Silakan pelajari materinya dulu, videonya akan segera hadir.</div>'; });
+    }
     if (t === 'kuis') isi.innerHTML = kuisAwal(b, kid, id);
     if (t === 'esai') isi.innerHTML = esai(b);
     if (t === 'istilah') isi.innerHTML = `<h2>Istilah penting</h2><div class="gl">${(b.glosarium || []).map(g => `<div><b>${esc(g[0])}</b>${esc(g[1])}</div>`).join('')}</div>`;
@@ -111,16 +115,16 @@ function bab(kid, id, tab) {
 function materi(b) {
   const j = b.jelajah;
   return `<div class="box"><h3>Tujuan pembelajaran</h3><ol class="tujuan">${b.tujuan.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div>
-${j ? `<h2>${esc(j.judul)}</h2><div class="dig"><div><div class="strata" id="strata"><div class="sky">${esc(j.atas)}</div><div class="grass"></div>${j.lapisan.map((x, k) => `<button class="layer" type="button" data-k="${k}" aria-pressed="false" style="background-color:${x.c}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span><svg viewBox="0 0 100 52" aria-hidden="true">${IKON[x.ikon] || ''}</svg></button>`).join('')}</div><div class="depth"><span>lebih muda</span><span>lebih tua, lebih dalam</span></div></div><aside class="panel" id="panel" aria-live="polite"></aside></div><p class="catatan">${esc(j.catatan)}</p>` : ''}
+${j ? `<h2>${esc(j.judul)}</h2><div class="dig"><div><div class="strata ${j.mode === 'waktu' ? 'waktu' : ''}" id="strata">${j.mode === 'waktu' ? '' : `<div class="sky">${esc(j.atas)}</div><div class="grass"></div>`}${j.lapisan.map((x, k) => `<button class="layer" type="button" data-k="${k}" aria-pressed="false" style="background-color:${x.c}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span>${x.ikon ? `<svg viewBox="0 0 100 52" aria-hidden="true">${IKON[x.ikon] || ''}</svg>` : (j.mode === 'waktu' ? `<em class="thn">${esc(x.th || '')}</em>` : '')}</button>`).join('')}</div><div class="depth">${j.mode === 'waktu' ? '<span>lebih awal</span><span>lebih akhir</span>' : '<span>lebih muda</span><span>lebih tua, lebih dalam</span>'}</div></div><aside class="panel" id="panel" aria-live="polite"></aside></div>${j.catatan ? `<p class="catatan">${esc(j.catatan)}</p>` : ''}` : ''}
 ${b.bagian.map(s => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>Refleksi ${esc(s.cinta[0].toLowerCase())}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
 <div class="box row" style="justify-content:space-between"><span>Sudah selesai membaca? Uji pemahamanmu.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
 }
-const kartu = b => `<p class="catatan">Klik kartu untuk membalik.</p><div class="cards">${b.kartu.map((c, i) => `<button class="flip" type="button" aria-pressed="false"><div class="inner"><div class="face"><b>${esc(c.nama)}</b><small>${esc(c.info)}</small>${kepala(i)}</div><div class="face back">${esc(c.isi)}</div></div></button>`).join('')}</div>`;
+const kartu = b => `<p class="catatan">Klik kartu untuk membalik.</p><div class="cards">${b.kartu.map((c, i) => `<button class="flip" type="button" aria-pressed="false"><div class="inner"><div class="face"><b>${esc(c.nama)}</b><small>${esc(c.info)}</small>${b.koleksi === 'indonesia' && b.id === 1 ? kepala(i) : `<span class="mono" aria-hidden="true">${esc(c.nama.split(/\s+/).filter(w => /^[A-Z]/.test(w)).slice(0, 2).map(w => w[0]).join('') || c.nama[0])}</span>`}</div><div class="face back">${esc(c.isi)}</div></div></button>`).join('')}</div>`;
 function pasangJelajah(b) {
   const L = b.jelajah.lapisan, st = document.getElementById('strata'), pn = document.getElementById('panel');
-  const show = k => { const x = L[k]; pn.innerHTML = `<small>Lapisan ${k + 1} dari ${L.length}</small><h3>${esc(x.n)}</h3><p>${esc(x.t)}</p><dl>${x.d.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl><p class="catatan">${esc(x.ket)}</p>`; st.querySelectorAll('.layer').forEach(e => e.setAttribute('aria-pressed', e.dataset.k == k)); };
+  const show = k => { const x = L[k]; pn.innerHTML = `<small>${b.jelajah.mode === 'waktu' ? 'Bagian' : 'Lapisan'} ${k + 1} dari ${L.length}</small><h3>${esc(x.n)}</h3><p>${esc(x.t)}</p><dl>${x.d.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl><p class="catatan">${esc(x.ket)}</p>`; st.querySelectorAll('.layer').forEach(e => e.setAttribute('aria-pressed', e.dataset.k == k)); };
   st.addEventListener('click', e => { const x = e.target.closest('.layer'); if (x) show(+x.dataset.k); });
-  show(L.length - 1);
+  show(b.jelajah.mode === 'waktu' ? 0 : L.length - 1);
 }
 const video = b => `<h2>${esc(b.video.judul)}</h2><video class="vid" controls preload="metadata" playsinline poster="${esc(b.video.src.replace(/\.mp4$/, ".jpg"))}" src="${esc(b.video.src)}"></video><p class="catatan" style="margin-top:12px">${esc(b.video.durasi)}. ${esc(b.video.catatan)}</p><div class="box row" style="justify-content:space-between"><span>Selesai menonton? Coba kuisnya.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
 const kuisAwal = (b, kid, id) => { const v = S.get('nilai', {})[`${kid}-bab${id}`]; return `<h2>Kuis Bab ${id}</h2><p>${b.soal.length} soal pilihan ganda, termasuk soal analisis (HOTS). Setiap jawaban langsung diberi pembahasan, dan urutan pilihan jawaban diacak. Nilai terbaikmu disimpan.</p>${v ? `<div class="box">Nilai terbaik: <b>${v.terbaik}</b> · terakhir ${v.terakhir} · sudah ${v.kali} kali</div>` : ''}<a class="btn" href="#${kid}-${id}-kuis">Mulai kuis</a>`; };

@@ -1,9 +1,7 @@
 /* Simpan file aplikasi agar bisa dibuka tanpa internet.
    Naikkan angka VERSI setiap kali materi diubah, supaya HP siswa mengambil versi baru. */
-const VERSI = 'historia-v2';
-const FILE = ['./', 'index.html', 'app.css', 'app.js', 'manifest.webmanifest',
-  'data/koleksi.js', 'data/indonesia/bab01.js', 'fonts/ArchivoBlack.ttf', 'fonts/SourceSans3.ttf',
-  'icons/icon-192.png', 'icons/icon-512.png', 'icons/logo.svg', 'icons/favicon-64.png'];
+const VERSI = 'historia-v5';
+const FILE = ['./', 'index.html', 'app.css', 'app.js', 'manifest.webmanifest', 'data/koleksi.js', 'fonts/ArchivoBlack.ttf', 'fonts/SourceSans3.ttf', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/logo.svg', 'icons/favicon-64.png', 'data/indonesia/bab01.js', 'data/indonesia/bab02.js', 'data/indonesia/bab03.js', 'data/indonesia/bab04.js', 'data/indonesia/bab05.js'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(VERSI).then(c => c.addAll(FILE))); self.skipWaiting(); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== VERSI).map(x => caches.delete(x))))); self.clients.claim(); });
 self.addEventListener('fetch', e => {

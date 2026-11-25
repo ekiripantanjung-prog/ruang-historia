@@ -142,3 +142,7 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .balik.gelap{color:var(--accent)}
 @media(prefers-reduced-motion:reduce){.room .door{transition:none}}
 @media(max-width:600px){.room .door{height:120px;border-radius:80px 80px 10px 10px}}
+/* garis waktu interaktif & kartu tokoh */
+.strata.waktu .layer{border-left:0}
+.thn{font-style:normal;font-family:"Archivo Black",sans-serif;font-size:18px;white-space:nowrap;opacity:.95}
+.mono{margin-top:auto;align-self:center;width:84px;height:84px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Archivo Black",sans-serif;font-size:30px}

@@ -14,7 +14,7 @@ TAMBAH_BAB({
 
   video: {
     src: "video/indonesia/bab01.mp4",
-    judul: "Masa Praaksara dalam 2,5 menit",
+    judul: "Masa Praaksara dalam 2 menit",
     durasi: "2 menit 30 detik",
     catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks. Guru dapat membacakan atau mengulas sambil memutar."
   },

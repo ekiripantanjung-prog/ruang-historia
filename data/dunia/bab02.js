@@ -11,7 +11,7 @@ TAMBAH_BAB({
     "Menjelaskan peran ilmuwan Muslim dalam melestarikan ilmu Yunani"
   ],
 
-  video: { src: "video/dunia/bab02.mp4", judul: "Yunani dan Romawi dalam 2 menit", durasi: "± 2 menit", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/dunia/bab02.mp4", judul: "Yunani dan Romawi dalam 1,5 menit", durasi: "1 menit 25 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Garis waktu Yunani dan Romawi: klik setiap peristiwa",
@@ -125,7 +125,7 @@ TAMBAH_BAB({
   ],
 
   videoAdegan: [
-    { jenis: "banding", tag: "Yunani Kuno", kiri: ["Athena", ["ilmu dan seni", "demokrasi", "perdagangan"]], kanan: ["Sparta", ["kekuatan militer", "dua raja", "latihan prajurit sejak kecil"]],
+    { jenis: "banding", vs: true, tag: "Yunani Kuno", kiri: ["Athena", ["ilmu dan seni", "demokrasi", "perdagangan"]], kanan: ["Sparta", ["kekuatan militer", "dua raja", "latihan prajurit sejak kecil"]],
       cap: [[0.5, "Yunani terdiri atas banyak negara-kota yang disebut polis."], [7, "Athena dan Sparta adalah dua polis yang sangat berbeda."]] },
     { jenis: "daftar", tag: "Cinta kebijaksanaan", judul: "Para pemikir Yunani", items: [["Sokrates", "Mengajar dengan bertanya"], ["Plato", "Mendirikan Akademia"], ["Aristoteles", "Logika dan ilmu alam"], ["Herodotus", "Bapak Sejarah"]],
       cap: [[0.5, "Orang Yunani gemar bertanya: mengapa?"], [8, "Dari pertanyaan itu lahir filsafat dan ilmu pengetahuan."]] },

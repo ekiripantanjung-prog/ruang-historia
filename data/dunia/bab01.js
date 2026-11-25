@@ -11,7 +11,7 @@ TAMBAH_BAB({
     "Mengambil pelajaran dari kisah bangsa-bangsa terdahulu sebagaimana dianjurkan Al-Qur'an"
   ],
 
-  video: { src: "video/dunia/bab01.mp4", judul: "Peradaban awal dunia dalam 2 menit", durasi: "± 2 menit", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/dunia/bab01.mp4", judul: "Peradaban awal dunia dalam 1 menit", durasi: "1 menit 17 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Empat peradaban lembah sungai: klik setiap peradaban",

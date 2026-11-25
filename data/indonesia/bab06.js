@@ -145,7 +145,7 @@ TAMBAH_BAB({
       cap: [[0.5, "Perlawanan kedaerahan abad ke-19 berhasil dipatahkan Belanda."], [5.5, "Kaum terpelajar dan ulama memilih cara baru: berorganisasi."]] },
     { jenis: "waktu", judul: "Organisasi pergerakan", items: [["1908", "Budi Utomo"], ["1912", "Sarekat Islam & Muhammadiyah"], ["1912", "Indische Partij"], ["1922", "Taman Siswa"], ["1926", "Nahdlatul Ulama"], ["1927", "PNI"]],
       cap: [[0.5, "Budi Utomo, 20 Mei 1908, menandai kebangkitan nasional."], [8.5, "Ulama, pelajar, dan pemuda mendirikan organisasi di berbagai bidang."]] },
-    { jenis: "banding", tag: "Dua strategi", kiri: ["Kooperatif", ["mau bekerja sama", "duduk di Volksraad", "berjuang dari dalam"]], kanan: ["Nonkooperatif", ["menolak kerja sama", "menuntut merdeka", "PNI, Perhimpunan Indonesia"]],
+    { jenis: "banding", vs: true, tag: "Dua strategi", kiri: ["Kooperatif", ["mau bekerja sama", "duduk di Volksraad", "berjuang dari dalam"]], kanan: ["Nonkooperatif", ["menolak kerja sama", "menuntut merdeka", "PNI, Perhimpunan Indonesia"]],
       cap: [[0.5, "Organisasi pergerakan memakai dua strategi berbeda."], [7, "Tujuannya sama: kemajuan dan kemerdekaan bangsa."]] },
     { jenis: "kutip", tag: "28 Oktober 1928", teks: "Kami poetera dan poeteri Indonesia, mendjoendjoeng bahasa persatoean, bahasa Indonesia.", sumber: "Ikrar ketiga Sumpah Pemuda",
       cap: [[0.5, "Pemuda dari berbagai daerah mengikrarkan satu tanah air, satu bangsa, dan satu bahasa persatuan."], [6, "W.R. Supratman memperdengarkan lagu Indonesia Raya untuk pertama kali."]] },

@@ -142,7 +142,7 @@ TAMBAH_BAB({
       cap: [[0.5, "Keadaan aman membuat pembangunan bisa direncanakan."], [8, "Namun kebebasan berpendapat dan pers dibatasi."]] },
     { jenis: "daftar", tag: "Pembangunan", judul: "Capaian Orde Baru", items: [["Swasembada beras", "1984, penghargaan FAO"], ["SD Inpres", "Wajib belajar 6 tahun"], ["Puskesmas & KB", "Kesehatan dasar"], ["Satelit Palapa", "1976"]],
       cap: [[0.5, "Repelita membawa pertumbuhan ekonomi yang tinggi."], [8, "Sekolah dan puskesmas menjangkau desa-desa."]] },
-    { jenis: "banding", tag: "Menilai secara seimbang", kiri: ["Capaian", ["pertumbuhan ekonomi", "swasembada beras", "pendidikan dasar meluas"]], kanan: ["Masalah", ["KKN", "pers dibungkam", "kesenjangan dan utang"]],
+    { jenis: "banding", vs: true, tag: "Menilai secara seimbang", kiri: ["Capaian", ["pertumbuhan ekonomi", "swasembada beras", "pendidikan dasar meluas"]], kanan: ["Masalah", ["KKN", "pers dibungkam", "kesenjangan dan utang"]],
       cap: [[0.5, "Sejarah tidak hitam-putih: ada capaian, ada pula kesalahan."], [7, "Keduanya perlu dipelajari dengan jujur."]] },
     { jenis: "angka", tag: "Krisis moneter 1997–1998", angka: 15000, akhiran: "+", label: "rupiah per dolar AS pada pertengahan 1998, dari sekitar Rp2.400 pada 1997",
       cap: [[0.5, "Rupiah anjlok, harga melonjak, dan jutaan orang kehilangan pekerjaan."], [5.5, "Mahasiswa turun ke jalan menuntut reformasi."]] },

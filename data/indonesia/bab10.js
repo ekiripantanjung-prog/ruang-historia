@@ -11,7 +11,7 @@ TAMBAH_BAB({
     "Menganalisis sebab-sebab runtuhnya Orde Baru secara seimbang"
   ],
 
-  video: { src: "video/indonesia/bab10.mp4", judul: "Orde Baru dalam 2 menit", durasi: "± 2 menit", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/indonesia/bab10.mp4", judul: "Orde Baru dalam 1,5 menit", durasi: "1 menit 35 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Garis waktu 1966–1998: klik setiap peristiwa",

@@ -1,148 +1,804 @@
 {
  "indonesia-1": [
-  {"judul":"Nekara Bulan Pejeng, Bali","ket":"Nekara perunggu terbesar di Asia Tenggara, peninggalan zaman logam.","cari":["File:Moon of Pejeng, Pura Penataran Sasih 1463.jpg","Pejeng moon nekara"]},
-  {"judul":"Tengkorak Homo erectus dari Jawa","ket":"Fosil manusia purba yang ditemukan di Lembah Bengawan Solo.","cari":["File:Ngandong 7.jpg","File:Homo erectus Java man skull.jpg"]},
-  {"judul":"Lukisan cap tangan di Gua Leang Pettakere, Maros","ket":"Seni cadas tertua di dunia, bukti kehidupan zaman berburu.","cari":["File:Hands in Pettakere Cave detail.jpg","Leang Pettakere hand stencil"]},
-  {"judul":"Arca megalitik Lembah Bada, Sulawesi Tengah","ket":"Patung batu peninggalan tradisi megalitik.","cari":["Palindo megalith Bada valley","Bada valley megalith"]}
+  {
+   "judul": "Nekara Bulan Pejeng, Bali",
+   "ket": "Nekara perunggu terbesar di Asia Tenggara, peninggalan zaman logam.",
+   "cari": [
+    "File:Moon of Pejeng, Pura Penataran Sasih 1463.jpg",
+    "Pejeng moon nekara"
+   ]
+  },
+  {
+   "judul": "Tengkorak Homo erectus dari Jawa",
+   "ket": "Fosil manusia purba yang ditemukan di Lembah Bengawan Solo.",
+   "cari": [
+    "File:Ngandong 7.jpg",
+    "File:Homo erectus Java man skull.jpg"
+   ]
+  },
+  {
+   "judul": "Lukisan cap tangan di Gua Leang Pettakere, Maros",
+   "ket": "Seni cadas tertua di dunia, bukti kehidupan zaman berburu.",
+   "cari": [
+    "File:Hands in Pettakere Cave detail.jpg",
+    "Leang Pettakere hand stencil"
+   ]
+  },
+  {
+   "judul": "Arca megalitik Lembah Bada, Sulawesi Tengah",
+   "ket": "Patung batu peninggalan tradisi megalitik.",
+   "cari": [
+    "Palindo megalith Bada valley",
+    "Bada valley megalith"
+   ]
+  }
  ],
  "indonesia-2": [
-  {"judul":"Prasasti Yupa, Kutai","ket":"Tiang batu beraksara Pallawa, bukti tertulis kerajaan tertua di Nusantara.","cari":["Yupa inscription Kutai Museum Nasional","Mulawarman inscription yupa"]},
-  {"judul":"Prasasti Ciaruteun, Bogor","ket":"Prasasti Tarumanagara dengan pahatan telapak kaki Raja Purnawarman.","cari":["Ciaruteun inscription","Prasasti Ciaruteun"]},
-  {"judul":"Candi Borobudur","ket":"Candi Buddha terbesar di dunia, dibangun masa Wangsa Syailendra.","cari":["File:Borobudur photograph by van kinsbergen.jpg","File:Borobudur-Nothwest-view.jpg"]},
-  {"judul":"Candi Prambanan","ket":"Kompleks candi Hindu abad ke-9 untuk Trimurti.","cari":["File:Prambanan Complex 1.jpg","File:Prambanan Shiva Temple.jpg"]}
+  {
+   "judul": "Prasasti Yupa, Kutai",
+   "ket": "Tiang batu beraksara Pallawa, bukti tertulis kerajaan tertua di Nusantara.",
+   "cari": [
+    "Yupa inscription Kutai Museum Nasional",
+    "Mulawarman inscription yupa"
+   ]
+  },
+  {
+   "judul": "Prasasti Ciaruteun, Bogor",
+   "ket": "Prasasti Tarumanagara dengan pahatan telapak kaki Raja Purnawarman.",
+   "cari": [
+    "Ciaruteun inscription",
+    "Prasasti Ciaruteun"
+   ]
+  },
+  {
+   "judul": "Candi Borobudur",
+   "ket": "Candi Buddha terbesar di dunia, dibangun masa Wangsa Syailendra.",
+   "cari": [
+    "File:Borobudur photograph by van kinsbergen.jpg",
+    "File:Borobudur-Nothwest-view.jpg"
+   ]
+  },
+  {
+   "judul": "Candi Prambanan",
+   "ket": "Kompleks candi Hindu abad ke-9 untuk Trimurti.",
+   "cari": [
+    "File:Prambanan Complex 1.jpg",
+    "File:Prambanan Shiva Temple.jpg"
+   ]
+  }
  ],
  "indonesia-3": [
-  {"judul":"Masjid Agung Demak","ket":"Salah satu masjid tertua di Jawa, berarsitektur atap tumpang.","cari":["File:COLLECTIE TROPENMUSEUM De moskee van Demak TMnr 10016515.jpg","File:Masjid Agung Demak.jpg"]},
-  {"judul":"Menara Masjid Kudus","ket":"Menara bata merah bergaya candi, contoh akulturasi Islam dan budaya lokal.","cari":["File:COLLECTIE TROPENMUSEUM Minaret en moskee van Koedoes TMnr 60054755.jpg","File:Masjid Menara Kudus.jpg"]},
-  {"judul":"Masjid Raya Baiturrahman, Banda Aceh","ket":"Masjid bersejarah Kesultanan Aceh.","cari":["Baiturrahman Grand Mosque Banda Aceh","Masjid Raya Baiturrahman"]}
+  {
+   "judul": "Masjid Agung Demak",
+   "ket": "Salah satu masjid tertua di Jawa, berarsitektur atap tumpang.",
+   "cari": [
+    "File:COLLECTIE TROPENMUSEUM De moskee van Demak TMnr 10016515.jpg",
+    "File:Masjid Agung Demak.jpg"
+   ]
+  },
+  {
+   "judul": "Menara Masjid Kudus",
+   "ket": "Menara bata merah bergaya candi, contoh akulturasi Islam dan budaya lokal.",
+   "cari": [
+    "File:COLLECTIE TROPENMUSEUM Minaret en moskee van Koedoes TMnr 60054755.jpg",
+    "File:Masjid Menara Kudus.jpg"
+   ]
+  },
+  {
+   "judul": "Masjid Raya Baiturrahman, Banda Aceh",
+   "ket": "Masjid bersejarah Kesultanan Aceh.",
+   "cari": [
+    "Masjid Raya Baiturrahman Banda Aceh",
+    "Baiturrahman Grand Mosque",
+    "Baiturrahman mosque Aceh"
+   ]
+  }
  ],
  "indonesia-4": [
-  {"judul":"Kastel Batavia, lukisan Andries Beeckman (± 1661)","ket":"Markas VOC di Batavia, kini kawasan Kota Tua Jakarta.","cari":["File:Andries Beeckman - The Castle of Batavia.jpg"]},
-  {"judul":"Benteng Duurstede, Saparua","ket":"Benteng VOC di Maluku, pusat perdagangan cengkih.","cari":["Duurstede Fort Saparua","Fort Duurstede"]},
-  {"judul":"Benteng Fort Rotterdam, Makassar","ket":"Benteng peninggalan Gowa-Tallo yang kemudian dikuasai VOC.","cari":["Fort Rotterdam Makassar","Fort Rotterdam Ujung Pandang"]}
+  {
+   "judul": "Kastel Batavia, lukisan Andries Beeckman (± 1661)",
+   "ket": "Markas VOC di Batavia, kini kawasan Kota Tua Jakarta.",
+   "cari": [
+    "File:Andries Beeckman - The Castle of Batavia.jpg"
+   ]
+  },
+  {
+   "judul": "Benteng Duurstede, Saparua",
+   "ket": "Benteng VOC di Maluku, pusat perdagangan cengkih.",
+   "cari": [
+    "Benteng Duurstede",
+    "Duurstede Saparua",
+    "Fort Duurstede Saparoea"
+   ]
+  },
+  {
+   "judul": "Benteng Fort Rotterdam, Makassar",
+   "ket": "Benteng peninggalan Gowa-Tallo yang kemudian dikuasai VOC.",
+   "cari": [
+    "Fort Rotterdam",
+    "Benteng Rotterdam Makassar",
+    "Fort Rotterdam Makassar Sulawesi"
+   ]
+  }
  ],
  "indonesia-5": [
-  {"judul":"Benteng Marlborough, Bengkulu","ket":"Benteng Inggris di pesisir barat Sumatra.","cari":["Fort Marlborough Bengkulu"]},
-  {"judul":"Benteng Van den Bosch (Benteng Pendem), Ngawi","ket":"Benteng Belanda yang dibangun setelah Perang Jawa.","cari":["Benteng Van den Bosch Ngawi","Fort Van den Bosch Ngawi"]},
-  {"judul":"Monumen Puputan Badung, Denpasar","ket":"Peringatan perlawanan rakyat Badung tahun 1906.","cari":["Puputan Badung monument Denpasar","Puputan Square Denpasar"]}
+  {
+   "judul": "Benteng Marlborough, Bengkulu",
+   "ket": "Benteng Inggris di pesisir barat Sumatra.",
+   "cari": [
+    "Benteng Marlborough",
+    "Fort Marlborough",
+    "Marlborough Bengkulu"
+   ]
+  },
+  {
+   "judul": "Benteng Van den Bosch (Benteng Pendem), Ngawi",
+   "ket": "Benteng Belanda yang dibangun setelah Perang Jawa.",
+   "cari": [
+    "Benteng Van den Bosch Ngawi",
+    "Fort Van den Bosch Ngawi"
+   ]
+  },
+  {
+   "judul": "Monumen Puputan Badung, Denpasar",
+   "ket": "Peringatan perlawanan rakyat Badung tahun 1906.",
+   "cari": [
+    "Puputan Badung monument Denpasar",
+    "Puputan Square Denpasar"
+   ]
+  }
  ],
  "indonesia-6": [
-  {"judul":"Gedung STOVIA, Jakarta","ket":"Sekolah dokter tempat Budi Utomo berdiri tahun 1908, kini Museum Kebangkitan Nasional.","cari":["Museum Kebangkitan Nasional STOVIA","STOVIA building Batavia"]},
-  {"judul":"Museum Sumpah Pemuda, Jl. Kramat Raya 106","ket":"Tempat Kongres Pemuda II, 28 Oktober 1928.","cari":["Museum Sumpah Pemuda Kramat Raya","Sumpah Pemuda museum"]},
-  {"judul":"Volksraad di Batavia","ket":"Dewan Rakyat bentukan Belanda tahun 1918.","cari":["Volksraad gebouw Batavia","Volksraad Batavia"]}
+  {
+   "judul": "Gedung STOVIA, Jakarta",
+   "ket": "Sekolah dokter tempat Budi Utomo berdiri tahun 1908, kini Museum Kebangkitan Nasional.",
+   "cari": [
+    "Museum Kebangkitan Nasional STOVIA",
+    "STOVIA building Batavia"
+   ]
+  },
+  {
+   "judul": "Museum Sumpah Pemuda, Jl. Kramat Raya 106",
+   "ket": "Tempat Kongres Pemuda II, 28 Oktober 1928.",
+   "cari": [
+    "Museum Sumpah Pemuda Kramat Raya",
+    "Sumpah Pemuda museum"
+   ]
+  },
+  {
+   "judul": "Volksraad di Batavia",
+   "ket": "Dewan Rakyat bentukan Belanda tahun 1918.",
+   "cari": [
+    "Volksraad gebouw Batavia",
+    "Volksraad Batavia"
+   ]
+  }
  ],
  "indonesia-7": [
-  {"judul":"Uang kertas pendudukan Jepang","ket":"Uang yang diterbitkan pemerintah militer Jepang di Hindia Belanda.","cari":["Japanese government issued rupiah Netherlands Indies banknote","Japanese invasion money Netherlands Indies"]},
-  {"judul":"Gua Jepang di Bukittinggi","ket":"Terowongan pertahanan buatan masa pendudukan Jepang.","cari":["Lobang Jepang Bukittinggi","Japanese tunnel Bukittinggi"]},
-  {"judul":"Monumen PETA, Bogor","ket":"Bekas markas pelatihan tentara Pembela Tanah Air.","cari":["Museum PETA Bogor","Monumen PETA Bogor"]}
+  {
+   "judul": "Uang kertas pendudukan Jepang",
+   "ket": "Uang yang diterbitkan pemerintah militer Jepang di Hindia Belanda.",
+   "cari": [
+    "De Japansche Regeering gulden",
+    "Japanese occupation Netherlands Indies gulden",
+    "Japanese invasion money"
+   ]
+  },
+  {
+   "judul": "Gua Jepang di Bukittinggi",
+   "ket": "Terowongan pertahanan buatan masa pendudukan Jepang.",
+   "cari": [
+    "Lubang Jepang Bukittinggi",
+    "Lobang Jepang",
+    "Japanese cave Bukittinggi"
+   ]
+  },
+  {
+   "judul": "Museum PETA, Bogor",
+   "ket": "Bekas markas pelatihan tentara Pembela Tanah Air.",
+   "cari": [
+    "Museum PETA Bogor gedung",
+    "Museum Pembela Tanah Air Bogor"
+   ]
+  }
  ],
  "indonesia-8": [
-  {"judul":"Naskah Proklamasi ketikan","ket":"Teks Proklamasi Kemerdekaan Indonesia, 17 Agustus 1945.","cari":["Naskah Proklamasi Kemerdekaan Indonesia ketik","Proklamasi Kemerdekaan Indonesia text"]},
-  {"judul":"Museum Perumusan Naskah Proklamasi","ket":"Rumah Laksamana Maeda, tempat naskah Proklamasi dirumuskan.","cari":["Museum Perumusan Naskah Proklamasi","Maeda house Jakarta"]},
-  {"judul":"Hotel Yamato (Hotel Majapahit), Surabaya","ket":"Lokasi insiden perobekan bendera, 19 September 1945.","cari":["Hotel Majapahit Surabaya","Hotel Yamato Surabaya"]},
-  {"judul":"Tugu Pahlawan, Surabaya","ket":"Monumen untuk pertempuran 10 November 1945.","cari":["Tugu Pahlawan Surabaya","Heroes Monument Surabaya"]}
+  {
+   "judul": "Naskah Proklamasi ketikan",
+   "ket": "Teks Proklamasi Kemerdekaan Indonesia, 17 Agustus 1945.",
+   "cari": [
+    "Naskah Proklamasi Kemerdekaan Indonesia ketik",
+    "Proklamasi Kemerdekaan Indonesia text"
+   ]
+  },
+  {
+   "judul": "Museum Perumusan Naskah Proklamasi",
+   "ket": "Rumah Laksamana Maeda, tempat naskah Proklamasi dirumuskan.",
+   "cari": [
+    "Museum Perumusan Naskah Proklamasi",
+    "Maeda house Jakarta"
+   ]
+  },
+  {
+   "judul": "Hotel Yamato (Hotel Majapahit), Surabaya",
+   "ket": "Lokasi insiden perobekan bendera, 19 September 1945.",
+   "cari": [
+    "Hotel Majapahit Surabaya",
+    "Hotel Yamato Surabaya"
+   ]
+  },
+  {
+   "judul": "Tugu Pahlawan, Surabaya",
+   "ket": "Monumen untuk pertempuran 10 November 1945.",
+   "cari": [
+    "Tugu Pahlawan",
+    "Monumen Tugu Pahlawan Surabaya",
+    "Heroes Monument Surabaya"
+   ]
+  }
  ],
  "indonesia-9": [
-  {"judul":"Gedung Merdeka, Bandung","ket":"Tempat Konferensi Asia-Afrika, April 1955.","cari":["Gedung Merdeka Bandung","Asian African Conference museum Bandung"]},
-  {"judul":"Monumen Nasional (Monas)","ket":"Tugu nasional yang mulai dibangun tahun 1961.","cari":["Monumen Nasional Jakarta","National Monument Jakarta"]},
-  {"judul":"Masjid Istiqlal, Jakarta","ket":"Masjid nasional yang mulai dibangun masa Demokrasi Terpimpin.","cari":["Istiqlal Mosque Jakarta","Masjid Istiqlal"]}
+  {
+   "judul": "Gedung Merdeka, Bandung",
+   "ket": "Tempat Konferensi Asia-Afrika, April 1955.",
+   "cari": [
+    "File:Gedung.Merdeka.jpg",
+    "Gedung Merdeka"
+   ]
+  },
+  {
+   "judul": "Monumen Nasional (Monas)",
+   "ket": "Tugu nasional yang mulai dibangun tahun 1961.",
+   "cari": [
+    "Monas Jakarta",
+    "Monumen Nasional",
+    "National Monument Indonesia"
+   ]
+  },
+  {
+   "judul": "Masjid Istiqlal, Jakarta",
+   "ket": "Masjid nasional yang mulai dibangun masa Demokrasi Terpimpin.",
+   "cari": [
+    "Masjid Istiqlal Jakarta",
+    "Istiqlal mosque exterior",
+    "Istiqlal Mosque"
+   ]
+  }
  ],
  "indonesia-10": [
-  {"judul":"Monumen Pancasila Sakti, Lubang Buaya","ket":"Monumen peringatan peristiwa 1965.","cari":["Monumen Pancasila Sakti","Lubang Buaya monument"]},
-  {"judul":"Bendungan Jatiluhur","ket":"Bendungan besar penopang irigasi dan listrik Jawa Barat.","cari":["Jatiluhur Dam","Waduk Jatiluhur"]},
-  {"judul":"Satelit Palapa","ket":"Satelit komunikasi domestik Indonesia, diluncurkan 1976.","cari":["Palapa satellite","Palapa A1 satellite"]}
+  {
+   "judul": "Monumen Pancasila Sakti, Lubang Buaya",
+   "ket": "Monumen peringatan peristiwa 1965.",
+   "cari": [
+    "Monumen Pancasila Sakti",
+    "Lubang Buaya monument"
+   ]
+  },
+  {
+   "judul": "Bendungan Jatiluhur",
+   "ket": "Bendungan besar penopang irigasi dan listrik Jawa Barat.",
+   "cari": [
+    "Jatiluhur Dam",
+    "Waduk Jatiluhur"
+   ]
+  },
+  {
+   "judul": "Satelit Palapa",
+   "ket": "Satelit komunikasi domestik Indonesia, diluncurkan 1976.",
+   "cari": [
+    "Palapa satellite",
+    "Palapa A1 satellite"
+   ]
+  }
  ],
  "indonesia-11": [
-  {"judul":"Gedung DPR/MPR, Senayan","ket":"Gedung yang diduduki mahasiswa pada Mei 1998.","cari":["Gedung DPR MPR Senayan","Indonesian Parliament building Jakarta"]},
-  {"judul":"Gedung Mahkamah Konstitusi","ket":"Lembaga baru hasil amandemen UUD 1945 masa Reformasi.","cari":["Mahkamah Konstitusi building Jakarta","Constitutional Court of Indonesia building"]},
-  {"judul":"Kotak suara Pemilu","ket":"Pemilu 1999 adalah pemilu demokratis pertama masa Reformasi.","cari":["Indonesian election ballot box","kotak suara pemilu Indonesia"]}
+  {
+   "judul": "Gedung DPR/MPR, Senayan",
+   "ket": "Gedung yang diduduki mahasiswa pada Mei 1998.",
+   "cari": [
+    "Gedung Nusantara DPR",
+    "MPR DPR building",
+    "Gedung DPR"
+   ]
+  },
+  {
+   "judul": "Gedung Mahkamah Konstitusi",
+   "ket": "Lembaga baru hasil amandemen UUD 1945 masa Reformasi.",
+   "cari": [
+    "Gedung Mahkamah Konstitusi",
+    "Mahkamah Konstitusi Republik Indonesia",
+    "Constitutional Court Indonesia"
+   ]
+  },
+  {
+   "judul": "Kotak suara Pemilu",
+   "ket": "Pemilu 1999 adalah pemilu demokratis pertama masa Reformasi.",
+   "cari": [
+    "kotak suara",
+    "ballot box Indonesia",
+    "Pemilu 1999 surat suara"
+   ]
+  }
  ],
  "dunia-1": [
-  {"judul":"Piramida Giza, Mesir","ket":"Makam raja-raja Mesir Kuno, sekitar 2500 SM.","cari":["File:All Gizah Pyramids.jpg","Giza pyramids"]},
-  {"judul":"Kode Hammurabi","ket":"Prasasti hukum Babilonia, sekitar 1754 SM.","cari":["Code of Hammurabi stele Louvre","Hammurabi stele"]},
-  {"judul":"Situs Mohenjo-daro","ket":"Kota terencana peradaban Lembah Sungai Indus.","cari":["Mohenjo-daro ruins","Mohenjodaro"]},
-  {"judul":"Tulang ramalan Dinasti Shang","ket":"Tulang beraksara Tiongkok tertua.","cari":["Shang dynasty oracle bone","oracle bone inscription"]}
+  {
+   "judul": "Piramida Giza, Mesir",
+   "ket": "Makam raja-raja Mesir Kuno, sekitar 2500 SM.",
+   "cari": [
+    "File:All Gizah Pyramids.jpg",
+    "Giza pyramids"
+   ]
+  },
+  {
+   "judul": "Kode Hammurabi",
+   "ket": "Prasasti hukum Babilonia, sekitar 1754 SM.",
+   "cari": [
+    "Code of Hammurabi stele Louvre",
+    "Hammurabi stele"
+   ]
+  },
+  {
+   "judul": "Situs Mohenjo-daro",
+   "ket": "Kota terencana peradaban Lembah Sungai Indus.",
+   "cari": [
+    "Mohenjo-daro ruins",
+    "Mohenjodaro"
+   ]
+  },
+  {
+   "judul": "Tulang ramalan Dinasti Shang",
+   "ket": "Tulang beraksara Tiongkok tertua.",
+   "cari": [
+    "Shang dynasty oracle bone",
+    "oracle bone inscription"
+   ]
+  }
  ],
  "dunia-2": [
-  {"judul":"Parthenon, Athena","ket":"Kuil Dewi Athena di Akropolis, abad ke-5 SM.","cari":["Parthenon Athens","The Parthenon in Athens"]},
-  {"judul":"Colosseum, Roma","ket":"Amfiteater Romawi yang selesai dibangun tahun 80 M.","cari":["Colosseum in Rome","Colosseum Rome"]},
-  {"judul":"Pont du Gard, Prancis","ket":"Akuaduk Romawi, bukti kemajuan teknik sipil.","cari":["Pont du Gard","Pont du Gard aqueduct"]}
+  {
+   "judul": "Parthenon, Athena",
+   "ket": "Kuil Dewi Athena di Akropolis, abad ke-5 SM.",
+   "cari": [
+    "Parthenon Athens",
+    "The Parthenon in Athens"
+   ]
+  },
+  {
+   "judul": "Colosseum, Roma",
+   "ket": "Amfiteater Romawi yang selesai dibangun tahun 80 M.",
+   "cari": [
+    "Colosseo",
+    "Colosseum 2020",
+    "Colosseum exterior"
+   ]
+  },
+  {
+   "judul": "Pont du Gard, Prancis",
+   "ket": "Akuaduk Romawi, bukti kemajuan teknik sipil.",
+   "cari": [
+    "Pont du Gard",
+    "Pont du Gard Vers",
+    "aqueduct Pont du Gard"
+   ]
+  }
  ],
  "dunia-3": [
-  {"judul":"Hagia Sophia, Istanbul","ket":"Bangunan megah Bizantium abad ke-6.","cari":["Hagia Sophia Istanbul exterior","Hagia Sophia"]},
-  {"judul":"Astrolab Islam abad pertengahan","ket":"Alat astronomi yang dikembangkan ilmuwan Muslim.","cari":["Islamic astrolabe","Persian astrolabe"]},
-  {"judul":"Katedral Notre-Dame, Paris","ket":"Contoh arsitektur Gotik Eropa abad pertengahan.","cari":["Notre-Dame de Paris facade","Notre Dame Paris"]}
+  {
+   "judul": "Hagia Sophia, Istanbul",
+   "ket": "Bangunan megah Bizantium abad ke-6.",
+   "cari": [
+    "Hagia Sophia Istanbul exterior",
+    "Hagia Sophia"
+   ]
+  },
+  {
+   "judul": "Astrolab Islam abad pertengahan",
+   "ket": "Alat astronomi yang dikembangkan ilmuwan Muslim.",
+   "cari": [
+    "Islamic astrolabe",
+    "Persian astrolabe"
+   ]
+  },
+  {
+   "judul": "Katedral Notre-Dame, Paris",
+   "ket": "Contoh arsitektur Gotik Eropa abad pertengahan.",
+   "cari": [
+    "Notre-Dame de Paris facade",
+    "Notre Dame Paris"
+   ]
+  }
  ],
  "dunia-4": [
-  {"judul":"Kubah Katedral Florence","ket":"Karya Brunelleschi, ikon Renaisans.","cari":["Florence Cathedral dome Brunelleschi","Santa Maria del Fiore"]},
-  {"judul":"Mesin cetak Gutenberg (replika)","ket":"Mesin cetak huruf lepas yang mempercepat penyebaran ilmu.","cari":["Gutenberg printing press replica","Gutenberg press"]},
-  {"judul":"Peta dunia abad ke-16","ket":"Peta hasil era penjelajahan samudra.","cari":["Ortelius Typus Orbis Terrarum","Waldseemuller map"]}
+  {
+   "judul": "Kubah Katedral Florence",
+   "ket": "Karya Brunelleschi, ikon Renaisans.",
+   "cari": [
+    "Florence Cathedral dome Brunelleschi",
+    "Santa Maria del Fiore"
+   ]
+  },
+  {
+   "judul": "Mesin cetak Gutenberg (replika)",
+   "ket": "Mesin cetak huruf lepas yang mempercepat penyebaran ilmu.",
+   "cari": [
+    "Gutenberg printing press replica",
+    "Gutenberg press"
+   ]
+  },
+  {
+   "judul": "Peta dunia abad ke-16",
+   "ket": "Peta hasil era penjelajahan samudra.",
+   "cari": [
+    "Typus Orbis Terrarum",
+    "Mercator 1569 world map",
+    "Ortelius world map 1570"
+   ]
+  }
  ],
  "dunia-5": [
-  {"judul":"Mesin uap Watt","ket":"Penggerak utama Revolusi Industri.","cari":["Watt steam engine","James Watt steam engine Science Museum"]},
-  {"judul":"Penyerbuan Bastille (lukisan)","ket":"Peristiwa 14 Juli 1789, awal Revolusi Prancis.","cari":["Prise de la Bastille Houel","Storming of the Bastille painting"]},
-  {"judul":"Deklarasi Kemerdekaan Amerika Serikat","ket":"Dokumen tahun 1776.","cari":["United States Declaration of Independence parchment","Declaration of Independence 1776 document"]}
+  {
+   "judul": "Mesin uap Watt",
+   "ket": "Penggerak utama Revolusi Industri.",
+   "cari": [
+    "Watt engine",
+    "Boulton and Watt engine",
+    "Boulton Watt steam engine"
+   ]
+  },
+  {
+   "judul": "Penyerbuan Bastille (lukisan)",
+   "ket": "Peristiwa 14 Juli 1789, awal Revolusi Prancis.",
+   "cari": [
+    "Prise de la Bastille Houel",
+    "Storming of the Bastille painting"
+   ]
+  },
+  {
+   "judul": "Deklarasi Kemerdekaan Amerika Serikat",
+   "ket": "Dokumen tahun 1776.",
+   "cari": [
+    "United States Declaration of Independence parchment",
+    "Declaration of Independence 1776 document"
+   ]
+  }
  ],
  "dunia-6": [
-  {"judul":"Peta kolonialisme di Afrika tahun 1914","ket":"Pembagian Afrika oleh negara-negara Eropa.","cari":["Colonial Africa 1914 map","Africa 1914 colonial map"]},
-  {"judul":"Pawai Garam Gandhi, 1930 (patung peringatan)","ket":"Monumen Dandi March di India.","cari":["Dandi March memorial","National Salt Satyagraha Memorial"]},
-  {"judul":"Terusan Suez","ket":"Jalur pelayaran yang dibuka 1869 dan mempercepat imperialisme.","cari":["Suez Canal aerial","Suez Canal"]}
+  {
+   "judul": "Peta kolonialisme di Afrika tahun 1914",
+   "ket": "Pembagian Afrika oleh negara-negara Eropa.",
+   "cari": [
+    "Colonial Africa 1914 map",
+    "Africa 1914 colonial map"
+   ]
+  },
+  {
+   "judul": "Gateway of India, Mumbai",
+   "ket": "Gerbang yang dibangun Inggris tahun 1924; pasukan Inggris terakhir meninggalkan India melaluinya tahun 1948.",
+   "cari": [
+    "Gateway of India Mumbai",
+    "Gateway of India"
+   ]
+  },
+  {
+   "judul": "Terusan Suez",
+   "ket": "Jalur pelayaran yang dibuka 1869 dan mempercepat imperialisme.",
+   "cari": [
+    "Suez Canal",
+    "Suez canal ship",
+    "Suez Canal Ismailia"
+   ]
+  }
  ],
  "dunia-7": [
-  {"judul":"Parit Perang Dunia I","ket":"Perang parit di Front Barat.","cari":["World War I trench Western Front","WWI trenches"]},
-  {"judul":"Kubah Bom Atom Hiroshima","ket":"Sisa bangunan setelah bom atom 6 Agustus 1945.","cari":["Hiroshima Peace Memorial Genbaku Dome","Atomic Bomb Dome"]},
-  {"judul":"Gedung Markas PBB, New York","ket":"Organisasi yang lahir tahun 1945 setelah perang.","cari":["United Nations Headquarters New York","UN headquarters building"]}
+  {
+   "judul": "Parit Perang Dunia I",
+   "ket": "Perang parit di Front Barat.",
+   "cari": [
+    "Western Front trench 1917",
+    "Somme trench 1916",
+    "Trench Ypres"
+   ]
+  },
+  {
+   "judul": "Kubah Bom Atom Hiroshima",
+   "ket": "Sisa bangunan setelah bom atom 6 Agustus 1945.",
+   "cari": [
+    "Hiroshima Peace Memorial Genbaku Dome",
+    "Atomic Bomb Dome"
+   ]
+  },
+  {
+   "judul": "Gedung Markas PBB, New York",
+   "ket": "Organisasi yang lahir tahun 1945 setelah perang.",
+   "cari": [
+    "United Nations Headquarters New York",
+    "UN headquarters building"
+   ]
+  }
  ],
  "dunia-8": [
-  {"judul":"Tembok Berlin","ket":"Simbol Perang Dingin, berdiri 1961–1989.","cari":["Berlin Wall East Side Gallery","Berlin Wall 1989"]},
-  {"judul":"Gedung Merdeka, Bandung","ket":"Konferensi Asia-Afrika 1955 mendorong dekolonisasi.","cari":["Gedung Merdeka Bandung"]},
-  {"judul":"Satelit Sputnik 1 (replika)","ket":"Satelit pertama tahun 1957, awal perlombaan angkasa.","cari":["Sputnik 1 replica","Sputnik 1"]}
+  {
+   "judul": "Tembok Berlin",
+   "ket": "Simbol Perang Dingin, berdiri 1961–1989.",
+   "cari": [
+    "Berlin Wall East Side Gallery",
+    "Berlin Wall 1989"
+   ]
+  },
+  {
+   "judul": "Gedung Merdeka, Bandung",
+   "ket": "Konferensi Asia-Afrika 1955 mendorong dekolonisasi.",
+   "cari": [
+    "Gedung Merdeka Bandung"
+   ]
+  },
+  {
+   "judul": "Satelit Sputnik 1 (replika)",
+   "ket": "Satelit pertama tahun 1957, awal perlombaan angkasa.",
+   "cari": [
+    "Sputnik 1 replica",
+    "Sputnik 1"
+   ]
+  }
  ],
  "dunia-9": [
-  {"judul":"Stasiun Luar Angkasa Internasional","ket":"Kerja sama antarnegara di era global.","cari":["International Space Station STS-134","International Space Station"]},
-  {"judul":"Komputer awal ENIAC","ket":"Awal revolusi teknologi informasi.","cari":["ENIAC computer","ENIAC"]},
-  {"judul":"Panel surya","ket":"Energi terbarukan dalam menghadapi perubahan iklim.","cari":["solar panel array","photovoltaic power station"]}
+  {
+   "judul": "Stasiun Luar Angkasa Internasional",
+   "ket": "Kerja sama antarnegara di era global.",
+   "cari": [
+    "ISS after STS-133",
+    "International Space Station orbit",
+    "ISS 2011"
+   ]
+  },
+  {
+   "judul": "Kabel serat optik",
+   "ket": "Jaringan serat optik menopang internet dan globalisasi informasi.",
+   "cari": [
+    "optical fiber cable",
+    "fiber optic cables"
+   ]
+  },
+  {
+   "judul": "Panel surya",
+   "ket": "Energi terbarukan dalam menghadapi perubahan iklim.",
+   "cari": [
+    "solar panel array",
+    "photovoltaic power station"
+   ]
+  }
  ],
  "ski-1": [
-  {"judul":"Ka'bah dan Masjidil Haram, Mekkah","ket":"Kiblat umat Islam, pusat dakwah awal Rasulullah ﷺ.","cari":["Kaaba Masjid al-Haram","Masjid al-Haram Kaaba"]},
-  {"judul":"Masjid Nabawi, Madinah","ket":"Masjid yang dibangun Rasulullah ﷺ setelah hijrah.","cari":["Al-Masjid an-Nabawi","Prophet's Mosque Medina"]},
-  {"judul":"Masjid Quba, Madinah","ket":"Masjid pertama yang dibangun dalam sejarah Islam.","cari":["Quba Mosque","Masjid Quba"]},
-  {"judul":"Jabal Nur dan Gua Hira","ket":"Tempat turunnya wahyu pertama.","cari":["Jabal al-Nour","Hira cave"]}
+  {
+   "judul": "Ka'bah dan Masjidil Haram, Mekkah",
+   "ket": "Kiblat umat Islam, pusat dakwah awal Rasulullah ﷺ.",
+   "cari": [
+    "Kaaba",
+    "Kaaba Mecca",
+    "Kaaba Masjid al-Haram aerial"
+   ]
+  },
+  {
+   "judul": "Masjid Nabawi, Madinah",
+   "ket": "Masjid yang dibangun Rasulullah ﷺ setelah hijrah.",
+   "cari": [
+    "Al-Masjid an-Nabawi",
+    "Prophet's Mosque Medina"
+   ]
+  },
+  {
+   "judul": "Masjid Quba, Madinah",
+   "ket": "Masjid pertama yang dibangun dalam sejarah Islam.",
+   "cari": [
+    "Quba Mosque",
+    "Masjid Quba"
+   ]
+  },
+  {
+   "judul": "Jabal Nur dan Gua Hira",
+   "ket": "Tempat turunnya wahyu pertama.",
+   "cari": [
+    "Jabal al-Nour",
+    "Hira cave"
+   ]
+  }
  ],
  "ski-2": [
-  {"judul":"Mushaf Al-Qur'an kuno","ket":"Naskah Al-Qur'an awal; pembukuan mushaf dirintis masa Khulafaur Rasyidin.","cari":["Birmingham Quran manuscript","early Quran manuscript hijazi"]},
-  {"judul":"Koin dirham awal Islam","ket":"Mata uang masa awal pemerintahan Islam.","cari":["early Islamic dirham","Arab-Sasanian dirham"]},
-  {"judul":"Kota Kufah dan Masjid Agung Kufah","ket":"Kota yang berkembang pada masa Khalifah Umar dan Ali.","cari":["Great Mosque of Kufa","Kufa mosque"]}
+  {
+   "judul": "Mushaf Al-Qur'an kuno",
+   "ket": "Naskah Al-Qur'an awal; pembukuan mushaf dirintis masa Khulafaur Rasyidin.",
+   "cari": [
+    "Codex Parisino-petropolitanus",
+    "Hijazi Quran manuscript",
+    "Sana'a manuscript"
+   ]
+  },
+  {
+   "judul": "Koin dirham awal Islam",
+   "ket": "Mata uang masa awal pemerintahan Islam.",
+   "cari": [
+    "Umayyad dirham",
+    "dirham Wasit",
+    "Arab-Sasanian coin"
+   ]
+  },
+  {
+   "judul": "Kota Kufah dan Masjid Agung Kufah",
+   "ket": "Kota yang berkembang pada masa Khalifah Umar dan Ali.",
+   "cari": [
+    "Great Mosque of Kufa",
+    "Kufa mosque"
+   ]
+  }
  ],
  "ski-3": [
-  {"judul":"Kubah Batu (Qubbat as-Sakhrah), Yerusalem","ket":"Dibangun masa Khalifah Abdul Malik, sekitar 691 M.","cari":["Dome of the Rock","Dome of the Rock Jerusalem"]},
-  {"judul":"Masjid Umayyah, Damaskus","ket":"Masjid agung di ibu kota Dinasti Umayyah.","cari":["Umayyad Mosque Damascus courtyard","Umayyad Mosque"]},
-  {"judul":"Dinar emas Abdul Malik","ket":"Mata uang Islam beraksara Arab pertama.","cari":["gold dinar Abd al-Malik","Umayyad gold dinar"]}
+  {
+   "judul": "Kubah Batu (Qubbat as-Sakhrah), Yerusalem",
+   "ket": "Dibangun masa Khalifah Abdul Malik, sekitar 691 M.",
+   "cari": [
+    "Dome of the Rock",
+    "Dome of the Rock Jerusalem"
+   ]
+  },
+  {
+   "judul": "Masjid Umayyah, Damaskus",
+   "ket": "Masjid agung di ibu kota Dinasti Umayyah.",
+   "cari": [
+    "Umayyad Mosque Damascus courtyard",
+    "Umayyad Mosque"
+   ]
+  },
+  {
+   "judul": "Dinar emas Abdul Malik",
+   "ket": "Mata uang Islam beraksara Arab pertama.",
+   "cari": [
+    "gold dinar Abd al-Malik",
+    "Umayyad gold dinar"
+   ]
+  }
  ],
  "ski-4": [
-  {"judul":"Menara spiral Masjid Agung Samarra","ket":"Peninggalan Dinasti Abbasiyah abad ke-9.","cari":["Malwiya minaret Samarra","Great Mosque of Samarra minaret"]},
-  {"judul":"Naskah ilmu pengetahuan Abbasiyah","ket":"Manuskrip hasil gerakan penerjemahan di Baghdad.","cari":["al-Jazari manuscript","Arabic manuscript astronomy"]},
-  {"judul":"Peta kota bundar Baghdad","ket":"Rancangan ibu kota yang dibangun Al-Mansur tahun 762.","cari":["Round city of Baghdad","Baghdad round city plan"]}
+  {
+   "judul": "Menara spiral Masjid Agung Samarra",
+   "ket": "Peninggalan Dinasti Abbasiyah abad ke-9.",
+   "cari": [
+    "Malwiya minaret Samarra",
+    "Great Mosque of Samarra minaret"
+   ]
+  },
+  {
+   "judul": "Madrasah Al-Mustansiriyah, Baghdad",
+   "ket": "Perguruan tinggi yang didirikan Khalifah Al-Mustansir tahun 1233.",
+   "cari": [
+    "Mustansiriya Madrasah Baghdad",
+    "Al-Mustansiriya"
+   ]
+  },
+  {
+   "judul": "Peta kota bundar Baghdad",
+   "ket": "Rancangan ibu kota yang dibangun Al-Mansur tahun 762.",
+   "cari": [
+    "Round City Baghdad",
+    "Baghdad 150 to 300 AH",
+    "Baghdad round city map"
+   ]
+  }
  ],
  "ski-5": [
-  {"judul":"Masjid Agung Cordoba","ket":"Lengkung merah-putih khas Andalusia.","cari":["Mosque-Cathedral of Cordoba arches","Mezquita Cordoba interior"]},
-  {"judul":"Istana Alhambra, Granada","ket":"Istana Bani Nasr, peninggalan terakhir Islam di Spanyol.","cari":["Alhambra Granada","Court of the Lions Alhambra"]},
-  {"judul":"Madinat az-Zahra","ket":"Kota istana Khalifah Abdurrahman III.","cari":["Medina Azahara","Madinat al-Zahra"]}
+  {
+   "judul": "Masjid Agung Cordoba",
+   "ket": "Lengkung merah-putih khas Andalusia.",
+   "cari": [
+    "Mosque-Cathedral of Cordoba arches",
+    "Mezquita Cordoba interior"
+   ]
+  },
+  {
+   "judul": "Istana Alhambra, Granada",
+   "ket": "Istana Bani Nasr, peninggalan terakhir Islam di Spanyol.",
+   "cari": [
+    "Alhambra Granada",
+    "Court of the Lions Alhambra"
+   ]
+  },
+  {
+   "judul": "Madinat az-Zahra",
+   "ket": "Kota istana Khalifah Abdurrahman III.",
+   "cari": [
+    "Medina Azahara salón rico",
+    "Madinat al-Zahra ruins",
+    "Medina Azahara"
+   ]
+  }
  ],
  "ski-6": [
-  {"judul":"Masjid Sulaimaniyah, Istanbul","ket":"Karya arsitek Sinan masa Turki Usmani.","cari":["Suleymaniye Mosque Istanbul","Süleymaniye Mosque"]},
-  {"judul":"Taj Mahal, Agra","ket":"Mahakarya arsitektur Dinasti Mughal.","cari":["Taj Mahal","Taj Mahal Agra"]},
-  {"judul":"Lapangan Naqsh-e Jahan, Isfahan","ket":"Pusat kota Dinasti Safawi.","cari":["Naqsh-e Jahan Square","Imam Square Isfahan"]}
+  {
+   "judul": "Masjid Sulaimaniyah, Istanbul",
+   "ket": "Karya arsitek Sinan masa Turki Usmani.",
+   "cari": [
+    "Suleymaniye Mosque Istanbul",
+    "Süleymaniye Mosque"
+   ]
+  },
+  {
+   "judul": "Taj Mahal, Agra",
+   "ket": "Mahakarya arsitektur Dinasti Mughal.",
+   "cari": [
+    "Taj Mahal",
+    "Taj Mahal Agra"
+   ]
+  },
+  {
+   "judul": "Lapangan Naqsh-e Jahan, Isfahan",
+   "ket": "Pusat kota Dinasti Safawi.",
+   "cari": [
+    "Naqsh-e Jahan",
+    "Imam Mosque Isfahan",
+    "Naghsh-e Jahan Square"
+   ]
+  }
  ],
  "ski-7": [
-  {"judul":"Universitas Al-Azhar, Kairo","ket":"Pusat ilmu yang melahirkan banyak tokoh pembaruan.","cari":["Al-Azhar Mosque Cairo","Al-Azhar Mosque"]},
-  {"judul":"Mesin cetak Arab abad ke-19","ket":"Percetakan yang mempercepat penyebaran gagasan pembaruan.","cari":["Bulaq Press","Arabic printing press Bulaq"]},
-  {"judul":"Gedung Muhammadiyah atau pesantren awal abad ke-20","ket":"Gerakan pembaruan sampai ke Nusantara.","cari":["Masjid Gedhe Kauman Yogyakarta","Kauman Yogyakarta mosque"]}
+  {
+   "judul": "Universitas Al-Azhar, Kairo",
+   "ket": "Pusat ilmu yang melahirkan banyak tokoh pembaruan.",
+   "cari": [
+    "Al-Azhar",
+    "Azhar Mosque",
+    "Al Azhar mosque Cairo"
+   ]
+  },
+  {
+   "judul": "Majalah pembaruan Islam abad ke-19/20",
+   "ket": "Media cetak menyebarkan gagasan pembaruan ke seluruh dunia Islam, termasuk Nusantara.",
+   "cari": [
+    "Al-Manar magazine",
+    "majalah Al-Manar",
+    "Al-Urwah al-Wuthqa"
+   ]
+  },
+  {
+   "judul": "Gedung Muhammadiyah atau pesantren awal abad ke-20",
+   "ket": "Gerakan pembaruan sampai ke Nusantara.",
+   "cari": [
+    "Masjid Gedhe Kauman Yogyakarta",
+    "Kauman Yogyakarta mosque"
+   ]
+  }
  ],
  "ski-8": [
-  {"judul":"Makam Malik as-Saleh, Aceh","ket":"Nisan raja Samudra Pasai, bertarikh 1297.","cari":["Malik al-Saleh tomb","Sultan Malikussaleh tomb"]},
-  {"judul":"Masjid Agung Demak","ket":"Masjid yang dikaitkan dengan dakwah Wali Songo.","cari":["File:COLLECTIE TROPENMUSEUM De moskee van Demak TMnr 10016515.jpg","File:Masjid Agung Demak.jpg"]},
-  {"judul":"Menara Masjid Kudus","ket":"Akulturasi Islam dan budaya Jawa.","cari":["File:COLLECTIE TROPENMUSEUM Minaret en moskee van Koedoes TMnr 60054755.jpg","File:Masjid Menara Kudus.jpg"]},
-  {"judul":"Masjid Wapauwe, Maluku","ket":"Salah satu masjid tertua di Indonesia Timur.","cari":["Wapauwe Mosque","Masjid Wapauwe"]}
+  {
+   "judul": "Makam Malik as-Saleh, Aceh",
+   "ket": "Nisan raja Samudra Pasai, bertarikh 1297.",
+   "cari": [
+    "Makam Sultan Malikussaleh",
+    "Malikussaleh",
+    "Samudera Pasai tomb"
+   ]
+  },
+  {
+   "judul": "Masjid Agung Demak",
+   "ket": "Masjid yang dikaitkan dengan dakwah Wali Songo.",
+   "cari": [
+    "File:COLLECTIE TROPENMUSEUM De moskee van Demak TMnr 10016515.jpg",
+    "File:Masjid Agung Demak.jpg"
+   ]
+  },
+  {
+   "judul": "Menara Masjid Kudus",
+   "ket": "Akulturasi Islam dan budaya Jawa.",
+   "cari": [
+    "File:COLLECTIE TROPENMUSEUM Minaret en moskee van Koedoes TMnr 60054755.jpg",
+    "File:Masjid Menara Kudus.jpg"
+   ]
+  },
+  {
+   "judul": "Masjid Wapauwe, Maluku",
+   "ket": "Salah satu masjid tertua di Indonesia Timur.",
+   "cari": [
+    "Wapauwe Mosque",
+    "Masjid Wapauwe"
+   ]
+  }
  ]
 }

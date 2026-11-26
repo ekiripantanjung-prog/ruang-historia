@@ -7,6 +7,8 @@ API = 'https://commons.wikimedia.org/w/api.php'
 UA = {'User-Agent': 'RuangHistoria/1.0 (aplikasi belajar sejarah madrasah; github.com/ekiripantanjung-prog/ruang-historia)'}
 BOLEH = re.compile(r'^(public domain|pd|cc0|cc by(-sa)? ?\d|cc-by(-sa)?-\d|attribution|gfdl)', re.I)
 DILARANG = re.compile(r'\b(nc|nd|fair use|non-free)\b', re.I)
+# hindari foto orang (kebijakan aplikasi: tampilkan artefak, situs, dokumen, bukan potret tokoh)
+ORANG = re.compile(r'portrait|potret|pilgrim|people|crowd|president|presiden|soldier|tentara|patung|statue|selfie|wisatawan|tourist|sahkan|\bman\b|\bwoman\b', re.I)
 
 def api(params):
     params = dict(params, format='json', formatversion=2)
@@ -40,10 +42,12 @@ def cocok(f):
 def cari(q):
     if q.startswith('File:'):
         f = info_berkas(q); return f if cocok(f) else None
-    d = api({'action': 'query', 'list': 'search', 'srsearch': q + ' filetype:bitmap', 'srnamespace': 6, 'srlimit': 8})
-    for h in d['query']['search']:
-        f = info_berkas(h['title'])
-        if cocok(f): return f
+    for kata in (q + ' filetype:bitmap', q):
+        d = api({'action': 'query', 'list': 'search', 'srsearch': kata, 'srnamespace': 6, 'srlimit': 12})
+        for h in d['query']['search']:
+            if ORANG.search(h['title']): continue
+            f = info_berkas(h['title'])
+            if cocok(f): return f
     return None
 
 def main():

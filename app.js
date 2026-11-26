@@ -244,7 +244,7 @@ const kartu = b => `<p class="catatan">Klik kartu untuk membalik.</p><div class=
 function pasangJelajah(b) {
   const L = b.jelajah.lapisan, st = document.getElementById('strata'), pn = document.getElementById('panel');
   const show = k => { const x = L[k]; pn.innerHTML = `<small>${b.jelajah.mode === 'waktu' ? 'Bagian' : 'Lapisan'} ${k + 1} dari ${L.length}</small><h3>${esc(x.n)}</h3><p>${esc(x.t)}</p><dl>${x.d.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl><p class="catatan">${esc(x.ket)}</p>`; st.querySelectorAll('.layer').forEach(e => e.setAttribute('aria-pressed', e.dataset.k == k)); };
-  st.addEventListener('click', e => { const x = e.target.closest('.layer'); if (x) show(+x.dataset.k); });
+  st.addEventListener('click', e => { const x = e.target.closest('.layer'); if (x) { show(+x.dataset.k); if (innerWidth < 820) pn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } });
   show(b.jelajah.mode === 'waktu' ? 0 : L.length - 1);
 }
 const video = b => `<h2>${esc(b.video.judul)}</h2><video class="vid" controls preload="metadata" playsinline poster="${esc(b.video.src.replace(/\.mp4$/, ".jpg"))}" src="${esc(b.video.src)}"></video><p class="catatan" style="margin-top:12px">${esc(b.video.durasi)}. ${esc(b.video.catatan)}</p><div class="box row" style="justify-content:space-between"><span>Selesai menonton? Coba kuisnya.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;

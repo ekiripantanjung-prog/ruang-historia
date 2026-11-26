@@ -1,6 +1,6 @@
 {
   "name": "Ruang Historia",
-  "short_name": "Historia",
+  "short_name": "Ruang Historia",
   "description": "Ruang belajar sejarah interaktif: Sejarah Indonesia, Sejarah Dunia, dan Sejarah Kebudayaan Islam",
   "start_url": "./index.html#beranda",
   "scope": "./",

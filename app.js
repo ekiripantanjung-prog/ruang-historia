@@ -87,7 +87,7 @@ function beranda() {
     <figure class="polaroid p1"></figure><figure class="polaroid p2"></figure><figure class="polaroid p3"></figure>
   </div>
 </div>
-<svg class="strata" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">${PANCA.map((c, i) => `<path d="M0 ${30 + i * 18} C 240 ${10 + i * 18}, 480 ${50 + i * 18}, 720 ${30 + i * 18} S 1200 ${10 + i * 18}, 1440 ${34 + i * 18} V120 H0Z" fill="${c[0]}"/>`).join('')}</svg>
+<svg class="gelombang" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">${PANCA.map((c, i) => `<path d="M0 ${30 + i * 18} C 240 ${10 + i * 18}, 480 ${50 + i * 18}, 720 ${30 + i * 18} S 1200 ${10 + i * 18}, 1440 ${34 + i * 18} V120 H0Z" fill="${c[0]}"/>`).join('')}</svg>
 </section>
 
 <section class="pad" id="ruang-pilih"><div class="wrap">
@@ -380,7 +380,7 @@ function filosofi() {
     <p class="sampul-p">Logo Ruang Historia memadukan dua gagasan: <b>gerbang</b> sebagai ruang yang dimasuki siswa, dan <b>jam pasir</b> sebagai lambang waktu. Di dasar jam pasir mengendap lima lapis warna, yaitu lima nilai Panca Cinta dalam Kurikulum Berbasis Cinta.</p>
   </div>
 </div>
-<svg class="strata" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">${PANCA.map((c, i) => `<path d="M0 ${30 + i * 18} C 240 ${10 + i * 18}, 480 ${50 + i * 18}, 720 ${30 + i * 18} S 1200 ${10 + i * 18}, 1440 ${34 + i * 18} V120 H0Z" fill="${c[0]}"/>`).join('')}</svg>
+<svg class="gelombang" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">${PANCA.map((c, i) => `<path d="M0 ${30 + i * 18} C 240 ${10 + i * 18}, 480 ${50 + i * 18}, 720 ${30 + i * 18} S 1200 ${10 + i * 18}, 1440 ${34 + i * 18} V120 H0Z" fill="${c[0]}"/>`).join('')}</svg>
 </section>
 
 <section class="pad"><div class="wrap" style="max-width:860px">

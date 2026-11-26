@@ -187,7 +187,7 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .p1{left:-6%;top:6%;transform:rotate(-8deg)}
 .p2{right:-6%;top:28%;transform:rotate(7deg)}
 .p3{left:8%;bottom:-4%;transform:rotate(4deg);width:32%}
-.strata{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(60px,9vw,120px);display:block}
+.gelombang{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(60px,9vw,120px);display:block}
 @keyframes apung{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes denyut{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
 

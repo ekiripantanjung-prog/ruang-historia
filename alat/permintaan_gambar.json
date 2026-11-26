@@ -91,6 +91,7 @@
    "judul": "Masjid Raya Baiturrahman, Banda Aceh",
    "ket": "Masjid bersejarah Kesultanan Aceh.",
    "cari": [
+    "File:Masjid Baiturrahman Aceh.jpg",
     "Masjid Raya Baiturrahman",
     "Baiturrahman Grand Mosque Banda Aceh",
     "Baiturrahman mosque"
@@ -133,12 +134,12 @@
    "judul": "Benteng Marlborough, Bengkulu",
    "ket": "Benteng Inggris di pesisir barat Sumatra.",
    "cari": [
-    "File:Cannon and Lamp at Fort Marlborough, 2015-04-19.jpg",
+    "Fort Marlborough Bengkulu gate",
     "Benteng Marlborough",
-    "Fort Marlborough Bengkulu",
     "Fort Marlborough"
    ],
-   "wajib": "Marlborough"
+   "wajib": "Marlborough",
+   "hindari": "Lamp|Cannon"
   },
   {
    "judul": "Benteng Van den Bosch (Benteng Pendem), Ngawi",
@@ -274,6 +275,7 @@
    "judul": "Monumen Nasional (Monas)",
    "ket": "Tugu nasional yang mulai dibangun tahun 1961.",
    "cari": [
+    "File:Monumen Nasional, Jakarta, Indonesia.jpg",
     "Monas Jakarta",
     "Monumen Nasional Jakarta",
     "Monas"
@@ -284,6 +286,7 @@
    "judul": "Masjid Istiqlal, Jakarta",
    "ket": "Masjid nasional yang mulai dibangun masa Demokrasi Terpimpin.",
    "cari": [
+    "File:Inner courtyard of the Masjid Istiqlal Jakarta 09.jpg",
     "Masjid Istiqlal Jakarta",
     "Istiqlal Mosque Jakarta",
     "Istiqlal Mosque"
@@ -326,12 +329,13 @@
    "judul": "Gedung Nusantara, kompleks parlemen Senayan",
    "ket": "Gedung yang diduduki mahasiswa pada Mei 1998, menjelang mundurnya Presiden Soeharto.",
    "cari": [
-    "Gedung Nusantara Senayan",
-    "Gedung Nusantara DPR",
-    "Kompleks Parlemen Senayan"
+    "Gedung DPR Senayan",
+    "Gedung MPR/DPR/DPD",
+    "DPR building Jakarta",
+    "Gedung Nusantara"
    ],
-   "wajib": "Nusantara|Senayan|Parlemen",
-   "hindari": "interview"
+   "wajib": "DPR|MPR|Nusantara|Parlemen|Parliament",
+   "hindari": "interview|sidang|rapat|demo|mahasiswa"
   },
   {
    "judul": "Gedung Mahkamah Konstitusi",
@@ -723,10 +727,12 @@
    "judul": "Menara spiral Masjid Agung Samarra",
    "ket": "Peninggalan Dinasti Abbasiyah abad ke-9.",
    "cari": [
-    "File:Samarra - Minaret of Malwiya.jpg",
-    "Malwiya minaret Samarra",
-    "Great Mosque of Samarra minaret"
-   ]
+    "Malwiya",
+    "Great Mosque of Samarra",
+    "Samarra minaret"
+   ],
+   "wajib": "Malwiya|Samarra",
+   "hindari": "Minaret of Malwiya.jpg$"
   },
   {
    "judul": "Madrasah Al-Mustansiriyah, Baghdad",

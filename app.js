@@ -196,7 +196,7 @@ function bab(kid, id, tab) {
     app.innerHTML = `<section class="babhead pad" style="--c:${d.warna}"><div class="wrap">${atas}<small>Bab ${id}</small><h1>${esc(d.judul)}</h1><p>${esc(d.ringkas)}</p></div></section><section class="pad"><div class="wrap"><div class="box"><h3>Segera hadir</h3><p>Materi, video, dan soal bab ini sedang disusun.</p><a class="btn" href="#${kid}">Kembali ke ${esc(k.judul)}</a></div></div></section>`;
     return;
   }
-  const T = [['materi', 'Materi'], ['video', 'Video'], ['kuis', 'Kuis'], ['esai', 'Soal uraian'], ['istilah', 'Istilah']];
+  const T = [['materi', 'Materi'], ['video', 'Video'], ['kuis', 'Kuis'], ['esai', 'Uraian'], ['istilah', 'Istilah']];
   tab = tab || 'materi';
   app.innerHTML = `<section class="babhead pad" style="--c:${d.warna}"><div class="wrap">${atas}
 <small>Bab ${id} · ${esc(d.masa)}</small><h1>${esc(b.judul)}</h1><p>${esc(b.sub)}</p>
@@ -204,7 +204,7 @@ function bab(kid, id, tab) {
 </div></section><section class="pad"><div class="wrap" id="isi"></div></section>`;
   const isi = document.getElementById('isi');
   const tampil = t => {
-    app.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-selected', x.dataset.t === t));
+    app.querySelectorAll('.seg button').forEach(x => { x.setAttribute('aria-selected', x.dataset.t === t); if (x.dataset.t === t) x.scrollIntoView({ block: 'nearest', inline: 'nearest' }); });
     if (t === 'materi') isi.innerHTML = materi(b);
     if (t === 'video') {
       isi.innerHTML = b.video ? video(b) : '<p>Video bab ini segera hadir.</p>';
@@ -229,7 +229,7 @@ function materi(b) {
   const j = b.jelajah;
   return `<div class="box"><h3>Tujuan pembelajaran</h3><ol class="tujuan">${b.tujuan.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div><div id="galeri"></div>
 ${j ? `<h2>${esc(j.judul)}</h2><div class="dig"><div><div class="strata ${j.mode === 'waktu' ? 'waktu' : ''}" id="strata">${j.mode === 'waktu' ? '' : `<div class="sky">${esc(j.atas)}</div><div class="grass"></div>`}${j.lapisan.map((x, k) => `<button class="layer" type="button" data-k="${k}" aria-pressed="false" style="background-color:${x.c}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span>${x.ikon ? `<svg viewBox="0 0 100 52" aria-hidden="true">${IKON[x.ikon] || ''}</svg>` : (j.mode === 'waktu' ? `<em class="thn">${esc(x.th || '')}</em>` : '')}</button>`).join('')}</div><div class="depth">${j.mode === 'waktu' ? '<span>lebih awal</span><span>lebih akhir</span>' : '<span>lebih muda</span><span>lebih tua, lebih dalam</span>'}</div></div><aside class="panel" id="panel" aria-live="polite"></aside></div>${j.catatan ? `<p class="catatan">${esc(j.catatan)}</p>` : ''}` : ''}
-${b.bagian.map(s => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>Refleksi ${esc(s.cinta[0].toLowerCase())}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
+${b.bagian.map(s => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi.replace(/<table/g, '<div class="tabel"><table').replace(/<\/table>/g, '</table></div>')}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>Refleksi ${esc(s.cinta[0].toLowerCase())}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
 <div class="box row" style="justify-content:space-between"><span>Sudah selesai membaca? Uji pemahamanmu.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
 }
 /* Foto bersejarah dari Wikimedia Commons (lihat alat/cari_gambar.py) */

@@ -70,3 +70,11 @@ Buka folder ini dengan ekstensi Live Server (VS Code), atau jalankan `python -m 
 ---
 
 Nilai siswa tersimpan di perangkat masing-masing (tidak dikirim ke server mana pun).
+
+## Pengembang dan hak cipta
+
+**Eki Ripan Junapratama Rahmatullah, S.Pd., M.Pd., Gr.** (Eki Ripan J.R. Tanjung), Guru Sejarah MAN 1 Belitung.
+
+© 2026 Eki Ripan Junapratama Rahmatullah. Hak cipta dilindungi undang-undang (UU No. 28 Tahun 2014 tentang Hak Cipta).
+
+Bagian dari keluarga aplikasi HISTORIA PLAY!, ASESMENKU, EVIDENKU, dan SEMEDI.

@@ -243,3 +243,20 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 }
 @media(max-width:600px){.lengkung{height:170px}.pita a{width:190px}.pita img{height:140px}}
 @media(prefers-reduced-motion:reduce){.pita-jalan,.logo-besar,.cahaya{animation:none}.pita{overflow-x:auto}}
+
+/* Keluarga aplikasi & kaki halaman */
+.kel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;margin-top:22px}
+.kel{display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:18px;text-decoration:none;color:var(--ink);background:color-mix(in srgb,var(--c) 9%,var(--card));border:1px solid color-mix(in srgb,var(--c) 30%,transparent);border-top:6px solid var(--c);transition:transform .25s}
+.kel:hover,.kel:focus-visible{transform:translateY(-4px)}
+.kel small{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.kel b{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:21px}
+.kel span{color:var(--soft);font-size:15px}
+.kel i{margin-top:auto;padding-top:8px;font-style:normal;font-weight:700;color:var(--c)}
+@media(prefers-color-scheme:dark){.kel small,.kel i{color:color-mix(in srgb,var(--c) 45%,#fff)}}
+.hak{margin-top:26px;padding:18px 20px;border-radius:14px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--brand)}
+.kaki{background:#14281e;color:#cfe2d6;padding:20px max(4vw,16px) calc(20px + env(safe-area-inset-bottom,0px));font-size:14px;text-align:center}
+.kaki-isi{max-width:1100px;margin:0 auto}
+.kaki p{margin:2px 0}
+.kaki b{color:#E0B04A;letter-spacing:.06em}
+.kaki a{color:#fff}
+.kaki-kel{opacity:.85}

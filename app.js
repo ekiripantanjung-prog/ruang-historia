@@ -39,6 +39,13 @@ let DAFTAR_GAMBAR = null;
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); pasang = e; const b = document.getElementById('pasang'); if (b) b.hidden = false; });
 
 /* ---------- BERANDA ---------- */
+const KELUARGA = [
+  ['HISTORIA PLAY!', 'https://historiaplay-man1.netlify.app', '#8a4b1f', 'Game sejarah', '10 mode permainan untuk evaluasi berkelompok atau mengisi jam kosong setelah materi selesai.'],
+  ['ASESMENKU', 'https://evidenku-eki.netlify.app/asesmenku/', '#1f5f8a', 'Ulangan', 'Ulangan tanpa kertas dengan penilaian otomatis dan pengawasan ujian.'],
+  ['EVIDENKU', 'https://evidenku-eki.netlify.app', '#0f6b52', 'Administrasi guru', 'Jurnal mengajar, bukti kinerja, tautan Google Drive, dan rekap e-Kinerja per bulan.'],
+  ['SEMEDI', 'https://semedi-eki.netlify.app', '#7a3b6e', 'Sejarah dalam Meme Digital', 'Sumber belajar sejarah lokal yang ringan untuk siswa.']
+];
+const HAK = '© 2026 Eki Ripan J.R., S.Pd., M.Pd., Gr.';
 const SAMPUL = { indonesia: 'Candi Borobudur', dunia: 'Piramida Giza, Mesir', ski: 'Kubah Batu (Qubbat as-Sakhrah), Yerusalem' };
 const PANCA = [
   ['#E0B04A', 'Cinta Allah dan Rasul-Nya', 'Melihat sejarah sebagai jejak ketetapan Allah dan teladan para nabi.'],
@@ -122,7 +129,13 @@ function beranda() {
   </ol>
   ${selesai ? `<p style="margin-top:18px"><a class="btn" href="#nilai">Lihat nilaiku (${selesai} bab)</a></p>` : ''}
 </div></section>
-<footer class="pad foot"><div class="wrap"><p>Ruang Historia · nilai kuis tersimpan di perangkat ini saja. Foto dari Wikimedia Commons dengan lisensi terbuka; rujukan di halaman <a href="#tentang">Tentang</a>.</p></div></footer>`;
+<section class="pad kel-sec"><div class="wrap">
+  <p class="alis gelap">Keluarga aplikasi</p>
+  <h2 class="judul-besar">Satu guru, satu ekosistem</h2>
+  <p class="soft">Ruang Historia untuk belajar. Lanjutkan ke aplikasi saudaranya untuk bermain, ulangan, dan administrasi kelas.</p>
+  <div class="kel-grid">${KELUARGA.map(x => `<a class="kel" href="${x[1]}" target="_blank" rel="noopener" style="--c:${x[2]}"><small>${x[3]}</small><b>${x[0]}</b><span>${x[4]}</span><i>Buka aplikasi ↗</i></a>`).join('')}</div>
+  <p class="catatan" style="margin-top:14px">Nilai kuis Ruang Historia tersimpan di perangkat ini saja. Foto dari Wikimedia Commons dengan lisensi terbuka; rujukan di halaman <a href="#tentang">Tentang</a>.</p>
+</div></section>`;
 
   const p = document.getElementById('pasang');
   if (pasang) p.hidden = false;
@@ -332,6 +345,15 @@ function tentang() {
 <p>Ruang Historia adalah aplikasi belajar sejarah interaktif untuk madrasah aliyah dan sekolah menengah. Setiap "ruang" berisi satu mata pelajaran: Sejarah Indonesia, Sejarah Dunia, dan Sejarah Kebudayaan Islam, dan ruang lain dapat ditambahkan. Materinya diperkaya nilai Panca Cinta dalam Kurikulum Berbasis Cinta Kementerian Agama: cinta kepada Allah dan Rasul-Nya, cinta ilmu, cinta diri dan sesama, cinta lingkungan, serta cinta tanah air.</p>
 <h3>Cara belajar yang disarankan</h3><ol><li>Pilih ruang, lalu buka bab.</li><li>Baca materi dan jelajahi gambar interaktifnya.</li><li>Tonton video bab.</li><li>Kerjakan kuis sampai nilai minimal 70.</li><li>Kerjakan soal uraian dan diskusikan refleksi Panca Cinta di kelas.</li><li>Setelah beberapa bab, coba ujian akhir.</li></ol>
 <h3>Rujukan utama</h3><ul><li>Buku teks Sejarah Indonesia dan Sejarah tingkat SMA/MA, Kementerian Pendidikan RI.</li><li>Buku Sejarah Kebudayaan Islam Madrasah Aliyah, Kementerian Agama RI.</li><li>Kementerian Agama RI (2025). <i>Panduan Kurikulum Berbasis Cinta di Madrasah</i>.</li><li>Soejono, R.P. dan Leirissa, R.Z. (ed.). <i>Sejarah Nasional Indonesia</i>. Balai Pustaka.</li><li>Ricklefs, M.C. <i>Sejarah Indonesia Modern</i>.</li><li>Azra, Azyumardi. <i>Jaringan Ulama Timur Tengah dan Kepulauan Nusantara Abad XVII dan XVIII</i>.</li><li>Bellwood, P. <i>Prehistory of the Indo-Malaysian Archipelago</i>. ANU Press.</li><li>Artikel ilmiah penanggalan situs purba: Sutikna dkk. (2016), Rizal dkk. (2020), Oktaviana dkk. (2024), jurnal <i>Nature</i>.</li></ul>
+<h3>Bagian dari keluarga aplikasi</h3><ul>${KELUARGA.map(x => `<li><a href="${x[1]}" target="_blank" rel="noopener"><b>${x[0]}</b></a>: ${x[4]}</li>`).join('')}</ul>
+<p>Saran pemakaian: pelajari materi di Ruang Historia, uji pemahaman dengan ulangan di ASESMENKU, lalu ajak kelas berlomba di HISTORIA PLAY! saat evaluasi atau jam kosong.</p>
+<div class="hak">
+<h3>Pengembang dan hak cipta</h3>
+<p><b>Eki Ripan Junapratama Rahmatullah, S.Pd., M.Pd., Gr.</b> (Eki Ripan J.R. Tanjung)<br>Guru Sejarah, MAN 1 Belitung</p>
+<p>© 2026 Eki Ripan Junapratama Rahmatullah. Hak cipta dilindungi undang-undang (UU No. 28 Tahun 2014 tentang Hak Cipta).</p>
+<p>Materi, soal, video, desain, dan logo Ruang Historia boleh dipakai untuk pembelajaran di kelas. Menyalin, memperbanyak, atau mengedarkan ulang aplikasi ini untuk tujuan lain memerlukan izin tertulis dari pengembang. Foto arsip tetap mengikuti lisensi masing-masing sebagaimana tercantum pada keterangannya.</p>
+<p>Saran dan masukan: <a href="mailto:ekiripantanjung@gmail.com">ekiripantanjung@gmail.com</a></p>
+</div>
 <p class="catatan">Guru dapat menambah atau mengubah materi dan soal pada folder <code>data/</code>.</p></div></section>`;
 }
 

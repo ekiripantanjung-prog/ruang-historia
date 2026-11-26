@@ -91,8 +91,12 @@
    "judul": "Masjid Raya Baiturrahman, Banda Aceh",
    "ket": "Masjid bersejarah Kesultanan Aceh.",
    "cari": [
-    "File:Masjid Raya Baiturrahman di Banda Aceh.jpg"
-   ]
+    "Masjid Raya Baiturrahman",
+    "Baiturrahman Grand Mosque Banda Aceh",
+    "Baiturrahman mosque"
+   ],
+   "wajib": "Baiturrahman",
+   "hindari": "Kohler|Prasasti"
   }
  ],
  "indonesia-4": [
@@ -129,6 +133,7 @@
    "judul": "Benteng Marlborough, Bengkulu",
    "ket": "Benteng Inggris di pesisir barat Sumatra.",
    "cari": [
+    "File:Cannon and Lamp at Fort Marlborough, 2015-04-19.jpg",
     "Benteng Marlborough",
     "Fort Marlborough Bengkulu",
     "Fort Marlborough"
@@ -198,6 +203,7 @@
    "judul": "Gua Jepang di Bukittinggi",
    "ket": "Terowongan pertahanan buatan masa pendudukan Jepang.",
    "cari": [
+    "File:Lobang Jepang 01.jpg",
     "Lubang Jepang",
     "Lobang Jepang Bukittinggi",
     "Japanese tunnel Bukittinggi"
@@ -208,6 +214,7 @@
    "judul": "Museum PETA, Bogor",
    "ket": "Bekas markas pelatihan tentara Pembela Tanah Air.",
    "cari": [
+    "File:PETA Museum entrance gate from the side of the road.jpg",
     "Museum PETA",
     "Museum Pembela Tanah Air"
    ],
@@ -246,6 +253,7 @@
    "judul": "Tugu Pahlawan, Surabaya",
    "ket": "Monumen untuk pertempuran 10 November 1945.",
    "cari": [
+    "File:Tugu Pahlawan Surabaya Jawa Timur.jpg",
     "Tugu Pahlawan",
     "Tugu Pahlawan Surabaya",
     "Heroes Monument Surabaya"
@@ -268,18 +276,20 @@
    "cari": [
     "Monas Jakarta",
     "Monumen Nasional Jakarta",
-    "National Monument Jakarta"
+    "Monas"
    ],
-   "wajib": "Monas|Monumen Nasional|National Monument"
+   "wajib": "Monas|Monumen Nasional"
   },
   {
    "judul": "Masjid Istiqlal, Jakarta",
    "ket": "Masjid nasional yang mulai dibangun masa Demokrasi Terpimpin.",
    "cari": [
-    "Masjid Istiqlal",
-    "Istiqlal Mosque Jakarta"
+    "Masjid Istiqlal Jakarta",
+    "Istiqlal Mosque Jakarta",
+    "Istiqlal Mosque"
    ],
-   "wajib": "Istiqlal"
+   "wajib": "Istiqlal",
+   "hindari": "Arabic|interior|imam|sholat|prayer"
   }
  ],
  "indonesia-10": [
@@ -313,14 +323,15 @@
  ],
  "indonesia-11": [
   {
-   "judul": "Gedung DPR/MPR, Senayan",
-   "ket": "Gedung yang diduduki mahasiswa pada Mei 1998.",
+   "judul": "Gedung Nusantara, kompleks parlemen Senayan",
+   "ket": "Gedung yang diduduki mahasiswa pada Mei 1998, menjelang mundurnya Presiden Soeharto.",
    "cari": [
-    "Gedung Nusantara",
-    "Gedung MPR DPR",
-    "Indonesian House of Representatives building"
+    "Gedung Nusantara Senayan",
+    "Gedung Nusantara DPR",
+    "Kompleks Parlemen Senayan"
    ],
-   "wajib": "Nusantara|DPR|MPR|House of Representatives|Parliament"
+   "wajib": "Nusantara|Senayan|Parlemen",
+   "hindari": "interview"
   },
   {
    "judul": "Gedung Mahkamah Konstitusi",
@@ -384,6 +395,7 @@
    "judul": "Colosseum, Roma",
    "ket": "Amfiteater Romawi yang selesai dibangun tahun 80 M.",
    "cari": [
+    "File:Colosseum in Rome-April 2007-1- copie 2B.jpg",
     "Colosseum Rome",
     "Colosseo Roma",
     "Flavian Amphitheatre Rome"
@@ -504,6 +516,7 @@
    "judul": "Gateway of India, Mumbai",
    "ket": "Gerbang yang dibangun Inggris tahun 1924; pasukan Inggris terakhir meninggalkan India melaluinya tahun 1948.",
    "cari": [
+    "File:Panoramic view of Taj Palace Hotel and Taj Tower with the iconic Gateway of India in the background.jpg",
     "Gateway of India"
    ],
    "wajib": "Gateway of India"
@@ -582,6 +595,7 @@
    "judul": "Stasiun Luar Angkasa Internasional",
    "ket": "Kerja sama antarnegara di era global.",
    "cari": [
+    "File:STS-134 International Space Station after undocking.jpg",
     "International Space Station after undocking",
     "ISS from Atlantis",
     "International Space Station"

@@ -8,7 +8,7 @@ UA = {'User-Agent': 'RuangHistoria/1.0 (aplikasi belajar sejarah madrasah; githu
 BOLEH = re.compile(r'^(public domain|pd|cc0|cc by(-sa)? ?\d|cc-by(-sa)?-\d|attribution|gfdl)', re.I)
 DILARANG = re.compile(r'\b(nc|nd|fair use|non-free)\b', re.I)
 # hindari foto orang (kebijakan aplikasi: tampilkan artefak, situs, dokumen, bukan potret tokoh)
-ORANG = re.compile(r'portrait|potret|pilgrim|people|crowd|president|presiden|soldier|tentara|patung|statue|selfie|wisatawan|tourist|sahkan|\bman\b|\bwoman\b', re.I)
+ORANG = re.compile(r'portrait|potret|pilgrim|people|crowd|president|presiden|soldier|tentara|patung|statue|selfie|wisatawan|tourist|sahkan|interview|wawancara|\bman\b|\bwoman\b', re.I)
 
 def api(params):
     params = dict(params, format='json', formatversion=2)
@@ -40,13 +40,13 @@ def cocok(f):
     return (f and f['thumb'] and f['mime'] in ('image/jpeg', 'image/png') and f['lebar'] >= 500
             and BOLEH.search(f['lisensi'] or '') and not DILARANG.search(f['lisensi'] or ''))
 
-def cari(q, wajib=None):
+def cari(q, wajib=None, hindari=None):
     if q.startswith('File:'):
         f = info_berkas(q); return f if cocok(f) else None
     for kata in (q + ' filetype:bitmap', q):
         d = api({'action': 'query', 'list': 'search', 'srsearch': kata, 'srnamespace': 6, 'srlimit': 12})
         for h in d['query']['search']:
-            if ORANG.search(h['title']) or (wajib and not re.search(wajib, h['title'], re.I)): continue
+            if ORANG.search(h['title']) or (wajib and not re.search(wajib, h['title'], re.I)) or (hindari and re.search(hindari, h['title'], re.I)): continue
             f = info_berkas(h['title'])
             if cocok(f): return f
     return None
@@ -63,7 +63,7 @@ def main():
         for i, item in enumerate(daftar):
             f = None
             for q in item['cari']:
-                try: f = cari(q, item.get('wajib'))
+                try: f = cari(q, item.get('wajib'), item.get('hindari'))
                 except Exception as e: print('gagal', q, e)
                 if f: break
             if not f:

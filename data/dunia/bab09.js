@@ -11,7 +11,7 @@ TAMBAH_BAB({
     "Menentukan sikap bijak sebagai warga dunia dan warga digital"
   ],
 
-  video: { src: "video/dunia/bab09.mp4", judul: "Dunia kontemporer dalam 2 menit", durasi: "± 2 menit", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/dunia/bab09.mp4", judul: "Dunia kontemporer dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Garis waktu 1991–2025: klik setiap peristiwa",

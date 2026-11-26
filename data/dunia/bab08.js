@@ -11,7 +11,7 @@ TAMBAH_BAB({
     "Menjelaskan berakhirnya Perang Dingin dan dampaknya"
   ],
 
-  video: { src: "video/dunia/bab08.mp4", judul: "Perang Dingin dalam 1 menit", durasi: "0 menit 7 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/dunia/bab08.mp4", judul: "Perang Dingin dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Garis waktu 1947–1991: klik setiap peristiwa",

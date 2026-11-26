@@ -12,7 +12,7 @@ TAMBAH_BAB({
     "Meneladani akhlak dan strategi dakwah Rasulullah saw."
   ],
 
-  video: { src: "video/ski/bab01.mp4", judul: "Dakwah Rasulullah dalam 2 menit", durasi: "± 2 menit", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/ski/bab01.mp4", judul: "Dakwah Rasulullah dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Garis waktu dakwah Rasulullah: klik setiap peristiwa",

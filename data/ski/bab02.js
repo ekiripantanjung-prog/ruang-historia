@@ -11,7 +11,7 @@ TAMBAH_BAB({
     "Meneladani kepemimpinan yang adil, sederhana, dan amanah"
   ],
 
-  video: { src: "video/ski/bab02.mp4", judul: "Khulafaur Rasyidin dalam 2 menit", durasi: "± 2 menit", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
+  video: { src: "video/ski/bab02.mp4", judul: "Khulafaur Rasyidin dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
 
   jelajah: {
     judul: "Empat khalifah: klik setiap masa pemerintahan",

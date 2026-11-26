@@ -362,7 +362,7 @@ function tentang() {
 function filosofi() {
   tandaiMenu('logo'); clearInterval(jam);
   const bagian = [
-    ['#2F6B4F', 'Lengkung mihrab', 'Bentuk gerbang melengkung diambil dari mihrab dan gapura. Ia adalah pintu masuk ke "ruang" sejarah, sekaligus pengingat bahwa belajar di madrasah berangkat dari nilai keislaman. Warnanya Hijau Historia (#2F6B4F), warna khas aplikasi ini: tumbuh, teduh, dan hidup.'],
+    ['#2B3A67', 'Lengkung mihrab', 'Bentuk gerbang melengkung diambil dari mihrab dan gapura. Ia adalah pintu masuk ke "ruang" sejarah, sekaligus pengingat bahwa belajar di madrasah berangkat dari nilai keislaman. Warnanya Biru Nila (#2B3A67), warna khas aplikasi ini: tenang, dalam, dan berwibawa.'],
     ['#FFF8EC', 'Jam pasir', 'Jam pasir adalah lambang waktu, bahan utama ilmu sejarah. Pasir di bagian atas adalah masa yang akan datang, pasir di bawah adalah masa lalu yang telah terkumpul. Belajar sejarah berarti menimbang keduanya.'],
     ['#F2C38F', 'Cahaya ilmu', 'Lingkaran bercahaya di bagian atas jam pasir adalah cahaya ilmu yang menerangi perjalanan waktu. Dari cahaya itulah butir-butir pasir mengalir turun.'],
     ['#E0B04A', 'Butir yang mengalir', 'Garis putus-putus di leher jam pasir adalah peristiwa demi peristiwa yang terus mengalir. Sejarah tidak pernah berhenti; setiap hari yang kita jalani akan menjadi sejarah.'],
@@ -394,9 +394,14 @@ function filosofi() {
   <ol class="panca">${lapis}</ol>
 
   <p class="alis gelap" style="margin-top:36px">Warna khas</p>
-  <h2 class="judul-besar">Hijau Historia</h2>
-  <div class="warna-khas"><span style="background:#2F6B4F">#2F6B4F<br><small>Hijau Historia</small></span><span style="background:#1D4232">#1D4232<br><small>Hijau tua</small></span><span style="background:#E0B04A;color:#2a1d14">#E0B04A<br><small>Emas</small></span><span style="background:#FFF8EC;color:#2a1d14">#FFF8EC<br><small>Krem</small></span></div>
-  <p class="soft" style="margin-top:14px">Hijau dipilih karena lekat dengan madrasah, kesuburan ilmu, dan kehidupan yang terus bertumbuh. Emas melambangkan nilai luhur yang diwariskan sejarah.</p>
+  <h2 class="judul-besar">Biru Nila</h2>
+  <div class="warna-khas"><span style="background:#2B3A67">#2B3A67<br><small>Biru Nila</small></span><span style="background:#1B2547">#1B2547<br><small>Nila malam</small></span><span style="background:#E0B04A;color:#2a1d14">#E0B04A<br><small>Emas</small></span><span style="background:#FFF8EC;color:#2a1d14">#FFF8EC<br><small>Krem</small></span></div>
+  <div class="unsur" style="margin-top:16px">
+    <div class="unsur-i"><span class="swatch" style="background:#2B3A67"></span><div><b>Warna warisan Nusantara</b><p>Nila (tarum) adalah pewarna alami tertua di Nusantara, dipakai turun-temurun untuk kain tenun dan batik. Nama Kerajaan Tarumanagara, salah satu kerajaan tertua di Indonesia, diyakini berasal dari kata <i>tarum</i>, tanaman penghasil warna nila.</p></div></div>
+    <div class="unsur-i"><span class="swatch" style="background:#1B2547"></span><div><b>Tinta para penulis sejarah</b><p>Warna biru tua mengingatkan pada tinta naskah, prasasti, dan arsip, sumber utama yang dipakai sejarawan untuk mengenal masa lalu.</p></div></div>
+    <div class="unsur-i"><span class="swatch" style="background:linear-gradient(#1B2547,#2B3A67)"></span><div><b>Langit tempat waktu berjalan</b><p>Biru nila adalah warna langit menjelang fajar: masa lalu yang gelap perlahan diterangi cahaya ilmu, seperti lingkaran cahaya di dalam jam pasir.</p></div></div>
+    <div class="unsur-i"><span class="swatch" style="background:#E0B04A"></span><div><b>Emas sebagai pendamping</b><p>Emas melambangkan nilai luhur yang diwariskan sejarah. Paduan nila dan emas berarti ketenangan berpikir yang menjaga kemuliaan warisan.</p></div></div>
+  </div>
 
   <blockquote class="ringkas">"Masuklah ke ruang sejarah, biarkan waktu mengajarkanmu, dan bawalah pulang lima lapis cinta."</blockquote>
   <p class="catatan">Logo dan filosofi dirancang untuk Ruang Historia · ${HAK}</p>

@@ -2,8 +2,8 @@
   <defs>
     <clipPath id="rh-bawah"><path d="M70 166 Q70 128 96 116 L104 116 Q130 128 130 166 Z"/></clipPath>
   </defs>
-  <!-- Lengkung mihrab: Hijau Historia -->
-  <path d="M34 188 V92 A66 66 0 0 1 166 92 V188 Z" fill="#2F6B4F"/>
+  <!-- Lengkung mihrab: Biru Nila -->
+  <path d="M34 188 V92 A66 66 0 0 1 166 92 V188 Z" fill="#2B3A67"/>
   <!-- Jam pasir -->
   <path d="M66 60 H134 Q134 98 107 112 Q134 126 134 166 H66 Q66 126 93 112 Q66 98 66 60 Z" fill="#FFF8EC"/>
   <!-- Cahaya ilmu -->

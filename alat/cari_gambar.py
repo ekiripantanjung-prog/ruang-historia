@@ -15,10 +15,11 @@ def api(params):
     url = API + '?' + urllib.parse.urlencode(params)
     for _ in range(3):
         try:
+            time.sleep(0.6)  # sopan pada server Commons, menghindari pembatasan
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:
                 return json.load(r)
         except Exception as e:
-            err = e; time.sleep(3)
+            err = e; time.sleep(10)
     raise err
 
 def bersih(html):
@@ -39,13 +40,13 @@ def cocok(f):
     return (f and f['thumb'] and f['mime'] in ('image/jpeg', 'image/png') and f['lebar'] >= 500
             and BOLEH.search(f['lisensi'] or '') and not DILARANG.search(f['lisensi'] or ''))
 
-def cari(q):
+def cari(q, wajib=None):
     if q.startswith('File:'):
         f = info_berkas(q); return f if cocok(f) else None
     for kata in (q + ' filetype:bitmap', q):
         d = api({'action': 'query', 'list': 'search', 'srsearch': kata, 'srnamespace': 6, 'srlimit': 12})
         for h in d['query']['search']:
-            if ORANG.search(h['title']): continue
+            if ORANG.search(h['title']) or (wajib and not re.search(wajib, h['title'], re.I)): continue
             f = info_berkas(h['title'])
             if cocok(f): return f
     return None
@@ -62,7 +63,7 @@ def main():
         for i, item in enumerate(daftar):
             f = None
             for q in item['cari']:
-                try: f = cari(q)
+                try: f = cari(q, item.get('wajib'))
                 except Exception as e: print('gagal', q, e)
                 if f: break
             if not f:
@@ -74,6 +75,12 @@ def main():
             print('OK', kunci, item['judul'], '->', f['berkas'], '|', f['lisensi'])
             time.sleep(0.5)
         hasil[kunci] = keluaran
+    # hapus berkas lama yang tidak lagi dipakai
+    pakai = {x['file'] for v in hasil.values() for x in v}
+    for k in os.listdir('gambar'):
+        if os.path.isdir(f'gambar/{k}'):
+            for n in os.listdir(f'gambar/{k}'):
+                if f'gambar/{k}/{n}' not in pakai: os.remove(f'gambar/{k}/{n}')
     json.dump(hasil, open('gambar/daftar.json', 'w'), ensure_ascii=False, indent=1)
 
 main()

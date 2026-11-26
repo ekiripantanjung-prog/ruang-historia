@@ -28,6 +28,7 @@
    "judul": "Arca megalitik Lembah Bada, Sulawesi Tengah",
    "ket": "Patung batu peninggalan tradisi megalitik.",
    "cari": [
+    "File:Palindo Megalith in Bada Valley.jpg",
     "Palindo megalith Bada valley",
     "Bada valley megalith"
    ]
@@ -38,6 +39,7 @@
    "judul": "Prasasti Yupa, Kutai",
    "ket": "Tiang batu beraksara Pallawa, bukti tertulis kerajaan tertua di Nusantara.",
    "cari": [
+    "File:4th century Sanskrit Yupa inscriptions of Mulavarman, Kutei East Kalimantan, Indonesia.jpg",
     "Yupa inscription Kutai Museum Nasional",
     "Mulawarman inscription yupa"
    ]
@@ -46,6 +48,7 @@
    "judul": "Prasasti Ciaruteun, Bogor",
    "ket": "Prasasti Tarumanagara dengan pahatan telapak kaki Raja Purnawarman.",
    "cari": [
+    "File:Ciaruteun 140101-0086 cia.JPG",
     "Ciaruteun inscription",
     "Prasasti Ciaruteun"
    ]
@@ -88,9 +91,7 @@
    "judul": "Masjid Raya Baiturrahman, Banda Aceh",
    "ket": "Masjid bersejarah Kesultanan Aceh.",
    "cari": [
-    "Masjid Raya Baiturrahman Banda Aceh",
-    "Baiturrahman Grand Mosque",
-    "Baiturrahman mosque Aceh"
+    "File:Masjid Raya Baiturrahman di Banda Aceh.jpg"
    ]
   }
  ],
@@ -106,6 +107,7 @@
    "judul": "Benteng Duurstede, Saparua",
    "ket": "Benteng VOC di Maluku, pusat perdagangan cengkih.",
    "cari": [
+    "File:Benteng Duurstede dari Atas.jpg",
     "Benteng Duurstede",
     "Duurstede Saparua",
     "Fort Duurstede Saparoea"
@@ -115,6 +117,7 @@
    "judul": "Benteng Fort Rotterdam, Makassar",
    "ket": "Benteng peninggalan Gowa-Tallo yang kemudian dikuasai VOC.",
    "cari": [
+    "File:Fort Rotterdam, Makassar, Indonesia - 20100227-02.jpg",
     "Fort Rotterdam",
     "Benteng Rotterdam Makassar",
     "Fort Rotterdam Makassar Sulawesi"
@@ -127,14 +130,16 @@
    "ket": "Benteng Inggris di pesisir barat Sumatra.",
    "cari": [
     "Benteng Marlborough",
-    "Fort Marlborough",
-    "Marlborough Bengkulu"
-   ]
+    "Fort Marlborough Bengkulu",
+    "Fort Marlborough"
+   ],
+   "wajib": "Marlborough"
   },
   {
    "judul": "Benteng Van den Bosch (Benteng Pendem), Ngawi",
    "ket": "Benteng Belanda yang dibangun setelah Perang Jawa.",
    "cari": [
+    "File:Benteng van den bosch ngawi.jpg",
     "Benteng Van den Bosch Ngawi",
     "Fort Van den Bosch Ngawi"
    ]
@@ -143,6 +148,7 @@
    "judul": "Monumen Puputan Badung, Denpasar",
    "ket": "Peringatan perlawanan rakyat Badung tahun 1906.",
    "cari": [
+    "File:Monumen Puputan Badung 1.jpg",
     "Puputan Badung monument Denpasar",
     "Puputan Square Denpasar"
    ]
@@ -153,6 +159,7 @@
    "judul": "Gedung STOVIA, Jakarta",
    "ket": "Sekolah dokter tempat Budi Utomo berdiri tahun 1908, kini Museum Kebangkitan Nasional.",
    "cari": [
+    "File:Gedung Kebangkitan Nasional (STOVIA).jpg",
     "Museum Kebangkitan Nasional STOVIA",
     "STOVIA building Batavia"
    ]
@@ -161,6 +168,7 @@
    "judul": "Museum Sumpah Pemuda, Jl. Kramat Raya 106",
    "ket": "Tempat Kongres Pemuda II, 28 Oktober 1928.",
    "cari": [
+    "File:MuseumSumpahPemuda-3.jpg",
     "Museum Sumpah Pemuda Kramat Raya",
     "Sumpah Pemuda museum"
    ]
@@ -169,6 +177,7 @@
    "judul": "Volksraad di Batavia",
    "ket": "Dewan Rakyat bentukan Belanda tahun 1918.",
    "cari": [
+    "File:COLLECTIE TROPENMUSEUM Het gebouw van de Volksraad Batavia TMnr 10015222.jpg",
     "Volksraad gebouw Batavia",
     "Volksraad Batavia"
    ]
@@ -179,6 +188,7 @@
    "judul": "Uang kertas pendudukan Jepang",
    "ket": "Uang yang diterbitkan pemerintah militer Jepang di Hindia Belanda.",
    "cari": [
+    "File:5 gulden De Japansche Regeering.jpg",
     "De Japansche Regeering gulden",
     "Japanese occupation Netherlands Indies gulden",
     "Japanese invasion money"
@@ -188,18 +198,20 @@
    "judul": "Gua Jepang di Bukittinggi",
    "ket": "Terowongan pertahanan buatan masa pendudukan Jepang.",
    "cari": [
-    "Lubang Jepang Bukittinggi",
-    "Lobang Jepang",
-    "Japanese cave Bukittinggi"
-   ]
+    "Lubang Jepang",
+    "Lobang Jepang Bukittinggi",
+    "Japanese tunnel Bukittinggi"
+   ],
+   "wajib": "Jepang|Japan"
   },
   {
    "judul": "Museum PETA, Bogor",
    "ket": "Bekas markas pelatihan tentara Pembela Tanah Air.",
    "cari": [
-    "Museum PETA Bogor gedung",
-    "Museum Pembela Tanah Air Bogor"
-   ]
+    "Museum PETA",
+    "Museum Pembela Tanah Air"
+   ],
+   "wajib": "PETA|Pembela Tanah Air"
   }
  ],
  "indonesia-8": [
@@ -207,6 +219,7 @@
    "judul": "Naskah Proklamasi ketikan",
    "ket": "Teks Proklamasi Kemerdekaan Indonesia, 17 Agustus 1945.",
    "cari": [
+    "File:Teks proklamasi ketikan (asli).jpg",
     "Naskah Proklamasi Kemerdekaan Indonesia ketik",
     "Proklamasi Kemerdekaan Indonesia text"
    ]
@@ -215,6 +228,7 @@
    "judul": "Museum Perumusan Naskah Proklamasi",
    "ket": "Rumah Laksamana Maeda, tempat naskah Proklamasi dirumuskan.",
    "cari": [
+    "File:Museum perumusan naskah proklamasi.png",
     "Museum Perumusan Naskah Proklamasi",
     "Maeda house Jakarta"
    ]
@@ -223,6 +237,7 @@
    "judul": "Hotel Yamato (Hotel Majapahit), Surabaya",
    "ket": "Lokasi insiden perobekan bendera, 19 September 1945.",
    "cari": [
+    "File:Collectie NMvWereldculturen, 7082-nf-1167, Ansichtkaart- Oranje Hotel in Surabaya, 1937.jpg",
     "Hotel Majapahit Surabaya",
     "Hotel Yamato Surabaya"
    ]
@@ -232,9 +247,10 @@
    "ket": "Monumen untuk pertempuran 10 November 1945.",
    "cari": [
     "Tugu Pahlawan",
-    "Monumen Tugu Pahlawan Surabaya",
+    "Tugu Pahlawan Surabaya",
     "Heroes Monument Surabaya"
-   ]
+   ],
+   "wajib": "Tugu Pahlawan|Heroes Monument"
   }
  ],
  "indonesia-9": [
@@ -251,18 +267,19 @@
    "ket": "Tugu nasional yang mulai dibangun tahun 1961.",
    "cari": [
     "Monas Jakarta",
-    "Monumen Nasional",
-    "National Monument Indonesia"
-   ]
+    "Monumen Nasional Jakarta",
+    "National Monument Jakarta"
+   ],
+   "wajib": "Monas|Monumen Nasional|National Monument"
   },
   {
    "judul": "Masjid Istiqlal, Jakarta",
    "ket": "Masjid nasional yang mulai dibangun masa Demokrasi Terpimpin.",
    "cari": [
-    "Masjid Istiqlal Jakarta",
-    "Istiqlal mosque exterior",
-    "Istiqlal Mosque"
-   ]
+    "Masjid Istiqlal",
+    "Istiqlal Mosque Jakarta"
+   ],
+   "wajib": "Istiqlal"
   }
  ],
  "indonesia-10": [
@@ -270,6 +287,7 @@
    "judul": "Monumen Pancasila Sakti, Lubang Buaya",
    "ket": "Monumen peringatan peristiwa 1965.",
    "cari": [
+    "File:Monumen Pancasila Sakti.jpg",
     "Monumen Pancasila Sakti",
     "Lubang Buaya monument"
    ]
@@ -278,6 +296,7 @@
    "judul": "Bendungan Jatiluhur",
    "ket": "Bendungan besar penopang irigasi dan listrik Jawa Barat.",
    "cari": [
+    "File:Jatiluhur Dam and Citarum from HSR Bridge.jpg",
     "Jatiluhur Dam",
     "Waduk Jatiluhur"
    ]
@@ -286,6 +305,7 @@
    "judul": "Satelit Palapa",
    "ket": "Satelit komunikasi domestik Indonesia, diluncurkan 1976.",
    "cari": [
+    "File:Stamp of Indonesia - 1987 - Colnect 256478 - Launch of Palapa B2 Communications Satellite.jpeg",
     "Palapa satellite",
     "Palapa A1 satellite"
    ]
@@ -296,27 +316,20 @@
    "judul": "Gedung DPR/MPR, Senayan",
    "ket": "Gedung yang diduduki mahasiswa pada Mei 1998.",
    "cari": [
-    "Gedung Nusantara DPR",
-    "MPR DPR building",
-    "Gedung DPR"
-   ]
+    "Gedung Nusantara",
+    "Gedung MPR DPR",
+    "Indonesian House of Representatives building"
+   ],
+   "wajib": "Nusantara|DPR|MPR|House of Representatives|Parliament"
   },
   {
    "judul": "Gedung Mahkamah Konstitusi",
    "ket": "Lembaga baru hasil amandemen UUD 1945 masa Reformasi.",
    "cari": [
+    "File:Constitutional Court of Indonesia.jpg",
     "Gedung Mahkamah Konstitusi",
     "Mahkamah Konstitusi Republik Indonesia",
     "Constitutional Court Indonesia"
-   ]
-  },
-  {
-   "judul": "Kotak suara Pemilu",
-   "ket": "Pemilu 1999 adalah pemilu demokratis pertama masa Reformasi.",
-   "cari": [
-    "kotak suara",
-    "ballot box Indonesia",
-    "Pemilu 1999 surat suara"
    ]
   }
  ],
@@ -333,6 +346,7 @@
    "judul": "Kode Hammurabi",
    "ket": "Prasasti hukum Babilonia, sekitar 1754 SM.",
    "cari": [
+    "File:P1050763 Louvre code Hammurabi face rwk.JPG",
     "Code of Hammurabi stele Louvre",
     "Hammurabi stele"
    ]
@@ -341,6 +355,7 @@
    "judul": "Situs Mohenjo-daro",
    "ket": "Kota terencana peradaban Lembah Sungai Indus.",
    "cari": [
+    "File:Mohenjo-daro.jpg",
     "Mohenjo-daro ruins",
     "Mohenjodaro"
    ]
@@ -349,6 +364,7 @@
    "judul": "Tulang ramalan Dinasti Shang",
    "ket": "Tulang beraksara Tiongkok tertua.",
    "cari": [
+    "File:Ancient Chinese Writing on Ox Scapula, Shang Dynasty Oracle Bone, Yinxu.jpg",
     "Shang dynasty oracle bone",
     "oracle bone inscription"
    ]
@@ -359,6 +375,7 @@
    "judul": "Parthenon, Athena",
    "ket": "Kuil Dewi Athena di Akropolis, abad ke-5 SM.",
    "cari": [
+    "File:Parthenon from south.jpg",
     "Parthenon Athens",
     "The Parthenon in Athens"
    ]
@@ -367,15 +384,17 @@
    "judul": "Colosseum, Roma",
    "ket": "Amfiteater Romawi yang selesai dibangun tahun 80 M.",
    "cari": [
-    "Colosseo",
-    "Colosseum 2020",
-    "Colosseum exterior"
-   ]
+    "Colosseum Rome",
+    "Colosseo Roma",
+    "Flavian Amphitheatre Rome"
+   ],
+   "wajib": "Colos|Flavi"
   },
   {
    "judul": "Pont du Gard, Prancis",
    "ket": "Akuaduk Romawi, bukti kemajuan teknik sipil.",
    "cari": [
+    "File:Pont du Gard BLS.jpg",
     "Pont du Gard",
     "Pont du Gard Vers",
     "aqueduct Pont du Gard"
@@ -387,6 +406,7 @@
    "judul": "Hagia Sophia, Istanbul",
    "ket": "Bangunan megah Bizantium abad ke-6.",
    "cari": [
+    "File:Hagia Sophia Mars 2013.jpg",
     "Hagia Sophia Istanbul exterior",
     "Hagia Sophia"
    ]
@@ -395,6 +415,7 @@
    "judul": "Astrolab Islam abad pertengahan",
    "ket": "Alat astronomi yang dikembangkan ilmuwan Muslim.",
    "cari": [
+    "File:Astrolabe planisférique.jpg",
     "Islamic astrolabe",
     "Persian astrolabe"
    ]
@@ -403,6 +424,7 @@
    "judul": "Katedral Notre-Dame, Paris",
    "ket": "Contoh arsitektur Gotik Eropa abad pertengahan.",
    "cari": [
+    "File:Notre Dame Paris front facade lower.jpg",
     "Notre-Dame de Paris facade",
     "Notre Dame Paris"
    ]
@@ -413,6 +435,7 @@
    "judul": "Kubah Katedral Florence",
    "ket": "Karya Brunelleschi, ikon Renaisans.",
    "cari": [
+    "File:Florence, Italy, Brunelleschi's Dome of Florence Cathedral.jpg",
     "Florence Cathedral dome Brunelleschi",
     "Santa Maria del Fiore"
    ]
@@ -421,6 +444,7 @@
    "judul": "Mesin cetak Gutenberg (replika)",
    "ket": "Mesin cetak huruf lepas yang mempercepat penyebaran ilmu.",
    "cari": [
+    "File:Gutenberg press.png",
     "Gutenberg printing press replica",
     "Gutenberg press"
    ]
@@ -429,6 +453,7 @@
    "judul": "Peta dunia abad ke-16",
    "ket": "Peta hasil era penjelajahan samudra.",
    "cari": [
+    "File:Theatrum Orbis Terrarum, by Abraham Ortelius, World, 1572.jpg",
     "Typus Orbis Terrarum",
     "Mercator 1569 world map",
     "Ortelius world map 1570"
@@ -440,6 +465,7 @@
    "judul": "Mesin uap Watt",
    "ket": "Penggerak utama Revolusi Industri.",
    "cari": [
+    "File:Maquina vapor Watt ETSIIM.jpg",
     "Watt engine",
     "Boulton and Watt engine",
     "Boulton Watt steam engine"
@@ -449,6 +475,7 @@
    "judul": "Penyerbuan Bastille (lukisan)",
    "ket": "Peristiwa 14 Juli 1789, awal Revolusi Prancis.",
    "cari": [
+    "File:Prise de la Bastille clean.jpg",
     "Prise de la Bastille Houel",
     "Storming of the Bastille painting"
    ]
@@ -457,6 +484,7 @@
    "judul": "Deklarasi Kemerdekaan Amerika Serikat",
    "ket": "Dokumen tahun 1776.",
    "cari": [
+    "File:Declaration of independence chichester.jpg",
     "United States Declaration of Independence parchment",
     "Declaration of Independence 1776 document"
    ]
@@ -467,6 +495,7 @@
    "judul": "Peta kolonialisme di Afrika tahun 1914",
    "ket": "Pembagian Afrika oleh negara-negara Eropa.",
    "cari": [
+    "File:Map of Africa 1914.jpg",
     "Colonial Africa 1914 map",
     "Africa 1914 colonial map"
    ]
@@ -475,14 +504,15 @@
    "judul": "Gateway of India, Mumbai",
    "ket": "Gerbang yang dibangun Inggris tahun 1924; pasukan Inggris terakhir meninggalkan India melaluinya tahun 1948.",
    "cari": [
-    "Gateway of India Mumbai",
     "Gateway of India"
-   ]
+   ],
+   "wajib": "Gateway of India"
   },
   {
    "judul": "Terusan Suez",
    "ket": "Jalur pelayaran yang dibuka 1869 dan mempercepat imperialisme.",
    "cari": [
+    "File:German floating cranes raise ship in the Suez Canal 1974.jpg",
     "Suez Canal",
     "Suez canal ship",
     "Suez Canal Ismailia"
@@ -494,6 +524,7 @@
    "judul": "Parit Perang Dunia I",
    "ket": "Perang parit di Front Barat.",
    "cari": [
+    "File:Aerial view Loos-Hulluch trench system July 1917.jpg",
     "Western Front trench 1917",
     "Somme trench 1916",
     "Trench Ypres"
@@ -503,6 +534,7 @@
    "judul": "Kubah Bom Atom Hiroshima",
    "ket": "Sisa bangunan setelah bom atom 6 Agustus 1945.",
    "cari": [
+    "File:A-Bomb Dome.jpg",
     "Hiroshima Peace Memorial Genbaku Dome",
     "Atomic Bomb Dome"
    ]
@@ -511,6 +543,7 @@
    "judul": "Gedung Markas PBB, New York",
    "ket": "Organisasi yang lahir tahun 1945 setelah perang.",
    "cari": [
+    "File:Headquarters of the United Nations, New York City, 20231001 1103 1006.jpg",
     "United Nations Headquarters New York",
     "UN headquarters building"
    ]
@@ -521,6 +554,7 @@
    "judul": "Tembok Berlin",
    "ket": "Simbol Perang Dingin, berdiri 1961–1989.",
    "cari": [
+    "File:Berlin Wall near East Side Gallery.JPG",
     "Berlin Wall East Side Gallery",
     "Berlin Wall 1989"
    ]
@@ -529,6 +563,7 @@
    "judul": "Gedung Merdeka, Bandung",
    "ket": "Konferensi Asia-Afrika 1955 mendorong dekolonisasi.",
    "cari": [
+    "File:Gedung.Merdeka.jpg",
     "Gedung Merdeka Bandung"
    ]
   },
@@ -536,6 +571,7 @@
    "judul": "Satelit Sputnik 1 (replika)",
    "ket": "Satelit pertama tahun 1957, awal perlombaan angkasa.",
    "cari": [
+    "File:Sputnik 1 satellite replica.png",
     "Sputnik 1 replica",
     "Sputnik 1"
    ]
@@ -546,15 +582,17 @@
    "judul": "Stasiun Luar Angkasa Internasional",
    "ket": "Kerja sama antarnegara di era global.",
    "cari": [
-    "ISS after STS-133",
-    "International Space Station orbit",
-    "ISS 2011"
-   ]
+    "International Space Station after undocking",
+    "ISS from Atlantis",
+    "International Space Station"
+   ],
+   "wajib": "International Space Station|\\bISS\\b"
   },
   {
    "judul": "Kabel serat optik",
    "ket": "Jaringan serat optik menopang internet dan globalisasi informasi.",
    "cari": [
+    "File:Optical fiber cable-01ASD.jpg",
     "optical fiber cable",
     "fiber optic cables"
    ]
@@ -563,6 +601,7 @@
    "judul": "Panel surya",
    "ket": "Energi terbarukan dalam menghadapi perubahan iklim.",
    "cari": [
+    "File:Solar Panel Array in Laos Laowotaiyangban.jpg",
     "solar panel array",
     "photovoltaic power station"
    ]
@@ -573,15 +612,15 @@
    "judul": "Ka'bah dan Masjidil Haram, Mekkah",
    "ket": "Kiblat umat Islam, pusat dakwah awal Rasulullah ﷺ.",
    "cari": [
-    "Kaaba",
-    "Kaaba Mecca",
-    "Kaaba Masjid al-Haram aerial"
+    "File:The Kaaba during Hajj - edited.jpg",
+    "Kaaba"
    ]
   },
   {
    "judul": "Masjid Nabawi, Madinah",
    "ket": "Masjid yang dibangun Rasulullah ﷺ setelah hijrah.",
    "cari": [
+    "File:Al-Masjid AL-Nabawi Door.jpg",
     "Al-Masjid an-Nabawi",
     "Prophet's Mosque Medina"
    ]
@@ -590,6 +629,7 @@
    "judul": "Masjid Quba, Madinah",
    "ket": "Masjid pertama yang dibangun dalam sejarah Islam.",
    "cari": [
+    "File:Quba Mosque Quran Racks.jpg",
     "Quba Mosque",
     "Masjid Quba"
    ]
@@ -598,6 +638,7 @@
    "judul": "Jabal Nur dan Gua Hira",
    "ket": "Tempat turunnya wahyu pertama.",
    "cari": [
+    "File:Jabal al-Nour And cave Hira.jpg",
     "Jabal al-Nour",
     "Hira cave"
    ]
@@ -608,6 +649,7 @@
    "judul": "Mushaf Al-Qur'an kuno",
    "ket": "Naskah Al-Qur'an awal; pembukuan mushaf dirintis masa Khulafaur Rasyidin.",
    "cari": [
+    "File:مخطوطة قرآنية أثرية نادرة على الرق في الجامع الكبير بصنعاء o Ancient Quranic manuscript parchment at the Grand Mosque of Sana'a.jpg",
     "Codex Parisino-petropolitanus",
     "Hijazi Quran manuscript",
     "Sana'a manuscript"
@@ -617,6 +659,7 @@
    "judul": "Koin dirham awal Islam",
    "ket": "Mata uang masa awal pemerintahan Islam.",
    "cari": [
+    "File:Salm ibn Ziyad silver dirham 682-83.jpg",
     "Umayyad dirham",
     "dirham Wasit",
     "Arab-Sasanian coin"
@@ -626,6 +669,7 @@
    "judul": "Kota Kufah dan Masjid Agung Kufah",
    "ket": "Kota yang berkembang pada masa Khalifah Umar dan Ali.",
    "cari": [
+    "File:Kufa Mosque (4).jpg",
     "Great Mosque of Kufa",
     "Kufa mosque"
    ]
@@ -636,6 +680,7 @@
    "judul": "Kubah Batu (Qubbat as-Sakhrah), Yerusalem",
    "ket": "Dibangun masa Khalifah Abdul Malik, sekitar 691 M.",
    "cari": [
+    "File:Jerusalem-2013-Temple Mount-Dome of the Rock & Chain 02.jpg",
     "Dome of the Rock",
     "Dome of the Rock Jerusalem"
    ]
@@ -644,6 +689,7 @@
    "judul": "Masjid Umayyah, Damaskus",
    "ket": "Masjid agung di ibu kota Dinasti Umayyah.",
    "cari": [
+    "File:Damascus, Syria, The Umayyad Mosque, The Courtyard, Islamic Art.jpg",
     "Umayyad Mosque Damascus courtyard",
     "Umayyad Mosque"
    ]
@@ -652,6 +698,7 @@
    "judul": "Dinar emas Abdul Malik",
    "ket": "Mata uang Islam beraksara Arab pertama.",
    "cari": [
+    "File:Gold dinar of Abd al-Malik 697-98.png",
     "gold dinar Abd al-Malik",
     "Umayyad gold dinar"
    ]
@@ -662,6 +709,7 @@
    "judul": "Menara spiral Masjid Agung Samarra",
    "ket": "Peninggalan Dinasti Abbasiyah abad ke-9.",
    "cari": [
+    "File:Samarra - Minaret of Malwiya.jpg",
     "Malwiya minaret Samarra",
     "Great Mosque of Samarra minaret"
    ]
@@ -670,6 +718,7 @@
    "judul": "Madrasah Al-Mustansiriyah, Baghdad",
    "ket": "Perguruan tinggi yang didirikan Khalifah Al-Mustansir tahun 1233.",
    "cari": [
+    "File:Mustansiriya University CPT.jpg",
     "Mustansiriya Madrasah Baghdad",
     "Al-Mustansiriya"
    ]
@@ -678,6 +727,7 @@
    "judul": "Peta kota bundar Baghdad",
    "ket": "Rancangan ibu kota yang dibangun Al-Mansur tahun 762.",
    "cari": [
+    "File:Round City in the Time of Mansur (Le Strange).png",
     "Round City Baghdad",
     "Baghdad 150 to 300 AH",
     "Baghdad round city map"
@@ -689,6 +739,7 @@
    "judul": "Masjid Agung Cordoba",
    "ket": "Lengkung merah-putih khas Andalusia.",
    "cari": [
+    "File:Cordoba Cathedral 2024 - Arches.jpg",
     "Mosque-Cathedral of Cordoba arches",
     "Mezquita Cordoba interior"
    ]
@@ -697,6 +748,7 @@
    "judul": "Istana Alhambra, Granada",
    "ket": "Istana Bani Nasr, peninggalan terakhir Islam di Spanyol.",
    "cari": [
+    "File:Pavillon Cour des Lions Alhambra Granada Spain.jpg",
     "Alhambra Granada",
     "Court of the Lions Alhambra"
    ]
@@ -705,6 +757,7 @@
    "judul": "Madinat az-Zahra",
    "ket": "Kota istana Khalifah Abdurrahman III.",
    "cari": [
+    "File:Salón Rico - Medina Azahara, Córdoba (2).jpg",
     "Medina Azahara salón rico",
     "Madinat al-Zahra ruins",
     "Medina Azahara"
@@ -716,6 +769,7 @@
    "judul": "Masjid Sulaimaniyah, Istanbul",
    "ket": "Karya arsitek Sinan masa Turki Usmani.",
    "cari": [
+    "File:Süleymaniye Mosque February 2013 01.jpg",
     "Suleymaniye Mosque Istanbul",
     "Süleymaniye Mosque"
    ]
@@ -724,6 +778,7 @@
    "judul": "Taj Mahal, Agra",
    "ket": "Mahakarya arsitektur Dinasti Mughal.",
    "cari": [
+    "File:Taj Mahal, Agra, India edit2.jpg",
     "Taj Mahal",
     "Taj Mahal Agra"
    ]
@@ -732,6 +787,7 @@
    "judul": "Lapangan Naqsh-e Jahan, Isfahan",
    "ket": "Pusat kota Dinasti Safawi.",
    "cari": [
+    "File:Mezquita Shah, Isfahán, Irán, 2016-09-20, DD 71-73 HDR.jpg",
     "Naqsh-e Jahan",
     "Imam Mosque Isfahan",
     "Naghsh-e Jahan Square"
@@ -743,6 +799,7 @@
    "judul": "Universitas Al-Azhar, Kairo",
    "ket": "Pusat ilmu yang melahirkan banyak tokoh pembaruan.",
    "cari": [
+    "File:Cairo - Islamic district - Al Azhar Mosque and University.JPG",
     "Al-Azhar",
     "Azhar Mosque",
     "Al Azhar mosque Cairo"
@@ -752,6 +809,7 @@
    "judul": "Majalah pembaruan Islam abad ke-19/20",
    "ket": "Media cetak menyebarkan gagasan pembaruan ke seluruh dunia Islam, termasuk Nusantara.",
    "cari": [
+    "File:Cover of the second issue of al-Manar magazine, 1899.jpg",
     "Al-Manar magazine",
     "majalah Al-Manar",
     "Al-Urwah al-Wuthqa"
@@ -761,6 +819,7 @@
    "judul": "Gedung Muhammadiyah atau pesantren awal abad ke-20",
    "ket": "Gerakan pembaruan sampai ke Nusantara.",
    "cari": [
+    "File:Masjid Gedhe Kauman 2022 - from outside.jpg",
     "Masjid Gedhe Kauman Yogyakarta",
     "Kauman Yogyakarta mosque"
    ]
@@ -771,6 +830,7 @@
    "judul": "Makam Malik as-Saleh, Aceh",
    "ket": "Nisan raja Samudra Pasai, bertarikh 1297.",
    "cari": [
+    "File:Makam Sultan Malik As-Shalih (Malikussaleh).jpg",
     "Makam Sultan Malikussaleh",
     "Malikussaleh",
     "Samudera Pasai tomb"
@@ -796,6 +856,7 @@
    "judul": "Masjid Wapauwe, Maluku",
    "ket": "Salah satu masjid tertua di Indonesia Timur.",
    "cari": [
+    "File:Masjid Tua Wapauwe Kaitetu.jpg",
     "Wapauwe Mosque",
     "Masjid Wapauwe"
    ]

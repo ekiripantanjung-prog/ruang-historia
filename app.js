@@ -35,23 +35,120 @@ const kepala = i => { const h = i * 2.2, w = 7 - i; return `<svg viewBox="0 0 20
 /* ---------- menu atas ---------- */
 const tandaiMenu = v => document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.dataset.v === v));
 let pasang = null;
+let DAFTAR_GAMBAR = null;
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); pasang = e; const b = document.getElementById('pasang'); if (b) b.hidden = false; });
 
-/* ---------- BERANDA: pilih ruang (koleksi) ---------- */
+/* ---------- BERANDA ---------- */
+const SAMPUL = { indonesia: 'Candi Borobudur', dunia: 'Piramida Giza, Mesir', ski: 'Kubah Batu (Qubbat as-Sakhrah), Yerusalem' };
+const PANCA = [
+  ['#E0B04A', 'Cinta Allah dan Rasul-Nya', 'Melihat sejarah sebagai jejak ketetapan Allah dan teladan para nabi.'],
+  ['#D9843A', 'Cinta ilmu', 'Bertanya, membaca sumber, dan menimbang bukti sebelum menyimpulkan.'],
+  ['#B23A1F', 'Cinta diri dan sesama', 'Menghargai perbedaan dan belajar dari perjuangan bersama.'],
+  ['#6E7F3A', 'Cinta lingkungan', 'Merawat situs, alam, dan warisan budaya yang tersisa.'],
+  ['#4A2E1C', 'Cinta tanah air', 'Mengenal akar bangsa agar sanggup menjaga masa depannya.']
+];
+const semuaKartu = () => K.flatMap(k => k.bab.flatMap(d => { const b = isiBab(k.id, d.id); return (b && b.kartu || []).map(c => ({ ...c, kid: k.id, id: d.id, bab: d.judul, k: k.judul })); }));
+async function ambilGambar() { try { DAFTAR_GAMBAR ||= await fetch('gambar/daftar.json').then(r => r.ok ? r.json() : {}); } catch { DAFTAR_GAMBAR = {}; } return DAFTAR_GAMBAR; }
+
 function beranda() {
   tandaiMenu('beranda');
+  const t = S.get('terakhir', null), tb = t && cariK(t[0]) && cariK(t[0]).bab.find(d => d.id === t[1]);
+  const jBab = K.reduce((a, k) => a + tersedia(k).length, 0);
+  const n = S.get('nilai', {}), selesai = Object.keys(n).filter(x => x.includes('-bab')).length;
   app.innerHTML = `
-<section class="hero pad"><div class="wrap">
-<h1>Ruang Historia</h1>
-<p>Ruang belajar sejarah interaktif untuk MA/SMA/SMK: materi ringkas, video, kuis dengan pembahasan, dan ujian akhir. Diperkaya nilai Panca Cinta Kurikulum Berbasis Cinta. Pilih ruang yang ingin kamu masuki.</p>
-<div class="rooms">${K.map(k => { const ada = tersedia(k).length;
-    return `<a class="room ${ada ? '' : 'kunci'}" href="#${k.id}" style="--c:${k.warna}"><span class="door"><span class="seg-bab">${k.bab.map(d => `<i class="${isiBab(k.id, d.id) ? 'on' : ''}"></i>`).join('')}</span></span><b>${esc(k.judul)}</b><span>${esc(k.ringkas)}</span><small>${ada ? `${ada} dari ${k.bab.length} bab tersedia` : `${k.bab.length} bab · segera hadir`}</small></a>`; }).join('')}</div>
-<div class="row" style="margin-top:18px"><button class="btn" id="pasang" hidden type="button">Pasang di HP</button></div>
+<section class="sampul"><div class="wrap sampul-isi">
+  <div class="sampul-teks">
+    <p class="alis">Aplikasi belajar sejarah · MA · SMA · SMK</p>
+    <h1>Ruang <em>Historia</em></h1>
+    <p class="slogan">Menyusuri jejak masa lalu, merawat cinta untuk masa depan.</p>
+    <p class="sampul-p">Materi ringkas, video, foto arsip asli, kuis berpembahasan, dan ujian akhir, diperkaya nilai Panca Cinta Kurikulum Berbasis Cinta.</p>
+    <div class="row">
+      <a class="btn emas" href="#ruang-pilih">Masuk ruang belajar</a>
+      ${tb ? `<a class="btn kaca" href="#${t[0]}-${t[1]}">Lanjutkan: Bab ${tb.id} ${esc(tb.judul)}</a>` : ''}
+      <button class="btn kaca" id="pasang" hidden type="button">Pasang di HP</button>
+    </div>
+    <dl class="angka-list">
+      <div><dt>${K.length}</dt><dd>ruang</dd></div>
+      <div><dt>${jBab}</dt><dd>bab</dd></div>
+      <div><dt>${jBab}</dt><dd>video</dd></div>
+      <div><dt id="jml-foto">80+</dt><dd>foto arsip</dd></div>
+    </dl>
+  </div>
+  <div class="sampul-gambar" aria-hidden="true">
+    <div class="cahaya"></div>
+    <img class="logo-besar" src="icons/logo.svg" alt="">
+    <figure class="polaroid p1"></figure><figure class="polaroid p2"></figure><figure class="polaroid p3"></figure>
+  </div>
+</div>
+<svg class="strata" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">${PANCA.map((c, i) => `<path d="M0 ${30 + i * 18} C 240 ${10 + i * 18}, 480 ${50 + i * 18}, 720 ${30 + i * 18} S 1200 ${10 + i * 18}, 1440 ${34 + i * 18} V120 H0Z" fill="${c[0]}"/>`).join('')}</svg>
+</section>
+
+<section class="pad" id="ruang-pilih"><div class="wrap">
+  <p class="alis gelap">Pilih ruang</p>
+  <h2 class="judul-besar">Tiga ruang, satu perjalanan</h2>
+  <div class="ruang-grid">${K.map(k => { const ada = tersedia(k).length, sel = k.bab.filter(d => n[`${k.id}-bab${d.id}`]).length;
+    return `<a class="kamar" href="#${k.id}" style="--c:${k.warna}">
+      <span class="lengkung" data-sampul="${k.id}"><span class="lengkung-tirai"></span><span class="lengkung-label">${esc(k.awal)} — ${esc(k.akhir)}</span></span>
+      <span class="kamar-isi"><b>${esc(k.judul)}</b><span>${esc(k.ringkas)}</span>
+      <span class="seg-bab">${k.bab.map(d => `<i class="${n[`${k.id}-bab${d.id}`] ? 'on' : ''}"></i>`).join('')}</span>
+      <small>${ada} bab · ${sel ? `${sel} kuis sudah kamu kerjakan` : 'belum ada kuis dikerjakan'}</small></span></a>`; }).join('')}</div>
 </div></section>
-<footer class="pad foot"><div class="wrap"><p>Nilai kuis tersimpan di perangkat ini saja. Rujukan dicantumkan di halaman Tentang.</p></div></footer>`;
+
+<section class="pad jejak-sec"><div class="wrap">
+  <p class="alis gelap">Jejak sejarah</p>
+  <h2 class="judul-besar">Dari arsip, bukan rekaan</h2>
+  <p class="soft">Foto artefak, situs, dan dokumen asli dari arsip terbuka Wikimedia Commons. Ketuk untuk membuka babnya.</p>
+</div><div class="pita" id="pita"><div class="pita-jalan"></div></div></section>
+
+<section class="pad"><div class="wrap tahu-wrap">
+  <div class="tahu" id="tahu"></div>
+</div></section>
+
+<section class="pad panca-sec"><div class="wrap">
+  <p class="alis gelap">Makna logo</p>
+  <h2 class="judul-besar">Lima lapis Panca Cinta</h2>
+  <p class="soft">Lima lapis pasir di dalam jam pasir logo Ruang Historia adalah lima nilai yang ingin dirawat lewat belajar sejarah.</p>
+  <ol class="panca">${PANCA.map((c, i) => `<li style="--c:${c[0]}"><span class="no">${i + 1}</span><b>${c[1]}</b><span>${c[2]}</span></li>`).join('')}</ol>
+</div></section>
+
+<section class="pad"><div class="wrap">
+  <p class="alis gelap">Cara belajar</p>
+  <h2 class="judul-besar">Empat langkah tiap bab</h2>
+  <ol class="langkah">
+    <li><b>Baca</b><span>Materi ringkas dan jelajah interaktif.</span></li>
+    <li><b>Tonton</b><span>Video pendek rangkuman bab.</span></li>
+    <li><b>Uji</b><span>Kuis dengan pembahasan, target nilai 70.</span></li>
+    <li><b>Renungkan</b><span>Soal uraian dan refleksi Panca Cinta.</span></li>
+  </ol>
+  ${selesai ? `<p style="margin-top:18px"><a class="btn" href="#nilai">Lihat nilaiku (${selesai} bab)</a></p>` : ''}
+</div></section>
+<footer class="pad foot"><div class="wrap"><p>Ruang Historia · nilai kuis tersimpan di perangkat ini saja. Foto dari Wikimedia Commons dengan lisensi terbuka; rujukan di halaman <a href="#tentang">Tentang</a>.</p></div></footer>`;
+
   const p = document.getElementById('pasang');
   if (pasang) p.hidden = false;
   p.addEventListener('click', async () => { if (!pasang) return; pasang.prompt(); await pasang.userChoice; pasang = null; p.hidden = true; });
+  document.querySelector('a[href="#ruang-pilih"]').addEventListener('click', e => { e.preventDefault(); document.getElementById('ruang-pilih').scrollIntoView({ behavior: 'smooth' }); });
+
+  // Tahukah kamu?
+  const KS = semuaKartu(), tahu = document.getElementById('tahu');
+  const acak = () => { const c = KS[Math.floor(Math.random() * KS.length)]; if (!c) return;
+    tahu.innerHTML = `<p class="alis">Tahukah kamu?</p><h3>${esc(c.nama)}</h3><p class="info">${esc(c.info || '')}</p><p>${esc(c.isi)}</p><div class="row"><a class="btn emas" href="#${c.kid}-${c.id}">Buka bab: ${esc(c.bab)}</a><button class="btn kaca" type="button" id="acak">Fakta lain</button></div><small>${esc(c.k)}</small>`;
+    document.getElementById('acak').onclick = acak; };
+  acak();
+
+  // Foto: sampul ruang, polaroid, pita berjalan
+  ambilGambar().then(G => {
+    if (!document.getElementById('pita')) return;
+    const semua = Object.entries(G).flatMap(([kunci, L]) => L.map(g => ({ ...g, kunci })));
+    if (!semua.length) { document.querySelector('.jejak-sec').remove(); return; }
+    document.getElementById('jml-foto').textContent = semua.length;
+    const cari = j => semua.find(g => g.judul === j);
+    K.forEach(k => { const g = cari(SAMPUL[k.id]) || semua.find(x => x.kunci.startsWith(k.id + '-')); const el = document.querySelector(`[data-sampul="${k.id}"]`); if (g && el) el.style.backgroundImage = `url("${g.file}")`; });
+    ['Nekara Bulan Pejeng, Bali', 'Naskah Proklamasi ketikan', 'Masjid Agung Demak'].forEach((j, i) => { const g = cari(j), f = document.querySelector('.p' + (i + 1)); if (g && f) f.innerHTML = `<img src="${esc(g.file)}" alt=""><figcaption>${esc(g.judul)}</figcaption>`; });
+    const pil = semua.filter((g, i, a) => a.findIndex(x => x.file === g.file) === i).sort(() => Math.random() - .5).slice(0, 18);
+    const isi = pil.map(g => `<a href="#${g.kunci}" title="${esc(g.judul)}"><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.parentElement.remove()"><span>${esc(g.judul)}</span></a>`).join('');
+    document.querySelector('.pita-jalan').innerHTML = isi + isi.replace(/<a /g, '<a aria-hidden="true" tabindex="-1" ');
+  });
 }
 
 /* ---------- RUANG: daftar bab satu koleksi ---------- */
@@ -79,6 +176,7 @@ function bab(kid, id, tab) {
   tandaiMenu('');
   const k = cariK(kid), d = k.bab.find(x => x.id === id), b = isiBab(kid, id);
   if (!d) return ruang(kid);
+  if (b) S.set('terakhir', [kid, id]);
   const atas = `<a class="balik" href="#${kid}">${esc(k.judul)}</a>`;
   if (!b) {
     app.innerHTML = `<section class="babhead pad" style="--c:${d.warna}"><div class="wrap">${atas}<small>Bab ${id}</small><h1>${esc(d.judul)}</h1><p>${esc(d.ringkas)}</p></div></section><section class="pad"><div class="wrap"><div class="box"><h3>Segera hadir</h3><p>Materi, video, dan soal bab ini sedang disusun.</p><a class="btn" href="#${kid}">Kembali ke ${esc(k.judul)}</a></div></div></section>`;
@@ -121,10 +219,9 @@ ${b.bagian.map(s => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi}${s
 <div class="box row" style="justify-content:space-between"><span>Sudah selesai membaca? Uji pemahamanmu.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
 }
 /* Foto bersejarah dari Wikimedia Commons (lihat alat/cari_gambar.py) */
-let DAFTAR_GAMBAR = null;
 const pembuat = t => { t = (t || '').replace(/(Unknown author|Unknown)+/gi, 'Pembuat tidak diketahui').replace(/(Pembuat tidak diketahui)(\s*\1)+/g, '$1').trim(); return t ? t.slice(0, 80) + ' · ' : ''; };
 async function pasangGaleri(kid, id) {
-  try { DAFTAR_GAMBAR ||= await fetch('gambar/daftar.json').then(r => r.ok ? r.json() : {}); } catch { DAFTAR_GAMBAR = {}; }
+  await ambilGambar();
   const L = DAFTAR_GAMBAR[`${kid}-${id}`], el = document.getElementById('galeri');
   if (!el || !L || !L.length) return;
   el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto dan dokumen asli dari arsip terbuka Wikimedia Commons. Klik "sumber" untuk melihat pembuat dan lisensinya.</p><div class="galeri">${L.map(g => `<figure><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}<small>${esc(pembuat(g.pembuat))}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small></figcaption></figure>`).join('')}</div>`;

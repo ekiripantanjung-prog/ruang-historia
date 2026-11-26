@@ -45,7 +45,7 @@ const KELUARGA = [
   ['EVIDENKU', 'https://evidenku-eki.netlify.app', '#0f6b52', 'Administrasi guru', 'Jurnal mengajar, bukti kinerja, tautan Google Drive, dan rekap e-Kinerja per bulan.'],
   ['SEMEDI', 'https://semedi-eki.netlify.app', '#7a3b6e', 'Sejarah dalam Meme Digital', 'Sumber belajar sejarah lokal yang ringan untuk siswa.']
 ];
-const HAK = '© 2026 Eki Ripan J.R., S.Pd., M.Pd., Gr.';
+const HAK = '© 2026 Eki Ripan J.R. Tanjung, S.Pd., M.Pd., Gr.';
 const SAMPUL = { indonesia: 'Candi Borobudur', dunia: 'Piramida Giza, Mesir', ski: 'Kubah Batu (Qubbat as-Sakhrah), Yerusalem' };
 const PANCA = [
   ['#E0B04A', 'Cinta Allah dan Rasul-Nya', 'Melihat sejarah sebagai jejak ketetapan Allah dan teladan para nabi.'],

@@ -354,6 +354,11 @@ rute();
 
 /* ---------- mode luring (offline) ---------- */
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(r => r.update()).catch(() => {});
+  // muat ulang sekali saat versi baru aplikasi aktif
+  if (navigator.serviceWorker.controller) {
+    let sekali = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => { if (!sekali) { sekali = true; location.reload(); } });
+  }
 }
 }

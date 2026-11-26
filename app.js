@@ -116,6 +116,7 @@ function beranda() {
   <h2 class="judul-besar">Lima lapis Panca Cinta</h2>
   <p class="soft">Lima lapis pasir di dalam jam pasir logo Ruang Historia adalah lima nilai yang ingin dirawat lewat belajar sejarah.</p>
   <ol class="panca">${PANCA.map((c, i) => `<li style="--c:${c[0]}"><span class="no">${i + 1}</span><b>${c[1]}</b><span>${c[2]}</span></li>`).join('')}</ol>
+  <p style="margin-top:16px"><a class="btn" href="#logo">Baca filosofi logo lengkap</a></p>
 </div></section>
 
 <section class="pad"><div class="wrap">
@@ -357,6 +358,51 @@ function tentang() {
 <p class="catatan">Guru dapat menambah atau mengubah materi dan soal pada folder <code>data/</code>.</p></div></section>`;
 }
 
+/* ---------- FILOSOFI LOGO ---------- */
+function filosofi() {
+  tandaiMenu('logo'); clearInterval(jam);
+  const bagian = [
+    ['#2F6B4F', 'Lengkung mihrab', 'Bentuk gerbang melengkung diambil dari mihrab dan gapura. Ia adalah pintu masuk ke "ruang" sejarah, sekaligus pengingat bahwa belajar di madrasah berangkat dari nilai keislaman. Warnanya Hijau Historia (#2F6B4F), warna khas aplikasi ini: tumbuh, teduh, dan hidup.'],
+    ['#FFF8EC', 'Jam pasir', 'Jam pasir adalah lambang waktu, bahan utama ilmu sejarah. Pasir di bagian atas adalah masa yang akan datang, pasir di bawah adalah masa lalu yang telah terkumpul. Belajar sejarah berarti menimbang keduanya.'],
+    ['#F2C38F', 'Cahaya ilmu', 'Lingkaran bercahaya di bagian atas jam pasir adalah cahaya ilmu yang menerangi perjalanan waktu. Dari cahaya itulah butir-butir pasir mengalir turun.'],
+    ['#E0B04A', 'Butir yang mengalir', 'Garis putus-putus di leher jam pasir adalah peristiwa demi peristiwa yang terus mengalir. Sejarah tidak pernah berhenti; setiap hari yang kita jalani akan menjadi sejarah.'],
+    ['#E0B04A', 'Tutup atas dan bawah', 'Dua bilah emas yang mengapit jam pasir melambangkan masa lalu dan masa depan. Keduanya diikat oleh masa kini, tempat siswa belajar.'],
+    ['#E0B04A', 'Ambang pintu', 'Bilah emas di dasar gerbang adalah ambang pintu: siapa pun yang melangkah masuk sedang memulai perjalanan menelusuri jejak sejarah.']
+  ];
+  const lapis = PANCA.map((c, i) => `<li style="--c:${c[0]}"><span class="no">${i + 1}</span><b>${c[1]}</b><span>${c[2]}</span></li>`).join('');
+  app.innerHTML = `
+<section class="sampul filo-sampul"><div class="wrap filo-isi">
+  <div class="filo-logo"><div class="cahaya"></div><img class="logo-besar" src="icons/logo.svg" alt="Logo Ruang Historia"></div>
+  <div>
+    <p class="alis">Filosofi logo</p>
+    <h1>Gerbang <em>Jam Pasir</em></h1>
+    <p class="slogan">Pintu menuju masa lalu, dijaga oleh lima lapis cinta.</p>
+    <p class="sampul-p">Logo Ruang Historia memadukan dua gagasan: <b>gerbang</b> sebagai ruang yang dimasuki siswa, dan <b>jam pasir</b> sebagai lambang waktu. Di dasar jam pasir mengendap lima lapis warna, yaitu lima nilai Panca Cinta dalam Kurikulum Berbasis Cinta.</p>
+  </div>
+</div>
+<svg class="strata" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">${PANCA.map((c, i) => `<path d="M0 ${30 + i * 18} C 240 ${10 + i * 18}, 480 ${50 + i * 18}, 720 ${30 + i * 18} S 1200 ${10 + i * 18}, 1440 ${34 + i * 18} V120 H0Z" fill="${c[0]}"/>`).join('')}</svg>
+</section>
+
+<section class="pad"><div class="wrap" style="max-width:860px">
+  <p class="alis gelap">Bagian demi bagian</p>
+  <h2 class="judul-besar">Apa arti setiap unsur?</h2>
+  <div class="unsur">${bagian.map(x => `<div class="unsur-i"><span class="swatch" style="background:${x[0]}"></span><div><b>${x[1]}</b><p>${x[2]}</p></div></div>`).join('')}</div>
+
+  <p class="alis gelap" style="margin-top:36px">Lima lapis pasir</p>
+  <h2 class="judul-besar">Panca Cinta, dari atas ke bawah</h2>
+  <p class="soft">Kelima lapis itu mengendap di dasar jam pasir. Artinya, setelah waktu berlalu, yang tersisa dari belajar sejarah adalah nilai-nilai yang tertanam dalam diri.</p>
+  <ol class="panca">${lapis}</ol>
+
+  <p class="alis gelap" style="margin-top:36px">Warna khas</p>
+  <h2 class="judul-besar">Hijau Historia</h2>
+  <div class="warna-khas"><span style="background:#2F6B4F">#2F6B4F<br><small>Hijau Historia</small></span><span style="background:#1D4232">#1D4232<br><small>Hijau tua</small></span><span style="background:#E0B04A;color:#2a1d14">#E0B04A<br><small>Emas</small></span><span style="background:#FFF8EC;color:#2a1d14">#FFF8EC<br><small>Krem</small></span></div>
+  <p class="soft" style="margin-top:14px">Hijau dipilih karena lekat dengan madrasah, kesuburan ilmu, dan kehidupan yang terus bertumbuh. Emas melambangkan nilai luhur yang diwariskan sejarah.</p>
+
+  <blockquote class="ringkas">"Masuklah ke ruang sejarah, biarkan waktu mengajarkanmu, dan bawalah pulang lima lapis cinta."</blockquote>
+  <p class="catatan">Logo dan filosofi dirancang untuk Ruang Historia · ${HAK}</p>
+</div></section>`;
+}
+
 /* ---------- router ---------- */
 function rute() {
   clearInterval(jam);
@@ -368,6 +414,7 @@ function rute() {
   else if (cariK(h)) ruang(h);
   else if (h === 'nilai') nilai();
   else if (h === 'tentang') tentang();
+  else if (h === 'logo') filosofi();
   else beranda();
   window.scrollTo(0, 0);
 }

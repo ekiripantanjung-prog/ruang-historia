@@ -122,11 +122,12 @@ ${b.bagian.map(s => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi}${s
 }
 /* Foto bersejarah dari Wikimedia Commons (lihat alat/cari_gambar.py) */
 let DAFTAR_GAMBAR = null;
+const pembuat = t => { t = (t || '').replace(/(Unknown author|Unknown)+/gi, 'Pembuat tidak diketahui').replace(/(Pembuat tidak diketahui)(\s*\1)+/g, '$1').trim(); return t ? t.slice(0, 80) + ' · ' : ''; };
 async function pasangGaleri(kid, id) {
   try { DAFTAR_GAMBAR ||= await fetch('gambar/daftar.json').then(r => r.ok ? r.json() : {}); } catch { DAFTAR_GAMBAR = {}; }
   const L = DAFTAR_GAMBAR[`${kid}-${id}`], el = document.getElementById('galeri');
   if (!el || !L || !L.length) return;
-  el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto dan dokumen asli dari arsip terbuka Wikimedia Commons. Klik "sumber" untuk melihat pembuat dan lisensinya.</p><div class="galeri">${L.map(g => `<figure><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}<small>${g.pembuat ? esc(g.pembuat.slice(0, 80)) + ' · ' : ''}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small></figcaption></figure>`).join('')}</div>`;
+  el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto dan dokumen asli dari arsip terbuka Wikimedia Commons. Klik "sumber" untuk melihat pembuat dan lisensinya.</p><div class="galeri">${L.map(g => `<figure><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}<small>${esc(pembuat(g.pembuat))}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small></figcaption></figure>`).join('')}</div>`;
 }
 const kartu = b => `<p class="catatan">Klik kartu untuk membalik.</p><div class="cards">${b.kartu.map((c, i) => `<button class="flip" type="button" aria-pressed="false"><div class="inner"><div class="face"><b>${esc(c.nama)}</b><small>${esc(c.info)}</small>${b.koleksi === 'indonesia' && b.id === 1 ? kepala(i) : `<span class="mono" aria-hidden="true">${esc(c.nama.split(/\s+/).filter(w => /^[A-Z]/.test(w)).slice(0, 2).map(w => w[0]).join('') || c.nama[0])}</span>`}</div><div class="face back">${esc(c.isi)}</div></div></button>`).join('')}</div>`;
 function pasangJelajah(b) {

@@ -134,6 +134,7 @@
    "judul": "Benteng Marlborough, Bengkulu",
    "ket": "Benteng Inggris di pesisir barat Sumatra.",
    "cari": [
+    "File:Interior of north-east gate, Fort Marlborough, 2015-04-19 01.jpg",
     "Fort Marlborough Bengkulu gate",
     "Benteng Marlborough",
     "Fort Marlborough"
@@ -326,18 +327,6 @@
  ],
  "indonesia-11": [
   {
-   "judul": "Gedung Nusantara, kompleks parlemen Senayan",
-   "ket": "Gedung yang diduduki mahasiswa pada Mei 1998, menjelang mundurnya Presiden Soeharto.",
-   "cari": [
-    "Gedung DPR Senayan",
-    "Gedung MPR/DPR/DPD",
-    "DPR building Jakarta",
-    "Gedung Nusantara"
-   ],
-   "wajib": "DPR|MPR|Nusantara|Parlemen|Parliament",
-   "hindari": "interview|sidang|rapat|demo|mahasiswa"
-  },
-  {
    "judul": "Gedung Mahkamah Konstitusi",
    "ket": "Lembaga baru hasil amandemen UUD 1945 masa Reformasi.",
    "cari": [
@@ -346,6 +335,27 @@
     "Mahkamah Konstitusi Republik Indonesia",
     "Constitutional Court Indonesia"
    ]
+  },
+  {
+   "judul": "Uang kertas rupiah akhir 1990-an",
+   "ket": "Krisis moneter 1997–1998 membuat nilai rupiah anjlok tajam dan memicu krisis politik.",
+   "cari": [
+    "Indonesia 50000 rupiah 1999 banknote",
+    "Indonesian rupiah banknote 1998",
+    "50000 rupiah 1995"
+   ],
+   "wajib": "rupiah"
+  },
+  {
+   "judul": "Gedung Komisi Pemilihan Umum (KPU)",
+   "ket": "Lembaga penyelenggara pemilu yang dibentuk mandiri sejak masa Reformasi.",
+   "cari": [
+    "Gedung KPU Jakarta",
+    "Komisi Pemilihan Umum gedung",
+    "KPU RI building"
+   ],
+   "wajib": "KPU|Komisi Pemilihan",
+   "hindari": "rapat|sidang|interview|ketua|anggota"
   }
  ],
  "dunia-1": [
@@ -727,6 +737,7 @@
    "judul": "Menara spiral Masjid Agung Samarra",
    "ket": "Peninggalan Dinasti Abbasiyah abad ke-9.",
    "cari": [
+    "File:Great Mosque of Samarra.jpg",
     "Malwiya",
     "Great Mosque of Samarra",
     "Samarra minaret"

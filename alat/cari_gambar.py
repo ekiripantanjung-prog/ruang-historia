@@ -1,0 +1,75 @@
+"""Cari foto berlisensi terbuka di Wikimedia Commons untuk setiap bab, unduh versi kecilnya,
+lalu tulis daftar sumber dan lisensinya ke gambar/daftar.json.
+Dijalankan oleh GitHub Actions (alur kerja 'Cari gambar')."""
+import json, os, re, time, urllib.parse, urllib.request
+
+API = 'https://commons.wikimedia.org/w/api.php'
+UA = {'User-Agent': 'RuangHistoria/1.0 (aplikasi belajar sejarah madrasah; github.com/ekiripantanjung-prog/ruang-historia)'}
+BOLEH = re.compile(r'^(public domain|pd|cc0|cc by(-sa)? ?\d|cc-by(-sa)?-\d|attribution|gfdl)', re.I)
+DILARANG = re.compile(r'\b(nc|nd|fair use|non-free)\b', re.I)
+
+def api(params):
+    params = dict(params, format='json', formatversion=2)
+    url = API + '?' + urllib.parse.urlencode(params)
+    for _ in range(3):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:
+                return json.load(r)
+        except Exception as e:
+            err = e; time.sleep(3)
+    raise err
+
+def bersih(html):
+    t = re.sub(r'<[^>]+>', '', html or '')
+    return re.sub(r'\s+', ' ', t).strip()[:300]
+
+def info_berkas(judul):
+    d = api({'action': 'query', 'titles': judul, 'prop': 'imageinfo', 'iiprop': 'url|extmetadata|mime|size', 'iiurlwidth': 960})
+    p = d['query']['pages'][0]
+    if p.get('missing') or 'imageinfo' not in p: return None
+    ii = p['imageinfo'][0]; m = ii.get('extmetadata', {})
+    g = lambda k: bersih(m.get(k, {}).get('value', ''))
+    return {'berkas': p['title'], 'thumb': ii.get('thumburl'), 'mime': ii.get('mime'), 'lebar': ii.get('width', 0),
+            'lisensi': g('LicenseShortName'), 'pembuat': g('Artist') or g('Credit'), 'keterangan': g('ImageDescription'),
+            'tanggal': g('DateTimeOriginal'), 'halaman': ii.get('descriptionurl')}
+
+def cocok(f):
+    return (f and f['thumb'] and f['mime'] in ('image/jpeg', 'image/png') and f['lebar'] >= 500
+            and BOLEH.search(f['lisensi'] or '') and not DILARANG.search(f['lisensi'] or ''))
+
+def cari(q):
+    if q.startswith('File:'):
+        f = info_berkas(q); return f if cocok(f) else None
+    d = api({'action': 'query', 'list': 'search', 'srsearch': q + ' filetype:bitmap', 'srnamespace': 6, 'srlimit': 8})
+    for h in d['query']['search']:
+        f = info_berkas(h['title'])
+        if cocok(f): return f
+    return None
+
+def main():
+    minta = json.load(open('alat/permintaan_gambar.json'))
+    hasil = {}
+    try: hasil = json.load(open('gambar/daftar.json'))
+    except Exception: pass
+    for kunci, daftar in minta.items():
+        k, n = kunci.split('-'); n = int(n)
+        os.makedirs(f'gambar/{k}', exist_ok=True)
+        keluaran = []
+        for i, item in enumerate(daftar):
+            f = None
+            for q in item['cari']:
+                try: f = cari(q)
+                except Exception as e: print('gagal', q, e)
+                if f: break
+            if not f:
+                print('TIDAK KETEMU', kunci, item['judul']); continue
+            nama = f'gambar/{k}/bab{n:02d}-{i + 1}.jpg'
+            with urllib.request.urlopen(urllib.request.Request(f['thumb'], headers=UA), timeout=60) as r:
+                open(nama, 'wb').write(r.read())
+            keluaran.append(dict(f, file=nama, judul=item['judul'], ket=item.get('ket', '')))
+            print('OK', kunci, item['judul'], '->', f['berkas'], '|', f['lisensi'])
+            time.sleep(0.5)
+        hasil[kunci] = keluaran
+    json.dump(hasil, open('gambar/daftar.json', 'w'), ensure_ascii=False, indent=1)
+
+main()

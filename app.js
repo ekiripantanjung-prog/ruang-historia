@@ -103,6 +103,7 @@ function bab(kid, id, tab) {
     if (t === 'esai') isi.innerHTML = esai(b);
     if (t === 'istilah') isi.innerHTML = `<h2>Istilah penting</h2><div class="gl">${(b.glosarium || []).map(g => `<div><b>${esc(g[0])}</b>${esc(g[1])}</div>`).join('')}</div>`;
     if (t === 'materi' && b.jelajah) pasangJelajah(b);
+    if (t === 'materi') pasangGaleri(kid, id);
   };
   app.querySelector('.seg').addEventListener('click', e => { const x = e.target.closest('button'); if (x) tampil(x.dataset.t); });
   isi.addEventListener('click', e => {
@@ -114,10 +115,18 @@ function bab(kid, id, tab) {
 
 function materi(b) {
   const j = b.jelajah;
-  return `<div class="box"><h3>Tujuan pembelajaran</h3><ol class="tujuan">${b.tujuan.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div>
+  return `<div class="box"><h3>Tujuan pembelajaran</h3><ol class="tujuan">${b.tujuan.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div><div id="galeri"></div>
 ${j ? `<h2>${esc(j.judul)}</h2><div class="dig"><div><div class="strata ${j.mode === 'waktu' ? 'waktu' : ''}" id="strata">${j.mode === 'waktu' ? '' : `<div class="sky">${esc(j.atas)}</div><div class="grass"></div>`}${j.lapisan.map((x, k) => `<button class="layer" type="button" data-k="${k}" aria-pressed="false" style="background-color:${x.c}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span>${x.ikon ? `<svg viewBox="0 0 100 52" aria-hidden="true">${IKON[x.ikon] || ''}</svg>` : (j.mode === 'waktu' ? `<em class="thn">${esc(x.th || '')}</em>` : '')}</button>`).join('')}</div><div class="depth">${j.mode === 'waktu' ? '<span>lebih awal</span><span>lebih akhir</span>' : '<span>lebih muda</span><span>lebih tua, lebih dalam</span>'}</div></div><aside class="panel" id="panel" aria-live="polite"></aside></div>${j.catatan ? `<p class="catatan">${esc(j.catatan)}</p>` : ''}` : ''}
 ${b.bagian.map(s => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>Refleksi ${esc(s.cinta[0].toLowerCase())}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
 <div class="box row" style="justify-content:space-between"><span>Sudah selesai membaca? Uji pemahamanmu.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
+}
+/* Foto bersejarah dari Wikimedia Commons (lihat alat/cari_gambar.py) */
+let DAFTAR_GAMBAR = null;
+async function pasangGaleri(kid, id) {
+  try { DAFTAR_GAMBAR ||= await fetch('gambar/daftar.json').then(r => r.ok ? r.json() : {}); } catch { DAFTAR_GAMBAR = {}; }
+  const L = DAFTAR_GAMBAR[`${kid}-${id}`], el = document.getElementById('galeri');
+  if (!el || !L || !L.length) return;
+  el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto dan dokumen asli dari arsip terbuka Wikimedia Commons. Klik "sumber" untuk melihat pembuat dan lisensinya.</p><div class="galeri">${L.map(g => `<figure><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}<small>${g.pembuat ? esc(g.pembuat.slice(0, 80)) + ' · ' : ''}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small></figcaption></figure>`).join('')}</div>`;
 }
 const kartu = b => `<p class="catatan">Klik kartu untuk membalik.</p><div class="cards">${b.kartu.map((c, i) => `<button class="flip" type="button" aria-pressed="false"><div class="inner"><div class="face"><b>${esc(c.nama)}</b><small>${esc(c.info)}</small>${b.koleksi === 'indonesia' && b.id === 1 ? kepala(i) : `<span class="mono" aria-hidden="true">${esc(c.nama.split(/\s+/).filter(w => /^[A-Z]/.test(w)).slice(0, 2).map(w => w[0]).join('') || c.nama[0])}</span>`}</div><div class="face back">${esc(c.isi)}</div></div></button>`).join('')}</div>`;
 function pasangJelajah(b) {

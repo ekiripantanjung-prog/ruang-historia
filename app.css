@@ -146,3 +146,11 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .strata.waktu .layer{border-left:0}
 .thn{font-style:normal;font-family:"Archivo Black",sans-serif;font-size:18px;white-space:nowrap;opacity:.95}
 .mono{margin-top:auto;align-self:center;width:84px;height:84px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Archivo Black",sans-serif;font-size:30px}
+
+/* Galeri foto bersejarah */
+.galeri{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin:12px 0 8px}
+.galeri figure{margin:0;background:var(--card,#fff);border-radius:14px;overflow:hidden;border:1px solid color-mix(in srgb,currentColor 12%,transparent)}
+.galeri img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#e8dfd4}
+.galeri figcaption{padding:10px 12px 12px;display:grid;gap:4px;font-size:.92rem}
+.galeri figcaption span{opacity:.85}
+.galeri figcaption small{opacity:.65;font-size:.78rem;word-break:break-word}

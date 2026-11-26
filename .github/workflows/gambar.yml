@@ -1,0 +1,28 @@
+# Mencari foto berlisensi terbuka di Wikimedia Commons dan menyimpannya di folder gambar/.
+# Berjalan otomatis setiap daftar permintaan berubah, atau manual dari tab Actions.
+name: Cari gambar
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'alat/permintaan_gambar.json'
+      - 'alat/cari_gambar.py'
+permissions:
+  contents: write
+jobs:
+  gambar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Cari dan unduh gambar
+        run: python alat/cari_gambar.py
+      - name: Simpan ke repositori
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add gambar
+          git commit -m "Perbarui gambar dari Wikimedia Commons" || echo "tidak ada perubahan"
+          git push

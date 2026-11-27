@@ -45,28 +45,17 @@
    "wajib": "sarcoph|sarkofag"
   },
   {
-   "judul": "Tempurung kepala Pithecanthropus erectus dari Trinil",
-   "ket": "Fosil temuan Eugène Dubois di Trinil, Ngawi (1891), dikenal sebagai \"Manusia Jawa\".",
+   "judul": "Tempurung kepala dan tulang paha dari Trinil",
+   "ket": "Fosil Pithecanthropus erectus temuan Eugène Dubois di Trinil, Ngawi (1891–1892), kini disimpan di Museum Naturalis, Leiden. Tulang pahanya menunjukkan makhluk ini sudah berjalan tegak.",
    "cari": [
+    "File:Pithecanthropus erectus-PeterMaas Naturalis.jpg",
     "Trinil 2 calotte",
     "Pithecanthropus erectus skull cap",
     "Java Man calvarium Trinil",
     "Homo erectus Trinil 2"
    ],
    "wajib": "Trinil|Pithecanthropus|calotte|calvari|skull ?cap|Java ?[Mm]an",
-   "hindari": "[Mm]anuscript|[Ff]emur|reconstruct|model|bust|statue|Ngandong|Sangiran",
-   "ulang": true
-  },
-  {
-   "judul": "Tulang paha (femur) Trinil",
-   "ket": "Tulang paha temuan Dubois yang menunjukkan manusia purba ini sudah berjalan tegak.",
-   "cari": [
-    "File:Interior view of the left femur of Pithecanthropus Erectus. Wellcome M0003715.jpg",
-    "Trinil femur",
-    "Femur Trinil Dubois",
-    "Pithecanthropus femur"
-   ],
-   "wajib": "[Ff]emur|Trinil"
+   "hindari": "[Mm]anuscript|[Ff]emur|reconstruct|model|bust|statue|Ngandong|Sangiran"
   },
   {
    "judul": "Tengkorak Sangiran 17",
@@ -80,9 +69,10 @@
    "wajib": "Sangiran"
   },
   {
-   "judul": "Rahang Meganthropus palaeojavanicus",
-   "ket": "Fosil rahang besar dari Sangiran, temuan von Koenigswald.",
+   "judul": "Rekonstruksi tengkorak Meganthropus palaeojavanicus",
+   "ket": "Gambar ilmiah berdasarkan fosil rahang besar dari Sangiran, temuan von Koenigswald (1941).",
    "cari": [
+    "File:Meganthropus palaeojavanicus cranium.png",
     "Meganthropus",
     "Sangiran 6 mandible",
     "Homo erectus mandible Sangiran"
@@ -115,6 +105,7 @@
    "judul": "Museum Purbakala Sangiran",
    "ket": "Situs Warisan Dunia UNESCO dengan ribuan fosil manusia purba.",
    "cari": [
+    "File:Museum Purbakala Sangiran 1.JPG",
     "Sangiran Museum",
     "Museum Manusia Purba Sangiran",
     "Sangiran Early Man Site"

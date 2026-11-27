@@ -187,8 +187,9 @@ ${ada.length ? `<div class="row" style="margin-top:18px"><a class="btn" href="#$
 <section class="pad"><div class="wrap">
 <h2>Daftar bab</h2>
 <p>${ada.length === D.length ? `Semua ${D.length} bab sudah tersedia, lengkap dengan video, kuis, dan soal uraian.` : ada.length ? `${ada.length} dari ${D.length} bab sudah tersedia. Bab lain akan menyusul.` : 'Materi ruang ini sedang disusun. Daftar bab di bawah adalah rencananya.'}</p>
-<div class="grid">${D.map(d => { const b = isiBab(kid, d.id), v = n[`${kid}-bab${d.id}`];
-    return `<a class="bab ${b ? '' : 'kunci'}" href="#${kid}-${d.id}" style="--c:${d.warna}"><small>Bab ${d.id} · ${esc(d.masa)}</small><b>${esc(d.judul)}</b><span>${esc(d.ringkas)}</span><span class="st">${b ? (v ? `Nilai terbaik ${v.terbaik}` : 'Siap dipelajari') : 'Segera hadir'}</span></a>`; }).join('')}</div>
+${babakAktif() ? `<div class="box babak-info"><b>Mode babak${konfig().nama ? ` · kelas ${esc(konfig().nama)}` : ''}</b> · KKM ${konfig().kkm}<div class="prog" style="margin:10px 0 6px"><i style="width:${ada.length ? ada.filter(d => lulusBab(kid, d.id)).length / ada.length * 100 : 0}%"></i></div>${ada.filter(d => lulusBab(kid, d.id)).length} dari ${ada.length} babak lulus · ${ada.reduce((s, d) => s + jumlahBintang(nilaiBab(kid, d.id)), 0)} ★ terkumpul</div>` : ''}
+<div class="grid">${D.map(d => { const b = isiBab(kid, d.id), v = n[`${kid}-bab${d.id}`], buka = !b || terbuka(kid, d.id), bt = v ? jumlahBintang(v.terbaik) : 0;
+    return `<a class="bab ${b ? '' : 'kunci'} ${buka ? '' : 'gembok'}" href="#${kid}-${d.id}" style="--c:${d.warna}"><small>${babakAktif() ? 'Babak' : 'Bab'} ${d.id} · ${esc(d.masa)}</small><b>${esc(d.judul)}</b><span>${esc(d.ringkas)}</span><span class="st">${!b ? 'Segera hadir' : !buka ? `${IKON_GEMBOK} Terkunci` : v ? `${bt ? bintangHTML(bt) : ''} Nilai terbaik ${v.terbaik}${babakAktif() && !bt ? ' · belum KKM' : ''}` : 'Siap dipelajari'}</span></a>`; }).join('')}</div>
 </div></section>`;
 }
 
@@ -197,6 +198,7 @@ function bab(kid, id, tab) {
   tandaiMenu('');
   const k = cariK(kid), d = k.bab.find(x => x.id === id), b = isiBab(kid, id);
   if (!d) return ruang(kid);
+  if (b && !terbuka(kid, id)) return terkunci(kid, id);
   if (b) S.set('terakhir', [kid, id]);
   const atas = `<a class="balik" href="#${kid}">${esc(k.judul)}</a>`;
   if (!b) {
@@ -222,7 +224,8 @@ function bab(kid, id, tab) {
     if (t === 'esai') isi.innerHTML = esai(b);
     if (t === 'istilah') isi.innerHTML = `<h2>Istilah penting</h2><div class="gl">${(b.glosarium || []).map(g => `<div><b>${esc(g[0])}</b>${esc(g[1])}</div>`).join('')}</div>`;
     if (t === 'materi' && b.jelajah) pasangJelajah(b);
-    if (t === 'materi') pasangGaleri(kid, id);
+    if (t === 'materi') { pasangGaleri(kid, id); isi.insertAdjacentHTML('beforeend', `<div class="box ajak"><b>Sudah selesai membaca?</b> Catat poin-poin penting di buku catatanmu, lalu uji pemahamanmu.<button class="btn" type="button" data-ke="kuis">Lanjut ke kuis</button></div>`); }
+    if (t === 'kuis') { const kotak = isi.querySelector('.siap'); if (kotak) kotak.addEventListener('change', () => { const ok = [...kotak.querySelectorAll('input')].every(x => x.checked); const sp = S.get('siap', {}); sp[`${kid}-${id}`] = ok; S.set('siap', sp); const m = isi.querySelector('#mulai'); m.classList.toggle('mati', !ok); m.setAttribute('aria-disabled', !ok); }); }
   };
   app.querySelector('.seg').addEventListener('click', e => { const x = e.target.closest('button'); if (x) tampil(x.dataset.t); });
   isi.addEventListener('click', e => {
@@ -269,7 +272,12 @@ function pasangJelajah(b) {
   show(b.jelajah.mode === 'waktu' ? 0 : L.length - 1);
 }
 const video = b => `<h2>${esc(b.video.judul)}</h2><video class="vid" controls preload="metadata" playsinline poster="${esc(b.video.src.replace(/\.mp4$/, ".jpg"))}" src="${esc(b.video.src)}"></video><p class="catatan" style="margin-top:12px">${esc(b.video.durasi)}. ${esc(b.video.catatan)}</p><div class="box row" style="justify-content:space-between"><span>Selesai menonton? Coba kuisnya.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
-const kuisAwal = (b, kid, id) => { const v = S.get('nilai', {})[`${kid}-bab${id}`]; return `<h2>Kuis Bab ${id}</h2><p>${b.soal.length} soal pilihan ganda, termasuk soal analisis (HOTS). Setiap jawaban langsung diberi pembahasan, dan urutan pilihan jawaban diacak. Nilai terbaikmu disimpan.</p>${v ? `<div class="box">Nilai terbaik: <b>${v.terbaik}</b> · terakhir ${v.terakhir} · sudah ${v.kali} kali</div>` : ''}<a class="btn" href="#${kid}-${id}-kuis">Mulai kuis</a>`; };
+const kuisAwal = (b, kid, id) => { const v = S.get('nilai', {})[`${kid}-bab${id}`], bab_ = babakAktif(), siap = siapKuis(kid, id), c = konfig();
+  return `<h2>Kuis Bab ${id}</h2><p>${b.soal.length} soal pilihan ganda, termasuk soal analisis (HOTS). Setiap jawaban langsung diberi pembahasan, dan urutan pilihan jawaban diacak. Nilai terbaikmu disimpan.</p>
+${bab_ ? `<div class="box babak-info"><b>Mode babak${c.nama ? ` · kelas ${esc(c.nama)}` : ''}</b><br>KKM: <b>${c.kkm}</b>. Lulus kuis ini untuk membuka ${babBerikut(kid, id) ? `Babak ${babBerikut(kid, id).id}` : 'ujian akhir'}.</div>
+<div class="box siap"><h3>Sebelum mulai</h3><label class="cek"><input type="checkbox" ${siap ? 'checked' : ''}> Saya sudah membaca seluruh materi Bab ${id}.</label><label class="cek"><input type="checkbox" ${siap ? 'checked' : ''}> Saya sudah mencatat poin-poin penting di buku catatan.</label></div>` : ''}
+${v ? `<div class="box">Nilai terbaik: <b>${v.terbaik}</b> ${bab_ || v.terbaik >= c.kkm ? bintangHTML(jumlahBintang(v.terbaik)) : ''} · terakhir ${v.terakhir} · sudah ${v.kali} kali</div>` : ''}
+<a class="btn ${bab_ && !siap ? 'mati' : ''}" id="mulai" href="#${kid}-${id}-kuis" aria-disabled="${bab_ && !siap}">Mulai kuis</a>`; };
 const esai = b => `<h2>Soal uraian</h2><p>Kerjakan di buku tulis atau kirim ke guru. Rubrik penilaian ada di bawah setiap soal.</p>${b.esai.map((e, i) => `<div class="box"><p><b>${i + 1}.</b> ${esc(e.q)}</p><details class="rub"><summary>Rubrik penilaian (untuk guru)</summary><ul>${e.rubrik.map(r => `<li>${esc(r)}</li>`).join('')}</ul></details></div>`).join('')}`;
 
 /* ---------- MESIN SOAL: latihan per bab & ujian akhir ---------- */
@@ -307,10 +315,10 @@ ${o.mode === 'ujian' ? `<div class="row" style="margin-top:16px;gap:6px">${list.
     if (selesai) return; selesai = true; clearInterval(jam);
     const skor = list.reduce((s, q, k) => s + (jawab[k] === q.a ? 1 : 0), 0);
     const nilai = simpanNilai(o.kunci, skor, list.length);
-    const pesan = nilai >= 85 ? 'Luar biasa! Pemahamanmu sangat baik.' : nilai >= 70 ? 'Bagus, sudah tuntas. Pelajari lagi soal yang salah.' : 'Belum tuntas. Baca ulang materinya, lalu coba lagi.';
+    const kkm = konfig().kkm, pesan = nilai >= 90 ? 'Luar biasa! Pemahamanmu sangat baik.' : nilai >= kkm ? 'Bagus, sudah tuntas. Pelajari lagi soal yang salah.' : 'Belum tuntas. Baca ulang materinya, lalu coba lagi.';
     document.querySelector('.sticky').remove();
     qq.innerHTML = `<div class="hasil"><big>${nilai}</big>${skor} benar dari ${list.length} soal<p style="margin:8px auto 0;color:#fff">${pesan}</p></div>
-<div class="row" style="margin-bottom:20px"><button class="btn" type="button" id="ulang">Ulangi</button><a class="btn alt" href="${o.balik}">Kembali</a></div>
+${o.setelah ? o.setelah(nilai) : ''}<div class="row" style="margin-bottom:20px"><button class="btn" type="button" id="ulang">Ulangi</button><a class="btn alt" href="${o.balik}">Kembali</a></div>
 <h2>Pembahasan</h2>${list.map((q, k) => `<div class="q" style="margin-bottom:12px"><span class="lv">${q.bab ? 'Bab ' + q.bab : ''}</span>${q.s ? `<div class="stim">${esc(q.s)}</div>` : ''}<div class="tanya">${k + 1}. ${esc(q.q)}</div><p style="margin:0">Jawabanmu: <b style="color:${jawab[k] === q.a ? 'var(--ok)' : 'var(--bad)'}">${jawab[k] === null ? 'kosong' : huruf(jawab[k]) + '. ' + esc(q.o[jawab[k]])}</b>${jawab[k] === q.a ? '' : `<br>Kunci: <b>${huruf(q.a)}. ${esc(q.o[q.a])}</b>`}</p><div class="why">${esc(q.p)}</div></div>`).join('')}`;
     document.getElementById('ulang').addEventListener('click', () => o.ulang());
     window.scrollTo(0, 0);
@@ -327,13 +335,21 @@ function kuis(id) {
 function kuis(kid, id) {
   tandaiMenu('');
   const b = isiBab(kid, id); if (!b) return bab(kid, id);
-  jalankan(b.soal, { mode: 'latihan', judul: `Kuis Bab ${id}. ${b.judul}`, kunci: `${kid}-bab${id}`, balik: `#${kid}-${id}`, ulang: () => kuis(kid, id) });
+  if (!terbuka(kid, id)) return terkunci(kid, id);
+  if (babakAktif() && !siapKuis(kid, id)) { history.replaceState(null, '', `#${kid}-${id}`); return bab(kid, id, 'kuis'); }
+  const sudahLulus = lulusBab(kid, id);
+  jalankan(b.soal, { mode: 'latihan', judul: `Kuis Bab ${id}. ${b.judul}`, kunci: `${kid}-bab${id}`, balik: `#${kid}-${id}`, ulang: () => kuis(kid, id),
+    setelah: v => { if (!babakAktif()) return ''; const c = konfig(), nx = babBerikut(kid, id);
+      if (v >= c.kkm) return `<div class="box naik ${sudahLulus ? '' : 'baru'}"><div>${bintangHTML(jumlahBintang(nilaiBab(kid, id)))}</div><b>${sudahLulus ? `Babak ${id} sudah lulus.` : `Selamat, Babak ${id} lulus!`}</b><p>${nx ? `Babak ${nx.id}: ${esc(nx.judul)} ${sudahLulus ? 'sudah' : 'kini'} terbuka.` : 'Semua babak di ruang ini sudah kamu selesaikan. Ujian akhir terbuka!'}</p><a class="btn" href="${nx ? `#${kid}-${nx.id}` : `#${kid}-ujian`}">${nx ? `Lanjut ke Babak ${nx.id}` : 'Ke ujian akhir'}</a></div>`;
+      return `<div class="box belum"><b>Belum mencapai KKM (${c.kkm}).</b><p>Baca ulang materinya dan catatanmu, perhatikan pembahasan di bawah, lalu coba lagi. Babak berikutnya terbuka setelah kamu lulus.</p></div>`; } });
 }
 
 /* ---------- UJIAN AKHIR per ruang ---------- */
 function ujian(kid) {
   tandaiMenu(''); clearInterval(jam);
   const k = cariK(kid), ada = tersedia(k);
+  const belum = babakAktif() ? ada.filter(d => !lulusBab(kid, d.id)) : [];
+  if (belum.length) { app.innerHTML = `<section class="pad"><div class="wrap kunci-hal"><div class="gembok-besar" style="--c:${k.warna}">${IKON_GEMBOK}</div><h1>Ujian akhir ${esc(k.judul)}</h1><p>Ujian akhir terbuka setelah semua babak lulus (nilai kuis ≥ ${konfig().kkm}). Babak yang belum lulus:</p><ul class="langkah-kunci">${belum.map(d => `<li><a href="#${kid}-${d.id}">Bab ${d.id}. ${esc(d.judul)}</a> · nilai terbaik ${nilaiBab(kid, d.id)}</li>`).join('')}</ul><a class="btn" href="#${kid}">Peta babak</a></div></section>`; return; }
   const semua = ada.flatMap(d => isiBab(kid, d.id).soal.map(q => ({ ...q, bab: d.id })));
   if (!semua.length) { app.innerHTML = `<section class="pad"><div class="wrap"><h1>Ujian akhir ${esc(k.judul)}</h1><p>Belum ada soal di ruang ini.</p><a class="btn" href="#${kid}">Kembali</a></div></section>`; return; }
   const pilihan = [10, 20, 40].filter(n => n <= semua.length);
@@ -438,18 +454,305 @@ function filosofi() {
 </div></section>`;
 }
 
+/* ---------- PENGATURAN KELAS, MODE GURU, DAN BABAK ---------- */
+const PG = window.PENGATURAN || { modeBabak: true, kkm: 75 };
+const konfig = () => { const c = { modeBabak: PG.modeBabak, kkm: PG.kkm, buka: {}, nama: '', ...S.get('kelas', {}) }; c.kkm = Math.min(100, Math.max(0, +c.kkm || 75)); return c; };
+const modeGuru = () => !!S.get('guru', false);
+const babakAktif = () => konfig().modeBabak && !modeGuru();
+const nilaiBab = (kid, id) => (S.get('nilai', {})[`${kid}-bab${id}`] || {}).terbaik || 0;
+const lulusBab = (kid, id) => nilaiBab(kid, id) >= konfig().kkm;
+const jumlahBintang = v => v >= 100 ? 3 : v >= 90 ? 2 : v >= konfig().kkm ? 1 : 0;
+const bintangHTML = n => `<span class="bintang" aria-label="${n} dari 3 bintang">${[1, 2, 3].map(k => `<i class="${k <= n ? 'on' : ''}">★</i>`).join('')}</span>`;
+const babSebelum = (kid, id) => { const a = tersedia(cariK(kid)), i = a.findIndex(d => d.id === id); return i > 0 ? a[i - 1] : null; };
+const babBerikut = (kid, id) => { const a = tersedia(cariK(kid)), i = a.findIndex(d => d.id === id); return i >= 0 && i < a.length - 1 ? a[i + 1] : null; };
+const terbuka = (kid, id) => { if (!babakAktif()) return true; const p = babSebelum(kid, id); if (!p) return true; if ((konfig().buka[kid] || 0) >= id) return true; return lulusBab(kid, p.id); };
+const siapKuis = (kid, id) => !!S.get('siap', {})[`${kid}-${id}`];
+const IKON_GEMBOK = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2.5" fill="currentColor"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2.4" fill="none"/></svg>';
+
+function terkunci(kid, id) {
+  tandaiMenu('');
+  const k = cariK(kid), d = k.bab.find(x => x.id === id), p = babSebelum(kid, id), c = konfig();
+  app.innerHTML = `<section class="pad"><div class="wrap kunci-hal">
+<div class="gembok-besar" style="--c:${d.warna}">${IKON_GEMBOK}</div>
+<small>${esc(k.judul)} · Babak ${id}</small><h1>${esc(d.judul)}</h1>
+<p>Babak ini masih terkunci. Selesaikan dulu <b>Bab ${p.id}. ${esc(p.judul)}</b>:</p>
+<ol class="langkah-kunci"><li>Baca seluruh materinya.</li><li>Catat poin-poin penting di buku catatanmu.</li><li>Kerjakan kuisnya sampai nilaimu minimal <b>${c.kkm}</b> (KKM).</li></ol>
+<p>Nilai terbaikmu di Bab ${p.id} sekarang: <b>${nilaiBab(kid, p.id)}</b></p>
+<div class="row" style="justify-content:center"><a class="btn" href="#${kid}-${p.id}">Buka Bab ${p.id}</a><a class="btn alt" href="#${kid}">Peta babak</a></div></div></section>`;
+}
+
+/* ---------- PANEL GURU ---------- */
+const sha256 = async t => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)))].map(x => x.toString(16).padStart(2, '0')).join('');
+const muatSkrip = src => new Promise((ok, gagal) => { if (document.querySelector(`script[data-lib="${src}"]`)) return ok(); const s = document.createElement('script'); s.src = src; s.dataset.lib = src; s.onload = ok; s.onerror = gagal; document.head.append(s); });
+const alamatDasar = () => location.origin + location.pathname;
+const kodeKelas = o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const bacaKelas = s => JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/')))));
+async function qrSVG(teks, ukuran = 220) { await muatSkrip('lib/qrcode.js'); const q = qrcode(0, 'M'); q.addData(teks); q.make(); const n = q.getModuleCount(), c = ukuran / (n + 8); let p = ''; for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) p += `M${((k + 4) * c).toFixed(2)} ${((r + 4) * c).toFixed(2)}h${c.toFixed(2)}v${c.toFixed(2)}h-${c.toFixed(2)}z`; return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${ukuran} ${ukuran}" width="${ukuran}" height="${ukuran}" role="img" aria-label="Kode QR"><rect width="100%" height="100%" fill="#fff"/><path d="${p}" fill="#111"/></svg>`; }
+async function qrPNG(teks, ukuran = 600) { const svg = await qrSVG(teks, ukuran); const img = new Image(); img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); await img.decode(); const cv = document.createElement('canvas'); cv.width = cv.height = ukuran; cv.getContext('2d').drawImage(img, 0, 0); return cv.toDataURL('image/png'); }
+
+function panelGuru() {
+  tandaiMenu('guru');
+  if (!modeGuru()) {
+    app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:520px"><h1>Panel Guru</h1>
+<p>Panel ini berisi pembuat presentasi dan pengaturan babak untuk kelas. Masukkan PIN guru untuk membuka.</p>
+<form class="box" id="fpin"><label for="pin"><b>PIN guru</b></label><input id="pin" class="isian" type="password" inputmode="numeric" autocomplete="off" required>
+<p class="catatan" id="pesanpin" style="margin-top:10px">Siswa tidak memerlukan panel ini.</p><button class="btn" type="submit">Masuk</button></form></div></section>`;
+    document.getElementById('fpin').addEventListener('submit', async e => {
+      e.preventDefault();
+      const ok = PG.pin && await sha256('ruang-historia:' + document.getElementById('pin').value.trim()) === PG.pin;
+      if (ok) { S.set('guru', true); panelGuru(); } else document.getElementById('pesanpin').textContent = 'PIN salah. Coba lagi.';
+    });
+    return;
+  }
+  const c = konfig();
+  const opsiBab = kid => tersedia(cariK(kid)).map(d => `<option value="${d.id}">Bab ${d.id}. ${esc(d.judul)}</option>`).join('');
+  app.innerHTML = `<section class="hero pad"><div class="wrap"><h1>Panel Guru</h1><p>Mode guru aktif di perangkat ini: semua babak terbuka untuk Bapak/Ibu.</p></div></section>
+<section class="pad"><div class="wrap guru-wrap">
+<div class="box guru-kartu"><h2>1. Presentasi kelas</h2><p>Slide dibuat otomatis dari materi bab: tujuan, materi, garis waktu, tokoh, foto arsip, istilah, refleksi Panca Cinta, dan pertanyaan diskusi.</p>
+<label><b>Ruang</b><select id="pr" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
+<label><b>Bab</b><select id="pb" class="isian"></select></label>
+<div class="row"><button class="btn" type="button" id="tampil">Tampilkan presentasi</button><button class="btn alt" type="button" id="unduh">Unduh PowerPoint (.pptx)</button></div>
+<p class="catatan" id="pesanppt">File PowerPoint dapat diedit di Microsoft PowerPoint, Google Slides, atau WPS.</p></div>
+
+<div class="box guru-kartu"><h2>2. Pengaturan babak untuk kelas</h2>
+<p>Mode babak: siswa harus membaca, mencatat, lalu lulus kuis (nilai ≥ KKM) untuk membuka bab berikutnya. Pengaturan dibagikan lewat <b>tautan kelas</b> atau kode QR; setiap kelas boleh berbeda.</p>
+<label><b>Nama kelas</b><input id="gk" class="isian" placeholder="contoh: X-1" value="${esc(c.nama || '')}"></label>
+<label class="cek"><input type="checkbox" id="gm" ${c.modeBabak ? 'checked' : ''}> Aktifkan mode babak (bab terkunci berurutan)</label>
+<label><b>KKM kuis</b><input id="gn" class="isian" type="number" min="0" max="100" value="${c.kkm}"></label>
+<details><summary><b>Buka paksa bab tertentu</b> (opsional)</summary><p class="catatan">Bab sampai nomor ini langsung terbuka untuk seluruh kelas, misalnya bila sudah dibahas di kelas. Isi 0 bila tidak perlu.</p>
+${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buka sampai Bab <input class="isian kecil" type="number" min="0" max="${k.bab.length}" data-buka="${k.id}" value="${(c.buka || {})[k.id] || 0}"></label>`).join('')}</details>
+<div class="row"><button class="btn" type="button" id="buat">Buat tautan kelas</button></div>
+<div id="hasilkelas"></div></div>
+
+<div class="box guru-kartu"><h2>3. Lainnya</h2><ul>
+<li>Tambah foto atau ilustrasi sendiri: lihat panduan di halaman <a href="#tentang">Tentang</a>.</li>
+<li>Rekap nilai: siswa dapat menunjukkan halaman <a href="#nilai">Nilaiku</a> di perangkatnya.</li></ul>
+<button class="btn alt" type="button" id="keluar">Keluar dari mode guru</button></div>
+</div></section>`;
+  const pr = document.getElementById('pr'), pb = document.getElementById('pb');
+  const isiBabPilihan = () => { pb.innerHTML = opsiBab(pr.value); };
+  pr.addEventListener('change', isiBabPilihan); isiBabPilihan();
+  document.getElementById('tampil').addEventListener('click', () => { location.hash = `#${pr.value}-${pb.value}-slide`; });
+  document.getElementById('unduh').addEventListener('click', async e => {
+    const t = e.target, pesan = document.getElementById('pesanppt'); t.disabled = true; pesan.textContent = 'Menyusun slide… (pertama kali mungkin agak lama)';
+    try { await unduhPPT(pr.value, +pb.value); pesan.textContent = 'Selesai. Cek folder unduhan.'; } catch (err) { console.error(err); pesan.textContent = 'Gagal membuat PowerPoint. Periksa koneksi internet lalu coba lagi.'; }
+    t.disabled = false;
+  });
+  document.getElementById('buat').addEventListener('click', async () => {
+    const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
+    const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka };
+    const url = `${alamatDasar()}#kelas=${kodeKelas(o)}`;
+    document.getElementById('hasilkelas').innerHTML = `<div class="tautan-kelas"><div>${await qrSVG(url, 200)}</div><div><p><b>Tautan kelas ${esc(o.nama || '')}</b>: mode babak ${o.modeBabak ? 'aktif' : 'mati'}, KKM ${o.kkm}.</p><input class="isian" readonly value="${esc(url)}"><div class="row"><button class="btn" type="button" id="salin">Salin tautan</button></div><p class="catatan">Bagikan tautan ini di grup kelas, atau tampilkan kode QR-nya di proyektor. Siswa cukup membukanya sekali dari HP masing-masing.</p></div></div>`;
+    document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
+  });
+  document.getElementById('keluar').addEventListener('click', () => { S.set('guru', false); location.hash = '#beranda'; });
+}
+
+function terapkanKelas(kode) {
+  try {
+    const o = bacaKelas(kode);
+    S.set('kelas', { nama: String(o.nama || '').slice(0, 40), modeBabak: !!o.modeBabak, kkm: Math.min(100, Math.max(0, +o.kkm || 75)), buka: o.buka || {} });
+    app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:600px"><div class="box"><h1>Selamat datang${o.nama ? ` di kelas ${esc(o.nama)}` : ''}!</h1>
+<p>Pengaturan dari gurumu sudah diterapkan: ${o.modeBabak ? `<b>mode babak aktif</b> dengan KKM <b>${o.kkm}</b>. Setiap bab adalah satu babak: baca materinya, catat di buku catatan, lalu lulus kuis untuk membuka babak berikutnya.` : 'semua bab terbuka.'}</p>
+<a class="btn" href="#beranda">Mulai belajar</a></div></div></section>`;
+    history.replaceState(null, '', location.pathname + '#kelas-ok');
+  } catch { location.hash = '#beranda'; }
+}
+
+/* ---------- PEMBUAT SLIDE ---------- */
+const runsDari = node => { const out = []; const jalan = (n, b, i) => { n.childNodes.forEach(x => { if (x.nodeType === 3) { if (x.textContent) out.push({ text: x.textContent.replace(/\s+/g, ' '), b, i }); } else if (x.nodeType === 1) jalan(x, b || /^(B|STRONG)$/.test(x.tagName), i || /^(I|EM)$/.test(x.tagName)); }); }; jalan(node, false, false); if (out.length) { out[0].text = out[0].text.replace(/^\s+/, ''); out[out.length - 1].text = out[out.length - 1].text.replace(/\s+$/, ''); } return out.filter(r => r.text); };
+const teksDari = runs => runs.map(r => r.text).join('');
+const kata = s => s.split(/\s+/).filter(Boolean).length;
+async function susunSlide(kid, id) {
+  const k = cariK(kid), d = k.bab.find(x => x.id === id), b = isiBab(kid, id), c = konfig();
+  const sl = [{ t: 'judul', ruang: k.judul, bab: id, judul: b.judul, sub: b.sub, masa: d.masa }];
+  sl.push({ t: 'poin', judul: 'Tujuan pembelajaran', item: b.tujuan.map(x => ({ runs: [{ text: x }], li: true })) });
+  const cinta = [];
+  for (const s of b.bagian) {
+    const doc = new DOMParser().parseFromString(`<div>${s.isi}</div>`, 'text/html').body.firstChild;
+    let cur = null, sub = '';
+    const tutup = () => { if (cur && cur.item.length) sl.push(cur); cur = null; };
+    const baru = () => { cur = { t: 'poin', judul: s.judul, sub, item: [] }; };
+    const tambahItem = it => { if (!cur) baru(); const w = cur.item.reduce((a, x) => a + kata(teksDari(x.runs)), 0); if (cur.item.length >= 6 || (cur.item.length && w + kata(teksDari(it.runs)) > 90)) { tutup(); baru(); } cur.item.push(it); };
+    let rute = null;
+    for (const el of doc.children) {
+      const tag = el.tagName;
+      if (!el.classList.contains('rute') && rute) { sl.push(rute); rute = null; }
+      if (tag === 'P') {
+        const runs = runsDari(el); if (!runs.length) continue;
+        if (kata(teksDari(runs)) > 80) { teksDari(runs).match(/[^.!?]+[.!?]+["”)]?\s*|[^.!?]+$/g).forEach(k2 => tambahItem({ runs: [{ text: k2.trim() }], catatan: el.classList.contains('catatan') })); }
+        else tambahItem({ runs, catatan: el.classList.contains('catatan') });
+      } else if (tag === 'UL' || tag === 'OL') {
+        [...el.children].forEach((li, n) => tambahItem({ runs: runsDari(li), li: true, no: tag === 'OL' ? n + 1 : 0 }));
+      } else if (tag === 'H3') { tutup(); sub = el.textContent.trim(); }
+      else if (tag === 'TABLE') {
+        tutup();
+        const head = [...el.querySelectorAll('thead th')].map(x => x.textContent.trim()), rows = [...el.querySelectorAll('tbody tr')].map(tr => [...tr.children].map(x => x.textContent.trim()));
+        const per = rows.reduce((a, r) => a + r.join(' ').length, 0) / Math.max(1, rows.length) > 140 ? 3 : 6;
+        for (let i = 0; i < rows.length; i += per) sl.push({ t: 'tabel', judul: s.judul, sub, head, rows: rows.slice(i, i + per), lanjut: i > 0 });
+      } else if (el.classList.contains('rute')) {
+        tutup(); if (!rute || rute.item.length >= 4) { if (rute) sl.push(rute); rute = { t: 'rute', judul: s.judul, item: [] }; }
+        rute.item.push({ nama: el.querySelector('b').textContent, warna: (el.getAttribute('style') || '').match(/#[0-9a-f]{6}/i)?.[0] || '#2B3A67', langkah: [...el.querySelectorAll('li')].map(x => x.textContent.trim()) });
+      }
+    }
+    if (rute) sl.push(rute);
+    tutup();
+    if (s.kartu && b.kartu) for (let i = 0; i < b.kartu.length; i += 3) sl.push({ t: 'tokoh', judul: 'Tokoh penting', item: b.kartu.slice(i, i + 3) });
+    if (s.cinta) cinta.push(s.cinta);
+  }
+  // gabungkan slide teks yang terlalu pendek dengan slide di dekatnya
+  const kataSl = s => s.item.reduce((x, it) => x + kata(teksDari(it.runs)), 0);
+  for (let i = 0; i < sl.length; i++) {
+    const s = sl[i]; if (s.t !== 'poin' || i < 2 || kataSl(s) >= 30) continue;
+    const nx = sl[i + 1], pv = sl[i - 1];
+    if (nx && (nx.t === 'tabel' || nx.t === 'rute') && nx.judul === s.judul && !nx.pengantar) { nx.pengantar = s.item.map(it => teksDari(it.runs)).join(' '); sl.splice(i--, 1); }
+    else if (pv && pv.t === 'poin' && pv.judul === s.judul && pv.item.length + s.item.length <= 7 && kataSl(pv) + kataSl(s) <= 110) { pv.item.push(...s.item); sl.splice(i--, 1); }
+  }
+  if (b.jelajah && b.jelajah.lapisan) {
+    const L = b.jelajah.mode === 'waktu' ? b.jelajah.lapisan : b.jelajah.lapisan.slice().reverse();
+    for (let i = 0; i < L.length; i += 5) sl.push({ t: 'waktu', judul: b.jelajah.mode === 'waktu' ? 'Garis waktu' : 'Lapisan zaman', item: L.slice(i, i + 5).map(x => ({ th: x.th || '', n: x.n, t: x.t, ket: x.ket, c: x.c })) });
+  }
+  if (b.kartu && !b.bagian.some(s => s.kartu)) for (let i = 0; i < b.kartu.length; i += 3) sl.push({ t: 'tokoh', judul: 'Tokoh penting', item: b.kartu.slice(i, i + 3) });
+  const G = (await ambilGambar())[`${kid}-${id}`] || [];
+  G.slice(0, 8).forEach(g => sl.push({ t: 'foto', judul: g.judul, ket: g.ket, file: g.file, kredit: g.guru ? 'Koleksi guru' : `${pembuat(g.pembuat)}${g.lisensi || ''} · Wikimedia Commons` }));
+  if (b.glosarium) for (let i = 0; i < b.glosarium.length; i += 8) sl.push({ t: 'istilah', judul: 'Istilah penting', item: b.glosarium.slice(i, i + 8) });
+  if (cinta.length) sl.push({ t: 'cinta', judul: 'Refleksi Panca Cinta', item: cinta.slice(0, 3) });
+  const hots = acak(b.soal.filter(q => /C[456]/.test(q.l || ''))).slice(0, 3);
+  if (hots.length) sl.push({ t: 'diskusi', judul: 'Mari berdiskusi', item: hots.map(q => ({ s: q.s, q: q.q })) });
+  if (b.esai && b.esai.length) sl.push({ t: 'poin', judul: 'Pertanyaan uraian', item: b.esai.map(e => ({ runs: [{ text: e.q }], li: true })) });
+  sl.push({ t: 'penutup', judul: 'Tugas mandiri', kid, id, kkm: c.kkm, url: `${alamatDasar()}#${kid}-${id}`, babJudul: b.judul });
+  return { sl, warna: d.warna, b, k };
+}
+
+/* ---------- PRESENTASI LAYAR PENUH ---------- */
+const runsHTML = runs => runs.map(r => { let t = esc(r.text); if (r.b) t = `<b>${t}</b>`; if (r.i) t = `<i>${t}</i>`; return t; }).join('');
+function slideHTML(s, w, total, n, qr) {
+  const kaki = `<div class="sl-kaki"><span>Ruang Historia</span><span>${n} / ${total}</span></div>`;
+  const head = `<div class="sl-pita"></div><h2 class="sl-judul">${esc(s.judul)}</h2>${s.sub ? `<p class="sl-sub">${esc(s.sub)}</p>` : ''}`;
+  if (s.t === 'judul') return `<div class="sl sl-cover"><div class="sl-cover-isi"><small>${esc(s.ruang)} · Bab ${s.bab} · ${esc(s.masa)}</small><h1>${esc(s.judul)}</h1><p>${esc(s.sub)}</p></div><img src="icons/logo.svg" alt="" class="sl-logo">${kaki}</div>`;
+  if (s.t === 'poin') { const w2 = s.item.reduce((a, x) => a + kata(teksDari(x.runs)), 0); return `<div class="sl">${head}<ul class="sl-poin ${w2 > 70 ? 'kecil' : ''}">${s.item.map(x => `<li class="${x.li ? 'li' : 'p'} ${x.catatan ? 'cat' : ''}">${x.no ? `<i>${x.no}.</i> ` : ''}${runsHTML(x.runs)}</li>`).join('')}</ul>${kaki}</div>`; }
+  const peng = s.pengantar ? `<p class="sl-pengantar">${esc(s.pengantar)}</p>` : '';
+  if (s.t === 'tabel') return `<div class="sl">${head}${peng}<div class="sl-tabel"><table>${s.head.length ? `<thead><tr>${s.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>` : ''}<tbody>${s.rows.map(r => `<tr>${r.map(x => `<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${kaki}</div>`;
+  if (s.t === 'rute') return `<div class="sl">${head}${peng}<div class="sl-rute">${s.item.map(r => `<div style="--c:${r.warna}"><b>${esc(r.nama)}</b><p>${r.langkah.map(esc).join(' <span>→</span> ')}</p></div>`).join('')}</div>${kaki}</div>`;
+  if (s.t === 'waktu') return `<div class="sl">${head}<div class="sl-waktu">${s.item.map(x => `<div style="--c:${x.c || w}"><span class="th">${esc(x.th)}</span><b>${esc(x.n)}</b><small>${esc(x.t || '')}</small><p>${esc(x.ket || '')}</p></div>`).join('')}</div>${kaki}</div>`;
+  if (s.t === 'tokoh') return `<div class="sl">${head}<div class="sl-tokoh">${s.item.map(x => `<div><b>${esc(x.nama)}</b><small>${esc(x.info)}</small><p>${esc(x.isi)}</p></div>`).join('')}</div>${kaki}</div>`;
+  if (s.t === 'foto') return `<div class="sl sl-foto"><img src="${esc(s.file)}" alt="${esc(s.judul)}"><div class="sl-foto-ket"><b>${esc(s.judul)}</b>${s.ket ? `<p>${esc(s.ket)}</p>` : ''}<small>${esc(s.kredit)}</small></div>${kaki}</div>`;
+  if (s.t === 'istilah') return `<div class="sl">${head}<dl class="sl-istilah">${s.item.map(g => `<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join('')}</dl>${kaki}</div>`;
+  if (s.t === 'cinta') return `<div class="sl">${head}<div class="sl-cinta">${s.item.map(x => `<div><b>${esc(x[0])}</b><p>${esc(x[1])}</p></div>`).join('')}</div>${kaki}</div>`;
+  if (s.t === 'diskusi') return `<div class="sl">${head}<ol class="sl-diskusi">${s.item.map(x => `<li>${x.s ? `<p class="stim">${esc(x.s)}</p>` : ''}<p>${esc(x.q)}</p></li>`).join('')}</ol>${kaki}</div>`;
+  if (s.t === 'penutup') return `<div class="sl sl-penutup">${head}<div class="sl-tugas"><ol><li>Buka <b>Ruang Historia</b>, Bab ${s.id}: ${esc(s.babJudul)}.</li><li>Baca seluruh materi dan tonton videonya.</li><li>Catat poin-poin penting di buku catatan.</li><li>Kerjakan kuis sampai nilai minimal <b>${s.kkm}</b> untuk membuka babak berikutnya.</li></ol><div class="sl-qr">${qr || ''}<small>Pindai untuk membuka bab ini</small></div></div>${kaki}</div>`;
+  return '';
+}
+async function presentasi(kid, id) {
+  if (!modeGuru()) { location.hash = '#guru'; return; }
+  const b = isiBab(kid, id); if (!b) return ruang(kid);
+  app.innerHTML = '<section class="pad"><div class="wrap"><p>Menyusun slide…</p></div></section>';
+  const { sl, warna } = await susunSlide(kid, id);
+  const qr = await qrSVG(sl[sl.length - 1].url, 260);
+  let i = 0;
+  app.innerHTML = `<div class="presenter" style="--c:${warna}" tabindex="0"><div class="pr-panggung"><div class="pr-slide" id="prs"></div></div>
+<div class="pr-kendali"><a class="btn alt" href="#guru">Tutup</a><button class="btn alt" type="button" id="pk">‹</button><span id="pn"></span><button class="btn alt" type="button" id="pl">›</button><button class="btn alt" type="button" id="pf">Layar penuh</button><button class="btn" type="button" id="pu">Unduh .pptx</button></div></div>`;
+  const pr = app.querySelector('.presenter'), prs = document.getElementById('prs');
+  const ukur = () => { const p = app.querySelector('.pr-panggung'); if (!p) return; const sk = Math.min(p.clientWidth / 1280, p.clientHeight / 720); prs.style.transform = `scale(${sk})`; };
+  const tampil = () => { prs.innerHTML = slideHTML(sl[i], warna, sl.length, i + 1, qr); document.getElementById('pn').textContent = `${i + 1} / ${sl.length}`; ukur(); };
+  const geser = n => { i = Math.max(0, Math.min(sl.length - 1, i + n)); tampil(); };
+  document.getElementById('pk').onclick = () => geser(-1); document.getElementById('pl').onclick = () => geser(1);
+  document.getElementById('pf').onclick = () => { document.fullscreenElement ? document.exitFullscreen() : pr.requestFullscreen?.(); };
+  document.getElementById('pu').onclick = async e => { e.target.disabled = true; e.target.textContent = 'Menyusun…'; try { await unduhPPT(kid, id); e.target.textContent = 'Terunduh'; } catch { e.target.textContent = 'Gagal, coba lagi'; } e.target.disabled = false; };
+  prs.onclick = e => { if (!e.target.closest('a,button')) geser(e.clientX > innerWidth / 3 ? 1 : -1); };
+  const tombol = e => { if (!document.getElementById('prs')) return document.removeEventListener('keydown', tombol); if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); geser(1); } if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); geser(-1); } if (e.key === 'Home') { i = 0; tampil(); } if (e.key === 'End') { i = sl.length - 1; tampil(); } };
+  document.addEventListener('keydown', tombol);
+  let x0 = null; prs.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true }); prs.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) geser(dx < 0 ? 1 : -1); x0 = null; });
+  addEventListener('resize', ukur); document.addEventListener('fullscreenchange', ukur);
+  tampil(); pr.focus();
+}
+
+/* ---------- UNDUH POWERPOINT ---------- */
+const hex = c => (c || '#2B3A67').replace('#', '').toUpperCase();
+const keData = async url => { const r = await fetch(url); const bl = await r.blob(); const du = await new Promise(ok => { const f = new FileReader(); f.onload = () => ok(f.result); f.readAsDataURL(bl); }); const img = new Image(); img.src = du; await img.decode(); return { data: du.replace(/^data:/, ''), w: img.naturalWidth, h: img.naturalHeight }; };
+const pas = (iw, ih, bx, by, bw, bh) => { const r = Math.min(bw / iw, bh / ih), w = iw * r, h = ih * r; return { x: bx + (bw - w) / 2, y: by + (bh - h) / 2, w, h }; };
+async function unduhPPT(kid, id) {
+  await muatSkrip('lib/pptxgen.bundle.js');
+  const { sl, warna, b, k } = await susunSlide(kid, id);
+  const p = new PptxGenJS(); p.layout = 'LAYOUT_WIDE'; p.author = 'Ruang Historia'; p.company = 'Ruang Historia'; p.title = `Bab ${id}. ${b.judul}`;
+  const W = 13.333, H = 7.5, C = hex(warna), NILA = '2B3A67', EMAS = 'E0B04A', TINTA = '2A1D14', LEMBUT = '6B5848', F = 'Calibri', FJ = 'Arial Black';
+  const logo = await keData('icons/icon-192.png').catch(() => null);
+  const dasar = (s, n) => { s.background = { color: 'FFFFFF' }; s.addShape(p.ShapeType.rect, { x: 0, y: 0, w: W, h: 0.18, fill: { color: C }, line: { color: C } }); s.addText(`Ruang Historia · ${k.judul} · Bab ${id}`, { x: 0.5, y: H - 0.45, w: 9, h: 0.3, fontFace: F, fontSize: 10, color: '8A7B6E' }); s.addText(`${n} / ${sl.length}`, { x: W - 1.7, y: H - 0.45, w: 1.2, h: 0.3, fontFace: F, fontSize: 10, color: '8A7B6E', align: 'right' }); };
+  const judul = (s, x) => { s.addText(x.judul, { x: 0.5, y: 0.4, w: W - 1, h: 0.75, fontFace: FJ, fontSize: 26, color: TINTA, fit: 'shrink' }); if (x.sub) s.addText(x.sub, { x: 0.5, y: 1.1, w: W - 1, h: 0.4, fontFace: F, fontSize: 15, color: C, bold: true }); return x.sub ? 1.6 : 1.35; };
+  for (let n = 0; n < sl.length; n++) {
+    const x = sl[n], s = p.addSlide();
+    if (x.t === 'judul') {
+      s.background = { color: NILA };
+      s.addShape(p.ShapeType.rect, { x: 0, y: H - 0.9, w: W, h: 0.9, fill: { color: C }, line: { color: C } });
+      s.addText(`${x.ruang} · Bab ${x.bab} · ${x.masa}`, { x: 0.7, y: 1.6, w: 9, h: 0.5, fontFace: F, fontSize: 16, color: EMAS, bold: true });
+      s.addText(x.judul, { x: 0.7, y: 2.1, w: 9.2, h: 2.2, fontFace: FJ, fontSize: 44, color: 'FFFFFF', valign: 'top', fit: 'shrink' });
+      s.addText(x.sub, { x: 0.7, y: 4.4, w: 9, h: 0.8, fontFace: F, fontSize: 20, color: 'D3DAF0' });
+      if (logo) s.addImage({ data: logo.data, x: 10.4, y: 1.8, w: 2.2, h: 2.2 });
+      s.addText(HAK, { x: 0.7, y: H - 0.75, w: 10, h: 0.5, fontFace: F, fontSize: 11, color: 'FFFFFF' });
+      continue;
+    }
+    dasar(s, n + 1);
+    if (x.t === 'foto') {
+      try { const im = await keData(x.file), f = pas(im.w, im.h, 0.5, 0.45, 8.2, 6.4); s.addImage({ data: im.data, ...f }); } catch {}
+      s.addText(x.judul, { x: 9, y: 0.6, w: 3.9, h: 1.6, fontFace: FJ, fontSize: 22, color: TINTA, valign: 'top', fit: 'shrink' });
+      if (x.ket) s.addText(x.ket, { x: 9, y: 2.3, w: 3.9, h: 3, fontFace: F, fontSize: 15, color: TINTA, valign: 'top', fit: 'shrink' });
+      s.addText(x.kredit, { x: 9, y: 5.6, w: 3.9, h: 1.1, fontFace: F, fontSize: 10, color: LEMBUT, valign: 'bottom' });
+      continue;
+    }
+    let y0 = judul(s, x);
+    if (x.pengantar) { s.addText(x.pengantar, { x: 0.5, y: y0, w: W - 1, h: 0.7, fontFace: F, fontSize: 15, color: LEMBUT, valign: 'top', fit: 'shrink' }); y0 += 0.75; }
+    const hT = H - 0.6 - y0;
+    if (x.t === 'poin') {
+      const w2 = x.item.reduce((a, it) => a + kata(teksDari(it.runs)), 0), fs = w2 > 75 ? 16 : w2 > 50 ? 18 : 20;
+      const teks = x.item.flatMap((it, n) => { const tanda = it.li ? (it.no ? `${it.no}.  ` : '•  ') : ''; const rr = it.runs.map((r, j) => ({ text: r.text, options: { bold: r.b, italic: r.i || it.catatan, color: it.catatan ? LEMBUT : TINTA, breakLine: j === it.runs.length - 1 && n < x.item.length - 1, paraSpaceAfter: 10 } })); if (tanda) rr.unshift({ text: tanda, options: { bold: true, color: C } }); return rr; });
+      s.addText(teks, { x: 0.6, y: y0, w: W - 1.2, h: hT, fontFace: F, fontSize: fs, valign: 'top', fit: 'shrink' });
+    } else if (x.t === 'tabel') {
+      const panjang = x.rows.reduce((a, r) => a + r.join(' ').length, 0), fs = panjang > 900 ? 11 : panjang > 500 ? 13 : 15;
+      const rows = [];
+      if (x.head.length) rows.push(x.head.map(h => ({ text: h, options: { bold: true, color: 'FFFFFF', fill: { color: C } } })));
+      x.rows.forEach((r, i) => rows.push(r.map(c2 => ({ text: c2, options: { fill: { color: i % 2 ? 'F6F1EA' : 'FFFFFF' } } }))));
+      s.addTable(rows, { x: 0.5, y: y0, w: W - 1, fontFace: F, fontSize: fs, color: TINTA, border: { type: 'solid', pt: 0.75, color: 'D8CFC4' }, valign: 'top', margin: 0.06 });
+    } else if (x.t === 'rute') {
+      const tinggi = Math.min(1.35, hT / x.item.length);
+      x.item.forEach((r, i) => { const y = y0 + i * tinggi; s.addShape(p.ShapeType.rect, { x: 0.5, y, w: 0.12, h: tinggi - 0.15, fill: { color: hex(r.warna) }, line: { color: hex(r.warna) } }); s.addText(r.nama, { x: 0.75, y, w: 3, h: 0.4, fontFace: F, fontSize: 18, bold: true, color: hex(r.warna) }); s.addText(r.langkah.join('  →  '), { x: 0.75, y: y + 0.4, w: W - 1.4, h: tinggi - 0.55, fontFace: F, fontSize: 15, color: TINTA, valign: 'top', fit: 'shrink' }); });
+    } else if (x.t === 'waktu') {
+      const lebar = (W - 1) / x.item.length;
+      s.addShape(p.ShapeType.line, { x: 0.5, y: y0 + 0.55, w: W - 1, h: 0, line: { color: 'C9BFB3', width: 2 } });
+      x.item.forEach((it, i) => { const xx = 0.5 + i * lebar; s.addShape(p.ShapeType.ellipse, { x: xx + 0.05, y: y0 + 0.43, w: 0.24, h: 0.24, fill: { color: hex(it.c) }, line: { color: 'FFFFFF', width: 1.5 } }); s.addText(it.th, { x: xx, y: y0 - 0.05, w: lebar - 0.15, h: 0.4, fontFace: F, fontSize: 14, bold: true, color: hex(it.c) }); s.addText([{ text: it.n, options: { bold: true, fontSize: 16, color: TINTA, breakLine: true } }, { text: it.t || '', options: { fontSize: 12, color: LEMBUT, breakLine: true } }, { text: it.ket || '', options: { fontSize: 12, color: TINTA } }], { x: xx, y: y0 + 0.8, w: lebar - 0.15, h: hT - 0.9, fontFace: F, valign: 'top', fit: 'shrink' }); });
+    } else if (x.t === 'tokoh') {
+      const lebar = (W - 1.3) / 3;
+      x.item.forEach((t, i) => { const xx = 0.5 + i * (lebar + 0.15); s.addShape(p.ShapeType.roundRect, { x: xx, y: y0, w: lebar, h: hT - 0.1, fill: { color: 'F6F1EA' }, line: { color: 'E6DDD4' }, rectRadius: 0.12 }); s.addText([{ text: t.nama, options: { bold: true, fontSize: 18, color: TINTA, breakLine: true } }, { text: t.info, options: { fontSize: 13, color: C, bold: true, breakLine: true } }, { text: ' ', options: { fontSize: 6, breakLine: true } }, { text: t.isi, options: { fontSize: 14, color: TINTA } }], { x: xx + 0.15, y: y0 + 0.15, w: lebar - 0.3, h: hT - 0.4, fontFace: F, valign: 'top', fit: 'shrink' }); });
+    } else if (x.t === 'istilah') {
+      const kol = [x.item.slice(0, 4), x.item.slice(4, 8)];
+      kol.forEach((col, ci) => s.addText(col.flatMap(g => [{ text: g[0], options: { bold: true, color: C, fontSize: 16, breakLine: true } }, { text: g[1], options: { color: TINTA, fontSize: 14, breakLine: true, paraSpaceAfter: 10 } }]), { x: 0.6 + ci * 6.2, y: y0, w: 5.9, h: hT, fontFace: F, valign: 'top', fit: 'shrink' }));
+    } else if (x.t === 'cinta') {
+      s.addText(x.item.flatMap(c2 => [{ text: c2[0], options: { bold: true, color: C, fontSize: 18, breakLine: true } }, { text: c2[1], options: { color: TINTA, fontSize: 16, breakLine: true, paraSpaceAfter: 14 } }]), { x: 0.6, y: y0, w: W - 1.2, h: hT, fontFace: F, valign: 'top', fit: 'shrink' });
+    } else if (x.t === 'diskusi') {
+      s.addText(x.item.flatMap((q, i) => [...(q.s ? [{ text: q.s, options: { italic: true, color: LEMBUT, fontSize: 14, breakLine: true } }] : []), { text: `${i + 1}. ${q.q}`, options: { bold: true, color: TINTA, fontSize: 17, breakLine: true, paraSpaceAfter: 14 } }]), { x: 0.6, y: y0, w: W - 1.2, h: hT, fontFace: F, valign: 'top', fit: 'shrink' });
+    } else if (x.t === 'penutup') {
+      s.addText([`Buka Ruang Historia, Bab ${x.id}: ${x.babJudul}.`, 'Baca seluruh materi dan tonton videonya.', 'Catat poin-poin penting di buku catatan.', `Kerjakan kuis sampai nilai minimal ${x.kkm} untuk membuka babak berikutnya.`].map((t, i, a) => ({ text: `${i + 1}.  ${t}`, options: { breakLine: i < a.length - 1, paraSpaceAfter: 12 } })), { x: 0.6, y: y0, w: 7.8, h: hT, fontFace: F, fontSize: 20, color: TINTA, valign: 'top' });
+      try { const q = await qrPNG(x.url, 600); s.addImage({ data: q.replace(/^data:/, ''), x: 9.2, y: y0, w: 3.4, h: 3.4 }); s.addText('Pindai untuk membuka bab ini', { x: 9.0, y: y0 + 3.45, w: 3.8, h: 0.4, fontFace: F, fontSize: 12, color: LEMBUT, align: 'center' }); } catch {}
+    }
+  }
+  const aman = `${k.judul} Bab ${id} ${b.judul}`.replace(/[^\w\s-]/g, '').replace(/\s+/g, ' ').trim();
+  await p.writeFile({ fileName: `Ruang Historia - ${aman}.pptx` });
+}
+
 /* ---------- router ---------- */
 function rute() {
   clearInterval(jam);
   const h = (location.hash || '#beranda').slice(1);
   let m;
-  if ((m = h.match(/^([a-z]+)-(\d+)-kuis$/)) && cariK(m[1])) kuis(m[1], +m[2]);
+  if (h.startsWith('kelas=')) return terapkanKelas(h.slice(6));
+  if ((m = h.match(/^([a-z]+)-(\d+)-slide$/)) && cariK(m[1])) presentasi(m[1], +m[2]);
+  else if ((m = h.match(/^([a-z]+)-(\d+)-kuis$/)) && cariK(m[1])) kuis(m[1], +m[2]);
   else if ((m = h.match(/^([a-z]+)-(\d+)$/)) && cariK(m[1])) bab(m[1], +m[2]);
   else if ((m = h.match(/^([a-z]+)-ujian$/)) && cariK(m[1])) ujian(m[1]);
   else if (cariK(h)) ruang(h);
   else if (h === 'nilai') nilai();
   else if (h === 'tentang') tentang();
   else if (h === 'logo') filosofi();
+  else if (h === 'guru') panelGuru();
   else beranda();
   window.scrollTo(0, 0);
 }

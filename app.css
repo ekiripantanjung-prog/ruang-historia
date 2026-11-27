@@ -423,3 +423,9 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .sl-tugas li{margin-bottom:12px}
 .sl-qr{text-align:center}.sl-qr svg{width:260px;height:260px}.sl-qr small{display:block;font-size:16px;color:#6b5848}
 .sl-pengantar{font-size:21px;color:#6b5848;margin:6px 0 4px;line-height:1.4}
+
+/* rekap & identitas siswa */
+.identitas{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-left:5px solid var(--accent)}
+.identitas>div:last-child{text-align:right}
+.masuk input{text-transform:uppercase;letter-spacing:.15em;font-weight:700;max-width:260px}
+.langkah-rekap{padding-left:22px}.langkah-rekap li{margin-bottom:6px}

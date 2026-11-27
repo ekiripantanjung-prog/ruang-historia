@@ -225,7 +225,8 @@ function bab(kid, id, tab) {
     if (t === 'istilah') isi.innerHTML = `<h2>Istilah penting</h2><div class="gl">${(b.glosarium || []).map(g => `<div><b>${esc(g[0])}</b>${esc(g[1])}</div>`).join('')}</div>`;
     if (t === 'materi' && b.jelajah) pasangJelajah(b);
     if (t === 'materi') { pasangGaleri(kid, id); isi.insertAdjacentHTML('beforeend', `<div class="box ajak"><b>Sudah selesai membaca?</b> Catat poin-poin penting di buku catatanmu, lalu uji pemahamanmu.<button class="btn" type="button" data-ke="kuis">Lanjut ke kuis</button></div>`); }
-    if (t === 'kuis') { const kotak = isi.querySelector('.siap'); if (kotak) kotak.addEventListener('change', () => { const ok = [...kotak.querySelectorAll('input')].every(x => x.checked); const sp = S.get('siap', {}); sp[`${kid}-${id}`] = ok; S.set('siap', sp); const m = isi.querySelector('#mulai'); m.classList.toggle('mati', !ok); m.setAttribute('aria-disabled', !ok); }); }
+    if (t === 'kuis') pasangMasuk(isi, () => tampil('kuis'));
+    if (t === 'kuis') { const kotak = isi.querySelector('.siap'); if (kotak) kotak.addEventListener('change', () => { const ok = [...kotak.querySelectorAll('input')].every(x => x.checked); const sp = S.get('siap', {}); sp[`${kid}-${id}`] = ok; S.set('siap', sp); const m = isi.querySelector('#mulai'), boleh = ok && !perluMasuk(); m.classList.toggle('mati', !boleh); m.setAttribute('aria-disabled', !boleh); }); }
   };
   app.querySelector('.seg').addEventListener('click', e => { const x = e.target.closest('button'); if (x) tampil(x.dataset.t); });
   isi.addEventListener('click', e => {
@@ -277,7 +278,8 @@ const kuisAwal = (b, kid, id) => { const v = S.get('nilai', {})[`${kid}-bab${id}
 ${bab_ ? `<div class="box babak-info"><b>Mode babak${c.nama ? ` · kelas ${esc(c.nama)}` : ''}</b><br>KKM: <b>${c.kkm}</b>. Lulus kuis ini untuk membuka ${babBerikut(kid, id) ? `Babak ${babBerikut(kid, id).id}` : 'ujian akhir'}.</div>
 <div class="box siap"><h3>Sebelum mulai</h3><label class="cek"><input type="checkbox" ${siap ? 'checked' : ''}> Saya sudah membaca seluruh materi Bab ${id}.</label><label class="cek"><input type="checkbox" ${siap ? 'checked' : ''}> Saya sudah mencatat poin-poin penting di buku catatan.</label></div>` : ''}
 ${v ? `<div class="box">Nilai terbaik: <b>${v.terbaik}</b> ${bab_ || v.terbaik >= c.kkm ? bintangHTML(jumlahBintang(v.terbaik)) : ''} · terakhir ${v.terakhir} · sudah ${v.kali} kali</div>` : ''}
-<a class="btn ${bab_ && !siap ? 'mati' : ''}" id="mulai" href="#${kid}-${id}-kuis" aria-disabled="${bab_ && !siap}">Mulai kuis</a>`; };
+${perluMasuk() ? formMasuk() : siswaAktif() && konfig().rekap ? `<p class="catatan">Masuk sebagai <b>${esc(siswaAktif().nama)}</b> (${esc(siswaAktif().kelas)}). Nilaimu akan dikirim ke guru.</p>` : ''}
+<a class="btn ${(bab_ && !siap) || perluMasuk() ? 'mati' : ''}" id="mulai" href="#${kid}-${id}-kuis" aria-disabled="${(bab_ && !siap) || perluMasuk()}">Mulai kuis</a>`; };
 const esai = b => `<h2>Soal uraian</h2><p>Kerjakan di buku tulis atau kirim ke guru. Rubrik penilaian ada di bawah setiap soal.</p>${b.esai.map((e, i) => `<div class="box"><p><b>${i + 1}.</b> ${esc(e.q)}</p><details class="rub"><summary>Rubrik penilaian (untuk guru)</summary><ul>${e.rubrik.map(r => `<li>${esc(r)}</li>`).join('')}</ul></details></div>`).join('')}`;
 
 /* ---------- MESIN SOAL: latihan per bab & ujian akhir ---------- */
@@ -315,10 +317,15 @@ ${o.mode === 'ujian' ? `<div class="row" style="margin-top:16px;gap:6px">${list.
     if (selesai) return; selesai = true; clearInterval(jam);
     const skor = list.reduce((s, q, k) => s + (jawab[k] === q.a ? 1 : 0), 0);
     const nilai = simpanNilai(o.kunci, skor, list.length);
+    let infoKirim = '';
+    if (o.kirim && konfig().rekap && siswaAktif() && !modeGuru()) {
+      o.kirim({ nilai, benar: skor, total: list.length, butir: list.map((q, k) => ({ no: k + 1, q: q.q.slice(0, 220), b: jawab[k] === q.a ? 1 : 0 })) });
+      infoKirim = `<p class="catatan kirim-info">${navigator.onLine ? 'Nilai dikirim ke rekap guru.' : 'Belum ada internet. Nilai akan dikirim otomatis saat tersambung.'}</p>`;
+    }
     const kkm = konfig().kkm, pesan = nilai >= 90 ? 'Luar biasa! Pemahamanmu sangat baik.' : nilai >= kkm ? 'Bagus, sudah tuntas. Pelajari lagi soal yang salah.' : 'Belum tuntas. Baca ulang materinya, lalu coba lagi.';
     document.querySelector('.sticky').remove();
     qq.innerHTML = `<div class="hasil"><big>${nilai}</big>${skor} benar dari ${list.length} soal<p style="margin:8px auto 0;color:#fff">${pesan}</p></div>
-${o.setelah ? o.setelah(nilai) : ''}<div class="row" style="margin-bottom:20px"><button class="btn" type="button" id="ulang">Ulangi</button><a class="btn alt" href="${o.balik}">Kembali</a></div>
+${infoKirim}${o.setelah ? o.setelah(nilai) : ''}<div class="row" style="margin-bottom:20px"><button class="btn" type="button" id="ulang">Ulangi</button><a class="btn alt" href="${o.balik}">Kembali</a></div>
 <h2>Pembahasan</h2>${list.map((q, k) => `<div class="q" style="margin-bottom:12px"><span class="lv">${q.bab ? 'Bab ' + q.bab : ''}</span>${q.s ? `<div class="stim">${esc(q.s)}</div>` : ''}<div class="tanya">${k + 1}. ${esc(q.q)}</div><p style="margin:0">Jawabanmu: <b style="color:${jawab[k] === q.a ? 'var(--ok)' : 'var(--bad)'}">${jawab[k] === null ? 'kosong' : huruf(jawab[k]) + '. ' + esc(q.o[jawab[k]])}</b>${jawab[k] === q.a ? '' : `<br>Kunci: <b>${huruf(q.a)}. ${esc(q.o[q.a])}</b>`}</p><div class="why">${esc(q.p)}</div></div>`).join('')}`;
     document.getElementById('ulang').addEventListener('click', () => o.ulang());
     window.scrollTo(0, 0);
@@ -336,9 +343,10 @@ function kuis(kid, id) {
   tandaiMenu('');
   const b = isiBab(kid, id); if (!b) return bab(kid, id);
   if (!terbuka(kid, id)) return terkunci(kid, id);
-  if (babakAktif() && !siapKuis(kid, id)) { history.replaceState(null, '', `#${kid}-${id}`); return bab(kid, id, 'kuis'); }
+  if ((babakAktif() && !siapKuis(kid, id)) || perluMasuk()) { history.replaceState(null, '', `#${kid}-${id}`); return bab(kid, id, 'kuis'); }
   const sudahLulus = lulusBab(kid, id);
   jalankan(b.soal, { mode: 'latihan', judul: `Kuis Bab ${id}. ${b.judul}`, kunci: `${kid}-bab${id}`, balik: `#${kid}-${id}`, ulang: () => kuis(kid, id),
+    kirim: r => kirimNilai({ kolom: `${NAMA_KOLOM[kid] || kid} Bab ${id}`, judul: b.judul, jenis: 'kuis', ...r }),
     setelah: v => { if (!babakAktif()) return ''; const c = konfig(), nx = babBerikut(kid, id);
       if (v >= c.kkm) return `<div class="box naik ${sudahLulus ? '' : 'baru'}"><div>${bintangHTML(jumlahBintang(nilaiBab(kid, id)))}</div><b>${sudahLulus ? `Babak ${id} sudah lulus.` : `Selamat, Babak ${id} lulus!`}</b><p>${nx ? `Babak ${nx.id}: ${esc(nx.judul)} ${sudahLulus ? 'sudah' : 'kini'} terbuka.` : 'Semua babak di ruang ini sudah kamu selesaikan. Ujian akhir terbuka!'}</p><a class="btn" href="${nx ? `#${kid}-${nx.id}` : `#${kid}-ujian`}">${nx ? `Lanjut ke Babak ${nx.id}` : 'Ke ujian akhir'}</a></div>`;
       return `<div class="box belum"><b>Belum mencapai KKM (${c.kkm}).</b><p>Baca ulang materinya dan catatanmu, perhatikan pembahasan di bawah, lalu coba lagi. Babak berikutnya terbuka setelah kamu lulus.</p></div>`; } });
@@ -350,6 +358,7 @@ function ujian(kid) {
   const k = cariK(kid), ada = tersedia(k);
   const belum = babakAktif() ? ada.filter(d => !lulusBab(kid, d.id)) : [];
   if (belum.length) { app.innerHTML = `<section class="pad"><div class="wrap kunci-hal"><div class="gembok-besar" style="--c:${k.warna}">${IKON_GEMBOK}</div><h1>Ujian akhir ${esc(k.judul)}</h1><p>Ujian akhir terbuka setelah semua babak lulus (nilai kuis ≥ ${konfig().kkm}). Babak yang belum lulus:</p><ul class="langkah-kunci">${belum.map(d => `<li><a href="#${kid}-${d.id}">Bab ${d.id}. ${esc(d.judul)}</a> · nilai terbaik ${nilaiBab(kid, d.id)}</li>`).join('')}</ul><a class="btn" href="#${kid}">Peta babak</a></div></section>`; return; }
+  if (perluMasuk()) { app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:600px"><h1>Ujian akhir ${esc(k.judul)}</h1>${formMasuk()}</div></section>`; pasangMasuk(app, () => ujian(kid)); return; }
   const semua = ada.flatMap(d => isiBab(kid, d.id).soal.map(q => ({ ...q, bab: d.id })));
   if (!semua.length) { app.innerHTML = `<section class="pad"><div class="wrap"><h1>Ujian akhir ${esc(k.judul)}</h1><p>Belum ada soal di ruang ini.</p><a class="btn" href="#${kid}">Kembali</a></div></section>`; return; }
   const pilihan = [10, 20, 40].filter(n => n <= semua.length);
@@ -360,7 +369,8 @@ function ujian(kid) {
   app.querySelector('.box').addEventListener('click', e => {
     const x = e.target.closest('[data-n]'); if (!x) return;
     const n = +x.dataset.n, list = acak(semua).slice(0, n);
-    jalankan(list, { mode: 'ujian', menit: Math.round(n * 1.5), judul: `Ujian akhir · ${n} soal`, kunci: `${kid}-ujian`, balik: '#nilai', ulang: () => ujian(kid) });
+    jalankan(list, { mode: 'ujian', menit: Math.round(n * 1.5), judul: `Ujian akhir · ${n} soal`, kunci: `${kid}-ujian`, balik: '#nilai', ulang: () => ujian(kid),
+      kirim: r => kirimNilai({ kolom: `${NAMA_KOLOM[kid] || kid} Ujian`, judul: `Ujian akhir ${k.judul}`, jenis: 'ujian', nilai: r.nilai, benar: r.benar, total: r.total }) });
   });
 }
 
@@ -370,10 +380,15 @@ function nilai() {
   const n = S.get('nilai', {});
   const blok = K.filter(k => tersedia(k).length).map(k => {
     const baris = [...tersedia(k).map(d => [`${k.id}-bab${d.id}`, `Bab ${d.id}. ${d.judul}`]), [`${k.id}-ujian`, 'Ujian akhir']];
-    return `<h2 style="margin-top:24px">${esc(k.judul)}</h2><div style="overflow-x:auto"><table class="nilai"><thead><tr><th>Bagian</th><th>Dikerjakan</th><th>Terakhir</th><th>Terbaik</th></tr></thead><tbody>${baris.map(r => { const v = n[r[0]]; return `<tr><td>${esc(r[1])}</td><td>${v ? v.kali + '× · ' + v.tgl : 'belum'}</td><td>${v ? v.terakhir : '–'}</td><td><b style="color:${v ? (v.terbaik >= 70 ? 'var(--ok)' : 'var(--bad)') : 'inherit'}">${v ? v.terbaik : '–'}</b></td></tr>`; }).join('')}</tbody></table></div>`;
+    return `<h2 style="margin-top:24px">${esc(k.judul)}</h2><div style="overflow-x:auto"><table class="nilai"><thead><tr><th>Bagian</th><th>Dikerjakan</th><th>Terakhir</th><th>Terbaik</th></tr></thead><tbody>${baris.map(r => { const v = n[r[0]]; return `<tr><td>${esc(r[1])}</td><td>${v ? v.kali + '× · ' + v.tgl : 'belum'}</td><td>${v ? v.terakhir : '–'}</td><td><b style="color:${v ? (v.terbaik >= konfig().kkm ? 'var(--ok)' : 'var(--bad)') : 'inherit'}">${v ? v.terbaik : '–'}</b></td></tr>`; }).join('')}</tbody></table></div>`;
   }).join('');
-  app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Nilaiku</h1><p>Nilai tersimpan di perangkat ini. Kriteria ketuntasan yang dipakai di sini: 70.</p>${blok}
+  const s = siswaAktif(), c = konfig(), antre = S.get('antrean', []).length;
+  const identitas = c.rekap ? (s ? `<div class="box identitas"><div><b>${esc(s.nama)}</b><br><small>Kelas ${esc(s.kelas)} · kode ${esc(s.kode)}</small></div><div><small>${antre ? `${antre} nilai menunggu dikirim (perlu internet)` : 'Semua nilai sudah terkirim ke guru'}</small><br><button class="btn alt" type="button" id="keluarsiswa">Keluar</button></div></div>` : formMasuk()) : '';
+  app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Nilaiku</h1>${identitas}<p>Nilai juga tersimpan di perangkat ini. KKM yang dipakai: ${c.kkm}${c.nama ? ` (kelas ${esc(c.nama)})` : ''}.</p>${blok}
 <button class="btn alt" type="button" id="hapus" style="margin-top:12px">Hapus semua nilai</button></div></section>`;
+  pasangMasuk(app, nilai);
+  const ks = document.getElementById('keluarsiswa'); if (ks) ks.addEventListener('click', e => { if (!e.target.dataset.yakin) { e.target.dataset.yakin = 1; e.target.textContent = 'Yakin keluar? Tekan lagi'; return; } S.set('siswa', null); nilai(); });
+  if (antre) kirimAntrean().then(() => { if (document.querySelector('.identitas') && !S.get('antrean', []).length) nilai(); });
   document.getElementById('hapus').addEventListener('click', e => { if (!e.target.dataset.yakin) { e.target.dataset.yakin = 1; e.target.textContent = 'Yakin? Tekan sekali lagi'; return; } S.set('nilai', {}); nilai(); });
 }
 
@@ -456,7 +471,7 @@ function filosofi() {
 
 /* ---------- PENGATURAN KELAS, MODE GURU, DAN BABAK ---------- */
 const PG = window.PENGATURAN || { modeBabak: true, kkm: 75 };
-const konfig = () => { const c = { modeBabak: PG.modeBabak, kkm: PG.kkm, buka: {}, nama: '', ...S.get('kelas', {}) }; c.kkm = Math.min(100, Math.max(0, +c.kkm || 75)); return c; };
+const konfig = () => { const c = { modeBabak: PG.modeBabak, kkm: PG.kkm, buka: {}, nama: '', rekap: PG.rekap || '', ...S.get('kelas', {}) }; if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(c.rekap || '')) c.rekap = ''; c.kkm = Math.min(100, Math.max(0, +c.kkm || 75)); return c; };
 const modeGuru = () => !!S.get('guru', false);
 const babakAktif = () => konfig().modeBabak && !modeGuru();
 const nilaiBab = (kid, id) => (S.get('nilai', {})[`${kid}-bab${id}`] || {}).terbaik || 0;
@@ -480,6 +495,43 @@ function terkunci(kid, id) {
 <p>Nilai terbaikmu di Bab ${p.id} sekarang: <b>${nilaiBab(kid, p.id)}</b></p>
 <div class="row" style="justify-content:center"><a class="btn" href="#${kid}-${p.id}">Buka Bab ${p.id}</a><a class="btn alt" href="#${kid}">Peta babak</a></div></div></section>`;
 }
+
+/* ---------- REKAP NILAI KE GOOGLE SHEETS ---------- */
+const siswaAktif = () => S.get('siswa', null);
+const perluMasuk = () => !!konfig().rekap && !siswaAktif() && !modeGuru();
+const NAMA_KOLOM = { indonesia: 'Indonesia', dunia: 'Dunia', ski: 'SKI' };
+const formMasuk = () => `<form class="box masuk" data-masuk><h3>Masuk dengan kode siswa</h3><p>Gurumu memakai rekap nilai. Masukkan kode siswa (6 huruf/angka) dari guru supaya nilaimu tercatat.</p><input class="isian" name="kode" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="contoh: 2FDX8S" required><p class="catatan pesan-masuk"></p><button class="btn" type="submit">Masuk</button></form>`;
+function pasangMasuk(akar, setelah) {
+  akar.querySelectorAll('[data-masuk]').forEach(f => f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const kode = f.kode.value.trim().toUpperCase(), pesan = f.querySelector('.pesan-masuk'), tb = f.querySelector('button');
+    tb.disabled = true; pesan.textContent = 'Memeriksa kode…';
+    try {
+      const r = await fetch(`${konfig().rekap}?aksi=masuk&kode=${encodeURIComponent(kode)}`).then(x => x.json());
+      if (r.ok) { S.set('siswa', { kode, nama: r.nama, kelas: r.kelas, no: r.no }); setelah(); }
+      else pesan.textContent = r.pesan || 'Kode tidak dikenal.';
+    } catch { pesan.textContent = 'Tidak dapat terhubung. Periksa internet, lalu coba lagi.'; }
+    tb.disabled = false;
+  }));
+}
+async function kirimAntrean() {
+  const url = konfig().rekap, q = S.get('antrean', []);
+  if (!url || !q.length || !navigator.onLine) return;
+  const sisa = [];
+  for (const d of q) {
+    try { await fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d) }); }
+    catch { sisa.push(d); }
+  }
+  S.set('antrean', sisa.concat(S.get('antrean', []).filter(d => !q.some(x => x.id === d.id))));
+}
+function kirimNilai(o) {
+  const s = siswaAktif(); if (!konfig().rekap || !s || modeGuru()) return null;
+  const d = { aksi: 'nilai', kode: s.kode, kkm: konfig().kkm, id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7), ...o };
+  S.set('antrean', S.get('antrean', []).concat(d));
+  return kirimAntrean();
+}
+addEventListener('online', kirimAntrean);
+setTimeout(kirimAntrean, 3000);
 
 /* ---------- PANEL GURU ---------- */
 const sha256 = async t => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)))].map(x => x.toString(16).padStart(2, '0')).join('');
@@ -524,7 +576,22 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <div class="row"><button class="btn" type="button" id="buat">Buat tautan kelas</button></div>
 <div id="hasilkelas"></div></div>
 
-<div class="box guru-kartu"><h2>3. Lainnya</h2><ul>
+<div class="box guru-kartu"><h2>3. Rekap nilai dan analisis (Google Sheets)</h2>
+<p>Nilai kuis dan ujian siswa terkirim otomatis ke Google Sheets milik Bapak/Ibu, lengkap dengan lembar <b>Rekap</b> dan <b>Analisis</b> (ketuntasan, siswa yang perlu remedial, dan soal yang paling sulit).</p>
+<ol class="langkah-rekap">
+<li>Buka <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> di Chrome, beri nama <i>Rekap Ruang Historia</i>.</li>
+<li>Di HP: menu ⋮ Chrome → centang <b>Situs desktop</b>. Lalu pilih menu <b>Ekstensi → Apps Script</b>.</li>
+<li>Hapus isi editor, tempel kode dari tombol <b>Salin kode</b> di bawah, lalu tekan ikon Simpan.</li>
+<li>Pilih fungsi <b>siapkan</b>, tekan <b>Jalankan</b>, lalu berikan izin (Lanjutan → Buka proyek).</li>
+<li><b>Terapkan → Deployment baru</b> → jenis <b>Aplikasi web</b>; Jalankan sebagai: <b>Saya</b>; Akses: <b>Siapa saja</b> → Terapkan. Salin alamat aplikasi web.</li>
+<li>Tempel alamat itu di kotak di bawah, tekan <b>Uji sambungan</b>, lalu buat tautan kelas (bagian 2).</li>
+<li>Di Google Sheets, isi lembar <b>Siswa</b> (Kelas, No, Nama; bisa disalin dari Excel), lalu menu <b>Ruang Historia → Buat kode siswa</b>. Bagikan kodenya kepada siswa.</li>
+</ol>
+<div class="row"><button class="btn alt" type="button" id="salinkode">Salin kode Apps Script</button></div>
+<label><b>Alamat aplikasi web (dari langkah 5)</b><input id="gr" class="isian" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(c.rekap || '')}"></label>
+<div class="row"><button class="btn alt" type="button" id="ujirekap">Uji sambungan</button></div><p class="catatan" id="pesanrekap"></p></div>
+
+<div class="box guru-kartu"><h2>4. Lainnya</h2><ul>
 <li>Tambah foto atau ilustrasi sendiri: lihat panduan di halaman <a href="#tentang">Tentang</a>.</li>
 <li>Rekap nilai: siswa dapat menunjukkan halaman <a href="#nilai">Nilaiku</a> di perangkatnya.</li></ul>
 <button class="btn alt" type="button" id="keluar">Keluar dari mode guru</button></div>
@@ -540,21 +607,25 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
   });
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
-    const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka };
+    const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka, rekap: document.getElementById('gr').value.trim() };
     const url = `${alamatDasar()}#kelas=${kodeKelas(o)}`;
-    document.getElementById('hasilkelas').innerHTML = `<div class="tautan-kelas"><div>${await qrSVG(url, 200)}</div><div><p><b>Tautan kelas ${esc(o.nama || '')}</b>: mode babak ${o.modeBabak ? 'aktif' : 'mati'}, KKM ${o.kkm}.</p><input class="isian" readonly value="${esc(url)}"><div class="row"><button class="btn" type="button" id="salin">Salin tautan</button></div><p class="catatan">Bagikan tautan ini di grup kelas, atau tampilkan kode QR-nya di proyektor. Siswa cukup membukanya sekali dari HP masing-masing.</p></div></div>`;
+    document.getElementById('hasilkelas').innerHTML = `<div class="tautan-kelas"><div>${await qrSVG(url, 200)}</div><div><p><b>Tautan kelas ${esc(o.nama || '')}</b>: mode babak ${o.modeBabak ? 'aktif' : 'mati'}, KKM ${o.kkm}, rekap nilai ${o.rekap ? 'aktif' : 'tidak dipakai'}.</p><input class="isian" readonly value="${esc(url)}"><div class="row"><button class="btn" type="button" id="salin">Salin tautan</button></div><p class="catatan">Bagikan tautan ini di grup kelas, atau tampilkan kode QR-nya di proyektor. Siswa cukup membukanya sekali dari HP masing-masing.</p></div></div>`;
     document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
   });
+  document.getElementById('salinkode').addEventListener('click', async ev => { try { const t = await fetch('alat/rekap-google-sheets.gs').then(r => r.text()); await navigator.clipboard.writeText(t); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; } catch { ev.target.textContent = 'Gagal menyalin. Coba lagi'; } });
+  document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Sekarang buat tautan kelas di bagian 2.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
   document.getElementById('keluar').addEventListener('click', () => { S.set('guru', false); location.hash = '#beranda'; });
 }
 
 function terapkanKelas(kode) {
   try {
     const o = bacaKelas(kode);
-    S.set('kelas', { nama: String(o.nama || '').slice(0, 40), modeBabak: !!o.modeBabak, kkm: Math.min(100, Math.max(0, +o.kkm || 75)), buka: o.buka || {} });
+    S.set('kelas', { nama: String(o.nama || '').slice(0, 40), modeBabak: !!o.modeBabak, kkm: Math.min(100, Math.max(0, +o.kkm || 75)), buka: o.buka || {}, rekap: /^https:\/\/script\.google\.com\//.test(o.rekap || '') ? o.rekap : '' });
     app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:600px"><div class="box"><h1>Selamat datang${o.nama ? ` di kelas ${esc(o.nama)}` : ''}!</h1>
 <p>Pengaturan dari gurumu sudah diterapkan: ${o.modeBabak ? `<b>mode babak aktif</b> dengan KKM <b>${o.kkm}</b>. Setiap bab adalah satu babak: baca materinya, catat di buku catatan, lalu lulus kuis untuk membuka babak berikutnya.` : 'semua bab terbuka.'}</p>
+${o.rekap ? `<p>Gurumu juga memakai <b>rekap nilai</b>. Masukkan kode siswa dari gurumu:</p>${formMasuk()}` : ''}
 <a class="btn" href="#beranda">Mulai belajar</a></div></div></section>`;
+    pasangMasuk(app, () => { const f = app.querySelector('[data-masuk]'); f.outerHTML = `<div class="box">Berhasil masuk sebagai <b>${esc(siswaAktif().nama)}</b> (${esc(siswaAktif().kelas)}).</div>`; });
     history.replaceState(null, '', location.pathname + '#kelas-ok');
   } catch { location.hash = '#beranda'; }
 }

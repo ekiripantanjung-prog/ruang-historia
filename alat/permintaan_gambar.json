@@ -37,16 +37,18 @@
    "judul": "Beliung persegi, alat batu Neolitikum",
    "ket": "Alat batu yang diasah halus, bukti masa bercocok tanam.",
    "cari": [
-    "Neolithic adze Indonesia",
-    "quadrangular adze Indonesia",
-    "beliung persegi"
+    "Neolithic axe Indonesia",
+    "stone adze Java Neolithic",
+    "Neolithic adze Museum Nasional Indonesia",
+    "polished stone adze Indonesia"
    ],
-   "wajib": "adze|beliung|kapak"
+   "wajib": "adze|axe|beliung|kapak|Neolit"
   },
   {
    "judul": "Sarkofagus dari Bali",
    "ket": "Peti mati batu peninggalan tradisi megalitik.",
    "cari": [
+    "File:Neolithic stone sarcophagus Bali.jpg",
     "sarcophagus Bali",
     "sarkofagus Bali",
     "Bali sarcophagus museum"
@@ -93,6 +95,7 @@
    "judul": "Prasasti Kedukan Bukit (683 M)",
    "ket": "Prasasti tertua tentang Kerajaan Sriwijaya, berbahasa Melayu Kuno.",
    "cari": [
+    "File:Prasasti Kedukan Bukit 3.jpg",
     "Kedukan Bukit inscription",
     "Prasasti Kedukan Bukit"
    ],
@@ -102,6 +105,7 @@
    "judul": "Candi Muara Takus, Riau",
    "ket": "Kompleks candi Buddha di Sumatra yang dikaitkan dengan Sriwijaya.",
    "cari": [
+    "File:Candi Muara Takus (1).jpg",
     "Muara Takus",
     "Candi Muara Takus"
    ],
@@ -111,10 +115,13 @@
    "judul": "Candi Penataran, Blitar",
    "ket": "Candi terbesar di Jawa Timur yang dipakai sejak Kediri hingga Majapahit.",
    "cari": [
-    "Penataran temple",
-    "Candi Penataran"
+    "Candi Penataran",
+    "Panataran temple Blitar",
+    "Penataran temple Java"
    ],
-   "wajib": "Penataran"
+   "wajib": "Candi Penataran|Panataran|Penataran temple|Penataran Blitar",
+   "hindari": "Pura|Pangkal",
+   "ulang": true
   }
  ],
  "indonesia-3": [
@@ -150,6 +157,7 @@
    "judul": "Masjid Agung Banten",
    "ket": "Masjid Kesultanan Banten dengan menara bergaya mercusuar.",
    "cari": [
+    "File:Masjid agung banten lama.jpg",
     "Masjid Agung Banten",
     "Great Mosque of Banten"
    ],
@@ -159,6 +167,7 @@
    "judul": "Gapura Masjid Sendang Duwur, Lamongan",
    "ket": "Gapura bersayap, perpaduan seni Islam dan Hindu-Buddha.",
    "cari": [
+    "File:Sendang Duwur.jpg",
     "Sendang Duwur",
     "Sendangduwur gate"
    ],
@@ -197,6 +206,7 @@
    "judul": "Peta Batavia abad ke-17",
    "ket": "Kota Batavia yang dibangun VOC lengkap dengan kanal dan benteng.",
    "cari": [
+    "File:Coat of arms Batavia on a map of 1681.jpg",
     "Batavia map 1681",
     "Kaart Batavia 17de eeuw",
     "map of Batavia 1667"
@@ -208,6 +218,7 @@
    "judul": "Replika kapal VOC \"Batavia\"",
    "ket": "Kapal dagang VOC abad ke-17 yang mengangkut rempah ke Eropa.",
    "cari": [
+    "File:De BATAVIA voor de film onderweg als de NIEUW HOORN (02).jpg",
     "Batavia ship replica Lelystad",
     "Batavia replica ship"
    ],
@@ -217,6 +228,7 @@
    "judul": "Benteng Victoria, Ambon",
    "ket": "Benteng VOC di pusat perdagangan cengkih Maluku.",
    "cari": [
+    "File:Fort Victoria, Ambon, 1690.jpg",
     "Fort Victoria Ambon",
     "Benteng Victoria Ambon"
    ],
@@ -258,6 +270,7 @@
    "judul": "Novel Max Havelaar (1860)",
    "ket": "Buku Multatuli yang membongkar penderitaan rakyat akibat tanam paksa.",
    "cari": [
+    "File:Multatuli Max Havelaar of de koffij-veilingen der Nederlansche Handelmaatschappij Amsterdam, 1860 - BBB-389.jpg",
     "Max Havelaar 1860 title page",
     "Max Havelaar first edition"
    ],
@@ -267,6 +280,7 @@
    "judul": "Jalan Raya Pos (De Grote Postweg)",
    "ket": "Jalan Anyer–Panarukan yang dibangun dengan kerja paksa masa Daendels.",
    "cari": [
+    "File:COLLECTIE TROPENMUSEUM Aan de Grote Postweg tussen Bandoeng en Garoet Java op de helling spoorlijn met trein TMnr 10007760.jpg",
     "Grote Postweg Java",
     "De Groote Postweg",
     "Jalan Raya Pos"
@@ -306,6 +320,7 @@
    "judul": "Teks ikrar Sumpah Pemuda",
    "ket": "Rumusan ikrar Kongres Pemuda II, 28 Oktober 1928.",
    "cari": [
+    "File:Teks sumpah pemuda yang benar.jpg",
     "Sumpah Pemuda text",
     "Teks Sumpah Pemuda"
    ],
@@ -315,6 +330,7 @@
    "judul": "Pendopo Tamansiswa, Yogyakarta",
    "ket": "Perguruan nasional yang didirikan tahun 1922.",
    "cari": [
+    "File:Main Taman Siswa pendapa, Daerah Istimewa Jogjakarta (1953), p883.jpg",
     "Taman Siswa Yogyakarta",
     "Tamansiswa pendopo"
    ],
@@ -357,6 +373,7 @@
    "judul": "Poster propaganda masa pendudukan Jepang",
    "ket": "Jepang memakai poster dan semboyan Gerakan 3A untuk menarik dukungan rakyat.",
    "cari": [
+    "File:Propaganda poster 'Japan controls the seas', Djawa Baroe, Vol. 1, Iss. 11 (1943-06-01), p8.jpg",
     "Japanese propaganda poster Indonesia",
     "Japanese occupation Indonesia poster"
    ],
@@ -406,6 +423,7 @@
    "judul": "Gedung Joang 45, Jakarta",
    "ket": "Markas para pemuda pejuang menjelang Proklamasi.",
    "cari": [
+    "File:Gedung Joang 45.jpg",
     "Gedung Joang 45",
     "Gedung Joang"
    ],
@@ -415,6 +433,7 @@
    "judul": "Gedung Perundingan Linggarjati, Kuningan",
    "ket": "Tempat Perundingan Linggarjati, November 1946.",
    "cari": [
+    "File:Gedung Perundingan Linggarjati, Kuningan001.JPG",
     "Linggarjati",
     "Gedung Perundingan Linggarjati"
    ],
@@ -424,6 +443,7 @@
    "judul": "Monumen Yogya Kembali",
    "ket": "Peringatan kembalinya Yogyakarta ke tangan RI tahun 1949.",
    "cari": [
+    "File:Monumen Yogya Kembali.JPG",
     "Monumen Yogya Kembali",
     "Monjali Yogyakarta"
    ],
@@ -467,14 +487,16 @@
    "ket": "Dekrit yang membubarkan Konstituante dan memberlakukan kembali UUD 1945.",
    "cari": [
     "Dekrit Presiden 5 Juli 1959",
-    "Dekrit Presiden 1959"
+    "Presidential Decree 5 July 1959 Indonesia",
+    "Dekrit 1959"
    ],
-   "wajib": "Dekrit"
+   "wajib": "Dekrit|Decree"
   },
   {
    "judul": "Gedung Pancasila, Jakarta",
    "ket": "Tempat pidato lahirnya Pancasila dalam sidang BPUPKI, 1 Juni 1945.",
    "cari": [
+    "File:Gedpancasila.jpg",
     "Gedung Pancasila",
     "Pancasila building Jakarta"
    ],
@@ -513,6 +535,7 @@
    "judul": "Naskah Surat Perintah Sebelas Maret (Supersemar)",
    "ket": "Dokumen tahun 1966 yang menandai peralihan kekuasaan ke Orde Baru.",
    "cari": [
+    "File:Supersemar I.JPG",
     "Supersemar",
     "Surat Perintah Sebelas Maret"
    ],
@@ -523,9 +546,12 @@
    "ket": "Proyek budaya masa Orde Baru yang dibuka tahun 1975.",
    "cari": [
     "Taman Mini Indonesia Indah",
-    "TMII Jakarta"
+    "TMII Jakarta anjungan",
+    "Keong Emas TMII"
    ],
-   "wajib": "Taman Mini|TMII"
+   "wajib": "Taman Mini|TMII",
+   "hindari": "LRT|Station|Stasiun",
+   "ulang": true
   }
  ],
  "indonesia-11": [
@@ -543,6 +569,7 @@
    "judul": "Uang kertas rupiah akhir 1990-an",
    "ket": "Krisis moneter 1997–1998 membuat nilai rupiah anjlok tajam dan memicu krisis politik.",
    "cari": [
+    "File:1998 series 10000 rupiah note (obverse and reverse).jpg",
     "Indonesia 50000 rupiah 1999 banknote",
     "Indonesian rupiah banknote 1998",
     "50000 rupiah 1995"
@@ -550,23 +577,10 @@
    "wajib": "rupiah"
   },
   {
-   "judul": "Gedung Komisi Pemilihan Umum (KPU)",
-   "ket": "Lembaga penyelenggara pemilu yang dibentuk mandiri sejak masa Reformasi.",
+   "judul": "Kampus Universitas Trisakti, Jakarta",
+   "ket": "Tempat Tragedi Trisakti, 12 Mei 1998, ketika empat mahasiswa gugur dan gerakan Reformasi kian membesar.",
    "cari": [
-    "Gedung KPU Jakarta",
-    "Komisi Pemilihan Umum gedung",
-    "KPU RI building"
-   ],
-   "wajib": "KPU|Komisi Pemilihan",
-   "hindari": "rapat|sidang|interview|ketua|anggota"
-  },
-  {
-   "judul": "Tugu Reformasi, Universitas Trisakti",
-   "ket": "Peringatan mahasiswa yang gugur dalam Tragedi Trisakti, 12 Mei 1998.",
-   "cari": [
-    "Tugu Reformasi Trisakti",
-    "Trisakti monument",
-    "Universitas Trisakti"
+    "File:Universitas Trisakti - panoramio.jpg"
    ],
    "wajib": "Trisakti|Reformasi"
   }
@@ -611,6 +625,7 @@
    "judul": "Ziggurat Ur, Irak",
    "ket": "Bangunan suci bertingkat peradaban Mesopotamia.",
    "cari": [
+    "File:Ancient ziggurat at Ali Air Base Iraq 2005.jpg",
     "Ziggurat of Ur",
     "Ur ziggurat"
    ],
@@ -620,6 +635,7 @@
    "judul": "Batu Rosetta",
    "ket": "Kunci untuk membaca huruf hieroglif Mesir Kuno.",
    "cari": [
+    "File:Rosetta Stone.JPG",
     "Rosetta Stone",
     "Rosetta Stone British Museum"
    ],
@@ -661,6 +677,7 @@
    "judul": "Forum Romanum, Roma",
    "ket": "Pusat pemerintahan dan kehidupan publik Romawi Kuno.",
    "cari": [
+    "File:Forum romanum 6k (5760x2097).jpg",
     "Roman Forum",
     "Forum Romanum"
    ],
@@ -699,6 +716,7 @@
    "judul": "Piagam Magna Carta (1215)",
    "ket": "Dokumen yang membatasi kekuasaan raja Inggris.",
    "cari": [
+    "File:Magna Carta (British Library Cotton MS Augustus II.106).jpg",
     "Magna Carta 1215",
     "Magna Carta British Library"
    ],
@@ -738,6 +756,7 @@
    "judul": "Replika kapal karavel",
    "ket": "Jenis kapal yang dipakai bangsa Portugis dan Spanyol menjelajah samudra.",
    "cari": [
+    "File:Réplica de Carabela de Sta María en Santa Teresita.jpg",
     "caravel replica",
     "Carabela replica",
     "caravela"
@@ -778,6 +797,7 @@
    "judul": "Deklarasi Hak Asasi Manusia dan Warga Negara (1789)",
    "ket": "Dokumen penting Revolusi Prancis.",
    "cari": [
+    "File:Assemblée Nationale.- Projet de déclaration des droits de l'Homme et du Citoyen, 1789.png",
     "Declaration of the Rights of Man and of the Citizen 1789",
     "Déclaration des droits de l'homme 1789"
    ],
@@ -787,6 +807,7 @@
    "judul": "Mesin pemintal Spinning Jenny (model)",
    "ket": "Penemuan awal Revolusi Industri di bidang tekstil.",
    "cari": [
+    "File:North Mill Museum - Hargreave's Spinning Jenny - geograph.org.uk - 356495.jpg",
     "Spinning jenny",
     "spinning jenny model"
    ],
@@ -826,6 +847,7 @@
    "judul": "Victoria Memorial, Kolkata",
    "ket": "Bangunan peninggalan masa kekuasaan Inggris di India.",
    "cari": [
+    "File:Victoria Memorial Kolkata at night.jpg",
     "Victoria Memorial Kolkata",
     "Victoria Memorial Calcutta"
    ],
@@ -865,6 +887,7 @@
    "judul": "Halaman pertama Perjanjian Versailles (1919)",
    "ket": "Perjanjian yang mengakhiri Perang Dunia I.",
    "cari": [
+    "File:Treaty of Versailles, English version.jpg",
     "Treaty of Versailles 1919 page",
     "Traité de Versailles 1919"
    ],
@@ -875,9 +898,11 @@
    "ket": "Peringatan serangan Jepang 7 Desember 1941.",
    "cari": [
     "USS Arizona Memorial",
-    "Arizona Memorial Pearl Harbor"
+    "Arizona Memorial aerial"
    ],
-   "wajib": "Arizona"
+   "wajib": "Arizona Memorial",
+   "hindari": "Sailor|Navy Sailor|ceremony|visit",
+   "ulang": true
   }
  ],
  "dunia-8": [
@@ -911,6 +936,7 @@
    "judul": "Checkpoint Charlie, Berlin",
    "ket": "Pos penyeberangan terkenal di Tembok Berlin masa Perang Dingin.",
    "cari": [
+    "File:Checkpoint Charlie memorial, Berlin.jpg",
     "Checkpoint Charlie",
     "Checkpoint Charlie 1961"
    ],
@@ -951,6 +977,7 @@
    "judul": "Komputer NeXT, server web pertama",
    "ket": "Komputer tempat World Wide Web pertama kali dijalankan, 1990.",
    "cari": [
+    "File:First Web Server.jpg",
     "first web server NeXT CERN",
     "NeXTcube CERN web server"
    ],
@@ -997,6 +1024,7 @@
    "judul": "Jabal Uhud, Madinah",
    "ket": "Tempat terjadinya Perang Uhud tahun 3 H.",
    "cari": [
+    "File:Mount Uhud.JPG",
     "Mount Uhud",
     "Jabal Uhud"
    ],
@@ -1037,6 +1065,7 @@
    "judul": "Masjid Amr bin Ash, Kairo",
    "ket": "Masjid pertama di Mesir, dibangun masa Khalifah Umar.",
    "cari": [
+    "File:Mosque of Amr ibn al-As 005.JPG",
     "Mosque of Amr ibn al-As",
     "Amr ibn al-As mosque Cairo"
    ],
@@ -1075,6 +1104,7 @@
    "judul": "Masjid Agung Kairouan, Tunisia",
    "ket": "Masjid besar di Afrika Utara yang berkembang pada masa Umayyah.",
    "cari": [
+    "File:Great Mosque of Kairouan mihrab view.jpg",
     "Great Mosque of Kairouan",
     "Kairouan mosque"
    ],
@@ -1118,10 +1148,12 @@
    "ket": "Kitab aljabar yang menjadi dasar matematika modern.",
    "cari": [
     "al-Khwarizmi algebra manuscript",
-    "Kitab al-Jabr manuscript",
-    "Al-Jabr wa'l muqabala"
+    "Kitab al-mukhtasar fi hisab al-jabr",
+    "Khwarizmi Algebra Bodleian"
    ],
-   "wajib": "Jabr|algebra|Khwarizmi|Khwārizmī"
+   "wajib": "Khwarizmi|Khwārizmī|al-Jabr|jabr",
+   "hindari": "treatise of algebra",
+   "ulang": true
   }
  ],
  "ski-5": [
@@ -1157,6 +1189,7 @@
    "judul": "Menara Giralda, Sevilla",
    "ket": "Bekas menara Masjid Agung Sevilla masa Muwahhidun.",
    "cari": [
+    "File:La Giralda, Seville, Spain - Sep 2009.jpg",
     "Giralda Seville",
     "La Giralda"
    ],
@@ -1196,6 +1229,7 @@
    "judul": "Istana Topkapi, Istanbul",
    "ket": "Pusat pemerintahan Turki Usmani selama hampir 400 tahun.",
    "cari": [
+    "File:Topkapı - 01.jpg",
     "Topkapi Palace",
     "Topkapı Palace"
    ],
@@ -1205,6 +1239,7 @@
    "judul": "Benteng Merah (Red Fort), Delhi",
    "ket": "Istana-benteng Dinasti Mughal.",
    "cari": [
+    "File:20191203 Naubat Khana, Red Fort, Delhi 0453 6340 DxO.jpg",
     "Red Fort Delhi",
     "Lal Qila Delhi"
    ],
@@ -1245,6 +1280,7 @@
    "judul": "Masjid Muhammad Ali, Kairo",
    "ket": "Masjid yang dibangun Muhammad Ali Pasha, tokoh modernisasi Mesir.",
    "cari": [
+    "File:Muhammad Ali Mosque 1.jpg",
     "Mosque of Muhammad Ali Cairo",
     "Muhammad Ali Mosque Citadel"
    ],
@@ -1292,16 +1328,19 @@
    "ket": "Masjid tertua di Kalimantan Selatan.",
    "cari": [
     "Masjid Sultan Suriansyah",
-    "Sultan Suriansyah mosque"
+    "Sultan Suriansyah Mosque Banjarmasin"
    ],
-   "wajib": "Suriansyah"
+   "wajib": "Suriansyah",
+   "hindari": "Drum|bedug|interior",
+   "ulang": true
   },
   {
    "judul": "Makam Fatimah binti Maimun, Gresik",
    "ket": "Nisan berangka tahun 1082 M, bukti awal Islam di Jawa.",
    "cari": [
-    "Makam Fatimah binti Maimun",
-    "Fatimah binti Maimun Leran"
+    "Fatimah binti Maimun",
+    "Makam Leran Gresik",
+    "Leran tomb Gresik"
    ],
    "wajib": "Fatimah|Maimun|Leran"
   }

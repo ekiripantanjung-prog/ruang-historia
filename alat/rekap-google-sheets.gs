@@ -9,6 +9,7 @@
  * 4. Salin alamat aplikasi web ke Panel Guru Ruang Historia.
  * 5. Isi lembar "Siswa" (Kelas, No, Nama), lalu menu Ruang Historia > Buat kode siswa.
  * 6. Lihat lembar "Analisis" (diperbarui otomatis setiap file dibuka, atau lewat menu).
+ * 7. Lembar "Pengaturan": atur sampai bab berapa materi dibuka untuk tiap kelas, dan KKM-nya.
  */
 
 const LEMBAR_SISWA = 'Siswa';
@@ -16,6 +17,8 @@ const LEMBAR_NILAI = 'Nilai';
 const LEMBAR_REKAP = 'Rekap';
 const LEMBAR_BUTIR = 'Butir Soal';
 const LEMBAR_ANALISIS = 'Analisis';
+const LEMBAR_ATUR = 'Pengaturan';
+const RUANG = [['Sejarah Indonesia', 'indonesia'], ['Sejarah Dunia', 'dunia'], ['SKI', 'ski']];
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 
 function onOpen() {
@@ -45,6 +48,7 @@ function siapkan() {
   buat(LEMBAR_REKAP, ['Kelas', 'No', 'Nama'], [80, 50, 240]);
   buat(LEMBAR_BUTIR, ['Bagian', 'Kelas', 'No soal', 'Soal', 'Dijawab', 'Benar', '% benar'], [130, 70, 60, 520, 70, 60, 70]);
   buat(LEMBAR_ANALISIS, ['Analisis hasil belajar'], [900]);
+  buat(LEMBAR_ATUR, ['Kelas'].concat(RUANG.map(r => 'Buka sampai bab: ' + r[0])).concat(['KKM']), [80, 190, 170, 120, 60]);
   const awal = ss.getSheetByName('Sheet1') || ss.getSheetByName('Lembar1');
   if (awal && awal.getLastRow() === 0 && ss.getSheets().length > 3) ss.deleteSheet(awal);
   try { SpreadsheetApp.getUi().alert('Lembar Siswa, Nilai, dan Rekap sudah siap. Isi daftar siswa di lembar Siswa (Kelas, No, Nama), lalu pilih menu Ruang Historia > Buat kode siswa.'); } catch (e) {}
@@ -67,6 +71,7 @@ function buatKode() {
     }
   });
   sh.getRange(2, 1, n, 4).setValues(data);
+  isiKelasPengaturan(data.map(r => String(r[0]).trim()).filter(Boolean));
   try { SpreadsheetApp.getUi().alert(baru + ' kode baru dibuat. Bagikan kode di kolom D kepada setiap siswa.'); } catch (e) {}
 }
 
@@ -77,6 +82,7 @@ function doGet(e) {
     kunci.waitLock(20000);
     if (p.aksi === 'cek') return keluar({ ok: true, nama: SpreadsheetApp.getActiveSpreadsheet().getName() });
     if (p.aksi === 'masuk') return keluar(masuk(p.kode));
+    if (p.aksi === 'atur') return keluar(bacaPengaturan(p.kode));
     if (p.aksi === 'nilai') return keluar(simpanNilai(p));
     return keluar({ ok: false, pesan: 'Aksi tidak dikenal' });
   } catch (err) {
@@ -113,6 +119,29 @@ function cariSiswa(kode) {
   const data = sh.getRange(2, 1, sh.getLastRow() - 1, 4).getValues();
   for (const r of data) if (String(r[3]).trim().toUpperCase() === kode) return { kelas: String(r[0]), no: r[1], nama: String(r[2]) };
   return null;
+}
+
+/** Menambahkan baris kelas baru di lembar Pengaturan (bawaan: Bab 1 terbuka, KKM 75). */
+function isiKelasPengaturan(kelasList) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(LEMBAR_ATUR);
+  if (!sh) { siapkan(); sh = ss.getSheetByName(LEMBAR_ATUR); }
+  const ada = sh.getLastRow() > 1 ? sh.getRange(2, 1, sh.getLastRow() - 1, 1).getValues().map(r => String(r[0]).trim()) : [];
+  Array.from(new Set(kelasList)).forEach(k => { if (ada.indexOf(k) < 0) sh.appendRow([k, 1, 1, 1, 75]); });
+}
+
+/** Mengirim pengaturan kelas siswa (bab yang sudah dibuka guru dan KKM). */
+function bacaPengaturan(kode) {
+  const s = cariSiswa(kode);
+  if (!s) return { ok: false };
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_ATUR);
+  if (!sh || sh.getLastRow() < 2) return { ok: true, batas: {} };
+  const data = sh.getRange(2, 1, sh.getLastRow() - 1, RUANG.length + 2).getValues();
+  const r = data.filter(x => String(x[0]).trim() === s.kelas)[0];
+  if (!r) return { ok: true, batas: {} };
+  const batas = {};
+  RUANG.forEach((ru, i) => { const v = r[i + 1]; if (v !== '' && v !== null) batas[ru[1]] = Number(v) || 0; });
+  return { ok: true, kelas: s.kelas, batas: batas, kkm: Number(r[RUANG.length + 1]) || null };
 }
 
 function masuk(kode) {
@@ -199,7 +228,8 @@ function perbaruiAnalisis(diam) {
   tulis('Diperbarui: ' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm') + ' · Nilai yang dipakai adalah nilai terbaik setiap siswa.', 'kecil');
   tulis('');
   kelasList.forEach(kelas => {
-    const kkm = Number(props.getProperty('kkm_' + kelas)) || 75;
+    const at = ss.getSheetByName(LEMBAR_ATUR), barisAt = at && at.getLastRow() > 1 ? at.getRange(2, 1, at.getLastRow() - 1, RUANG.length + 2).getValues().filter(x => String(x[0]).trim() === kelas)[0] : null;
+  const kkm = (barisAt && Number(barisAt[RUANG.length + 1])) || Number(props.getProperty('kkm_' + kelas)) || 75;
     const anggota = siswa.filter(r => String(r[0]) === kelas).map(r => String(r[2]));
     const baris = isi.filter(r => String(r[0]) === kelas);
     tulis('KELAS ' + kelas + ' · ' + (anggota.length || baris.length) + ' siswa · KKM ' + kkm, 'kelas');

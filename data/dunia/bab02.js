@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan sumbangan Yunani di bidang filsafat, ilmu, dan demokrasi",
     "Menjelaskan perkembangan Romawi dari republik menjadi kekaisaran",
     "Menganalisis warisan Yunani dan Romawi bagi dunia modern",
-    "Menjelaskan peran ilmuwan Muslim dalam melestarikan ilmu Yunani"
+    "Menjelaskan peran ilmuwan Muslim dalam melestarikan ilmu Yunani",
+    "Menjelaskan perang-perang besar dan sebab runtuhnya Romawi Barat"
   ],
 
   video: { src: "video/dunia/bab02.mp4", judul: "Yunani dan Romawi dalam 1,5 menit", durasi: "1 menit 25 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -65,7 +66,13 @@ TAMBAH_BAB({
       isi: `<p>Roma berkembang dari sebuah kota kecil di Italia menjadi kekaisaran yang menguasai seluruh pantai Laut Tengah. Mula-mula berbentuk <b>republik</b> (509 SM), lalu menjadi <b>kekaisaran</b> sejak Augustus (27 SM).</p>
 <p>Warisan Romawi sangat luas: <b>hukum Romawi</b> menjadi dasar hukum banyak negara (termasuk hukum warisan Belanda di Indonesia), <b>huruf Latin</b> kita pakai sehari-hari, serta <b>teknik bangunan</b> seperti jalan, jembatan, akuaduk, dan kubah.</p>
 <p>Romawi Barat runtuh pada 476 M. Romawi Timur (Bizantium) dengan ibu kota Konstantinopel bertahan hampir seribu tahun lagi.</p>`,
-      cinta: ["Cinta kepada Allah dan Rasul-Nya", "Surah Ar-Rum mengabarkan bahwa Romawi yang kalah akan menang kembali dalam beberapa tahun, dan hal itu terbukti. Kekuasaan di dunia selalu dipergilirkan oleh Allah."] }
+      cinta: ["Cinta kepada Allah dan Rasul-Nya", "Surah Ar-Rum mengabarkan bahwa Romawi yang kalah akan menang kembali dalam beberapa tahun, dan hal itu terbukti. Kekuasaan di dunia selalu dipergilirkan oleh Allah."] },
+    { judul: "D. Perang-perang besar Yunani",
+      isi: "<ul>\n<li><b>Perang Persia</b> (490–479 SM): Yunani bersatu melawan serangan Kekaisaran Persia. Terkenal pertempuran <b>Marathon</b> (490 SM), <b>Thermopylae</b> dan <b>Salamis</b> (480 SM). Kemenangan Yunani menandai awal zaman keemasan Athena.</li>\n<li><b>Perang Peloponnesos</b> (431–404 SM): perang saudara antara Athena dan Sparta beserta sekutu masing-masing. Sparta menang, tetapi seluruh Yunani menjadi lemah.</li>\n<li>Kelemahan itu dimanfaatkan <b>Makedonia</b>. Raja Filipus II menguasai Yunani, lalu putranya, <b>Aleksander Agung</b>, membangun kekaisaran sampai India dan menyebarkan budaya Yunani (masa Hellenistik). Kota <b>Aleksandria</b> di Mesir menjadi pusat ilmu dengan perpustakaan terbesar zaman kuno.</li>\n</ul>",
+      cinta: null },
+    { judul: "E. Romawi: dari Kartago sampai runtuhnya Romawi Barat",
+      isi: "<p><b>Perang Punisia</b> (264–146 SM) adalah tiga perang antara Romawi dan <b>Kartago</b> (Afrika Utara) untuk menguasai Laut Tengah. Jenderal Kartago, <b>Hannibal</b>, terkenal karena menyeberangi Pegunungan Alpen dengan gajah. Romawi akhirnya menang dan menghancurkan Kartago.</p>\n<p>Kekayaan dari wilayah taklukan memicu perebutan kekuasaan. <b>Julius Caesar</b> menjadi diktator, lalu dibunuh pada 44 SM. Keponakannya, <b>Oktavianus</b>, menjadi kaisar pertama dengan gelar <b>Augustus</b> (27 SM).</p>\n<p><b>Agama Kristen</b>, yang lahir di Palestina pada abad ke-1, mula-mula dilarang. Kaisar <b>Konstantinus</b> memberi kebebasan beragama melalui Edik Milan (313 M) dan memindahkan ibu kota ke <b>Konstantinopel</b> (330 M). Pada 380 M Kristen menjadi agama resmi kekaisaran.</p>\n<p><b>Sebab runtuhnya Romawi Barat</b> (476 M):</p>\n<ol>\n<li>Wilayah terlalu luas dan sulit dipertahankan.</li>\n<li>Perebutan takhta dan pemerintahan yang lemah.</li>\n<li>Krisis ekonomi dan pajak berat.</li>\n<li>Serangan bangsa-bangsa Jermanik. Pada 476 M, kepala suku <b>Odoaker</b> menurunkan kaisar terakhir, Romulus Augustulus.</li>\n</ol>",
+      cinta: ["Cinta tanah air", "Romawi yang perkasa runtuh karena perpecahan, pemimpin yang lemah, dan beban rakyat yang berat. Negeri yang kuat dijaga oleh persatuan dan pemerintahan yang adil."] }
   ],
 
   kartu: [
@@ -89,10 +96,18 @@ TAMBAH_BAB({
     ["Pax Romana", "Masa damai Romawi"],
     ["Akuaduk", "Saluran air buatan Romawi"],
     ["Bizantium", "Kekaisaran Romawi Timur"],
-    ["Baitul Hikmah", "Pusat penerjemahan dan ilmu di Baghdad"]
+    ["Baitul Hikmah", "Pusat penerjemahan dan ilmu di Baghdad"],
+    ["Perang Punisia", "Tiga perang Romawi melawan Kartago (264–146 SM)"],
+    ["Edik Milan", "Pernyataan kebebasan beragama oleh Kaisar Konstantinus (313 M)"],
+    ["Aleksandria", "Kota di Mesir, pusat ilmu masa Hellenistik"]
   ],
 
   soal: [
+    { q: "Perang antara Yunani dan Kekaisaran Persia yang terkenal dengan pertempuran Marathon dan Thermopylae adalah…", o: ["Perang Peloponnesos", "Perang Persia", "Perang Punisia", "Perang Troya", "Perang Salib"], a: 1, l: "C1", p: "Perang Persia (490–479 SM) dimenangkan Yunani." },
+    { q: "Perang Peloponnesos (431–404 SM) adalah perang antara…", o: ["Yunani dan Persia", "Athena dan Sparta", "Romawi dan Kartago", "Makedonia dan Persia", "Romawi dan Jermanik"], a: 1, l: "C1", p: "Perang saudara Yunani ini melemahkan negara-negara kota." },
+    { q: "Jenderal Kartago yang menyeberangi Pegunungan Alpen dengan pasukan gajah adalah…", o: ["Julius Caesar", "Hannibal", "Aleksander", "Odoaker", "Spartacus"], a: 1, l: "C1", p: "Hannibal menyerang Italia dalam Perang Punisia Kedua." },
+    { q: "Kaisar Romawi yang memberi kebebasan beragama melalui Edik Milan (313 M) dan mendirikan Konstantinopel adalah…", o: ["Augustus", "Nero", "Konstantinus", "Theodosius", "Justinianus"], a: 2, l: "C1", p: "Konstantinus memindahkan ibu kota ke Konstantinopel pada 330 M." },
+    { q: "Faktor dari luar yang menyebabkan runtuhnya Romawi Barat pada 476 M adalah…", o: ["serangan bangsa Mongol", "serangan bangsa-bangsa Jermanik", "serangan Turki Usmani", "Perang Salib", "wabah hitam"], a: 1, l: "C2", p: "Odoaker, pemimpin Jermanik, menurunkan kaisar Romawi Barat terakhir." },
     { q: "Negara-kota di Yunani Kuno disebut…", o: ["polis", "republik", "dinasti", "provinsi", "kesultanan"], a: 0, l: "C1", p: "Polis adalah negara-kota yang berdiri sendiri." },
     { q: "Keadaan alam Yunani yang bergunung-gunung dan berpulau menyebabkan…", o: ["Yunani dipimpin satu kaisar", "masyarakatnya hidup dalam negara-kota yang terpisah", "tidak ada pertanian", "Yunani tidak berdagang", "Yunani tidak pernah berperang"], a: 1, l: "C2", p: "Gunung dan laut memisahkan wilayah, sehingga tumbuh banyak polis yang mandiri." },
     { s: "Di negara-kota ini, anak laki-laki sejak usia tujuh tahun tinggal di barak dan dilatih menjadi prajurit yang tangguh. Kehidupan diatur ketat untuk kepentingan militer.", q: "Negara-kota yang dimaksud adalah…", o: ["Athena", "Sparta", "Korintus", "Roma", "Aleksandria"], a: 1, l: "C3", p: "Sparta mengutamakan kekuatan militer." },

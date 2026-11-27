@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan masa keemasan peradaban Islam dan sumbangannya bagi ilmu pengetahuan",
     "Menjelaskan sebab, jalannya, dan dampak Perang Salib",
     "Menganalisis peristiwa runtuhnya Baghdad (1258) dan jatuhnya Konstantinopel (1453)",
-    "Meneladani semangat ilmiah para ilmuwan Muslim"
+    "Meneladani semangat ilmiah para ilmuwan Muslim",
+    "Menjelaskan peradaban Bizantium, Tiongkok, dan Mongol pada Abad Pertengahan"
   ],
 
   video: { src: "video/dunia/bab03.mp4", judul: "Abad Pertengahan dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -71,7 +72,13 @@ TAMBAH_BAB({
       isi: `<p><b>Perang Salib</b> (1096–1291) adalah serangkaian perang antara pasukan Kristen Eropa dan kaum Muslim untuk menguasai Yerusalem dan sekitarnya. Pada 1187, <b>Shalahuddin Al-Ayyubi</b> merebut kembali Yerusalem dan memperlakukan penduduknya dengan baik.</p>
 <p>Di balik peperangan, terjadi perjumpaan budaya. Eropa mengenal gula, rempah, kain, kertas, ilmu kedokteran, dan matematika dari dunia Islam. Perjumpaan ini, bersama terjemahan di Andalusia, ikut mendorong lahirnya Renaisans.</p>`,
       cinta: ["Cinta diri dan sesama", "Shalahuddin tetap berlaku adil kepada musuh yang sudah kalah. Akhlak mulia tetap dijaga bahkan dalam peperangan."] },
-    { judul: "D. Dua peristiwa besar: 1258 dan 1453",
+    { judul: "D. Bizantium, Tiongkok, dan Mongol",
+      isi: "<p><b>Romawi Timur (Bizantium)</b> bertahan sampai 1453. Kaisar <b>Justinianus</b> (527–565) menyusun kitab hukum <i>Corpus Juris Civilis</i> dan membangun <b>Hagia Sophia</b> (537). Bizantium menjadi penjaga warisan Yunani-Romawi dan pusat Kristen Ortodoks.</p>\n<p>Di Asia Timur, <b>Tiongkok</b> masa Dinasti <b>Tang</b> (618–907) dan <b>Song</b> (960–1279) termasuk peradaban termaju di dunia. Empat penemuan penting Tiongkok, yaitu <b>kertas, percetakan, mesiu, dan kompas</b>, kelak menyebar ke dunia Islam dan Eropa.</p>\n<p>Pada abad ke-13, bangsa <b>Mongol</b> di bawah <b>Jenghis Khan</b> membangun kekaisaran darat terbesar dalam sejarah, dari Tiongkok sampai Eropa Timur. Cucunya, <b>Kubilai Khan</b>, mendirikan Dinasti Yuan di Tiongkok dan pernah mengirim pasukan ke Jawa (1293), peristiwa yang dimanfaatkan Raden Wijaya untuk mendirikan Majapahit. Masa damai di bawah Mongol (<i>Pax Mongolica</i>) membuat Jalur Sutra ramai; <b>Marco Polo</b> dari Venesia melakukan perjalanan ke Tiongkok pada masa ini.</p>",
+      cinta: null },
+    { judul: "E. Wabah Hitam dan akhir Abad Pertengahan",
+      isi: "<p>Pada 1347–1351, wabah <b>Black Death</b> (pes) menyebar dari Asia Tengah melalui jalur dagang dan menewaskan sekitar sepertiga penduduk Eropa. Akibatnya:</p>\n<ul>\n<li>Tenaga kerja berkurang sehingga petani dapat menuntut upah lebih tinggi; sistem feodal melemah.</li>\n<li>Kepercayaan sebagian orang terhadap lembaga lama goyah, membuka jalan bagi cara berpikir baru.</li>\n<li>Kota dan perdagangan kemudian bangkit kembali, terutama di Italia.</li>\n</ul>\n<p>Melemahnya feodalisme, tumbuhnya kota, perjumpaan dengan dunia Islam, dan jatuhnya Konstantinopel (1453) menandai berakhirnya Abad Pertengahan dan dimulainya Renaisans.</p>",
+      cinta: ["Cinta diri dan sesama", "Wabah menyebar lewat jalur yang menghubungkan manusia. Pengalaman pandemi mengajarkan pentingnya menjaga kesehatan bersama dan peduli pada orang lain."] },
+    { judul: "F. Dua peristiwa besar: 1258 dan 1453",
       isi: `<p>Pada 1258, pasukan Mongol di bawah Hulagu Khan menghancurkan <b>Baghdad</b>, mengakhiri Kekhalifahan Abbasiyah. Banyak naskah ilmu musnah. Namun peradaban Islam bangkit lagi melalui Mamluk di Mesir dan kemudian tiga kerajaan besar: Usmani, Safawi, dan Mughal.</p>
 <p>Pada 1453, Sultan <b>Muhammad Al-Fatih</b> dari Turki Usmani menaklukkan <b>Konstantinopel</b>. Jalur dagang lama ke Asia dikuasai Usmani, sehingga bangsa Eropa mencari jalan laut, dan dimulailah zaman penjelajahan (Bab 4).</p>`,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Kejatuhan Baghdad mengingatkan bahwa kejayaan bisa hilang bila umat lalai dan terpecah. Menjaga persatuan dan ilmu adalah bagian dari menjaga amanah."] }
@@ -98,10 +105,18 @@ TAMBAH_BAB({
     ["Perang Salib", "Perang 1096–1291 memperebutkan Yerusalem"],
     ["Andalusia", "Wilayah Islam di Semenanjung Iberia (Spanyol dan Portugal)"],
     ["Mamluk", "Kesultanan di Mesir yang menghentikan Mongol"],
-    ["Bizantium", "Kekaisaran Romawi Timur"]
+    ["Bizantium", "Kekaisaran Romawi Timur"],
+    ["Black Death", "Wabah pes yang melanda Eropa pada 1347–1351"],
+    ["Pax Mongolica", "Masa damai di bawah Kekaisaran Mongol yang meramaikan Jalur Sutra"],
+    ["Corpus Juris Civilis", "Kitab hukum Romawi yang disusun Kaisar Justinianus"]
   ],
 
   soal: [
+    { q: "Kaisar Bizantium yang menyusun kitab hukum Corpus Juris Civilis dan membangun Hagia Sophia adalah…", o: ["Konstantinus", "Justinianus", "Charlemagne", "Augustus", "Theodosius"], a: 1, l: "C1", p: "Justinianus memerintah 527–565 M." },
+    { q: "Empat penemuan penting Tiongkok yang kemudian mengubah dunia adalah…", o: ["roda, irigasi, perunggu, piramida", "kertas, percetakan, mesiu, dan kompas", "angka nol, aljabar, astrolab, optik", "mesin uap, kereta api, telegraf, listrik", "teleskop, mikroskop, jam, kacamata"], a: 1, l: "C1", p: "Keempatnya menyebar ke dunia Islam lalu ke Eropa." },
+    { q: "Pendiri Kekaisaran Mongol adalah…", o: ["Kubilai Khan", "Hulagu Khan", "Jenghis Khan", "Timur Lenk", "Batu Khan"], a: 2, l: "C1", p: "Jenghis Khan membangun kekaisaran darat terbesar dalam sejarah." },
+    { q: "Serangan pasukan Kubilai Khan ke Jawa pada 1293 dimanfaatkan Raden Wijaya untuk…", o: ["menyerahkan Jawa kepada Mongol", "mengalahkan Jayakatwang lalu mendirikan Majapahit", "menyerang Sriwijaya", "mengusir Portugis", "mendirikan Singasari"], a: 1, l: "C3", p: "Raden Wijaya bersekutu dengan pasukan Mongol mengalahkan Jayakatwang, lalu berbalik mengusir mereka." },
+    { q: "Dampak Wabah Hitam (1347–1351) terhadap masyarakat Eropa adalah…", o: ["sistem feodal makin kuat", "petani dapat menuntut upah lebih tinggi sehingga feodalisme melemah", "penduduk Eropa bertambah", "perdagangan berhenti selamanya", "Gereja makin berkuasa tanpa kritik"], a: 1, l: "C4", p: "Kekurangan tenaga kerja mengubah hubungan petani dan tuan tanah." },
     { q: "Abad Pertengahan Eropa dimulai setelah peristiwa…", o: ["jatuhnya Konstantinopel", "runtuhnya Romawi Barat (476)", "Perang Salib", "lahirnya Renaisans", "penemuan Amerika"], a: 1, l: "C1", p: "Runtuhnya Romawi Barat pada 476 menandai awal Abad Pertengahan." },
     { q: "Sistem pertukaran tanah dengan kesetiaan dan perlindungan di Eropa Abad Pertengahan disebut…", o: ["merkantilisme", "feodalisme", "demokrasi", "kapitalisme", "republik"], a: 1, l: "C1", p: "Feodalisme mengatur hubungan raja, bangsawan, ksatria, dan petani." },
     { s: "Seorang petani di Eropa abad ke-10 menggarap tanah milik seorang bangsawan. Ia tidak boleh pindah tanpa izin, wajib menyerahkan sebagian hasil panen, dan sebagai gantinya mendapat perlindungan.", q: "Kedudukan petani tersebut disebut…", o: ["ksatria", "serf", "lord", "konsul", "senator"], a: 1, l: "C3", p: "Serf adalah petani yang terikat pada tanah tuannya." },

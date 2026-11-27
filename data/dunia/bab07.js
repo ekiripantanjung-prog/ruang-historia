@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan jalannya dan dampak Perang Dunia I",
     "Menjelaskan sebab-sebab Perang Dunia II di Eropa dan Asia Pasifik",
     "Menguraikan jalannya, akhir, dan dampak Perang Dunia II, termasuk bagi Indonesia",
-    "Menarik pelajaran tentang nilai kemanusiaan dan perdamaian"
+    "Menarik pelajaran tentang nilai kemanusiaan dan perdamaian",
+    "Menguraikan jalannya Perang Dunia I dan II"
   ],
 
   video: { src: "video/dunia/bab07.mp4", judul: "Perang Dunia I dan II dalam 1 menit", durasi: "1 menit 18 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -70,7 +71,13 @@ TAMBAH_BAB({
 <p>Perang Dunia II adalah perang paling mematikan dalam sejarah, dengan korban jiwa diperkirakan 70–85 juta orang, sebagian besar warga sipil. Kekejaman seperti <b>Holocaust</b> dan bom atom di Hiroshima dan Nagasaki menjadi pelajaran pahit bagi umat manusia.</p>`,
       kartu: true,
       cinta: ["Cinta diri dan sesama", "Islam mengajarkan bahwa membunuh satu jiwa tanpa hak seperti membunuh seluruh manusia, dan menyelamatkan satu jiwa seperti menyelamatkan seluruh manusia (QS Al-Ma'idah: 32)."] },
-    { judul: "C. Dampak perang dan kaitannya dengan Indonesia",
+    { judul: "C. Jalannya Perang Dunia I",
+      isi: "<table><thead><tr><th>Blok Sekutu</th><th>Blok Sentral</th></tr></thead><tbody>\n<tr><td>Inggris, Prancis, Rusia; kemudian Italia (1915) dan Amerika Serikat (1917)</td><td>Jerman, Austria-Hungaria, Turki Usmani, Bulgaria</td></tr>\n</tbody></table>\n<ul>\n<li>Rusia keluar dari perang setelah <b>Revolusi Rusia</b> (1917).</li>\n<li>Amerika Serikat masuk perang (1917) setelah kapal-kapalnya diserang kapal selam Jerman, sehingga kekuatan Sekutu bertambah.</li>\n<li>Perang berakhir dengan gencatan senjata pada <b>11 November 1918</b>.</li>\n<li>Presiden AS Woodrow Wilson mengusulkan <b>14 Pasal</b>, termasuk hak bangsa-bangsa menentukan nasibnya sendiri, dan pembentukan <b>Liga Bangsa-Bangsa</b> (1920).</li>\n<li>Turki Usmani runtuh. Wilayah Arabnya dibagi Inggris dan Prancis (Perjanjian Sykes-Picot, 1916). Melalui <b>Deklarasi Balfour</b> (1917), Inggris menjanjikan \"tanah air bagi bangsa Yahudi\" di Palestina; janji ini menjadi akar konflik Palestina.</li>\n</ul>",
+      cinta: null },
+    { judul: "D. Jalannya Perang Dunia II",
+      isi: "<table><thead><tr><th>Blok Sekutu</th><th>Blok Poros</th></tr></thead><tbody>\n<tr><td>Inggris, Prancis, Uni Soviet (sejak 1941), Amerika Serikat (sejak 1941), Tiongkok</td><td>Jerman, Italia, Jepang</td></tr>\n</tbody></table>\n<p><b>Di Eropa</b>: Jerman menaklukkan banyak negara dengan serangan kilat (<i>blitzkrieg</i>), termasuk Belanda dan Prancis (1940). Kekalahan Jerman di <b>Stalingrad</b> (1942–1943) menjadi titik balik. Sekutu mendarat di Normandia, Prancis (<b>D-Day, 6 Juni 1944</b>). Jerman menyerah pada <b>8 Mei 1945</b>.</p>\n<p><b>Di Asia-Pasifik</b>: setelah menyerang Pearl Harbor, Jepang menguasai Asia Tenggara, termasuk Hindia Belanda (1942). Kekalahan Jepang di <b>Midway</b> (1942) menjadi titik balik. Amerika Serikat menjatuhkan bom atom di <b>Hiroshima</b> (6 Agustus 1945) dan <b>Nagasaki</b> (9 Agustus 1945). Jepang menyatakan menyerah pada <b>15 Agustus 1945</b> dan menandatangani penyerahan resmi pada 2 September 1945.</p>",
+      cinta: ["Cinta diri dan sesama", "Perang Dunia II merenggut puluhan juta nyawa, sebagian besar warga sipil. Menghargai perdamaian dan menolak kebencian adalah pelajaran terpenting dari perang."] },
+    { judul: "E. Dampak perang dan kaitannya dengan Indonesia",
       isi: `<table><thead><tr><th>Dampak</th><th>Contoh</th></tr></thead><tbody>
 <tr><td>Politik</td><td>Lahirnya PBB (1945); dunia terbelah menjadi blok AS dan Uni Soviet (Perang Dingin)</td></tr>
 <tr><td>Ekonomi</td><td>Eropa hancur dan dibangun kembali; AS menjadi kekuatan ekonomi terbesar</td></tr>
@@ -102,10 +109,19 @@ TAMBAH_BAB({
     ["Liga Bangsa-Bangsa", "Organisasi perdamaian dunia setelah PD I"],
     ["PBB", "Perserikatan Bangsa-Bangsa, didirikan 24 Oktober 1945"],
     ["Gencatan senjata", "Penghentian pertempuran untuk sementara"],
-    ["Dekolonisasi", "Proses merdekanya bangsa-bangsa terjajah"]
+    ["Dekolonisasi", "Proses merdekanya bangsa-bangsa terjajah"],
+    ["Blitzkrieg", "Serangan kilat Jerman dalam Perang Dunia II"],
+    ["D-Day", "Pendaratan Sekutu di Normandia, 6 Juni 1944"],
+    ["Deklarasi Balfour", "Janji Inggris tentang tanah air Yahudi di Palestina (1917)"],
+    ["14 Pasal Wilson", "Usul perdamaian Presiden AS Woodrow Wilson setelah Perang Dunia I"]
   ],
 
   soal: [
+    { q: "Negara yang keluar dari Perang Dunia I setelah terjadi revolusi pada 1917 adalah…", o: ["Prancis", "Rusia", "Italia", "Jerman", "Inggris"], a: 1, l: "C1", p: "Revolusi Rusia membuat Rusia menarik diri dari perang." },
+    { q: "Pernyataan Inggris pada 1917 yang menjanjikan tanah air bagi bangsa Yahudi di Palestina dikenal sebagai…", o: ["Perjanjian Versailles", "Deklarasi Balfour", "14 Pasal Wilson", "Perjanjian Sykes-Picot", "Piagam Atlantik"], a: 1, l: "C1", p: "Deklarasi Balfour menjadi salah satu akar konflik Palestina." },
+    { q: "Anggota Blok Poros dalam Perang Dunia II adalah…", o: ["Inggris, Prancis, AS", "Jerman, Italia, Jepang", "Uni Soviet, Tiongkok, AS", "Jerman, Austria-Hungaria, Turki", "Jepang, Tiongkok, Korea"], a: 1, l: "C1", p: "Blok Poros terdiri atas Jerman, Italia, dan Jepang." },
+    { q: "Pendaratan pasukan Sekutu di Normandia pada 6 Juni 1944 dikenal sebagai…", o: ["Blitzkrieg", "D-Day", "Operasi Barbarossa", "Pertempuran Midway", "Pearl Harbor"], a: 1, l: "C1", p: "D-Day membuka front barat untuk membebaskan Eropa dari Jerman." },
+    { s: "Setelah bom atom dijatuhkan di Hiroshima dan Nagasaki, Jepang menyatakan menyerah kepada Sekutu pada 15 Agustus 1945.", q: "Hubungan peristiwa tersebut dengan sejarah Indonesia adalah…", o: ["Belanda kembali berkuasa penuh", "terjadi kekosongan kekuasaan yang dimanfaatkan untuk memproklamasikan kemerdekaan", "Jepang memberikan kemerdekaan secara resmi", "Indonesia ikut menyerah kepada Sekutu", "Sekutu langsung mengakui Indonesia"], a: 1, l: "C4", p: "Menyerahnya Jepang (15 Agustus 1945) menciptakan vacuum of power yang dimanfaatkan bangsa Indonesia." },
     { q: "Sebab khusus meletusnya Perang Dunia I adalah…", o: ["serangan Jepang ke Pearl Harbor", "pembunuhan Pangeran Franz Ferdinand di Sarajevo", "Jerman menyerang Polandia", "krisis Malaise", "Revolusi Rusia"], a: 1, l: "C1", p: "Pembunuhan pewaris takhta Austria-Hungaria pada 28 Juni 1914 memicu perang." },
     { q: "Negara-negara Blok Sentral dalam Perang Dunia I adalah…", o: ["Inggris, Prancis, Rusia", "Jerman, Austria-Hungaria, Turki Usmani", "Jerman, Italia, Jepang", "AS, Inggris, Uni Soviet", "Prancis, Italia, Jepang"], a: 1, l: "C1", p: "Blok Sentral: Jerman, Austria-Hungaria, Turki Usmani, Bulgaria." },
     { s: "Ketika Austria-Hungaria menyatakan perang kepada Serbia, Rusia membantu Serbia, Jerman membantu Austria-Hungaria, lalu Prancis dan Inggris membantu Rusia. Dalam beberapa minggu, sebagian besar Eropa terseret perang.", q: "Teks tersebut menunjukkan sebab umum Perang Dunia I berupa…", o: ["krisis ekonomi", "sistem persekutuan antarnegara", "perebutan Afrika", "Revolusi Industri", "penyebaran agama"], a: 1, l: "C4", p: "Sistem persekutuan membuat konflik kecil berkembang menjadi perang besar." },

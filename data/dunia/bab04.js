@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan revolusi ilmu pengetahuan dan peran mesin cetak",
     "Mengurutkan penjelajahan samudra bangsa Eropa beserta dampaknya bagi dunia",
     "Menjelaskan sebab dan akibat Reformasi Gereja",
-    "Menganalisis peran ilmu dari dunia Islam dalam kebangkitan Eropa"
+    "Menganalisis peran ilmu dari dunia Islam dalam kebangkitan Eropa",
+    "Menjelaskan revolusi ilmu pengetahuan dan lahirnya monarki absolut"
   ],
 
   video: { src: "video/dunia/bab04.mp4", judul: "Renaisans dan penjelajahan dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -67,6 +68,12 @@ TAMBAH_BAB({
     { judul: "C. Reformasi Gereja",
       isi: `<p>Pada 1517, <b>Martin Luther</b> mengkritik praktik penjualan surat pengampunan dosa (indulgensi). Kritiknya menyebar cepat berkat mesin cetak dan melahirkan <b>Kristen Protestan</b>. Tokoh lain: <b>Yohanes Calvin</b> di Swiss. Di Inggris, Raja Henry VIII memisahkan Gereja Inggris dari Roma (1534).</p>
 <p>Gereja Katolik menanggapi dengan <b>Kontra-Reformasi</b>, antara lain melalui Konsili Trente (1545). Eropa kemudian mengalami perang agama yang panjang, yang akhirnya mendorong gagasan toleransi beragama.</p>`,
+      cinta: null },
+    { judul: "D. Revolusi ilmu pengetahuan",
+      isi: "<p>Antara abad ke-16 dan ke-17, cara manusia memahami alam berubah besar. Pengetahuan diuji dengan <b>pengamatan, percobaan, dan perhitungan</b>, bukan hanya berdasarkan kitab lama.</p>\n<table><thead><tr><th>Tokoh</th><th>Sumbangan</th></tr></thead><tbody>\n<tr><td>Nicolaus Copernicus (1543)</td><td>Teori <b>heliosentris</b>: bumi dan planet mengelilingi matahari</td></tr>\n<tr><td>Johannes Kepler</td><td>Hukum gerak planet: orbit planet berbentuk elips</td></tr>\n<tr><td>Galileo Galilei</td><td>Mengamati langit dengan teleskop; mendukung heliosentris, sehingga diadili Gereja (1633)</td></tr>\n<tr><td>Francis Bacon</td><td>Metode ilmiah berdasarkan pengamatan dan percobaan</td></tr>\n<tr><td>Isaac Newton (1687)</td><td>Hukum gerak dan gravitasi dalam buku <i>Principia</i></td></tr>\n</tbody></table>\n<p>Para ilmuwan ini berutang pada karya ilmuwan Muslim, misalnya metode percobaan Ibnu al-Haitsam dan tabel astronomi dari observatorium Maragha dan Samarkand.</p>",
+      cinta: ["Cinta ilmu", "Galileo tetap meneliti meski pendapatnya ditentang. Ilmu berkembang karena keberanian mencari kebenaran dengan bukti dan kejujuran."] },
+    { judul: "E. Lahirnya negara-negara kuat di Eropa",
+      isi: "<p>Penjelajahan dan perdagangan membuat raja-raja Eropa makin kaya dan kuat. Muncullah <b>monarki absolut</b>, yaitu raja yang berkuasa penuh tanpa dibatasi undang-undang. Contoh terkenal adalah Raja <b>Louis XIV</b> dari Prancis (1643–1715), yang dikenal dengan ucapan \"Negara adalah saya\" (<i>L'État, c'est moi</i>) dan membangun Istana Versailles.</p>\n<p>Bersamaan dengan itu, negara-negara Eropa bersaing merebut jajahan dan jalur dagang. Setelah Portugis dan Spanyol, muncul Belanda, Inggris, dan Prancis sebagai kekuatan laut baru dengan kongsi dagangnya masing-masing (VOC, EIC). Persaingan inilah yang membawa mereka ke Nusantara.</p>",
       cinta: null }
   ],
 
@@ -91,10 +98,16 @@ TAMBAH_BAB({
     ["Kontra-Reformasi", "Pembaruan dari dalam Gereja Katolik sebagai tanggapan Reformasi"],
     ["Indulgensi", "Surat pengampunan dosa yang dijual Gereja saat itu"],
     ["Pertukaran Kolumbus", "Perpindahan tanaman, hewan, dan penyakit antara Amerika dan dunia lama"],
-    ["Revolusi ilmu", "Perubahan besar cara memahami alam melalui pengamatan dan percobaan"]
+    ["Revolusi ilmu", "Perubahan besar cara memahami alam melalui pengamatan dan percobaan"],
+    ["Monarki absolut", "Pemerintahan raja yang berkuasa penuh tanpa batas undang-undang"],
+    ["Metode ilmiah", "Cara memperoleh pengetahuan melalui pengamatan, percobaan, dan pembuktian"]
   ],
 
   soal: [
+    { q: "Ilmuwan yang merumuskan hukum gravitasi dalam buku Principia (1687) adalah…", o: ["Galileo Galilei", "Johannes Kepler", "Isaac Newton", "Nicolaus Copernicus", "Francis Bacon"], a: 2, l: "C1", p: "Newton menyatukan hukum gerak di bumi dan di langit." },
+    { q: "Teori heliosentris menyatakan bahwa…", o: ["bumi adalah pusat alam semesta", "bumi dan planet-planet mengelilingi matahari", "matahari mengelilingi bumi", "bumi itu datar", "bintang mengelilingi bulan"], a: 1, l: "C1", p: "Teori ini dikemukakan Copernicus pada 1543." },
+    { q: "Ilmuwan yang diadili Gereja pada 1633 karena mendukung teori heliosentris adalah…", o: ["Newton", "Galileo Galilei", "Kepler", "Bacon", "Leonardo da Vinci"], a: 1, l: "C1", p: "Galileo mendukung heliosentris berdasarkan pengamatan teleskop." },
+    { s: "Raja memegang seluruh kekuasaan: membuat hukum, menjalankan pemerintahan, dan mengadili, tanpa dibatasi undang-undang atau parlemen.", q: "Bentuk pemerintahan tersebut disebut…", o: ["republik", "monarki absolut", "monarki konstitusional", "demokrasi", "teokrasi"], a: 1, l: "C3", p: "Louis XIV adalah contoh raja absolut." },
     { q: "Renaisans berarti…", o: ["revolusi industri", "kelahiran kembali", "pembaruan gereja", "penjelajahan samudra", "masa kegelapan"], a: 1, l: "C1", p: "Renaisans adalah kelahiran kembali budaya Yunani-Romawi." },
     { q: "Renaisans pertama kali berkembang di…", o: ["Inggris", "Italia", "Spanyol", "Jerman", "Prancis"], a: 1, l: "C1", p: "Kota-kota Italia seperti Firenze menjadi tempat lahirnya Renaisans." },
     { q: "Paham yang menghargai akal, kemampuan, dan martabat manusia pada zaman Renaisans disebut…", o: ["feodalisme", "humanisme", "merkantilisme", "imperialisme", "liberalisme"], a: 1, l: "C1", p: "Humanisme menjadi jiwa Renaisans." },

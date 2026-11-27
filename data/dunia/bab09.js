@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan perkembangan teknologi informasi dan dampaknya",
     "Mengidentifikasi peristiwa dan isu penting dunia sejak 1991",
     "Menganalisis peran Indonesia dalam kerja sama internasional",
-    "Menentukan sikap bijak sebagai warga dunia dan warga digital"
+    "Menentukan sikap bijak sebagai warga dunia dan warga digital",
+    "Menjelaskan Revolusi Industri 4.0 dan kerja sama ekonomi dunia"
   ],
 
   video: { src: "video/dunia/bab09.mp4", judul: "Dunia kontemporer dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -74,7 +75,13 @@ TAMBAH_BAB({
 <li>Konsisten mendukung <b>kemerdekaan Palestina</b> sesuai amanat Pembukaan UUD 1945.</li>
 </ul>`,
       cinta: ["Cinta tanah air", "Indonesia dapat menjadi teladan negara Muslim terbesar yang demokratis, rukun dalam keberagaman, dan aktif menjaga perdamaian dunia."] },
-    { judul: "D. Menjadi warga digital yang bijak",
+    { judul: "D. Revolusi Industri 4.0 dan masyarakat digital",
+      isi: "<table><thead><tr><th>Revolusi industri</th><th>Masa</th><th>Penggerak</th></tr></thead><tbody>\n<tr><td>Pertama</td><td>± 1760</td><td>Mesin uap</td></tr>\n<tr><td>Kedua</td><td>± 1870</td><td>Listrik dan produksi massal</td></tr>\n<tr><td>Ketiga</td><td>± 1970</td><td>Komputer dan otomatisasi</td></tr>\n<tr><td>Keempat (4.0)</td><td>Abad ke-21</td><td>Internet, kecerdasan buatan, robot, dan data besar</td></tr>\n</tbody></table>\n<p>Revolusi industri keempat mengubah cara manusia belajar, bekerja, berdagang, dan berkomunikasi. Muncul pekerjaan baru seperti pengembang aplikasi dan analis data, sementara sebagian pekerjaan lama digantikan mesin. Karena itu, kemampuan berpikir kritis, kreatif, bekerja sama, dan belajar sepanjang hayat menjadi sangat penting.</p>",
+      cinta: ["Cinta ilmu", "Teknologi berubah cepat, tetapi semangat belajar dan akhlak yang baik tetap menjadi bekal utama. Gunakan teknologi untuk memperluas ilmu dan kebaikan."] },
+    { judul: "E. Kerja sama ekonomi dunia dan Indonesia",
+      isi: "<ul>\n<li><b>WTO</b> (1995): organisasi perdagangan dunia yang mengatur aturan perdagangan antarnegara.</li>\n<li><b>APEC</b> (1989): kerja sama ekonomi negara-negara Asia-Pasifik.</li>\n<li><b>Masyarakat Ekonomi ASEAN</b> (2015): pasar bersama ASEAN untuk barang, jasa, modal, dan tenaga kerja terampil.</li>\n<li><b>G20</b>: kelompok 19 negara dengan ekonomi besar ditambah Uni Eropa dan Uni Afrika. Indonesia satu-satunya anggota dari Asia Tenggara dan memimpin G20 pada 2022.</li>\n<li><b>BRICS</b>: kelompok negara berkembang yang awalnya beranggotakan Brasil, Rusia, India, Tiongkok, dan Afrika Selatan. Indonesia resmi menjadi anggota penuh pada <b>6 Januari 2025</b>.</li>\n</ul>\n<p>Sesuai prinsip bebas aktif, Indonesia bekerja sama dengan berbagai kelompok negara tanpa terikat pada satu blok.</p>",
+      cinta: null },
+    { judul: "F. Menjadi warga digital yang bijak",
       isi: `<ol>
 <li><b>Tabayun:</b> periksa sumber sebelum mempercayai atau membagikan berita.</li>
 <li><b>Jaga lisan dan jari:</b> tidak menghina, merundung, atau menyebar kebencian.</li>
@@ -105,10 +112,17 @@ TAMBAH_BAB({
     ["Kecerdasan buatan", "Teknologi komputer yang meniru kemampuan berpikir manusia"],
     ["Hoaks", "Berita bohong"],
     ["Literasi digital", "Kemampuan memakai teknologi digital secara cerdas dan bertanggung jawab"],
-    ["Multinasional", "Beroperasi di banyak negara"]
+    ["Multinasional", "Beroperasi di banyak negara"],
+    ["Revolusi Industri 4.0", "Perubahan besar yang digerakkan internet, kecerdasan buatan, dan data"],
+    ["MEA", "Masyarakat Ekonomi ASEAN (2015)"],
+    ["BRICS", "Kelompok negara berkembang: Brasil, Rusia, India, Tiongkok, Afrika Selatan, dan anggota baru termasuk Indonesia"]
   ],
 
   soal: [
+    { q: "Revolusi industri keempat (4.0) ditandai dengan…", o: ["mesin uap", "listrik dan produksi massal", "internet, kecerdasan buatan, dan robot", "penemuan roda", "mesin cetak"], a: 2, l: "C1", p: "Revolusi 4.0 bertumpu pada teknologi digital dan kecerdasan buatan." },
+    { q: "Pasar bersama ASEAN untuk barang, jasa, modal, dan tenaga kerja terampil disebut…", o: ["APEC", "Masyarakat Ekonomi ASEAN", "WTO", "G20", "BRICS"], a: 1, l: "C1", p: "Masyarakat Ekonomi ASEAN berlaku sejak akhir 2015." },
+    { q: "Indonesia resmi menjadi anggota penuh BRICS pada…", o: ["2015", "2019", "2022", "Januari 2025", "Oktober 2025"], a: 3, l: "C1", p: "Brasil sebagai ketua BRICS 2025 mengumumkan keanggotaan Indonesia pada 6 Januari 2025." },
+    { q: "Sikap paling tepat pelajar dalam menghadapi Revolusi Industri 4.0 adalah…", o: ["menolak semua teknologi", "membiasakan berpikir kritis, kreatif, dan terus belajar", "menyerahkan semua tugas kepada mesin", "berhenti belajar karena semua ada di internet", "hanya memakai teknologi untuk hiburan"], a: 1, l: "C5", p: "Kemampuan belajar sepanjang hayat dan berpikir kritis menjadi bekal di era digital." },
     { q: "Proses makin terhubungnya manusia di seluruh dunia dalam bidang ekonomi, budaya, dan informasi disebut…", o: ["imperialisme", "globalisasi", "dekolonisasi", "industrialisasi", "urbanisasi"], a: 1, l: "C1", p: "Globalisasi didorong oleh teknologi transportasi, komunikasi, dan perdagangan." },
     { q: "Penemu World Wide Web adalah…", o: ["Bill Gates", "Tim Berners-Lee", "Steve Jobs", "Alexander Graham Bell", "Thomas Edison"], a: 1, l: "C1", p: "Tim Berners-Lee mengembangkan web di CERN." },
     { q: "Sistem diskriminasi ras yang dihapus di Afrika Selatan pada awal 1990-an disebut…", o: ["kolonialisme", "apartheid", "feodalisme", "fasisme", "komunisme"], a: 1, l: "C1", p: "Apartheid berakhir dan Nelson Mandela menjadi presiden pada 1994." },

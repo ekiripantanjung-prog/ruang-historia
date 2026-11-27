@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan peristiwa-peristiwa penting Perang Dingin",
     "Menjelaskan proses dekolonisasi di Asia dan Afrika",
     "Menganalisis peran Indonesia melalui KAA, Gerakan Non-Blok, dan politik bebas aktif",
-    "Menjelaskan berakhirnya Perang Dingin dan dampaknya"
+    "Menjelaskan berakhirnya Perang Dingin dan dampaknya",
+    "Menjelaskan perang-perang di masa Perang Dingin dan lahirnya kerja sama kawasan"
   ],
 
   video: { src: "video/dunia/bab08.mp4", judul: "Perang Dingin dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -71,7 +72,13 @@ TAMBAH_BAB({
 <p>Wujudnya: Konferensi Asia Afrika di Bandung (1955), ikut memprakarsai <b>Gerakan Non-Blok</b> (1961), dan mengirim pasukan perdamaian <b>Garuda</b> ke berbagai negara sejak 1957.</p>`,
       kartu: true,
       cinta: ["Cinta tanah air", "Politik bebas aktif menjaga kedaulatan Indonesia sekaligus memberi sumbangan bagi perdamaian dunia."] },
-    { judul: "D. Berakhirnya Perang Dingin",
+    { judul: "D. Perang-perang panas di masa Perang Dingin",
+      isi: "<ul>\n<li><b>Perang Korea</b> (1950–1953): Korea Utara (didukung Uni Soviet dan Tiongkok) menyerang Korea Selatan (didukung AS dan PBB). Perang berakhir dengan gencatan senjata; Korea tetap terbelah di sekitar <b>garis lintang 38°</b> sampai sekarang.</li>\n<li><b>Perang Vietnam</b> (1955–1975): Vietnam Utara yang komunis melawan Vietnam Selatan yang didukung AS. Perang berakhir dengan jatuhnya <b>Saigon</b> (1975) dan bersatunya Vietnam di bawah pemerintahan komunis.</li>\n<li><b>Krisis Rudal Kuba</b> (1962): dunia nyaris mengalami perang nuklir ketika Uni Soviet menempatkan rudal di Kuba.</li>\n<li><b>Invasi Soviet ke Afganistan</b> (1979–1989): pejuang Afganistan, didukung negara-negara Barat dan Muslim, memaksa Soviet mundur.</li>\n</ul>\n<p>Perang-perang ini disebut <i>proxy war</i> (perang perwakilan), karena dua negara adidaya tidak berperang langsung tetapi mendukung pihak yang berperang.</p>",
+      cinta: null },
+    { judul: "E. Kerja sama baru: ASEAN dan OKI",
+      isi: "<p>Di tengah persaingan blok, negara-negara berkembang membangun kerja sama sendiri:</p>\n<ul>\n<li><b>ASEAN</b> (8 Agustus 1967): didirikan Indonesia, Malaysia, Filipina, Singapura, dan Thailand melalui Deklarasi Bangkok untuk menjaga perdamaian dan memajukan ekonomi kawasan.</li>\n<li><b>Organisasi Kerja Sama Islam (OKI)</b> (1969): dibentuk setelah pembakaran Masjid Al-Aqsa, sebagai wadah solidaritas negara-negara berpenduduk Muslim. Indonesia menjadi anggota aktif.</li>\n<li><b>Gerakan Non-Blok</b> (1961): menghimpun negara-negara yang tidak memihak blok mana pun.</li>\n</ul>",
+      cinta: ["Cinta diri dan sesama", "Di tengah dunia yang terbelah, bangsa-bangsa berkembang memilih bekerja sama. Persahabatan dan kerja sama lebih kuat daripada permusuhan."] },
+    { judul: "F. Berakhirnya Perang Dingin",
       isi: `<p>Pada 1980-an ekonomi Uni Soviet melemah. Pemimpin Soviet <b>Mikhail Gorbachev</b> menjalankan <b>glasnost</b> (keterbukaan) dan <b>perestroika</b> (pembenahan ekonomi). Rakyat Eropa Timur menuntut kebebasan. <b>Tembok Berlin runtuh</b> pada 9 November 1989, Jerman bersatu pada 1990, dan <b>Uni Soviet bubar</b> pada 26 Desember 1991.</p>`,
       cinta: null }
   ],
@@ -97,10 +104,17 @@ TAMBAH_BAB({
     ["Bebas aktif", "Politik luar negeri Indonesia: tidak memihak, aktif menjaga perdamaian"],
     ["Glasnost", "Keterbukaan politik di Uni Soviet"],
     ["Perestroika", "Pembenahan ekonomi di Uni Soviet"],
-    ["Adidaya", "Negara dengan kekuatan sangat besar di dunia"]
+    ["Adidaya", "Negara dengan kekuatan sangat besar di dunia"],
+    ["Proxy war", "Perang perwakilan antara kekuatan besar melalui pihak lain"],
+    ["OKI", "Organisasi Kerja Sama Islam (1969)"],
+    ["Garis lintang 38°", "Garis pemisah Korea Utara dan Korea Selatan"]
   ],
 
   soal: [
+    { q: "Perang Korea (1950–1953) berakhir dengan…", o: ["bersatunya Korea", "gencatan senjata; Korea tetap terbelah di sekitar garis lintang 38°", "kemenangan mutlak Korea Utara", "Korea dijajah Jepang kembali", "Korea bergabung dengan Tiongkok"], a: 1, l: "C2", p: "Sampai kini Korea Utara dan Korea Selatan masih terpisah." },
+    { q: "Perang Vietnam berakhir pada 1975 dengan…", o: ["kemenangan Vietnam Selatan", "jatuhnya Saigon dan bersatunya Vietnam", "perjanjian damai dengan Prancis", "Vietnam terbelah dua", "masuknya Vietnam ke NATO"], a: 1, l: "C1", p: "Saigon jatuh pada 30 April 1975 dan kini bernama Kota Ho Chi Minh." },
+    { q: "Perang ketika dua negara adidaya tidak berperang langsung tetapi mendukung pihak lain yang berperang disebut…", o: ["perang total", "proxy war", "perang gerilya", "perang dingin", "perang saudara"], a: 1, l: "C2", p: "Perang Korea dan Vietnam adalah contoh proxy war." },
+    { q: "OKI dibentuk pada 1969 dengan latar belakang…", o: ["Perang Dunia II", "pembakaran Masjid Al-Aqsa", "krisis minyak", "berdirinya ASEAN", "Perang Teluk"], a: 1, l: "C1", p: "Pembakaran Masjid Al-Aqsa mendorong negara-negara Muslim membentuk OKI." },
     { q: "Perang Dingin adalah persaingan antara…", o: ["Jerman dan Prancis", "Amerika Serikat dan Uni Soviet", "Inggris dan Jepang", "Tiongkok dan India", "Korea Utara dan Korea Selatan"], a: 1, l: "C1", p: "Dua negara adidaya ini bersaing setelah Perang Dunia II." },
     { q: "Disebut Perang Dingin karena…", o: ["terjadi di daerah bersalju", "kedua negara tidak berperang secara langsung", "berlangsung di musim dingin", "tidak ada persaingan", "hanya berlangsung singkat"], a: 1, l: "C2", p: "Persaingan terjadi di bidang ideologi, ekonomi, militer, dan teknologi tanpa perang langsung." },
     { q: "Ideologi yang dianut Blok Timur adalah…", o: ["liberalisme", "komunisme", "fasisme", "kapitalisme", "monarki"], a: 1, l: "C1", p: "Blok Timur pimpinan Uni Soviet menganut komunisme." },

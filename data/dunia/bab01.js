@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Mengidentifikasi ciri dan hasil budaya peradaban Mesopotamia, Mesir, Lembah Indus, dan Tiongkok",
     "Membandingkan sistem tulisan, pemerintahan, dan kepercayaan keempat peradaban",
     "Menganalisis warisan peradaban awal bagi kehidupan masa kini",
-    "Mengambil pelajaran dari kisah bangsa-bangsa terdahulu sebagaimana dianjurkan Al-Qur'an"
+    "Mengambil pelajaran dari kisah bangsa-bangsa terdahulu sebagaimana dianjurkan Al-Qur'an",
+    "Menjelaskan perkembangan dan kepercayaan tiap peradaban awal"
   ],
 
   video: { src: "video/dunia/bab01.mp4", judul: "Peradaban awal dunia dalam 1 menit", durasi: "1 menit 17 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -53,7 +54,13 @@ TAMBAH_BAB({
 <p>Jelajahi setiap peradaban melalui gambar interaktif di atas.</p>`,
       kartu: true,
       cinta: ["Cinta ilmu", "Tulisan, hitungan, dan kalender lahir dari rasa ingin tahu manusia. Setiap kali kamu melihat jam dengan 60 menit, kamu memakai warisan Mesopotamia."] },
-    { judul: "C. Warisan untuk dunia",
+    { judul: "C. Lebih dekat: Mesopotamia dan Mesir",
+      isi: "<p><b>Mesopotamia</b> (artinya \"tanah di antara dua sungai\") silih berganti dikuasai beberapa bangsa:</p>\n<ul>\n<li><b>Sumeria</b> (± 3500 SM): menciptakan tulisan paku, roda, dan kota-kota seperti Ur dan Uruk. Kisah <i>Epos Gilgamesh</i> berasal dari masa ini.</li>\n<li><b>Akkadia</b>: Raja <b>Sargon</b> (± 2334 SM) mendirikan kekaisaran pertama di dunia.</li>\n<li><b>Babilonia</b>: Raja <b>Hammurabi</b> (± 1754 SM) membuat kitab hukum tertulis. Kelak Raja Nebukadnezar II membangun Taman Gantung Babilonia.</li>\n<li><b>Assyria</b>: bangsa militer yang kuat dan memiliki perpustakaan besar di Niniwe.</li>\n</ul>\n<p><b>Mesir Kuno</b> bergantung pada banjir tahunan Sungai Nil. Sejarahnya dibagi menjadi tiga masa:</p>\n<table><thead><tr><th>Masa</th><th>Ciri</th></tr></thead><tbody>\n<tr><td>Kerajaan Lama (± 2686–2181 SM)</td><td>Zaman piramida, termasuk Piramida Agung Khufu di Giza</td></tr>\n<tr><td>Kerajaan Tengah (± 2055–1650 SM)</td><td>Pembangunan irigasi, sastra, dan perdagangan</td></tr>\n<tr><td>Kerajaan Baru (± 1550–1070 SM)</td><td>Masa kekaisaran; firaun terkenal Ramses II dan Tutankhamun; makam di Lembah Para Raja</td></tr>\n</tbody></table>\n<p>Orang Mesir percaya pada kehidupan setelah mati, sehingga jenazah firaun diawetkan menjadi <b>mumi</b>. Hieroglif baru dapat dibaca kembali pada 1822 oleh <b>Jean-François Champollion</b> berkat Batu Rosetta.</p>",
+      cinta: null },
+    { judul: "D. Lebih dekat: Lembah Indus dan Tiongkok",
+      isi: "<p><b>Peradaban Lembah Indus</b> (Harappa dan Mohenjo-daro) mengalami kemunduran sekitar 1900 SM, kemungkinan karena perubahan aliran sungai dan iklim. Sekitar 1500 SM datang bangsa <b>Arya</b> yang membawa kitab <b>Weda</b> dan sistem <b>kasta</b>. Dari perpaduan budaya Arya dan penduduk asli (Dravida) lahir agama <b>Hindu</b>. Pada abad ke-6 SM, <b>Siddharta Gautama</b> mengajarkan agama <b>Buddha</b>. Kedua agama inilah yang kelak sampai ke Nusantara.</p>\n<p><b>Tiongkok Kuno</b> diperintah oleh dinasti-dinasti yang berganti-ganti:</p>\n<table><thead><tr><th>Dinasti</th><th>Peristiwa penting</th></tr></thead><tbody>\n<tr><td>Shang (± 1600–1046 SM)</td><td>Tulisan pada tulang ramalan, kerajinan perunggu</td></tr>\n<tr><td>Zhou (1046–256 SM)</td><td>Ajaran Mandat Langit; masa Konfusius dan Laozi</td></tr>\n<tr><td>Qin (221–206 SM)</td><td>Qin Shi Huang menyatukan Tiongkok; menyeragamkan tulisan, ukuran, dan mata uang; membangun Tembok Besar; Pasukan Terakota</td></tr>\n<tr><td>Han (206 SM–220 M)</td><td>Jalur Sutra dibuka; kertas disempurnakan oleh Cai Lun (105 M)</td></tr>\n</tbody></table>\n<p>Orang Tiongkok percaya bahwa kaisar memerintah atas <b>Mandat Langit</b>: jika kaisar zalim dan rakyat menderita, mandat itu dapat dicabut dan dinasti berganti.</p>",
+      cinta: ["Cinta ilmu", "Penemuan kertas, tulisan, dan hukum tertulis membuat ilmu dapat diwariskan lintas generasi. Kita menikmati warisan itu setiap kali membuka buku."] },
+    { judul: "E. Warisan untuk dunia",
       isi: `<ul>
 <li><b>Tulisan</b> memungkinkan ilmu dicatat dan diwariskan.</li>
 <li><b>Hukum tertulis</b> seperti Hukum Hammurabi menjadi awal gagasan keadilan yang diatur.</li>
@@ -85,10 +92,20 @@ TAMBAH_BAB({
     ["Mumi", "Jenazah yang diawetkan"],
     ["Dinasti", "Keluarga raja yang memerintah turun-temurun"],
     ["Irigasi", "Sistem pengairan sawah atau ladang"],
-    ["SM", "Sebelum Masehi"]
+    ["SM", "Sebelum Masehi"],
+    ["Sumeria", "Bangsa pertama di Mesopotamia yang menciptakan tulisan paku"],
+    ["Mandat Langit", "Kepercayaan Tiongkok bahwa kaisar memerintah atas restu langit"],
+    ["Weda", "Kitab suci tertua agama Hindu"],
+    ["Jalur Sutra", "Jalur dagang darat dari Tiongkok ke Asia Barat dan Eropa"]
   ],
 
   soal: [
+    { q: "Raja yang mendirikan kekaisaran pertama di dunia di Mesopotamia adalah…", o: ["Hammurabi", "Sargon dari Akkadia", "Nebukadnezar II", "Gilgamesh", "Ramses II"], a: 1, l: "C1", p: "Sargon dari Akkadia menyatukan kota-kota Sumeria sekitar 2334 SM." },
+    { q: "Piramida Agung di Giza dibangun pada masa…", o: ["Kerajaan Lama", "Kerajaan Tengah", "Kerajaan Baru", "Dinasti Ptolemaios", "Romawi"], a: 0, l: "C1", p: "Piramida Khufu dibangun pada masa Kerajaan Lama, sekitar 2560 SM." },
+    { q: "Tokoh yang berhasil membaca kembali huruf hieroglif pada 1822 adalah…", o: ["Napoleon Bonaparte", "Jean-François Champollion", "Howard Carter", "Herodotus", "Imhotep"], a: 1, l: "C1", p: "Champollion memanfaatkan Batu Rosetta yang memuat teks yang sama dalam tiga aksara." },
+    { q: "Bangsa yang membawa kitab Weda dan sistem kasta ke India sekitar 1500 SM adalah…", o: ["Dravida", "Arya", "Persia", "Mongol", "Yunani"], a: 1, l: "C1", p: "Bangsa Arya membawa Weda; dari perpaduan dengan budaya Dravida lahir agama Hindu." },
+    { q: "Kaisar yang pertama kali menyatukan Tiongkok dan menyeragamkan tulisan serta mata uang adalah…", o: ["Kubilai Khan", "Qin Shi Huang", "Konfusius", "Wu dari Han", "Cai Lun"], a: 1, l: "C1", p: "Qin Shi Huang menyatukan Tiongkok pada 221 SM." },
+    { s: "Menurut kepercayaan Tiongkok Kuno, kaisar memerintah atas restu langit. Jika kaisar zalim dan bencana melanda, restu itu dianggap dicabut sehingga dinasti boleh diganti.", q: "Pandangan tersebut dikenal sebagai…", o: ["Pax Romana", "Mandat Langit", "Trias politica", "Kontrak sosial", "Humanisme"], a: 1, l: "C3", p: "Ajaran Mandat Langit menjelaskan pergantian dinasti di Tiongkok." },
     { q: "Peradaban-peradaban tertua di dunia umumnya lahir di…", o: ["puncak gunung", "lembah sungai", "tengah gurun", "pulau kecil", "hutan tropis"], a: 1, l: "C1", p: "Lembah sungai menyediakan tanah subur, air, dan jalur transportasi." },
     { q: "Mesopotamia terletak di antara dua sungai, yaitu…", o: ["Nil dan Eufrat", "Tigris dan Eufrat", "Indus dan Gangga", "Huang He dan Yangtze", "Nil dan Tigris"], a: 1, l: "C1", p: "Mesopotamia berarti tanah di antara dua sungai, Tigris dan Eufrat." },
     { q: "Tulisan bangsa Sumeria yang dibuat pada lempeng tanah liat disebut…", o: ["hieroglif", "paku (cuneiform)", "Pallawa", "aksara Indus", "alfabet Latin"], a: 1, l: "C1", p: "Tulisan paku dibuat dengan menekan alat runcing pada tanah liat basah." },

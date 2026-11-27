@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan sebab, jalannya, dan dampak Revolusi Industri",
     "Menguraikan sebab dan hasil Revolusi Amerika",
     "Menganalisis sebab, jalannya, dan dampak Revolusi Prancis",
-    "Menghubungkan zaman revolusi dengan sejarah Indonesia"
+    "Menghubungkan zaman revolusi dengan sejarah Indonesia",
+    "Menjelaskan pengaruh Napoleon dan lahirnya paham-paham baru"
   ],
 
   video: { src: "video/dunia/bab05.mp4", judul: "Zaman revolusi dalam 1 menit", durasi: "1 menit 18 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -70,7 +71,13 @@ TAMBAH_BAB({
 <li>Perang Napoleon membuat Belanda dikuasai Prancis, sehingga <b>Daendels</b> dikirim ke Jawa (1808).</li>
 <li>Gagasan hak asasi, kedaulatan rakyat, dan pembagian kekuasaan ikut memengaruhi para pendiri bangsa Indonesia.</li>
 </ul>`,
-      cinta: ["Cinta diri dan sesama", "Revolusi memperjuangkan persamaan derajat manusia. Islam telah lebih dulu mengajarkan bahwa manusia sama di hadapan Allah, yang membedakan hanyalah takwa (QS Al-Hujurat: 13)."] }
+      cinta: ["Cinta diri dan sesama", "Revolusi memperjuangkan persamaan derajat manusia. Islam telah lebih dulu mengajarkan bahwa manusia sama di hadapan Allah, yang membedakan hanyalah takwa (QS Al-Hujurat: 13)."] },
+    { judul: "D. Napoleon dan menyebarnya gagasan revolusi",
+      isi: "<p><b>Napoleon Bonaparte</b> berkuasa di Prancis sejak 1799 dan menobatkan diri sebagai kaisar (1804). Ia menaklukkan sebagian besar Eropa, termasuk Belanda (1806–1813). Warisannya:</p>\n<ul>\n<li><b>Code Napoléon</b> (1804): kitab hukum perdata yang menjamin persamaan di depan hukum. Kitab ini menjadi dasar hukum banyak negara, termasuk hukum perdata Belanda yang masih dipakai sebagian di Indonesia.</li>\n<li>Menyebarnya gagasan <b>kebebasan</b>, <b>persamaan</b>, dan <b>nasionalisme</b> ke seluruh Eropa.</li>\n</ul>\n<p>Napoleon dikalahkan di <b>Waterloo</b> (1815). <b>Kongres Wina</b> (1814–1815) mengembalikan raja-raja lama, tetapi gagasan revolusi tidak dapat dipadamkan dan terus memicu revolusi berikutnya.</p>",
+      cinta: null },
+    { judul: "E. Paham-paham baru dan revolusi di Amerika Latin",
+      isi: "<p>Revolusi Industri dan revolusi politik melahirkan paham-paham yang memengaruhi dunia sampai kini:</p>\n<table><thead><tr><th>Paham</th><th>Gagasan pokok</th><th>Tokoh</th></tr></thead><tbody>\n<tr><td>Liberalisme</td><td>Kebebasan individu dan pembatasan kekuasaan negara</td><td>John Locke</td></tr>\n<tr><td>Kapitalisme</td><td>Ekonomi diatur pasar; alat produksi dimiliki swasta</td><td>Adam Smith, <i>The Wealth of Nations</i> (1776)</td></tr>\n<tr><td>Sosialisme</td><td>Alat produksi dimiliki bersama untuk kesejahteraan buruh</td><td>Karl Marx dan Friedrich Engels, <i>Manifesto Komunis</i> (1848)</td></tr>\n<tr><td>Nasionalisme</td><td>Kesetiaan tertinggi diberikan kepada bangsa dan tanah air</td><td>Berkembang luas setelah Revolusi Prancis</td></tr>\n</tbody></table>\n<p>Gelombang revolusi juga melanda <b>Amerika Latin</b>. Haiti merdeka dari Prancis (1804) melalui pemberontakan para budak. <b>Simón Bolívar</b> memimpin kemerdekaan Venezuela, Kolombia, dan negara-negara lain dari Spanyol (1810–1825).</p>",
+      cinta: ["Cinta tanah air", "Para pendiri bangsa mempelajari berbagai paham dunia, tetapi memilih jalannya sendiri: Pancasila. Belajar dari dunia tanpa kehilangan jati diri adalah sikap yang bijak."] }
   ],
 
   kartu: [
@@ -94,10 +101,19 @@ TAMBAH_BAB({
     ["Kapitalisme", "Sistem ekonomi berdasarkan kepemilikan modal pribadi"],
     ["Sosialisme", "Paham yang menekankan kepemilikan bersama dan pemerataan"],
     ["Imperialisme", "Perluasan kekuasaan atas bangsa lain"],
-    ["Bastille", "Penjara di Paris, lambang kekuasaan raja"]
+    ["Bastille", "Penjara di Paris, lambang kekuasaan raja"],
+    ["Code Napoléon", "Kitab hukum perdata Prancis (1804)"],
+    ["Kongres Wina", "Pertemuan negara-negara Eropa untuk menata ulang Eropa setelah Napoleon (1814–1815)"],
+    ["Liberalisme", "Paham yang mengutamakan kebebasan individu"],
+    ["Nasionalisme", "Paham yang menempatkan kesetiaan tertinggi pada bangsa"]
   ],
 
   soal: [
+    { q: "Kitab hukum yang menjamin persamaan di depan hukum dan menjadi dasar hukum perdata banyak negara adalah…", o: ["Magna Carta", "Code Napoléon", "Corpus Juris Civilis", "Hukum Hammurabi", "Bill of Rights"], a: 1, l: "C1", p: "Code Napoléon (1804) memengaruhi hukum perdata Belanda dan Indonesia." },
+    { q: "Napoleon Bonaparte akhirnya dikalahkan dalam pertempuran…", o: ["Austerlitz", "Waterloo", "Trafalgar", "Leipzig", "Borodino"], a: 1, l: "C1", p: "Kekalahan di Waterloo (1815) mengakhiri kekuasaan Napoleon." },
+    { q: "Buku The Wealth of Nations (1776) yang menjadi dasar kapitalisme ditulis oleh…", o: ["Karl Marx", "Adam Smith", "John Locke", "Montesquieu", "Rousseau"], a: 1, l: "C1", p: "Adam Smith berpendapat ekonomi berjalan baik bila diatur mekanisme pasar." },
+    { q: "Paham yang menghendaki alat produksi dimiliki bersama demi kesejahteraan buruh disebut…", o: ["liberalisme", "kapitalisme", "sosialisme", "merkantilisme", "feodalisme"], a: 2, l: "C2", p: "Sosialisme lahir sebagai kritik terhadap nasib buruh pada masa Revolusi Industri." },
+    { q: "Tokoh yang memimpin kemerdekaan sejumlah negara Amerika Latin dari Spanyol adalah…", o: ["George Washington", "Simón Bolívar", "José Rizal", "Toussaint Louverture", "Che Guevara"], a: 1, l: "C1", p: "Simón Bolívar dijuluki El Libertador (Sang Pembebas)." },
     { q: "Gerakan pemikiran abad ke-18 yang mengutamakan akal untuk menilai pemerintahan disebut…", o: ["Renaisans", "Pencerahan", "Reformasi", "Humanisme", "Feodalisme"], a: 1, l: "C1", p: "Zaman Pencerahan melahirkan gagasan hak asasi dan kedaulatan rakyat." },
     { q: "Pemikir yang menggagas pemisahan kekuasaan (trias politica) adalah…", o: ["Rousseau", "Montesquieu", "John Locke", "Voltaire", "Karl Marx"], a: 1, l: "C1", p: "Montesquieu menulis The Spirit of the Laws (1748)." },
     { q: "Pembagian kekuasaan menurut trias politica terdiri atas…", o: ["eksekutif, legislatif, yudikatif", "raja, bangsawan, rakyat", "pusat, provinsi, daerah", "polisi, tentara, hakim", "presiden, menteri, gubernur"], a: 0, l: "C1", p: "Legislatif membuat undang-undang, eksekutif melaksanakan, yudikatif mengadili." },

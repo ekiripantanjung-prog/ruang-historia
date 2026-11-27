@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menjelaskan perebutan wilayah jajahan di Asia dan Afrika",
     "Menguraikan gerakan nasionalisme di Jepang, India, Tiongkok, Turki, dan Filipina",
     "Menjelaskan pengaruh pembaruan Islam terhadap nasionalisme",
-    "Menganalisis pengaruh nasionalisme Asia terhadap pergerakan nasional Indonesia"
+    "Menganalisis pengaruh nasionalisme Asia terhadap pergerakan nasional Indonesia",
+    "Mengidentifikasi wilayah jajahan bangsa-bangsa Eropa di Asia dan Afrika"
   ],
 
   video: { src: "video/dunia/bab06.mp4", judul: "Imperialisme dan nasionalisme dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -68,7 +69,13 @@ TAMBAH_BAB({
       isi: `<p>Di dunia Islam, tokoh seperti <b>Jamaluddin al-Afghani</b> mengajak umat Islam bersatu melawan penjajahan (Pan-Islamisme), dan <b>Muhammad Abduh</b> di Mesir mengajak umat kembali kepada Al-Qur'an dan Sunnah sambil memajukan pendidikan modern.</p>
 <p>Gagasan mereka sampai ke Nusantara melalui jemaah haji, pelajar di Mekkah dan Kairo, serta majalah seperti <i>Al-Manar</i>. Pengaruhnya tampak pada lahirnya organisasi pembaru seperti Muhammadiyah dan Al-Irsyad, serta semangat kebangsaan di kalangan ulama.</p>`,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Para pembaru Islam mengajarkan bahwa iman yang kuat harus melahirkan umat yang berilmu, bersatu, dan tidak mau ditindas."] },
-    { judul: "D. Pengaruh bagi Indonesia",
+    { judul: "D. Peta penjajahan di Asia dan Afrika",
+      isi: "<table><thead><tr><th>Negara penjajah</th><th>Wilayah jajahan utama</th></tr></thead><tbody>\n<tr><td>Inggris</td><td>India, Myanmar, Malaysia, Singapura, Hong Kong, Mesir, Afrika Selatan, Nigeria, Kenya</td></tr>\n<tr><td>Prancis</td><td>Vietnam, Laos, Kamboja (Indocina), Aljazair, Maroko, Senegal</td></tr>\n<tr><td>Belanda</td><td>Hindia Belanda (Indonesia), Suriname</td></tr>\n<tr><td>Spanyol lalu Amerika Serikat</td><td>Filipina (diserahkan Spanyol kepada AS pada 1898)</td></tr>\n<tr><td>Portugis</td><td>Timor, Makau, Angola, Mozambik</td></tr>\n<tr><td>Jerman, Belgia, Italia</td><td>Kamerun, Namibia, Kongo, Libya, Somalia</td></tr>\n</tbody></table>\n<p>Pembagian Afrika ditetapkan dalam <b>Konferensi Berlin</b> (1884–1885) tanpa melibatkan satu pun bangsa Afrika. Garis batasnya sering membelah suku-suku dan menjadi sumber konflik sampai sekarang. Peristiwa ini dikenal sebagai <i>Scramble for Africa</i> (perebutan Afrika).</p>\n<p>Tiongkok tidak dijajah sepenuhnya, tetapi dipaksa membuka pelabuhan dan menyerahkan wilayah setelah kalah dalam <b>Perang Candu</b> (1839–1842); Hong Kong diserahkan kepada Inggris. Rakyat Tiongkok melawan, misalnya dalam <b>Pemberontakan Boxer</b> (1900).</p>",
+      cinta: null },
+    { judul: "E. Nasionalisme di Asia Tenggara dan Timur Tengah",
+      isi: "<ul>\n<li><b>Filipina</b>: setelah José Rizal, <b>Emilio Aguinaldo</b> memproklamasikan kemerdekaan dari Spanyol (1898), tetapi Filipina kemudian dikuasai Amerika Serikat dan baru merdeka penuh pada 1946.</li>\n<li><b>Vietnam</b>: <b>Ho Chi Minh</b> mendirikan Partai Komunis Indocina (1930) dan memproklamasikan kemerdekaan Vietnam pada 2 September 1945.</li>\n<li><b>Myanmar (Burma)</b>: gerakan pemuda dan biksu menuntut kemerdekaan; <b>Aung San</b> menjadi tokoh utamanya.</li>\n<li><b>Mesir</b>: Revolusi 1919 di bawah <b>Saad Zaghlul</b> mendorong Inggris mengakui kemerdekaan terbatas Mesir (1922).</li>\n<li><b>Dunia Arab</b>: setelah Turki Usmani kalah dalam Perang Dunia I, wilayah Arab dibagi Inggris dan Prancis sebagai daerah mandat. Hal ini memicu gerakan nasionalisme Arab.</li>\n</ul>",
+      cinta: ["Cinta tanah air", "Bangsa-bangsa Asia dan Afrika berjuang pada masa yang hampir bersamaan dan saling memberi semangat. Itulah sebabnya Indonesia selalu bersolidaritas dengan bangsa yang masih memperjuangkan kemerdekaannya."] },
+    { judul: "F. Pengaruh bagi Indonesia",
       isi: `<ul>
 <li>Kemenangan <b>Jepang atas Rusia</b> (1905) menumbuhkan keyakinan bahwa bangsa Asia mampu melawan bangsa Eropa.</li>
 <li>Perjuangan <b>Gandhi</b> mengilhami cara berjuang tanpa kekerasan dan gerakan memakai produksi sendiri.</li>
@@ -99,10 +106,18 @@ TAMBAH_BAB({
     ["Pan-Islamisme", "Gerakan persatuan umat Islam sedunia"],
     ["Candu", "Opium, zat yang menimbulkan ketergantungan"],
     ["Republik", "Negara yang dipimpin presiden, bukan raja"],
-    ["Modernisasi", "Proses pembaruan menuju kehidupan modern"]
+    ["Modernisasi", "Proses pembaruan menuju kehidupan modern"],
+    ["Scramble for Africa", "Perebutan wilayah Afrika oleh negara-negara Eropa pada akhir abad ke-19"],
+    ["Daerah mandat", "Wilayah bekas Usmani yang diurus Inggris dan Prancis setelah Perang Dunia I"],
+    ["Pemberontakan Boxer", "Perlawanan rakyat Tiongkok terhadap pengaruh asing (1900)"]
   ],
 
   soal: [
+    { q: "Konferensi yang membagi-bagi wilayah Afrika di antara negara-negara Eropa adalah…", o: ["Konferensi Wina", "Konferensi Berlin", "Konferensi Asia Afrika", "Konferensi Meja Bundar", "Konferensi Yalta"], a: 1, l: "C1", p: "Konferensi Berlin (1884–1885) memicu Scramble for Africa." },
+    { q: "Akibat kekalahan dalam Perang Candu, Tiongkok menyerahkan … kepada Inggris.", o: ["Makau", "Hong Kong", "Taiwan", "Shanghai", "Singapura"], a: 1, l: "C1", p: "Hong Kong diserahkan melalui Perjanjian Nanking (1842)." },
+    { q: "Tokoh yang memproklamasikan kemerdekaan Vietnam pada 2 September 1945 adalah…", o: ["Aung San", "Ho Chi Minh", "Sun Yat-sen", "Emilio Aguinaldo", "Norodom Sihanouk"], a: 1, l: "C1", p: "Ho Chi Minh membacakan proklamasi kemerdekaan Vietnam di Hanoi." },
+    { q: "Filipina diserahkan Spanyol kepada Amerika Serikat pada tahun…", o: ["1868", "1898", "1910", "1945", "1946"], a: 1, l: "C1", p: "Setelah Perang Spanyol–Amerika (1898), Filipina menjadi jajahan AS sampai 1946." },
+    { s: "Para pemimpin Eropa menggambar batas wilayah jajahan di Afrika menggunakan penggaris di atas peta, tanpa memperhatikan wilayah suku dan bahasa penduduk setempat.", q: "Masalah yang paling mungkin timbul dari cara pembagian tersebut adalah…", o: ["semua suku bersatu", "konflik antarsuku dan perbatasan yang berkepanjangan", "Afrika menjadi makmur", "Eropa kehilangan jajahan", "hilangnya bahasa Eropa di Afrika"], a: 1, l: "C4", p: "Batas buatan penjajah menjadi sumber konflik di banyak negara Afrika." },
     { q: "Perbedaan utama tujuan imperialisme modern dengan imperialisme kuno adalah imperialisme modern bertujuan…", o: ["mencari emas dan menyebarkan agama", "mencari bahan mentah, pasar, dan tempat menanam modal", "mencari tempat tinggal", "melakukan perjalanan ilmiah", "mencari rempah saja"], a: 1, l: "C2", p: "Imperialisme modern didorong kebutuhan industri setelah Revolusi Industri." },
     { q: "Konferensi yang mengatur pembagian wilayah Afrika di antara negara-negara Eropa adalah Konferensi…", o: ["Asia Afrika", "Berlin (1884–1885)", "Wina", "Versailles", "Meja Bundar"], a: 1, l: "C1", p: "Konferensi Berlin mengatur perebutan Afrika." },
     { q: "Negara Afrika yang tidak pernah dijajah sampai Perang Dunia I adalah…", o: ["Mesir dan Aljazair", "Etiopia dan Liberia", "Kenya dan Nigeria", "Kongo dan Ghana", "Libya dan Sudan"], a: 1, l: "C1", p: "Etiopia dan Liberia tetap merdeka." },

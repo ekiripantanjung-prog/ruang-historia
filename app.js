@@ -395,6 +395,7 @@ function nilai() {
 function tentang() {
   tandaiMenu('tentang'); clearInterval(jam);
   app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Tentang Ruang Historia</h1>
+<p><a class="btn" href="#panduan">Buku panduan penggunaan (PDF)</a></p>
 <p>Ruang Historia adalah aplikasi belajar sejarah interaktif untuk madrasah aliyah dan sekolah menengah. Setiap "ruang" berisi satu mata pelajaran: Sejarah Indonesia, Sejarah Dunia, dan Sejarah Kebudayaan Islam, dan ruang lain dapat ditambahkan. Materinya diperkaya nilai Panca Cinta dalam Kurikulum Berbasis Cinta Kementerian Agama: cinta kepada Allah dan Rasul-Nya, cinta ilmu, cinta diri dan sesama, cinta lingkungan, serta cinta tanah air.</p>
 <h3>Cara belajar yang disarankan</h3><ol><li>Pilih ruang, lalu buka bab.</li><li>Baca materi dan jelajahi gambar interaktifnya.</li><li>Tonton video bab.</li><li>Kerjakan kuis sampai nilai minimal 70.</li><li>Kerjakan soal uraian dan diskusikan refleksi Panca Cinta di kelas.</li><li>Setelah beberapa bab, coba ujian akhir.</li></ol>
 <h3>Rujukan utama</h3><ul><li>Buku teks Sejarah Indonesia dan Sejarah tingkat SMA/MA, Kementerian Pendidikan RI.</li><li>Buku Sejarah Kebudayaan Islam Madrasah Aliyah, Kementerian Agama RI.</li><li>Kementerian Agama RI (2025). <i>Panduan Kurikulum Berbasis Cinta di Madrasah</i>.</li><li>Soejono, R.P. dan Leirissa, R.Z. (ed.). <i>Sejarah Nasional Indonesia</i>. Balai Pustaka.</li><li>Ricklefs, M.C. <i>Sejarah Indonesia Modern</i>.</li><li>Azra, Azyumardi. <i>Jaringan Ulama Timur Tengah dan Kepulauan Nusantara Abad XVII dan XVIII</i>.</li><li>Bellwood, P. <i>Prehistory of the Indo-Malaysian Archipelago</i>. ANU Press.</li><li>Artikel ilmiah penanggalan situs purba: Sutikna dkk. (2016), Rizal dkk. (2020), Oktaviana dkk. (2024), jurnal <i>Nature</i>.</li></ul>
@@ -542,6 +543,9 @@ setTimeout(ambilAtur, 1500);
 setTimeout(kirimAntrean, 3000);
 
 /* ---------- PANEL GURU ---------- */
+const normKode = k => String(k).toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/^RH/, '');
+async function kodeAktivasi(nama) { const h = await sha256('ruang-historia-aktivasi:' + nama.toLowerCase().replace(/\s+/g, ' ').trim() + ':' + (PG.pin || '')); let s = ''; for (let i = 0; i < 8; i++) s += HURUF_KODE[parseInt(h.substr(i * 2, 2), 16) % HURUF_KODE.length]; return `RH-${s.slice(0, 4)}-${s.slice(4)}`; }
+const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 const sha256 = async t => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)))].map(x => x.toString(16).padStart(2, '0')).join('');
 const muatSkrip = src => new Promise((ok, gagal) => { if (document.querySelector(`script[data-lib="${src}"]`)) return ok(); const s = document.createElement('script'); s.src = src; s.dataset.lib = src; s.onload = ok; s.onerror = gagal; document.head.append(s); });
 const alamatDasar = () => location.origin + location.pathname;
@@ -554,19 +558,34 @@ function panelGuru() {
   tandaiMenu('guru');
   if (!modeGuru()) {
     app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:520px"><h1>Panel Guru</h1>
-<p>Panel ini berisi pembuat presentasi dan pengaturan babak untuk kelas. Masukkan PIN guru untuk membuka.</p>
+<p>Panel ini berisi pembuat presentasi, modul ajar, soal ulangan, dan pengaturan kelas. Masukkan PIN guru untuk membuka.</p>
 <form class="box" id="fpin"><label for="pin"><b>PIN guru</b></label><input id="pin" class="isian" type="password" inputmode="numeric" autocomplete="off" required>
-<p class="catatan" id="pesanpin" style="margin-top:10px">Siswa tidak memerlukan panel ini.</p><button class="btn" type="submit">Masuk</button></form></div></section>`;
+<p class="catatan" id="pesanpin" style="margin-top:10px">Siswa tidak memerlukan panel ini.</p><button class="btn" type="submit">Masuk</button></form>
+<details class="box" id="aktivasi" ${S.get('pinSaya', null) ? '' : 'open'}><summary><b>Guru baru, atau lupa PIN?</b> Aktifkan dengan kode aktivasi</summary>
+<p class="catatan">Kode aktivasi diberikan oleh pengembang Ruang Historia untuk setiap guru. Setelah aktif, Bapak/Ibu membuat PIN sendiri untuk perangkat ini.</p>
+<form id="fakt"><label><b>Nama guru</b> (tulis persis seperti saat menerima kode)<input id="anama" class="isian" required autocomplete="name"></label>
+<label><b>Kode aktivasi</b><input id="akode" class="isian" required autocomplete="off" placeholder="RH-XXXX-XXXX" style="text-transform:uppercase"></label>
+<label><b>Buat PIN baru</b> (minimal 4 angka)<input id="apin1" class="isian" type="password" inputmode="numeric" minlength="4" required></label>
+<label><b>Ulangi PIN baru</b><input id="apin2" class="isian" type="password" inputmode="numeric" minlength="4" required></label>
+<p class="catatan" id="pesanakt"></p><button class="btn" type="submit">Aktifkan</button></form></details>
+<p><a href="#panduan">Buka buku panduan penggunaan</a></p></div></section>`;
+    document.getElementById('fakt').addEventListener('submit', async e => {
+      e.preventDefault(); const ps = document.getElementById('pesanakt');
+      const nama = document.getElementById('anama').value.trim(), kode = document.getElementById('akode').value, p1 = document.getElementById('apin1').value.trim(), p2 = document.getElementById('apin2').value.trim();
+      if (normKode(kode) !== normKode(await kodeAktivasi(nama))) { ps.textContent = 'Nama atau kode aktivasi tidak cocok. Periksa penulisan nama dan kodenya.'; return; }
+      if (p1.length < 4 || p1 !== p2) { ps.textContent = 'PIN minimal 4 angka dan kedua isian harus sama.'; return; }
+      S.set('pinSaya', await sha256('ruang-historia-saya:' + p1)); S.set('namaGuru', nama); S.set('pemilik', false); S.set('guru', true); panelGuru();
+    });
     document.getElementById('fpin').addEventListener('submit', async e => {
       e.preventDefault();
-      const ok = PG.pin && await sha256('ruang-historia:' + document.getElementById('pin').value.trim()) === PG.pin;
-      if (ok) { S.set('guru', true); panelGuru(); } else document.getElementById('pesanpin').textContent = 'PIN salah. Coba lagi.';
+      const v = document.getElementById('pin').value.trim(), pemilik = PG.pin && await sha256('ruang-historia:' + v) === PG.pin, saya = S.get('pinSaya', null) && await sha256('ruang-historia-saya:' + v) === S.get('pinSaya');
+      if (pemilik || saya) { if (pemilik) S.set('pemilik', true); S.set('guru', true); panelGuru(); } else document.getElementById('pesanpin').textContent = 'PIN salah. Coba lagi.';
     });
     return;
   }
   const c = konfig();
   const opsiBab = kid => tersedia(cariK(kid)).map(d => `<option value="${d.id}">Bab ${d.id}. ${esc(d.judul)}</option>`).join('');
-  app.innerHTML = `<section class="hero pad"><div class="wrap"><h1>Panel Guru</h1><p>Mode guru aktif di perangkat ini: semua babak terbuka untuk Bapak/Ibu.</p></div></section>
+  app.innerHTML = `<section class="hero pad"><div class="wrap"><h1>Panel Guru</h1><p>${S.get('namaGuru', '') && !S.get('pemilik') ? `Selamat datang, ${esc(S.get('namaGuru').replace(/\.$/, ''))}. ` : ''}Mode guru aktif di perangkat ini: semua babak terbuka untuk Bapak/Ibu. <a href="#panduan" style="color:inherit"><b>Buku panduan</b></a></p></div></section>
 <section class="pad"><div class="wrap guru-wrap">
 <div class="box guru-kartu"><h2>1. Presentasi kelas</h2><p>Slide dibuat otomatis dari materi bab: tujuan, materi, garis waktu, tokoh, foto arsip, istilah, refleksi Panca Cinta, dan pertanyaan diskusi.</p>
 <label><b>Ruang</b><select id="pr" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
@@ -631,7 +650,15 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <label><b>Alamat aplikasi web (dari langkah 5)</b><input id="gr" class="isian" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(c.rekap || '')}"></label>
 <div class="row"><button class="btn alt" type="button" id="ujirekap">Uji sambungan</button></div><p class="catatan" id="pesanrekap"></p></div>
 
+${S.get('pemilik') ? `<div class="box guru-kartu"><h2>Bagikan ke guru lain</h2><p>Buat kode aktivasi untuk setiap guru. Dengan kode itu, guru membuat PIN sendiri, sehingga PIN Bapak tidak perlu dibagikan. Kode hanya berlaku untuk nama yang ditulis.</p>
+<label><b>Nama guru</b><input id="bnama" class="isian" placeholder="contoh: Rina Marlina, S.Pd."></label>
+<div class="row"><button class="btn" type="button" id="bbuat">Buat kode aktivasi</button></div><div id="bhasil"></div></div>` : ''}
+<div class="box guru-kartu"><h2>Ganti PIN</h2><p>Ganti PIN guru untuk perangkat ini.</p>
+<label><b>PIN baru</b> (minimal 4 angka)<input id="gp1" class="isian" type="password" inputmode="numeric"></label><label><b>Ulangi PIN baru</b><input id="gp2" class="isian" type="password" inputmode="numeric"></label>
+<div class="row"><button class="btn alt" type="button" id="gpsimpan">Simpan PIN</button></div><p class="catatan" id="gppesan">${S.get('pemilik') ? 'PIN utama pengembang (di file pengaturan) tetap berlaku di semua perangkat.' : ''}</p></div>
+
 <div class="box guru-kartu"><h2>6. Lainnya</h2><ul>
+<li><a href="#panduan">Buku panduan penggunaan</a> (dapat diunduh sebagai PDF).</li>
 <li>Tambah foto atau ilustrasi sendiri: lihat panduan di halaman <a href="#tentang">Tentang</a>.</li>
 <li>Rekap nilai: siswa dapat menunjukkan halaman <a href="#nilai">Nilaiku</a> di perangkatnya.</li></ul>
 <button class="btn alt" type="button" id="keluar">Keluar dari mode guru</button></div>
@@ -657,6 +684,12 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
   document.getElementById('salinkode').addEventListener('click', async ev => { try { const t = await fetch('alat/rekap-google-sheets.gs').then(r => r.text()); await navigator.clipboard.writeText(t); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; } catch { ev.target.textContent = 'Gagal menyalin. Coba lagi'; } });
   document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Sekarang buat tautan kelas di bagian 4.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
   document.getElementById('keluar').addEventListener('click', () => { S.set('guru', false); location.hash = '#beranda'; });
+  document.getElementById('gpsimpan').onclick = async () => { const a1 = document.getElementById('gp1').value.trim(), a2 = document.getElementById('gp2').value.trim(), ps = document.getElementById('gppesan'); if (a1.length < 4 || a1 !== a2) { ps.textContent = 'PIN minimal 4 angka dan kedua isian harus sama.'; return; } S.set('pinSaya', await sha256('ruang-historia-saya:' + a1)); ps.textContent = 'PIN baru tersimpan untuk perangkat ini.'; document.getElementById('gp1').value = document.getElementById('gp2').value = ''; };
+  const bb = document.getElementById('bbuat');
+  if (bb) bb.onclick = async () => { const nama = document.getElementById('bnama').value.trim(); if (!nama) return; const kode = await kodeAktivasi(nama), url = alamatDasar();
+    const pesan = `Assalamu'alaikum, ${nama.replace(/\.$/, '')}.\n\nBerikut akses guru aplikasi Ruang Historia:\n1. Buka ${url}#guru\n2. Pilih "Guru baru, atau lupa PIN?"\n3. Nama guru: ${nama}\n4. Kode aktivasi: ${kode}\n5. Buat PIN sendiri.\n\nBuku panduan: ${url}#panduan\nMohon kode ini tidak dibagikan kepada siswa.\n\nSalam,\nEki Ripan J.R. Tanjung, S.Pd., M.Pd., Gr.`;
+    document.getElementById('bhasil').innerHTML = `<p>Kode aktivasi untuk <b>${esc(nama)}</b>:</p><p class="kode-akt">${kode}</p><textarea class="isian" rows="9" readonly>${esc(pesan)}</textarea><div class="row"><button class="btn" type="button" id="bsalin">Salin pesan untuk dikirim</button></div>`;
+    document.getElementById('bsalin').onclick = async ev => { try { await navigator.clipboard.writeText(pesan); ev.target.textContent = 'Tersalin. Kirim lewat WhatsApp'; } catch { document.querySelector('#bhasil textarea').select(); } }; };
 }
 
 function terapkanKelas(kode) {
@@ -1218,7 +1251,7 @@ function halamanSoal() {
 }
 
 const tahunAjar = () => { const d = new Date(), y = d.getFullYear(); return d.getMonth() >= 6 ? `${y}/${y + 1}` : `${y - 1}/${y}`; };
-const idGuru = () => ({ madrasah: 'MAN 1 Belitung', guru: 'Eki Ripan J.R. Tanjung, S.Pd., M.Pd., Gr.', nip: '', kepala: '', nipKepala: '', tempat: 'Tanjungpandan', tahun: tahunAjar(), menitJp: '45', ...S.get('idGuru', {}) });
+const idGuru = () => ({ madrasah: S.get('pemilik') !== false ? 'MAN 1 Belitung' : '', guru: S.get('pemilik') !== false ? 'Eki Ripan J.R. Tanjung, S.Pd., M.Pd., Gr.' : S.get('namaGuru', ''), nip: '', kepala: '', nipKepala: '', tempat: 'Tanjungpandan', tahun: tahunAjar(), menitJp: '45', ...S.get('idGuru', {}) });
 function pasangModulForm() {
   const mr = document.getElementById('mr'), mb = document.getElementById('mb'), mm = document.getElementById('mm'), al = document.getElementById('malasan');
   const isiModel = () => { const saran = MODEL_BAB[`${mr.value}-${mb.value}`] || 'discovery'; mm.innerHTML = Object.entries(MODEL).map(([k, m]) => `<option value="${k}" ${k === saran ? 'selected' : ''}>${esc(m.nama)}${k === saran ? ' (disarankan)' : ''}</option>`).join(''); alasan(); };
@@ -1294,6 +1327,73 @@ function teksAsesmenku(N) {
   return out.join('\n').trim();
 }
 
+/* ---------- BUKU PANDUAN PENGGUNAAN ---------- */
+function susunPanduan() {
+  const url = alamatDasar(), B = [];
+  const h1 = x => B.push({ t: 'h1', x }), h2 = x => B.push({ t: 'h2', x }), h3 = x => B.push({ t: 'h3', x }), p = x => B.push({ t: 'p', x }), li = (x, n) => B.push({ t: 'li', x, n });
+  const langkah = xs => xs.forEach((x, i) => li(x, i + 1)), poin = xs => xs.forEach(x => li(x));
+  const kv = rows => B.push({ t: 'tabel', kv: true, rows, lebar: [30, 70] });
+  B.push({ t: 'judul', x: 'BUKU PANDUAN PENGGUNAAN', sub: 'RUANG HISTORIA\nAplikasi Belajar Sejarah Interaktif Berbasis Cinta' });
+  kv([['Nama aplikasi', 'Ruang Historia'], ['Alamat', url], ['Isi', 'Sejarah Indonesia (11 bab), Sejarah Dunia (9 bab), Sejarah Kebudayaan Islam (8 bab)'], ['Pembuat dan pemegang hak cipta', 'Eki Ripan Junapratama Rahmatullah, S.Pd., M.Pd., Gr. (Eki Ripan J.R. Tanjung)'], ['Jabatan', 'Guru Sejarah, MAN 1 Belitung, Kementerian Agama'], ['Kontak', 'ekiripantanjung@gmail.com'], ['Tahun', '2026']]);
+  p('Ruang Historia adalah aplikasi belajar sejarah untuk madrasah aliyah dan sekolah menengah. Materinya dilengkapi foto arsip, video, garis waktu, kuis, dan refleksi Panca Cinta Kurikulum Berbasis Cinta. Aplikasi ini dapat dipasang di HP dan laptop, dan tetap bisa dipakai tanpa internet setelah dibuka pertama kali.');
+
+  h2('Bagian A. Panduan untuk siswa');
+  h3('1. Membuka dan memasang aplikasi');
+  langkah([`Buka **${url}** di Chrome (HP Android atau laptop) atau Safari (iPhone).`, 'Di HP Android: ketuk menu titik tiga di kanan atas, lalu **Tambahkan ke layar utama** atau **Instal aplikasi**. Di iPhone: ketuk tombol Bagikan lalu **Tambahkan ke Layar Utama**. Di laptop: klik ikon instal di ujung kanan kolom alamat.', 'Ikon **Ruang Historia** muncul di layar. Buka aplikasi dari ikon itu.']);
+  h3('2. Bergabung dengan kelas');
+  langkah(['Buka **tautan kelas** atau pindai **kode QR** yang dibagikan guru. Cukup sekali.', 'Bila guru memakai rekap nilai, masukkan **kode siswa** 6 huruf dari guru. Nama dan kelasmu akan muncul.', 'Jangan berikan kode siswamu kepada teman, karena nilai yang masuk tercatat atas namamu.']);
+  h3('3. Belajar setiap bab (babak)');
+  langkah(['Di Beranda, pilih ruang (Sejarah Indonesia, Sejarah Dunia, atau SKI), lalu pilih bab yang terbuka.', 'Baca **Materi**, lihat **Jejak sejarah** (foto arsip), dan tonton **Video**.', 'Catat poin penting di buku catatan. Centang daftar kesiapan, lalu kerjakan **Kuis**.', 'Bila nilaimu mencapai **KKM**, kamu mendapat bintang dan babak berikutnya terbuka. Bila belum, pelajari lagi materinya lalu ulangi kuis.', 'Bab yang belum dibuka guru bertanda **Belum dibuka guru**. Tunggu sampai guru membukanya di kelas.']);
+  h3('4. Nilai dan ujian');
+  poin(['Menu **Nilaiku** menampilkan semua nilai dan bintangmu. Tunjukkan halaman ini bila guru memintanya.', 'Ujian akhir tiap ruang terbuka setelah babak-babaknya selesai.', 'Bila mengerjakan kuis tanpa internet, nilai disimpan di HP dan terkirim otomatis ke guru saat HP tersambung internet lagi.']);
+
+  h2('Bagian B. Panduan untuk guru');
+  h3('1. Masuk Panel Guru');
+  langkah(['Ketuk menu **Guru** di bagian atas.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
+  h3('2. Presentasi kelas (PowerPoint dan PDF)');
+  langkah(['Pada bagian **1. Presentasi kelas**, pilih ruang dan bab.', 'Tekan **Tampilkan presentasi** untuk mengajar langsung dari aplikasi (geser atau tombol panah untuk pindah slide).', 'Tekan **Unduh PowerPoint** untuk file yang dapat diedit, atau **Unduh PDF** lalu pilih **Simpan sebagai PDF** pada jendela cetak.']);
+  h3('3. Modul ajar (Word dan PDF)');
+  langkah(['Pada bagian **2. Modul ajar**, pilih ruang dan bab. Model pembelajaran yang cocok dipilihkan otomatis beserta alasannya; boleh diganti.', 'Atur kelas, semester, jumlah pertemuan, dan JP. Lengkapi identitas madrasah, nama guru, NIP, dan kepala madrasah.', 'Tekan **Buat modul ajar**, periksa pratinjau, lalu **Unduh Word** (dapat diedit) atau **Unduh PDF**.', 'Modul memuat identitas, identifikasi (DPL dan Panca Cinta), desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, contoh soal, dan glosarium. Sesuaikan Capaian Pembelajaran dengan dokumen CP yang berlaku.']);
+  h3('4. Soal ulangan harian dan ASESMENKU');
+  langkah(['Pada bagian **3. Soal ulangan harian**, pilih ruang dan satu atau beberapa bab.', 'Isi jumlah soal pilihan ganda untuk setiap level **C1–C6**, atau tekan tombol cepat **ASESMENKU 30-40-30**, **Dasar**, **Seimbang**, atau **HOTS**. Angka merah berarti stok soal level itu kurang; tambahkan bab.', 'Isi jumlah PG kompleks, benar-salah, isian, menjodohkan, dan uraian, lalu tekan **Buat soal**.', 'Pilih **Format ASESMENKU**, tekan **Salin semua soal**, lalu tempel di ASESMENKU.', 'Naskah lengkap dengan kunci, pembahasan, pedoman penskoran, dan kisi-kisi dapat diunduh sebagai Word atau PDF. Tersedia juga file Excel (.csv). Tekan **Acak ulang soal** untuk paket soal yang berbeda.']);
+  h3('5. Mode babak dan tautan kelas');
+  langkah(['Pada bagian **4. Pengaturan babak**, isi nama kelas dan KKM, lalu aktifkan mode babak.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
+  h3('6. Rekap nilai di Google Sheets (dipasang sekali)');
+  langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Panel Guru bagian **5**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di Panel Guru bagian 5, lalu tekan **Uji sambungan**.', 'Isi lembar **Siswa** (Kelas, No, Nama), lalu menu **Ruang Historia → Buat kode siswa**. Bagikan kode kepada setiap siswa.', 'Buat tautan kelas (bagian 4). Sejak itu nilai kuis dan ujian masuk otomatis.']);
+  h3('7. Membuka bab baru dan membaca analisis');
+  poin(['Setiap mulai mengajar bab baru, buka lembar **Pengaturan** di Google Sheets dan ubah angka **Buka sampai bab** untuk kelas itu. KKM per kelas juga diatur di sana.', 'Lembar **Rekap** berisi nilai tertinggi setiap siswa per bab (merah bila di bawah KKM).', 'Lembar **Analisis** berisi rata-rata, persentase ketuntasan, siswa yang perlu remedial, siswa yang belum mengerjakan, dan soal yang paling sulit.']);
+  h3('8. Tahun ajaran baru');
+  poin(['Menu **Ruang Historia → Hapus data satu kelas**: menghapus data satu kelas saja.', 'Menu **Ruang Historia → Tahun ajaran baru**: file lama disimpan sebagai arsip di Google Drive, lalu nilai dikosongkan. Daftar siswa boleh dihapus atau disimpan. Alamat aplikasi web tidak berubah.']);
+
+  h2('Bagian C. Pertanyaan yang sering muncul');
+  B.push({ t: 'tabel', head: ['Masalah', 'Penyelesaian'], lebar: [35, 65], rows: [
+    ['Bab terkunci padahal sudah belajar', 'Kerjakan kuis bab sebelumnya sampai mencapai KKM. Bila bertanda "Belum dibuka guru", tunggu guru membukanya.'],
+    ['Nilai belum masuk ke Google Sheets', 'Pastikan HP tersambung internet lalu buka aplikasi lagi; nilai yang tertunda terkirim otomatis. Pastikan siswa sudah memasukkan kode siswa.'],
+    ['Uji sambungan gagal', 'Ulangi langkah Deployment dan pastikan akses diatur ke "Siapa saja". Alamat harus diakhiri /exec.'],
+    ['Guru lupa PIN', 'Pilih "Guru baru, atau lupa PIN?" dan pakai kode aktivasi yang sama untuk membuat PIN baru.'],
+    ['Tampilan masih versi lama', 'Tutup aplikasi lalu buka lagi saat tersambung internet. Pembaruan terpasang otomatis.'],
+    ['Siswa lupa kode siswa', 'Lihat kolom Kode di lembar Siswa pada Google Sheets.']] });
+
+  h2('Bagian D. Hak cipta dan ketentuan penggunaan');
+  p('**Ruang Historia** dibuat dan dikembangkan oleh **Eki Ripan Junapratama Rahmatullah, S.Pd., M.Pd., Gr.** (Eki Ripan J.R. Tanjung), Guru Sejarah MAN 1 Belitung. Seluruh rancangan aplikasi, materi, soal, video, desain, dan logo merupakan ciptaan pembuat dan dilindungi Undang-Undang Nomor 28 Tahun 2014 tentang Hak Cipta.');
+  poin(['Guru dan siswa boleh memakai aplikasi ini secara gratis untuk kegiatan pembelajaran.', 'Modul ajar, presentasi, dan soal yang dihasilkan aplikasi boleh disunting dan dipakai untuk keperluan mengajar.', 'Dilarang memperjualbelikan, mengakui sebagai karya sendiri, atau mengedarkan ulang aplikasi tanpa izin tertulis dari pembuat.', 'Saat membagikan atau memakai hasilnya di luar kelas, cantumkan sumber: "Ruang Historia, karya Eki Ripan J.R. Tanjung, S.Pd., M.Pd., Gr."', 'Foto arsip mengikuti lisensi masing-masing sebagaimana tercantum pada keterangannya.']);
+  p(`Ruang Historia merupakan bagian dari keluarga aplikasi karya pembuat: ${KELUARGA.map(x => x[0]).join(', ')}.`);
+  p(`Saran dan masukan: ekiripantanjung@gmail.com.`);
+  p(`*${HAK}. Hak cipta dilindungi undang-undang.*`);
+  return { blok: B, nama: 'Buku Panduan Ruang Historia' };
+}
+function panduan() {
+  tandaiMenu('tentang');
+  const M = susunPanduan();
+  app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><h1>Buku panduan penggunaan</h1>
+<p>Panduan singkat untuk siswa dan guru. Dapat dibaca di sini atau diunduh untuk dibagikan.</p>
+<div class="row"><button class="btn" type="button" id="ppdf">Unduh PDF</button><button class="btn alt" type="button" id="pword">Unduh Word (.docx)</button></div>
+<p class="catatan">Untuk PDF: pada jendela cetak, pilih <b>Simpan sebagai PDF</b>.</p></div></section>
+<section class="pad"><div class="wrap"><article class="modul-dok">${modulHTML(M)}</article></div></section>`;
+  document.getElementById('pword').onclick = () => unduhBlob(docxDari(M), M.nama + '.docx');
+  document.getElementById('ppdf').onclick = () => { const t = document.title; document.title = M.nama; document.body.classList.add('cetak-modul'); setTimeout(() => { print(); document.body.classList.remove('cetak-modul'); document.title = t; }, 50); };
+}
+
 /* ---------- router ---------- */
 function rute() {
   clearInterval(jam);
@@ -1311,6 +1411,7 @@ function rute() {
   else if (h === 'guru') panelGuru();
   else if (h === 'guru-modul') halamanModul();
   else if (h === 'guru-soal') halamanSoal();
+  else if (h === 'panduan') panduan();
   else beranda();
   window.scrollTo(0, 0);
 }

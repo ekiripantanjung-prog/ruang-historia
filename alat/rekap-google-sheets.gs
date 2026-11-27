@@ -10,6 +10,7 @@
  * 5. Isi lembar "Siswa" (Kelas, No, Nama), lalu menu Ruang Historia > Buat kode siswa.
  * 6. Lihat lembar "Analisis" (diperbarui otomatis setiap file dibuka, atau lewat menu).
  * 7. Lembar "Pengaturan": atur sampai bab berapa materi dibuka untuk tiap kelas, dan KKM-nya.
+ * 8. Tahun ajaran baru: menu Ruang Historia > Tahun ajaran baru. File lama disimpan sebagai arsip, lalu data dikosongkan.
  */
 
 const LEMBAR_SISWA = 'Siswa';
@@ -26,6 +27,9 @@ function onOpen() {
     .addItem('1. Siapkan lembar', 'siapkan')
     .addItem('2. Buat kode siswa', 'buatKode')
     .addItem('3. Perbarui analisis', 'perbaruiAnalisis')
+    .addSeparator()
+    .addItem('Hapus data satu kelas', 'hapusKelas')
+    .addItem('Tahun ajaran baru (arsipkan lalu kosongkan)', 'tahunAjaranBaru')
     .addToUi();
   try { perbaruiAnalisis(true); } catch (e) {}
 }
@@ -273,4 +277,48 @@ function perbaruiAnalisis(diam) {
   });
   an.setFrozenRows(1);
   if (diam !== true) { try { SpreadsheetApp.getUi().alert('Analisis sudah diperbarui. Lihat lembar Analisis.'); } catch (e) {} }
+}
+
+
+/* ---------- HAPUS DATA DAN TAHUN AJARAN BARU ---------- */
+// lembar dan nomor kolom "Kelas" di dalamnya
+const KOLOM_KELAS = [[LEMBAR_SISWA, 1], [LEMBAR_NILAI, 2], [LEMBAR_REKAP, 1], [LEMBAR_BUTIR, 2], [LEMBAR_ATUR, 1]];
+
+/** Menghapus semua baris milik satu kelas (siswa, nilai, rekap, butir soal, pengaturan). */
+function hapusKelas() {
+  const ui = SpreadsheetApp.getUi(), ss = SpreadsheetApp.getActiveSpreadsheet();
+  const r = ui.prompt('Hapus data satu kelas', 'Ketik nama kelas persis seperti di lembar Siswa (contoh: XI D):', ui.ButtonSet.OK_CANCEL);
+  if (r.getSelectedButton() !== ui.Button.OK) return;
+  const kelas = r.getResponseText().trim(); if (!kelas) return;
+  if (ui.alert('Yakin?', 'Semua data kelas "' + kelas + '" (daftar siswa, kode, nilai, rekap, dan pengaturan) akan dihapus. Data kelas lain tidak berubah.', ui.ButtonSet.YES_NO) !== ui.Button.YES) return;
+  let jumlah = 0;
+  KOLOM_KELAS.forEach(([nama, kol]) => {
+    const sh = ss.getSheetByName(nama); if (!sh || sh.getLastRow() < 2) return;
+    const nilai = sh.getRange(2, kol, sh.getLastRow() - 1, 1).getValues();
+    for (let i = nilai.length - 1; i >= 0; i--) if (String(nilai[i][0]).trim() === kelas) { sh.deleteRow(i + 2); jumlah++; }
+  });
+  PropertiesService.getDocumentProperties().deleteProperty('kkm_' + kelas);
+  try { perbaruiAnalisis(true); } catch (e) {}
+  ui.alert(jumlah ? 'Selesai. ' + jumlah + ' baris data kelas "' + kelas + '" sudah dihapus.' : 'Tidak ada data dengan nama kelas "' + kelas + '". Periksa penulisannya.');
+}
+
+/** Menyimpan salinan file sebagai arsip, lalu mengosongkan data untuk tahun ajaran baru. */
+function tahunAjaranBaru() {
+  const ui = SpreadsheetApp.getUi(), ss = SpreadsheetApp.getActiveSpreadsheet();
+  const t = new Date(), y = t.getFullYear(), lalu = t.getMonth() >= 6 ? (y - 1) + '-' + y : (y - 2) + '-' + (y - 1);
+  const r = ui.prompt('Tahun ajaran baru', 'File ini akan disalin sebagai arsip, lalu semua nilai dikosongkan.\nNama tahun ajaran yang diarsipkan:', ui.ButtonSet.OK_CANCEL);
+  if (r.getSelectedButton() !== ui.Button.OK) return;
+  const label = r.getResponseText().trim() || lalu;
+  const siswaJuga = ui.alert('Daftar siswa', 'Hapus juga daftar siswa dan kodenya?\n\nYA = hapus (isi siswa baru nanti)\nTIDAK = simpan daftar siswa (misalnya bila siswanya sama, hanya naik kelas)', ui.ButtonSet.YES_NO_CANCEL);
+  if (siswaJuga === ui.Button.CANCEL || siswaJuga === ui.Button.CLOSE) return;
+  const arsip = ss.copy('Arsip ' + ss.getName() + ' ' + label);
+  const kosongkan = nama => { const sh = ss.getSheetByName(nama); if (sh && sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, sh.getMaxColumns()).clearContent().setBackground(null); };
+  [LEMBAR_NILAI, LEMBAR_BUTIR].forEach(kosongkan);
+  const rek = ss.getSheetByName(LEMBAR_REKAP);
+  if (rek) { kosongkan(LEMBAR_REKAP); if (rek.getMaxColumns() > 3) rek.getRange(1, 4, 1, rek.getMaxColumns() - 3).clearContent().setBackground(null); }
+  const an = ss.getSheetByName(LEMBAR_ANALISIS); if (an && an.getLastRow() > 1) an.getRange(2, 1, an.getLastRow() - 1, an.getMaxColumns()).clear();
+  if (siswaJuga === ui.Button.YES) { kosongkan(LEMBAR_SISWA); kosongkan(LEMBAR_ATUR); }
+  else { const at = ss.getSheetByName(LEMBAR_ATUR); if (at && at.getLastRow() > 1) at.getRange(2, 2, at.getLastRow() - 1, RUANG.length).setValue(1); }
+  const props = PropertiesService.getDocumentProperties(); Object.keys(props.getProperties()).filter(k => k.indexOf('kkm_') === 0).forEach(k => props.deleteProperty(k));
+  ui.alert('Selesai.\n\nArsip tersimpan di Google Drive dengan nama:\n"' + arsip.getName() + '"\n\nFile ini sudah kosong dan siap dipakai tahun ajaran baru. Alamat aplikasi web dan tautan kelas tetap sama.' + (siswaJuga === ui.Button.YES ? '\n\nIsi daftar siswa baru di lembar Siswa, lalu pilih menu Buat kode siswa.' : '\n\nJangan lupa ubah nama kelas di lembar Siswa dan Pengaturan bila siswa naik kelas.'));
 }

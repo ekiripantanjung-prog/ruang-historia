@@ -9,7 +9,8 @@ TAMBAH_BAB({
     "Menguraikan perjuangan bersenjata mempertahankan kemerdekaan",
     "Menguraikan perjuangan diplomasi hingga pengakuan kedaulatan",
     "Menjelaskan peran ulama dan santri melalui Resolusi Jihad",
-    "Meneladani rela berkorban dan kebesaran hati para pendiri bangsa"
+    "Meneladani rela berkorban dan kebesaran hati para pendiri bangsa",
+    "Menjelaskan makna Proklamasi dan sambutan rakyat di berbagai daerah"
   ],
 
   video: { src: "video/indonesia/bab08.mp4", judul: "Proklamasi dan Revolusi dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -80,6 +81,15 @@ TAMBAH_BAB({
 <tr><td>Konferensi Meja Bundar (KMB)</td><td>Agustus–November 1949</td><td>Pengakuan kedaulatan kepada RIS, 27 Desember 1949</td></tr>
 </tbody></table>
 <p>Perjuangan diplomasi didukung negara-negara sahabat dan PBB. Mesir termasuk negara pertama yang mengakui kemerdekaan Indonesia (1947).</p>`,
+      cinta: null },
+    { judul: "E. Makna Proklamasi dan sambutan dari daerah",
+      isi: "<p>Proklamasi 17 Agustus 1945 memiliki makna yang sangat dalam:</p>\n<ul>\n<li><b>Puncak perjuangan</b> bangsa Indonesia melawan penjajahan selama berabad-abad.</li>\n<li><b>Lahirnya Negara Kesatuan Republik Indonesia</b> sebagai negara merdeka dan berdaulat.</li>\n<li><b>Sumber hukum</b> bagi berdirinya negara dan seluruh tata hukum Indonesia.</li>\n<li><b>Jembatan emas</b> menuju masyarakat adil dan makmur.</li>\n</ul>\n<p>Berita Proklamasi disebarkan melalui radio (kantor berita Domei), surat kabar, pamflet, dan dari mulut ke mulut. Rakyat di berbagai daerah menyambutnya:</p>\n<ul>\n<li><b>Yogyakarta</b>: Sri Sultan Hamengkubuwono IX dan Paku Alam VIII menyatakan Yogyakarta bagian dari Republik Indonesia (Amanat 5 September 1945).</li>\n<li><b>Jakarta</b>: <b>Rapat raksasa di Lapangan Ikada</b> (19 September 1945) dihadiri ratusan ribu orang. Soekarno meminta rakyat tetap tenang dan percaya kepada pemerintah.</li>\n<li><b>Surabaya</b>: <b>Insiden Hotel Yamato</b> (19 September 1945), ketika pemuda merobek bagian biru bendera Belanda sehingga menjadi Merah Putih.</li>\n<li>Di daerah lain, rakyat dan pemuda mengambil alih kantor dan senjata dari tentara Jepang.</li>\n</ul>",
+      cinta: ["Cinta tanah air", "Proklamasi disambut dengan berani dari Sabang sampai Merauke. Rasa memiliki terhadap negeri inilah yang membuat kemerdekaan dapat dipertahankan."] },
+    { judul: "F. Ujian dari dalam: Peristiwa Madiun 1948",
+      isi: "<p>Di tengah perjuangan melawan Belanda, Republik juga menghadapi pergolakan dari dalam. Pada <b>18 September 1948</b>, Front Demokrasi Rakyat (FDR) yang dipimpin <b>Musso</b> dan <b>Amir Sjarifuddin</b> memproklamasikan berdirinya \"Republik Soviet Indonesia\" di Madiun. Pemerintah menumpasnya dengan pasukan Siliwangi dan bantuan rakyat. Peristiwa ini melemahkan Republik tepat sebelum Belanda melancarkan Agresi Militer II (Desember 1948).</p>",
+      cinta: null },
+    { judul: "G. Dari RIS kembali ke NKRI",
+      isi: "<p>Hasil KMB adalah berdirinya <b>Republik Indonesia Serikat (RIS)</b> pada 27 Desember 1949, terdiri atas 16 negara bagian, termasuk Republik Indonesia. Bentuk federal ini dianggap warisan siasat Belanda untuk memecah belah. Satu per satu negara bagian bergabung dengan Republik Indonesia, dan pada <b>17 Agustus 1950</b> RIS dibubarkan. Indonesia kembali menjadi <b>Negara Kesatuan Republik Indonesia</b> dengan UUD Sementara 1950. Langkah ini didorong <b>Mosi Integral Natsir</b> yang diajukan Mohammad Natsir di parlemen RIS pada 3 April 1950.</p>",
       cinta: null }
   ],
 
@@ -104,10 +114,19 @@ TAMBAH_BAB({
     ["Diplomasi", "Perjuangan melalui perundingan"],
     ["De facto", "Diakui berdasarkan kenyataan"],
     ["De jure", "Diakui secara hukum"],
-    ["PDRI", "Pemerintahan Darurat Republik Indonesia"]
+    ["PDRI", "Pemerintahan Darurat Republik Indonesia"],
+    ["RIS", "Republik Indonesia Serikat (1949–1950)"],
+    ["Mosi Integral", "Usul Mohammad Natsir untuk kembali ke negara kesatuan (1950)"],
+    ["Rapat Ikada", "Rapat raksasa mendukung Proklamasi di Jakarta, 19 September 1945"],
+    ["FDR", "Front Demokrasi Rakyat, pelaku Peristiwa Madiun 1948"]
   ],
 
   soal: [
+    { q: "Makna Proklamasi Kemerdekaan sebagai jembatan emas berarti…", o: ["akhir dari seluruh perjuangan", "pintu menuju masyarakat adil dan makmur yang masih harus diwujudkan", "tanda kekalahan Jepang", "awal penjajahan baru", "hadiah dari Sekutu"], a: 1, l: "C2", p: "Kemerdekaan adalah awal; cita-cita adil dan makmur harus terus diperjuangkan." },
+    { q: "Rapat raksasa di Lapangan Ikada, Jakarta, berlangsung pada…", o: ["17 Agustus 1945", "18 Agustus 1945", "19 September 1945", "10 November 1945", "22 Oktober 1945"], a: 2, l: "C1", p: "Rapat Ikada (19 September 1945) menunjukkan dukungan rakyat Jakarta terhadap Proklamasi." },
+    { s: "Para pemuda Surabaya memanjat sebuah hotel dan merobek warna biru bendera Belanda yang dikibarkan di sana, sehingga yang tersisa adalah Merah Putih.", q: "Peristiwa tersebut dikenal sebagai…", o: ["Bandung Lautan Api", "Insiden Hotel Yamato", "Palagan Ambarawa", "Pertempuran Lima Hari", "Medan Area"], a: 1, l: "C3", p: "Insiden Hotel Yamato di Surabaya terjadi pada 19 September 1945." },
+    { q: "Peristiwa Madiun 1948 dipimpin oleh…", o: ["Kartosuwiryo dan Kahar Muzakkar", "Musso dan Amir Sjarifuddin", "Westerling", "Andi Aziz", "Soumokil"], a: 1, l: "C1", p: "FDR/PKI di bawah Musso dan Amir Sjarifuddin memproklamasikan Republik Soviet Indonesia di Madiun." },
+    { q: "Usul di parlemen RIS yang mendorong kembalinya Indonesia menjadi negara kesatuan dikenal sebagai…", o: ["Dekrit Presiden", "Mosi Integral Natsir", "Deklarasi Djuanda", "Manifesto Politik", "Maklumat X"], a: 1, l: "C1", p: "Mosi Integral Natsir (3 April 1950) mengantar Indonesia kembali ke NKRI pada 17 Agustus 1950." },
     { q: "Perbedaan pendapat golongan muda dan golongan tua menjelang proklamasi menyangkut…", o: ["siapa yang menjadi presiden", "waktu dan cara pelaksanaan proklamasi", "bentuk bendera negara", "bahasa resmi negara", "letak ibu kota"], a: 1, l: "C2", p: "Golongan muda ingin segera tanpa PPKI; golongan tua ingin melalui PPKI dan berhati-hati." },
     { q: "Peristiwa Rengasdengklok terjadi pada…", o: ["15 Agustus 1945", "16 Agustus 1945", "17 Agustus 1945", "18 Agustus 1945", "22 Oktober 1945"], a: 1, l: "C1", p: "Pada 16 Agustus 1945 Soekarno dan Hatta dibawa golongan muda ke Rengasdengklok." },
     { q: "Teks Proklamasi dirumuskan di rumah…", o: ["Soekarno", "Laksamana Maeda", "Ahmad Soebardjo", "Hatta", "Sayuti Melik"], a: 1, l: "C1", p: "Rumah Laksamana Tadashi Maeda dianggap aman dari gangguan tentara Jepang." },

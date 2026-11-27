@@ -9,7 +9,9 @@ TAMBAH_BAB({
     "Membedakan strategi kooperatif dan nonkooperatif",
     "Menganalisis makna Sumpah Pemuda bagi persatuan bangsa",
     "Menjelaskan peran ulama, perempuan, dan kaum terpelajar dalam pergerakan",
-    "Meneladani semangat belajar dan persatuan para tokoh pergerakan"
+    "Meneladani semangat belajar dan persatuan para tokoh pergerakan",
+    "Menjelaskan peran pers dan bahasa dalam pergerakan nasional",
+    "Menganalisis perubahan strategi pergerakan setelah 1928"
   ],
 
   video: { src: "video/indonesia/bab06.mp4", judul: "Pergerakan Nasional dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -79,7 +81,13 @@ TAMBAH_BAB({
 <div class="box"><p style="margin:0"><i>Kami poetera dan poeteri Indonesia, mengakoe bertoempah darah jang satoe, tanah Indonesia.<br>Kami poetera dan poeteri Indonesia, mengakoe berbangsa jang satoe, bangsa Indonesia.<br>Kami poetera dan poeteri Indonesia, mendjoendjoeng bahasa persatoean, bahasa Indonesia.</i></p></div>
 <p>Pada kongres itu juga, Wage Rudolf Supratman memperdengarkan lagu <b>Indonesia Raya</b> dengan biola. Sumpah Pemuda menandai lahirnya kesadaran sebagai <b>satu bangsa</b>, melampaui kesukuan dan kedaerahan.</p>`,
       cinta: ["Cinta tanah air", "Para pemuda rela melepas identitas kedaerahannya demi satu bangsa. Bahasa Indonesia yang kita pakai setiap hari adalah hasil ikrar mereka."] },
-    { judul: "D. Perempuan dalam pergerakan",
+    { judul: "D. Pers dan bahasa sebagai senjata",
+      isi: "<p>Kaum pergerakan berjuang dengan pena. Surat kabar menyebarkan gagasan kebangsaan ke seluruh pelosok.</p>\n<ul>\n<li><b>Medan Prijaji</b> (1907), dipimpin <b>Tirto Adhi Soerjo</b>: surat kabar berbahasa Melayu pertama yang dikelola sepenuhnya oleh pribumi. Tirto dikenal sebagai Bapak Pers Nasional.</li>\n<li><b>Oetoesan Hindia</b> (Sarekat Islam), <b>Soenting Melajoe</b> (Rohana Kudus), dan <b>Fikiran Ra'jat</b> (Soekarno).</li>\n<li>Tulisan Suwardi Suryaningrat, <i>Als ik eens Nederlander was</i> (Seandainya Aku Seorang Belanda, 1913), mengecam rencana perayaan kemerdekaan Belanda di tanah jajahan. Karena tulisan itu ia diasingkan.</li>\n</ul>\n<p>Bahasa Melayu, yang kemudian disebut <b>bahasa Indonesia</b>, menjadi alat pemersatu karena dapat dipahami oleh orang dari berbagai suku.</p>",
+      cinta: ["Cinta ilmu", "Para tokoh pergerakan melawan dengan tulisan yang cerdas dan berani. Menulis dengan jujur dan bertanggung jawab tetap menjadi cara berjuang di zaman digital."] },
+    { judul: "E. Setelah Sumpah Pemuda: tekanan dan perjuangan baru",
+      isi: "<p>Pemerintah kolonial makin keras terhadap pergerakan setelah 1927:</p>\n<ul>\n<li>Pemberontakan PKI (1926–1927) gagal; ribuan orang ditangkap dan diasingkan ke <b>Boven Digul</b>, Papua.</li>\n<li>Soekarno ditangkap (1929). Dalam sidang di Bandung ia membacakan pembelaan berjudul <b>Indonesia Menggugat</b> (1930). PNI kemudian dibubarkan.</li>\n<li>Para tokoh nonkooperatif diasingkan: Soekarno ke Ende dan Bengkulu, Hatta dan Sjahrir ke Boven Digul lalu Banda Neira.</li>\n</ul>\n<p>Karena tekanan itu, banyak organisasi beralih ke strategi <b>kooperatif</b> dan bersatu dalam wadah bersama:</p>\n<table><thead><tr><th>Peristiwa</th><th>Tahun</th><th>Isi</th></tr></thead><tbody>\n<tr><td>Kongres Pemuda I</td><td>1926</td><td>Pertemuan awal organisasi pemuda kedaerahan</td></tr>\n<tr><td>PPPKI</td><td>1927</td><td>Permufakatan partai-partai politik kebangsaan</td></tr>\n<tr><td>Petisi Soetardjo</td><td>1936</td><td>Usul agar Indonesia berpemerintahan sendiri dalam 10 tahun; ditolak Belanda</td></tr>\n<tr><td>MIAI</td><td>1937</td><td>Majelis Islam A'la Indonesia, wadah bersama organisasi Islam</td></tr>\n<tr><td>GAPI</td><td>1939</td><td>Gabungan Politik Indonesia dengan tuntutan \"Indonesia Berparlemen\"</td></tr>\n</tbody></table>",
+      cinta: null },
+    { judul: "F. Perempuan dalam pergerakan",
       isi: `<p><b>R.A. Kartini</b> memperjuangkan pendidikan perempuan melalui surat-suratnya yang kemudian dibukukan dengan judul <i>Habis Gelap Terbitlah Terang</i>. <b>Dewi Sartika</b> mendirikan Sekolah Istri di Bandung (1904). <b>Rohana Kudus</b> menerbitkan surat kabar perempuan <i>Soenting Melajoe</i> (1912). Puncaknya, <b>Kongres Perempuan I</b> pada 22 Desember 1928, yang kini diperingati sebagai Hari Ibu.</p>`,
       cinta: ["Cinta diri dan sesama", "Pendidikan adalah hak setiap orang, laki-laki dan perempuan. Menghargai teman tanpa membedakan adalah bagian dari akhlak yang baik."] }
   ],
@@ -105,10 +113,20 @@ TAMBAH_BAB({
     ["Kongres", "Pertemuan besar perwakilan organisasi"],
     ["Ikrar", "Janji yang diucapkan dengan sungguh-sungguh"],
     ["Tut wuri handayani", "Dari belakang memberi dorongan"],
-    ["Manifesto Politik", "Pernyataan sikap politik Perhimpunan Indonesia (1925)"]
+    ["Manifesto Politik", "Pernyataan sikap politik Perhimpunan Indonesia (1925)"],
+    ["Boven Digul", "Tempat pengasingan tokoh pergerakan di Papua"],
+    ["Indonesia Menggugat", "Pidato pembelaan Soekarno di pengadilan Bandung, 1930"],
+    ["Petisi Soetardjo", "Usul pemerintahan sendiri bagi Indonesia, 1936"],
+    ["GAPI", "Gabungan Politik Indonesia (1939)"],
+    ["Medan Prijaji", "Surat kabar pribumi pertama, dipimpin Tirto Adhi Soerjo (1907)"]
   ],
 
   soal: [
+    { q: "Tokoh yang dikenal sebagai Bapak Pers Nasional dan pendiri Medan Prijaji (1907) adalah…", o: ["Ki Hajar Dewantara", "Tirto Adhi Soerjo", "H.O.S. Tjokroaminoto", "Douwes Dekker", "Mohammad Yamin"], a: 1, l: "C1", p: "Medan Prijaji adalah surat kabar berbahasa Melayu pertama yang dikelola sepenuhnya oleh pribumi." },
+    { q: "Tulisan Als ik eens Nederlander was (1913) yang mengecam Belanda ditulis oleh…", o: ["Soekarno", "Suwardi Suryaningrat", "Tjipto Mangoenkoesoemo", "Mohammad Hatta", "Kartini"], a: 1, l: "C1", p: "Suwardi Suryaningrat (Ki Hajar Dewantara) diasingkan karena tulisan ini." },
+    { q: "Pidato pembelaan Soekarno dalam sidang di Bandung pada 1930 berjudul…", o: ["Lahirnya Pancasila", "Indonesia Menggugat", "Indonesia Merdeka", "Mencapai Indonesia Merdeka", "Di Bawah Bendera Revolusi"], a: 1, l: "C1", p: "Indonesia Menggugat mengecam penjajahan dan menjadi dokumen penting pergerakan." },
+    { q: "Tuntutan GAPI (1939) dikenal dengan semboyan…", o: ["Indonesia Merdeka", "Indonesia Berparlemen", "Satu Nusa Satu Bangsa", "Hidup atau Mati", "Merdeka atau Mati"], a: 1, l: "C1", p: "GAPI menuntut parlemen yang dipilih rakyat." },
+    { s: "Setelah 1930, banyak organisasi pergerakan beralih ke cara kooperatif, misalnya mengajukan Petisi Soetardjo (1936) dan membentuk GAPI (1939).", q: "Perubahan strategi tersebut terutama disebabkan oleh…", o: ["dukungan penuh Belanda", "tekanan keras pemerintah kolonial terhadap tokoh dan partai nonkooperatif", "kemenangan Jepang", "bubarnya semua organisasi Islam", "Sumpah Pemuda ditolak rakyat"], a: 1, l: "C4", p: "Penangkapan dan pengasingan tokoh membuat banyak organisasi memilih strategi kooperatif yang lebih aman." },
     { q: "Organisasi modern pertama di Indonesia yang berdiri pada 20 Mei 1908 adalah…", o: ["Sarekat Islam", "Budi Utomo", "Indische Partij", "Muhammadiyah", "PNI"], a: 1, l: "C1", p: "Budi Utomo berdiri 20 Mei 1908; tanggal itu diperingati sebagai Hari Kebangkitan Nasional." },
     { q: "Peristiwa luar negeri yang membangkitkan semangat bangsa Asia, termasuk Indonesia, pada awal abad ke-20 adalah…", o: ["Revolusi Industri di Inggris", "kemenangan Jepang atas Rusia (1905)", "Perang Dunia II", "jatuhnya Konstantinopel", "Revolusi Prancis"], a: 1, l: "C2", p: "Kemenangan Jepang membuktikan bangsa Asia mampu mengalahkan bangsa Eropa." },
     { s: "Banyak tokoh pergerakan seperti Sutomo, Soekarno, dan Hatta adalah lulusan sekolah yang dibuka pada masa Politik Etis. Pendidikan membuat mereka memahami ketidakadilan penjajahan.", q: "Teks tersebut menunjukkan faktor pendorong pergerakan nasional berupa…", o: ["kemenangan Jepang atas Rusia", "lahirnya golongan terpelajar", "kenangan kejayaan masa lalu", "kedatangan bangsa Eropa", "pengaruh Revolusi Prancis"], a: 1, l: "C4", p: "Kaum terpelajar hasil pendidikan Politik Etis menjadi motor pergerakan nasional." },

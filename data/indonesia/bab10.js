@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menganalisis kebijakan politik Orde Baru dan dampaknya bagi demokrasi",
     "Menganalisis kebijakan pembangunan ekonomi dan sosial Orde Baru",
     "Menjelaskan politik luar negeri Orde Baru",
-    "Menganalisis sebab-sebab runtuhnya Orde Baru secara seimbang"
+    "Menganalisis sebab-sebab runtuhnya Orde Baru secara seimbang",
+    "Menjelaskan politik luar negeri dan kehidupan sosial-budaya masa Orde Baru"
   ],
 
   video: { src: "video/indonesia/bab10.mp4", judul: "Orde Baru dalam 1,5 menit", durasi: "1 menit 35 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -69,12 +70,18 @@ TAMBAH_BAB({
 <p>Namun pembangunan juga menyisakan masalah: <b>kesenjangan</b> antara kaya dan miskin serta antara Jawa dan luar Jawa, <b>utang luar negeri</b> yang besar, kerusakan lingkungan, dan <b>KKN</b>.</p>`,
       kartu: true,
       cinta: ["Cinta lingkungan", "Pembangunan perlu menjaga hutan, sungai, dan tanah. Kemajuan yang merusak alam akan merugikan generasi berikutnya."] },
-    { judul: "C. Runtuhnya Orde Baru",
+    { judul: "C. Politik luar negeri Orde Baru",
+      isi: "<ul>\n<li>Indonesia <b>kembali menjadi anggota PBB</b> (September 1966) dan mengakhiri konfrontasi dengan Malaysia.</li>\n<li>Indonesia ikut mendirikan <b>ASEAN</b> melalui Deklarasi Bangkok (8 Agustus 1967), bersama Malaysia, Filipina, Singapura, dan Thailand.</li>\n<li>Indonesia aktif dalam <b>Organisasi Konferensi Islam</b> (OKI) dan menjadi Ketua <b>Gerakan Non-Blok</b> (1992–1995), dengan KTT di Jakarta (1992).</li>\n<li>Indonesia menjadi tuan rumah pertemuan <b>APEC</b> di Bogor (1994).</li>\n<li>Dukungan terhadap Konvensi Hukum Laut PBB (<b>UNCLOS 1982</b>) membuat konsep Wawasan Nusantara dari Deklarasi Djuanda diakui dunia.</li>\n</ul>\n<p><b>Timor Timur</b>: bekas jajahan Portugis ini diintegrasikan menjadi provinsi ke-27 Indonesia pada 1976. Integrasi tersebut tidak diakui PBB dan diwarnai konflik berkepanjangan. Pada masa Presiden Habibie (1999), diadakan jajak pendapat; mayoritas rakyat Timor Timur memilih berpisah, dan Timor Leste merdeka pada 2002.</p>",
+      cinta: null },
+    { judul: "D. Kehidupan sosial-budaya masa Orde Baru",
+      isi: "<ul>\n<li><b>Keluarga Berencana</b>: semboyan \"Dua anak cukup\" menekan pertumbuhan penduduk; Indonesia mendapat penghargaan PBB atas keberhasilan program ini (1989).</li>\n<li><b>Transmigrasi</b>: perpindahan penduduk dari Jawa, Bali, dan Madura ke pulau lain untuk pemerataan penduduk dan pembukaan lahan.</li>\n<li><b>Televisi</b>: TVRI menjangkau seluruh Indonesia berkat satelit Palapa, sehingga informasi dan budaya nasional menyebar luas.</li>\n<li><b>Pendidikan</b>: angka buta huruf turun tajam; kesempatan bersekolah meluas sampai ke desa.</li>\n<li>Di sisi lain, berlaku <b>pembatasan</b>: aturan yang mendiskriminasi warga keturunan Tionghoa (misalnya larangan merayakan Imlek di tempat umum), larangan berjilbab di sekolah negeri sampai 1991, dan pembatasan kebebasan berekspresi.</li>\n</ul>",
+      cinta: ["Cinta diri dan sesama", "Kebijakan yang membatasi suatu golongan pernah terjadi di negeri ini. Belajar dari sejarah berarti memperlakukan setiap warga negara dengan adil, apa pun suku dan agamanya."] },
+    { judul: "E. Runtuhnya Orde Baru",
       isi: `<p><b>Krisis moneter</b> 1997 memukul Indonesia paling keras di Asia. Rupiah anjlok, harga kebutuhan pokok melonjak, dan jutaan orang kehilangan pekerjaan. Mahasiswa di berbagai kota berdemonstrasi menuntut <b>reformasi</b>.</p>
 <p>Pada 12 Mei 1998, empat mahasiswa Universitas Trisakti tewas tertembak. Kerusuhan pecah pada 13–15 Mei di Jakarta dan kota lain, menelan banyak korban. Mahasiswa menduduki gedung DPR/MPR. Pada <b>21 Mei 1998</b>, Presiden Soeharto mengundurkan diri, dan B.J. Habibie dilantik sebagai presiden.</p>
 <p class="catatan">Menilai Orde Baru secara seimbang: akui capaian pembangunannya, dan pelajari pula pelanggaran hak dan KKN yang terjadi. Keduanya sama-sama fakta sejarah.</p>`,
       cinta: ["Cinta diri dan sesama", "Para mahasiswa 1998 memperjuangkan keadilan bagi rakyat banyak. Kepedulian pada nasib orang lain adalah inti dari cinta sesama."] },
-    { judul: "D. Pelajaran dari Orde Baru",
+    { judul: "F. Pelajaran dari Orde Baru",
       isi: `<p>Orde Baru menunjukkan bahwa pembangunan ekonomi penting, tetapi harus disertai <b>keadilan</b>, <b>keterbukaan</b>, <b>penegakan hukum</b>, dan <b>pembatasan kekuasaan</b>. Kekuasaan yang terlalu lama dan tanpa pengawasan mudah disalahgunakan.</p>`,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Amanah kekuasaan akan dipertanggungjawabkan di hadapan Allah. Kejujuran dan menjauhi korupsi adalah bagian dari iman."] }
   ],
@@ -100,10 +107,19 @@ TAMBAH_BAB({
     ["KKN", "Korupsi, kolusi, dan nepotisme"],
     ["Krisis moneter", "Krisis keuangan, terutama jatuhnya nilai mata uang"],
     ["ASEAN", "Perhimpunan Bangsa-Bangsa Asia Tenggara"],
-    ["SD Inpres", "Sekolah dasar yang dibangun berdasarkan Instruksi Presiden"]
+    ["SD Inpres", "Sekolah dasar yang dibangun berdasarkan Instruksi Presiden"],
+    ["Transmigrasi", "Perpindahan penduduk antarpulau di dalam negeri"],
+    ["Keluarga Berencana", "Program pengaturan jumlah kelahiran"],
+    ["UNCLOS", "Konvensi Hukum Laut PBB 1982 yang mengakui Wawasan Nusantara"],
+    ["APEC", "Kerja Sama Ekonomi Asia-Pasifik"]
   ],
 
   soal: [
+    { q: "Organisasi kawasan Asia Tenggara yang didirikan melalui Deklarasi Bangkok pada 1967 adalah…", o: ["APEC", "ASEAN", "OKI", "GNB", "SEATO"], a: 1, l: "C1", p: "Indonesia termasuk lima negara pendiri ASEAN." },
+    { q: "Indonesia menjadi Ketua Gerakan Non-Blok dan menyelenggarakan KTT di Jakarta pada tahun…", o: ["1955", "1961", "1985", "1992", "1998"], a: 3, l: "C1", p: "KTT GNB ke-10 diadakan di Jakarta pada 1992." },
+    { q: "Program pemindahan penduduk dari pulau padat ke pulau yang masih jarang penduduknya disebut…", o: ["urbanisasi", "transmigrasi", "emigrasi", "imigrasi", "repatriasi"], a: 1, l: "C1", p: "Transmigrasi bertujuan meratakan persebaran penduduk." },
+    { s: "Pada 1999, rakyat sebuah provinsi diberi pilihan untuk tetap bergabung dengan Indonesia dengan otonomi khusus atau berpisah. Mayoritas memilih berpisah, dan wilayah itu merdeka pada 2002.", q: "Peristiwa yang dimaksud adalah…", o: ["referendum Aceh", "jajak pendapat di Timor Timur", "Pepera Irian Barat", "Pemilu 1999", "pemekaran Papua"], a: 1, l: "C3", p: "Jajak pendapat 1999 di masa Habibie menghasilkan kemerdekaan Timor Leste (2002)." },
+    { q: "Program Keluarga Berencana pada masa Orde Baru bertujuan…", o: ["menambah jumlah penduduk", "menekan laju pertumbuhan penduduk", "memindahkan penduduk ke luar negeri", "mengurangi jumlah sekolah", "meningkatkan impor beras"], a: 1, l: "C2", p: "KB dengan semboyan dua anak cukup berhasil menekan pertumbuhan penduduk." },
     { q: "Landasan pembangunan Orde Baru yang dikenal sebagai Trilogi Pembangunan terdiri atas…", o: ["stabilitas, pertumbuhan, pemerataan", "pendidikan, kesehatan, ekonomi", "politik, ekonomi, budaya", "pertanian, industri, jasa", "persatuan, kesatuan, keadilan"], a: 0, l: "C1", p: "Trilogi Pembangunan: stabilitas nasional, pertumbuhan ekonomi, dan pemerataan." },
     { q: "Rencana pembangunan Orde Baru yang dilaksanakan bertahap setiap lima tahun disebut…", o: ["Repelita", "Nasakom", "Tritura", "Dwikora", "GBHN Lama"], a: 0, l: "C1", p: "Repelita I dimulai pada 1969." },
     { q: "Pada 1973, partai-partai politik dilebur menjadi…", o: ["PNI, Masyumi, NU", "PPP, PDI, dan Golkar", "PKB, PAN, PDI-P", "Golkar dan ABRI", "Partai Islam dan Partai Nasional"], a: 1, l: "C1", p: "Fusi partai menghasilkan PPP, PDI, dan Golkar." },

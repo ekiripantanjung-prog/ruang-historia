@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menganalisis perubahan ketatanegaraan melalui amandemen UUD 1945",
     "Menguraikan kebijakan utama para presiden masa Reformasi",
     "Menjelaskan otonomi daerah, kebebasan pers, dan pemilihan langsung",
-    "Menganalisis tantangan Reformasi dan peran pelajar dalam mengisinya"
+    "Menganalisis tantangan Reformasi dan peran pelajar dalam mengisinya",
+    "Menjelaskan perkembangan pemilu dan upaya perdamaian pada masa Reformasi"
   ],
 
   video: { src: "video/indonesia/bab11.mp4", judul: "Reformasi dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -75,7 +76,13 @@ TAMBAH_BAB({
 <p>Presiden-presiden masa Reformasi dapat kamu kenali melalui garis waktu di atas.</p>`,
       kartu: true,
       cinta: null },
-    { judul: "D. Tantangan dan peran pelajar",
+    { judul: "D. Pemilu pada masa Reformasi",
+      isi: "<table><thead><tr><th>Pemilu</th><th>Ciri penting</th></tr></thead><tbody>\n<tr><td>1999</td><td>Diikuti 48 partai; pemilu demokratis pertama sejak 1955. Presiden masih dipilih MPR.</td></tr>\n<tr><td>2004</td><td>Pertama kali presiden dan wakil presiden dipilih langsung oleh rakyat; DPD dipilih untuk pertama kali.</td></tr>\n<tr><td>2009 dan 2014</td><td>Pemilu legislatif dan pemilu presiden diadakan terpisah.</td></tr>\n<tr><td>2019</td><td>Pemilu serentak pertama: memilih presiden, DPR, DPD, dan DPRD pada hari yang sama.</td></tr>\n<tr><td>2024</td><td>Pemilu serentak kedua, disusul pilkada serentak nasional pada November 2024.</td></tr>\n</tbody></table>\n<p>Pemilu diselenggarakan oleh <b>Komisi Pemilihan Umum (KPU)</b> yang mandiri, diawasi <b>Bawaslu</b>, dan sengketanya diputus oleh <b>Mahkamah Konstitusi</b>. Usia minimal pemilih adalah 17 tahun atau sudah/pernah menikah.</p>",
+      cinta: ["Cinta tanah air", "Menggunakan hak pilih dengan jujur dan cerdas adalah cara sederhana ikut menentukan arah bangsa. Bagi pelajar yang sudah berusia 17 tahun, ini kesempatan pertama berpartisipasi."] },
+    { judul: "E. Konflik, bencana, dan perdamaian",
+      isi: "<p>Masa awal Reformasi diwarnai berbagai ujian:</p>\n<ul>\n<li><b>Konflik di Ambon dan Poso</b> (1999–2002) menelan banyak korban. Perdamaian dicapai melalui <b>Perjanjian Malino</b> I (Poso, 2001) dan II (Maluku, 2002), yang difasilitasi pemerintah bersama tokoh agama.</li>\n<li><b>Konflik Aceh</b> berakhir melalui <b>Perjanjian Helsinki</b> (15 Agustus 2005) antara pemerintah dan GAM, setelah tsunami Desember 2004 mendorong kedua pihak berdamai.</li>\n<li><b>Tsunami Aceh dan Nias</b> (26 Desember 2004) menewaskan lebih dari 160.000 orang di Indonesia. Bantuan datang dari seluruh Indonesia dan dunia.</li>\n<li><b>Pandemi Covid-19</b> (2020–2022) mengubah cara belajar, bekerja, dan beribadah; pelajar mengalami sekolah daring.</li>\n</ul>\n<p>Pengalaman ini menunjukkan bahwa perdamaian dapat dibangun melalui dialog, dan bangsa Indonesia mampu bangkit bersama dari bencana.</p>",
+      cinta: ["Cinta diri dan sesama", "Perjanjian Malino lahir karena tokoh-tokoh agama mau duduk bersama. Dialog dan saling memaafkan lebih kuat daripada dendam."] },
+    { judul: "F. Tantangan dan peran pelajar",
       isi: `<p>Reformasi membuka kebebasan, tetapi juga membawa tantangan: korupsi yang masih terjadi, politik uang, berita bohong (hoaks) di media sosial, intoleransi, dan kesenjangan antardaerah.</p>
 <p>Pelajar madrasah dapat mengisi Reformasi dengan cara sederhana: <b>jujur</b> dalam ujian dan tugas, <b>memeriksa kebenaran</b> berita sebelum membagikannya (tabayun), <b>menghargai perbedaan</b>, dan kelak <b>menggunakan hak pilih</b> dengan bijak.</p>`,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Al-Qur'an mengajarkan untuk memeriksa kebenaran berita sebelum mempercayai dan menyebarkannya (QS Al-Hujurat: 6). Tabayun adalah akhlak penting di zaman media sosial."] }
@@ -102,10 +109,19 @@ TAMBAH_BAB({
     ["Pemilu langsung", "Rakyat memilih sendiri presiden atau kepala daerah"],
     ["Multipartai", "Sistem dengan banyak partai politik"],
     ["Hoaks", "Berita bohong"],
-    ["Tabayun", "Memeriksa kebenaran berita sebelum menerima atau menyebarkannya"]
+    ["Tabayun", "Memeriksa kebenaran berita sebelum menerima atau menyebarkannya"],
+    ["Pemilu serentak", "Pemilu presiden dan legislatif pada hari yang sama (sejak 2019)"],
+    ["Bawaslu", "Badan Pengawas Pemilu"],
+    ["Perjanjian Malino", "Perjanjian damai untuk Poso (2001) dan Maluku (2002)"],
+    ["Perjanjian Helsinki", "Perjanjian damai RI dan GAM (2005)"]
   ],
 
   soal: [
+    { q: "Pemilu pertama yang memilih presiden dan wakil presiden secara langsung oleh rakyat berlangsung pada tahun…", o: ["1999", "2004", "2009", "2014", "2019"], a: 1, l: "C1", p: "Pemilu 2004 menjadi pemilihan presiden langsung pertama." },
+    { q: "Pemilu serentak pertama yang memilih presiden, DPR, DPD, dan DPRD pada hari yang sama berlangsung pada…", o: ["2004", "2009", "2014", "2019", "2024"], a: 3, l: "C1", p: "Pemilu 2019 adalah pemilu serentak pertama." },
+    { q: "Lembaga yang bertugas mengawasi jalannya pemilu adalah…", o: ["KPU", "Bawaslu", "KPK", "Komisi Yudisial", "DPD"], a: 1, l: "C1", p: "KPU menyelenggarakan, Bawaslu mengawasi, dan MK memutus sengketa hasil pemilu." },
+    { q: "Perjanjian damai yang mengakhiri konflik di Aceh pada 2005 adalah…", o: ["Perjanjian Malino", "Perjanjian Helsinki", "Perjanjian New York", "Perjanjian Roem-Royen", "Perjanjian Renville"], a: 1, l: "C1", p: "Perjanjian Helsinki ditandatangani pemerintah RI dan GAM pada 15 Agustus 2005." },
+    { s: "Konflik di Poso dan Maluku mereda setelah tokoh-tokoh agama dari kedua pihak bertemu dan menandatangani Perjanjian Malino yang difasilitasi pemerintah.", q: "Nilai yang paling tepat dari peristiwa tersebut adalah…", o: ["konflik hanya dapat diselesaikan dengan senjata", "dialog dan peran tokoh agama dapat membangun perdamaian", "pemerintah tidak perlu terlibat", "perdamaian tidak mungkin dicapai", "konflik harus dibiarkan"], a: 1, l: "C5", p: "Perjanjian Malino menunjukkan kekuatan dialog dan kepemimpinan tokoh agama." },
     { q: "Berikut ini yang termasuk agenda Reformasi 1998 adalah…", o: ["memperkuat dwifungsi ABRI", "amandemen UUD 1945", "fusi partai politik", "presiden seumur hidup", "membatasi kebebasan pers"], a: 1, l: "C1", p: "Amandemen UUD 1945 adalah salah satu dari enam agenda Reformasi." },
     { q: "Presiden pertama pada masa Reformasi adalah…", o: ["Abdurrahman Wahid", "B.J. Habibie", "Megawati Soekarnoputri", "Susilo Bambang Yudhoyono", "Amien Rais"], a: 1, l: "C1", p: "B.J. Habibie dilantik setelah Soeharto mundur pada 21 Mei 1998." },
     { q: "Pemilu 1999 dianggap penting karena…", o: ["hanya diikuti tiga partai", "menjadi pemilu demokratis pertama sejak 1955 dengan 48 partai", "presiden dipilih langsung", "dimenangkan Golkar seperti biasa", "tidak ada pemilih"], a: 1, l: "C2", p: "Pemilu 1999 diikuti 48 partai dan dinilai demokratis." },

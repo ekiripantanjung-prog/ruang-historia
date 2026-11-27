@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menganalisis kebijakan politik, militer, dan ekonomi Jepang",
     "Menguraikan perlawanan rakyat terhadap Jepang",
     "Menjelaskan peran BPUPKI dan PPKI dalam persiapan kemerdekaan",
-    "Meneladani keteguhan iman dan semangat musyawarah para pendiri bangsa"
+    "Meneladani keteguhan iman dan semangat musyawarah para pendiri bangsa",
+    "Menjelaskan sistem pemerintahan militer Jepang dan dampaknya"
   ],
 
   video: { src: "video/indonesia/bab07.mp4", judul: "Pendudukan Jepang dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -58,7 +59,16 @@ TAMBAH_BAB({
 <tr><td>Agama</td><td>Mendekati ulama melalui MIAI lalu Masyumi</td><td>Ulama mendapat wadah dan pengaruh yang luas</td></tr>
 </tbody></table>`,
       cinta: ["Cinta diri dan sesama", "Romusha dipaksa bekerja jauh dari keluarga hingga banyak yang meninggal. Mengingat penderitaan mereka mengajarkan kita untuk peduli dan tidak menindas orang lain."] },
-    { judul: "C. Perlawanan terhadap Jepang",
+    { judul: "C. Pemerintahan militer Jepang",
+      isi: "<p>Jepang memerintah Indonesia dengan pemerintahan <b>militer</b>, dibagi menjadi tiga wilayah:</p>\n<table><thead><tr><th>Wilayah</th><th>Penguasa</th><th>Pusat</th></tr></thead><tbody>\n<tr><td>Jawa dan Madura</td><td>Angkatan Darat ke-16</td><td>Jakarta</td></tr>\n<tr><td>Sumatra</td><td>Angkatan Darat ke-25</td><td>Bukittinggi</td></tr>\n<tr><td>Kalimantan dan Indonesia bagian timur</td><td>Angkatan Laut (Armada Selatan Kedua)</td><td>Makassar</td></tr>\n</tbody></table>\n<p>Pembagian ini membuat hubungan antardaerah sulit, tetapi di sisi lain banyak orang Indonesia untuk pertama kalinya menduduki jabatan pemerintahan yang dulu dipegang orang Belanda. Jepang juga membentuk <b>Chuo Sangi In</b> (Badan Pertimbangan Pusat) pada 1943, diketuai Soekarno.</p>",
+      cinta: null },
+    { judul: "D. Dampak pendudukan Jepang",
+      isi: "<table><thead><tr><th>Dampak negatif</th><th>Dampak positif (tidak sengaja)</th></tr></thead><tbody>\n<tr><td>Romusha: ratusan ribu orang dipaksa bekerja, banyak yang meninggal</td><td>Bahasa Indonesia menjadi bahasa resmi dan bahasa pengantar sekolah</td></tr>\n<tr><td>Kelaparan dan kemiskinan akibat wajib serah padi</td><td>Pemuda mendapat latihan militer (PETA, Heiho, Hizbullah) yang kelak menjadi kekuatan TNI</td></tr>\n<tr><td>Kebebasan berpendapat dan berorganisasi dibatasi</td><td>Orang Indonesia mendapat pengalaman memimpin pemerintahan</td></tr>\n<tr><td>Penderitaan perempuan yang dipaksa menjadi jugun ianfu</td><td>Tokoh nasional dapat berpidato kepada rakyat luas melalui radio dan organisasi resmi</td></tr>\n</tbody></table>",
+      cinta: ["Cinta diri dan sesama", "Penderitaan romusha dan kelaparan adalah luka sejarah. Mengenangnya membuat kita menghargai kemerdekaan dan peka terhadap penderitaan orang lain."] },
+    { judul: "E. Menjelang Proklamasi: Dalat dan kekosongan kekuasaan",
+      isi: "<p>Pada 12 Agustus 1945, Soekarno, Hatta, dan Radjiman Wedyodiningrat dipanggil ke <b>Dalat</b> (Vietnam) untuk bertemu Marsekal <b>Terauchi</b>, panglima Jepang di Asia Tenggara. Terauchi menjanjikan kemerdekaan Indonesia akan diberikan dalam waktu dekat, dengan wilayah bekas Hindia Belanda.</p>\n<p>Namun tiga hari kemudian (15 Agustus 1945) Jepang menyerah kepada Sekutu, sedangkan pasukan Sekutu belum tiba. Terjadilah <b>kekosongan kekuasaan</b> (<i>vacuum of power</i>). Kaum muda, yang mendengar berita kekalahan Jepang dari radio, melihat inilah saat yang tepat untuk menyatakan kemerdekaan dengan kekuatan sendiri, bukan sebagai hadiah Jepang.</p>",
+      cinta: null },
+    { judul: "F. Perlawanan terhadap Jepang",
       isi: `<ul>
 <li><b>Cot Plieng, Aceh (1942):</b> dipimpin Teungku Abdul Djalil.</li>
 <li><b>Singaparna, Tasikmalaya (1944):</b> dipimpin K.H. Zainal Mustafa, menolak seikerei.</li>
@@ -68,7 +78,7 @@ TAMBAH_BAB({
 <p>Selain perlawanan terbuka, ada juga <b>gerakan bawah tanah</b> yang diam-diam mendengarkan radio Sekutu dan mempersiapkan kemerdekaan, misalnya kelompok Sutan Sjahrir dan kelompok pemuda di Menteng 31.</p>`,
       kartu: true,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "K.H. Zainal Mustafa menolak membungkuk ke arah matahari karena hanya Allah yang patut disembah. Keteguhan akidah adalah teladan bagi kita."] },
-    { judul: "D. Mempersiapkan kemerdekaan: BPUPKI dan PPKI",
+    { judul: "G. Mempersiapkan kemerdekaan: BPUPKI dan PPKI",
       isi: `<p>Ketika Jepang mulai kalah, Perdana Menteri Koiso menjanjikan kemerdekaan bagi Indonesia (September 1944). Dibentuklah <b>BPUPKI</b> (1 Maret 1945).</p>
 <p>Dalam sidang pertama, tiga tokoh menyampaikan gagasan dasar negara: <b>Mohammad Yamin</b> (29 Mei), <b>Soepomo</b> (31 Mei), dan <b>Soekarno</b> (1 Juni) yang memberi nama <b>Pancasila</b>. <b>Panitia Sembilan</b> kemudian merumuskan <b>Piagam Jakarta</b> (22 Juni 1945), hasil musyawarah golongan kebangsaan dan golongan Islam.</p>
 <p>BPUPKI dibubarkan dan diganti <b>PPKI</b> (7 Agustus 1945). Setelah bom atom dijatuhkan di Hiroshima dan Nagasaki, Jepang menyerah kepada Sekutu pada 15 Agustus 1945.</p>`,
@@ -96,10 +106,18 @@ TAMBAH_BAB({
     ["BPUPKI", "Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia"],
     ["PPKI", "Panitia Persiapan Kemerdekaan Indonesia"],
     ["Piagam Jakarta", "Rumusan dasar negara hasil Panitia Sembilan, 22 Juni 1945"],
-    ["Vacuum of power", "Kekosongan kekuasaan"]
+    ["Vacuum of power", "Kekosongan kekuasaan"],
+    ["Chuo Sangi In", "Badan Pertimbangan Pusat bentukan Jepang (1943)"],
+    ["Jugun ianfu", "Perempuan yang dipaksa melayani tentara Jepang"],
+    ["Dalat", "Kota di Vietnam tempat pertemuan dengan Marsekal Terauchi"]
   ],
 
   soal: [
+    { q: "Pada masa pendudukan Jepang, Pulau Jawa dan Madura diperintah oleh…", o: ["Angkatan Laut", "Angkatan Darat ke-16", "Angkatan Darat ke-25", "Kempeitai", "Gubernur Jenderal"], a: 1, l: "C1", p: "Jawa-Madura di bawah Angkatan Darat ke-16 yang berpusat di Jakarta." },
+    { q: "Pusat pemerintahan militer Jepang untuk Sumatra berada di…", o: ["Medan", "Padang", "Bukittinggi", "Palembang", "Banda Aceh"], a: 2, l: "C1", p: "Angkatan Darat ke-25 memerintah Sumatra dari Bukittinggi." },
+    { q: "Salah satu dampak positif pendudukan Jepang bagi bangsa Indonesia adalah…", o: ["romusha", "bahasa Indonesia menjadi bahasa resmi dan bahasa pengantar sekolah", "wajib serah padi", "dilarangnya organisasi", "seikerei"], a: 1, l: "C2", p: "Larangan bahasa Belanda membuat bahasa Indonesia makin kuat dan meluas." },
+    { q: "Soekarno, Hatta, dan Radjiman bertemu Marsekal Terauchi untuk membicarakan kemerdekaan pada 12 Agustus 1945 di…", o: ["Tokyo", "Dalat", "Saigon", "Singapura", "Rengasdengklok"], a: 1, l: "C1", p: "Pertemuan di Dalat, Vietnam, membahas pemberian kemerdekaan Indonesia." },
+    { s: "Setelah Jepang menyerah pada 15 Agustus 1945, tentara Jepang tidak lagi berwenang mengubah keadaan, sementara pasukan Sekutu belum tiba di Indonesia.", q: "Keadaan tersebut disebut…", o: ["de facto", "vacuum of power", "devide et impera", "korte verklaring", "status quo"], a: 1, l: "C3", p: "Kekosongan kekuasaan dimanfaatkan bangsa Indonesia untuk memproklamasikan kemerdekaan." },
     { q: "Alasan utama Jepang menyerang Hindia Belanda adalah…", o: ["menyebarkan agama Shinto", "membutuhkan minyak bumi dan bahan mentah untuk perang", "membantu Indonesia merdeka", "membalas serangan Indonesia", "memindahkan penduduk Jepang"], a: 1, l: "C2", p: "Jepang membutuhkan minyak, karet, dan bahan mentah untuk Perang Asia Timur Raya." },
     { q: "Belanda menyerah tanpa syarat kepada Jepang pada 8 Maret 1942 di…", o: ["Linggarjati", "Kalijati", "Renville", "Rengasdengklok", "Tarakan"], a: 1, l: "C1", p: "Penyerahan di Kalijati, Subang, mengakhiri kekuasaan Belanda." },
     { q: "Propaganda Jepang yang disebut Gerakan 3A berisi…", o: ["Jepang Pemimpin, Pelindung, dan Cahaya Asia", "Asia Aman, Asia Adil, Asia Abadi", "Ajaran, Amal, Aksi", "Agama, Adat, Alam", "Asia Bersatu, Asia Merdeka, Asia Jaya"], a: 0, l: "C1", p: "3A: Jepang Pemimpin Asia, Jepang Pelindung Asia, Jepang Cahaya Asia." },

@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan jalannya perlawanan di berbagai daerah beserta tokohnya",
     "Menganalisis strategi Belanda dalam menghadapi perlawanan",
     "Menyimpulkan sebab kegagalan perlawanan yang bersifat kedaerahan",
-    "Meneladani keberanian, keikhlasan, dan cinta tanah air para pejuang"
+    "Meneladani keberanian, keikhlasan, dan cinta tanah air para pejuang",
+    "Mengidentifikasi perlawanan terhadap bangsa Eropa sejak masa VOC"
   ],
 
   video: { src: "video/indonesia/bab05.mp4", judul: "Perlawanan rakyat dalam 1,5 menit", durasi: "1 menit 35 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -51,7 +52,13 @@ TAMBAH_BAB({
 <li><b>Harga diri:</b> rakyat tidak rela tanah airnya dikuasai bangsa lain.</li>
 </ul>`,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Banyak pejuang seperti Imam Bonjol, Diponegoro, dan Cut Nyak Dhien melawan dengan niat ibadah: membela agama, kehormatan, dan tanah air."] },
-    { judul: "B. Perlawanan di berbagai daerah",
+    { judul: "B. Perlawanan pada masa VOC (abad ke-17–18)",
+      isi: "<p>Perlawanan terhadap bangsa Eropa sudah terjadi jauh sebelum abad ke-19. Beberapa di antaranya:</p>\n<table><thead><tr><th>Perlawanan</th><th>Tokoh dan waktu</th><th>Keterangan</th></tr></thead><tbody>\n<tr><td>Ternate melawan Portugis</td><td>Sultan Baabullah, 1570–1575</td><td>Membalas terbunuhnya Sultan Hairun; Portugis terusir dari Ternate (1575)</td></tr>\n<tr><td>Mataram menyerang Batavia</td><td>Sultan Agung, 1628 dan 1629</td><td>Gagal karena jarak jauh, wabah, dan lumbung padi dibakar VOC</td></tr>\n<tr><td>Gowa-Tallo melawan VOC</td><td>Sultan Hasanuddin, 1666–1669</td><td>Berakhir dengan Perjanjian Bongaya (1667) yang merugikan Gowa</td></tr>\n<tr><td>Banten melawan VOC</td><td>Sultan Ageng Tirtayasa, 1680-an</td><td>VOC memanfaatkan konflik dengan putranya, Sultan Haji</td></tr>\n<tr><td>Trunojoyo</td><td>Raden Trunojoyo dari Madura, 1674–1680</td><td>Melawan Amangkurat I yang bersekutu dengan VOC</td></tr>\n<tr><td>Untung Surapati</td><td>1686–1706</td><td>Bekas budak yang melawan VOC dan mendirikan kekuasaan di Pasuruan</td></tr>\n<tr><td>Tidore melawan VOC</td><td>Sultan Nuku, 1780–1805</td><td>Berhasil mengusir VOC dan Belanda dari Tidore</td></tr>\n</tbody></table>",
+      cinta: null },
+    { judul: "C. Perlawanan lain pada abad ke-19",
+      isi: "<ul>\n<li><b>Perang Tondano</b> (1808–1809), Minahasa: rakyat menolak dijadikan pasukan Belanda untuk melawan Inggris.</li>\n<li><b>Perlawanan Palembang</b> (1819–1821): dipimpin <b>Sultan Mahmud Badaruddin II</b>. Ia sempat mengalahkan Belanda sebelum akhirnya diasingkan ke Ternate.</li>\n<li><b>Perlawanan Jambi</b> (1858–1904): dipimpin <b>Sultan Thaha Syaifuddin</b>, yang menolak perjanjian yang merugikan Jambi.</li>\n<li><b>Perlawanan rakyat Bone</b> (1859–1905), Sulawesi Selatan: menolak pengaruh Belanda di wilayahnya.</li>\n</ul>\n<p>Ditambah dengan perang-perang besar pada garis waktu, terlihat bahwa perlawanan terjadi <b>di hampir seluruh Nusantara</b>, dari Aceh sampai Maluku. Penjajahan tidak pernah diterima begitu saja.</p>",
+      cinta: ["Cinta tanah air", "Wajah para pahlawan ini kita temui di uang kertas dan nama jalan. Mengenal perjuangan mereka adalah cara menghargai kemerdekaan yang kini kita nikmati."] },
+    { judul: "D. Perlawanan di berbagai daerah",
       isi: `<p>Perlawanan terjadi hampir di seluruh Nusantara sepanjang abad ke-19. Jelajahi garis waktu di atas untuk mengenal setiap perang. Beberapa ciri yang menonjol:</p>
 <ul>
 <li><b>Perang Diponegoro (1825–1830)</b> adalah perang terbesar di Jawa. Diponegoro memakai siasat gerilya dan didukung ulama serta rakyat.</li>
@@ -60,7 +67,7 @@ TAMBAH_BAB({
 </ul>`,
       kartu: true,
       cinta: ["Cinta tanah air", "Para pejuang mengorbankan harta, keluarga, bahkan nyawa. Kemerdekaan yang kita nikmati dibayar dengan pengorbanan mereka."] },
-    { judul: "C. Siasat Belanda",
+    { judul: "E. Siasat Belanda",
       isi: `<ul>
 <li><b>Devide et impera:</b> mengadu domba bangsawan, kerajaan, dan golongan masyarakat.</li>
 <li><b>Benteng stelsel:</b> membangun banyak benteng kecil yang saling terhubung untuk mempersempit ruang gerak pejuang, dipakai dalam Perang Diponegoro.</li>
@@ -69,7 +76,7 @@ TAMBAH_BAB({
 <li><b>Korte Verklaring (Pelakat Pendek):</b> raja yang kalah dipaksa menandatangani pengakuan atas kekuasaan Belanda.</li>
 </ul>`,
       cinta: null },
-    { judul: "D. Mengapa perlawanan belum berhasil?",
+    { judul: "F. Mengapa perlawanan belum berhasil?",
       isi: `<p>Walau sangat berani, perlawanan abad ke-19 akhirnya dapat dipatahkan. Sebabnya:</p>
 <ol>
 <li>Bersifat <b>kedaerahan</b>: setiap daerah berjuang sendiri-sendiri, tidak serentak.</li>
@@ -102,10 +109,17 @@ TAMBAH_BAB({
     ["Korte Verklaring", "Pelakat Pendek: pernyataan tunduk raja kepada Belanda"],
     ["Pengasingan", "Hukuman membuang seseorang ke tempat jauh"],
     ["Kedaerahan", "Bersifat lokal, terbatas pada satu daerah"],
-    ["Plakat Panjang", "Pernyataan Belanda (1833) di Minangkabau yang berisi janji tidak memungut pajak, untuk meredakan perlawanan"]
+    ["Plakat Panjang", "Pernyataan Belanda (1833) di Minangkabau yang berisi janji tidak memungut pajak, untuk meredakan perlawanan"],
+    ["Perjanjian Bongaya", "Perjanjian 1667 yang mengakhiri perang Gowa-Tallo dengan VOC"],
+    ["Perang Tondano", "Perlawanan rakyat Minahasa, 1808–1809"]
   ],
 
   soal: [
+    { q: "Sultan Ternate yang berhasil mengusir Portugis pada 1575 adalah…", o: ["Sultan Hairun", "Sultan Baabullah", "Sultan Nuku", "Sultan Hasanuddin", "Sultan Agung"], a: 1, l: "C1", p: "Sultan Baabullah memimpin perlawanan setelah ayahnya, Sultan Hairun, dibunuh Portugis." },
+    { q: "Serangan Sultan Agung ke Batavia (1628 dan 1629) gagal, salah satunya karena…", o: ["Mataram tidak punya tentara", "lumbung-lumbung padi persediaan pasukan Mataram dibakar VOC", "Sultan Agung menyerah", "Inggris membantu VOC", "pasukan Mataram berpihak kepada VOC"], a: 1, l: "C2", p: "Jarak jauh, wabah penyakit, dan dibakarnya lumbung padi membuat pasukan Mataram kekurangan bekal." },
+    { q: "Sultan Palembang yang melawan Belanda pada 1819–1821 dan kemudian diasingkan ke Ternate adalah…", o: ["Sultan Thaha Syaifuddin", "Sultan Mahmud Badaruddin II", "Sultan Ageng Tirtayasa", "Pangeran Antasari", "Sultan Nuku"], a: 1, l: "C1", p: "Wajah Sultan Mahmud Badaruddin II diabadikan pada uang kertas Rp10.000 emisi 2005." },
+    { q: "Sultan Tidore yang berhasil mengusir VOC dari wilayahnya pada akhir abad ke-18 adalah…", o: ["Sultan Baabullah", "Sultan Nuku", "Sultan Hairun", "Sultan Iskandar Muda", "Sultan Agung"], a: 1, l: "C1", p: "Sultan Nuku dijuluki Lord of Fortune oleh Inggris karena kecerdikannya." },
+    { s: "Perlawanan terhadap penjajah tercatat di Ternate (1575), Mataram (1628), Gowa (1666), Tidore (1780), Palembang (1819), Jawa (1825), Bali (1846), Aceh (1873), dan Tapanuli (1878).", q: "Kesimpulan yang paling tepat dari fakta tersebut adalah…", o: ["penjajahan diterima rakyat", "perlawanan terhadap penjajah terjadi di hampir seluruh Nusantara sepanjang masa", "hanya Jawa yang melawan", "perlawanan baru terjadi abad ke-20", "semua perlawanan berhasil"], a: 1, l: "C4", p: "Perlawanan berlangsung sejak abad ke-16 dan tersebar dari Aceh sampai Maluku." },
     { q: "Salah satu sebab umum perlawanan rakyat terhadap Belanda pada abad ke-19 adalah…", o: ["Belanda membangun sekolah", "Belanda mencampuri urusan kerajaan dan memaksakan monopoli", "rakyat ingin pindah ke Eropa", "Belanda menyebarkan agama Islam", "raja-raja meminta bantuan Belanda"], a: 1, l: "C2", p: "Campur tangan politik, monopoli, pajak berat, dan kerja paksa memicu perlawanan." },
     { q: "Pemimpin perlawanan rakyat Maluku yang merebut Benteng Duurstede pada 1817 adalah…", o: ["Sultan Baabullah", "Thomas Matulessy (Pattimura)", "Sultan Nuku", "Teuku Umar", "Sultan Hasanuddin"], a: 1, l: "C1", p: "Kapitan Pattimura memimpin perlawanan di Saparua pada 1817." },
     { q: "Pejuang perempuan muda dari Maluku yang ikut berperang bersama Pattimura adalah…", o: ["Cut Meutia", "Martha Christina Tiahahu", "Nyi Ageng Serang", "R.A. Kartini", "Dewi Sartika"], a: 1, l: "C1", p: "Martha Christina Tiahahu ikut bertempur pada usia belasan tahun." },

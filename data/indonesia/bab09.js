@@ -9,7 +9,8 @@ TAMBAH_BAB({
     "Menguraikan pergolakan daerah dan cara pemerintah mengatasinya",
     "Menjelaskan latar belakang dan isi Dekrit Presiden 5 Juli 1959",
     "Menganalisis kebijakan masa Demokrasi Terpimpin dan perjuangan pembebasan Irian Barat",
-    "Menjelaskan peristiwa 1965 dan lahirnya Supersemar secara kritis"
+    "Menjelaskan peristiwa 1965 dan lahirnya Supersemar secara kritis",
+    "Menganalisis kebijakan ekonomi dan politik luar negeri 1950–1965"
   ],
 
   video: { src: "video/indonesia/bab09.mp4", judul: "Demokrasi Liberal dan Terpimpin dalam 1 menit", durasi: "1 menit 18 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -79,7 +80,13 @@ TAMBAH_BAB({
 </ul>`,
       kartu: true,
       cinta: null },
-    { judul: "D. Peristiwa 1965 dan Supersemar",
+    { judul: "D. Kebijakan ekonomi 1950–1965",
+      isi: "<p>Setelah merdeka, ekonomi Indonesia masih dikuasai perusahaan asing dan menghadapi kas negara yang kosong. Berbagai kebijakan dicoba:</p>\n<table><thead><tr><th>Kebijakan</th><th>Tahun</th><th>Isi dan hasil</th></tr></thead><tbody>\n<tr><td>Gunting Syafruddin</td><td>1950</td><td>Uang kertas bernilai Rp5 ke atas digunting dua; separuhnya tetap berlaku dengan setengah nilai. Tujuannya mengurangi jumlah uang beredar dan menekan inflasi.</td></tr>\n<tr><td>Gerakan Benteng</td><td>1950</td><td>Pengusaha pribumi diberi kredit dan izin impor. Banyak yang gagal karena kurang pengalaman.</td></tr>\n<tr><td>Nasionalisasi De Javasche Bank</td><td>1951–1953</td><td>Menjadi <b>Bank Indonesia</b>, bank sentral milik bangsa sendiri.</td></tr>\n<tr><td>Sistem Ali-Baba</td><td>1954</td><td>Kerja sama pengusaha pribumi (Ali) dan nonpribumi (Baba). Sering hanya menjadi \"pinjam nama\".</td></tr>\n<tr><td>Nasionalisasi perusahaan Belanda</td><td>1957–1959</td><td>Perusahaan Belanda diambil alih negara di tengah sengketa Irian Barat.</td></tr>\n<tr><td>Deklarasi Ekonomi (Dekon)</td><td>1963</td><td>Rencana ekonomi berdikari ala Demokrasi Terpimpin; tidak berjalan karena biaya politik dan konfrontasi.</td></tr>\n<tr><td>Uang baru (redenominasi)</td><td>Desember 1965</td><td>Rp1.000 uang lama menjadi Rp1 uang baru. Inflasi justru melonjak hingga ratusan persen.</td></tr>\n</tbody></table>\n<p>Pelajarannya: kemerdekaan politik perlu diikuti kemandirian ekonomi, dan kemandirian itu memerlukan perencanaan, keahlian, serta keadaan politik yang stabil.</p>",
+      cinta: ["Cinta tanah air", "Berdikari (berdiri di atas kaki sendiri) adalah cita-cita para pendiri bangsa. Belajar sungguh-sungguh dan berwirausaha dengan jujur adalah cara pelajar ikut mewujudkannya."] },
+    { judul: "E. Politik luar negeri: dari Bandung sampai keluar dari PBB",
+      isi: "<p>Politik luar negeri Indonesia berpegang pada prinsip <b>bebas aktif</b>, yang dirumuskan Mohammad Hatta dalam pidato <i>Mendayung di Antara Dua Karang</i> (1948).</p>\n<ul>\n<li><b>Konferensi Asia Afrika</b> (Bandung, 1955) menjadikan Indonesia pelopor solidaritas bangsa-bangsa yang baru merdeka.</li>\n<li><b>Gerakan Non-Blok</b> (Beograd, 1961): Soekarno termasuk salah satu pendirinya.</li>\n<li><b>Pembebasan Irian Barat</b>: diplomasi gagal, lalu Trikora (1961). Melalui Persetujuan New York (1962), Irian Barat diserahkan kepada Indonesia lewat UNTEA (1963). Penentuan Pendapat Rakyat (<b>Pepera</b>, 1969) menetapkan Irian Barat tetap menjadi bagian Indonesia.</li>\n<li><b>Konfrontasi dengan Malaysia</b> (Dwikora, 1964), karena pembentukan Malaysia dianggap proyek neokolonialisme Inggris.</li>\n<li>Ketika Malaysia menjadi anggota tidak tetap Dewan Keamanan, Indonesia <b>keluar dari PBB</b> (7 Januari 1965), dan Indonesia mengadakan <b>GANEFO</b> (1963) sebagai tandingan Olimpiade.</li>\n</ul>\n<p>Pada masa Demokrasi Terpimpin, politik luar negeri condong ke poros Jakarta–Peking (Beijing), sehingga makin jauh dari prinsip bebas aktif.</p>",
+      cinta: null },
+    { judul: "F. Peristiwa 1965 dan Supersemar",
       isi: `<p>Pada malam <b>30 September–1 Oktober 1965</b>, enam jenderal dan seorang perwira TNI AD diculik dan dibunuh. Pemerintah menyatakan PKI sebagai dalangnya. Gerakan itu ditumpas oleh pasukan di bawah Mayjen Soeharto, dan setelahnya terjadi penumpasan terhadap anggota dan simpatisan PKI di berbagai daerah yang menelan banyak korban jiwa.</p>
 <p>Mahasiswa dan pelajar (KAMI, KAPPI) turun ke jalan dengan <b>Tritura</b>: bubarkan PKI, rombak Kabinet Dwikora, turunkan harga. Pada <b>11 Maret 1966</b>, Presiden Soekarno mengeluarkan <b>Supersemar</b> kepada Soeharto untuk memulihkan keamanan. Inilah awal masa Orde Baru.</p>
 <p class="catatan">Catatan untuk berpikir kritis: peristiwa 1965 termasuk bagian sejarah yang masih diteliti. Biasakan membandingkan berbagai sumber, membedakan fakta dan pendapat, dan menghormati semua korban.</p>`,
@@ -107,10 +114,23 @@ TAMBAH_BAB({
     ["Dwikora", "Dwi Komando Rakyat dalam konfrontasi dengan Malaysia"],
     ["Tritura", "Tiga tuntutan rakyat (1966)"],
     ["Supersemar", "Surat Perintah Sebelas Maret 1966"],
-    ["Inflasi", "Kenaikan harga barang secara terus-menerus"]
+    ["Inflasi", "Kenaikan harga barang secara terus-menerus"],
+    ["Gunting Syafruddin", "Kebijakan pemotongan uang kertas tahun 1950"],
+    ["Gerakan Benteng", "Program bantuan bagi pengusaha pribumi (1950)"],
+    ["Sistem Ali-Baba", "Kerja sama pengusaha pribumi dan nonpribumi (1954)"],
+    ["Nasionalisasi", "Pengambilalihan perusahaan asing menjadi milik negara"],
+    ["Bebas aktif", "Politik luar negeri yang tidak memihak blok mana pun dan aktif menjaga perdamaian"],
+    ["Pepera", "Penentuan Pendapat Rakyat Irian Barat, 1969"],
+    ["GANEFO", "Games of the New Emerging Forces, pesta olahraga di Jakarta (1963)"]
   ],
 
   soal: [
+    { q: "Kebijakan pemotongan uang kertas menjadi dua bagian pada 1950 dikenal sebagai…", o: ["Sistem Ali-Baba", "Gunting Syafruddin", "Gerakan Benteng", "Dekon", "Sanering"], a: 1, l: "C1", p: "Gunting Syafruddin, dari nama Menteri Keuangan Sjafruddin Prawiranegara, bertujuan menekan inflasi." },
+    { q: "De Javasche Bank dinasionalisasi dan kemudian menjadi…", o: ["Bank Rakyat Indonesia", "Bank Indonesia", "Bank Negara Indonesia", "Bank Mandiri", "Bank Dunia"], a: 1, l: "C1", p: "Bank Indonesia menjadi bank sentral milik bangsa sendiri." },
+    { q: "Program Gerakan Benteng kurang berhasil terutama karena…", o: ["dilarang Belanda", "banyak pengusaha pribumi belum berpengalaman dan kredit disalahgunakan", "tidak ada pengusaha pribumi", "dibatalkan Soekarno", "harga minyak turun"], a: 1, l: "C2", p: "Kurangnya pengalaman dan penyalahgunaan kredit membuat program ini gagal." },
+    { q: "Prinsip politik luar negeri bebas aktif pertama kali dirumuskan Mohammad Hatta dalam pidato…", o: ["Indonesia Menggugat", "Mendayung di Antara Dua Karang", "Lahirnya Pancasila", "Jalannya Revolusi Kita", "Tahun Vivere Pericoloso"], a: 1, l: "C1", p: "Pidato Hatta di depan KNIP (1948) itu menjadi dasar politik bebas aktif." },
+    { q: "Indonesia keluar dari PBB pada 1965 sebagai bentuk protes karena…", o: ["PBB mendukung Belanda di Irian", "Malaysia diangkat menjadi anggota tidak tetap Dewan Keamanan PBB", "Indonesia dikalahkan dalam GANEFO", "PBB menolak KAA", "Amerika menyerang Indonesia"], a: 1, l: "C2", p: "Konfrontasi dengan Malaysia mendorong Indonesia keluar dari PBB pada 7 Januari 1965." },
+    { q: "Hasil Penentuan Pendapat Rakyat (Pepera) 1969 adalah…", o: ["Irian Barat merdeka", "Irian Barat tetap menjadi bagian Indonesia", "Irian Barat kembali ke Belanda", "Irian Barat diperintah PBB", "Irian Barat bergabung dengan Australia"], a: 1, l: "C1", p: "Pepera 1969 menetapkan Irian Barat (Papua) sebagai bagian Indonesia." },
     { q: "Tokoh yang mengajukan Mosi Integral sehingga Indonesia kembali menjadi negara kesatuan adalah…", o: ["Soekarno", "Mohammad Natsir", "Ali Sastroamidjojo", "Djuanda", "Sjahrir"], a: 1, l: "C1", p: "Mosi Integral Natsir (3 April 1950) mendorong pembubaran RIS." },
     { q: "Konstitusi yang berlaku pada masa Demokrasi Liberal adalah…", o: ["UUD 1945", "Konstitusi RIS", "UUD Sementara 1950", "Piagam Jakarta", "Dekrit Presiden"], a: 2, l: "C1", p: "UUDS 1950 berlaku sejak 17 Agustus 1950 sampai Dekrit 5 Juli 1959." },
     { s: "Antara 1950 dan 1959 Indonesia mengalami tujuh kali pergantian kabinet. Sebagian besar kabinet jatuh karena mosi tidak percaya dari partai-partai di parlemen.", q: "Dampak utama keadaan tersebut adalah…", o: ["pembangunan berjalan lancar", "program pemerintah sulit dilaksanakan karena pemerintahan tidak stabil", "Indonesia kembali menjadi negara serikat", "pemilu tidak pernah diadakan", "partai politik dibubarkan"], a: 1, l: "C4", p: "Kabinet yang sering berganti membuat program kerja tidak berkesinambungan." },

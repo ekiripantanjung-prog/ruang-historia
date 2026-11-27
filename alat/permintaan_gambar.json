@@ -151,18 +151,6 @@
     "Great Mosque of Banten"
    ],
    "wajib": "Banten"
-  },
-  {
-   "judul": "Gapura Masjid Sendang Duwur, Lamongan",
-   "ket": "Gapura bersayap, perpaduan seni Islam dan Hindu-Buddha.",
-   "cari": [
-    "Sendang Duwur gate",
-    "Gapura Sendang Duwur",
-    "Masjid Sendang Duwur Lamongan"
-   ],
-   "wajib": "Sendang ?[Dd]uwur|Sendangduwur",
-   "hindari": "^File:Sendang Duwur.jpg$|naskah|manuscript",
-   "ulang": true
   }
  ],
  "indonesia-4": [
@@ -194,17 +182,17 @@
    ]
   },
   {
-   "judul": "Peta Batavia abad ke-17",
+   "judul": "Peta kawasan Batavia masa VOC",
    "ket": "Kota Batavia yang dibangun VOC lengkap dengan kanal dan benteng.",
    "cari": [
+    "File:AMH-7042-KB Map of the artisan's quarter in Batavia.jpg",
     "Plattegrond van Batavia",
     "map of Batavia 1667",
     "Batavia city map 1681",
     "Kaart van Batavia"
    ],
    "wajib": "Batavia",
-   "hindari": "Coat of arms|ship|schip",
-   "ulang": true
+   "hindari": "Coat of arms|ship|schip"
   },
   {
    "judul": "Replika kapal VOC \"Batavia\"",

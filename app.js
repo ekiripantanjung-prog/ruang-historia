@@ -55,7 +55,14 @@ const PANCA = [
   ['#4A2E1C', 'Cinta tanah air', 'Mengenal akar bangsa agar sanggup menjaga masa depannya.']
 ];
 const semuaKartu = () => K.flatMap(k => k.bab.flatMap(d => { const b = isiBab(k.id, d.id); return (b && b.kartu || []).map(c => ({ ...c, kid: k.id, id: d.id, bab: d.judul, k: k.judul })); }));
-async function ambilGambar() { try { DAFTAR_GAMBAR ||= await fetch('gambar/daftar.json').then(r => r.ok ? r.json() : {}); } catch { DAFTAR_GAMBAR = {}; } return DAFTAR_GAMBAR; }
+async function ambilGambar() {
+  if (DAFTAR_GAMBAR) return DAFTAR_GAMBAR;
+  const ambil = u => fetch(u).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  const [c, g] = await Promise.all([ambil('gambar/daftar.json'), ambil('gambar/guru.json')]);
+  DAFTAR_GAMBAR = {};
+  for (const k of new Set([...Object.keys(g), ...Object.keys(c)])) DAFTAR_GAMBAR[k] = [...(g[k] || []), ...(c[k] || [])];
+  return DAFTAR_GAMBAR;
+}
 
 function beranda() {
   tandaiMenu('beranda');
@@ -238,7 +245,21 @@ async function pasangGaleri(kid, id) {
   await ambilGambar();
   const L = DAFTAR_GAMBAR[`${kid}-${id}`], el = document.getElementById('galeri');
   if (!el || !L || !L.length) return;
-  el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto dan dokumen asli dari arsip terbuka Wikimedia Commons. Klik "sumber" untuk melihat pembuat dan lisensinya.</p><div class="galeri">${L.map(g => `<figure><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}<small>${esc(pembuat(g.pembuat))}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small></figcaption></figure>`).join('')}</div>`;
+  const sumber = g => g.guru ? `<small class="dari-guru">Ditambahkan guru</small>` : `<small>${esc(pembuat(g.pembuat))}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small>`;
+  el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto, dokumen, dan ilustrasi sejarah. Ketuk gambar untuk memperbesar.</p><div class="galeri">${L.map((g, i) => `<figure><button type="button" class="perbesar" data-i="${i}" aria-label="Perbesar: ${esc(g.judul)}"><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.closest('figure').remove()"></button><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}${sumber(g)}</figcaption></figure>`).join('')}</div>`;
+  el.querySelectorAll('.perbesar').forEach(b => b.addEventListener('click', () => lihatBesar(L, +b.dataset.i)));
+}
+/* tampilan foto layar penuh */
+function lihatBesar(L, i) {
+  let d = document.getElementById('lb');
+  if (!d) { d = document.createElement('dialog'); d.id = 'lb'; document.body.append(d);
+    d.addEventListener('click', e => { if (e.target === d || e.target.closest('.lb-tutup')) d.close(); });
+    d.addEventListener('keydown', e => { if (e.key === 'ArrowRight') d.geser(1); if (e.key === 'ArrowLeft') d.geser(-1); }); }
+  const isi = () => { const g = L[i]; d.innerHTML = `<figure><img src="${esc(g.file)}" alt="${esc(g.judul)}"><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<em>${esc(g.ket)}</em>` : ''}<span>${i + 1} / ${L.length}</span></figcaption></figure>
+    <button class="lb-tutup" type="button" aria-label="Tutup">✕</button>${L.length > 1 ? `<button class="lb-n kiri" type="button" aria-label="Sebelumnya">‹</button><button class="lb-n kanan" type="button" aria-label="Berikutnya">›</button>` : ''}`;
+    d.querySelectorAll('.lb-n').forEach(b => b.onclick = e => { e.stopPropagation(); d.geser(b.classList.contains('kanan') ? 1 : -1); }); };
+  d.geser = s => { i = (i + s + L.length) % L.length; isi(); };
+  isi(); d.showModal();
 }
 const kartu = b => `<p class="catatan">Klik kartu untuk membalik.</p><div class="cards">${b.kartu.map((c, i) => `<button class="flip" type="button" aria-pressed="false"><div class="inner"><div class="face"><b>${esc(c.nama)}</b><small>${esc(c.info)}</small>${b.koleksi === 'indonesia' && b.id === 1 ? kepala(i) : `<span class="mono" aria-hidden="true">${esc(c.nama.split(/\s+/).filter(w => /^[A-Z]/.test(w)).slice(0, 2).map(w => w[0]).join('') || c.nama[0])}</span>`}</div><div class="face back">${esc(c.isi)}</div></div></button>`).join('')}</div>`;
 function pasangJelajah(b) {
@@ -355,6 +376,15 @@ function tentang() {
 <p>Materi, soal, video, desain, dan logo Ruang Historia boleh dipakai untuk pembelajaran di kelas. Menyalin, memperbanyak, atau mengedarkan ulang aplikasi ini untuk tujuan lain memerlukan izin tertulis dari pengembang. Foto arsip tetap mengikuti lisensi masing-masing sebagaimana tercantum pada keterangannya.</p>
 <p>Saran dan masukan: <a href="mailto:ekiripantanjung@gmail.com">ekiripantanjung@gmail.com</a></p>
 </div>
+<details class="panduan"><summary>Panduan guru: menambah foto atau ilustrasi sendiri</summary>
+<ol>
+<li>Buka <a href="https://github.com/ekiripantanjung-prog/ruang-historia/tree/main/gambar/guru" target="_blank" rel="noopener">folder gambar/guru di GitHub</a> (masuk dengan akun GitHub Bapak/Ibu).</li>
+<li>Klik <b>Add file → Upload files</b>, seret fotonya, lalu klik <b>Commit changes</b>.</li>
+<li>Beri nama file dengan format <code>ruang-nomorbab judul.jpg</code>, misalnya <code>indonesia-8 Pembacaan teks Proklamasi.jpg</code> atau <code>ski-3 Peta wilayah Umayyah -- Sumber buku paket.jpg</code>. Kode ruang: <code>indonesia</code>, <code>dunia</code>, <code>ski</code>.</li>
+<li>Tunggu 1–2 menit. Gambar muncul paling depan di bagian "Jejak sejarah" bab tersebut, dengan tanda "Ditambahkan guru".</li>
+</ol>
+<p class="catatan">Tulisan setelah <code>--</code> menjadi keterangan atau sumber. Untuk menghapus, buka filenya di GitHub lalu pilih Delete file.</p>
+</details>
 <p class="catatan">Guru dapat menambah atau mengubah materi dan soal pada folder <code>data/</code>.</p></div></section>`;
 }
 

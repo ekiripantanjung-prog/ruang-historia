@@ -285,3 +285,23 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .tabel table{margin:0;min-width:520px}
 @media(min-width:600px){.tabel table{min-width:0}}
 @media(max-width:420px){.seg{gap:5px}.seg button{padding:9px 12px;font-size:14px}}
+
+/* foto bisa diperbesar */
+.perbesar{all:unset;display:block;width:100%;cursor:zoom-in}
+.perbesar:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.dari-guru{display:inline-block;width:max-content;padding:2px 8px;border-radius:99px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-weight:700;opacity:1!important}
+#lb{border:0;padding:0;max-width:100vw;max-height:100vh;width:100vw;height:100dvh;background:#000;color:#fff}
+#lb::backdrop{background:#000c}
+#lb figure{margin:0;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding:56px 12px 20px;box-sizing:border-box}
+#lb img{max-width:100%;max-height:calc(100% - 70px);object-fit:contain;border-radius:6px}
+#lb figcaption{text-align:center;max-width:70ch;font-size:15px;line-height:1.4;display:flex;flex-direction:column;gap:4px}
+#lb figcaption span{opacity:.6;font-size:13px}
+.lb-tutup,.lb-n{all:unset;position:absolute;display:grid;place-items:center;cursor:pointer;color:#fff;background:#ffffff22;border-radius:50%}
+.lb-tutup{top:12px;right:12px;width:42px;height:42px;font-size:20px}
+.lb-n{top:50%;transform:translateY(-50%);width:46px;height:46px;font-size:32px;line-height:1}
+.lb-n.kiri{left:10px}.lb-n.kanan{right:10px}
+.panduan{margin-top:22px;padding:14px 18px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.panduan summary{cursor:pointer;font-weight:700}
+.panduan ol{margin:12px 0 6px;padding-left:20px}
+#lb figcaption em{font-style:normal;opacity:.85}
+.panduan code{font-size:.85em;word-break:break-word}

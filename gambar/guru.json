@@ -1,1 +1,64 @@
-{}
+{
+ "indonesia-10": [
+  {
+   "file": "gambar/guru-tampil/indonesia-10-841e3216d7.jpg",
+   "judul": "Presiden ke-2 Soeharto (1967–1998)",
+   "ket": "Pemimpin pemerintahan Orde Baru",
+   "guru": true
+  }
+ ],
+ "indonesia-11": [
+  {
+   "file": "gambar/guru-tampil/indonesia-11-910bea3dfd.jpg",
+   "judul": "Presiden ke-3 B.J. Habibie (1998–1999)",
+   "ket": "Presiden pertama masa Reformasi",
+   "guru": true
+  },
+  {
+   "file": "gambar/guru-tampil/indonesia-11-4e4c3be6fa.jpg",
+   "judul": "Presiden ke-4 K.H. Abdurrahman Wahid (1999–2001)",
+   "ket": "Dipilih MPR hasil Pemilu 1999",
+   "guru": true
+  },
+  {
+   "file": "gambar/guru-tampil/indonesia-11-5f302ea58b.jpg",
+   "judul": "Presiden ke-5 Megawati Soekarnoputri (2001–2004)",
+   "ket": "Presiden perempuan pertama Indonesia",
+   "guru": true
+  },
+  {
+   "file": "gambar/guru-tampil/indonesia-11-92138a6744.jpg",
+   "judul": "Presiden ke-6 Susilo Bambang Yudhoyono (2004–2014)",
+   "ket": "Presiden pertama yang dipilih langsung oleh rakyat",
+   "guru": true
+  },
+  {
+   "file": "gambar/guru-tampil/indonesia-11-d2edcbeb39.jpg",
+   "judul": "Presiden ke-7 Joko Widodo (2014–2024)",
+   "ket": "Menjabat dua periode",
+   "guru": true
+  },
+  {
+   "file": "gambar/guru-tampil/indonesia-11-3e46459aa1.jpg",
+   "judul": "Presiden ke-8 Prabowo Subianto (2024–sekarang)",
+   "ket": "",
+   "guru": true
+  }
+ ],
+ "indonesia-8": [
+  {
+   "file": "gambar/guru-tampil/indonesia-08-c2edc5f675.jpg",
+   "judul": "Presiden ke-1 Ir. Soekarno (1945–1967)",
+   "ket": "Proklamator kemerdekaan bersama Mohammad Hatta",
+   "guru": true
+  }
+ ],
+ "indonesia-9": [
+  {
+   "file": "gambar/guru-tampil/indonesia-09-48dfd1b645.jpg",
+   "judul": "Presiden Soekarno (1945–1967)",
+   "ket": "Memimpin masa Demokrasi Terpimpin",
+   "guru": true
+  }
+ ]
+}

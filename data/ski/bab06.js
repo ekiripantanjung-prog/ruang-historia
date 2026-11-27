@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan masa kejayaan dan tokoh-tokoh penting ketiga kerajaan",
     "Mengidentifikasi peninggalan peradaban ketiga kerajaan",
     "Menganalisis sebab kemunduran ketiga kerajaan",
-    "Menjelaskan hubungan ketiga kerajaan dengan Nusantara"
+    "Menjelaskan hubungan ketiga kerajaan dengan Nusantara",
+    "Mengenal para sultan dan peristiwa penting tiga kerajaan besar"
   ],
 
   video: { src: "video/ski/bab06.mp4", judul: "Tiga kerajaan besar dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -68,10 +69,13 @@ TAMBAH_BAB({
 <li><b>Ilmu:</b> madrasah, observatorium, dan kitab hukum seperti Fatawa Alamgiri.</li>
 </ul>`,
       cinta: ["Cinta ilmu", "Mimar Sinan merancang ratusan bangunan dengan perhitungan matematika yang cermat. Seni dan ilmu bertemu untuk memuliakan rumah Allah."] },
-    { judul: "C. Hubungan dengan Nusantara",
+    { judul: "C. Para sultan dan peristiwa penting",
+      isi: "<p><b>Turki Usmani</b></p>\n<ul>\n<li><b>Usman I</b> mendirikan kerajaan di Anatolia (1299).</li>\n<li><b>Muhammad al-Fatih</b> menaklukkan Konstantinopel (1453) dan menjadikannya ibu kota dengan nama Istanbul.</li>\n<li><b>Selim I</b> menguasai Mesir (1517) dan membawa gelar khalifah ke Istanbul.</li>\n<li><b>Sulaiman al-Qanuni</b> (1520–1566): masa puncak; wilayah sampai ke Wina (dikepung 1529).</li>\n<li>Kekhalifahan Usmani dihapuskan oleh Republik Turki pada <b>3 Maret 1924</b>.</li>\n</ul>\n<p><b>Safawi</b> (Persia): didirikan <b>Syah Ismail I</b> (1501), yang menjadikan mazhab Syiah sebagai mazhab resmi negara. Mencapai puncak pada masa <b>Syah Abbas I</b> dengan ibu kota Isfahan yang megah.</p>\n<p><b>Mughal</b> (India): didirikan <b>Babur</b> setelah Pertempuran Panipat (1526). <b>Akbar</b> menjalankan kebijakan toleransi terhadap rakyat yang beragam (<i>sulh-i kul</i>). <b>Syah Jahan</b> membangun Taj Mahal. <b>Aurangzeb</b> menyusun kitab hukum <i>Fatawa Alamgiri</i>. Mughal berakhir setelah Inggris menumpas perlawanan India pada 1857.</p>",
+      cinta: null },
+    { judul: "D. Hubungan dengan Nusantara",
       isi: `<p>Kesultanan <b>Aceh</b> menjalin hubungan dengan <b>Turki Usmani</b> pada abad ke-16. Usmani mengirim ahli senjata dan meriam untuk membantu Aceh menghadapi Portugis. Pedagang dari wilayah <b>Mughal</b> (Gujarat dan India) juga ramai berdagang di pelabuhan-pelabuhan Nusantara.</p>`,
       cinta: ["Cinta diri dan sesama", "Persaudaraan sesama Muslim melampaui batas negara. Aceh dan Turki Usmani saling membantu menghadapi penjajah."] },
-    { judul: "D. Sebab kemunduran",
+    { judul: "E. Sebab kemunduran",
       isi: `<ol>
 <li>Wilayah terlalu luas dan sulit dikendalikan.</li>
 <li>Perebutan takhta dan pemimpin yang lemah.</li>
@@ -104,10 +108,16 @@ TAMBAH_BAB({
     ["Taj Mahal", "Makam marmer di Agra, India"],
     ["Topkapi", "Istana sultan Usmani di Istanbul"],
     ["Fatawa Alamgiri", "Kitab hukum Islam yang disusun pada masa Aurangzeb"],
-    ["Miniatur", "Lukisan kecil yang sangat rinci"]
+    ["Miniatur", "Lukisan kecil yang sangat rinci"],
+    ["Sulh-i kul", "Kebijakan perdamaian dan toleransi Akbar terhadap rakyat yang beragam"],
+    ["Pertempuran Panipat", "Kemenangan Babur yang menandai berdirinya Mughal (1526)"]
   ],
 
   soal: [
+    { q: "Sultan Usmani yang menaklukkan Mesir pada 1517 dan membawa gelar khalifah ke Istanbul adalah…", o: ["Muhammad al-Fatih", "Selim I", "Sulaiman al-Qanuni", "Usman I", "Murad II"], a: 1, l: "C1", p: "Sejak Selim I, sultan Usmani juga bergelar khalifah." },
+    { q: "Pendiri Kerajaan Mughal setelah memenangkan Pertempuran Panipat (1526) adalah…", o: ["Akbar", "Babur", "Humayun", "Syah Jahan", "Aurangzeb"], a: 1, l: "C1", p: "Babur adalah keturunan Timur Lenk dan Jenghis Khan." },
+    { q: "Kekhalifahan Turki Usmani resmi dihapuskan pada tahun…", o: ["1453", "1517", "1857", "1918", "1924"], a: 4, l: "C1", p: "Republik Turki menghapus kekhalifahan pada 3 Maret 1924." },
+    { q: "Kitab hukum Fatawa Alamgiri disusun pada masa…", o: ["Akbar", "Syah Jahan", "Aurangzeb", "Babur", "Syah Abbas I"], a: 2, l: "C1", p: "Aurangzeb (Alamgir) memerintahkan penyusunan kitab fikih mazhab Hanafi ini." },
     { q: "Tiga kerajaan Islam besar setelah runtuhnya Baghdad adalah…", o: ["Umayyah, Abbasiyah, Fatimiyah", "Turki Usmani, Safawi, Mughal", "Mamluk, Seljuk, Ayyubiyah", "Samudra Pasai, Demak, Aceh", "Murabithun, Muwahhidun, Nasriyah"], a: 1, l: "C1", p: "Ketiganya berkembang sejak abad ke-14 sampai ke-16." },
     { q: "Pendiri Kerajaan Turki Usmani adalah…", o: ["Muhammad Al-Fatih", "Utsman I", "Sulaiman al-Qanuni", "Salim I", "Orhan"], a: 1, l: "C1", p: "Utsman I mendirikan Usmani sekitar 1299." },
     { q: "Sultan Usmani yang menaklukkan Konstantinopel pada 1453 adalah…", o: ["Sulaiman al-Qanuni", "Muhammad Al-Fatih", "Salim I", "Murad II", "Bayazid I"], a: 1, l: "C1", p: "Konstantinopel kemudian menjadi Istanbul." },

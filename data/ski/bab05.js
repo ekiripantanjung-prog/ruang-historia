@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan periode-periode pemerintahan Islam di Andalusia",
     "Mengidentifikasi kemajuan ilmu, budaya, dan arsitektur Andalusia",
     "Menganalisis peran Andalusia sebagai jembatan ilmu ke Eropa",
-    "Menganalisis sebab-sebab runtuhnya Islam di Andalusia dan mengambil pelajarannya"
+    "Menganalisis sebab-sebab runtuhnya Islam di Andalusia dan mengambil pelajarannya",
+    "Menjelaskan peran Andalusia sebagai jembatan ilmu ke Eropa"
   ],
 
   video: { src: "video/ski/bab05.mp4", judul: "Islam di Andalusia dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -63,7 +64,13 @@ TAMBAH_BAB({
 <li>Tidak ada <b>sistem pergantian kepemimpinan</b> yang jelas.</li>
 </ol>`,
       cinta: ["Cinta diri dan sesama", "Andalusia runtuh bukan karena kekurangan ilmu, tetapi karena perpecahan. Persatuan adalah kekuatan yang harus dijaga bersama."] },
-    { judul: "D. Pelajaran bagi umat Islam Indonesia",
+    { judul: "D. Jembatan ilmu ke Eropa",
+      isi: "<p>Andalusia menjadi <b>jembatan</b> yang membawa ilmu dari dunia Islam ke Eropa:</p>\n<ul>\n<li>Setelah Toledo dikuasai kerajaan Kristen (1085), di kota itu berkembang <b>pusat penerjemahan</b>. Karya Ibnu Sina, Al-Khawarizmi, Ibnu Rusyd, dan terjemahan Arab atas karya Yunani diterjemahkan ke bahasa Latin.</li>\n<li><b>Angka Arab</b> dan angka nol, aljabar, dan astronomi masuk ke Eropa.</li>\n<li><b>Pabrik kertas</b> pertama di Eropa berdiri di Xàtiva, Andalusia (± 1150).</li>\n<li>Teknik <b>irigasi</b> serta tanaman seperti tebu, jeruk, dan padi diperkenalkan ke Spanyol.</li>\n<li>Pemikiran Ibnu Rusyd (Averroes) sangat berpengaruh di universitas-universitas Eropa.</li>\n</ul>",
+      cinta: ["Cinta ilmu", "Ilmu dari Andalusia ikut menerangi Eropa. Ilmu tidak mengenal batas bangsa; menyebarkan ilmu yang bermanfaat adalah amal yang terus mengalir."] },
+    { judul: "E. Akhir umat Islam di Spanyol",
+      isi: "<p>Granada, kerajaan Islam terakhir, menyerah kepada Ferdinand dan Isabella pada <b>2 Januari 1492</b>. Perjanjian penyerahan menjamin kebebasan beragama, tetapi janji itu kemudian dilanggar. Umat Islam dipaksa berpindah agama; mereka yang dibaptis disebut <b>Morisco</b>. Lembaga <b>Inkuisisi</b> mengawasi dan menghukum mereka yang diam-diam tetap menjalankan Islam. Akhirnya, pada <b>1609–1614</b>, ratusan ribu Morisco diusir dari Spanyol.</p>\n<p>Peninggalan Islam tetap terlihat di Spanyol sampai sekarang: Masjid Cordoba, Alhambra, menara Giralda, dan ribuan kata Spanyol yang berasal dari bahasa Arab, misalnya <i>aceite</i> (minyak, dari <i>az-zait</i>) dan <i>azúcar</i> (gula, dari <i>as-sukkar</i>).</p>",
+      cinta: null },
+    { judul: "F. Pelajaran bagi umat Islam Indonesia",
       isi: `<ul>
 <li>Ilmu dan kemajuan harus dijaga dengan <b>persatuan</b> dan <b>akhlak</b>.</li>
 <li>Hidup rukun dengan pemeluk agama lain dapat melahirkan peradaban yang kaya.</li>
@@ -93,10 +100,16 @@ TAMBAH_BAB({
     ["Reconquista", "Usaha kerajaan Kristen merebut kembali Iberia"],
     ["Mozarab", "Orang Kristen yang hidup di bawah pemerintahan Islam di Andalusia"],
     ["Averroes", "Nama Latin Ibnu Rusyd"],
-    ["Inkuisisi", "Pengadilan gereja yang memaksa orang berpindah agama"]
+    ["Inkuisisi", "Pengadilan gereja yang memaksa orang berpindah agama"],
+    ["Morisco", "Muslim Spanyol yang dipaksa dibaptis setelah 1492"],
+    ["Toledo", "Kota pusat penerjemahan karya Arab ke Latin"]
   ],
 
   soal: [
+    { q: "Kota di Spanyol yang menjadi pusat penerjemahan karya ilmuwan Muslim ke bahasa Latin setelah 1085 adalah…", o: ["Granada", "Toledo", "Cordoba", "Sevilla", "Madrid"], a: 1, l: "C1", p: "Di Toledo karya-karya berbahasa Arab diterjemahkan ke bahasa Latin." },
+    { q: "Pabrik kertas pertama di Eropa berdiri di…", o: ["Paris", "Xàtiva, Andalusia", "Roma", "London", "Venesia"], a: 1, l: "C1", p: "Pabrik kertas di Xàtiva berdiri sekitar 1150." },
+    { q: "Umat Islam Spanyol yang dipaksa dibaptis setelah jatuhnya Granada disebut…", o: ["Mozarab", "Morisco", "Mudejar", "Mawali", "Muwalladun"], a: 1, l: "C1", p: "Morisco akhirnya diusir dari Spanyol pada 1609–1614." },
+    { q: "Granada, kerajaan Islam terakhir di Spanyol, jatuh pada tahun…", o: ["711", "1031", "1236", "1492", "1609"], a: 3, l: "C1", p: "Granada menyerah pada 2 Januari 1492." },
     { q: "Andalusia adalah sebutan untuk wilayah Islam di…", o: ["Afrika Utara", "Semenanjung Iberia (Spanyol dan Portugal)", "Sisilia", "Turki", "Asia Tengah"], a: 1, l: "C1", p: "Al-Andalus meliputi sebagian besar Spanyol dan Portugal sekarang." },
     { q: "Islam masuk ke Andalusia pada tahun 711 M di bawah pimpinan…", o: ["Abdurrahman ad-Dakhil", "Thariq bin Ziyad", "Yusuf bin Tasyfin", "Uqbah bin Nafi'", "Muhammad bin Qasim"], a: 1, l: "C1", p: "Thariq bin Ziyad memimpin pasukan menyeberangi selat." },
     { q: "Penaklukan Andalusia terjadi pada masa khalifah…", o: ["Umar bin Khattab", "Al-Walid I dari Umayyah", "Harun ar-Rasyid", "Utsman bin Affan", "Al-Ma'mun"], a: 1, l: "C1", p: "Al-Walid I memerintah 705–715 M." },

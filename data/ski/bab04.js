@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan masa keemasan Abbasiyah pada masa Harun ar-Rasyid dan Al-Ma'mun",
     "Mengidentifikasi ulama dan ilmuwan Muslim masa Abbasiyah beserta karyanya",
     "Menganalisis sebab kemunduran dan runtuhnya Abbasiyah",
-    "Meneladani semangat menuntut ilmu para ulama dan ilmuwan"
+    "Meneladani semangat menuntut ilmu para ulama dan ilmuwan",
+    "Mengidentifikasi dinasti-dinasti yang sezaman dengan Abbasiyah"
   ],
 
   video: { src: "video/ski/bab04.mp4", judul: "Dinasti Abbasiyah dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -67,7 +68,10 @@ TAMBAH_BAB({
 <li><b>Serangan dari luar</b>: Perang Salib dan akhirnya <b>Mongol</b> yang menghancurkan Baghdad pada 1258.</li>
 </ol>`,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Kejayaan ilmu dibangun oleh iman dan kesungguhan, lalu runtuh karena lalai dan perpecahan. Menjaga persatuan dan ilmu adalah bagian dari bersyukur kepada Allah."] },
-    { judul: "D. Warisan untuk madrasah kita",
+    { judul: "D. Dinasti-dinasti yang sezaman dengan Abbasiyah",
+      isi: "<table><thead><tr><th>Dinasti</th><th>Wilayah dan masa</th><th>Peninggalan dan peran</th></tr></thead><tbody>\n<tr><td>Fatimiyah</td><td>Mesir, 909–1171</td><td>Membangun Kota Kairo dan Masjid <b>Al-Azhar</b> (970–972), kelak menjadi universitas tertua yang masih berjalan</td></tr>\n<tr><td>Ayyubiyah</td><td>Mesir dan Syam, 1171–1250</td><td>Didirikan <b>Shalahuddin al-Ayyubi</b>, yang merebut kembali Yerusalem (1187)</td></tr>\n<tr><td>Mamluk</td><td>Mesir dan Syam, 1250–1517</td><td>Menghentikan laju pasukan Mongol dalam <b>Pertempuran Ain Jalut</b> (1260)</td></tr>\n<tr><td>Seljuk</td><td>Persia dan Anatolia, abad ke-11–12</td><td>Wazirnya, Nizam al-Mulk, mendirikan Madrasah Nizamiyah</td></tr>\n<tr><td>Ghaznawi</td><td>Afganistan dan India utara, abad ke-10–12</td><td>Membawa Islam ke India; ilmuwan Al-Biruni hidup pada masa ini</td></tr>\n</tbody></table>\n<p>Meskipun wilayah Islam terpecah menjadi banyak dinasti, ilmu dan peradaban tetap berkembang di berbagai pusat: Baghdad, Kairo, Cordoba, Bukhara, dan lainnya.</p>",
+      cinta: null },
+    { judul: "E. Warisan untuk madrasah kita",
       isi: `<p>Madrasah Nizamiyah yang didirikan <b>Nizam al-Mulk</b> (1067) memiliki guru tetap, kurikulum, asrama, dan beasiswa. Model ini menjadi cikal bakal lembaga pendidikan Islam di berbagai negeri. Madrasah tempat kita belajar hari ini adalah bagian dari tradisi panjang itu.</p>`,
       cinta: ["Cinta tanah air", "Belajar di madrasah berarti meneruskan tradisi ilmu yang telah berumur lebih dari seribu tahun, lalu mempersembahkannya untuk kemajuan Indonesia."] }
   ],
@@ -93,10 +97,18 @@ TAMBAH_BAB({
     ["Observatorium", "Tempat pengamatan bintang"],
     ["Penerjemahan", "Mengalihkan karya dari satu bahasa ke bahasa lain"],
     ["Buwaihi", "Dinasti Persia yang menguasai Baghdad sejak 945 M"],
-    ["Seljuk", "Dinasti Turki yang menguasai Baghdad sejak 1055 M"]
+    ["Seljuk", "Dinasti Turki yang menguasai Baghdad sejak 1055 M"],
+    ["Fatimiyah", "Dinasti di Mesir (909–1171) pendiri Al-Azhar"],
+    ["Ayyubiyah", "Dinasti yang didirikan Shalahuddin al-Ayyubi"],
+    ["Mamluk", "Dinasti di Mesir (1250–1517) yang mengalahkan Mongol di Ain Jalut"],
+    ["Bimaristan", "Rumah sakit pada masa peradaban Islam"]
   ],
 
   soal: [
+    { q: "Masjid Al-Azhar di Kairo yang kemudian menjadi universitas didirikan pada masa Dinasti…", o: ["Abbasiyah", "Fatimiyah", "Ayyubiyah", "Mamluk", "Umayyah"], a: 1, l: "C1", p: "Al-Azhar dibangun Dinasti Fatimiyah pada 970–972 M." },
+    { q: "Dinasti yang menghentikan serangan Mongol dalam Pertempuran Ain Jalut (1260) adalah…", o: ["Seljuk", "Mamluk", "Ayyubiyah", "Ghaznawi", "Safawi"], a: 1, l: "C1", p: "Kemenangan Mamluk di Ain Jalut menyelamatkan Mesir dan Syam dari Mongol." },
+    { q: "Pendiri Dinasti Ayyubiyah yang merebut kembali Yerusalem pada 1187 adalah…", o: ["Nuruddin Zanki", "Shalahuddin al-Ayyubi", "Baibars", "Alp Arslan", "Muhammad al-Fatih"], a: 1, l: "C1", p: "Shalahuddin dikenal adil dan memperlakukan penduduk Yerusalem dengan baik." },
+    { s: "Sejak abad ke-10, wilayah Islam terbagi menjadi banyak dinasti: Fatimiyah di Mesir, Umayyah di Andalusia, Ghaznawi di India, dan Seljuk di Persia. Namun di setiap pusat itu berdiri madrasah, perpustakaan, dan observatorium.", q: "Kesimpulan yang tepat dari keadaan tersebut adalah…", o: ["peradaban Islam berhenti berkembang", "ilmu dan peradaban tetap berkembang di banyak pusat meskipun kekuasaan politik terpecah", "semua dinasti saling menghancurkan ilmu", "hanya Baghdad pusat ilmu", "dinasti-dinasti itu menolak ilmu pengetahuan"], a: 1, l: "C4", p: "Kairo, Cordoba, Bukhara, dan kota lain menjadi pusat ilmu baru." },
     { q: "Nama Dinasti Abbasiyah diambil dari nama…", o: ["Abu Ja'far al-Mansur", "Abbas bin Abdul Muthalib, paman Rasulullah", "Abul Abbas as-Saffah", "kota Abbas", "Abdullah bin Abbas"], a: 1, l: "C1", p: "Bani Abbas adalah keturunan Abbas, paman Rasulullah." },
     { q: "Pendiri Dinasti Abbasiyah adalah…", o: ["Harun ar-Rasyid", "Abul Abbas as-Saffah", "Al-Ma'mun", "Abu Ja'far al-Mansur", "Al-Mu'tashim"], a: 1, l: "C1", p: "Abul Abbas as-Saffah menjadi khalifah pertama pada 750 M." },
     { q: "Kota Baghdad dibangun oleh khalifah…", o: ["Harun ar-Rasyid", "Abu Ja'far al-Mansur", "Al-Ma'mun", "Abul Abbas as-Saffah", "Al-Mutawakkil"], a: 1, l: "C1", p: "Baghdad dibangun pada 762 M." },

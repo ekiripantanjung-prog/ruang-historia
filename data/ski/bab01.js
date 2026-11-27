@@ -9,7 +9,8 @@ TAMBAH_BAB({
     "Menjelaskan peristiwa hijrah dan pembentukan masyarakat Madinah",
     "Menganalisis isi dan makna Piagam Madinah",
     "Menguraikan peristiwa penting periode Madinah sampai Fathu Makkah",
-    "Meneladani akhlak dan strategi dakwah Rasulullah saw."
+    "Meneladani akhlak dan strategi dakwah Rasulullah saw.",
+    "Menganalisis ujian dakwah di Mekkah serta peperangan dan perjanjian masa Madinah"
   ],
 
   video: { src: "video/ski/bab01.mp4", judul: "Dakwah Rasulullah dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -76,7 +77,13 @@ TAMBAH_BAB({
 </ul>
 <p>Masa Madinah juga diwarnai peperangan mempertahankan diri: Badar, Uhud, dan Khandaq; lalu <b>Perjanjian Hudaibiyah</b> dan <b>Fathu Makkah</b>.</p>`,
       cinta: ["Cinta diri dan sesama", "Persaudaraan Muhajirin dan Anshar adalah teladan berbagi: kaum Anshar rela membagi rumah dan hartanya kepada saudara yang datang tanpa apa-apa."] },
-    { judul: "D. Keteladanan untuk kita",
+    { judul: "D. Ujian dakwah di Mekkah",
+      isi: "<ul>\n<li><b>Hijrah ke Habasyah</b> (± 615 M): sebagian sahabat berhijrah ke Habasyah (Etiopia) dan dilindungi Raja Najasyi yang adil.</li>\n<li><b>Pemboikotan Bani Hasyim</b> (± 617–619 M): kaum Quraisy memutus hubungan dagang dan pernikahan dengan keluarga Nabi selama sekitar tiga tahun.</li>\n<li><b>'Amul Huzni</b> (tahun duka cita, ± 619 M): wafatnya Khadijah dan Abu Thalib.</li>\n<li><b>Dakwah ke Thaif</b>: Rasulullah dilempari batu, tetapi justru mendoakan kebaikan bagi penduduknya.</li>\n<li><b>Isra Mikraj</b>: perjalanan malam ke Masjidil Aqsa lalu ke Sidratul Muntaha; turunnya perintah salat lima waktu.</li>\n<li><b>Baiat Aqabah</b> I (621 M) dan II (622 M): penduduk Yatsrib (Madinah) berjanji setia dan mengundang Rasulullah berhijrah.</li>\n</ul>",
+      cinta: ["Cinta Allah dan Rasul-Nya", "Di Thaif Rasulullah disakiti, tetapi beliau mendoakan kebaikan. Mencintai Rasul berarti meneladani kesabaran dan kasih sayang beliau, bahkan kepada orang yang menyakiti."] },
+    { judul: "E. Perang dan perjanjian pada masa Madinah",
+      isi: "<table><thead><tr><th>Peristiwa</th><th>Waktu</th><th>Keterangan</th></tr></thead><tbody>\n<tr><td>Perang Badar</td><td>17 Ramadan 2 H (624 M)</td><td>Sekitar 313 kaum Muslim mengalahkan sekitar 1.000 pasukan Quraisy</td></tr>\n<tr><td>Perang Uhud</td><td>3 H (625 M)</td><td>Kaum Muslim terdesak karena pasukan pemanah meninggalkan pos; Hamzah gugur</td></tr>\n<tr><td>Perang Khandaq (Ahzab)</td><td>5 H (627 M)</td><td>Atas usul Salman al-Farisi, umat Islam menggali parit; pasukan sekutu musuh mundur</td></tr>\n<tr><td>Perjanjian Hudaibiyah</td><td>6 H (628 M)</td><td>Gencatan senjata 10 tahun; tampak merugikan, tetapi membuka jalan dakwah yang luas</td></tr>\n<tr><td>Fathu Makkah</td><td>20 Ramadan 8 H (630 M)</td><td>Mekkah dibebaskan hampir tanpa pertumpahan darah; Rasulullah memaafkan penduduknya</td></tr>\n<tr><td>Perang Hunain dan Tabuk</td><td>8 H dan 9 H</td><td>Menghadapi suku Hawazin dan ancaman dari Romawi</td></tr>\n</tbody></table>\n<p>Peperangan masa Rasulullah bersifat <b>mempertahankan diri</b> dan menjaga keamanan dakwah, dengan aturan ketat: tidak membunuh perempuan, anak-anak, orang tua, dan pendeta, serta tidak merusak tanaman.</p>",
+      cinta: null },
+    { judul: "F. Keteladanan untuk kita",
       isi: `<ul>
 <li><b>Jujur dan amanah</b>, seperti gelar Al-Amin sejak muda.</li>
 <li><b>Sabar dan pemaaf</b>, seperti di Thaif dan pada Fathu Makkah.</li>
@@ -108,10 +115,20 @@ TAMBAH_BAB({
     ["'Amul Huzni", "Tahun duka cita"],
     ["Fathu Makkah", "Pembebasan kota Mekkah (8 H)"],
     ["Haji Wada'", "Haji perpisahan Rasulullah (10 H)"],
-    ["Hikmah", "Kebijaksanaan dalam berdakwah"]
+    ["Hikmah", "Kebijaksanaan dalam berdakwah"],
+    ["Habasyah", "Etiopia, tujuan hijrah pertama para sahabat"],
+    ["Baiat Aqabah", "Janji setia penduduk Yatsrib kepada Rasulullah (621 dan 622 M)"],
+    ["Ghazwah", "Peperangan yang dipimpin langsung oleh Rasulullah"],
+    ["Perjanjian Hudaibiyah", "Gencatan senjata antara umat Islam dan Quraisy (6 H)"]
   ],
 
   soal: [
+    { q: "Raja Habasyah yang melindungi para sahabat yang berhijrah dari Mekkah adalah…", o: ["Kisra", "Najasyi", "Heraklius", "Muqauqis", "Abrahah"], a: 1, l: "C1", p: "Raja Najasyi (Negus) dikenal adil dan melindungi kaum Muslim." },
+    { q: "Tahun wafatnya Khadijah dan Abu Thalib disebut…", o: ["'Amul Fil", "'Amul Huzni", "'Amul Jama'ah", "Tahun Hijrah", "Tahun Wufud"], a: 1, l: "C1", p: "'Amul Huzni berarti tahun duka cita." },
+    { q: "Usulan menggali parit untuk mempertahankan Madinah berasal dari…", o: ["Abu Bakar", "Umar bin Khattab", "Salman al-Farisi", "Ali bin Abi Thalib", "Khalid bin Walid"], a: 2, l: "C1", p: "Strategi parit dari Persia diusulkan Salman al-Farisi dalam Perang Khandaq." },
+    { s: "Dalam Perang Uhud, kaum Muslim sempat unggul. Namun sebagian besar pasukan pemanah meninggalkan posnya di bukit untuk mengambil harta rampasan, padahal Rasulullah memerintahkan mereka tetap di tempat. Pasukan musuh pun menyerang dari belakang.", q: "Pelajaran utama dari peristiwa tersebut adalah…", o: ["kemenangan pasti diraih bila jumlah pasukan banyak", "ketaatan pada perintah pemimpin sangat menentukan keberhasilan", "pemanah tidak penting dalam perang", "perang harus dihindari dengan segala cara", "harta rampasan lebih utama"], a: 1, l: "C4", p: "Kekalahan di Uhud terjadi karena pasukan pemanah melanggar perintah Rasulullah." },
+    { q: "Perjanjian Hudaibiyah pada akhirnya menguntungkan umat Islam karena…", o: ["umat Islam langsung menguasai Mekkah", "masa damai membuat dakwah tersebar luas dan banyak orang masuk Islam", "Quraisy membayar denda", "umat Islam mendapat wilayah baru", "Quraisy masuk Islam semua"], a: 1, l: "C4", p: "Selama gencatan senjata, dakwah berkembang pesat hingga Fathu Makkah." },
+    { q: "Peristiwa pembebasan Kota Mekkah yang hampir tanpa pertumpahan darah terjadi pada tahun…", o: ["2 H", "5 H", "6 H", "8 H", "10 H"], a: 3, l: "C1", p: "Fathu Makkah terjadi pada 20 Ramadan 8 H (630 M)." },
     { q: "Masa sebelum Islam di Jazirah Arab disebut zaman jahiliah karena…", o: ["masyarakatnya tidak bisa berdagang", "masyarakatnya jauh dari petunjuk tauhid dan akhlak mulia", "tidak ada kota", "tidak mengenal syair", "tidak memiliki pemimpin"], a: 1, l: "C2", p: "Jahiliah merujuk pada kebodohan dalam hal akidah dan akhlak, bukan dalam keterampilan dunia." },
     { q: "Wahyu pertama yang diterima Nabi Muhammad saw. di Gua Hira adalah…", o: ["QS Al-Fatihah 1–7", "QS Al-'Alaq 1–5", "QS Al-Muddatstsir 1–7", "QS Al-Ikhlas 1–4", "QS Al-Baqarah 1–5"], a: 1, l: "C1", p: "QS Al-'Alaq 1–5 berisi perintah membaca." },
     { s: "Ayat pertama yang diturunkan kepada Rasulullah berisi perintah membaca dengan nama Tuhan yang menciptakan, dan menyebut bahwa Allah mengajar manusia dengan perantaraan pena.", q: "Pesan utama ayat tersebut bagi umat Islam adalah…", o: ["Islam tidak mementingkan ilmu", "ilmu dan membaca sangat penting serta harus dilandasi iman", "hanya nabi yang boleh membaca", "menulis dilarang", "ilmu dunia tidak berguna"], a: 1, l: "C4", p: "Perintah iqra' menunjukkan kedudukan ilmu yang tinggi dalam Islam." },

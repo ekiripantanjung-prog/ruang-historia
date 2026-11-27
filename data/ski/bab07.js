@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan pemikiran tokoh-tokoh pembaruan di Timur Tengah dan India",
     "Menjelaskan pengaruh gerakan pembaruan terhadap umat Islam Indonesia",
     "Mengidentifikasi organisasi dan lembaga pendidikan Islam modern di Indonesia",
-    "Menyikapi perbedaan pendekatan pembaruan dan tradisi secara bijak"
+    "Menyikapi perbedaan pendekatan pembaruan dan tradisi secara bijak",
+    "Mengidentifikasi organisasi-organisasi Islam di Indonesia"
   ],
 
   video: { src: "video/ski/bab07.mp4", judul: "Gerakan pembaruan Islam dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -71,7 +72,13 @@ TAMBAH_BAB({
 </ul>
 <p>Para pelajar dan ulama inilah yang kemudian ikut menggerakkan <b>pergerakan nasional</b> dan perjuangan kemerdekaan Indonesia.</p>`,
       cinta: ["Cinta tanah air", "Pembaruan Islam di Indonesia melahirkan sekolah, madrasah, dan organisasi yang ikut memerdekakan dan membangun bangsa."] },
-    { judul: "D. Menyikapi perbedaan",
+    { judul: "D. Pembaruan di Mesir dan Turki",
+      isi: "<ul>\n<li><b>Muhammad Ali Pasha</b> (berkuasa di Mesir 1805–1848) dijuluki Bapak Mesir Modern. Ia mengirim pelajar ke Eropa, mendirikan sekolah teknik dan kedokteran, percetakan, serta industri.</li>\n<li><b>Tanzimat</b> (1839–1876) di Turki Usmani: penataan ulang hukum, pendidikan, dan pemerintahan agar setara dengan negara-negara Eropa.</li>\n<li><b>Rifa'ah at-Tahtawi</b>, ulama Mesir lulusan Al-Azhar yang belajar di Paris, menerjemahkan banyak buku dan mendorong pendidikan untuk semua, termasuk perempuan.</li>\n</ul>",
+      cinta: null },
+    { judul: "E. Organisasi Islam di Indonesia",
+      isi: "<table><thead><tr><th>Organisasi</th><th>Tahun dan tempat</th><th>Pendiri</th><th>Bidang utama</th></tr></thead><tbody>\n<tr><td>Sarekat Islam</td><td>1912, Surakarta (dari Sarekat Dagang Islam)</td><td>H. Samanhudi, H.O.S. Tjokroaminoto</td><td>Ekonomi dan politik</td></tr>\n<tr><td>Muhammadiyah</td><td>1912, Yogyakarta</td><td>K.H. Ahmad Dahlan</td><td>Pendidikan, kesehatan, dakwah</td></tr>\n<tr><td>Al-Irsyad</td><td>1914, Jakarta</td><td>Syekh Ahmad Surkati</td><td>Pendidikan</td></tr>\n<tr><td>Persatuan Islam (Persis)</td><td>1923, Bandung</td><td>K.H. Zamzam, kemudian A. Hassan</td><td>Dakwah dan pemurnian ajaran</td></tr>\n<tr><td>Nahdlatul Ulama</td><td>1926, Surabaya</td><td>K.H. Hasyim Asy'ari dan para ulama pesantren</td><td>Pesantren, dakwah, sosial</td></tr>\n<tr><td>Persatuan Tarbiyah Islamiyah (Perti)</td><td>1928, Sumatra Barat</td><td>Syekh Sulaiman ar-Rasuli</td><td>Pendidikan madrasah</td></tr>\n<tr><td>Al-Jam'iyatul Washliyah</td><td>1930, Medan</td><td>Para ulama dan pelajar Medan</td><td>Pendidikan dan dakwah</td></tr>\n<tr><td>Nahdlatul Wathan</td><td>1953, Lombok</td><td>T.G.K.H. Muhammad Zainuddin Abdul Madjid</td><td>Pendidikan dan dakwah</td></tr>\n</tbody></table>",
+      cinta: ["Cinta diri dan sesama", "Organisasi Islam di Indonesia beragam, tetapi semuanya bergerak untuk mencerdaskan umat. Keragaman itu adalah kekuatan bila dijalani dengan saling menghormati."] },
+    { judul: "F. Menyikapi perbedaan",
       isi: `<p>Kelompok pembaru dan kelompok tradisi kadang berbeda pendapat dalam masalah ibadah atau tradisi. Namun keduanya sama-sama berjasa: yang satu mendorong pembaruan pendidikan dan pemikiran, yang lain menjaga sanad keilmuan dan kearifan tradisi pesantren. Para tokoh seperti K.H. Ahmad Dahlan dan K.H. Hasyim Asy'ari adalah sesama murid Syekh Ahmad Khatib di Mekkah dan saling menghormati.</p>`,
       cinta: ["Cinta diri dan sesama", "Perbedaan pendapat dalam masalah cabang agama adalah rahmat bila disikapi dengan ilmu, adab, dan saling menghormati."] }
   ],
@@ -97,10 +104,17 @@ TAMBAH_BAB({
     ["Madrasah modern", "Sekolah agama dengan kelas, kurikulum, dan pelajaran umum"],
     ["Kaum muda", "Sebutan bagi kelompok pembaru di Minangkabau"],
     ["Kaum tua", "Sebutan bagi kelompok penjaga tradisi di Minangkabau"],
-    ["Khudi", "Konsep kebangkitan diri dalam pemikiran Iqbal"]
+    ["Khudi", "Konsep kebangkitan diri dalam pemikiran Iqbal"],
+    ["Tanzimat", "Pembaruan hukum dan pemerintahan Turki Usmani (1839–1876)"],
+    ["Perti", "Persatuan Tarbiyah Islamiyah (1928)"],
+    ["Persis", "Persatuan Islam (1923)"]
   ],
 
   soal: [
+    { q: "Tokoh yang dijuluki Bapak Mesir Modern karena memodernisasi pendidikan dan militer Mesir adalah…", o: ["Muhammad Abduh", "Muhammad Ali Pasha", "Jamaluddin al-Afghani", "Rifa'ah at-Tahtawi", "Gamal Abdel Nasser"], a: 1, l: "C1", p: "Muhammad Ali Pasha berkuasa di Mesir 1805–1848." },
+    { q: "Gerakan penataan ulang hukum dan pemerintahan Turki Usmani pada 1839–1876 disebut…", o: ["Reconquista", "Tanzimat", "Renaisans", "Restorasi Meiji", "Pan-Islamisme"], a: 1, l: "C1", p: "Tanzimat berarti penataan atau pengaturan." },
+    { q: "Organisasi Islam yang didirikan Syekh Ahmad Surkati pada 1914 adalah…", o: ["Persis", "Al-Irsyad", "Perti", "Al-Washliyah", "Muhammadiyah"], a: 1, l: "C1", p: "Al-Irsyad bergerak di bidang pendidikan." },
+    { q: "Persatuan Islam (Persis) didirikan pada 1923 di…", o: ["Yogyakarta", "Surabaya", "Bandung", "Medan", "Padang"], a: 2, l: "C1", p: "Persis berpusat di Bandung dan terkenal dengan tokohnya, A. Hassan." },
     { q: "Peristiwa yang membuat umat Islam di Mesir menyadari ketertinggalannya dari Eropa adalah…", o: ["Perang Salib", "pendudukan Napoleon atas Mesir (1798)", "runtuhnya Baghdad", "jatuhnya Granada", "berdirinya Turki Usmani"], a: 1, l: "C2", p: "Napoleon membawa pasukan modern, ilmuwan, dan mesin cetak." },
     { q: "Tujuan utama gerakan pembaruan Islam adalah…", o: ["meninggalkan ajaran Islam", "membangkitkan umat dengan kembali kepada Al-Qur'an dan Sunnah serta memajukan ilmu", "meniru seluruh budaya Barat", "menolak semua ilmu pengetahuan", "memperluas wilayah dengan perang"], a: 1, l: "C2", p: "Pembaruan memadukan kemurnian ajaran dengan kemajuan ilmu." },
     { q: "Tokoh pembaru yang menekankan pemurnian tauhid di Jazirah Arab pada abad ke-18 adalah…", o: ["Muhammad Abduh", "Muhammad bin Abdul Wahhab", "Muhammad Iqbal", "Sayyid Ahmad Khan", "Rasyid Ridha"], a: 1, l: "C1", p: "Muhammad bin Abdul Wahhab menyerukan pemurnian akidah." },

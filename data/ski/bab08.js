@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Mengidentifikasi ulama Nusantara dan karya-karyanya",
     "Menjelaskan jaringan ulama Nusantara dengan Timur Tengah",
     "Menguraikan peran pesantren, madrasah, dan ulama dalam sejarah bangsa",
-    "Meneladani sikap moderat dan cinta tanah air para ulama"
+    "Meneladani sikap moderat dan cinta tanah air para ulama",
+    "Menjelaskan perkembangan Islam di Indonesia setelah kemerdekaan"
   ],
 
   video: { src: "video/ski/bab08.mp4", judul: "Islam di Nusantara dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -67,7 +68,10 @@ TAMBAH_BAB({
       isi: `<p><b>Pesantren</b> adalah lembaga pendidikan Islam khas Nusantara: santri tinggal bersama kiai, mengaji <b>kitab kuning</b> dengan metode <b>sorogan</b> (santri membaca di hadapan kiai) dan <b>bandongan</b> (kiai membaca, santri menyimak). Pesantren mendidik ilmu, akhlak, dan kemandirian.</p>
 <p>Sejak awal abad ke-20 lahir <b>madrasah</b> dengan sistem kelas. Setelah merdeka, madrasah dibina <b>Kementerian Agama</b> (berdiri 3 Januari 1946) dan kini menjadi bagian dari sistem pendidikan nasional: MI, MTs, dan MA.</p>`,
       cinta: ["Cinta tanah air", "Pesantren dan madrasah telah mendidik ulama, pejuang, dan pemimpin bangsa. Belajar dengan sungguh-sungguh di madrasah adalah cara meneruskan perjuangan mereka."] },
-    { judul: "D. Ulama dan bangsa",
+    { judul: "D. Perkembangan Islam di Indonesia setelah merdeka",
+      isi: "<table><thead><tr><th>Tahun</th><th>Peristiwa</th></tr></thead><tbody>\n<tr><td>1946</td><td>Kementerian Agama berdiri (3 Januari)</td></tr>\n<tr><td>1951 dan 1960</td><td>PTAIN berdiri di Yogyakarta, lalu berkembang menjadi IAIN (kini banyak yang menjadi UIN)</td></tr>\n<tr><td>1975</td><td>Majelis Ulama Indonesia (MUI) dibentuk</td></tr>\n<tr><td>1989</td><td>Undang-Undang Peradilan Agama</td></tr>\n<tr><td>1991</td><td>Kompilasi Hukum Islam; berdirinya Bank Muamalat, bank syariah pertama</td></tr>\n<tr><td>1999</td><td>Undang-Undang Pengelolaan Zakat</td></tr>\n<tr><td>2015</td><td>Penetapan Hari Santri Nasional (22 Oktober)</td></tr>\n</tbody></table>\n<p>Kini Indonesia adalah negara dengan <b>jumlah penduduk Muslim terbesar di dunia</b>. Islam Indonesia dikenal dunia karena sikap moderat dan kemampuannya hidup berdampingan dalam negara Pancasila. Pemerintah mengembangkan program <b>moderasi beragama</b> dengan empat indikator: komitmen kebangsaan, toleransi, antikekerasan, dan penerimaan terhadap tradisi.</p>",
+      cinta: ["Cinta tanah air", "Madrasah tempat kita belajar adalah buah perjuangan panjang ulama dan bangsa. Menjadi pelajar yang berilmu, berakhlak, dan cinta tanah air adalah cara meneruskan perjuangan itu."] },
+    { judul: "E. Ulama dan bangsa",
       isi: `<ul>
 <li>Ulama memimpin <b>perlawanan</b> terhadap penjajah: Syekh Yusuf, Tuanku Imam Bonjol, Pangeran Diponegoro, Teungku Chik di Tiro, K.H. Zainal Mustafa.</li>
 <li>Ulama ikut <b>merumuskan dasar negara</b> dalam BPUPKI dan Panitia Sembilan.</li>
@@ -98,10 +102,17 @@ TAMBAH_BAB({
     ["Mufti", "Ulama pemberi fatwa"],
     ["Jaringan ulama", "Hubungan guru dan murid antara ulama Nusantara dan Timur Tengah"],
     ["Hari Santri", "22 Oktober, mengenang Resolusi Jihad 1945"],
-    ["Hari Amal Bakti", "3 Januari, hari berdirinya Kementerian Agama"]
+    ["Hari Amal Bakti", "3 Januari, hari berdirinya Kementerian Agama"],
+    ["MUI", "Majelis Ulama Indonesia (1975)"],
+    ["IAIN/UIN", "Institut/Universitas Islam Negeri"],
+    ["Moderasi beragama", "Cara beragama yang adil, seimbang, dan tidak berlebihan"]
   ],
 
   soal: [
+    { q: "Kementerian Agama Republik Indonesia berdiri pada…", o: ["17 Agustus 1945", "3 Januari 1946", "22 Oktober 1945", "1 Juni 1945", "26 Juli 1975"], a: 1, l: "C1", p: "Tanggal 3 Januari diperingati sebagai Hari Amal Bakti Kementerian Agama." },
+    { q: "Bank syariah pertama di Indonesia adalah…", o: ["Bank Syariah Indonesia", "Bank Muamalat", "Bank Mandiri Syariah", "BRI Syariah", "Bank Indonesia"], a: 1, l: "C1", p: "Bank Muamalat berdiri pada 1991." },
+    { q: "Lembaga yang dibentuk pada 1975 sebagai wadah musyawarah para ulama Indonesia adalah…", o: ["Kementerian Agama", "Majelis Ulama Indonesia", "Nahdlatul Ulama", "Dewan Masjid Indonesia", "BAZNAS"], a: 1, l: "C1", p: "MUI dibentuk pada 26 Juli 1975." },
+    { q: "Empat indikator moderasi beragama yang dikembangkan pemerintah adalah…", o: ["iman, islam, ihsan, ilmu", "komitmen kebangsaan, toleransi, antikekerasan, dan penerimaan terhadap tradisi", "salat, zakat, puasa, haji", "jujur, amanah, tablig, fatanah", "musyawarah, mufakat, gotong royong, keadilan"], a: 1, l: "C2", p: "Keempat indikator ini menjadi pedoman sikap beragama yang moderat." },
     { q: "Ciri utama Islam di Nusantara yang tumbuh melalui jalur damai adalah…", o: ["keras dan tertutup", "moderat dan menghargai budaya lokal yang tidak bertentangan dengan syariat", "menolak semua budaya", "hanya dianut kaum bangsawan", "disebarkan dengan perang"], a: 1, l: "C2", p: "Islam Nusantara dikenal moderat (wasathiyah) dan ramah." },
     { q: "Ulama Aceh yang dikenal sebagai perintis sastra Melayu Islam melalui syair-syair tasawufnya adalah…", o: ["Hamzah Fansuri", "Nuruddin ar-Raniri", "Abdurrauf as-Singkili", "Syamsuddin as-Sumatrani", "Syekh Yusuf"], a: 0, l: "C1", p: "Hamzah Fansuri menulis syair-syair tasawuf dalam bahasa Melayu." },
     { q: "Tafsir Al-Qur'an lengkap pertama dalam bahasa Melayu, Tarjuman al-Mustafid, ditulis oleh…", o: ["Hamzah Fansuri", "Abdurrauf as-Singkili", "Syekh Nawawi al-Bantani", "Syekh Arsyad al-Banjari", "Hamka"], a: 1, l: "C1", p: "Abdurrauf as-Singkili adalah mufti Kesultanan Aceh pada abad ke-17." },

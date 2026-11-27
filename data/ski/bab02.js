@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan kebijakan dan prestasi Abu Bakar, Umar, Utsman, dan Ali",
     "Menjelaskan sejarah pengumpulan dan pembukuan Al-Qur'an",
     "Menganalisis ujian persatuan umat pada akhir masa Khulafaur Rasyidin",
-    "Meneladani kepemimpinan yang adil, sederhana, dan amanah"
+    "Meneladani kepemimpinan yang adil, sederhana, dan amanah",
+    "Menjelaskan perluasan wilayah Islam pada masa Khulafaur Rasyidin"
   ],
 
   video: { src: "video/ski/bab02.mp4", judul: "Khulafaur Rasyidin dalam 1,5 menit", durasi: "1 menit 21 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -51,11 +52,14 @@ TAMBAH_BAB({
 <p><b>Masa Umar</b> meletakkan dasar pemerintahan Islam: kalender Hijriah, Baitul Mal (kas negara), diwan (administrasi), hakim yang terpisah dari gubernur, serta pembagian wilayah menjadi provinsi.</p>`,
       kartu: true,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Berkat kesungguhan para sahabat menjaga Al-Qur'an, kitab suci yang kita baca hari ini sama dengan yang dibaca umat Islam sejak berabad-abad lalu."] },
-    { judul: "C. Ujian persatuan",
+    { judul: "C. Perluasan wilayah Islam",
+      isi: "<table><thead><tr><th>Khalifah</th><th>Peristiwa penting</th></tr></thead><tbody>\n<tr><td>Abu Bakar (632–634)</td><td>Menumpas kaum murtad, penolak zakat, dan nabi palsu seperti Musailamah al-Kadzab (Perang <b>Riddah</b>). Banyak penghafal Al-Qur'an gugur dalam Perang Yamamah, sehingga Al-Qur'an dikumpulkan.</td></tr>\n<tr><td>Umar bin Khattab (634–644)</td><td>Kemenangan di <b>Yarmuk</b> (636) atas Romawi dan <b>Qadisiyah</b> (636) atas Persia. Yerusalem diserahkan secara damai (± 638) dan Umar menjamin keamanan penduduknya. Mesir dibebaskan oleh Amr bin Ash. Kota baru dibangun: Kufah, Basrah, dan Fustat.</td></tr>\n<tr><td>Utsman bin Affan (644–656)</td><td>Wilayah meluas ke Armenia, Afrika Utara, dan Siprus. Membentuk <b>armada laut</b> pertama umat Islam.</td></tr>\n<tr><td>Ali bin Abi Thalib (656–661)</td><td>Memindahkan pusat pemerintahan ke Kufah; berupaya memulihkan persatuan umat di tengah fitnah.</td></tr>\n</tbody></table>\n<p>Penduduk wilayah baru tidak dipaksa masuk Islam. Pemeluk agama lain dilindungi dengan membayar <b>jizyah</b>, sebagai ganti kewajiban zakat dan wajib militer bagi kaum Muslim.</p>",
+      cinta: ["Cinta diri dan sesama", "Umar bin Khattab menjamin keamanan gereja dan penduduk Yerusalem. Kekuatan tidak dipakai untuk menindas, tetapi untuk melindungi semua orang."] },
+    { judul: "D. Ujian persatuan",
       isi: `<p>Pada akhir masa Utsman dan masa Ali, umat Islam mengalami <b>fitnah</b> (perselisihan besar): pemberontakan, terbunuhnya Utsman, Perang Jamal dan Shiffin, serta lahirnya kelompok Khawarij yang mudah mengafirkan sesama Muslim.</p>
 <p>Para ulama mengajarkan untuk menghormati seluruh sahabat Nabi dan mengambil pelajaran: <b>perselisihan politik dapat memecah umat</b>, sehingga persatuan, musyawarah, dan sikap tidak mudah menyalahkan harus dijaga.</p>`,
       cinta: ["Cinta diri dan sesama", "Sejarah fitnah mengajarkan bahaya perpecahan dan sikap ekstrem. Berbeda pendapat boleh, tetapi persaudaraan harus tetap dijaga."] },
-    { judul: "D. Keteladanan kepemimpinan",
+    { judul: "E. Keteladanan kepemimpinan",
       isi: `<ul>
 <li><b>Abu Bakar:</b> jujur dan tegas: "Taatilah aku selama aku taat kepada Allah dan Rasul-Nya."</li>
 <li><b>Umar:</b> adil dan peduli; memikul sendiri gandum untuk keluarga miskin.</li>
@@ -86,10 +90,18 @@ TAMBAH_BAB({
     ["Qadhi", "Hakim"],
     ["Amirul Mukminin", "Pemimpin orang-orang beriman"],
     ["Fitnah", "Dalam sejarah Islam: perselisihan dan kekacauan besar di kalangan umat"],
-    ["Khawarij", "Kelompok yang keluar dari barisan Ali dan bersikap ekstrem"]
+    ["Khawarij", "Kelompok yang keluar dari barisan Ali dan bersikap ekstrem"],
+    ["Riddah", "Kemurtadan; Perang Riddah pada masa Abu Bakar"],
+    ["Jizyah", "Pajak perlindungan bagi warga non-Muslim"],
+    ["Fustat", "Kota yang dibangun Amr bin Ash di Mesir, cikal bakal Kairo"]
   ],
 
   soal: [
+    { q: "Perang melawan kaum murtad, penolak zakat, dan nabi palsu pada masa Abu Bakar disebut…", o: ["Perang Yarmuk", "Perang Riddah", "Perang Jamal", "Perang Shiffin", "Perang Qadisiyah"], a: 1, l: "C1", p: "Perang Riddah menjaga persatuan umat setelah Rasulullah wafat." },
+    { q: "Gugurnya banyak penghafal Al-Qur'an dalam Perang Yamamah mendorong…", o: ["pemindahan ibu kota", "pengumpulan Al-Qur'an dalam satu mushaf", "pembentukan armada laut", "penetapan kalender Hijriah", "pembangunan Kota Kufah"], a: 1, l: "C2", p: "Umar mengusulkan kepada Abu Bakar agar Al-Qur'an dikumpulkan, lalu Zaid bin Tsabit ditugaskan melaksanakannya." },
+    { q: "Kemenangan umat Islam atas Persia dalam Perang Qadisiyah terjadi pada masa khalifah…", o: ["Abu Bakar", "Umar bin Khattab", "Utsman bin Affan", "Ali bin Abi Thalib", "Muawiyah"], a: 1, l: "C1", p: "Perang Qadisiyah (636 M) terjadi pada masa Umar bin Khattab." },
+    { q: "Armada laut pertama umat Islam dibentuk pada masa khalifah…", o: ["Abu Bakar", "Umar bin Khattab", "Utsman bin Affan", "Ali bin Abi Thalib", "Umar bin Abdul Aziz"], a: 2, l: "C1", p: "Pada masa Utsman, umat Islam membangun armada laut dan menguasai Siprus." },
+    { s: "Ketika Yerusalem diserahkan secara damai, Khalifah Umar datang sendiri, menjamin keselamatan jiwa, harta, dan gereja penduduknya, serta menolak salat di dalam gereja agar tempat itu tidak diubah menjadi masjid oleh orang sesudahnya.", q: "Sikap Umar bin Khattab tersebut mencerminkan nilai…", o: ["kesombongan penakluk", "toleransi dan perlindungan terhadap pemeluk agama lain", "pemaksaan agama", "balas dendam", "sikap tertutup"], a: 1, l: "C5", p: "Umar menjamin keamanan jiwa, harta, dan gereja penduduk Yerusalem." },
     { q: "Abu Bakar diangkat menjadi khalifah melalui musyawarah di…", o: ["Masjid Nabawi", "Saqifah Bani Sa'idah", "Gua Tsur", "Darul Arqam", "Padang Arafah"], a: 1, l: "C1", p: "Para sahabat Muhajirin dan Anshar bermusyawarah di Saqifah Bani Sa'idah." },
     { q: "Tantangan utama yang dihadapi Abu Bakar pada awal pemerintahannya adalah…", o: ["serangan Mongol", "kaum murtad, penolak zakat, dan nabi palsu", "perang dengan Spanyol", "pemberontakan Khawarij", "kodifikasi hadis"], a: 1, l: "C2", p: "Abu Bakar memerangi kaum murtad (perang riddah) untuk menjaga keutuhan umat." },
     { s: "Dalam Perang Yamamah, sekitar 70 penghafal Al-Qur'an gugur. Umar bin Khattab khawatir Al-Qur'an akan hilang bila para penghafalnya terus berkurang.", q: "Kekhawatiran Umar tersebut melatarbelakangi…", o: ["penetapan kalender Hijriah", "pengumpulan Al-Qur'an dalam satu mushaf pada masa Abu Bakar", "pembangunan armada laut", "pembentukan Baitul Mal", "Perang Shiffin"], a: 1, l: "C4", p: "Abu Bakar kemudian menugaskan Zaid bin Tsabit mengumpulkan Al-Qur'an." },

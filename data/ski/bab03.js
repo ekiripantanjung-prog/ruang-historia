@@ -8,7 +8,8 @@ TAMBAH_BAB({
     "Menguraikan khalifah-khalifah penting dan kebijakannya",
     "Mengidentifikasi perluasan wilayah dan kemajuan peradaban masa Umayyah",
     "Menganalisis sebab-sebab runtuhnya Dinasti Umayyah",
-    "Meneladani keadilan dan kesederhanaan Umar bin Abdul Aziz"
+    "Meneladani keadilan dan kesederhanaan Umar bin Abdul Aziz",
+    "Mengenal para ulama dan perkembangan ilmu pada masa Umayyah"
   ],
 
   video: { src: "video/ski/bab03.mp4", judul: "Dinasti Umayyah dalam 1,5 menit", durasi: "1 menit 22 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -54,10 +55,13 @@ TAMBAH_BAB({
 </tbody></table>`,
       kartu: true,
       cinta: ["Cinta ilmu", "Perintah Umar bin Abdul Aziz untuk membukukan hadis menjaga sabda Rasulullah bagi generasi sesudahnya. Menjaga ilmu adalah amal jariyah."] },
-    { judul: "C. Umar bin Abdul Aziz: teladan pemimpin",
+    { judul: "C. Ulama dan ilmu pada masa Umayyah",
+      isi: "<ul>\n<li><b>Abul Aswad ad-Du'ali</b>: peletak dasar ilmu <b>nahwu</b> (tata bahasa Arab) dan pemberi tanda baris pada mushaf, sehingga Al-Qur'an mudah dibaca orang non-Arab.</li>\n<li><b>Ibnu Syihab az-Zuhri</b>: atas perintah Umar bin Abdul Aziz, mulai <b>membukukan hadis</b> secara resmi agar tidak hilang.</li>\n<li><b>Hasan al-Bashri</b>: ulama dan zahid dari Basrah yang terkenal dengan nasihat-nasihatnya.</li>\n<li><b>Khalid bin Yazid</b>: pangeran Umayyah yang tertarik pada ilmu kimia dan penerjemahan.</li>\n</ul>\n<p>Pada masa <b>Abdul Malik bin Marwan</b>, administrasi negara diarabkan (bahasa Arab menjadi bahasa resmi pemerintahan) dan mata uang Islam pertama dicetak. Dengan demikian, masa Umayyah meletakkan dasar bagi masa keemasan ilmu pada masa Abbasiyah.</p>",
+      cinta: ["Cinta ilmu", "Abul Aswad ad-Du'ali memberi tanda baris agar Al-Qur'an mudah dibaca semua orang. Ilmu yang bermanfaat adalah ilmu yang memudahkan orang lain dekat dengan kebaikan."] },
+    { judul: "D. Umar bin Abdul Aziz: teladan pemimpin",
       isi: `<p>Umar bin Abdul Aziz memerintah hanya sekitar dua setengah tahun, tetapi dikenang sepanjang masa. Ia menolak hidup mewah, mengembalikan harta yang diambil tidak sah ke Baitul Mal, menghapus pajak yang menzalimi kaum mawali, dan menghentikan kebiasaan mencela Ali bin Abi Thalib di mimbar. Pada masanya rakyat hidup sejahtera.</p>`,
       cinta: ["Cinta kepada Allah dan Rasul-Nya", "Umar bin Abdul Aziz takut kepada Allah atas amanah kekuasaannya. Diriwayatkan ia mematikan lampu milik negara ketika berbincang urusan pribadi."] },
-    { judul: "D. Mengapa Umayyah runtuh?",
+    { judul: "E. Mengapa Umayyah runtuh?",
       isi: `<ol>
 <li>Sistem <b>turun-temurun</b> memicu perebutan takhta di dalam keluarga.</li>
 <li>Sebagian khalifah hidup <b>mewah</b> dan jauh dari rakyat.</li>
@@ -89,10 +93,16 @@ TAMBAH_BAB({
     ["Qubbat ash-Shakhrah", "Kubah Batu di Yerusalem"],
     ["Asyura", "Tanggal 10 Muharram"],
     ["Ekspansi", "Perluasan wilayah"],
-    ["Zuhud", "Hidup sederhana dan tidak terikat pada dunia"]
+    ["Zuhud", "Hidup sederhana dan tidak terikat pada dunia"],
+    ["Nahwu", "Ilmu tata bahasa Arab"],
+    ["Arabisasi", "Kebijakan menjadikan bahasa Arab bahasa resmi pemerintahan"],
+    ["Tadwin", "Pembukuan, misalnya pembukuan hadis"]
   ],
 
   soal: [
+    { q: "Peletak dasar ilmu nahwu dan pemberi tanda baris pada mushaf adalah…", o: ["Imam Bukhari", "Abul Aswad ad-Du'ali", "Hasan al-Bashri", "Ibnu Syihab az-Zuhri", "Al-Khalil bin Ahmad"], a: 1, l: "C1", p: "Abul Aswad ad-Du'ali hidup pada masa awal Umayyah." },
+    { q: "Pembukuan hadis secara resmi dimulai atas perintah khalifah…", o: ["Muawiyah bin Abi Sufyan", "Abdul Malik bin Marwan", "Umar bin Abdul Aziz", "Al-Walid I", "Harun ar-Rasyid"], a: 2, l: "C1", p: "Umar bin Abdul Aziz memerintahkan Ibnu Syihab az-Zuhri dan ulama lain membukukan hadis." },
+    { q: "Kebijakan Abdul Malik bin Marwan yang menjadikan bahasa Arab sebagai bahasa resmi pemerintahan disebut…", o: ["kodifikasi", "arabisasi administrasi", "ekspansi", "nasionalisasi", "desentralisasi"], a: 1, l: "C2", p: "Arabisasi menyatukan administrasi di seluruh wilayah Umayyah." },
     { q: "Pendiri Dinasti Umayyah adalah…", o: ["Abdul Malik bin Marwan", "Muawiyah bin Abi Sufyan", "Yazid bin Muawiyah", "Umar bin Abdul Aziz", "Marwan bin Hakam"], a: 1, l: "C1", p: "Muawiyah mendirikan Dinasti Umayyah pada 661 M." },
     { q: "Ibu kota Dinasti Umayyah adalah…", o: ["Madinah", "Damaskus", "Baghdad", "Kairo", "Kufah"], a: 1, l: "C1", p: "Pusat pemerintahan dipindahkan ke Damaskus, Suriah." },
     { q: "Perubahan sistem pemerintahan yang paling mendasar pada masa Umayyah dibandingkan masa Khulafaur Rasyidin adalah…", o: ["khalifah dipilih rakyat", "kepemimpinan menjadi turun-temurun", "khalifah dihapuskan", "ibu kota tetap di Madinah", "musyawarah semakin luas"], a: 1, l: "C2", p: "Umayyah memakai sistem monarki turun-temurun." },

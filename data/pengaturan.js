@@ -6,5 +6,5 @@
 window.PENGATURAN = {
   modeBabak: true,
   kkm: 75,
-  pin: "bc0c9ebd4149da168372573283d050281462baf25c4059620f365bb62c13b3ca"
+  pin: "7c16c9cf793a3ea6c23ed762001c443ab7166d9960512e97b427072dbd8bf389"
 };

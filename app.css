@@ -472,3 +472,7 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 }
 .level-grid input.kurang{border-color:#c0392b;color:#c0392b}
 .kode-akt{font:700 28px/1.2 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--brand);margin:4px 0 10px}
+#cetak-as{position:absolute;left:-99999px;top:0;width:277mm;font:9pt/1.35 Arial,Helvetica,sans-serif;color:#000;background:#fff}
+#cetak-as .as-baris{white-space:pre;overflow:visible}
+@page asesmenku{size:A4 landscape;margin:10mm}
+@media print{body.cetak-as>*:not(#cetak-as){display:none!important}body.cetak-as #cetak-as{position:static;page:asesmenku}}

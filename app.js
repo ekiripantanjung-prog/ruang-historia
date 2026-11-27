@@ -1090,6 +1090,7 @@ function docxDari(M) {
     else if (x.t === 'h2') body += par(x.x, { gaya: 'Heading2' });
     else if (x.t === 'h3') body += par(x.x, { gaya: 'Heading3' });
     else if (x.t === 'p') body += par(x.x, { al: x.al === 'center' ? 'center' : 'both' });
+    else if (x.t === 'mentah') body += `<w:p><w:pPr><w:spacing w:after="0"/></w:pPr>${x.x ? `<w:r><w:t xml:space="preserve">${xe(x.x)}</w:t></w:r>` : ''}</w:p>`;
     else if (x.t === 'li') body += par(`${x.n ? x.n + '.' : '•'}\t${x.x}`, { ind: 425, gantung: 425 });
     else if (x.t === 'opsi') body += par(x.x, { ind: 851, gantung: 0, sesudah: 20 });
     else if (x.t === 'pb') body += '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
@@ -1226,6 +1227,17 @@ function csvUlangan(N) {
   return '﻿' + [h, ...r].map(x => x.map(csvSel).join(',')).join('\r\n');
 }
 
+/* PDF berisi baris-baris teks yang tidak boleh terlipat (agar terbaca utuh oleh ASESMENKU) */
+function cetakBaris(baris, nama) {
+  let w = document.getElementById('cetak-as'); if (w) w.remove();
+  w = document.createElement('div'); w.id = 'cetak-as';
+  w.innerHTML = baris.map(x => `<div class="as-baris">${esc(x) || '&nbsp;'}</div>`).join('');
+  document.body.append(w);
+  const lebar = w.clientWidth;
+  w.querySelectorAll('.as-baris').forEach(d => { const sw = d.scrollWidth; if (sw > lebar) d.style.fontSize = Math.max(4, 9 * lebar / sw * 0.98) + 'pt'; });
+  const t = document.title; document.title = nama; document.body.classList.add('cetak-as');
+  setTimeout(() => { print(); document.body.classList.remove('cetak-as'); document.title = t; w.remove(); }, 80);
+}
 function halamanSoal() {
   if (!modeGuru()) { location.hash = '#guru'; return; }
   const U = S.get('ulanganTerakhir', null); if (!U || !cariK(U.kid)) { location.hash = '#guru'; return; }
@@ -1237,6 +1249,9 @@ function halamanSoal() {
 <textarea id="st" class="isian teks-soal" rows="10" readonly></textarea>
 <div class="row"><button class="btn" type="button" id="ssalin">Salin semua soal</button><button class="btn alt" type="button" id="scsv">Unduh Excel (.csv)</button></div>
 <p class="catatan">File .csv dapat dibuka di Excel atau Google Sheets. Kolomnya: No, Jenis, Stimulus, Pertanyaan, A–E, Kunci, Level, Ranah, Bab, Pembahasan.</p></div>
+<div class="box"><h2 style="margin-top:0">Berkas untuk impor ASESMENKU</h2><p>Di ASESMENKU, buka paket soal → <b>Impor Word/PDF</b>, lalu pilih berkas ini. Isinya sudah dalam format ASESMENKU, lengkap dengan kunci.</p>
+<div class="row"><button class="btn" type="button" id="aword">Word untuk ASESMENKU</button><button class="btn alt" type="button" id="apdf">PDF untuk ASESMENKU</button></div>
+<p class="catatan">Disarankan memakai Word, karena hasil bacanya paling rapi. Jangan ubah susunan barisnya, misalnya baris "Kunci:".</p></div>
 <div class="box"><h2 style="margin-top:0">Naskah cetak</h2><p>Berisi naskah soal, kunci jawaban dan pembahasan, pedoman penskoran, serta kisi-kisi.</p>
 <div class="row"><button class="btn" type="button" id="sword">Unduh Word (.docx)</button><button class="btn alt" type="button" id="spdf">Unduh PDF</button><button class="btn alt" type="button" id="sulang">Acak ulang soal</button></div>
 <p class="catatan">Untuk PDF: pada jendela cetak, pilih <b>Simpan sebagai PDF</b>.</p></div></div></section>
@@ -1247,6 +1262,10 @@ function halamanSoal() {
   document.getElementById('scsv').onclick = () => unduhBlob(new Blob([csvUlangan(N)], { type: 'text/csv;charset=utf-8' }), namaBerkas(N.nama) + '.csv');
   document.getElementById('sword').onclick = () => unduhBlob(docxDari(N), namaBerkas(N.nama) + '.docx');
   document.getElementById('spdf').onclick = () => { const t = document.title; document.title = namaBerkas(N.nama); document.body.classList.add('cetak-modul'); setTimeout(() => { print(); document.body.classList.remove('cetak-modul'); document.title = t; }, 50); };
+  const kepalaAs = () => [`Ruang Historia - soal untuk impor ASESMENKU`, `${cariK(U.kid).judul}: ${U.bab.map(id => `Bab ${id} ${isiBab(U.kid, id).judul}`).join('; ')}`, `Kelas ${U.kelas} / ${U.semester}`, ''];
+  const namaAs = namaBerkas(N.nama) + ' - ASESMENKU';
+  document.getElementById('aword').onclick = () => unduhBlob(docxDari({ blok: [...kepalaAs(), ...teksAsesmenku(N).split('\n')].map(x => ({ t: 'mentah', x })) }), namaAs + '.docx');
+  document.getElementById('apdf').onclick = () => cetakBaris([...kepalaAs(), ...teksAsesmenku(N).split('\n')], namaAs);
   document.getElementById('sulang').onclick = () => { S.set('ulanganTerakhir', buatUlangan(U)); halamanSoal(); };
 }
 
@@ -1355,7 +1374,7 @@ function susunPanduan() {
   h3('3. Modul ajar (Word dan PDF)');
   langkah(['Pada bagian **2. Modul ajar**, pilih ruang dan bab. Model pembelajaran yang cocok dipilihkan otomatis beserta alasannya; boleh diganti.', 'Atur kelas, semester, jumlah pertemuan, dan JP. Lengkapi identitas madrasah, nama guru, NIP, dan kepala madrasah.', 'Tekan **Buat modul ajar**, periksa pratinjau, lalu **Unduh Word** (dapat diedit) atau **Unduh PDF**.', 'Modul memuat identitas, identifikasi (DPL dan Panca Cinta), desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, contoh soal, dan glosarium. Sesuaikan Capaian Pembelajaran dengan dokumen CP yang berlaku.']);
   h3('4. Soal ulangan harian dan ASESMENKU');
-  langkah(['Pada bagian **3. Soal ulangan harian**, pilih ruang dan satu atau beberapa bab.', 'Isi jumlah soal pilihan ganda untuk setiap level **C1–C6**, atau tekan tombol cepat **ASESMENKU 30-40-30**, **Dasar**, **Seimbang**, atau **HOTS**. Angka merah berarti stok soal level itu kurang; tambahkan bab.', 'Isi jumlah PG kompleks, benar-salah, isian, menjodohkan, dan uraian, lalu tekan **Buat soal**.', 'Pilih **Format ASESMENKU**, tekan **Salin semua soal**, lalu tempel di ASESMENKU.', 'Naskah lengkap dengan kunci, pembahasan, pedoman penskoran, dan kisi-kisi dapat diunduh sebagai Word atau PDF. Tersedia juga file Excel (.csv). Tekan **Acak ulang soal** untuk paket soal yang berbeda.']);
+  langkah(['Pada bagian **3. Soal ulangan harian**, pilih ruang dan satu atau beberapa bab.', 'Isi jumlah soal pilihan ganda untuk setiap level **C1–C6**, atau tekan tombol cepat **ASESMENKU 30-40-30**, **Dasar**, **Seimbang**, atau **HOTS**. Angka merah berarti stok soal level itu kurang; tambahkan bab.', 'Isi jumlah PG kompleks, benar-salah, isian, menjodohkan, dan uraian, lalu tekan **Buat soal**.', 'Masukkan ke ASESMENKU dengan salah satu cara: (a) pilih **Format ASESMENKU**, tekan **Salin semua soal**, lalu di ASESMENKU pilih **Tempel banyak soal**; atau (b) tekan **Word untuk ASESMENKU** atau **PDF untuk ASESMENKU**, lalu di ASESMENKU buka paket soal → **Impor Word/PDF** dan pilih berkas tadi. Cara Word paling disarankan. Jangan ubah susunan baris berkas itu (misalnya baris "Kunci:").', 'Semua jenis soal terbawa lengkap dengan kuncinya: pilihan ganda, PG kompleks, benar-salah, isian, menjodohkan, dan uraian. Periksa pratinjau di ASESMENKU sebelum menekan Tambahkan.', 'Naskah lengkap dengan kunci, pembahasan, pedoman penskoran, dan kisi-kisi dapat diunduh sebagai Word atau PDF. Tersedia juga file Excel (.csv). Tekan **Acak ulang soal** untuk paket soal yang berbeda.']);
   h3('5. Mode babak dan tautan kelas');
   langkah(['Pada bagian **4. Pengaturan babak**, isi nama kelas dan KKM, lalu aktifkan mode babak.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
   h3('6. Rekap nilai di Google Sheets (dipasang sekali)');
@@ -1371,6 +1390,7 @@ function susunPanduan() {
     ['Nilai belum masuk ke Google Sheets', 'Pastikan HP tersambung internet lalu buka aplikasi lagi; nilai yang tertunda terkirim otomatis. Pastikan siswa sudah memasukkan kode siswa.'],
     ['Uji sambungan gagal', 'Ulangi langkah Deployment dan pastikan akses diatur ke "Siapa saja". Alamat harus diakhiri /exec.'],
     ['Guru lupa PIN', 'Pilih "Guru baru, atau lupa PIN?" dan pakai kode aktivasi yang sama untuk membuat PIN baru.'],
+    ['Soal dari berkas tidak terbaca rapi di ASESMENKU', 'Pakai berkas "Word untuk ASESMENKU" (bukan naskah cetak), dan jangan menyunting susunan barisnya. Naskah cetak hanya untuk dibagikan kepada siswa.'],
     ['Tampilan masih versi lama', 'Tutup aplikasi lalu buka lagi saat tersambung internet. Pembaruan terpasang otomatis.'],
     ['Siswa lupa kode siswa', 'Lihat kolom Kode di lembar Siswa pada Google Sheets.']] });
 

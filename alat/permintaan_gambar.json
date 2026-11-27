@@ -48,17 +48,20 @@
    "judul": "Tempurung kepala Pithecanthropus erectus dari Trinil",
    "ket": "Fosil temuan Eugène Dubois di Trinil, Ngawi (1891), dikenal sebagai \"Manusia Jawa\".",
    "cari": [
-    "Trinil skullcap Dubois",
-    "Pithecanthropus erectus skullcap Trinil",
-    "Java Man skullcap Naturalis"
+    "Trinil 2 calotte",
+    "Pithecanthropus erectus skull cap",
+    "Java Man calvarium Trinil",
+    "Homo erectus Trinil 2"
    ],
-   "wajib": "Trinil|Pithecanthropus|skullcap|Dubois",
-   "hindari": "reconstruct|model|bust|statue"
+   "wajib": "Trinil|Pithecanthropus|calotte|calvari|skull ?cap|Java ?[Mm]an",
+   "hindari": "[Mm]anuscript|[Ff]emur|reconstruct|model|bust|statue|Ngandong|Sangiran",
+   "ulang": true
   },
   {
    "judul": "Tulang paha (femur) Trinil",
    "ket": "Tulang paha temuan Dubois yang menunjukkan manusia purba ini sudah berjalan tegak.",
    "cari": [
+    "File:Interior view of the left femur of Pithecanthropus Erectus. Wellcome M0003715.jpg",
     "Trinil femur",
     "Femur Trinil Dubois",
     "Pithecanthropus femur"
@@ -69,6 +72,7 @@
    "judul": "Tengkorak Sangiran 17",
    "ket": "Tengkorak Homo erectus paling lengkap dari Sangiran, Sragen, ditemukan tahun 1969.",
    "cari": [
+    "File:Sangiran 17-02.JPG",
     "Sangiran 17",
     "Sangiran 17 skull",
     "Pithecanthropus VIII"
@@ -79,16 +83,17 @@
    "judul": "Rahang Meganthropus palaeojavanicus",
    "ket": "Fosil rahang besar dari Sangiran, temuan von Koenigswald.",
    "cari": [
-    "Meganthropus palaeojavanicus",
-    "Meganthropus jaw",
-    "Meganthropus mandible"
+    "Meganthropus",
+    "Sangiran 6 mandible",
+    "Homo erectus mandible Sangiran"
    ],
-   "wajib": "Meganthropus"
+   "wajib": "Meganthropus|mandible|[Rr]ahang"
   },
   {
    "judul": "Tengkorak Homo floresiensis (LB1)",
    "ket": "Fosil \"manusia Flores\" dari Liang Bua, Nusa Tenggara Timur, ditemukan tahun 2003.",
    "cari": [
+    "File:LB1 skull.jpg",
     "Homo floresiensis LB1 skull",
     "Homo floresiensis skull",
     "Homo floresiensis cranium"
@@ -100,6 +105,7 @@
    "judul": "Gua Liang Bua, Flores",
    "ket": "Situs penemuan Homo floresiensis.",
    "cari": [
+    "File:20160328124557 - Interesting stalagmite in the Liang Bua hobbit cave (26066061666).jpg",
     "Liang Bua cave",
     "Liang Bua Flores"
    ],
@@ -109,12 +115,12 @@
    "judul": "Museum Purbakala Sangiran",
    "ket": "Situs Warisan Dunia UNESCO dengan ribuan fosil manusia purba.",
    "cari": [
-    "Sangiran Early Man Site museum",
-    "Museum Sangiran",
-    "Sangiran museum diorama"
+    "Sangiran Museum",
+    "Museum Manusia Purba Sangiran",
+    "Sangiran Early Man Site"
    ],
    "wajib": "Sangiran",
-   "hindari": "17"
+   "hindari": "Sangiran 17|skull|tengkorak"
   }
  ],
  "indonesia-2": [
@@ -687,6 +693,7 @@
    "judul": "Rangka Australopithecus afarensis \"Lucy\"",
    "ket": "Fosil hominin berumur sekitar 3,2 juta tahun dari Ethiopia.",
    "cari": [
+    "File:Lucy Skeleton cropped.jpg",
     "Lucy Australopithecus afarensis skeleton",
     "Lucy skeleton cast",
     "Australopithecus afarensis Lucy"

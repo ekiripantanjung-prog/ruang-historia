@@ -34,17 +34,6 @@
    ]
   },
   {
-   "judul": "Beliung persegi, alat batu Neolitikum",
-   "ket": "Alat batu yang diasah halus, bukti masa bercocok tanam.",
-   "cari": [
-    "Neolithic axe Indonesia",
-    "stone adze Java Neolithic",
-    "Neolithic adze Museum Nasional Indonesia",
-    "polished stone adze Indonesia"
-   ],
-   "wajib": "adze|axe|beliung|kapak|Neolit"
-  },
-  {
    "judul": "Sarkofagus dari Bali",
    "ket": "Peti mati batu peninggalan tradisi megalitik.",
    "cari": [
@@ -115,13 +104,13 @@
    "judul": "Candi Penataran, Blitar",
    "ket": "Candi terbesar di Jawa Timur yang dipakai sejak Kediri hingga Majapahit.",
    "cari": [
+    "File:Candi penataran.jpg",
     "Candi Penataran",
     "Panataran temple Blitar",
     "Penataran temple Java"
    ],
    "wajib": "Candi Penataran|Panataran|Penataran temple|Penataran Blitar",
-   "hindari": "Pura|Pangkal",
-   "ulang": true
+   "hindari": "Pura|Pangkal"
   }
  ],
  "indonesia-3": [
@@ -167,11 +156,13 @@
    "judul": "Gapura Masjid Sendang Duwur, Lamongan",
    "ket": "Gapura bersayap, perpaduan seni Islam dan Hindu-Buddha.",
    "cari": [
-    "File:Sendang Duwur.jpg",
-    "Sendang Duwur",
-    "Sendangduwur gate"
+    "Sendang Duwur gate",
+    "Gapura Sendang Duwur",
+    "Masjid Sendang Duwur Lamongan"
    ],
-   "wajib": "Sendang"
+   "wajib": "Sendang ?[Dd]uwur|Sendangduwur",
+   "hindari": "^File:Sendang Duwur.jpg$|naskah|manuscript",
+   "ulang": true
   }
  ],
  "indonesia-4": [
@@ -206,13 +197,14 @@
    "judul": "Peta Batavia abad ke-17",
    "ket": "Kota Batavia yang dibangun VOC lengkap dengan kanal dan benteng.",
    "cari": [
-    "File:Coat of arms Batavia on a map of 1681.jpg",
-    "Batavia map 1681",
-    "Kaart Batavia 17de eeuw",
-    "map of Batavia 1667"
+    "Plattegrond van Batavia",
+    "map of Batavia 1667",
+    "Batavia city map 1681",
+    "Kaart van Batavia"
    ],
-   "wajib": "Batavia|Batavi",
-   "hindari": "Ship|schip"
+   "wajib": "Batavia",
+   "hindari": "Coat of arms|ship|schip",
+   "ulang": true
   },
   {
    "judul": "Replika kapal VOC \"Batavia\"",
@@ -483,16 +475,6 @@
    "hindari": "Arabic|interior|imam|sholat|prayer"
   },
   {
-   "judul": "Naskah Dekrit Presiden 5 Juli 1959",
-   "ket": "Dekrit yang membubarkan Konstituante dan memberlakukan kembali UUD 1945.",
-   "cari": [
-    "Dekrit Presiden 5 Juli 1959",
-    "Presidential Decree 5 July 1959 Indonesia",
-    "Dekrit 1959"
-   ],
-   "wajib": "Dekrit|Decree"
-  },
-  {
    "judul": "Gedung Pancasila, Jakarta",
    "ket": "Tempat pidato lahirnya Pancasila dalam sidang BPUPKI, 1 Juni 1945.",
    "cari": [
@@ -545,13 +527,13 @@
    "judul": "Taman Mini Indonesia Indah",
    "ket": "Proyek budaya masa Orde Baru yang dibuka tahun 1975.",
    "cari": [
+    "File:Saudjana Viewing Tower, Taman Mini Indonesia Indah, lower perspective.jpg",
     "Taman Mini Indonesia Indah",
     "TMII Jakarta anjungan",
     "Keong Emas TMII"
    ],
    "wajib": "Taman Mini|TMII",
-   "hindari": "LRT|Station|Stasiun",
-   "ulang": true
+   "hindari": "LRT|Station|Stasiun"
   }
  ],
  "indonesia-11": [
@@ -897,12 +879,12 @@
    "judul": "USS Arizona Memorial, Pearl Harbor",
    "ket": "Peringatan serangan Jepang 7 Desember 1941.",
    "cari": [
+    "File:USS Arizona Memorial, Oahu, Hawaii, USA6.jpg",
     "USS Arizona Memorial",
     "Arizona Memorial aerial"
    ],
    "wajib": "Arizona Memorial",
-   "hindari": "Sailor|Navy Sailor|ceremony|visit",
-   "ulang": true
+   "hindari": "Sailor|Navy Sailor|ceremony|visit"
   }
  ],
  "dunia-8": [
@@ -1142,18 +1124,6 @@
     "Baghdad 150 to 300 AH",
     "Baghdad round city map"
    ]
-  },
-  {
-   "judul": "Naskah Al-Jabr karya Al-Khawarizmi",
-   "ket": "Kitab aljabar yang menjadi dasar matematika modern.",
-   "cari": [
-    "al-Khwarizmi algebra manuscript",
-    "Kitab al-mukhtasar fi hisab al-jabr",
-    "Khwarizmi Algebra Bodleian"
-   ],
-   "wajib": "Khwarizmi|Khwārizmī|al-Jabr|jabr",
-   "hindari": "treatise of algebra",
-   "ulang": true
   }
  ],
  "ski-5": [
@@ -1327,17 +1297,18 @@
    "judul": "Masjid Sultan Suriansyah, Banjarmasin",
    "ket": "Masjid tertua di Kalimantan Selatan.",
    "cari": [
+    "File:Masjid Sultan Suriansyah (2).jpg",
     "Masjid Sultan Suriansyah",
     "Sultan Suriansyah Mosque Banjarmasin"
    ],
    "wajib": "Suriansyah",
-   "hindari": "Drum|bedug|interior",
-   "ulang": true
+   "hindari": "Drum|bedug|interior"
   },
   {
    "judul": "Makam Fatimah binti Maimun, Gresik",
    "ket": "Nisan berangka tahun 1082 M, bukti awal Islam di Jawa.",
    "cari": [
+    "File:Nisan Fatimah binti Maimun di Museum Trowulan.jpg",
     "Fatimah binti Maimun",
     "Makam Leran Gresik",
     "Leran tomb Gresik"

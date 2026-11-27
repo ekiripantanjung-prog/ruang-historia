@@ -305,3 +305,4 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .panduan ol{margin:12px 0 6px;padding-left:20px}
 #lb figcaption em{font-style:normal;opacity:.85}
 .panduan code{font-size:.85em;word-break:break-word}
+.galeri figure.tegak img{aspect-ratio:3/4;object-position:center 12%}

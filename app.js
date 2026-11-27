@@ -246,7 +246,7 @@ async function pasangGaleri(kid, id) {
   const L = DAFTAR_GAMBAR[`${kid}-${id}`], el = document.getElementById('galeri');
   if (!el || !L || !L.length) return;
   const sumber = g => g.guru ? `<small class="dari-guru">Ditambahkan guru</small>` : `<small>${esc(pembuat(g.pembuat))}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small>`;
-  el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto, dokumen, dan ilustrasi sejarah. Ketuk gambar untuk memperbesar.</p><div class="galeri">${L.map((g, i) => `<figure><button type="button" class="perbesar" data-i="${i}" aria-label="Perbesar: ${esc(g.judul)}"><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onerror="this.closest('figure').remove()"></button><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}${sumber(g)}</figcaption></figure>`).join('')}</div>`;
+  el.innerHTML = `<h2>Jejak sejarah</h2><p class="catatan">Foto, dokumen, dan ilustrasi sejarah. Ketuk gambar untuk memperbesar.</p><div class="galeri">${L.map((g, i) => `<figure><button type="button" class="perbesar" data-i="${i}" aria-label="Perbesar: ${esc(g.judul)}"><img src="${esc(g.file)}" alt="${esc(g.judul)}" loading="lazy" onload="if(this.naturalHeight>this.naturalWidth*1.1)this.closest('figure').classList.add('tegak')" onerror="this.closest('figure').remove()"></button><figcaption><b>${esc(g.judul)}</b>${g.ket ? `<span>${esc(g.ket)}</span>` : ''}${sumber(g)}</figcaption></figure>`).join('')}</div>`;
   el.querySelectorAll('.perbesar').forEach(b => b.addEventListener('click', () => lihatBesar(L, +b.dataset.i)));
 }
 /* tampilan foto layar penuh */

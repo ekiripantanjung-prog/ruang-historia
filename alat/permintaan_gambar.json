@@ -32,6 +32,26 @@
     "Palindo megalith Bada valley",
     "Bada valley megalith"
    ]
+  },
+  {
+   "judul": "Beliung persegi, alat batu Neolitikum",
+   "ket": "Alat batu yang diasah halus, bukti masa bercocok tanam.",
+   "cari": [
+    "Neolithic adze Indonesia",
+    "quadrangular adze Indonesia",
+    "beliung persegi"
+   ],
+   "wajib": "adze|beliung|kapak"
+  },
+  {
+   "judul": "Sarkofagus dari Bali",
+   "ket": "Peti mati batu peninggalan tradisi megalitik.",
+   "cari": [
+    "sarcophagus Bali",
+    "sarkofagus Bali",
+    "Bali sarcophagus museum"
+   ],
+   "wajib": "sarcoph|sarkofag"
   }
  ],
  "indonesia-2": [
@@ -68,6 +88,33 @@
     "File:Prambanan Complex 1.jpg",
     "File:Prambanan Shiva Temple.jpg"
    ]
+  },
+  {
+   "judul": "Prasasti Kedukan Bukit (683 M)",
+   "ket": "Prasasti tertua tentang Kerajaan Sriwijaya, berbahasa Melayu Kuno.",
+   "cari": [
+    "Kedukan Bukit inscription",
+    "Prasasti Kedukan Bukit"
+   ],
+   "wajib": "Kedukan"
+  },
+  {
+   "judul": "Candi Muara Takus, Riau",
+   "ket": "Kompleks candi Buddha di Sumatra yang dikaitkan dengan Sriwijaya.",
+   "cari": [
+    "Muara Takus",
+    "Candi Muara Takus"
+   ],
+   "wajib": "Muara Takus"
+  },
+  {
+   "judul": "Candi Penataran, Blitar",
+   "ket": "Candi terbesar di Jawa Timur yang dipakai sejak Kediri hingga Majapahit.",
+   "cari": [
+    "Penataran temple",
+    "Candi Penataran"
+   ],
+   "wajib": "Penataran"
   }
  ],
  "indonesia-3": [
@@ -98,6 +145,24 @@
    ],
    "wajib": "Baiturrahman",
    "hindari": "Kohler|Prasasti"
+  },
+  {
+   "judul": "Masjid Agung Banten",
+   "ket": "Masjid Kesultanan Banten dengan menara bergaya mercusuar.",
+   "cari": [
+    "Masjid Agung Banten",
+    "Great Mosque of Banten"
+   ],
+   "wajib": "Banten"
+  },
+  {
+   "judul": "Gapura Masjid Sendang Duwur, Lamongan",
+   "ket": "Gapura bersayap, perpaduan seni Islam dan Hindu-Buddha.",
+   "cari": [
+    "Sendang Duwur",
+    "Sendangduwur gate"
+   ],
+   "wajib": "Sendang"
   }
  ],
  "indonesia-4": [
@@ -127,6 +192,35 @@
     "Benteng Rotterdam Makassar",
     "Fort Rotterdam Makassar Sulawesi"
    ]
+  },
+  {
+   "judul": "Peta Batavia abad ke-17",
+   "ket": "Kota Batavia yang dibangun VOC lengkap dengan kanal dan benteng.",
+   "cari": [
+    "Batavia map 1681",
+    "Kaart Batavia 17de eeuw",
+    "map of Batavia 1667"
+   ],
+   "wajib": "Batavia|Batavi",
+   "hindari": "Ship|schip"
+  },
+  {
+   "judul": "Replika kapal VOC \"Batavia\"",
+   "ket": "Kapal dagang VOC abad ke-17 yang mengangkut rempah ke Eropa.",
+   "cari": [
+    "Batavia ship replica Lelystad",
+    "Batavia replica ship"
+   ],
+   "wajib": "Batavia"
+  },
+  {
+   "judul": "Benteng Victoria, Ambon",
+   "ket": "Benteng VOC di pusat perdagangan cengkih Maluku.",
+   "cari": [
+    "Fort Victoria Ambon",
+    "Benteng Victoria Ambon"
+   ],
+   "wajib": "Victoria"
   }
  ],
  "indonesia-5": [
@@ -159,6 +253,25 @@
     "Puputan Badung monument Denpasar",
     "Puputan Square Denpasar"
    ]
+  },
+  {
+   "judul": "Novel Max Havelaar (1860)",
+   "ket": "Buku Multatuli yang membongkar penderitaan rakyat akibat tanam paksa.",
+   "cari": [
+    "Max Havelaar 1860 title page",
+    "Max Havelaar first edition"
+   ],
+   "wajib": "Havelaar"
+  },
+  {
+   "judul": "Jalan Raya Pos (De Grote Postweg)",
+   "ket": "Jalan Anyer–Panarukan yang dibangun dengan kerja paksa masa Daendels.",
+   "cari": [
+    "Grote Postweg Java",
+    "De Groote Postweg",
+    "Jalan Raya Pos"
+   ],
+   "wajib": "Postweg|Raya Pos"
   }
  ],
  "indonesia-6": [
@@ -188,6 +301,24 @@
     "Volksraad gebouw Batavia",
     "Volksraad Batavia"
    ]
+  },
+  {
+   "judul": "Teks ikrar Sumpah Pemuda",
+   "ket": "Rumusan ikrar Kongres Pemuda II, 28 Oktober 1928.",
+   "cari": [
+    "Sumpah Pemuda text",
+    "Teks Sumpah Pemuda"
+   ],
+   "wajib": "Sumpah"
+  },
+  {
+   "judul": "Pendopo Tamansiswa, Yogyakarta",
+   "ket": "Perguruan nasional yang didirikan tahun 1922.",
+   "cari": [
+    "Taman Siswa Yogyakarta",
+    "Tamansiswa pendopo"
+   ],
+   "wajib": "Taman ?siswa"
   }
  ],
  "indonesia-7": [
@@ -221,6 +352,15 @@
     "Museum Pembela Tanah Air"
    ],
    "wajib": "PETA|Pembela Tanah Air"
+  },
+  {
+   "judul": "Poster propaganda masa pendudukan Jepang",
+   "ket": "Jepang memakai poster dan semboyan Gerakan 3A untuk menarik dukungan rakyat.",
+   "cari": [
+    "Japanese propaganda poster Indonesia",
+    "Japanese occupation Indonesia poster"
+   ],
+   "wajib": "poster|propaganda"
   }
  ],
  "indonesia-8": [
@@ -261,6 +401,33 @@
     "Heroes Monument Surabaya"
    ],
    "wajib": "Tugu Pahlawan|Heroes Monument"
+  },
+  {
+   "judul": "Gedung Joang 45, Jakarta",
+   "ket": "Markas para pemuda pejuang menjelang Proklamasi.",
+   "cari": [
+    "Gedung Joang 45",
+    "Gedung Joang"
+   ],
+   "wajib": "Joang"
+  },
+  {
+   "judul": "Gedung Perundingan Linggarjati, Kuningan",
+   "ket": "Tempat Perundingan Linggarjati, November 1946.",
+   "cari": [
+    "Linggarjati",
+    "Gedung Perundingan Linggarjati"
+   ],
+   "wajib": "Linggarjati|Linggadjati"
+  },
+  {
+   "judul": "Monumen Yogya Kembali",
+   "ket": "Peringatan kembalinya Yogyakarta ke tangan RI tahun 1949.",
+   "cari": [
+    "Monumen Yogya Kembali",
+    "Monjali Yogyakarta"
+   ],
+   "wajib": "Yogya Kembali|Monjali"
   }
  ],
  "indonesia-9": [
@@ -294,6 +461,24 @@
    ],
    "wajib": "Istiqlal",
    "hindari": "Arabic|interior|imam|sholat|prayer"
+  },
+  {
+   "judul": "Naskah Dekrit Presiden 5 Juli 1959",
+   "ket": "Dekrit yang membubarkan Konstituante dan memberlakukan kembali UUD 1945.",
+   "cari": [
+    "Dekrit Presiden 5 Juli 1959",
+    "Dekrit Presiden 1959"
+   ],
+   "wajib": "Dekrit"
+  },
+  {
+   "judul": "Gedung Pancasila, Jakarta",
+   "ket": "Tempat pidato lahirnya Pancasila dalam sidang BPUPKI, 1 Juni 1945.",
+   "cari": [
+    "Gedung Pancasila",
+    "Pancasila building Jakarta"
+   ],
+   "wajib": "Pancasila"
   }
  ],
  "indonesia-10": [
@@ -323,6 +508,24 @@
     "Palapa satellite",
     "Palapa A1 satellite"
    ]
+  },
+  {
+   "judul": "Naskah Surat Perintah Sebelas Maret (Supersemar)",
+   "ket": "Dokumen tahun 1966 yang menandai peralihan kekuasaan ke Orde Baru.",
+   "cari": [
+    "Supersemar",
+    "Surat Perintah Sebelas Maret"
+   ],
+   "wajib": "Supersemar|Sebelas Maret"
+  },
+  {
+   "judul": "Taman Mini Indonesia Indah",
+   "ket": "Proyek budaya masa Orde Baru yang dibuka tahun 1975.",
+   "cari": [
+    "Taman Mini Indonesia Indah",
+    "TMII Jakarta"
+   ],
+   "wajib": "Taman Mini|TMII"
   }
  ],
  "indonesia-11": [
@@ -356,6 +559,16 @@
    ],
    "wajib": "KPU|Komisi Pemilihan",
    "hindari": "rapat|sidang|interview|ketua|anggota"
+  },
+  {
+   "judul": "Tugu Reformasi, Universitas Trisakti",
+   "ket": "Peringatan mahasiswa yang gugur dalam Tragedi Trisakti, 12 Mei 1998.",
+   "cari": [
+    "Tugu Reformasi Trisakti",
+    "Trisakti monument",
+    "Universitas Trisakti"
+   ],
+   "wajib": "Trisakti|Reformasi"
   }
  ],
  "dunia-1": [
@@ -393,6 +606,24 @@
     "Shang dynasty oracle bone",
     "oracle bone inscription"
    ]
+  },
+  {
+   "judul": "Ziggurat Ur, Irak",
+   "ket": "Bangunan suci bertingkat peradaban Mesopotamia.",
+   "cari": [
+    "Ziggurat of Ur",
+    "Ur ziggurat"
+   ],
+   "wajib": "Ziggurat"
+  },
+  {
+   "judul": "Batu Rosetta",
+   "ket": "Kunci untuk membaca huruf hieroglif Mesir Kuno.",
+   "cari": [
+    "Rosetta Stone",
+    "Rosetta Stone British Museum"
+   ],
+   "wajib": "Rosetta"
   }
  ],
  "dunia-2": [
@@ -425,6 +656,15 @@
     "Pont du Gard Vers",
     "aqueduct Pont du Gard"
    ]
+  },
+  {
+   "judul": "Forum Romanum, Roma",
+   "ket": "Pusat pemerintahan dan kehidupan publik Romawi Kuno.",
+   "cari": [
+    "Roman Forum",
+    "Forum Romanum"
+   ],
+   "wajib": "Forum"
   }
  ],
  "dunia-3": [
@@ -454,6 +694,15 @@
     "Notre-Dame de Paris facade",
     "Notre Dame Paris"
    ]
+  },
+  {
+   "judul": "Piagam Magna Carta (1215)",
+   "ket": "Dokumen yang membatasi kekuasaan raja Inggris.",
+   "cari": [
+    "Magna Carta 1215",
+    "Magna Carta British Library"
+   ],
+   "wajib": "Magna Carta"
   }
  ],
  "dunia-4": [
@@ -484,6 +733,16 @@
     "Mercator 1569 world map",
     "Ortelius world map 1570"
    ]
+  },
+  {
+   "judul": "Replika kapal karavel",
+   "ket": "Jenis kapal yang dipakai bangsa Portugis dan Spanyol menjelajah samudra.",
+   "cari": [
+    "caravel replica",
+    "Carabela replica",
+    "caravela"
+   ],
+   "wajib": "[Cc]aravel|Carabela"
   }
  ],
  "dunia-5": [
@@ -514,6 +773,24 @@
     "United States Declaration of Independence parchment",
     "Declaration of Independence 1776 document"
    ]
+  },
+  {
+   "judul": "Deklarasi Hak Asasi Manusia dan Warga Negara (1789)",
+   "ket": "Dokumen penting Revolusi Prancis.",
+   "cari": [
+    "Declaration of the Rights of Man and of the Citizen 1789",
+    "Déclaration des droits de l'homme 1789"
+   ],
+   "wajib": "Rights of Man|droits de l"
+  },
+  {
+   "judul": "Mesin pemintal Spinning Jenny (model)",
+   "ket": "Penemuan awal Revolusi Industri di bidang tekstil.",
+   "cari": [
+    "Spinning jenny",
+    "spinning jenny model"
+   ],
+   "wajib": "[Jj]enny"
   }
  ],
  "dunia-6": [
@@ -544,6 +821,15 @@
     "Suez canal ship",
     "Suez Canal Ismailia"
    ]
+  },
+  {
+   "judul": "Victoria Memorial, Kolkata",
+   "ket": "Bangunan peninggalan masa kekuasaan Inggris di India.",
+   "cari": [
+    "Victoria Memorial Kolkata",
+    "Victoria Memorial Calcutta"
+   ],
+   "wajib": "Victoria Memorial"
   }
  ],
  "dunia-7": [
@@ -574,6 +860,24 @@
     "United Nations Headquarters New York",
     "UN headquarters building"
    ]
+  },
+  {
+   "judul": "Halaman pertama Perjanjian Versailles (1919)",
+   "ket": "Perjanjian yang mengakhiri Perang Dunia I.",
+   "cari": [
+    "Treaty of Versailles 1919 page",
+    "Traité de Versailles 1919"
+   ],
+   "wajib": "Versailles"
+  },
+  {
+   "judul": "USS Arizona Memorial, Pearl Harbor",
+   "ket": "Peringatan serangan Jepang 7 Desember 1941.",
+   "cari": [
+    "USS Arizona Memorial",
+    "Arizona Memorial Pearl Harbor"
+   ],
+   "wajib": "Arizona"
   }
  ],
  "dunia-8": [
@@ -602,6 +906,15 @@
     "Sputnik 1 replica",
     "Sputnik 1"
    ]
+  },
+  {
+   "judul": "Checkpoint Charlie, Berlin",
+   "ket": "Pos penyeberangan terkenal di Tembok Berlin masa Perang Dingin.",
+   "cari": [
+    "Checkpoint Charlie",
+    "Checkpoint Charlie 1961"
+   ],
+   "wajib": "Checkpoint"
   }
  ],
  "dunia-9": [
@@ -633,6 +946,15 @@
     "solar panel array",
     "photovoltaic power station"
    ]
+  },
+  {
+   "judul": "Komputer NeXT, server web pertama",
+   "ket": "Komputer tempat World Wide Web pertama kali dijalankan, 1990.",
+   "cari": [
+    "first web server NeXT CERN",
+    "NeXTcube CERN web server"
+   ],
+   "wajib": "NeXT|web server"
   }
  ],
  "ski-1": [
@@ -670,6 +992,15 @@
     "Jabal al-Nour",
     "Hira cave"
    ]
+  },
+  {
+   "judul": "Jabal Uhud, Madinah",
+   "ket": "Tempat terjadinya Perang Uhud tahun 3 H.",
+   "cari": [
+    "Mount Uhud",
+    "Jabal Uhud"
+   ],
+   "wajib": "Uhud"
   }
  ],
  "ski-2": [
@@ -701,6 +1032,15 @@
     "Great Mosque of Kufa",
     "Kufa mosque"
    ]
+  },
+  {
+   "judul": "Masjid Amr bin Ash, Kairo",
+   "ket": "Masjid pertama di Mesir, dibangun masa Khalifah Umar.",
+   "cari": [
+    "Mosque of Amr ibn al-As",
+    "Amr ibn al-As mosque Cairo"
+   ],
+   "wajib": "Amr"
   }
  ],
  "ski-3": [
@@ -730,6 +1070,15 @@
     "gold dinar Abd al-Malik",
     "Umayyad gold dinar"
    ]
+  },
+  {
+   "judul": "Masjid Agung Kairouan, Tunisia",
+   "ket": "Masjid besar di Afrika Utara yang berkembang pada masa Umayyah.",
+   "cari": [
+    "Great Mosque of Kairouan",
+    "Kairouan mosque"
+   ],
+   "wajib": "Kairouan"
   }
  ],
  "ski-4": [
@@ -763,6 +1112,16 @@
     "Baghdad 150 to 300 AH",
     "Baghdad round city map"
    ]
+  },
+  {
+   "judul": "Naskah Al-Jabr karya Al-Khawarizmi",
+   "ket": "Kitab aljabar yang menjadi dasar matematika modern.",
+   "cari": [
+    "al-Khwarizmi algebra manuscript",
+    "Kitab al-Jabr manuscript",
+    "Al-Jabr wa'l muqabala"
+   ],
+   "wajib": "Jabr|algebra|Khwarizmi|Khwārizmī"
   }
  ],
  "ski-5": [
@@ -793,6 +1152,15 @@
     "Madinat al-Zahra ruins",
     "Medina Azahara"
    ]
+  },
+  {
+   "judul": "Menara Giralda, Sevilla",
+   "ket": "Bekas menara Masjid Agung Sevilla masa Muwahhidun.",
+   "cari": [
+    "Giralda Seville",
+    "La Giralda"
+   ],
+   "wajib": "Giralda"
   }
  ],
  "ski-6": [
@@ -823,6 +1191,24 @@
     "Imam Mosque Isfahan",
     "Naghsh-e Jahan Square"
    ]
+  },
+  {
+   "judul": "Istana Topkapi, Istanbul",
+   "ket": "Pusat pemerintahan Turki Usmani selama hampir 400 tahun.",
+   "cari": [
+    "Topkapi Palace",
+    "Topkapı Palace"
+   ],
+   "wajib": "Topkap"
+  },
+  {
+   "judul": "Benteng Merah (Red Fort), Delhi",
+   "ket": "Istana-benteng Dinasti Mughal.",
+   "cari": [
+    "Red Fort Delhi",
+    "Lal Qila Delhi"
+   ],
+   "wajib": "Red Fort|Lal Q"
   }
  ],
  "ski-7": [
@@ -854,6 +1240,15 @@
     "Masjid Gedhe Kauman Yogyakarta",
     "Kauman Yogyakarta mosque"
    ]
+  },
+  {
+   "judul": "Masjid Muhammad Ali, Kairo",
+   "ket": "Masjid yang dibangun Muhammad Ali Pasha, tokoh modernisasi Mesir.",
+   "cari": [
+    "Mosque of Muhammad Ali Cairo",
+    "Muhammad Ali Mosque Citadel"
+   ],
+   "wajib": "Muhammad Ali|Mohamed Ali"
   }
  ],
  "ski-8": [
@@ -891,6 +1286,24 @@
     "Wapauwe Mosque",
     "Masjid Wapauwe"
    ]
+  },
+  {
+   "judul": "Masjid Sultan Suriansyah, Banjarmasin",
+   "ket": "Masjid tertua di Kalimantan Selatan.",
+   "cari": [
+    "Masjid Sultan Suriansyah",
+    "Sultan Suriansyah mosque"
+   ],
+   "wajib": "Suriansyah"
+  },
+  {
+   "judul": "Makam Fatimah binti Maimun, Gresik",
+   "ket": "Nisan berangka tahun 1082 M, bukti awal Islam di Jawa.",
+   "cari": [
+    "Makam Fatimah binti Maimun",
+    "Fatimah binti Maimun Leran"
+   ],
+   "wajib": "Fatimah|Maimun|Leran"
   }
  ]
 }

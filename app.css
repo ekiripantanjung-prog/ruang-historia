@@ -306,3 +306,13 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 #lb figcaption em{font-style:normal;opacity:.85}
 .panduan code{font-size:.85em;word-break:break-word}
 .galeri figure.tegak img{aspect-ratio:3/4;object-position:center 12%}
+
+/* rute pelayaran */
+.rute{margin:12px 0;padding:12px 14px 12px 16px;border-radius:14px;background:color-mix(in srgb,var(--c) 9%,var(--card));border-left:6px solid var(--c)}
+.rute>b{display:block;color:var(--c);font-size:17px;margin-bottom:6px}
+@media(prefers-color-scheme:dark){.rute>b{color:color-mix(in srgb,var(--c) 55%,#fff)}}
+.rute ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px}
+.rute li{padding:4px 10px;border-radius:99px;background:var(--bg);border:1px solid color-mix(in srgb,var(--c) 35%,transparent);font-size:15px}
+.rute li:not(:last-child)::after{content:"→";margin-left:8px;color:var(--c);font-weight:700}
+.rute li:last-child{background:var(--c);color:#fff;border-color:var(--c);font-weight:700}
+.rute small{display:block;margin-top:8px;color:var(--soft)}

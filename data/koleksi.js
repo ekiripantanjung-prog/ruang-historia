@@ -14,7 +14,7 @@ window.KOLEKSI = [
       { id: 1,  judul: "Masa Praaksara", ringkas: "Manusia purba, zaman batu dan logam, asal-usul nenek moyang", warna: "#7a3f22", masa: "± 1,5 juta tahun lalu – abad ke-5 M" },
       { id: 2,  judul: "Masa Hindu-Buddha", ringkas: "Teori masuknya pengaruh India, Kutai sampai Majapahit", warna: "#9a6a1c", masa: "abad ke-4 – ke-16 M" },
       { id: 3,  judul: "Masa Islam", ringkas: "Jalur dagang, Samudra Pasai, Demak, Mataram Islam, Wali Songo", warna: "#2f6b4f", masa: "abad ke-13 – ke-18 M" },
-      { id: 4,  judul: "Bangsa Eropa dan Kolonialisme", ringkas: "Rempah, VOC, Daendels, Raffles, Tanam Paksa", warna: "#5a4a7a", masa: "1511 – 1900-an" },
+      { id: 4,  judul: "Bangsa Eropa dan Kolonialisme", ringkas: "Rempah, VOC, Daendels, Raffles, Tanam Paksa", warna: "#5a4a7a", masa: "1453 – 1900-an" },
       { id: 5,  judul: "Perlawanan terhadap Penjajah", ringkas: "Pattimura, Padri, Diponegoro, Aceh, Banjar, Bali", warna: "#8a2f2f", masa: "1800-an – 1900-an" },
       { id: 6,  judul: "Pergerakan Nasional", ringkas: "Budi Utomo, Sarekat Islam, Muhammadiyah, NU, Sumpah Pemuda", warna: "#a04a20", masa: "1908 – 1942" },
       { id: 7,  judul: "Pendudukan Jepang", ringkas: "Romusha, PETA, BPUPKI, perumusan Pancasila", warna: "#7a2a3a", masa: "1942 – 1945" },

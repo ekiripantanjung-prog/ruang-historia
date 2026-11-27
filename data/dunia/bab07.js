@@ -117,6 +117,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang pewaris takhta Austria-Hungaria ditembak di Sarajevo, lalu negara-negara yang terikat aliansi saling menyatakan perang. Peristiwa ini memicu…", o: ["Perang Dunia I", "Perang Dunia II", "Perang Dingin", "Perang Salib", "Perang Vietnam"], a: 0, l: "C3", p: "Pembunuhan Franz Ferdinand (1914) menjadi sebab khusus Perang Dunia I." },
+    { q: "Kamu ingin membuat kampanye perdamaian berdasarkan pelajaran Perang Dunia. Rancangan yang paling tepat adalah…", o: ["poster yang mengagungkan perang", "permainan tembak-tembakan", "daftar senjata", "foto tank", "seri poster \"Belajar dari Perang Dunia\": korban sipil, sebab perang (nasionalisme sempit, aliansi, perlombaan senjata), lalu ajakan menyelesaikan konflik dengan dialog"], a: 4, l: "C6", p: "Pelajaran sejarah perang dipakai untuk membangun budaya damai." },
+    { q: "Untuk menjelaskan kaitan Perang Dunia II dengan kemerdekaan Indonesia, media yang paling tepat adalah…", o: ["garis waktu: Jepang menduduki Indonesia (1942), bom Hiroshima-Nagasaki, Jepang menyerah (15 Agustus 1945), kekosongan kekuasaan, dan Proklamasi (17 Agustus 1945)", "foto bom atom saja", "daftar negara Sekutu", "peta Eropa", "lagu"], a: 0, l: "C6", p: "Garis waktu menunjukkan hubungan peristiwa dunia dengan Proklamasi." },
     { q: "Negara yang keluar dari Perang Dunia I setelah terjadi revolusi pada 1917 adalah…", o: ["Prancis", "Rusia", "Italia", "Jerman", "Inggris"], a: 1, l: "C1", p: "Revolusi Rusia membuat Rusia menarik diri dari perang." },
     { q: "Pernyataan Inggris pada 1917 yang menjanjikan tanah air bagi bangsa Yahudi di Palestina dikenal sebagai…", o: ["Perjanjian Versailles", "Deklarasi Balfour", "14 Pasal Wilson", "Perjanjian Sykes-Picot", "Piagam Atlantik"], a: 1, l: "C1", p: "Deklarasi Balfour menjadi salah satu akar konflik Palestina." },
     { q: "Anggota Blok Poros dalam Perang Dunia II adalah…", o: ["Inggris, Prancis, AS", "Jerman, Italia, Jepang", "Uni Soviet, Tiongkok, AS", "Jerman, Austria-Hungaria, Turki", "Jepang, Tiongkok, Korea"], a: 1, l: "C1", p: "Blok Poros terdiri atas Jerman, Italia, dan Jepang." },
@@ -150,7 +153,9 @@ TAMBAH_BAB({
     { q: "Bagaimana Perjanjian Versailles dan krisis Malaise ikut menyebabkan Perang Dunia II?",
       rubrik: ["4: menjelaskan dendam Jerman, krisis ekonomi, naiknya Nazi, hingga perang", "3: menjelaskan sebagian hubungan", "2: hanya menyebut peristiwa", "1: jawaban tidak relevan"] },
     { q: "Jelaskan hubungan antara berakhirnya Perang Dunia II dan Proklamasi Kemerdekaan Indonesia.",
-      rubrik: ["4: menjelaskan pendudukan Jepang, kekalahan Jepang, kekosongan kekuasaan, dan sikap para tokoh", "3: hubungan dijelaskan sebagian", "2: hanya menyebut tanggal", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menjelaskan pendudukan Jepang, kekalahan Jepang, kekosongan kekuasaan, dan sikap para tokoh", "3: hubungan dijelaskan sebagian", "2: hanya menyebut tanggal", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah surat perdamaian dari pelajar Indonesia untuk pelajar dunia, berdasarkan pelajaran Perang Dunia I dan II. Masukkan minimal tiga fakta sejarah dan tiga ajakan nyata.",
+      rubrik: ["4: tiga fakta tepat dan tiga ajakan nyata yang terkait", "3: fakta tepat tetapi ajakan kurang nyata", "2: fakta kurang atau keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

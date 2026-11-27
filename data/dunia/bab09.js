@@ -119,6 +119,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Kamu memesan barang dari negara lain lewat aplikasi dan barang itu tiba dalam beberapa hari. Kenyataan ini merupakan contoh…", o: ["kolonialisme", "feodalisme", "merkantilisme", "isolasionisme", "globalisasi"], a: 4, l: "C3", p: "Globalisasi membuat perdagangan dan komunikasi lintas negara sangat cepat." },
+    { q: "OSIS ingin membuat program menghadapi tantangan Revolusi Industri 4.0. Program yang paling tepat adalah…", o: ["melarang penggunaan gawai", "lomba bermain gim seharian", "membeli gawai mahal", "pelatihan literasi digital, klub coding atau desain, serta kampanye etika bermedia dan menjaga kesehatan mental", "menghapus pelajaran sejarah"], a: 3, l: "C6", p: "Program yang baik membekali keterampilan digital sekaligus etika." },
+    { q: "Kamu diminta membuat rencana aksi untuk isu lingkungan global di madrasah. Rencana yang paling bermakna adalah…", o: ["membuang sampah ke sungai", "membuat poster tanpa tindakan", "audit sampah kelas, bank sampah, gerakan tumbler, dan laporan hasil berkala, dikaitkan dengan ajaran menjaga bumi", "menunggu pemerintah", "mengganti semua tanaman dengan plastik"], a: 2, l: "C6", p: "Rencana aksi yang baik nyata, terukur, dan bernilai cinta lingkungan." },
     { q: "Revolusi industri keempat (4.0) ditandai dengan…", o: ["mesin uap", "listrik dan produksi massal", "internet, kecerdasan buatan, dan robot", "penemuan roda", "mesin cetak"], a: 2, l: "C1", p: "Revolusi 4.0 bertumpu pada teknologi digital dan kecerdasan buatan." },
     { q: "Pasar bersama ASEAN untuk barang, jasa, modal, dan tenaga kerja terampil disebut…", o: ["APEC", "Masyarakat Ekonomi ASEAN", "WTO", "G20", "BRICS"], a: 1, l: "C1", p: "Masyarakat Ekonomi ASEAN berlaku sejak akhir 2015." },
     { q: "Indonesia resmi menjadi anggota penuh BRICS pada…", o: ["2015", "2019", "2022", "Januari 2025", "Oktober 2025"], a: 3, l: "C1", p: "Brasil sebagai ketua BRICS 2025 mengumumkan keanggotaan Indonesia pada 6 Januari 2025." },
@@ -151,7 +154,9 @@ TAMBAH_BAB({
     { q: "Pilih satu isu dunia masa kini (perubahan iklim, pandemi, konflik, atau teknologi). Jelaskan sebab, dampak, dan apa yang dapat kamu lakukan.",
       rubrik: ["4: sebab, dampak, dan aksi nyata dijelaskan tepat", "3: dua dari tiga aspek", "2: satu aspek", "1: jawaban tidak relevan"] },
     { q: "Bagaimana nilai-nilai Islam (tabayun, berkata baik, amanah) membantumu menjadi warga digital yang bijak?",
-      rubrik: ["4: tiga nilai dijelaskan dan diterapkan pada contoh nyata", "3: dua nilai", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: tiga nilai dijelaskan dan diterapkan pada contoh nyata", "3: dua nilai", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah proyek kecil \"Pelajar Indonesia Menjawab Tantangan Dunia\" untuk satu isu (perubahan iklim, hoaks, atau konflik). Tuliskan masalah, data atau fakta, langkah kegiatan, produk, dan cara mengukur keberhasilannya.",
+      rubrik: ["4: proyek lengkap, berbasis fakta, langkah logis, dan ukuran keberhasilan jelas", "3: lengkap tetapi ukuran keberhasilan kurang jelas", "2: kurang lengkap", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

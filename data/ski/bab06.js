@@ -114,6 +114,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Sebuah kerajaan Islam di India membangun Taj Mahal dan memiliki raja yang menerapkan toleransi antarumat beragama. Kerajaan tersebut adalah…", o: ["Turki Usmani", "Safawi", "Mughal", "Abbasiyah", "Umayyah"], a: 2, l: "C3", p: "Kerajaan Mughal di India membangun Taj Mahal; Akbar dikenal dengan kebijakan toleransinya." },
+    { q: "Kamu membuat tabel interaktif tiga kerajaan besar. Rancangan yang paling lengkap adalah…", o: ["hanya nama kerajaan", "foto masjid saja", "daftar tahun", "peta modern", "kolom Turki Usmani, Safawi, dan Mughal; baris pendiri, wilayah, sultan terkenal, kemajuan, peninggalan, dan sebab kemunduran"], a: 4, l: "C6", p: "Tabel perbandingan menyusun informasi tiga kerajaan secara sistematis." },
+    { q: "Untuk menunjukkan hubungan Turki Usmani dengan Nusantara, media yang paling tepat adalah…", o: ["peta dan cerita tentang bantuan meriam dan ahli senjata Usmani untuk Aceh melawan Portugis pada abad ke-16", "foto kota Istanbul saja", "daftar sultan", "lagu", "kuis bebas"], a: 0, l: "C6", p: "Media ini menghubungkan sejarah dunia Islam dengan sejarah Nusantara." },
     { q: "Sultan Usmani yang menaklukkan Mesir pada 1517 dan membawa gelar khalifah ke Istanbul adalah…", o: ["Muhammad al-Fatih", "Selim I", "Sulaiman al-Qanuni", "Usman I", "Murad II"], a: 1, l: "C1", p: "Sejak Selim I, sultan Usmani juga bergelar khalifah." },
     { q: "Pendiri Kerajaan Mughal setelah memenangkan Pertempuran Panipat (1526) adalah…", o: ["Akbar", "Babur", "Humayun", "Syah Jahan", "Aurangzeb"], a: 1, l: "C1", p: "Babur adalah keturunan Timur Lenk dan Jenghis Khan." },
     { q: "Kekhalifahan Turki Usmani resmi dihapuskan pada tahun…", o: ["1453", "1517", "1857", "1918", "1924"], a: 4, l: "C1", p: "Republik Turki menghapus kekhalifahan pada 3 Maret 1924." },
@@ -146,7 +149,9 @@ TAMBAH_BAB({
     { q: "Jelaskan hubungan Kesultanan Aceh dengan Turki Usmani. Apa makna hubungan itu bagi perjuangan melawan penjajah?",
       rubrik: ["4: bentuk hubungan (bantuan senjata, ahli) dan maknanya dijelaskan", "3: bentuk hubungan tanpa makna", "2: jawaban umum", "1: jawaban tidak relevan"] },
     { q: "Jelaskan minimal tiga sebab kemunduran tiga kerajaan besar Islam dan kaitkan dengan tantangan umat Islam masa kini.",
-      rubrik: ["4: tiga sebab dan kaitan masa kini yang relevan", "3: tiga sebab tanpa kaitan", "2: satu atau dua sebab", "1: jawaban tidak relevan"] }
+      rubrik: ["4: tiga sebab dan kaitan masa kini yang relevan", "3: tiga sebab tanpa kaitan", "2: satu atau dua sebab", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah poster \"Tiga Kerajaan, Satu Pelajaran\" yang menampilkan kemajuan dan sebab kemunduran Usmani, Safawi, dan Mughal, lalu rumuskan tiga pelajaran untuk umat Islam sekarang.",
+      rubrik: ["4: tiga kerajaan lengkap dan tiga pelajaran tepat", "3: lengkap tetapi pelajaran kurang tajam", "2: kurang lengkap", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

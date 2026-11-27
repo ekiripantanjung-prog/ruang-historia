@@ -123,6 +123,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Ketika kaum Muslim di Mekkah ditekan, sebagian sahabat diizinkan Rasulullah pindah ke negeri yang dipimpin raja yang adil. Negeri tersebut adalah…", o: ["Persia", "Romawi", "Yaman", "Habasyah (Etiopia)", "Mesir"], a: 3, l: "C3", p: "Para sahabat hijrah ke Habasyah, yang dipimpin Raja Najasyi yang adil." },
+    { q: "Kamu ingin membuat garis waktu dakwah Rasulullah untuk mading madrasah. Rancangan yang paling tepat adalah…", o: ["urutan acak", "foto pemandangan saja", "daftar nama sahabat", "peta modern", "dua bagian: Mekkah (wahyu pertama, dakwah sembunyi-sembunyi dan terang-terangan, hijrah ke Habasyah) dan Madinah (Piagam Madinah, perang dan perjanjian, Fathu Makkah), dengan tahun dan nilai teladan"], a: 4, l: "C6", p: "Garis waktu dua periode menunjukkan perkembangan dakwah secara runtut." },
+    { q: "Untuk meneladani Piagam Madinah di kelas yang beragam, kegiatan yang paling tepat adalah…", o: ["memisahkan siswa berdasarkan daerah", "guru membuat aturan sendiri", "tidak ada aturan", "menyusun \"Piagam Kelas\" bersama: hak, kewajiban, dan cara menyelesaikan masalah secara musyawarah", "aturan hanya untuk sebagian siswa"], a: 3, l: "C6", p: "Piagam Madinah mengatur hidup bersama secara adil; nilainya dapat diterapkan dalam kelas." },
     { q: "Raja Habasyah yang melindungi para sahabat yang berhijrah dari Mekkah adalah…", o: ["Kisra", "Najasyi", "Heraklius", "Muqauqis", "Abrahah"], a: 1, l: "C1", p: "Raja Najasyi (Negus) dikenal adil dan melindungi kaum Muslim." },
     { q: "Tahun wafatnya Khadijah dan Abu Thalib disebut…", o: ["'Amul Fil", "'Amul Huzni", "'Amul Jama'ah", "Tahun Hijrah", "Tahun Wufud"], a: 1, l: "C1", p: "'Amul Huzni berarti tahun duka cita." },
     { q: "Usulan menggali parit untuk mempertahankan Madinah berasal dari…", o: ["Abu Bakar", "Umar bin Khattab", "Salman al-Farisi", "Ali bin Abi Thalib", "Khalid bin Walid"], a: 2, l: "C1", p: "Strategi parit dari Persia diusulkan Salman al-Farisi dalam Perang Khandaq." },
@@ -157,7 +160,9 @@ TAMBAH_BAB({
     { q: "Jelaskan isi pokok Piagam Madinah dan relevansinya dengan kehidupan berbangsa di Indonesia.",
       rubrik: ["4: isi pokok (persatuan, kebebasan beragama, saling membela, keadilan) dan kaitan dengan Indonesia dijelaskan", "3: isi tanpa kaitan", "2: hanya menyebut nama piagam", "1: jawaban tidak relevan"] },
     { q: "Bandingkan dakwah periode Mekkah dan periode Madinah dari segi fokus dan tantangannya.",
-      rubrik: ["4: fokus (akidah vs pembinaan masyarakat) dan tantangan masing-masing dijelaskan", "3: satu aspek dibandingkan", "2: hanya satu periode", "1: jawaban tidak relevan"] }
+      rubrik: ["4: fokus (akidah vs pembinaan masyarakat) dan tantangan masing-masing dijelaskan", "3: satu aspek dibandingkan", "2: hanya satu periode", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah tabel perbandingan strategi dakwah Rasulullah di Mekkah dan di Madinah (sasaran, cara, tantangan, hasil). Tuliskan dua teladan yang dapat kamu terapkan di madrasah.",
+      rubrik: ["4: perbandingan lengkap dan tepat, dua teladan nyata", "3: perbandingan lengkap tetapi teladan kurang nyata", "2: kurang lengkap", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

@@ -122,6 +122,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Pada sebuah peristiwa, golongan muda membawa Soekarno dan Hatta ke luar kota agar tidak terpengaruh Jepang dan segera memproklamasikan kemerdekaan. Peristiwa itu adalah…", o: ["Peristiwa Rengasdengklok", "Bandung Lautan Api", "Pertempuran Surabaya", "Peristiwa Madiun", "Serangan Umum 1 Maret"], a: 0, l: "C3", p: "Pada 16 Agustus 1945, golongan muda membawa Soekarno-Hatta ke Rengasdengklok." },
+    { q: "Kelasmu membuat diorama tentang mempertahankan kemerdekaan. Rancangan yang paling lengkap adalah…", o: ["hanya menampilkan satu pertempuran tanpa keterangan", "menampilkan kapal VOC", "menampilkan sidang BPUPKI saja", "menampilkan pemilu 1955", "dua sisi: perjuangan bersenjata (Surabaya, Bandung Lautan Api, Serangan Umum) dan diplomasi (Linggarjati, Renville, Roem-Royen, KMB), dengan garis waktu"], a: 4, l: "C6", p: "Kemerdekaan dipertahankan melalui perjuangan bersenjata dan diplomasi." },
+    { q: "Kamu membuat kuis interaktif tentang detik-detik Proklamasi. Susunan soal yang paling baik adalah…", o: ["berurutan dari kekalahan Jepang, Rengasdengklok, perumusan teks, pembacaan, hingga sidang PPKI, dengan pembahasan setiap soal", "acak tanpa urutan dan tanpa pembahasan", "hanya soal tanggal", "soal tentang Orde Baru", "soal yang jawabannya semua benar"], a: 0, l: "C6", p: "Kuis yang baik runtut secara kronologis dan memberi umpan balik." },
     { q: "Makna Proklamasi Kemerdekaan sebagai jembatan emas berarti…", o: ["akhir dari seluruh perjuangan", "pintu menuju masyarakat adil dan makmur yang masih harus diwujudkan", "tanda kekalahan Jepang", "awal penjajahan baru", "hadiah dari Sekutu"], a: 1, l: "C2", p: "Kemerdekaan adalah awal; cita-cita adil dan makmur harus terus diperjuangkan." },
     { q: "Rapat raksasa di Lapangan Ikada, Jakarta, berlangsung pada…", o: ["17 Agustus 1945", "18 Agustus 1945", "19 September 1945", "10 November 1945", "22 Oktober 1945"], a: 2, l: "C1", p: "Rapat Ikada (19 September 1945) menunjukkan dukungan rakyat Jakarta terhadap Proklamasi." },
     { s: "Para pemuda Surabaya memanjat sebuah hotel dan merobek warna biru bendera Belanda yang dikibarkan di sana, sehingga yang tersisa adalah Merah Putih.", q: "Peristiwa tersebut dikenal sebagai…", o: ["Bandung Lautan Api", "Insiden Hotel Yamato", "Palagan Ambarawa", "Pertempuran Lima Hari", "Medan Area"], a: 1, l: "C3", p: "Insiden Hotel Yamato di Surabaya terjadi pada 19 September 1945." },
@@ -155,7 +158,9 @@ TAMBAH_BAB({
     { q: "Mengapa perjuangan diplomasi dan perjuangan bersenjata sama-sama penting dalam mempertahankan kemerdekaan? Berikan dua contoh.",
       rubrik: ["4: menjelaskan hubungan keduanya dengan dua contoh tepat (misalnya Serangan Umum 1 Maret dan Roem-Royen)", "3: penjelasan dengan satu contoh", "2: hanya membahas salah satu", "1: jawaban tidak relevan"] },
     { q: "Resolusi Jihad kini diperingati sebagai Hari Santri. Apa makna peristiwa itu bagi santri dan pelajar madrasah masa kini?",
-      rubrik: ["4: menjelaskan isi dan latar Resolusi Jihad serta wujud nyata mengisi kemerdekaan bagi pelajar", "3: menjelaskan makna tanpa penerapan", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menjelaskan isi dan latar Resolusi Jihad serta wujud nyata mengisi kemerdekaan bagi pelajar", "3: menjelaskan makna tanpa penerapan", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah peta pikiran (mind map) tentang cara bangsa Indonesia mempertahankan kemerdekaan 1945–1949. Buat dua cabang utama (senjata dan diplomasi), isi setiap cabang dengan minimal tiga peristiwa beserta tahunnya, lalu tuliskan kesimpulanmu.",
+      rubrik: ["4: dua cabang lengkap, peristiwa dan tahun tepat, kesimpulan tajam", "3: dua cabang lengkap dengan sedikit kekeliruan", "2: cabang kurang lengkap atau banyak kekeliruan", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

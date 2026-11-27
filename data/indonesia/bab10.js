@@ -115,6 +115,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang petani bercerita bahwa pada 1984 hasil panen padi melimpah karena bibit unggul, pupuk, dan irigasi, hingga Indonesia mendapat penghargaan dari FAO. Cerita itu berkaitan dengan program…", o: ["Tanam Paksa", "Benteng", "Gunting Syafruddin", "Ali-Baba", "swasembada beras melalui Repelita"], a: 4, l: "C3", p: "Swasembada beras 1984 dicapai melalui program pembangunan pertanian (Repelita, Bimas, revolusi hijau)." },
+    { q: "Kamu ingin membuat diskusi kelas yang adil tentang Orde Baru. Rancangan yang paling tepat adalah…", o: ["hanya membahas keberhasilannya", "hanya membahas kesalahannya", "melarang siswa berpendapat", "memakai satu sumber saja", "membagi kelompok untuk meneliti keberhasilan (pembangunan, swasembada) dan masalah (KKN, pembatasan kebebasan), memakai sumber, lalu menyimpulkan pelajaran secara berimbang"], a: 4, l: "C6", p: "Penilaian sejarah yang adil melihat dua sisi berdasarkan sumber." },
+    { q: "Untuk mengenalkan pembangunan masa Orde Baru di daerahmu, karya yang paling tepat adalah…", o: ["foto pemandangan tanpa keterangan", "daftar nama menteri", "kuis tentang Orde Lama", "album \"dulu dan sekarang\" berisi foto sekolah, jalan, atau pasar hasil pembangunan disertai wawancara warga dan keterangan tahun", "poster iklan"], a: 3, l: "C6", p: "Album perbandingan memadukan sumber visual, sejarah lisan, dan kronologi." },
     { q: "Organisasi kawasan Asia Tenggara yang didirikan melalui Deklarasi Bangkok pada 1967 adalah…", o: ["APEC", "ASEAN", "OKI", "GNB", "SEATO"], a: 1, l: "C1", p: "Indonesia termasuk lima negara pendiri ASEAN." },
     { q: "Indonesia menjadi Ketua Gerakan Non-Blok dan menyelenggarakan KTT di Jakarta pada tahun…", o: ["1955", "1961", "1985", "1992", "1998"], a: 3, l: "C1", p: "KTT GNB ke-10 diadakan di Jakarta pada 1992." },
     { q: "Program pemindahan penduduk dari pulau padat ke pulau yang masih jarang penduduknya disebut…", o: ["urbanisasi", "transmigrasi", "emigrasi", "imigrasi", "repatriasi"], a: 1, l: "C1", p: "Transmigrasi bertujuan meratakan persebaran penduduk." },
@@ -148,7 +151,9 @@ TAMBAH_BAB({
     { q: "Mengapa krisis moneter 1997 dapat berubah menjadi krisis politik yang meruntuhkan Orde Baru?",
       rubrik: ["4: menjelaskan rantai krisis ekonomi, ketidakpuasan, KKN, gerakan mahasiswa, hingga mundurnya Soeharto", "3: menjelaskan sebagian rantai", "2: hanya menyebut krisis tanpa kaitan politik", "1: jawaban tidak relevan"] },
     { q: "Tulislah penilaianmu sendiri tentang Orde Baru secara seimbang: dua capaian dan dua kelemahan, beserta pelajaran untuk masa kini.",
-      rubrik: ["4: dua capaian, dua kelemahan, dan pelajaran yang relevan dengan bukti", "3: capaian dan kelemahan tanpa pelajaran", "2: hanya satu sisi", "1: jawaban tidak relevan"] }
+      rubrik: ["4: dua capaian, dua kelemahan, dan pelajaran yang relevan dengan bukti", "3: capaian dan kelemahan tanpa pelajaran", "2: hanya satu sisi", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah tabel \"Warisan Orde Baru\": tiga hal positif yang masih dirasakan dan tiga masalah yang menjadi pelajaran. Untuk setiap baris, tuliskan bukti sejarahnya dan sikapmu sebagai pelajar.",
+      rubrik: ["4: enam baris lengkap, bukti tepat, sikap relevan dan berimbang", "3: lengkap tetapi bukti kurang kuat", "2: kurang lengkap atau tidak berimbang", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

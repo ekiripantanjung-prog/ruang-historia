@@ -113,6 +113,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang tokoh memimpin rakyatnya melawan penjajah tanpa kekerasan, dengan mogok, boikot garam, dan tidak bekerja sama. Tokoh tersebut adalah…", o: ["Sun Yat-sen", "Jose Rizal", "Mahatma Gandhi", "Mustafa Kemal", "Ho Chi Minh"], a: 2, l: "C3", p: "Gandhi memimpin perjuangan India dengan ahimsa dan satyagraha, termasuk Pawai Garam (1930)." },
+    { q: "Kamu membuat peta tokoh nasionalisme Asia. Rancangan yang paling bermakna adalah…", o: ["peta Asia dengan tokoh (Gandhi, Sun Yat-sen, Jose Rizal, Mustafa Kemal), gagasan perjuangan, dan pengaruhnya bagi pergerakan Indonesia", "foto tokoh tanpa keterangan", "peta jalan", "daftar negara saja", "foto kota modern"], a: 0, l: "C6", p: "Peta tokoh menghubungkan gagasan nasionalisme Asia dengan pergerakan Indonesia." },
+    { q: "Untuk menunjukkan bahwa kemenangan Jepang atas Rusia (1905) membangkitkan semangat Asia, media yang paling tepat adalah…", o: ["lagu bebas", "foto kapal perang saja", "daftar tahun", "puisi cinta", "bagan sebab-akibat: kemenangan Jepang, runtuhnya mitos bangsa kulit putih tak terkalahkan, lalu bangkitnya organisasi pergerakan di Asia termasuk Indonesia"], a: 4, l: "C6", p: "Bagan sebab-akibat menjelaskan dampak peristiwa bagi bangsa-bangsa Asia." },
     { q: "Konferensi yang membagi-bagi wilayah Afrika di antara negara-negara Eropa adalah…", o: ["Konferensi Wina", "Konferensi Berlin", "Konferensi Asia Afrika", "Konferensi Meja Bundar", "Konferensi Yalta"], a: 1, l: "C1", p: "Konferensi Berlin (1884–1885) memicu Scramble for Africa." },
     { q: "Akibat kekalahan dalam Perang Candu, Tiongkok menyerahkan … kepada Inggris.", o: ["Makau", "Hong Kong", "Taiwan", "Shanghai", "Singapura"], a: 1, l: "C1", p: "Hong Kong diserahkan melalui Perjanjian Nanking (1842)." },
     { q: "Tokoh yang memproklamasikan kemerdekaan Vietnam pada 2 September 1945 adalah…", o: ["Aung San", "Ho Chi Minh", "Sun Yat-sen", "Emilio Aguinaldo", "Norodom Sihanouk"], a: 1, l: "C1", p: "Ho Chi Minh membacakan proklamasi kemerdekaan Vietnam di Hanoi." },
@@ -146,7 +149,9 @@ TAMBAH_BAB({
     { q: "Bandingkan cara perjuangan Gandhi di India dan Sun Yat-sen di Tiongkok.",
       rubrik: ["4: perbandingan tepat (tanpa kekerasan vs revolusi menggulingkan dinasti) dengan hasilnya", "3: perbandingan tanpa hasil", "2: hanya satu tokoh", "1: jawaban tidak relevan"] },
     { q: "Pilih dua gerakan nasionalisme di Asia dan jelaskan pengaruhnya terhadap pergerakan nasional Indonesia.",
-      rubrik: ["4: dua gerakan dan pengaruhnya dijelaskan tepat dengan contoh", "3: dua gerakan tanpa contoh", "2: satu gerakan", "1: jawaban tidak relevan"] }
+      rubrik: ["4: dua gerakan dan pengaruhnya dijelaskan tepat dengan contoh", "3: dua gerakan tanpa contoh", "2: satu gerakan", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah tabel perbandingan nasionalisme di tiga negara Asia atau Afrika (penjajah, tokoh, cara perjuangan, hasil). Kemudian tuliskan persamaan dengan perjuangan Indonesia.",
+      rubrik: ["4: tiga negara lengkap dan tepat, persamaan dengan Indonesia jelas", "3: lengkap tetapi persamaan kurang jelas", "2: kurang lengkap atau keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

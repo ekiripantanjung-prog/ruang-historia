@@ -124,6 +124,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Sebuah prasasti berbahasa Sanskerta dengan aksara Pallawa menyebut raja yang memberikan 1.000 ekor sapi kepada kaum brahmana. Prasasti ini paling mungkin berasal dari kerajaan…", o: ["Kutai", "Majapahit", "Demak", "Singasari", "Mataram Islam"], a: 0, l: "C3", p: "Prasasti Yupa dari Kutai menceritakan Raja Mulawarman yang menghadiahkan sapi kepada kaum brahmana." },
+    { q: "OSIS ingin membuat kegiatan yang mengenalkan semangat toleransi pada masa Hindu-Buddha. Rancangan kegiatan yang paling tepat adalah…", o: ["kunjungan virtual ke Candi Borobudur dan Prambanan lalu diskusi tentang hidup rukun antarumat beragama, ditutup dengan membuat infografis semboyan Bhinneka Tunggal Ika", "lomba hafalan nama raja", "menonton film laga", "memasang foto candi tanpa keterangan", "lomba balap karung"], a: 0, l: "C6", p: "Kegiatan memadukan sumber sejarah, diskusi nilai, dan produk kreatif yang relevan dengan toleransi." },
+    { q: "Kamu ditugasi membuat peta digital interaktif tentang kerajaan Hindu-Buddha. Isi peta yang paling lengkap dan bermakna adalah…", o: ["titik lokasi tanpa nama", "hanya gambar candi yang menarik", "lokasi mal dan tempat wisata modern", "nama raja saja", "lokasi tiap kerajaan, masa berdiri, raja terkenal, peninggalan, dan tautan foto prasasti atau candinya"], a: 4, l: "C6", p: "Peta sejarah yang bermakna memuat ruang, waktu, tokoh, dan bukti peninggalan." },
     { q: "Pendeta Tiongkok yang singgah di Jawa sekitar 414 M dan mencatat keadaannya adalah…", o: ["I-Tsing", "Fa-Hien", "Marco Polo", "Ibnu Batutah", "Cheng Ho"], a: 1, l: "C1", p: "Fa-Hien singgah di Jawa (Ye-po-ti) dalam perjalanan pulang dari India." },
     { q: "Kasta yang terdiri atas pedagang, petani, dan peternak disebut…", o: ["Brahmana", "Ksatria", "Waisya", "Sudra", "Paria"], a: 2, l: "C1", p: "Waisya adalah golongan ekonomi: pedagang, petani, dan peternak." },
     { s: "Candi Plaosan, sebuah candi Buddha, dibangun atas prakarsa Rakai Pikatan yang beragama Hindu bersama permaisurinya Pramodhawardhani yang beragama Buddha.", q: "Sikap yang tercermin dari fakta tersebut adalah…", o: ["persaingan agama", "toleransi dan kerja sama antarumat beragama", "pemaksaan agama oleh raja", "pemisahan Hindu dan Buddha", "penolakan terhadap budaya asing"], a: 1, l: "C4", p: "Candi Plaosan menjadi bukti toleransi Hindu dan Buddha di Jawa." },
@@ -159,7 +162,9 @@ TAMBAH_BAB({
     { q: "Jelaskan mengapa Sriwijaya disebut kerajaan maritim, sedangkan Mataram Kuno disebut kerajaan agraris. Apa dampaknya bagi kehidupan ekonomi masing-masing?",
       rubrik: ["4: membedakan sumber kekayaan (laut/pelabuhan vs pertanian), letak geografis, dan dampak ekonomi dengan contoh", "3: membedakan keduanya tanpa contoh", "2: hanya menjelaskan satu kerajaan", "1: jawaban tidak relevan"] },
     { q: "Bagaimana semboyan Bhinneka Tunggal Ika dari masa Majapahit dapat kamu terapkan dalam kehidupan di madrasah? Berikan dua contoh.",
-      rubrik: ["4: menjelaskan asal dan makna semboyan, lalu memberi dua contoh nyata yang relevan", "3: memberi dua contoh tanpa menjelaskan makna", "2: hanya memberi satu contoh", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menjelaskan asal dan makna semboyan, lalu memberi dua contoh nyata yang relevan", "3: memberi dua contoh tanpa menjelaskan makna", "2: hanya memberi satu contoh", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah satu rencana kunjungan belajar (nyata atau virtual) ke sebuah candi peninggalan Hindu-Buddha. Tuliskan tujuan, langkah kegiatan, hal yang diamati, pertanyaan untuk pemandu, dan bentuk laporan akhir.",
+      rubrik: ["4: rencana lengkap, logis, memuat hal yang diamati secara sejarah dan bentuk laporan yang jelas", "3: rencana cukup lengkap dengan sedikit kekurangan", "2: rencana kurang runtut atau kurang berkaitan dengan sejarah candi", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

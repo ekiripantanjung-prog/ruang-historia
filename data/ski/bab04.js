@@ -105,6 +105,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Sebuah lembaga di Baghdad menjadi tempat menerjemahkan karya Yunani, Persia, dan India, sekaligus perpustakaan dan pusat penelitian. Lembaga tersebut adalah…", o: ["Al-Azhar", "Nizamiyah Nishapur", "Masjid Cordoba", "Darul Arqam", "Baitul Hikmah"], a: 4, l: "C3", p: "Baitul Hikmah di Baghdad menjadi pusat penerjemahan dan ilmu pada masa Abbasiyah." },
+    { q: "Madrasahmu ingin menghidupkan semangat Baitul Hikmah. Program yang paling tepat adalah…", o: ["menutup perpustakaan", "lomba tidur siang", "pojok baca dan klub riset siswa yang meneliti, menerjemahkan artikel sederhana, dan memamerkan hasilnya setiap bulan", "membeli buku tanpa dibaca", "melarang diskusi"], a: 2, l: "C6", p: "Program yang memadukan membaca, meneliti, menerjemahkan, dan berbagi hasil sesuai semangat Baitul Hikmah." },
+    { q: "Kamu membuat video \"Ilmuwan Abbasiyah yang Ilmunya Kita Pakai\". Isi yang paling tepat adalah…", o: ["hanya nama tanpa karya", "ilmuwan Eropa abad ke-20", "artis terkenal", "daftar khalifah", "Al-Khawarizmi (aljabar, algoritma), Ibnu Sina (kedokteran), Ar-Razi, Al-Kindi, beserta contoh pemakaiannya kini"], a: 4, l: "C6", p: "Video yang baik menghubungkan karya ilmuwan dengan kehidupan sekarang." },
     { q: "Masjid Al-Azhar di Kairo yang kemudian menjadi universitas didirikan pada masa Dinasti…", o: ["Abbasiyah", "Fatimiyah", "Ayyubiyah", "Mamluk", "Umayyah"], a: 1, l: "C1", p: "Al-Azhar dibangun Dinasti Fatimiyah pada 970–972 M." },
     { q: "Dinasti yang menghentikan serangan Mongol dalam Pertempuran Ain Jalut (1260) adalah…", o: ["Seljuk", "Mamluk", "Ayyubiyah", "Ghaznawi", "Safawi"], a: 1, l: "C1", p: "Kemenangan Mamluk di Ain Jalut menyelamatkan Mesir dan Syam dari Mongol." },
     { q: "Pendiri Dinasti Ayyubiyah yang merebut kembali Yerusalem pada 1187 adalah…", o: ["Nuruddin Zanki", "Shalahuddin al-Ayyubi", "Baibars", "Alp Arslan", "Muhammad al-Fatih"], a: 1, l: "C1", p: "Shalahuddin dikenal adil dan memperlakukan penduduk Yerusalem dengan baik." },
@@ -137,7 +140,9 @@ TAMBAH_BAB({
     { q: "Pilih dua tokoh, satu ulama dan satu ilmuwan, masa Abbasiyah. Jelaskan karya dan pengaruhnya sampai sekarang.",
       rubrik: ["4: dua tokoh, karya, dan pengaruh dijelaskan tepat", "3: dua tokoh tanpa pengaruh", "2: satu tokoh", "1: jawaban tidak relevan"] },
     { q: "Jelaskan hubungan antara Madrasah Nizamiyah dan madrasah tempatmu belajar sekarang.",
-      rubrik: ["4: ciri Nizamiyah dijelaskan dan dikaitkan dengan madrasah masa kini", "3: ciri Nizamiyah tanpa kaitan", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: ciri Nizamiyah dijelaskan dan dikaitkan dengan madrasah masa kini", "3: ciri Nizamiyah tanpa kaitan", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah proposal singkat \"Kelas Baitul Hikmah\" untuk madrasahmu: tujuan, kegiatan, jadwal, dan hasil yang diharapkan, dengan alasan yang diambil dari kejayaan ilmu masa Abbasiyah.",
+      rubrik: ["4: proposal lengkap, logis, dan dikaitkan dengan fakta Abbasiyah", "3: lengkap tetapi kaitan sejarah kurang", "2: kurang lengkap", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

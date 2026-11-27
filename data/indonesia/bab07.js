@@ -113,6 +113,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang kakek bercerita bahwa pada masa mudanya ia dipaksa bekerja membangun jalan dan benteng tanpa upah layak, dan banyak temannya tidak kembali. Cerita itu menggambarkan kebijakan…", o: ["romusha pada masa pendudukan Jepang", "Tanam Paksa", "Politik Etis", "kerja rodi Daendels", "transmigrasi"], a: 0, l: "C3", p: "Pada masa pendudukan Jepang (1942–1945), rakyat dipaksa menjadi romusha dan banyak yang meninggal." },
+    { q: "Kamu akan mewawancarai saksi atau keluarga saksi masa pendudukan Jepang. Rancangan wawancara yang paling baik adalah…", o: ["langsung merekam tanpa izin", "hanya bertanya umur narasumber", "mengarang jawaban sendiri", "menyebarkan wawancara tanpa izin", "meminta izin, menyiapkan pertanyaan tentang kehidupan sehari-hari, pangan, romusha, dan perlawanan, mencatat dengan sopan, lalu membandingkan hasilnya dengan buku"], a: 4, l: "C6", p: "Sejarah lisan memerlukan izin, pertanyaan terarah, etika, dan verifikasi dengan sumber lain." },
+    { q: "Agar teman-temanmu memahami bahwa Jepang memiliki tujuan sendiri di balik semboyan 3A, karya yang paling tepat dibuat adalah…", o: ["poster yang memuji Jepang", "lagu tanpa isi sejarah", "kuis tentang makanan Jepang", "infografis dua kolom: janji propaganda Jepang dan kenyataan yang dialami rakyat, disertai sumber", "foto kota Tokyo modern"], a: 3, l: "C6", p: "Membandingkan propaganda dan kenyataan melatih berpikir kritis berdasarkan sumber." },
     { q: "Pada masa pendudukan Jepang, Pulau Jawa dan Madura diperintah oleh…", o: ["Angkatan Laut", "Angkatan Darat ke-16", "Angkatan Darat ke-25", "Kempeitai", "Gubernur Jenderal"], a: 1, l: "C1", p: "Jawa-Madura di bawah Angkatan Darat ke-16 yang berpusat di Jakarta." },
     { q: "Pusat pemerintahan militer Jepang untuk Sumatra berada di…", o: ["Medan", "Padang", "Bukittinggi", "Palembang", "Banda Aceh"], a: 2, l: "C1", p: "Angkatan Darat ke-25 memerintah Sumatra dari Bukittinggi." },
     { q: "Salah satu dampak positif pendudukan Jepang bagi bangsa Indonesia adalah…", o: ["romusha", "bahasa Indonesia menjadi bahasa resmi dan bahasa pengantar sekolah", "wajib serah padi", "dilarangnya organisasi", "seikerei"], a: 1, l: "C2", p: "Larangan bahasa Belanda membuat bahasa Indonesia makin kuat dan meluas." },
@@ -146,7 +149,9 @@ TAMBAH_BAB({
     { q: "Pendudukan Jepang membawa penderitaan, tetapi ada juga dampak yang kelak berguna bagi kemerdekaan. Jelaskan dua dampak tersebut.",
       rubrik: ["4: dua dampak tepat (latihan militer PETA/Hizbullah, penggunaan bahasa Indonesia, organisasi, BPUPKI) dengan penjelasan", "3: dua dampak tanpa penjelasan", "2: satu dampak", "1: jawaban tidak relevan"] },
     { q: "Apa yang dapat kamu pelajari dari cara para pendiri bangsa menyelesaikan perbedaan pendapat dalam sidang BPUPKI dan Panitia Sembilan?",
-      rubrik: ["4: menjelaskan perbedaan pendapat, proses musyawarah, dan penerapannya dalam kehidupan pelajar", "3: menjelaskan musyawarah tanpa penerapan", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menjelaskan perbedaan pendapat, proses musyawarah, dan penerapannya dalam kehidupan pelajar", "3: menjelaskan musyawarah tanpa penerapan", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah buku harian fiktif (3 hari) seorang pelajar pada masa pendudukan Jepang. Setiap hari harus memuat satu fakta sejarah yang benar (misalnya romusha, kekurangan pangan, Peta, atau propaganda) dan perasaan tokohnya.",
+      rubrik: ["4: tiga catatan memuat fakta sejarah yang tepat, empati, dan bahasa yang hidup", "3: tiga catatan dengan fakta tepat tetapi kurang hidup", "2: fakta sejarah sedikit atau keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

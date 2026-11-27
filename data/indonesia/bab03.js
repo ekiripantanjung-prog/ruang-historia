@@ -123,6 +123,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Sebuah makam kuno memiliki nisan bertuliskan huruf Arab dengan tahun 1297 dan nama seorang sultan. Bukti ini paling tepat digunakan untuk menjelaskan…", o: ["berdirinya Kerajaan Samudra Pasai sebagai kerajaan Islam awal", "masuknya Hindu ke Jawa", "kedatangan Portugis", "lahirnya Budi Utomo", "runtuhnya Majapahit"], a: 0, l: "C3", p: "Nisan Sultan Malik as-Saleh (1297) menjadi bukti Samudra Pasai sebagai kerajaan Islam awal di Nusantara." },
+    { q: "Kamu ingin membuat video pendek tentang cara Wali Songo berdakwah. Alur video yang paling tepat adalah…", o: ["menampilkan perang antarwali", "hanya membaca daftar nama wali", "membuka dengan pertanyaan, menunjukkan dakwah melalui wayang, gamelan, pendidikan pesantren, dan perdagangan, lalu menutup dengan pesan dakwah yang damai", "menampilkan pemandangan tanpa narasi", "menceritakan kedatangan VOC"], a: 2, l: "C6", p: "Video yang baik memiliki alur jelas dan menonjolkan dakwah damai melalui budaya." },
+    { q: "Madrasahmu akan membuat sudut literasi \"Islam Nusantara\". Rancangan isi yang paling tepat adalah…", o: ["koleksi komik superhero", "poster iklan makanan", "daftar harga buku", "foto selebritas", "garis waktu kerajaan Islam, profil ulama dan karya kitabnya, foto masjid kuno bercorak akulturasi, dan kotak pertanyaan untuk pembaca"], a: 4, l: "C6", p: "Sudut literasi memuat urutan sejarah, tokoh, karya, bukti akulturasi, dan mengajak pembaca berpikir." },
     { q: "Kerajaan Islam yang menjadi bandar terbesar di Asia Tenggara sampai direbut Portugis pada 1511 adalah…", o: ["Samudra Pasai", "Malaka", "Demak", "Aceh", "Banten"], a: 1, l: "C1", p: "Malaka didirikan Parameswara dan menjadi pusat dagang besar sampai direbut Portugis." },
     { q: "Sultan Banten yang gigih melawan VOC tetapi dikhianati putranya sendiri, Sultan Haji, adalah…", o: ["Sultan Hasanuddin", "Sultan Ageng Tirtayasa", "Sultan Agung", "Sultan Baabullah", "Sultan Trenggana"], a: 1, l: "C1", p: "Konflik Sultan Ageng Tirtayasa dengan Sultan Haji dimanfaatkan VOC untuk menguasai Banten." },
     { q: "Perjanjian yang membagi Mataram menjadi Yogyakarta dan Surakarta (1755) adalah…", o: ["Bongaya", "Giyanti", "Salatiga", "Linggarjati", "Saragosa"], a: 1, l: "C1", p: "Perjanjian Giyanti adalah contoh politik adu domba VOC." },
@@ -158,7 +161,9 @@ TAMBAH_BAB({
     { q: "Jelaskan tiga saluran islamisasi di Nusantara dan berikan contohnya masing-masing.",
       rubrik: ["4: tiga saluran dijelaskan dengan contoh tepat", "3: tiga saluran tanpa contoh lengkap", "2: satu atau dua saluran", "1: jawaban tidak relevan"] },
     { q: "Bagaimana cara berdakwah Wali Songo dapat diteladani oleh pelajar madrasah ketika mengajak teman berbuat baik?",
-      rubrik: ["4: menjelaskan ciri dakwah Wali Songo (damai, menghargai budaya) dan menerapkannya pada contoh nyata", "3: menyebut ciri tanpa penerapan", "2: jawaban umum tanpa kaitan dengan Wali Songo", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menjelaskan ciri dakwah Wali Songo (damai, menghargai budaya) dan menerapkannya pada contoh nyata", "3: menyebut ciri tanpa penerapan", "2: jawaban umum tanpa kaitan dengan Wali Songo", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah infografis tentang akulturasi budaya Islam dan Nusantara. Pilih tiga contoh (misalnya masjid, seni, atau tradisi), jelaskan unsur lama dan unsur Islamnya, lalu tuliskan pesan tentang dakwah yang damai.",
+      rubrik: ["4: tiga contoh tepat dengan unsur lama dan unsur Islam dijelaskan jelas serta pesan yang bermakna", "3: tiga contoh tepat tetapi penjelasan kurang lengkap", "2: kurang dari tiga contoh atau ada kekeliruan", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

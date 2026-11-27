@@ -103,6 +103,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Di sebuah kota, warga laki-laki dewasa berkumpul untuk memberikan suara langsung tentang undang-undang. Sistem ini paling mirip dengan…", o: ["monarki absolut Romawi", "feodalisme Eropa", "kekhalifahan", "demokrasi langsung Athena", "teokrasi Mesir"], a: 3, l: "C3", p: "Athena menerapkan demokrasi langsung, walau hanya untuk warga laki-laki dewasa." },
+    { q: "Kelasmu ingin membuat simulasi untuk merasakan beda demokrasi Athena dan republik Romawi. Rancangan yang paling tepat adalah…", o: ["semua siswa diam", "babak 1: semua siswa memilih langsung; babak 2: siswa memilih wakil (senat) yang memutuskan; lalu diskusi kelebihan dan kekurangannya", "guru memutuskan semuanya", "lomba lari", "menonton film perang"], a: 1, l: "C6", p: "Simulasi langsung membandingkan demokrasi langsung dan perwakilan." },
+    { q: "Kamu ingin membuat infografis tentang warisan Yunani dan Romawi. Isi yang paling tepat adalah…", o: ["hanya foto patung", "daftar kaisar saja", "peta modern", "gambar kapal", "filsafat (Socrates, Plato, Aristoteles), demokrasi, Olimpiade, hukum Romawi, arsitektur, huruf Latin, beserta contoh pemakaiannya kini"], a: 4, l: "C6", p: "Infografis yang baik mengaitkan warisan kuno dengan kehidupan sekarang." },
     { q: "Perang antara Yunani dan Kekaisaran Persia yang terkenal dengan pertempuran Marathon dan Thermopylae adalah…", o: ["Perang Peloponnesos", "Perang Persia", "Perang Punisia", "Perang Troya", "Perang Salib"], a: 1, l: "C1", p: "Perang Persia (490–479 SM) dimenangkan Yunani." },
     { q: "Perang Peloponnesos (431–404 SM) adalah perang antara…", o: ["Yunani dan Persia", "Athena dan Sparta", "Romawi dan Kartago", "Makedonia dan Persia", "Romawi dan Jermanik"], a: 1, l: "C1", p: "Perang saudara Yunani ini melemahkan negara-negara kota." },
     { q: "Jenderal Kartago yang menyeberangi Pegunungan Alpen dengan pasukan gajah adalah…", o: ["Julius Caesar", "Hannibal", "Aleksander", "Odoaker", "Spartacus"], a: 1, l: "C1", p: "Hannibal menyerang Italia dalam Perang Punisia Kedua." },
@@ -136,7 +139,9 @@ TAMBAH_BAB({
     { q: "Sebutkan tiga warisan Romawi yang masih dipakai sekarang dan jelaskan manfaatnya.",
       rubrik: ["4: tiga warisan tepat dengan penjelasan manfaat", "3: tiga warisan tanpa penjelasan", "2: satu atau dua warisan", "1: jawaban tidak relevan"] },
     { q: "Jelaskan peran Baitul Hikmah dan ilmuwan Muslim dalam menjembatani ilmu Yunani ke Eropa. Apa teladan bagi pelajar masa kini?",
-      rubrik: ["4: peran penerjemahan, pengembangan, dan penyebaran ke Eropa dijelaskan serta teladan yang relevan", "3: peran dijelaskan tanpa teladan", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: peran penerjemahan, pengembangan, dan penyebaran ke Eropa dijelaskan serta teladan yang relevan", "3: peran dijelaskan tanpa teladan", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah dialog singkat antara Socrates dan seorang pelajar Indonesia masa kini tentang \"mengapa kita harus bertanya dan berpikir kritis\". Gunakan gagasan Socrates yang benar dan kaitkan dengan menyaring berita di internet.",
+      rubrik: ["4: dialog memakai gagasan Socrates dengan tepat dan kaitan masa kini jelas", "3: gagasan tepat tetapi kaitan masa kini lemah", "2: gagasan kurang tepat", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

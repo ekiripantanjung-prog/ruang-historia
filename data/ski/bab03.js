@@ -100,6 +100,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang khalifah menetapkan bahasa Arab sebagai bahasa resmi pemerintahan dan mencetak mata uang sendiri. Kebijakan ini dilakukan oleh…", o: ["Harun ar-Rasyid", "Abdul Malik bin Marwan", "Al-Ma'mun", "Abu Bakar", "Abdurrahman ad-Dakhil"], a: 1, l: "C3", p: "Abdul Malik bin Marwan mengarabkan administrasi dan mencetak dinar Islam." },
+    { q: "Kamu membuat infografis \"Mengapa Umayyah Runtuh?\". Rancangan yang paling tepat adalah…", o: ["hanya gambar istana", "bagan faktor: perebutan kekuasaan keluarga, gaya hidup mewah, fanatisme kesukuan, ketidakadilan, dan gerakan Abbasiyah, lalu pelajaran bagi pemimpin sekarang", "daftar khalifah saja", "foto masjid modern", "peta jalan"], a: 1, l: "C6", p: "Infografis sebab-akibat menghasilkan pelajaran bagi masa kini." },
+    { q: "Untuk mengenalkan teladan Umar bin Abdul Aziz, karya yang paling tepat adalah…", o: ["cerita bergambar tentang sikap adil dan sederhananya, hingga rakyat sejahtera dan sulit mencari penerima zakat", "lagu bebas", "daftar tahun", "foto istana", "kuis matematika"], a: 0, l: "C6", p: "Cerita bergambar menyampaikan keteladanan dengan menarik dan tepat." },
     { q: "Peletak dasar ilmu nahwu dan pemberi tanda baris pada mushaf adalah…", o: ["Imam Bukhari", "Abul Aswad ad-Du'ali", "Hasan al-Bashri", "Ibnu Syihab az-Zuhri", "Al-Khalil bin Ahmad"], a: 1, l: "C1", p: "Abul Aswad ad-Du'ali hidup pada masa awal Umayyah." },
     { q: "Pembukuan hadis secara resmi dimulai atas perintah khalifah…", o: ["Muawiyah bin Abi Sufyan", "Abdul Malik bin Marwan", "Umar bin Abdul Aziz", "Al-Walid I", "Harun ar-Rasyid"], a: 2, l: "C1", p: "Umar bin Abdul Aziz memerintahkan Ibnu Syihab az-Zuhri dan ulama lain membukukan hadis." },
     { q: "Kebijakan Abdul Malik bin Marwan yang menjadikan bahasa Arab sebagai bahasa resmi pemerintahan disebut…", o: ["kodifikasi", "arabisasi administrasi", "ekspansi", "nasionalisasi", "desentralisasi"], a: 1, l: "C2", p: "Arabisasi menyatukan administrasi di seluruh wilayah Umayyah." },
@@ -131,7 +134,9 @@ TAMBAH_BAB({
     { q: "Jelaskan tiga kemajuan peradaban Islam pada masa Dinasti Umayyah beserta contohnya.",
       rubrik: ["4: tiga kemajuan tepat dengan contoh", "3: tiga kemajuan tanpa contoh", "2: satu atau dua", "1: jawaban tidak relevan"] },
     { q: "Mengapa Umar bin Abdul Aziz dijuluki khalifah rasyidin kelima? Apa yang dapat kamu teladani?",
-      rubrik: ["4: kebijakan dan akhlak dijelaskan serta teladan konkret", "3: kebijakan tanpa teladan", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: kebijakan dan akhlak dijelaskan serta teladan konkret", "3: kebijakan tanpa teladan", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah garis waktu Dinasti Umayyah (661–750) dengan minimal lima peristiwa atau tokoh penting. Tambahkan satu kalimat pelajaran dari setiap peristiwa.",
+      rubrik: ["4: lima peristiwa tepat dan runtut, pelajaran relevan", "3: lengkap dengan sedikit kekeliruan", "2: kurang dari lima atau urutan keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

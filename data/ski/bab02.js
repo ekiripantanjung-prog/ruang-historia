@@ -97,6 +97,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang khalifah memerintahkan pengumpulan mushaf Al-Qur'an dalam satu bacaan baku lalu menyalinnya ke berbagai wilayah. Khalifah tersebut adalah…", o: ["Abu Bakar", "Umar bin Khattab", "Utsman bin Affan", "Ali bin Abi Thalib", "Muawiyah"], a: 2, l: "C3", p: "Khalifah Utsman membakukan mushaf (Mushaf Utsmani) dan mengirim salinannya ke berbagai wilayah." },
+    { q: "Kamu membuat kartu teladan empat khalifah. Rancangan yang paling bermakna adalah…", o: ["hanya foto masjid", "daftar tahun saja", "setiap kartu memuat nama khalifah, masa jabatan, prestasi utama, sifat teladan, dan contoh penerapannya bagi pelajar", "kartu tanpa teks", "nama khalifah Umayyah"], a: 2, l: "C6", p: "Kartu yang bermakna memadukan fakta sejarah dan nilai keteladanan." },
+    { q: "Untuk meneladani musyawarah pada masa Khulafaur Rasyidin, kegiatan kelas yang paling tepat adalah…", o: ["ketua kelas ditunjuk tanpa diskusi", "musyawarah memilih ketua kelas dengan kriteria amanah, mendengarkan pendapat semua anggota, lalu kesepakatan bersama", "pemilihan dengan suara terbanyak tanpa diskusi", "undian", "guru memilih sendiri"], a: 1, l: "C6", p: "Pengangkatan para khalifah dilakukan melalui musyawarah." },
     { q: "Perang melawan kaum murtad, penolak zakat, dan nabi palsu pada masa Abu Bakar disebut…", o: ["Perang Yarmuk", "Perang Riddah", "Perang Jamal", "Perang Shiffin", "Perang Qadisiyah"], a: 1, l: "C1", p: "Perang Riddah menjaga persatuan umat setelah Rasulullah wafat." },
     { q: "Gugurnya banyak penghafal Al-Qur'an dalam Perang Yamamah mendorong…", o: ["pemindahan ibu kota", "pengumpulan Al-Qur'an dalam satu mushaf", "pembentukan armada laut", "penetapan kalender Hijriah", "pembangunan Kota Kufah"], a: 1, l: "C2", p: "Umar mengusulkan kepada Abu Bakar agar Al-Qur'an dikumpulkan, lalu Zaid bin Tsabit ditugaskan melaksanakannya." },
     { q: "Kemenangan umat Islam atas Persia dalam Perang Qadisiyah terjadi pada masa khalifah…", o: ["Abu Bakar", "Umar bin Khattab", "Utsman bin Affan", "Ali bin Abi Thalib", "Muawiyah"], a: 1, l: "C1", p: "Perang Qadisiyah (636 M) terjadi pada masa Umar bin Khattab." },
@@ -130,7 +133,9 @@ TAMBAH_BAB({
     { q: "Sebutkan tiga kebijakan Umar bin Khattab dan jelaskan manfaatnya bagi pemerintahan Islam.",
       rubrik: ["4: tiga kebijakan tepat dengan manfaatnya", "3: tiga kebijakan tanpa manfaat", "2: satu atau dua kebijakan", "1: jawaban tidak relevan"] },
     { q: "Pilih satu khalifah dan jelaskan keteladanannya yang dapat kamu terapkan sebagai pemimpin di kelas atau organisasi.",
-      rubrik: ["4: keteladanan tepat dan penerapan konkret", "3: keteladanan tanpa penerapan", "2: hanya menyebut nama", "1: jawaban tidak relevan"] }
+      rubrik: ["4: keteladanan tepat dan penerapan konkret", "3: keteladanan tanpa penerapan", "2: hanya menyebut nama", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah \"profil pemimpin ideal\" untuk OSIS berdasarkan teladan Abu Bakar, Umar, Utsman, dan Ali. Ambil satu sifat dari tiap khalifah dan berikan bukti sejarahnya.",
+      rubrik: ["4: empat sifat dengan bukti sejarah tepat dan penerapan jelas", "3: empat sifat tepat tetapi bukti kurang", "2: kurang dari empat atau keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

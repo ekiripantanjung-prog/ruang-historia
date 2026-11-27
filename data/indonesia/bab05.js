@@ -115,6 +115,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang pemimpin perlawanan didukung ulama dan rakyat, berperang secara gerilya pada 1825–1830, lalu ditangkap saat datang berunding. Tokoh tersebut adalah…", o: ["Pangeran Diponegoro", "Sultan Hasanuddin", "Kapitan Pattimura", "Cut Nyak Dien", "Tuanku Imam Bonjol"], a: 0, l: "C3", p: "Ciri tersebut sesuai dengan Perang Jawa yang dipimpin Pangeran Diponegoro." },
+    { q: "Kamu ingin membuat kartu permainan tentang pahlawan perlawanan daerah. Rancangan kartu yang paling bermakna adalah…", o: ["setiap kartu memuat nama tokoh, daerah, tahun perlawanan, sebab, strategi, akhir perlawanan, dan nilai keteladanan", "kartu berisi gambar senjata saja", "kartu berisi skor kekuatan fiksi", "kartu tanpa teks", "kartu berisi nama pejabat Belanda saja"], a: 0, l: "C6", p: "Kartu yang bermakna memadukan fakta sejarah (waktu, tempat, sebab, strategi) dan nilai." },
+    { q: "Agar perjuangan pahlawan daerah dikenal generasi muda di kotamu, gagasan yang paling tepat adalah…", o: ["mengganti nama jalan dengan nama asing", "menghapus pelajaran sejarah", "membuat cerita fiksi yang mengubah fakta", "membuat konten media sosial berseri tentang pahlawan daerah berdasarkan sumber tepercaya dan wawancara dengan sejarawan setempat", "hanya memperingati pada hari libur"], a: 3, l: "C6", p: "Gagasan kreatif tetap harus berdasar sumber tepercaya dan menjangkau generasi muda." },
     { q: "Sultan Ternate yang berhasil mengusir Portugis pada 1575 adalah…", o: ["Sultan Hairun", "Sultan Baabullah", "Sultan Nuku", "Sultan Hasanuddin", "Sultan Agung"], a: 1, l: "C1", p: "Sultan Baabullah memimpin perlawanan setelah ayahnya, Sultan Hairun, dibunuh Portugis." },
     { q: "Serangan Sultan Agung ke Batavia (1628 dan 1629) gagal, salah satunya karena…", o: ["Mataram tidak punya tentara", "lumbung-lumbung padi persediaan pasukan Mataram dibakar VOC", "Sultan Agung menyerah", "Inggris membantu VOC", "pasukan Mataram berpihak kepada VOC"], a: 1, l: "C2", p: "Jarak jauh, wabah penyakit, dan dibakarnya lumbung padi membuat pasukan Mataram kekurangan bekal." },
     { q: "Sultan Palembang yang melawan Belanda pada 1819–1821 dan kemudian diasingkan ke Ternate adalah…", o: ["Sultan Thaha Syaifuddin", "Sultan Mahmud Badaruddin II", "Sultan Ageng Tirtayasa", "Pangeran Antasari", "Sultan Nuku"], a: 1, l: "C1", p: "Wajah Sultan Mahmud Badaruddin II diabadikan pada uang kertas Rp10.000 emisi 2005." },
@@ -148,7 +151,9 @@ TAMBAH_BAB({
     { q: "Mengapa perlawanan rakyat pada abad ke-19 belum berhasil mengusir Belanda? Apa pelajaran yang dapat diambil?",
       rubrik: ["4: menyebut minimal tiga sebab (kedaerahan, bergantung tokoh, senjata, adu domba) dan pelajaran persatuan", "3: menyebut dua sebab dan pelajaran", "2: menyebut sebab tanpa pelajaran", "1: jawaban tidak relevan"] },
     { q: "Tulislah surat pendek (5–7 kalimat) kepada salah satu pahlawan di bab ini. Ceritakan bagaimana kamu akan meneruskan perjuangannya sebagai pelajar madrasah.",
-      rubrik: ["4: menyebut pahlawan dan perjuangannya dengan tepat, serta komitmen nyata yang relevan", "3: komitmen jelas tetapi fakta kurang lengkap", "2: surat umum tanpa kaitan dengan pahlawan", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menyebut pahlawan dan perjuangannya dengan tepat, serta komitmen nyata yang relevan", "3: komitmen jelas tetapi fakta kurang lengkap", "2: surat umum tanpa kaitan dengan pahlawan", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah tabel perbandingan tiga perlawanan rakyat (misalnya Maluku, Jawa, dan Aceh). Bandingkan sebab, tokoh, strategi, dan alasan perlawanan belum berhasil, lalu rumuskan satu pelajaran untuk persatuan bangsa sekarang.",
+      rubrik: ["4: tiga perlawanan dibandingkan lengkap dan tepat, disertai pelajaran yang relevan", "3: perbandingan lengkap tetapi pelajaran kurang tajam", "2: perbandingan kurang lengkap atau ada kekeliruan", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

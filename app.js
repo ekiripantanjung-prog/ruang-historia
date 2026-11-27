@@ -571,10 +571,39 @@ function panelGuru() {
 <div class="box guru-kartu"><h2>1. Presentasi kelas</h2><p>Slide dibuat otomatis dari materi bab: tujuan, materi, garis waktu, tokoh, foto arsip, istilah, refleksi Panca Cinta, dan pertanyaan diskusi.</p>
 <label><b>Ruang</b><select id="pr" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
 <label><b>Bab</b><select id="pb" class="isian"></select></label>
-<div class="row"><button class="btn" type="button" id="tampil">Tampilkan presentasi</button><button class="btn alt" type="button" id="unduh">Unduh PowerPoint (.pptx)</button></div>
-<p class="catatan" id="pesanppt">File PowerPoint dapat diedit di Microsoft PowerPoint, Google Slides, atau WPS.</p></div>
+<div class="row"><button class="btn" type="button" id="tampil">Tampilkan presentasi</button><button class="btn alt" type="button" id="unduh">Unduh PowerPoint (.pptx)</button><button class="btn alt" type="button" id="unduhpdf">Unduh PDF</button></div>
+<p class="catatan" id="pesanppt">File PowerPoint dapat diedit di Microsoft PowerPoint, Google Slides, atau WPS. Untuk PDF, pilih <b>Simpan sebagai PDF</b> pada jendela cetak.</p></div>
 
-<div class="box guru-kartu"><h2>2. Pengaturan babak untuk kelas</h2>
+<div class="box guru-kartu"><h2>2. Modul ajar</h2><p>Modul ajar Pembelajaran Mendalam berbasis Kurikulum Berbasis Cinta, disusun dari materi bab: identifikasi, desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, dan glosarium.</p>
+<label><b>Ruang</b><select id="mr" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
+<label><b>Bab</b><select id="mb" class="isian"></select></label>
+<label><b>Model pembelajaran</b><select id="mm" class="isian"></select></label>
+<p class="catatan" id="malasan"></p>
+<div class="dua"><label><b>Kelas</b><select id="mk" class="isian"><option>X</option><option>XI</option><option>XII</option></select></label>
+<label><b>Semester</b><select id="ms" class="isian"><option>Ganjil</option><option>Genap</option></select></label></div>
+<div class="dua"><label><b>Jumlah pertemuan</b><select id="mp" class="isian"><option>1</option><option selected>2</option><option>3</option></select></label>
+<label><b>JP per pertemuan</b><input id="mj" class="isian" type="number" min="1" max="6" value="2"></label></div>
+<details><summary><b>Identitas madrasah dan guru</b></summary>
+${[['madrasah', 'Nama madrasah'], ['guru', 'Nama guru'], ['nip', 'NIP guru'], ['kepala', 'Nama kepala madrasah'], ['nipKepala', 'NIP kepala madrasah'], ['tempat', 'Tempat penandatanganan'], ['tahun', 'Tahun pelajaran'], ['menitJp', 'Menit per JP']].map(([k, l]) => `<label><b>${l}</b><input class="isian" data-id="${k}" value="${esc(idGuru()[k])}"></label>`).join('')}</details>
+<div class="row"><button class="btn" type="button" id="mbuat">Buat modul ajar</button></div></div>
+
+<div class="box guru-kartu"><h2>3. Soal ulangan harian</h2><p>Pilih bab dan jumlah soal untuk setiap level kognitif. Hasilnya dapat disalin ke ASESMENKU, diunduh sebagai Excel, atau dicetak lengkap dengan kunci dan kisi-kisi.</p>
+<label><b>Ruang</b><select id="ur" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
+<div><b>Bab</b> <span class="catatan">(boleh lebih dari satu)</span><div id="ub" class="pilih-bab"></div></div>
+<div><b>Jumlah soal pilihan ganda per level</b>
+<div class="row kecil-row"><button class="btn alt kecil-btn" type="button" data-preset="dasar">Dasar</button><button class="btn alt kecil-btn" type="button" data-preset="seimbang">Seimbang</button><button class="btn alt kecil-btn" type="button" data-preset="hots">HOTS</button></div>
+<div class="level-grid" id="ul"></div></div>
+<div class="dua"><label><b>Soal uraian</b><input id="ue" class="isian" type="number" min="0" max="10" value="2"></label>
+<label><b>Level uraian</b><select id="uel" class="isian"><option value="">Semua level</option><option value="C4,C5,C6" selected>HOTS (C4–C6)</option><option value="C6">C6 saja</option><option value="C1,C2,C3">C1–C3</option></select></label></div>
+<div class="dua"><label><b>Kelas</b><select id="uk" class="isian"><option>X</option><option>XI</option><option>XII</option></select></label><label><b>Semester</b><select id="us" class="isian"><option>Ganjil</option><option>Genap</option></select></label></div>
+<label><b>Judul naskah</b><input id="uj" class="isian" value="ULANGAN HARIAN"></label>
+<div class="dua"><label><b>Waktu (menit)</b><input id="uw" class="isian" type="number" min="10" value="90"></label>
+<label><b>Bobot pilihan ganda (%)</b><input id="ubb" class="isian" type="number" min="0" max="100" value="70"></label></div>
+<label class="cek"><input type="checkbox" id="ua"> Acak urutan soal (bila tidak dicentang: urut dari C1 ke C6)</label>
+<p class="catatan" id="uinfo"></p>
+<div class="row"><button class="btn" type="button" id="ubuat">Buat soal</button></div></div>
+
+<div class="box guru-kartu"><h2>4. Pengaturan babak untuk kelas</h2>
 <p>Mode babak: siswa harus membaca, mencatat, lalu lulus kuis (nilai ≥ KKM) untuk membuka bab berikutnya. Pengaturan dibagikan lewat <b>tautan kelas</b> atau kode QR; setiap kelas boleh berbeda.</p>
 <label><b>Nama kelas</b><input id="gk" class="isian" placeholder="contoh: X-1" value="${esc(c.nama || '')}"></label>
 <label class="cek"><input type="checkbox" id="gm" ${c.modeBabak ? 'checked' : ''}> Aktifkan mode babak (bab terkunci berurutan)</label>
@@ -584,7 +613,7 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <div class="row"><button class="btn" type="button" id="buat">Buat tautan kelas</button></div>
 <div id="hasilkelas"></div></div>
 
-<div class="box guru-kartu"><h2>3. Rekap nilai dan analisis (Google Sheets)</h2>
+<div class="box guru-kartu"><h2>5. Rekap nilai dan analisis (Google Sheets)</h2>
 <p>Nilai kuis dan ujian siswa terkirim otomatis ke Google Sheets milik Bapak/Ibu, lengkap dengan lembar <b>Rekap</b> dan <b>Analisis</b> (ketuntasan, siswa yang perlu remedial, dan soal yang paling sulit).</p>
 <ol class="langkah-rekap">
 <li>Buka <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> di Chrome, beri nama <i>Rekap Ruang Historia</i>.</li>
@@ -592,7 +621,7 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <li>Hapus isi editor, tempel kode dari tombol <b>Salin kode</b> di bawah, lalu tekan ikon Simpan.</li>
 <li>Pilih fungsi <b>siapkan</b>, tekan <b>Jalankan</b>, lalu berikan izin (Lanjutan → Buka proyek).</li>
 <li><b>Terapkan → Deployment baru</b> → jenis <b>Aplikasi web</b>; Jalankan sebagai: <b>Saya</b>; Akses: <b>Siapa saja</b> → Terapkan. Salin alamat aplikasi web.</li>
-<li>Tempel alamat itu di kotak di bawah, tekan <b>Uji sambungan</b>, lalu buat tautan kelas (bagian 2).</li>
+<li>Tempel alamat itu di kotak di bawah, tekan <b>Uji sambungan</b>, lalu buat tautan kelas (bagian 4).</li>
 <li>Di Google Sheets, isi lembar <b>Siswa</b> (Kelas, No, Nama; bisa disalin dari Excel), lalu menu <b>Ruang Historia → Buat kode siswa</b>. Bagikan kodenya kepada siswa.</li>
 <li>Setiap kali mulai mengajar bab baru, buka lembar <b>Pengaturan</b> dan ubah angka <b>Buka sampai bab</b> untuk kelas itu (misalnya 1 menjadi 2). KKM per kelas juga diatur di sana.</li>
 </ol>
@@ -600,7 +629,7 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <label><b>Alamat aplikasi web (dari langkah 5)</b><input id="gr" class="isian" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(c.rekap || '')}"></label>
 <div class="row"><button class="btn alt" type="button" id="ujirekap">Uji sambungan</button></div><p class="catatan" id="pesanrekap"></p></div>
 
-<div class="box guru-kartu"><h2>4. Lainnya</h2><ul>
+<div class="box guru-kartu"><h2>6. Lainnya</h2><ul>
 <li>Tambah foto atau ilustrasi sendiri: lihat panduan di halaman <a href="#tentang">Tentang</a>.</li>
 <li>Rekap nilai: siswa dapat menunjukkan halaman <a href="#nilai">Nilaiku</a> di perangkatnya.</li></ul>
 <button class="btn alt" type="button" id="keluar">Keluar dari mode guru</button></div>
@@ -614,6 +643,8 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
     try { await unduhPPT(pr.value, +pb.value); pesan.textContent = 'Selesai. Cek folder unduhan.'; } catch (err) { console.error(err); pesan.textContent = 'Gagal membuat PowerPoint. Periksa koneksi internet lalu coba lagi.'; }
     t.disabled = false;
   });
+  document.getElementById('unduhpdf').addEventListener('click', async e => { const t = e.target, pesan = document.getElementById('pesanppt'); t.disabled = true; pesan.textContent = 'Menyiapkan PDF…'; try { await cetakSlide(pr.value, +pb.value); pesan.textContent = 'Pilih "Simpan sebagai PDF" pada jendela cetak.'; } catch (err) { console.error(err); pesan.textContent = 'Gagal menyiapkan PDF. Coba lagi.'; } t.disabled = false; });
+  pasangModulForm(); pasangSoalForm();
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
     const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka, rekap: document.getElementById('gr').value.trim() };
@@ -622,7 +653,7 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
     document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
   });
   document.getElementById('salinkode').addEventListener('click', async ev => { try { const t = await fetch('alat/rekap-google-sheets.gs').then(r => r.text()); await navigator.clipboard.writeText(t); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; } catch { ev.target.textContent = 'Gagal menyalin. Coba lagi'; } });
-  document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Sekarang buat tautan kelas di bagian 2.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
+  document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Sekarang buat tautan kelas di bagian 4.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
   document.getElementById('keluar').addEventListener('click', () => { S.set('guru', false); location.hash = '#beranda'; });
 }
 
@@ -818,6 +849,401 @@ async function unduhPPT(kid, id) {
   await p.writeFile({ fileName: `Ruang Historia - ${aman}.pptx` });
 }
 
+/* ---------- GENERATOR MODUL AJAR (Pembelajaran Mendalam + KBC) ---------- */
+const MODEL = {
+  discovery: { nama: 'Discovery Learning', metode: ['tanya jawab', 'pengamatan sumber sejarah (foto arsip dan video)', 'diskusi kelompok', 'presentasi'],
+    alasan: 'materi ini kaya akan sumber sejarah (artefak, foto, garis waktu) sehingga murid dapat menemukan sendiri konsepnya melalui pengamatan dan pengolahan data.',
+    sintaks: { memahami: ['Pemberian rangsangan (stimulation)', 'Identifikasi masalah (problem statement)'], mengaplikasi: ['Pengumpulan data (data collection)', 'Pengolahan data (data processing)'], merefleksi: ['Pembuktian (verification)', 'Menarik kesimpulan (generalization)'] } },
+  inquiry: { nama: 'Inquiry Learning (analisis sumber sejarah)', metode: ['tanya jawab', 'analisis sumber primer dan sekunder', 'diskusi kelompok', 'presentasi'],
+    alasan: 'materi ini menuntut murid membandingkan berbagai sumber dan sudut pandang, sehingga cocok dipelajari dengan merumuskan pertanyaan lalu menelusuri jawabannya dari sumber sejarah.',
+    sintaks: { memahami: ['Orientasi', 'Merumuskan pertanyaan penelitian'], mengaplikasi: ['Mengumpulkan informasi dari sumber', 'Menganalisis dan menguji jawaban sementara'], merefleksi: ['Merumuskan kesimpulan', 'Refleksi proses inkuiri'] } },
+  pbl: { nama: 'Problem Based Learning', metode: ['diskusi kelompok', 'studi kasus', 'tanya jawab', 'presentasi'],
+    alasan: 'materi ini memuat persoalan nyata (ketidakadilan, kebijakan, dan dampaknya) yang dapat dikaitkan dengan masalah masa kini sehingga murid berlatih memecahkan masalah.',
+    sintaks: { memahami: ['Orientasi murid pada masalah', 'Mengorganisasi murid untuk belajar'], mengaplikasi: ['Membimbing penyelidikan individu dan kelompok', 'Mengembangkan dan menyajikan hasil karya'], merefleksi: ['Menganalisis dan mengevaluasi proses pemecahan masalah'] } },
+  pjbl: { nama: 'Project Based Learning', metode: ['diskusi kelompok', 'kerja proyek', 'presentasi', 'tanya jawab'],
+    alasan: 'materi ini dekat dengan kehidupan murid dan dapat diwujudkan menjadi produk nyata, sehingga murid belajar dengan berkarya secara kolaboratif.',
+    sintaks: { memahami: ['Penentuan pertanyaan mendasar', 'Mendesain perencanaan proyek'], mengaplikasi: ['Menyusun jadwal', 'Memonitor murid dan kemajuan proyek'], merefleksi: ['Menguji hasil (presentasi produk)', 'Mengevaluasi pengalaman'] } },
+  jigsaw: { nama: 'Cooperative Learning tipe Jigsaw', metode: ['diskusi kelompok asal dan kelompok ahli', 'tutor sebaya', 'tanya jawab', 'kuis'],
+    alasan: 'materi ini terdiri atas beberapa subtopik yang setara (kerajaan, tokoh, atau peristiwa), sehingga setiap murid dapat menjadi ahli satu subtopik lalu mengajarkannya kepada teman.',
+    sintaks: { memahami: ['Pembentukan kelompok asal dan pembagian subtopik'], mengaplikasi: ['Diskusi kelompok ahli', 'Kembali ke kelompok asal dan saling mengajarkan'], merefleksi: ['Kuis individu dan penghargaan kelompok', 'Refleksi'] } }
+};
+const MODEL_BAB = { 'indonesia-1': 'discovery', 'indonesia-2': 'jigsaw', 'indonesia-3': 'jigsaw', 'indonesia-4': 'pbl', 'indonesia-5': 'jigsaw', 'indonesia-6': 'inquiry', 'indonesia-7': 'inquiry', 'indonesia-8': 'pjbl', 'indonesia-9': 'pbl', 'indonesia-10': 'inquiry', 'indonesia-11': 'pjbl',
+  'dunia-1': 'jigsaw', 'dunia-2': 'discovery', 'dunia-3': 'inquiry', 'dunia-4': 'discovery', 'dunia-5': 'pbl', 'dunia-6': 'jigsaw', 'dunia-7': 'inquiry', 'dunia-8': 'pbl', 'dunia-9': 'pjbl',
+  'ski-1': 'discovery', 'ski-2': 'jigsaw', 'ski-3': 'inquiry', 'ski-4': 'pjbl', 'ski-5': 'pbl', 'ski-6': 'jigsaw', 'ski-7': 'inquiry', 'ski-8': 'pjbl' };
+const PRODUK = { discovery: 'peta konsep atau garis waktu bergambar', inquiry: 'laporan analisis sumber singkat', pbl: 'rekomendasi solusi dalam bentuk poster atau infografis', pjbl: 'produk kreatif (poster digital, video pendek, atau podcast sejarah)', jigsaw: 'rangkuman kelompok dalam bentuk peta konsep' };
+
+const bersihJudul = s => s.replace(/^[A-Z]\.\s*/, '');
+const teksPolos = h => new DOMParser().parseFromString(`<div>${String(h).replace(/<(table|figure|svg|ol|ul)[\s\S]*?<\/\1>/gi, ' ').replace(/<\/(p|li|td|th|div|h\d)>|<br\s*\/?>/gi, ' $&')}</div>`, 'text/html').body.textContent.replace(/\s+/g, ' ').trim();
+const kalimat = (t, n) => (t.match(/[^.!?]+[.!?]+/g) || [t]).slice(0, n).join(' ').trim();
+const fmtTgl = d => d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+function susunModul(o) {
+  const k = cariK(o.kid), d = k.bab.find(x => x.id === o.id), b = isiBab(o.kid, o.id), M = MODEL[o.model] || MODEL.discovery;
+  const fase = o.kelas === 'X' ? 'E' : 'F', mapel = o.kid === 'ski' ? 'Sejarah Kebudayaan Islam' : 'Sejarah';
+  const sub = b.bagian.map(s => bersihJudul(s.judul));
+  const cinta = []; b.bagian.forEach(s => { if (s.cinta && !cinta.some(c => c[0] === s.cinta[0])) cinta.push(s.cinta); });
+  const hots = b.soal.filter(q => /C[456]/.test(q.l || '')), mudah = b.soal.filter(q => /C[12]/.test(q.l || ''));
+  const pemantik = (b.soal.find(q => /C[45]/.test(q.l || '')) || b.soal[0]).q.replace(/…$/, '?').replace(/adalah\s*\?$/, 'adalah?');
+  const menit = o.jp * o.menitJp, P = o.pertemuan;
+  const kkm = konfig().kkm, url = `${alamatDasar()}#${o.kid}-${o.id}`;
+  const dpl = ['Penalaran Kritis', 'Komunikasi', 'Kolaborasi', o.kid === 'ski' ? 'Keimanan dan Ketakwaan terhadap Tuhan YME' : 'Kewargaan'];
+  const B = [];
+  const h1 = x => B.push({ t: 'h1', x }), h2 = x => B.push({ t: 'h2', x }), h3 = x => B.push({ t: 'h3', x }), p = (x, al) => B.push({ t: 'p', x, al }), li = (x, n) => B.push({ t: 'li', x, n }), tabel = (rows, head, lebar) => B.push({ t: 'tabel', rows, head, lebar });
+  const kv = rows => B.push({ t: 'tabel', rows, kv: true, lebar: [32, 68] });
+
+  B.push({ t: 'judul', x: 'MODUL AJAR', sub: `Pembelajaran Mendalam Berbasis Cinta (KBC)\n${mapel} · ${b.judul}` });
+  h2('A. Identitas Modul');
+  kv([['Nama Madrasah', o.madrasah || '…'], ['Nama Penyusun', o.guru || '…'], ['Mata Pelajaran', mapel], ['Fase / Kelas / Semester', `${fase} / ${o.kelas} / ${o.semester}`], ['Materi Pokok', `${k.judul}, Bab ${o.id}: ${b.judul}`], ['Alokasi Waktu', `${P} pertemuan × ${o.jp} JP × ${o.menitJp} menit`], ['Tahun Pelajaran', o.tahun]]);
+
+  h2('B. Identifikasi');
+  h3('1. Kesiapan murid');
+  p(`Murid telah mempelajari materi sebelumnya${babSebelum(o.kid, o.id) ? ` (Bab ${babSebelum(o.kid, o.id).id}: ${babSebelum(o.kid, o.id).judul})` : ''} dan terbiasa menggunakan gawai untuk belajar. Sebelum pertemuan, murid diminta membaca materi Bab ${o.id} di aplikasi Ruang Historia dan mencatat poin-poin penting di buku catatan. Kesiapan murid diukur melalui asesmen awal (lihat bagian E).`);
+  h3('2. Karakteristik materi');
+  p(`Materi ${b.judul.toLowerCase()} bersifat ${/1|2|3/.test(String(o.id)) && o.kid !== 'ski' ? 'konseptual dan faktual' : 'faktual, kronologis, dan analitis'}: murid perlu memahami fakta dan urutan peristiwa, lalu menganalisis sebab-akibat serta maknanya bagi kehidupan sekarang. Cakupan materi: ${sub.join('; ')}.`);
+  h3('3. Dimensi Profil Lulusan');
+  dpl.forEach(x => li(x));
+  h3('4. Topik Panca Cinta dan materi insersi KBC');
+  if (cinta.length) cinta.forEach(c => li(`**${c[0]}**: ${c[1]}`)); else li('**Cinta tanah air**: menghargai perjuangan dan warisan sejarah bangsa.');
+
+  h2('C. Desain Pembelajaran');
+  h3('1. Capaian Pembelajaran');
+  p(o.cp || `Pada akhir Fase ${fase}, murid mampu memahami dan menganalisis ${b.judul.toLowerCase()} dengan menggunakan konsep dasar sejarah (kronologi, sebab-akibat, perubahan dan keberlanjutan), serta mengaitkannya dengan kehidupan masa kini. (Sesuaikan dengan dokumen CP ${mapel} yang berlaku.)`);
+  h3('2. Lintas disiplin ilmu');
+  p(o.kid === 'ski' ? 'Al-Qur\'an Hadis, Akidah Akhlak, Geografi, dan Bahasa Indonesia (literasi).' : 'Geografi (ruang dan peta), Ekonomi, Sosiologi, PPKn, dan Bahasa Indonesia (literasi).');
+  h3('3. Tujuan Pembelajaran');
+  b.tujuan.forEach((t, i) => li(t, i + 1));
+  h3('4. Praktik pedagogis');
+  kv([['Pendekatan', 'Pembelajaran Mendalam (berkesadaran, bermakna, menggembirakan) terintegrasi Kurikulum Berbasis Cinta'], ['Model', M.nama], ['Metode', M.metode.join(', ')], ['Alasan pemilihan model', `Model ini dipilih karena ${M.alasan}`]]);
+  h3('5. Kemitraan pembelajaran');
+  p('Orang tua mendampingi murid membaca materi di rumah; pustakawan madrasah menyediakan buku pendukung; bila memungkinkan, museum atau situs sejarah setempat dijadikan sumber belajar.');
+  h3('6. Lingkungan pembelajaran');
+  kv([['Ruang fisik', 'Kelas ditata berkelompok (4–5 murid), dinding untuk menempel hasil karya (galeri)'], ['Ruang virtual', `Aplikasi Ruang Historia (${url})`], ['Budaya belajar', 'Saling menghargai pendapat, jujur, tabayun (memeriksa sumber), dan gotong royong']]);
+  h3('7. Pemanfaatan digital');
+  li(`Materi, video, foto arsip, dan kuis interaktif di aplikasi Ruang Historia (Bab ${o.id}).`);
+  li('Presentasi kelas yang dibuat dari Panel Guru Ruang Historia.');
+  li('Rekap nilai kuis otomatis melalui Google Sheets (bila diaktifkan).');
+
+  h2('D. Pengalaman Belajar');
+  const fase3 = { memahami: 'Memahami (berkesadaran, bermakna)', mengaplikasi: 'Mengaplikasi (bermakna, menggembirakan)', merefleksi: 'Merefleksi (berkesadaran)' };
+  const kegiatan = {
+    memahami: () => {
+      const s = M.sintaks.memahami, L = [];
+      if (o.model === 'jigsaw') { L.push([s[0], [`Guru membentuk kelompok asal beranggotakan ${Math.min(sub.length, 5)} murid.`, `Setiap anggota mendapat satu subtopik: ${sub.slice(0, 5).map((x, i) => `(${i + 1}) ${x}`).join('; ')}.`, 'Murid membaca subtopiknya di Ruang Historia dan mencatat poin penting.']]); return L; }
+      L.push([s[0], [o.model === 'pjbl' ? `Guru mengajukan pertanyaan mendasar: "Bagaimana kita dapat menyampaikan pelajaran dari ${b.judul.toLowerCase()} kepada masyarakat sekarang?"` : o.model === 'pbl' ? `Guru menyajikan masalah dari stimulus berikut: "${(hots.find(q => q.s) || {}).s || b.sub}"` : `Guru menayangkan video "${b.video ? b.video.judul : b.judul}" dan beberapa foto arsip dari Ruang Historia.`, `Guru mengajukan pertanyaan pemantik: "${pemantik}"`]]);
+      L.push([s[1], [o.model === 'pjbl' ? `Murid berkelompok merancang ${PRODUK.pjbl} beserta pembagian tugas.` : 'Murid berkelompok merumuskan 2–3 pertanyaan yang ingin dijawab tentang materi.', 'Guru membantu murid memilih pertanyaan yang paling penting dan dapat diteliti.']]);
+      return L;
+    },
+    mengaplikasi: () => {
+      const s = M.sintaks.mengaplikasi;
+      if (o.model === 'jigsaw') return [[s[0], ['Murid dengan subtopik yang sama berkumpul dalam kelompok ahli.', 'Kelompok ahli membahas subtopik menggunakan materi, garis waktu, dan kartu tokoh di Ruang Historia, lalu menyiapkan cara menjelaskannya.']], [s[1], ['Murid kembali ke kelompok asal dan bergiliran mengajarkan subtopiknya.', `Kelompok asal menyusun ${PRODUK.jigsaw} untuk seluruh subtopik pada LKPD.`]]];
+      return [[s[0], [o.model === 'pjbl' ? 'Kelompok menyusun jadwal pengerjaan proyek dan mulai mengumpulkan bahan dari Ruang Historia.' : `Murid mengumpulkan informasi dari materi Ruang Historia (${sub.slice(0, 4).join('; ')}), foto arsip, dan buku teks.`, 'Guru berkeliling memberi bimbingan dan pertanyaan penuntun.']],
+        [s[1], [o.model === 'pjbl' ? `Guru memantau kemajuan; kelompok menyelesaikan ${PRODUK.pjbl}.` : `Kelompok mengolah informasi menjadi ${PRODUK[o.model] || 'rangkuman'} pada LKPD.`, 'Kelompok menyajikan hasilnya dengan teknik galeri (gallery walk); kelompok lain memberi tanggapan.']]];
+    },
+    merefleksi: () => {
+      const s = M.sintaks.merefleksi, L = [];
+      L.push([s[0], [o.model === 'jigsaw' ? `Murid mengerjakan kuis individu Bab ${o.id} di Ruang Historia (KKM ${kkm}); kelompok dengan peningkatan terbaik mendapat penghargaan.` : 'Guru dan murid mengecek kembali hasil kerja dengan sumber sejarah; meluruskan miskonsepsi.', 'Murid menuliskan satu hal baru yang dipelajari dan satu pertanyaan yang masih tersisa.']]);
+      if (s[1]) L.push([s[1], [`Refleksi Panca Cinta: ${cinta[0] ? cinta[0][1] : 'apa makna peristiwa ini bagi sikap kita sebagai warga bangsa?'}`, 'Murid menuliskan komitmen sikap yang akan dipraktikkan dalam kehidupan sehari-hari.']]);
+      return L;
+    }
+  };
+  const awal = (n) => [`Guru membuka dengan salam dan doa bersama (cinta Allah dan Rasul-Nya), lalu mengecek kehadiran dan kesiapan murid.`, n === 1 ? `Apersepsi: mengaitkan materi dengan ${babSebelum(o.kid, o.id) ? `Bab ${babSebelum(o.kid, o.id).id} (${babSebelum(o.kid, o.id).judul})` : 'pengalaman murid'} dan dengan catatan murid dari Ruang Historia.` : 'Guru mengulas singkat kegiatan pertemuan sebelumnya.', n === 1 ? 'Guru menyampaikan tujuan pembelajaran dan manfaatnya bagi kehidupan.' : 'Guru menyampaikan target kegiatan hari ini.'];
+  const tutup = (n, akhir) => ['Murid bersama guru menyimpulkan pembelajaran.', akhir ? `Tindak lanjut: murid menyelesaikan kuis Bab ${o.id} di Ruang Historia (KKM ${kkm}) dan membaca bab berikutnya.` : 'Guru menyampaikan rencana kegiatan pertemuan berikutnya.', 'Pembelajaran ditutup dengan doa dan salam.'];
+  const urutan = P === 1 ? [['memahami', 'mengaplikasi', 'merefleksi']] : P === 2 ? [['memahami', 'mengaplikasi'], ['merefleksi']] : [['memahami'], ['mengaplikasi'], ['merefleksi']];
+  urutan.forEach((fs, i) => {
+    const n = i + 1, inti = menit - 25;
+    h3(P > 1 ? `Pertemuan ${n} (${o.jp} JP)` : `Kegiatan pembelajaran (${o.jp} JP)`);
+    const rows = [];
+    rows.push(['Pendahuluan (berkesadaran)', awal(n).map(x => '• ' + x).join('\n'), '15 menit']);
+    fs.forEach(f => kegiatan[f]().forEach(([nm, langkah]) => rows.push([`${fase3[f]}\nSintaks: ${nm}`, langkah.map(x => '• ' + x).join('\n'), `${Math.round(inti / fs.length / kegiatan[f]().length)} menit`])));
+    rows.push(['Penutup (bermakna)', tutup(n, n === urutan.length).map(x => '• ' + x).join('\n'), '10 menit']);
+    tabel(rows, ['Tahap', 'Kegiatan', 'Waktu'], [24, 62, 14]);
+  });
+  p(`Diferensiasi: murid yang sudah cepat paham diberi tugas pengayaan (menganalisis satu sumber tambahan atau menjadi tutor sebaya); murid yang memerlukan bantuan mendapat pendampingan, ringkasan visual, dan video di Ruang Historia.`);
+
+  h2('E. Asesmen Pembelajaran');
+  kv([['Asesmen awal (diagnostik)', `Pertanyaan pemantik lisan dan 3 soal singkat (lampiran 3), atau kuis Bab ${o.id} di Ruang Historia sebelum pembelajaran.`],
+    ['Asesmen proses (formatif)', 'Observasi keaktifan dan kolaborasi dalam diskusi (rubrik lampiran 3), penilaian LKPD, dan kuis interaktif Ruang Historia.'],
+    ['Asesmen akhir (sumatif)', `Soal uraian (lampiran 3) dan/atau kuis Bab ${o.id} di Ruang Historia dengan KKM ${kkm}. Murid yang belum tuntas mengikuti remedial; yang tuntas mendapat pengayaan.`]]);
+
+  B.push({ t: 'ttd', tempat: o.tempat || '…', tgl: fmtTgl(new Date()), kepala: o.kepala || '…', nipKepala: o.nipKepala || '…', guru: o.guru || '…', nipGuru: o.nip || '…' });
+
+  B.push({ t: 'pb' });
+  h1('LAMPIRAN');
+  h2('Lampiran 1. Ringkasan materi');
+  b.bagian.forEach(s => { h3(s.judul); p(kalimat(teksPolos(s.isi), 3)); });
+  if (b.jelajah && b.jelajah.lapisan) { h3(b.jelajah.mode === 'waktu' ? 'Garis waktu' : 'Lapisan zaman'); tabel(b.jelajah.lapisan.map(l => [l.th || '', l.n, l.ket || '']), [b.jelajah.mode === 'waktu' ? 'Waktu' : 'Masa', 'Peristiwa', 'Keterangan'], [16, 30, 54]); }
+
+  h2('Lampiran 2. Lembar Kerja Peserta Didik (LKPD)');
+  kv([['Nama kelompok', ''], ['Anggota', '\n\n'], ['Kelas', '']]);
+  p(`**Petunjuk**: Baca materi Bab ${o.id} di Ruang Historia (pindai atau buka ${url}), diskusikan bersama kelompok, lalu kerjakan tugas berikut.`);
+  if (o.model === 'jigsaw') sub.slice(0, 5).forEach((x, i) => li(`Subtopik ${i + 1}: ${x}. Tuliskan tiga poin penting dan satu tokoh atau peristiwa kuncinya.`, i + 1));
+  else b.esai.forEach((e, i) => li(e.q, i + 1));
+  li(`Buatlah ${PRODUK[o.model] || 'rangkuman'} dari hasil diskusi kelompok.`, (o.model === 'jigsaw' ? Math.min(sub.length, 5) : b.esai.length) + 1);
+  li(`Refleksi: ${cinta[0] ? cinta[0][1] : 'Apa nilai yang dapat kalian teladani dari materi ini?'} Tuliskan pendapat kelompokmu.`, (o.model === 'jigsaw' ? Math.min(sub.length, 5) : b.esai.length) + 2);
+
+  h2('Lampiran 3. Instrumen asesmen');
+  h3('a. Asesmen awal (diagnostik)');
+  mudah.slice(0, 3).forEach((q, i) => li(q.q, i + 1));
+  h3('b. Rubrik observasi diskusi (formatif)');
+  tabel([['Keaktifan', 'Selalu aktif bertanya dan menjawab', 'Sering aktif', 'Kadang-kadang aktif', 'Pasif'], ['Kerja sama', 'Membantu seluruh anggota', 'Bekerja sama dengan baik', 'Kurang bekerja sama', 'Bekerja sendiri'], ['Penggunaan sumber', 'Memakai beberapa sumber dan menyebutkannya', 'Memakai dua sumber', 'Memakai satu sumber', 'Tanpa sumber'], ['Sikap menghargai', 'Selalu menghargai pendapat teman', 'Sering menghargai', 'Kadang-kadang', 'Tidak menghargai']], ['Aspek', '4 (Sangat baik)', '3 (Baik)', '2 (Cukup)', '1 (Perlu bimbingan)'], [18, 22, 20, 20, 20]);
+  p('Nilai = (jumlah skor ÷ 16) × 100.');
+  h3('c. Asesmen akhir: soal uraian dan rubrik');
+  b.esai.forEach((e, i) => { li(e.q, i + 1); tabel(e.rubrik.map(r => { const m = r.match(/^(\d)\s*:\s*(.*)$/); return m ? [m[1], m[2]] : ['', r]; }), ['Skor', 'Kriteria'], [12, 88]); });
+  h3(`d. Soal pilihan ganda (contoh dari bank soal, ${b.soal.length} soal tersedia di Ruang Historia)`);
+  const pg = hots.slice(0, 3).concat(mudah.slice(3, 10)).slice(0, 10);
+  pg.forEach((q, i) => { if (q.s) p(`*${q.s}*`); li(q.q, i + 1); q.o.forEach((x, j) => B.push({ t: 'opsi', x: `${huruf(j)}. ${x}` })); });
+  p('**Kunci jawaban**: ' + pg.map((q, i) => `${i + 1}. ${huruf(q.a)}`).join('; '));
+
+  h2('Lampiran 4. Glosarium');
+  tabel((b.glosarium || []).map(g => [g[0], g[1]]), ['Istilah', 'Arti'], [28, 72]);
+  h2('Lampiran 5. Daftar pustaka');
+  li(`Ruang Historia: aplikasi belajar sejarah interaktif. ${HAK}. ${url}`);
+  li(`Buku teks ${mapel} kelas ${o.kelas} yang digunakan di madrasah.`);
+  li('Wikimedia Commons: sumber foto arsip berlisensi terbuka (keterangan pembuat dan lisensi tercantum di aplikasi).');
+  li('Keputusan Direktur Jenderal Pendidikan Islam Nomor 6077 Tahun 2025 tentang Panduan Kurikulum Berbasis Cinta.');
+  return { blok: B, nama: `Modul Ajar ${mapel} Kelas ${o.kelas} Bab ${o.id} ${b.judul}` };
+}
+
+/* ---- tampilan HTML (pratinjau dan PDF) ---- */
+const runsMd = t => { const out = []; String(t).split(/(\*\*[^*]+\*\*|\*[^*]+\*)/).forEach(s => { if (!s) return; if (/^\*\*.*\*\*$/.test(s)) out.push({ text: s.slice(2, -2), b: true }); else if (/^\*.*\*$/.test(s)) out.push({ text: s.slice(1, -1), i: true }); else out.push({ text: s }); }); return out; };
+const mdHTML = t => runsMd(t).map(r => r.b ? `<b>${esc(r.text)}</b>` : r.i ? `<i>${esc(r.text)}</i>` : esc(r.text)).join('').replace(/\n/g, '<br>');
+function modulHTML(M) {
+  let html = '', ol = null;
+  const tutupList = () => { if (ol) { html += `</${ol}>`; ol = null; } };
+  for (const x of M.blok) {
+    if (x.t !== 'li' && x.t !== 'opsi') tutupList();
+    if (x.t === 'judul') html += `<div class="md-judul"><h1>${esc(x.x)}</h1><p>${esc(x.sub).replace(/\n/g, '<br>')}</p></div>`;
+    else if (x.t === 'h1') html += `<h1 class="md-h1">${esc(x.x)}</h1>`;
+    else if (x.t === 'h2') html += `<h2 class="md-h2">${esc(x.x)}</h2>`;
+    else if (x.t === 'h3') html += `<h3 class="md-h3">${esc(x.x)}</h3>`;
+    else if (x.t === 'p') html += `<p style="${x.al ? 'text-align:' + x.al : ''}">${mdHTML(x.x)}</p>`;
+    else if (x.t === 'li') { const jenis = x.n ? 'ol' : 'ul'; if (ol !== jenis) { tutupList(); html += `<${jenis}>`; ol = jenis; } html += `<li ${x.n ? `value="${x.n}"` : ''}>${mdHTML(x.x)}</li>`; }
+    else if (x.t === 'opsi') html += `<div class="md-opsi">${esc(x.x)}</div>`;
+    else if (x.t === 'tabel') html += `<table class="md-tabel ${x.kv ? 'kv' : ''}">${x.lebar ? `<colgroup>${x.lebar.map(w => `<col style="width:${w}%">`).join('')}</colgroup>` : ''}${x.head ? `<thead><tr>${x.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>` : ''}<tbody>${x.rows.map(r => `<tr>${r.map((c, j) => `<td>${x.kv && j === 0 ? `<b>${esc(c)}</b>` : mdHTML(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+    else if (x.t === 'ttd') html += `<table class="md-ttd"><tr><td>Mengetahui,<br>Kepala Madrasah<br><br><br><br><b>${esc(x.kepala)}</b><br>NIP. ${esc(x.nipKepala)}</td><td>${esc(x.tempat)}, ${esc(x.tgl)}<br>Guru Mata Pelajaran<br><br><br><br><b>${esc(x.guru)}</b><br>NIP. ${esc(x.nipGuru)}</td></tr></table>`;
+    else if (x.t === 'pb') html += '<div class="md-pb"></div>';
+  }
+  tutupList();
+  return html;
+}
+
+/* ---- penulis .docx sederhana (tanpa pustaka tambahan) ---- */
+const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return b => { let c = 0xFFFFFFFF; for (let i = 0; i < b.length; i++) c = t[(c ^ b[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }; })();
+function zipSimpan(berkas) {
+  const enc = new TextEncoder(), bagian = [], pusat = []; let off = 0;
+  const u16 = n => [n & 255, (n >> 8) & 255], u32 = n => [n & 255, (n >> 8) & 255, (n >> 16) & 255, (n >>> 24) & 255];
+  for (const [nama, isi] of berkas) {
+    const nb = enc.encode(nama), data = typeof isi === 'string' ? enc.encode(isi) : isi, crc = CRC(data);
+    const kepala = new Uint8Array([...u32(0x04034b50), ...u16(20), ...u16(0x0800), ...u16(0), ...u16(0), ...u16(0x21), ...u32(crc), ...u32(data.length), ...u32(data.length), ...u16(nb.length), ...u16(0)]);
+    bagian.push(kepala, nb, data);
+    pusat.push(new Uint8Array([...u32(0x02014b50), ...u16(20), ...u16(20), ...u16(0x0800), ...u16(0), ...u16(0), ...u16(0x21), ...u32(crc), ...u32(data.length), ...u32(data.length), ...u16(nb.length), ...u16(0), ...u16(0), ...u16(0), ...u16(0), ...u32(0), ...u32(off)]), nb);
+    off += kepala.length + nb.length + data.length;
+  }
+  const besarPusat = pusat.reduce((a, x) => a + x.length, 0);
+  const akhir = new Uint8Array([...u32(0x06054b50), ...u16(0), ...u16(0), ...u16(berkas.length), ...u16(berkas.length), ...u32(besarPusat), ...u32(off), ...u16(0)]);
+  return new Blob([...bagian, ...pusat, akhir], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+}
+const xe = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+function docxDari(M) {
+  const run = (r, extra = '') => { const parts = r.text.split('\n'); return parts.map((t, i) => `<w:r><w:rPr>${r.b ? '<w:b/>' : ''}${r.i ? '<w:i/>' : ''}${extra}</w:rPr>${i ? '<w:br/>' : ''}<w:t xml:space="preserve">${xe(t)}</w:t></w:r>`).join(''); };
+  const par = (teks, { gaya = '', al = '', ind = 0, gantung = 0, rpr = '', sesudah = null } = {}) => `<w:p><w:pPr>${gaya ? `<w:pStyle w:val="${gaya}"/>` : ''}${sesudah !== null ? `<w:spacing w:after="${sesudah}"/>` : ''}${ind ? `<w:ind w:left="${ind}" w:hanging="${gantung}"/>` : ''}${al ? `<w:jc w:val="${al}"/>` : ''}</w:pPr>${runsMd(teks).map(r => run(r, rpr)).join('')}</w:p>`;
+  const sel = (isi, w, { kepala = false, tebal = false } = {}) => `<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/>${kepala ? '<w:shd w:val="clear" w:color="auto" w:fill="2B3A67"/>' : ''}</w:tcPr>${String(isi).split('\n').map(baris => par(tebal ? `**${baris.replace(/\*\*/g, '')}**` : baris, { rpr: kepala ? '<w:color w:val="FFFFFF"/><w:b/>' : '', sesudah: 40 })).join('') || '<w:p/>'}</w:tc>`;
+  let body = ''; const lebarTotal = 9354;
+  for (const x of M.blok) {
+    if (x.t === 'judul') body += par(x.x, { gaya: 'Title', al: 'center' }) + x.sub.split('\n').map(s => par(s, { al: 'center', rpr: '<w:sz w:val="26"/><w:color w:val="2B3A67"/>' })).join('');
+    else if (x.t === 'h1') body += par(x.x, { gaya: 'Heading1' });
+    else if (x.t === 'h2') body += par(x.x, { gaya: 'Heading2' });
+    else if (x.t === 'h3') body += par(x.x, { gaya: 'Heading3' });
+    else if (x.t === 'p') body += par(x.x, { al: x.al === 'center' ? 'center' : 'both' });
+    else if (x.t === 'li') body += par(`${x.n ? x.n + '.' : '•'}\t${x.x}`, { ind: 425, gantung: 425 });
+    else if (x.t === 'opsi') body += par(x.x, { ind: 851, gantung: 0, sesudah: 20 });
+    else if (x.t === 'pb') body += '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+    else if (x.t === 'tabel' || x.t === 'ttd') {
+      const rows = x.t === 'ttd' ? [[`Mengetahui,\nKepala Madrasah\n\n\n\n**${x.kepala}**\nNIP. ${x.nipKepala}`, `${x.tempat}, ${x.tgl}\nGuru Mata Pelajaran\n\n\n\n**${x.guru}**\nNIP. ${x.nipGuru}`]] : x.rows;
+      const kol = (x.head || rows[0]).length, lebar = (x.lebar || Array(kol).fill(100 / kol)).map(w => Math.round(w / 100 * lebarTotal));
+      const garis = x.t === 'ttd' ? '<w:tblBorders><w:top w:val="nil"/><w:left w:val="nil"/><w:bottom w:val="nil"/><w:right w:val="nil"/><w:insideH w:val="nil"/><w:insideV w:val="nil"/></w:tblBorders>' : '<w:tblBorders><w:top w:val="single" w:sz="4" w:color="BFB6AA"/><w:left w:val="single" w:sz="4" w:color="BFB6AA"/><w:bottom w:val="single" w:sz="4" w:color="BFB6AA"/><w:right w:val="single" w:sz="4" w:color="BFB6AA"/><w:insideH w:val="single" w:sz="4" w:color="BFB6AA"/><w:insideV w:val="single" w:sz="4" w:color="BFB6AA"/></w:tblBorders>';
+      body += `<w:tbl><w:tblPr><w:tblW w:w="${lebarTotal}" w:type="dxa"/>${garis}<w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="40" w:type="dxa"/><w:left w:w="80" w:type="dxa"/><w:bottom w:w="40" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${lebar.map(w => `<w:gridCol w:w="${w}"/>`).join('')}</w:tblGrid>`;
+      if (x.head) body += `<w:tr><w:trPr><w:tblHeader/></w:trPr>${x.head.map((h, j) => sel(h, lebar[j], { kepala: true })).join('')}</w:tr>`;
+      rows.forEach(r => { body += `<w:tr><w:trPr><w:cantSplit/></w:trPr>${r.map((c, j) => sel(c, lebar[j], { tebal: x.kv && j === 0 })).join('')}</w:tr>`; });
+      body += '</w:tbl>' + par('', { sesudah: 60 });
+    }
+  }
+  const doc = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>${body}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1418" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr></w:body></w:document>`;
+  const gaya = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri" w:eastAsia="Calibri"/><w:sz w:val="22"/><w:szCs w:val="22"/><w:lang w:val="id-ID"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="100" w:line="264" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>
+<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style>
+<w:style w:type="paragraph" w:styleId="Title"><w:name w:val="Title"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:after="60"/><w:jc w:val="center"/></w:pPr><w:rPr><w:b/><w:color w:val="2B3A67"/><w:sz w:val="40"/></w:rPr></w:style>
+<w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="240" w:after="120"/><w:jc w:val="center"/><w:outlineLvl w:val="0"/></w:pPr><w:rPr><w:b/><w:color w:val="2B3A67"/><w:sz w:val="30"/></w:rPr></w:style>
+<w:style w:type="paragraph" w:styleId="Heading2"><w:name w:val="heading 2"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="240" w:after="100"/><w:pBdr><w:bottom w:val="single" w:sz="6" w:space="2" w:color="E0B04A"/></w:pBdr><w:outlineLvl w:val="1"/></w:pPr><w:rPr><w:b/><w:color w:val="2B3A67"/><w:sz w:val="26"/></w:rPr></w:style>
+<w:style w:type="paragraph" w:styleId="Heading3"><w:name w:val="heading 3"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="160" w:after="60"/><w:outlineLvl w:val="2"/></w:pPr><w:rPr><w:b/><w:sz w:val="23"/></w:rPr></w:style></w:styles>`;
+  return zipSimpan([
+    ['[Content_Types].xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>'],
+    ['_rels/.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'],
+    ['word/_rels/document.xml.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'],
+    ['word/document.xml', doc], ['word/styles.xml', gaya]
+  ]);
+}
+const unduhBlob = (blob, nama) => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nama; document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500); };
+const namaBerkas = s => s.replace(/[^\w\s.-]/g, '').replace(/\s+/g, ' ').trim();
+
+function halamanModul() {
+  if (!modeGuru()) { location.hash = '#guru'; return; }
+  const o = S.get('modulTerakhir', null); if (!o || !isiBab(o.kid, o.id)) { location.hash = '#guru'; return; }
+  const M = susunModul(o);
+  app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><a class="balik gelap" href="#guru">Panel Guru</a><h1>Modul ajar siap</h1>
+<p>Periksa pratinjau di bawah, lalu unduh. Dokumen Word dapat diedit di Microsoft Word, WPS, atau Google Dokumen.</p>
+<div class="row"><button class="btn" type="button" id="mword">Unduh Word (.docx)</button><button class="btn alt" type="button" id="mpdf">Unduh PDF</button></div>
+<p class="catatan">Untuk PDF: pada jendela cetak, pilih <b>Simpan sebagai PDF</b>.</p></div></section>
+<section class="pad"><div class="wrap"><article class="modul-dok">${modulHTML(M)}</article></div></section>`;
+  document.getElementById('mword').addEventListener('click', () => unduhBlob(docxDari(M), namaBerkas(M.nama) + '.docx'));
+  document.getElementById('mpdf').addEventListener('click', () => { const t = document.title; document.title = namaBerkas(M.nama); document.body.classList.add('cetak-modul'); setTimeout(() => { print(); document.body.classList.remove('cetak-modul'); document.title = t; }, 50); });
+}
+
+async function cetakSlide(kid, id) {
+  const { sl, warna } = await susunSlide(kid, id);
+  const qr = await qrSVG(sl[sl.length - 1].url, 260);
+  let wadah = document.getElementById('cetak-slide'); if (wadah) wadah.remove();
+  wadah = document.createElement('div'); wadah.id = 'cetak-slide'; wadah.style.setProperty('--c', warna);
+  wadah.innerHTML = sl.map((s, i) => `<div class="cs-hal">${slideHTML(s, warna, sl.length, i + 1, qr)}</div>`).join('');
+  document.body.append(wadah);
+  await Promise.all([...wadah.querySelectorAll('img')].map(im => im.complete ? 1 : new Promise(r => { im.onload = im.onerror = r; })));
+  const t = document.title; document.title = namaBerkas(`Ruang Historia - ${cariK(kid).judul} Bab ${id} ${isiBab(kid, id).judul}`);
+  document.body.classList.add('cetak-slide');
+  setTimeout(() => { print(); document.body.classList.remove('cetak-slide'); document.title = t; wadah.remove(); }, 100);
+}
+
+/* ---------- GENERATOR SOAL ULANGAN HARIAN ---------- */
+const LEVEL = { C1: 'Mengingat', C2: 'Memahami', C3: 'Menerapkan', C4: 'Menganalisis', C5: 'Mengevaluasi', C6: 'Mencipta' };
+const RANAH = l => /C[123]/.test(l) ? (l === 'C3' ? 'MOTS' : 'LOTS') : 'HOTS';
+const levelEsai = e => e.l || (/^Rancang|^Buat(lah)?|^Susun(lah)? (sebuah|rencana|usulan)/i.test(e.q) ? 'C6' : /^(Nilai|Bagaimana pendapat|Setujukah|Menurutmu|Apakah .* tepat)/i.test(e.q) ? 'C5' : /^(Jelaskan|Sebutkan|Uraikan) /i.test(e.q) && !/mengapa|kaitkan|bandingkan|hubungan/i.test(e.q) ? 'C2' : 'C4');
+const bankSoal = (kid, ids) => ids.flatMap(id => { const b = isiBab(kid, id); return b ? b.soal.map((q, i) => ({ ...q, l: q.l || 'C1', kid, id, i, bab: b.judul })) : []; });
+const bankEsai = (kid, ids) => ids.flatMap(id => { const b = isiBab(kid, id); return b ? (b.esai || []).map((e, i) => ({ ...e, l: levelEsai(e), kid, id, i, bab: b.judul })) : []; });
+const PRESET = { seimbang: { C1: 4, C2: 4, C3: 4, C4: 3, C5: 3, C6: 2 }, hots: { C1: 2, C2: 2, C3: 3, C4: 5, C5: 4, C6: 4 }, dasar: { C1: 8, C2: 6, C3: 4, C4: 2, C5: 0, C6: 0 } };
+
+function buatUlangan(o) {
+  const pg = bankSoal(o.kid, o.bab), es = bankEsai(o.kid, o.bab);
+  const pilih = [];
+  Object.keys(LEVEL).forEach(l => { const ada = acak(pg.filter(q => q.l === l)); pilih.push(...ada.slice(0, o.jumlah[l] || 0)); });
+  // urutkan dari mudah ke sukar, atau acak
+  const urut = o.acak ? acak(pilih) : pilih;
+  const esaiPilih = o.levelEsai.length ? acak(es.filter(e => o.levelEsai.includes(e.l))).slice(0, o.nEsai) : acak(es).slice(0, o.nEsai);
+  return { ...o, pg: urut.map(q => [q.kid, q.id, q.i]), es: esaiPilih.map(e => [e.kid, e.id, e.i]), dibuat: Date.now() };
+}
+const ambilPG = r => { const b = isiBab(r[0], r[1]), q = b && b.soal[r[2]]; return q ? { ...q, l: q.l || 'C1', bab: b.judul, id: r[1] } : null; };
+const ambilEs = r => { const b = isiBab(r[0], r[1]), e = b && (b.esai || [])[r[2]]; return e ? { ...e, l: levelEsai(e), bab: b.judul, id: r[1] } : null; };
+
+function naskahUlangan(U) {
+  const k = cariK(U.kid), mapel = U.kid === 'ski' ? 'Sejarah Kebudayaan Islam' : 'Sejarah';
+  const pg = U.pg.map(ambilPG).filter(Boolean), es = U.es.map(ambilEs).filter(Boolean);
+  const judulBab = U.bab.map(id => `Bab ${id}. ${isiBab(U.kid, id).judul}`).join('; ');
+  const skorPG = pg.length ? Math.round((U.bobotPG / pg.length) * 100) / 100 : 0, skorEs = es.length ? Math.round(((100 - U.bobotPG) / es.length) * 100) / 100 : 0;
+  const B = []; const p = x => B.push({ t: 'p', x }), li = (x, n) => B.push({ t: 'li', x, n }), h2 = x => B.push({ t: 'h2', x }), h3 = x => B.push({ t: 'h3', x });
+  B.push({ t: 'judul', x: U.judul || 'ULANGAN HARIAN', sub: `${mapel} · ${k.judul}\n${judulBab}` });
+  B.push({ t: 'tabel', kv: true, lebar: [30, 70], rows: [['Madrasah', U.madrasah || '…'], ['Kelas / Semester', `${U.kelas} / ${U.semester}`], ['Waktu', `${U.waktu} menit`], ['Nama', ''], ['No. absen', '']] });
+  h3('Petunjuk');
+  [`Berdoalah sebelum mengerjakan soal.`, pg.length ? `Pilihlah satu jawaban yang paling tepat untuk soal nomor 1–${pg.length}.` : null, es.length ? `Jawablah soal uraian dengan jelas dan runtut.` : null, 'Kerjakan dengan jujur. Kejujuran adalah bagian dari cinta ilmu.'].filter(Boolean).forEach((x, i) => li(x, i + 1));
+  if (pg.length) { h2('A. Pilihan ganda'); pg.forEach((q, i) => { if (q.s) p(`*${q.s}*`); li(q.q, i + 1); q.o.forEach((x, j) => B.push({ t: 'opsi', x: `${huruf(j)}. ${x}` })); }); }
+  if (es.length) { h2(`${pg.length ? 'B' : 'A'}. Uraian`); es.forEach((e, i) => li(e.q, pg.length + i + 1)); }
+  B.push({ t: 'pb' });
+  B.push({ t: 'h1', x: 'KUNCI JAWABAN DAN PEMBAHASAN' });
+  p(`Pedoman penskoran: pilihan ganda ${pg.length} soal × ${skorPG} = ${U.bobotPG}${es.length ? `; uraian ${es.length} soal × ${skorEs} (skor rubrik 1–4 dikonversi: skor ÷ 4 × ${skorEs})` : ''}. Nilai maksimal 100.`);
+  if (pg.length) tabel(B, pg.map((q, i) => [String(i + 1), huruf(q.a), q.l, q.p || '']), ['No', 'Kunci', 'Level', 'Pembahasan'], [7, 9, 9, 75]);
+  es.forEach((e, i) => { h3(`Soal ${pg.length + i + 1} (uraian, ${e.l})`); tabel(B, e.rubrik.map(r => { const m = r.match(/^(\d)\s*:\s*(.*)$/); return m ? [m[1], m[2]] : ['', r]; }), ['Skor', 'Kriteria'], [12, 88]); });
+  B.push({ t: 'pb' });
+  B.push({ t: 'h1', x: 'KISI-KISI SOAL' });
+  const semua = pg.map((q, i) => [String(i + 1), 'PG', `Bab ${q.id}`, indikator(q), q.l + ' ' + LEVEL[q.l], RANAH(q.l)]).concat(es.map((e, i) => [String(pg.length + i + 1), 'Uraian', `Bab ${e.id}`, indikator(e), e.l + ' ' + LEVEL[e.l], RANAH(e.l)]));
+  tabel(B, semua, ['No', 'Bentuk', 'Materi', 'Indikator soal', 'Level kognitif', 'Ranah'], [6, 9, 9, 46, 18, 12]);
+  const hit = {}; [...pg, ...es].forEach(x => hit[x.l] = (hit[x.l] || 0) + 1);
+  p('**Sebaran level**: ' + Object.keys(LEVEL).filter(l => hit[l]).map(l => `${l} = ${hit[l]}`).join(', ') + `. LOTS ${[...pg, ...es].filter(x => RANAH(x.l) === 'LOTS').length}, MOTS ${[...pg, ...es].filter(x => RANAH(x.l) === 'MOTS').length}, HOTS ${[...pg, ...es].filter(x => RANAH(x.l) === 'HOTS').length}.`);
+  return { blok: B, nama: `Ulangan Harian ${mapel} Kelas ${U.kelas} ${U.bab.map(x => 'Bab ' + x).join(' ')}`, pg, es };
+}
+function tabel(B, rows, head, lebar) { B.push({ t: 'tabel', rows, head, lebar }); }
+const KATA_KERJA = { C1: 'menyebutkan', C2: 'menjelaskan', C3: 'menerapkan konsep tentang', C4: 'menganalisis', C5: 'menilai', C6: 'merancang' };
+function indikator(q) {
+  const t = (q.q || '').replace(/…|\.\.\./g, '').replace(/\s+/g, ' ').trim();
+  const pendek = t.length > 110 ? t.slice(0, 107).replace(/\s\S*$/, '') + '…' : t;
+  return `Disajikan ${q.s ? 'stimulus, ' : ''}murid mampu ${KATA_KERJA[q.l] || 'menjelaskan'}: ${pendek.charAt(0).toLowerCase() + pendek.slice(1)}`;
+}
+
+/* format teks untuk disalin ke aplikasi asesmen */
+function teksUlangan(N, gaya) {
+  const out = [];
+  N.pg.forEach((q, i) => {
+    if (gaya === 'aiken') { out.push(`${q.s ? q.s + ' ' : ''}${q.q}`); q.o.forEach((x, j) => out.push(`${huruf(j)}. ${x}`)); out.push(`ANSWER: ${huruf(q.a)}`, ''); return; }
+    out.push(`${i + 1}. ${q.s ? q.s + ' ' : ''}${q.q}`); q.o.forEach((x, j) => out.push(`${huruf(j)}. ${x}`));
+    out.push(`Kunci: ${huruf(q.a)}`); if (gaya === 'lengkap') out.push(`Level: ${q.l} (${LEVEL[q.l]})`, `Pembahasan: ${q.p || '-'}`); out.push('');
+  });
+  if (gaya !== 'aiken' && N.es.length) { out.push('URAIAN', ''); N.es.forEach((e, i) => { out.push(`${N.pg.length + i + 1}. ${e.q}`); if (gaya === 'lengkap') out.push(`Level: ${e.l} (${LEVEL[e.l]})`, 'Rubrik: ' + e.rubrik.join(' | ')); out.push(''); }); }
+  return out.join('\n').trim();
+}
+const csvSel = x => `"${String(x ?? '').replace(/"/g, '""')}"`;
+function csvUlangan(N) {
+  const h = ['No', 'Jenis', 'Stimulus', 'Pertanyaan', 'A', 'B', 'C', 'D', 'E', 'Kunci', 'Level', 'Ranah', 'Bab', 'Pembahasan'];
+  const r = N.pg.map((q, i) => [i + 1, 'PG', q.s || '', q.q, ...q.o, huruf(q.a), q.l, RANAH(q.l), `Bab ${q.id}`, q.p || '']).concat(N.es.map((e, i) => [N.pg.length + i + 1, 'Uraian', '', e.q, '', '', '', '', '', '', e.l, RANAH(e.l), `Bab ${e.id}`, e.rubrik.join(' | ')]));
+  return '﻿' + [h, ...r].map(x => x.map(csvSel).join(',')).join('\r\n');
+}
+
+function halamanSoal() {
+  if (!modeGuru()) { location.hash = '#guru'; return; }
+  const U = S.get('ulanganTerakhir', null); if (!U || !cariK(U.kid)) { location.hash = '#guru'; return; }
+  const N = naskahUlangan(U);
+  app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><a class="balik gelap" href="#guru">Panel Guru</a><h1>Soal ulangan siap</h1>
+<p><b>${N.pg.length}</b> soal pilihan ganda dan <b>${N.es.length}</b> soal uraian. Periksa naskahnya di bawah sebelum dipakai.</p>
+<div class="box"><h2 style="margin-top:0">Masukkan ke ASESMENKU</h2>
+<label><b>Format teks</b><select id="sg" class="isian"><option value="ringkas">Bernomor + kunci (umum)</option><option value="lengkap">Bernomor + kunci + level + pembahasan</option><option value="aiken">Aiken (ANSWER: B), untuk impor kuis</option></select></label>
+<textarea id="st" class="isian teks-soal" rows="10" readonly></textarea>
+<div class="row"><button class="btn" type="button" id="ssalin">Salin semua soal</button><button class="btn alt" type="button" id="scsv">Unduh Excel (.csv)</button></div>
+<p class="catatan">File .csv dapat dibuka di Excel atau Google Sheets. Kolomnya: No, Jenis, Stimulus, Pertanyaan, A–E, Kunci, Level, Ranah, Bab, Pembahasan.</p></div>
+<div class="box"><h2 style="margin-top:0">Naskah cetak</h2><p>Berisi naskah soal, kunci jawaban dan pembahasan, pedoman penskoran, serta kisi-kisi.</p>
+<div class="row"><button class="btn" type="button" id="sword">Unduh Word (.docx)</button><button class="btn alt" type="button" id="spdf">Unduh PDF</button><button class="btn alt" type="button" id="sulang">Acak ulang soal</button></div>
+<p class="catatan">Untuk PDF: pada jendela cetak, pilih <b>Simpan sebagai PDF</b>.</p></div></div></section>
+<section class="pad"><div class="wrap"><article class="modul-dok">${modulHTML(N)}</article></div></section>`;
+  const sg = document.getElementById('sg'), st = document.getElementById('st');
+  sg.value = S.get('gayaSoal', 'ringkas'); const isi = () => { st.value = teksUlangan(N, sg.value); S.set('gayaSoal', sg.value); }; sg.onchange = isi; isi();
+  document.getElementById('ssalin').onclick = async e => { try { await navigator.clipboard.writeText(st.value); e.target.textContent = 'Tersalin. Tempel di ASESMENKU'; } catch { st.select(); document.execCommand('copy'); e.target.textContent = 'Tersalin'; } };
+  document.getElementById('scsv').onclick = () => unduhBlob(new Blob([csvUlangan(N)], { type: 'text/csv;charset=utf-8' }), namaBerkas(N.nama) + '.csv');
+  document.getElementById('sword').onclick = () => unduhBlob(docxDari(N), namaBerkas(N.nama) + '.docx');
+  document.getElementById('spdf').onclick = () => { const t = document.title; document.title = namaBerkas(N.nama); document.body.classList.add('cetak-modul'); setTimeout(() => { print(); document.body.classList.remove('cetak-modul'); document.title = t; }, 50); };
+  document.getElementById('sulang').onclick = () => { S.set('ulanganTerakhir', buatUlangan(U)); halamanSoal(); };
+}
+
+const tahunAjar = () => { const d = new Date(), y = d.getFullYear(); return d.getMonth() >= 6 ? `${y}/${y + 1}` : `${y - 1}/${y}`; };
+const idGuru = () => ({ madrasah: 'MAN 1 Belitung', guru: 'Eki Ripan J.R. Tanjung, S.Pd., M.Pd., Gr.', nip: '', kepala: '', nipKepala: '', tempat: 'Tanjungpandan', tahun: tahunAjar(), menitJp: '45', ...S.get('idGuru', {}) });
+function pasangModulForm() {
+  const mr = document.getElementById('mr'), mb = document.getElementById('mb'), mm = document.getElementById('mm'), al = document.getElementById('malasan');
+  const isiModel = () => { const saran = MODEL_BAB[`${mr.value}-${mb.value}`] || 'discovery'; mm.innerHTML = Object.entries(MODEL).map(([k, m]) => `<option value="${k}" ${k === saran ? 'selected' : ''}>${esc(m.nama)}${k === saran ? ' (disarankan)' : ''}</option>`).join(''); alasan(); };
+  const alasan = () => { al.textContent = `Model ini cocok karena ${MODEL[mm.value].alasan}`; };
+  const isiBabM = () => { mb.innerHTML = tersedia(cariK(mr.value)).map(d => `<option value="${d.id}">Bab ${d.id}. ${esc(d.judul)}</option>`).join(''); isiModel(); };
+  mr.onchange = isiBabM; mb.onchange = isiModel; mm.onchange = alasan; isiBabM();
+  document.getElementById('mbuat').onclick = () => {
+    const idg = {}; app.querySelectorAll('[data-id]').forEach(x => idg[x.dataset.id] = x.value.trim()); S.set('idGuru', idg);
+    S.set('modulTerakhir', { kid: mr.value, id: +mb.value, model: mm.value, kelas: document.getElementById('mk').value, semester: document.getElementById('ms').value, pertemuan: +document.getElementById('mp').value, jp: +document.getElementById('mj').value || 2, ...idg, menitJp: +idg.menitJp || 45 });
+    location.hash = '#guru-modul';
+  };
+}
+function pasangSoalForm() {
+  const ur = document.getElementById('ur'), ub = document.getElementById('ub'), ul = document.getElementById('ul'), info = document.getElementById('uinfo');
+  const babDipilih = () => [...ub.querySelectorAll('input:checked')].map(x => +x.value);
+  const hitung = () => {
+    const bank = bankSoal(ur.value, babDipilih()), ada = {}; bank.forEach(q => ada[q.l] = (ada[q.l] || 0) + 1);
+    ul.querySelectorAll('input').forEach(x => { const n = ada[x.dataset.l] || 0; x.max = n; x.closest('label').querySelector('small').textContent = `tersedia ${n}`; if (+x.value > n) x.value = n; });
+    const tot = [...ul.querySelectorAll('input')].reduce((s, x) => s + (+x.value || 0), 0), es = bankEsai(ur.value, babDipilih()).length;
+    info.textContent = babDipilih().length ? `Total ${tot} soal pilihan ganda. Bank soal: ${bank.length} pilihan ganda, ${es} uraian.` : 'Pilih minimal satu bab.';
+  };
+  const isiBabU = () => { ub.innerHTML = tersedia(cariK(ur.value)).map((d, i) => `<label class="cek"><input type="checkbox" value="${d.id}" ${i === 0 ? 'checked' : ''}> Bab ${d.id}. ${esc(d.judul)}</label>`).join(''); ub.onchange = hitung; hitung(); };
+  ul.innerHTML = Object.entries(LEVEL).map(([l, n]) => `<label><b>${l}</b> <span>${n}</span><input class="isian" type="number" min="0" data-l="${l}" value="${PRESET.seimbang[l]}"><small></small></label>`).join('');
+  ul.oninput = hitung;
+  app.querySelectorAll('[data-preset]').forEach(b => b.onclick = () => { const P = PRESET[b.dataset.preset]; ul.querySelectorAll('input').forEach(x => x.value = P[x.dataset.l]); hitung(); });
+  ur.onchange = isiBabU; isiBabU();
+  document.getElementById('ubuat').onclick = () => {
+    const bab = babDipilih(); if (!bab.length) { info.textContent = 'Pilih minimal satu bab.'; return; }
+    const jumlah = {}; ul.querySelectorAll('input').forEach(x => jumlah[x.dataset.l] = Math.min(+x.value || 0, +x.max));
+    const idg = idGuru(), uel = document.getElementById('uel').value;
+    const U = buatUlangan({ kid: ur.value, bab, jumlah, nEsai: +document.getElementById('ue').value || 0, levelEsai: uel ? uel.split(',') : [], acak: document.getElementById('ua').checked, waktu: +document.getElementById('uw').value || 90, bobotPG: Math.min(100, Math.max(0, +document.getElementById('ubb').value || 70)), madrasah: idg.madrasah, kelas: document.getElementById('uk').value, semester: document.getElementById('us').value, judul: document.getElementById('uj').value.trim() || 'ULANGAN HARIAN' });
+    if (!U.es.length) U.bobotPG = 100; if (!U.pg.length) U.bobotPG = 0;
+    S.set('ulanganTerakhir', U); location.hash = '#guru-soal';
+  };
+}
+
 /* ---------- router ---------- */
 function rute() {
   clearInterval(jam);
@@ -833,6 +1259,8 @@ function rute() {
   else if (h === 'tentang') tentang();
   else if (h === 'logo') filosofi();
   else if (h === 'guru') panelGuru();
+  else if (h === 'guru-modul') halamanModul();
+  else if (h === 'guru-soal') halamanSoal();
   else beranda();
   window.scrollTo(0, 0);
 }

@@ -117,6 +117,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang wartawan kini bebas menerbitkan berita tanpa takut izin terbitnya dicabut. Kebebasan ini merupakan hasil langsung dari…", o: ["Reformasi 1998", "Dekret Presiden 1959", "Supersemar", "Pemilu 1955", "KMB"], a: 0, l: "C3", p: "Pada awal Reformasi, kebebasan pers dibuka dan pencabutan izin terbit (SIUPP) dihapus." },
+    { q: "OSIS ingin menjalankan agenda Reformasi \"pemberantasan KKN\" di lingkungan madrasah. Program yang paling tepat adalah…", o: ["tidak perlu program apa pun", "kampanye kantin kejujuran, laporan keuangan OSIS yang terbuka, dan pemilihan pengurus yang jujur", "memilih pengurus dari teman dekat saja", "merahasiakan dana kegiatan", "memberi hadiah agar terpilih"], a: 1, l: "C6", p: "Nilai antikorupsi dapat diterapkan melalui keterbukaan dan kejujuran sehari-hari." },
+    { q: "Kamu ingin membuat kampanye \"Bijak Bermedia Sosial\" sebagai warga Reformasi. Rancangan yang paling baik adalah…", o: ["seri unggahan tentang cara cek fakta (tabayun), etika berkomentar, dan contoh hoaks sejarah yang diluruskan", "menyebarkan berita tanpa memeriksa", "membuat akun palsu", "mengunggah ujaran kebencian", "menghapus semua media sosial"], a: 0, l: "C6", p: "Kebebasan berpendapat perlu disertai tanggung jawab dan tabayun." },
     { q: "Pemilu pertama yang memilih presiden dan wakil presiden secara langsung oleh rakyat berlangsung pada tahun…", o: ["1999", "2004", "2009", "2014", "2019"], a: 1, l: "C1", p: "Pemilu 2004 menjadi pemilihan presiden langsung pertama." },
     { q: "Pemilu serentak pertama yang memilih presiden, DPR, DPD, dan DPRD pada hari yang sama berlangsung pada…", o: ["2004", "2009", "2014", "2019", "2024"], a: 3, l: "C1", p: "Pemilu 2019 adalah pemilu serentak pertama." },
     { q: "Lembaga yang bertugas mengawasi jalannya pemilu adalah…", o: ["KPU", "Bawaslu", "KPK", "Komisi Yudisial", "DPD"], a: 1, l: "C1", p: "KPU menyelenggarakan, Bawaslu mengawasi, dan MK memutus sengketa hasil pemilu." },
@@ -150,7 +153,9 @@ TAMBAH_BAB({
     { q: "Bandingkan tata negara Indonesia sebelum dan sesudah amandemen UUD 1945 dalam tiga aspek.",
       rubrik: ["4: tiga aspek dibandingkan dengan tepat (misalnya masa jabatan, cara pemilihan presiden, lembaga negara)", "3: dua aspek", "2: satu aspek", "1: jawaban tidak relevan"] },
     { q: "Hoaks menjadi tantangan besar di era Reformasi. Jelaskan langkah-langkah tabayun yang dapat kamu lakukan ketika menerima berita di media sosial.",
-      rubrik: ["4: langkah runtut (cek sumber, bandingkan dengan media terpercaya, periksa tanggal, tidak membagikan bila ragu) dikaitkan dengan QS Al-Hujurat: 6", "3: langkah tepat tanpa kaitan nilai", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: langkah runtut (cek sumber, bandingkan dengan media terpercaya, periksa tanggal, tidak membagikan bila ragu) dikaitkan dengan QS Al-Hujurat: 6", "3: langkah tepat tanpa kaitan nilai", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah \"Rapor Reformasi\": nilai keberhasilan enam agenda Reformasi menurut pendapatmu (skala 1–5), beri alasan dan bukti untuk setiap agenda, lalu usulkan satu tindakan nyata pelajar untuk agenda yang nilainya paling rendah.",
+      rubrik: ["4: enam agenda dinilai dengan alasan dan bukti tepat, usulan tindakan nyata dan logis", "3: penilaian lengkap tetapi bukti kurang", "2: hanya sebagian agenda atau alasan lemah", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

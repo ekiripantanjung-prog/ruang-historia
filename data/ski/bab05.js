@@ -106,6 +106,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang panglima menyeberangi selat dari Afrika Utara ke Spanyol pada 711, dan nama gunung tempat ia mendarat masih dipakai hingga kini. Tokoh itu adalah…", o: ["Musa bin Nushair", "Shalahuddin Al-Ayyubi", "Abdurrahman an-Nashir", "Thariq bin Ziyad", "Ibnu Rusyd"], a: 3, l: "C3", p: "Thariq bin Ziyad mendarat di Jabal Thariq (Gibraltar) pada 711." },
+    { q: "Kamu membuat pameran virtual \"Andalusia, Rumah Ilmu dan Kerukunan\". Rancangan yang paling tepat adalah…", o: ["foto pantai Spanyol", "daftar tahun saja", "ruang arsitektur (Masjid Cordoba, Alhambra), ruang ilmuwan (Ibnu Rusyd, Az-Zahrawi, Ibnu Firnas), ruang kerukunan antarumat, dan ruang sebab keruntuhan", "foto klub sepak bola", "peta modern"], a: 2, l: "C6", p: "Pameran yang lengkap memuat kemajuan, kerukunan, dan pelajaran keruntuhan." },
+    { q: "Untuk mengambil pelajaran dari runtuhnya Andalusia, kegiatan yang paling tepat adalah…", o: ["menyalahkan pihak lain saja", "menonton film fiksi", "menghafal nama raja", "diskusi sebab keruntuhan (perpecahan Muluk ath-Thawaif, lemahnya persatuan) lalu menyusun komitmen menjaga persatuan di kelas", "melewatkan materi"], a: 3, l: "C6", p: "Sejarah keruntuhan menjadi bahan refleksi untuk menjaga persatuan." },
     { q: "Kota di Spanyol yang menjadi pusat penerjemahan karya ilmuwan Muslim ke bahasa Latin setelah 1085 adalah…", o: ["Granada", "Toledo", "Cordoba", "Sevilla", "Madrid"], a: 1, l: "C1", p: "Di Toledo karya-karya berbahasa Arab diterjemahkan ke bahasa Latin." },
     { q: "Pabrik kertas pertama di Eropa berdiri di…", o: ["Paris", "Xàtiva, Andalusia", "Roma", "London", "Venesia"], a: 1, l: "C1", p: "Pabrik kertas di Xàtiva berdiri sekitar 1150." },
     { q: "Umat Islam Spanyol yang dipaksa dibaptis setelah jatuhnya Granada disebut…", o: ["Mozarab", "Morisco", "Mudejar", "Mawali", "Muwalladun"], a: 1, l: "C1", p: "Morisco akhirnya diusir dari Spanyol pada 1609–1614." },
@@ -138,7 +141,9 @@ TAMBAH_BAB({
     { q: "Bagaimana Andalusia menjadi jembatan ilmu antara dunia Islam dan Eropa?",
       rubrik: ["4: menjelaskan penerjemahan di Toledo, tokoh seperti Ibnu Rusyd, dan dampaknya pada Renaisans", "3: menjelaskan sebagian", "2: jawaban umum", "1: jawaban tidak relevan"] },
     { q: "Jelaskan sebab-sebab runtuhnya Islam di Andalusia dan pelajaran yang dapat diambil bangsa Indonesia.",
-      rubrik: ["4: minimal tiga sebab dan pelajaran yang relevan", "3: dua sebab dan pelajaran", "2: sebab tanpa pelajaran", "1: jawaban tidak relevan"] }
+      rubrik: ["4: minimal tiga sebab dan pelajaran yang relevan", "3: dua sebab dan pelajaran", "2: sebab tanpa pelajaran", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah komik pendek (4–6 panel) tentang perjalanan Islam di Andalusia dari 711 hingga 1492. Setiap panel memuat satu fakta yang benar, dan panel terakhir berisi pelajaran untuk umat sekarang.",
+      rubrik: ["4: panel runtut, fakta tepat, pelajaran bermakna", "3: runtut dengan sedikit kekeliruan", "2: urutan atau fakta keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

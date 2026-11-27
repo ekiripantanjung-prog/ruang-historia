@@ -104,6 +104,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang pelaut berlayar terus ke barat dari Spanyol dan kapalnya kembali ke Spanyol dari arah timur. Peristiwa ini membuktikan…", o: ["bumi datar", "laut tidak berujung", "matahari mengelilingi bumi", "benua tidak ada", "bumi bulat"], a: 4, l: "C3", p: "Pelayaran keliling dunia ekspedisi Magellan-Elcano (1519–1522) membuktikan bumi bulat." },
+    { q: "Kamu membuat peta interaktif tentang Perjanjian Tordesillas dan Saragosa. Rancangan yang paling tepat adalah…", o: ["satu garis tanpa keterangan", "garis Tordesillas (1494) di Samudra Atlantik dan garis Saragosa (1529) di timur Maluku, dengan wilayah Portugis dan Spanyol diberi warna dan keterangan sengketa Maluku", "peta jalan raya", "peta Belanda saja", "foto kapal"], a: 1, l: "C6", p: "Peta yang tepat menunjukkan kedua garis pembagian dan alasan perjanjian kedua dibuat." },
+    { q: "Untuk menjelaskan faktor pendorong penjelajahan samudra, media yang paling tepat adalah…", o: ["bagan sebab: jatuhnya Konstantinopel, semangat 3G, Renaisans, kompas dan kapal karavel, serta cerita Marco Polo, menuju akibatnya", "daftar nama kapal", "foto rempah saja", "peta modern", "lagu"], a: 0, l: "C6", p: "Bagan sebab-akibat merangkum faktor pendorong secara sistematis." },
     { q: "Ilmuwan yang merumuskan hukum gravitasi dalam buku Principia (1687) adalah…", o: ["Galileo Galilei", "Johannes Kepler", "Isaac Newton", "Nicolaus Copernicus", "Francis Bacon"], a: 2, l: "C1", p: "Newton menyatukan hukum gerak di bumi dan di langit." },
     { q: "Teori heliosentris menyatakan bahwa…", o: ["bumi adalah pusat alam semesta", "bumi dan planet-planet mengelilingi matahari", "matahari mengelilingi bumi", "bumi itu datar", "bintang mengelilingi bulan"], a: 1, l: "C1", p: "Teori ini dikemukakan Copernicus pada 1543." },
     { q: "Ilmuwan yang diadili Gereja pada 1633 karena mendukung teori heliosentris adalah…", o: ["Newton", "Galileo Galilei", "Kepler", "Bacon", "Leonardo da Vinci"], a: 1, l: "C1", p: "Galileo mendukung heliosentris berdasarkan pengamatan teleskop." },
@@ -136,7 +139,9 @@ TAMBAH_BAB({
     { q: "Penjelajahan samudra membawa kemajuan sekaligus penderitaan. Jelaskan masing-masing dua contoh.",
       rubrik: ["4: dua contoh kemajuan dan dua contoh penderitaan tepat", "3: contoh kurang lengkap", "2: hanya satu sisi", "1: jawaban tidak relevan"] },
     { q: "Bagaimana mesin cetak mengubah cara manusia menyebarkan ilmu? Bandingkan dengan peran internet pada masa kini.",
-      rubrik: ["4: dampak mesin cetak dijelaskan dan dibandingkan dengan internet secara kritis", "3: dampak dijelaskan dengan perbandingan sederhana", "2: hanya satu sisi", "1: jawaban tidak relevan"] }
+      rubrik: ["4: dampak mesin cetak dijelaskan dan dibandingkan dengan internet secara kritis", "3: dampak dijelaskan dengan perbandingan sederhana", "2: hanya satu sisi", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah komik strip (4–6 panel) tentang perjalanan Eropa dari Abad Kegelapan ke Renaisans hingga penjelajahan samudra. Setiap panel memuat satu fakta sejarah yang benar.",
+      rubrik: ["4: panel runtut, fakta tepat, dan hubungan antarperistiwa jelas", "3: panel runtut dengan sedikit kekeliruan", "2: urutan atau fakta banyak keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

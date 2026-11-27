@@ -109,6 +109,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Di sebuah desa, masjid tua memiliki atap tumpang bersusun tiga dan menara mirip candi. Bangunan ini merupakan contoh…", o: ["kolonialisme", "akulturasi budaya Islam dan budaya lokal", "Renaisans", "pengaruh Eropa", "budaya praaksara murni"], a: 1, l: "C3", p: "Atap tumpang dan menara bergaya candi (misalnya Masjid Menara Kudus) adalah wujud akulturasi." },
+    { q: "Kamu membuat peta jejak Islam di daerahmu. Rancangan yang paling bermakna adalah…", o: ["peta mal", "peta jalan tol", "peta masjid tua, makam ulama, pesantren, dan tradisi Islam setempat, disertai foto, tahun, dan wawancara tokoh masyarakat", "daftar nama toko", "foto pemandangan"], a: 2, l: "C6", p: "Peta lokal menghubungkan sejarah Islam Nusantara dengan lingkungan siswa." },
+    { q: "Untuk meneladani cara Wali Songo berdakwah, kegiatan OSIS yang paling tepat adalah…", o: ["dakwah dengan cara memaksa", "festival seni Islami (hadrah, puisi, video kreatif) yang mengajak kebaikan dengan santun dan menghargai budaya", "melarang semua kesenian", "kegiatan tanpa pesan", "lomba saling mengejek"], a: 1, l: "C6", p: "Wali Songo berdakwah dengan damai melalui budaya." },
     { q: "Kementerian Agama Republik Indonesia berdiri pada…", o: ["17 Agustus 1945", "3 Januari 1946", "22 Oktober 1945", "1 Juni 1945", "26 Juli 1975"], a: 1, l: "C1", p: "Tanggal 3 Januari diperingati sebagai Hari Amal Bakti Kementerian Agama." },
     { q: "Bank syariah pertama di Indonesia adalah…", o: ["Bank Syariah Indonesia", "Bank Muamalat", "Bank Mandiri Syariah", "BRI Syariah", "Bank Indonesia"], a: 1, l: "C1", p: "Bank Muamalat berdiri pada 1991." },
     { q: "Lembaga yang dibentuk pada 1975 sebagai wadah musyawarah para ulama Indonesia adalah…", o: ["Kementerian Agama", "Majelis Ulama Indonesia", "Nahdlatul Ulama", "Dewan Masjid Indonesia", "BAZNAS"], a: 1, l: "C1", p: "MUI dibentuk pada 26 Juli 1975." },
@@ -141,7 +144,9 @@ TAMBAH_BAB({
     { q: "Jelaskan apa yang dimaksud jaringan ulama Nusantara dan Timur Tengah, serta pengaruhnya terhadap pendidikan Islam di Indonesia.",
       rubrik: ["4: pengertian, contoh tokoh, dan pengaruh (pesantren, organisasi) dijelaskan", "3: pengertian dan contoh tanpa pengaruh", "2: jawaban umum", "1: jawaban tidak relevan"] },
     { q: "Mengapa sikap moderat (wasathiyah) penting bagi umat Islam di Indonesia yang beragam? Berikan contoh sikap moderat dalam kehidupan pelajar.",
-      rubrik: ["4: pengertian, dalil (QS Al-Baqarah: 143), alasan, dan contoh nyata", "3: alasan dan contoh tanpa dalil", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: pengertian, dalil (QS Al-Baqarah: 143), alasan, dan contoh nyata", "3: alasan dan contoh tanpa dalil", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah proyek \"Jejak Islam di Daerahku\": pilih satu peninggalan (masjid, makam, naskah, atau tradisi), tuliskan pertanyaan penelitian, cara mengumpulkan data, bentuk produk, dan nilai Panca Cinta yang ingin disampaikan.",
+      rubrik: ["4: proyek lengkap, logis, berbasis sumber, dan nilai jelas", "3: lengkap dengan sedikit kekurangan", "2: kurang lengkap", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

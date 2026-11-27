@@ -111,6 +111,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Sebuah negara menolak bergabung dengan Blok Barat maupun Blok Timur, tetapi tetap aktif menjaga perdamaian dunia. Sikap ini sesuai dengan…", o: ["Pakta Warsawa", "NATO", "Doktrin Truman", "Marshall Plan", "politik bebas aktif dan Gerakan Non-Blok"], a: 4, l: "C3", p: "Indonesia menerapkan politik luar negeri bebas aktif dan ikut memprakarsai Gerakan Non-Blok." },
+    { q: "Kelasmu membuat simulasi Konferensi Asia Afrika 1955. Rancangan yang paling tepat adalah…", o: ["siswa menonton film bebas", "kelompok mewakili negara peserta, membahas masalah penjajahan dan perdamaian, lalu merumuskan \"Dasasila\" versi kelas", "guru membacakan buku saja", "lomba makan", "siswa memilih Blok Barat atau Timur"], a: 1, l: "C6", p: "Simulasi menghidupkan semangat solidaritas dan perdamaian KAA." },
+    { q: "Untuk menjelaskan perbedaan Blok Barat dan Blok Timur, media yang paling efektif adalah…", o: ["foto satu tokoh", "daftar warna bendera", "lagu", "tabel: ideologi, pemimpin, pakta militer, sistem ekonomi, dan contoh konflik (Korea, Vietnam, Kuba)", "peta jalan"], a: 3, l: "C6", p: "Tabel perbandingan memperjelas dua blok yang bersaing." },
     { q: "Perang Korea (1950–1953) berakhir dengan…", o: ["bersatunya Korea", "gencatan senjata; Korea tetap terbelah di sekitar garis lintang 38°", "kemenangan mutlak Korea Utara", "Korea dijajah Jepang kembali", "Korea bergabung dengan Tiongkok"], a: 1, l: "C2", p: "Sampai kini Korea Utara dan Korea Selatan masih terpisah." },
     { q: "Perang Vietnam berakhir pada 1975 dengan…", o: ["kemenangan Vietnam Selatan", "jatuhnya Saigon dan bersatunya Vietnam", "perjanjian damai dengan Prancis", "Vietnam terbelah dua", "masuknya Vietnam ke NATO"], a: 1, l: "C1", p: "Saigon jatuh pada 30 April 1975 dan kini bernama Kota Ho Chi Minh." },
     { q: "Perang ketika dua negara adidaya tidak berperang langsung tetapi mendukung pihak lain yang berperang disebut…", o: ["perang total", "proxy war", "perang gerilya", "perang dingin", "perang saudara"], a: 1, l: "C2", p: "Perang Korea dan Vietnam adalah contoh proxy war." },
@@ -143,7 +146,9 @@ TAMBAH_BAB({
     { q: "Jelaskan makna politik luar negeri bebas aktif dan berikan dua contoh pelaksanaannya.",
       rubrik: ["4: makna bebas dan aktif serta dua contoh tepat", "3: makna tanpa contoh lengkap", "2: hanya contoh", "1: jawaban tidak relevan"] },
     { q: "Mengapa banyak bangsa Asia dan Afrika dapat merdeka setelah Perang Dunia II?",
-      rubrik: ["4: menyebut melemahnya penjajah, semangat nasionalisme, dukungan PBB/KAA, dan contoh negara", "3: dua sebab dengan contoh", "2: satu sebab", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menyebut melemahnya penjajah, semangat nasionalisme, dukungan PBB/KAA, dan contoh negara", "3: dua sebab dengan contoh", "2: satu sebab", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah peta pikiran tentang peran Indonesia pada masa Perang Dingin (KAA, Gerakan Non-Blok, politik bebas aktif). Tuliskan fakta, tokoh, dan maknanya bagi perdamaian dunia.",
+      rubrik: ["4: lengkap, fakta dan tokoh tepat, makna jelas", "3: lengkap dengan sedikit kekeliruan", "2: kurang lengkap", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

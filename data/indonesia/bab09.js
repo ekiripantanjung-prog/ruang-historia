@@ -125,6 +125,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Dalam satu masa, kabinet silih berganti karena mosi tidak percaya dari parlemen dan partai-partai sulit bersepakat. Keadaan itu paling tepat menggambarkan masa…", o: ["Demokrasi Terpimpin", "Demokrasi Liberal (1950–1959)", "Orde Baru", "Reformasi", "pendudukan Jepang"], a: 1, l: "C3", p: "Pada masa Demokrasi Liberal terjadi tujuh kali pergantian kabinet karena sistem parlementer dan banyaknya partai." },
+    { q: "Kamu diminta membuat simulasi sidang kelas untuk memahami Pemilu 1955. Rancangan simulasi yang paling tepat adalah…", o: ["guru memilih sendiri ketua kelas", "lomba pidato tanpa pemilihan", "pemilihan dengan suara terbuka dan paksaan", "membaca sejarah tanpa kegiatan", "membentuk partai kelas dengan program, kampanye santun, pemungutan suara rahasia, penghitungan terbuka, lalu refleksi tentang pemilu yang jujur"], a: 4, l: "C6", p: "Simulasi menghidupkan asas pemilu yang jujur, rahasia, dan bebas seperti Pemilu 1955." },
+    { q: "Untuk menjelaskan perbedaan Demokrasi Liberal dan Demokrasi Terpimpin, media yang paling efektif adalah…", o: ["tabel perbandingan sistem pemerintahan, peran presiden, partai, kebijakan ekonomi, dan peristiwa penting di kedua masa", "satu kalimat tanpa contoh", "gambar bendera saja", "foto satu tokoh", "lagu kebangsaan"], a: 0, l: "C6", p: "Tabel perbandingan membantu melihat perbedaan secara sistematis." },
     { q: "Kebijakan pemotongan uang kertas menjadi dua bagian pada 1950 dikenal sebagai…", o: ["Sistem Ali-Baba", "Gunting Syafruddin", "Gerakan Benteng", "Dekon", "Sanering"], a: 1, l: "C1", p: "Gunting Syafruddin, dari nama Menteri Keuangan Sjafruddin Prawiranegara, bertujuan menekan inflasi." },
     { q: "De Javasche Bank dinasionalisasi dan kemudian menjadi…", o: ["Bank Rakyat Indonesia", "Bank Indonesia", "Bank Negara Indonesia", "Bank Mandiri", "Bank Dunia"], a: 1, l: "C1", p: "Bank Indonesia menjadi bank sentral milik bangsa sendiri." },
     { q: "Program Gerakan Benteng kurang berhasil terutama karena…", o: ["dilarang Belanda", "banyak pengusaha pribumi belum berpengalaman dan kredit disalahgunakan", "tidak ada pengusaha pribumi", "dibatalkan Soekarno", "harga minyak turun"], a: 1, l: "C2", p: "Kurangnya pengalaman dan penyalahgunaan kredit membuat program ini gagal." },
@@ -159,7 +162,9 @@ TAMBAH_BAB({
     { q: "Mengapa Deklarasi Djuanda penting bagi Indonesia sebagai negara kepulauan? Hubungkan dengan kehidupan masa kini.",
       rubrik: ["4: menjelaskan isi, perubahan status laut, pengakuan internasional, dan kaitan masa kini (kedaulatan laut, perikanan)", "3: menjelaskan isi dan pentingnya tanpa kaitan masa kini", "2: hanya menyebut isi", "1: jawaban tidak relevan"] },
     { q: "Bagaimana seharusnya pelajar menyikapi peristiwa sejarah yang masih diperdebatkan, seperti peristiwa 1965 dan Supersemar?",
-      rubrik: ["4: menjelaskan pentingnya sumber, membedakan fakta dan pendapat, berpikir kritis, dan menghormati korban", "3: menyebut sikap kritis tanpa penjelasan lengkap", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: menjelaskan pentingnya sumber, membedakan fakta dan pendapat, berpikir kritis, dan menghormati korban", "3: menyebut sikap kritis tanpa penjelasan lengkap", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah poster \"Belajar dari 1950–1965\" yang memuat tiga masalah utama masa Demokrasi Liberal dan Terpimpin serta tiga usulan sikap warga negara masa kini agar masalah serupa tidak terulang.",
+      rubrik: ["4: tiga masalah tepat dan tiga usulan logis yang terkait langsung", "3: masalah tepat tetapi usulan kurang terkait", "2: masalah atau usulan kurang dari tiga atau keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

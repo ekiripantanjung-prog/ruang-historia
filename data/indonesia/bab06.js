@@ -122,6 +122,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Sebuah organisasi berdiri tahun 1912, menggunakan nama Hindia sebagai tanah air, dan terang-terangan menuntut kemerdekaan. Organisasi yang dimaksud adalah…", o: ["Budi Utomo", "Muhammadiyah", "Taman Siswa", "Indische Partij", "Jong Java"], a: 3, l: "C3", p: "Indische Partij (Tiga Serangkai, 1912) adalah organisasi politik pertama yang menuntut kemerdekaan." },
+    { q: "Kelasmu akan memperingati Sumpah Pemuda dengan cara yang bermakna. Rancangan kegiatan yang paling tepat adalah…", o: ["membuat \"kongres pemuda\" mini: perwakilan tiap kelompok membawa budaya daerah, berdiskusi tentang persatuan, lalu merumuskan ikrar pelajar masa kini", "lomba makan kerupuk saja", "libur sekolah", "menonton film tanpa diskusi", "membaca teks Sumpah Pemuda sendiri-sendiri"], a: 0, l: "C6", p: "Kegiatan menghidupkan kembali makna persatuan dalam keberagaman dan menghasilkan karya baru." },
+    { q: "Kamu diminta membuat podcast tentang peran pers dan bahasa dalam pergerakan. Kerangka isi yang paling tepat adalah…", o: ["membahas gosip artis", "menjelaskan surat kabar pergerakan, tulisan \"Als ik eens Nederlander was\", peran bahasa Indonesia sebagai pemersatu, lalu kaitannya dengan literasi digital", "membaca iklan", "menyebut nama surat kabar tanpa penjelasan", "membahas teknologi kapal"], a: 1, l: "C6", p: "Kerangka podcast runtut dari fakta sejarah ke relevansi masa kini." },
     { q: "Tokoh yang dikenal sebagai Bapak Pers Nasional dan pendiri Medan Prijaji (1907) adalah…", o: ["Ki Hajar Dewantara", "Tirto Adhi Soerjo", "H.O.S. Tjokroaminoto", "Douwes Dekker", "Mohammad Yamin"], a: 1, l: "C1", p: "Medan Prijaji adalah surat kabar berbahasa Melayu pertama yang dikelola sepenuhnya oleh pribumi." },
     { q: "Tulisan Als ik eens Nederlander was (1913) yang mengecam Belanda ditulis oleh…", o: ["Soekarno", "Suwardi Suryaningrat", "Tjipto Mangoenkoesoemo", "Mohammad Hatta", "Kartini"], a: 1, l: "C1", p: "Suwardi Suryaningrat (Ki Hajar Dewantara) diasingkan karena tulisan ini." },
     { q: "Pidato pembelaan Soekarno dalam sidang di Bandung pada 1930 berjudul…", o: ["Lahirnya Pancasila", "Indonesia Menggugat", "Indonesia Merdeka", "Mencapai Indonesia Merdeka", "Di Bawah Bendera Revolusi"], a: 1, l: "C1", p: "Indonesia Menggugat mengecam penjajahan dan menjadi dokumen penting pergerakan." },
@@ -155,7 +158,9 @@ TAMBAH_BAB({
     { q: "Bandingkan strategi kooperatif dan nonkooperatif. Menurutmu, strategi mana yang lebih tepat pada masa itu? Berikan alasan.",
       rubrik: ["4: membedakan keduanya dengan contoh organisasi dan memberi pendapat beralasan", "3: membedakan tanpa pendapat yang jelas", "2: hanya menjelaskan satu strategi", "1: jawaban tidak relevan"] },
     { q: "Sumpah Pemuda dibuat hampir seabad lalu. Bagaimana kamu mengamalkan ketiga isinya dalam kehidupan sehari-hari sebagai pelajar madrasah?",
-      rubrik: ["4: setiap ikrar dikaitkan dengan contoh nyata yang relevan", "3: dua ikrar dengan contoh", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: setiap ikrar dikaitkan dengan contoh nyata yang relevan", "3: dua ikrar dengan contoh", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Bayangkan kamu adalah pelajar tahun 1928. Rancanglah sebuah pidato singkat (8–10 kalimat) untuk Kongres Pemuda II yang mengajak pemuda dari berbagai daerah bersatu. Gunakan fakta sejarah masa itu.",
+      rubrik: ["4: pidato runtut, memakai fakta sejarah yang tepat, dan pesan persatuan kuat", "3: pidato runtut dengan sedikit fakta", "2: pidato kurang runtut atau faktanya keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

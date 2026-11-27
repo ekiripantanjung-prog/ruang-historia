@@ -112,6 +112,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang raja memberikan tanah kepada bangsawan, bangsawan memberikan perlindungan kepada petani, dan petani bekerja di tanah itu. Sistem tersebut disebut…", o: ["feodalisme", "demokrasi", "merkantilisme", "kapitalisme", "sosialisme"], a: 0, l: "C3", p: "Feodalisme adalah sistem pertukaran tanah dan perlindungan yang berkembang di Eropa Abad Pertengahan." },
+    { q: "Kamu ingin membuat video tentang \"jembatan ilmu\" dari dunia Islam ke Eropa. Alur yang paling tepat adalah…", o: ["menceritakan Perang Salib saja", "menceritakan Revolusi Industri", "hanya menampilkan nama ilmuwan", "menceritakan Perang Dunia", "Baitul Hikmah menerjemahkan karya Yunani, ilmuwan Muslim mengembangkannya, karya itu diterjemahkan di Toledo dan Sisilia, lalu membantu lahirnya Renaisans"], a: 4, l: "C6", p: "Alur sebab-akibat menunjukkan peran ilmuwan Muslim dalam kebangkitan Eropa." },
+    { q: "Untuk membandingkan Eropa dan dunia Islam pada abad ke-9–12, media yang paling efektif adalah…", o: ["satu foto kastil", "daftar raja Inggris", "tabel dua kolom tentang ilmu, kota, pendidikan, dan kesehatan di Eropa Abad Pertengahan dan di Baghdad atau Cordoba", "lagu bebas", "kalender"], a: 2, l: "C6", p: "Tabel perbandingan menunjukkan perbedaan keadaan kedua wilayah secara jelas." },
     { q: "Kaisar Bizantium yang menyusun kitab hukum Corpus Juris Civilis dan membangun Hagia Sophia adalah…", o: ["Konstantinus", "Justinianus", "Charlemagne", "Augustus", "Theodosius"], a: 1, l: "C1", p: "Justinianus memerintah 527–565 M." },
     { q: "Empat penemuan penting Tiongkok yang kemudian mengubah dunia adalah…", o: ["roda, irigasi, perunggu, piramida", "kertas, percetakan, mesiu, dan kompas", "angka nol, aljabar, astrolab, optik", "mesin uap, kereta api, telegraf, listrik", "teleskop, mikroskop, jam, kacamata"], a: 1, l: "C1", p: "Keempatnya menyebar ke dunia Islam lalu ke Eropa." },
     { q: "Pendiri Kekaisaran Mongol adalah…", o: ["Kubilai Khan", "Hulagu Khan", "Jenghis Khan", "Timur Lenk", "Batu Khan"], a: 2, l: "C1", p: "Jenghis Khan membangun kekaisaran darat terbesar dalam sejarah." },
@@ -145,7 +148,9 @@ TAMBAH_BAB({
     { q: "Jelaskan sebab dan dampak Perang Salib bagi dunia Islam dan Eropa.",
       rubrik: ["4: sebab dan dampak bagi kedua pihak dijelaskan tepat", "3: sebab dan dampak bagi satu pihak", "2: hanya sebab atau dampak", "1: jawaban tidak relevan"] },
     { q: "Pilih satu ilmuwan Muslim di bab ini. Jelaskan karyanya dan bagaimana semangatnya dapat kamu teladani dalam belajar.",
-      rubrik: ["4: karya dijelaskan tepat dan teladan konkret", "3: karya tepat tanpa teladan", "2: hanya menyebut nama", "1: jawaban tidak relevan"] }
+      rubrik: ["4: karya dijelaskan tepat dan teladan konkret", "3: karya tepat tanpa teladan", "2: hanya menyebut nama", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah kartu tokoh untuk tiga ilmuwan Muslim (misalnya Ibnu Sina, Al-Khawarizmi, Ibnu Haitham) yang karyanya dipelajari di Eropa. Tulis bidang, karya, dan pengaruhnya bagi ilmu modern.",
+      rubrik: ["4: tiga tokoh lengkap dan tepat dengan pengaruh yang jelas", "3: tiga tokoh tepat tetapi pengaruh kurang jelas", "2: kurang dari tiga atau ada kekeliruan", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

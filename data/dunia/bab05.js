@@ -109,6 +109,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Di suatu negara, rakyat menyerbu penjara yang menjadi lambang kekuasaan raja, lalu menyerukan kebebasan, persamaan, dan persaudaraan. Peristiwa ini adalah awal…", o: ["Revolusi Industri", "Revolusi Amerika", "Restorasi Meiji", "Reformasi Gereja", "Revolusi Prancis"], a: 4, l: "C3", p: "Penyerbuan Bastille (14 Juli 1789) menandai awal Revolusi Prancis dengan semboyan liberté, égalité, fraternité." },
+    { q: "Kamu membuat pameran \"Revolusi yang Mengubah Dunia\". Rancangan yang paling lengkap adalah…", o: ["foto mesin uap saja", "satu poster tokoh", "daftar tahun tanpa penjelasan", "film fiksi", "tiga ruang: Revolusi Industri, Revolusi Amerika, dan Revolusi Prancis, masing-masing berisi sebab, tokoh, peristiwa, dampak, dan kaitannya dengan Indonesia"], a: 4, l: "C6", p: "Pameran yang lengkap memuat sebab, jalannya, dan dampak tiap revolusi." },
+    { q: "Untuk menunjukkan dampak Revolusi Industri bagi lingkungan, karya yang paling tepat adalah…", o: ["poster mesin yang indah", "infografis \"dulu dan kini\" tentang asap pabrik abad ke-19 dan polusi sekarang, disertai ajakan cinta lingkungan", "daftar penemu", "foto kota", "lagu"], a: 1, l: "C6", p: "Menghubungkan dampak sejarah dengan isu masa kini membangun sikap cinta lingkungan." },
     { q: "Kitab hukum yang menjamin persamaan di depan hukum dan menjadi dasar hukum perdata banyak negara adalah…", o: ["Magna Carta", "Code Napoléon", "Corpus Juris Civilis", "Hukum Hammurabi", "Bill of Rights"], a: 1, l: "C1", p: "Code Napoléon (1804) memengaruhi hukum perdata Belanda dan Indonesia." },
     { q: "Napoleon Bonaparte akhirnya dikalahkan dalam pertempuran…", o: ["Austerlitz", "Waterloo", "Trafalgar", "Leipzig", "Borodino"], a: 1, l: "C1", p: "Kekalahan di Waterloo (1815) mengakhiri kekuasaan Napoleon." },
     { q: "Buku The Wealth of Nations (1776) yang menjadi dasar kapitalisme ditulis oleh…", o: ["Karl Marx", "Adam Smith", "John Locke", "Montesquieu", "Rousseau"], a: 1, l: "C1", p: "Adam Smith berpendapat ekonomi berjalan baik bila diatur mekanisme pasar." },
@@ -142,7 +145,9 @@ TAMBAH_BAB({
     { q: "Bandingkan sebab Revolusi Amerika dan Revolusi Prancis. Apa persamaan dan perbedaannya?",
       rubrik: ["4: persamaan (melawan ketidakadilan, gagasan Pencerahan) dan perbedaan (melawan penjajah vs melawan raja sendiri) dijelaskan", "3: persamaan atau perbedaan saja", "2: hanya satu revolusi", "1: jawaban tidak relevan"] },
     { q: "Bagaimana zaman revolusi di Eropa dan Amerika memengaruhi sejarah Indonesia? Sebutkan minimal dua pengaruh.",
-      rubrik: ["4: dua pengaruh tepat (Daendels, imperialisme perkebunan, gagasan kedaulatan rakyat, trias politica) dijelaskan", "3: dua pengaruh tanpa penjelasan", "2: satu pengaruh", "1: jawaban tidak relevan"] }
+      rubrik: ["4: dua pengaruh tepat (Daendels, imperialisme perkebunan, gagasan kedaulatan rakyat, trias politica) dijelaskan", "3: dua pengaruh tanpa penjelasan", "2: satu pengaruh", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah poster \"Dari Revolusi ke Kemerdekaan Indonesia\" yang menunjukkan bagaimana gagasan Pencerahan (Locke, Montesquieu, Rousseau) dan revolusi dunia memengaruhi para pendiri bangsa.",
+      rubrik: ["4: gagasan tepat dan kaitannya dengan Indonesia jelas", "3: gagasan tepat tetapi kaitan kurang jelas", "2: gagasan kurang tepat", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

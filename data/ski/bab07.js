@@ -111,6 +111,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Seorang ulama mengajak umat kembali kepada Al-Qur'an dan sunah, membuka pintu ijtihad, dan memajukan pendidikan modern di Mesir. Tokoh tersebut adalah…", o: ["Muhammad Abduh", "Imam Syafi'i", "Ibnu Sina", "Al-Ghazali", "Harun ar-Rasyid"], a: 0, l: "C3", p: "Muhammad Abduh adalah tokoh pembaruan Islam di Mesir yang menekankan ijtihad dan pendidikan." },
+    { q: "Kamu membuat peta tokoh pembaruan Islam. Rancangan yang paling tepat adalah…", o: ["foto tokoh tanpa nama", "daftar tahun saja", "peta jalan", "lagu", "peta dunia Islam dengan tokoh (Jamaluddin al-Afghani, Muhammad Abduh, Rasyid Ridha, Sayyid Ahmad Khan, K.H. Ahmad Dahlan, K.H. Hasyim Asy'ari), gagasan, dan pengaruhnya"], a: 4, l: "C6", p: "Peta tokoh menunjukkan penyebaran gagasan pembaruan hingga Indonesia." },
+    { q: "Untuk menghidupkan semangat pembaruan di madrasah, program yang paling tepat adalah…", o: ["melarang teknologi", "menghapus pelajaran agama", "kegiatan tanpa tujuan", "klub sains dan teknologi bernilai Islam, kajian kitab yang dikaitkan dengan masalah masa kini, dan kegiatan sosial", "lomba gim"], a: 3, l: "C6", p: "Pembaruan memadukan iman, ilmu, dan amal nyata." },
     { q: "Tokoh yang dijuluki Bapak Mesir Modern karena memodernisasi pendidikan dan militer Mesir adalah…", o: ["Muhammad Abduh", "Muhammad Ali Pasha", "Jamaluddin al-Afghani", "Rifa'ah at-Tahtawi", "Gamal Abdel Nasser"], a: 1, l: "C1", p: "Muhammad Ali Pasha berkuasa di Mesir 1805–1848." },
     { q: "Gerakan penataan ulang hukum dan pemerintahan Turki Usmani pada 1839–1876 disebut…", o: ["Reconquista", "Tanzimat", "Renaisans", "Restorasi Meiji", "Pan-Islamisme"], a: 1, l: "C1", p: "Tanzimat berarti penataan atau pengaturan." },
     { q: "Organisasi Islam yang didirikan Syekh Ahmad Surkati pada 1914 adalah…", o: ["Persis", "Al-Irsyad", "Perti", "Al-Washliyah", "Muhammadiyah"], a: 1, l: "C1", p: "Al-Irsyad bergerak di bidang pendidikan." },
@@ -143,7 +146,9 @@ TAMBAH_BAB({
     { q: "Bandingkan pemikiran Jamaluddin al-Afghani dan Muhammad Abduh.",
       rubrik: ["4: perbedaan pendekatan (politik vs pendidikan) dan persamaannya dijelaskan", "3: perbedaan saja", "2: hanya satu tokoh", "1: jawaban tidak relevan"] },
     { q: "Jelaskan pengaruh gerakan pembaruan Islam terhadap pendidikan di Indonesia, termasuk madrasah tempatmu belajar.",
-      rubrik: ["4: jalur masuk, contoh madrasah dan organisasi, serta kaitan dengan madrasah masa kini", "3: contoh tanpa kaitan", "2: jawaban umum", "1: jawaban tidak relevan"] }
+      rubrik: ["4: jalur masuk, contoh madrasah dan organisasi, serta kaitan dengan madrasah masa kini", "3: contoh tanpa kaitan", "2: jawaban umum", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah tabel perbandingan gagasan dua tokoh pembaruan dunia (misalnya Muhammad Abduh dan Sayyid Ahmad Khan) dengan dua tokoh pembaruan Indonesia (K.H. Ahmad Dahlan dan K.H. Hasyim Asy'ari). Tuliskan persamaan gagasan mereka.",
+      rubrik: ["4: empat tokoh tepat, gagasan jelas, persamaan logis", "3: lengkap tetapi persamaan kurang jelas", "2: kurang lengkap atau keliru", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

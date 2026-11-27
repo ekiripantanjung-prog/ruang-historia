@@ -100,6 +100,9 @@ TAMBAH_BAB({
   ],
 
   soal: [
+    { q: "Sebuah peradaban membangun piramida, menulis dengan hieroglif, dan sangat bergantung pada banjir tahunan sungai. Peradaban tersebut adalah…", o: ["Mesopotamia", "Lembah Indus", "Tiongkok Kuno", "Yunani", "Mesir Kuno di Lembah Sungai Nil"], a: 4, l: "C3", p: "Piramida, hieroglif, dan banjir Sungai Nil adalah ciri Mesir Kuno." },
+    { q: "Kamu membuat permainan papan tentang empat peradaban lembah sungai. Rancangan yang paling mendidik adalah…", o: ["papan bergambar kartun tanpa fakta", "empat wilayah sungai (Tigris-Efrat, Nil, Indus, Huang He); pemain mengumpulkan kartu tulisan, kepercayaan, bangunan, dan hukum dari tiap peradaban", "papan ular tangga biasa", "papan berisi nama negara modern", "permainan tanpa aturan"], a: 1, l: "C6", p: "Permainan memadukan aspek ruang (sungai) dan hasil budaya tiap peradaban." },
+    { q: "Untuk menunjukkan bahwa warisan peradaban awal masih dipakai, karya yang paling tepat adalah…", o: ["foto piramida saja", "daftar nama raja", "pameran \"Warisan yang Masih Kita Pakai\": kalender, roda, sistem hitungan 60 menit, kertas, dan hukum tertulis beserta asal peradabannya", "lagu bebas", "peta dunia modern"], a: 2, l: "C6", p: "Menghubungkan warisan kuno dengan kehidupan sekarang membuat sejarah bermakna." },
     { q: "Raja yang mendirikan kekaisaran pertama di dunia di Mesopotamia adalah…", o: ["Hammurabi", "Sargon dari Akkadia", "Nebukadnezar II", "Gilgamesh", "Ramses II"], a: 1, l: "C1", p: "Sargon dari Akkadia menyatukan kota-kota Sumeria sekitar 2334 SM." },
     { q: "Piramida Agung di Giza dibangun pada masa…", o: ["Kerajaan Lama", "Kerajaan Tengah", "Kerajaan Baru", "Dinasti Ptolemaios", "Romawi"], a: 0, l: "C1", p: "Piramida Khufu dibangun pada masa Kerajaan Lama, sekitar 2560 SM." },
     { q: "Tokoh yang berhasil membaca kembali huruf hieroglif pada 1822 adalah…", o: ["Napoleon Bonaparte", "Jean-François Champollion", "Howard Carter", "Herodotus", "Imhotep"], a: 1, l: "C1", p: "Champollion memanfaatkan Batu Rosetta yang memuat teks yang sama dalam tiga aksara." },
@@ -134,7 +137,9 @@ TAMBAH_BAB({
     { q: "Bandingkan peradaban Mesopotamia dan Mesir dari segi tulisan, bangunan, dan pemerintahan.",
       rubrik: ["4: ketiga aspek dibandingkan dengan tepat", "3: dua aspek", "2: satu aspek", "1: jawaban tidak relevan"] },
     { q: "Pilih satu warisan peradaban awal yang masih kamu gunakan sehari-hari. Jelaskan asal-usulnya dan bagaimana kamu memanfaatkannya.",
-      rubrik: ["4: warisan, asal peradaban, dan pemanfaatan dijelaskan dengan tepat", "3: warisan dan asal tanpa pemanfaatan", "2: hanya menyebut warisan", "1: jawaban tidak relevan"] }
+      rubrik: ["4: warisan, asal peradaban, dan pemanfaatan dijelaskan dengan tepat", "3: warisan dan asal tanpa pemanfaatan", "2: hanya menyebut warisan", "1: jawaban tidak relevan"] },
+    { q: "Rancanglah sebuah tabel perbandingan empat peradaban lembah sungai (Mesopotamia, Mesir, Indus, Tiongkok): sungai, tulisan, kepercayaan, bangunan, dan satu warisan. Lalu simpulkan mengapa sungai penting bagi lahirnya peradaban.",
+      rubrik: ["4: empat peradaban lengkap dan tepat, kesimpulan logis", "3: lengkap dengan sedikit kekeliruan", "2: kurang lengkap atau kesimpulan lemah", "1: tidak sesuai atau tidak dikerjakan"], l: "C6" }
   ],
 
   videoAdegan: [

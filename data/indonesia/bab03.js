@@ -9,7 +9,8 @@ TAMBAH_BAB({
     "Mengidentifikasi peran Wali Songo dalam dakwah yang damai",
     "Mengidentifikasi kerajaan-kerajaan Islam dan tokohnya",
     "Menganalisis wujud akulturasi budaya Islam dan budaya lokal",
-    "Meneladani cara dakwah yang santun dan penuh hikmah"
+    "Meneladani cara dakwah yang santun dan penuh hikmah",
+    "Menganalisis sebab melemahnya kerajaan-kerajaan Islam"
   ],
 
   video: { src: "video/indonesia/bab03.mp4", judul: "Masa Islam di Nusantara dalam 1,5 menit", durasi: "1 menit 35 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -79,7 +80,16 @@ TAMBAH_BAB({
 <li><b>Kalender:</b> Sultan Agung memadukan tahun Saka dengan perhitungan bulan Hijriah menjadi kalender Jawa (1633).</li>
 <li><b>Tradisi:</b> sekaten dan grebeg Maulud di keraton Yogyakarta dan Surakarta.</li>
 </ul>`,
-      cinta: ["Cinta tanah air", "Islam di Nusantara tumbuh bersama budaya lokal. Inilah kekayaan yang membuat Islam Indonesia dikenal ramah dan menyejukkan."] }
+      cinta: ["Cinta tanah air", "Islam di Nusantara tumbuh bersama budaya lokal. Inilah kekayaan yang membuat Islam Indonesia dikenal ramah dan menyejukkan."] },
+    { judul: "E. Peta kerajaan Islam di Nusantara",
+      isi: "<table><thead><tr><th>Kerajaan</th><th>Wilayah</th><th>Tokoh dan masa jaya</th><th>Catatan</th></tr></thead><tbody>\n<tr><td>Samudra Pasai</td><td>Aceh Utara</td><td>Sultan Malik as-Saleh (wafat 1297)</td><td>Kerajaan Islam pertama yang diketahui; mencetak koin emas (dirham)</td></tr>\n<tr><td>Malaka</td><td>Semenanjung Melayu</td><td>Parameswara (Iskandar Syah), awal abad ke-15</td><td>Bandar dagang terbesar di Asia Tenggara sampai direbut Portugis (1511)</td></tr>\n<tr><td>Aceh Darussalam</td><td>Aceh</td><td>Sultan Iskandar Muda (1607–1636)</td><td>Pusat ilmu dan dagang; dijuluki Serambi Mekkah</td></tr>\n<tr><td>Demak</td><td>Jawa Tengah</td><td>Raden Patah; Sultan Trenggana</td><td>Kerajaan Islam pertama di Jawa, didukung Wali Songo</td></tr>\n<tr><td>Pajang</td><td>Jawa Tengah</td><td>Sultan Hadiwijaya (Jaka Tingkir)</td><td>Penerus Demak di pedalaman</td></tr>\n<tr><td>Mataram Islam</td><td>Yogyakarta</td><td>Sultan Agung (1613–1645)</td><td>Menyerang VOC di Batavia (1628 dan 1629)</td></tr>\n<tr><td>Cirebon</td><td>Jawa Barat</td><td>Sunan Gunung Jati</td><td>Pusat dakwah di Jawa bagian barat</td></tr>\n<tr><td>Banten</td><td>Jawa Barat</td><td>Sultan Ageng Tirtayasa (1651–1683)</td><td>Bandar lada internasional; melawan VOC</td></tr>\n<tr><td>Banjar</td><td>Kalimantan Selatan</td><td>Sultan Suriansyah</td><td>Kerajaan Islam pertama di Kalimantan</td></tr>\n<tr><td>Gowa-Tallo</td><td>Sulawesi Selatan</td><td>Sultan Hasanuddin (1653–1669)</td><td>Kekuatan maritim; kalah dalam Perjanjian Bongaya (1667)</td></tr>\n<tr><td>Ternate dan Tidore</td><td>Maluku Utara</td><td>Sultan Baabullah (Ternate); Sultan Nuku (Tidore)</td><td>Penghasil cengkih; melawan Portugis, Spanyol, dan VOC</td></tr>\n</tbody></table>",
+      cinta: null },
+    { judul: "F. Jaringan ulama dan sastra Islam",
+      isi: "<p>Islam di Nusantara tidak terpisah dari dunia Islam yang lebih luas. Sejak abad ke-17, banyak pelajar Nusantara menuntut ilmu di <b>Mekkah dan Madinah (Haramain)</b>, lalu pulang mengajar. Jaringan guru dan murid ini disebut <b>jaringan ulama</b>. Tokohnya antara lain Abdurrauf as-Singkili dari Aceh dan Syekh Yusuf al-Makassari dari Gowa.</p>\n<p>Islam juga melahirkan karya sastra dalam bahasa Melayu dan Jawa:</p>\n<ul>\n<li><b>Hikayat</b>: cerita berbentuk prosa, misalnya <i>Hikayat Raja-Raja Pasai</i> dan <i>Hikayat Amir Hamzah</i>.</li>\n<li><b>Babad</b>: kisah sejarah bercampur legenda, misalnya <i>Babad Tanah Jawi</i>.</li>\n<li><b>Suluk</b>: karya tasawuf, misalnya suluk karya Sunan Bonang.</li>\n<li><b>Syair</b>: puisi empat baris berima sama, misalnya karya <b>Hamzah Fansuri</b>, penyair sufi dari Barus.</li>\n<li>Kitab <i>Bustanus Salatin</i> karya Nuruddin ar-Raniri (1638) tentang sejarah dan nasihat bagi raja.</li>\n</ul>\n<p>Bahasa Melayu yang ditulis dengan huruf Arab (Jawi) menjadi bahasa pergaulan di seluruh Nusantara. Inilah salah satu akar bahasa Indonesia.</p>",
+      cinta: ["Cinta ilmu", "Para pelajar Nusantara rela berlayar berbulan-bulan ke Mekkah untuk menuntut ilmu. Semangat itu patut kita teladani di zaman ketika ilmu dapat diakses jauh lebih mudah."] },
+    { judul: "G. Mengapa kerajaan-kerajaan Islam melemah?",
+      isi: "<ol>\n<li><b>Perebutan takhta</b> di dalam istana, misalnya di Demak setelah Sultan Trenggana wafat (1546) dan di Mataram setelah Sultan Agung.</li>\n<li><b>Politik adu domba (devide et impera)</b> VOC yang memanfaatkan konflik itu. Contohnya Perjanjian <b>Giyanti</b> (1755) yang membagi Mataram menjadi Yogyakarta dan Surakarta, serta konflik Sultan Ageng Tirtayasa dengan putranya, Sultan Haji, di Banten.</li>\n<li><b>Monopoli dagang VOC</b> yang mematikan bandar-bandar Islam, misalnya setelah Perjanjian Bongaya (1667) di Makassar.</li>\n<li><b>Kekalahan militer</b> karena persenjataan dan armada VOC yang lebih kuat.</li>\n</ol>\n<p>Meskipun kerajaannya melemah, Islam terus berkembang di tengah rakyat melalui pesantren, ulama, dan tarekat. Kelak, para ulama dan santri menjadi penggerak perlawanan terhadap penjajah.</p>",
+      cinta: ["Cinta tanah air", "Kerajaan-kerajaan Nusantara melemah karena perpecahan, bukan karena kurang kuat. Persatuan adalah kunci menjaga kedaulatan bangsa."] }
   ],
 
   kartu: [
@@ -103,10 +113,23 @@ TAMBAH_BAB({
     ["Pegon", "Huruf Arab yang dipakai untuk menulis bahasa Jawa atau Sunda"],
     ["Sekaten", "Tradisi peringatan Maulid Nabi di keraton Jawa"],
     ["Monopoli", "Penguasaan perdagangan oleh satu pihak saja"],
-    ["Bandar", "Kota pelabuhan tempat berdagang"]
+    ["Bandar", "Kota pelabuhan tempat berdagang"],
+    ["Haramain", "Dua kota suci: Mekkah dan Madinah"],
+    ["Jaringan ulama", "Hubungan guru-murid antara ulama Nusantara dan Haramain"],
+    ["Syair", "Puisi Melayu empat baris berima sama"],
+    ["Suluk", "Karya sastra bertema tasawuf"],
+    ["Jawi", "Huruf Arab untuk menulis bahasa Melayu"],
+    ["Perjanjian Giyanti", "Perjanjian 1755 yang membagi Mataram menjadi dua"]
   ],
 
   soal: [
+    { q: "Kerajaan Islam yang menjadi bandar terbesar di Asia Tenggara sampai direbut Portugis pada 1511 adalah…", o: ["Samudra Pasai", "Malaka", "Demak", "Aceh", "Banten"], a: 1, l: "C1", p: "Malaka didirikan Parameswara dan menjadi pusat dagang besar sampai direbut Portugis." },
+    { q: "Sultan Banten yang gigih melawan VOC tetapi dikhianati putranya sendiri, Sultan Haji, adalah…", o: ["Sultan Hasanuddin", "Sultan Ageng Tirtayasa", "Sultan Agung", "Sultan Baabullah", "Sultan Trenggana"], a: 1, l: "C1", p: "Konflik Sultan Ageng Tirtayasa dengan Sultan Haji dimanfaatkan VOC untuk menguasai Banten." },
+    { q: "Perjanjian yang membagi Mataram menjadi Yogyakarta dan Surakarta (1755) adalah…", o: ["Bongaya", "Giyanti", "Salatiga", "Linggarjati", "Saragosa"], a: 1, l: "C1", p: "Perjanjian Giyanti adalah contoh politik adu domba VOC." },
+    { q: "Jaringan guru dan murid antara ulama Nusantara dan ulama di Mekkah-Madinah disebut…", o: ["jaringan ulama", "jalur sutra", "politik etis", "tarekat kerajaan", "jalur rempah"], a: 0, l: "C1", p: "Melalui jaringan ulama, ilmu dari Haramain menyebar ke Nusantara." },
+    { q: "Penyair sufi dari Barus yang terkenal dengan syair-syair tasawufnya adalah…", o: ["Nuruddin ar-Raniri", "Hamzah Fansuri", "Sunan Bonang", "Mpu Tantular", "Raja Ali Haji"], a: 1, l: "C1", p: "Hamzah Fansuri adalah pelopor syair Melayu bercorak tasawuf." },
+    { s: "Di Demak, Mataram, dan Banten terjadi perebutan takhta di antara keluarga raja. VOC kemudian membantu salah satu pihak dengan imbalan wilayah dan hak dagang.", q: "Penyebab utama melemahnya kerajaan-kerajaan Islam berdasarkan pernyataan tersebut adalah…", o: ["kekurangan ulama", "perpecahan dari dalam yang dimanfaatkan pihak asing", "bencana alam", "berhentinya perdagangan rempah", "tidak adanya pesantren"], a: 1, l: "C4", p: "Perebutan takhta dan konflik keluarga dimanfaatkan VOC melalui politik devide et impera." },
+    { q: "Kerajaan Islam pertama di Kalimantan adalah…", o: ["Kutai Kartanegara", "Banjar", "Pontianak", "Sambas", "Brunei"], a: 1, l: "C1", p: "Kesultanan Banjar dengan rajanya Sultan Suriansyah." },
     { q: "Islam masuk ke Nusantara terutama melalui jalur…", o: ["peperangan", "perdagangan", "penjajahan", "perpindahan seluruh penduduk Arab", "pengiriman tentara"], a: 1, l: "C1", p: "Pedagang Muslim yang singgah dan menetap di pelabuhan Nusantara menjadi pembawa awal ajaran Islam." },
     { s: "Bentuk nisan Sultan Malik as-Saleh di Samudra Pasai memiliki kemiripan dengan nisan-nisan di Cambay, India.", q: "Fakta ini digunakan untuk mendukung teori…", o: ["Mekkah", "Persia", "Gujarat", "Tiongkok", "Arus balik"], a: 2, l: "C3", p: "Teori Gujarat (Snouck Hurgronje dan Moquette) bersandar pada kemiripan nisan." },
     { q: "Tokoh yang berpendapat bahwa Islam datang langsung dari Mekkah (Arab) adalah…", o: ["Snouck Hurgronje", "Hamka", "Slamet Muljana", "Hoesein Djajadiningrat", "J.P. Moquette"], a: 1, l: "C1", p: "Hamka mengemukakan teori Mekkah, antara lain berdasarkan mazhab Syafi'i yang dianut di Nusantara." },

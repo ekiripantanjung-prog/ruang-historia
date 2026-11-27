@@ -8,7 +8,9 @@ TAMBAH_BAB({
     "Membandingkan teori-teori masuknya pengaruh Hindu-Buddha",
     "Mengidentifikasi kerajaan Hindu-Buddha beserta sumber sejarahnya",
     "Menganalisis bentuk akulturasi budaya India dan budaya lokal",
-    "Meneladani nilai toleransi dan persatuan dari masa Hindu-Buddha"
+    "Meneladani nilai toleransi dan persatuan dari masa Hindu-Buddha",
+    "Mengidentifikasi sumber-sumber sejarah masa Hindu-Buddha",
+    "Menjelaskan sebab-sebab runtuhnya Majapahit"
   ],
 
   video: { src: "video/indonesia/bab02.mp4", judul: "Masa Hindu-Buddha dalam 1,5 menit", durasi: "1 menit 42 detik", catatan: "Video dengan musik latar lembut, tanpa narasi suara; keterangan tampil sebagai teks." },
@@ -74,7 +76,19 @@ TAMBAH_BAB({
 <p><b>Candi Borobudur</b> (Buddha Mahayana) dibangun pada masa wangsa Syailendra sekitar abad ke-9, memiliki 2.672 panel relief dan 504 arca Buddha. <b>Candi Prambanan</b> (Hindu) diresmikan sekitar 856 M. Keduanya ditetapkan UNESCO sebagai Warisan Dunia pada 1991.</p>`,
       kartu: true,
       cinta: ["Cinta diri dan sesama", "Borobudur (Buddha) dan Prambanan (Hindu) dibangun berdekatan pada zaman yang hampir sama. Pemeluk agama berbeda bisa hidup berdampingan dan saling menghormati."] },
-    { judul: "D. Warisan untuk Indonesia hari ini",
+    { judul: "D. Sumber sejarah masa Hindu-Buddha",
+      isi: "<p>Kita mengenal masa Hindu-Buddha dari tiga jenis sumber:</p>\n<ul>\n<li><b>Prasasti</b>: tulisan pada batu atau logam, misalnya Yupa (Kutai), Ciaruteun dan Tugu (Tarumanegara), Kedukan Bukit dan Talang Tuo (Sriwijaya), Canggal (Mataram Kuno), serta Kudadu (Majapahit).</li>\n<li><b>Kitab dan naskah</b>: misalnya <i>Negarakertagama</i> (Mpu Prapanca, 1365), <i>Sutasoma</i> (Mpu Tantular), <i>Arjunawiwaha</i> (Mpu Kanwa), <i>Pararaton</i>, dan <i>Bharatayuddha</i> (Mpu Sedah dan Mpu Panuluh).</li>\n<li><b>Berita asing</b>: catatan para pengelana, misalnya <b>Fa-Hien</b> (pendeta Buddha Tiongkok yang singgah di Jawa ± 414 M), <b>I-Tsing</b> (belajar di Sriwijaya pada 671 M dan menyebutnya pusat ajaran Buddha), serta catatan India dan Arab.</li>\n</ul>\n<p>Selain itu, <b>candi, arca, dan relief</b> menjadi sumber benda yang menggambarkan kehidupan masa itu, misalnya relief kapal bercadik di Borobudur.</p>",
+      cinta: null },
+    { judul: "E. Kehidupan sosial: kasta yang lebih longgar",
+      isi: "<p>Agama Hindu mengenal pembagian masyarakat yang disebut <b>kasta</b> (catur warna):</p>\n<ol><li><b>Brahmana</b>: pendeta dan kaum terpelajar agama.</li><li><b>Ksatria</b>: raja, bangsawan, dan prajurit.</li><li><b>Waisya</b>: pedagang, petani, dan peternak.</li><li><b>Sudra</b>: pekerja kasar dan pelayan.</li></ol>\n<p>Di Nusantara, pembagian kasta tidak seketat di India. Di Jawa, misalnya, rakyat desa tetap mengatur hidupnya sendiri melalui musyawarah dan gotong royong. Pembagian kasta paling kuat bertahan di <b>Bali</b> sampai sekarang, tetapi lebih banyak berfungsi dalam adat dan upacara.</p>\n<p>Ajaran Buddha tidak mengenal kasta. Karena itu, kerajaan Buddha seperti Sriwijaya menarik banyak pelajar dari berbagai bangsa. Di Jawa, Hindu dan Buddha dapat hidup berdampingan. Contohnya, Candi Plaosan dibangun oleh Rakai Pikatan (Hindu) bersama permaisurinya Pramodhawardhani (Buddha).</p>",
+      cinta: ["Cinta diri dan sesama", "Pasangan Rakai Pikatan dan Pramodhawardhani yang berbeda agama bekerja sama membangun Candi Plaosan. Perbedaan keyakinan tidak menghalangi kerja sama untuk kebaikan bersama."] },
+    { judul: "F. Kerajaan lain dan runtuhnya Majapahit",
+      isi: "<p>Selain kerajaan besar di garis waktu, ada kerajaan Hindu-Buddha lain yang penting:</p>\n<ul>\n<li><b>Melayu-Dharmasraya</b> (Jambi–Sumatra Barat): disebut dalam Ekspedisi Pamalayu Singasari (1275). Rajanya, <b>Adityawarman</b>, kemudian memerintah di Pagaruyung.</li>\n<li><b>Bali</b>: mencapai kejayaan pada masa <b>Udayana</b> (abad ke-10). Putranya, <b>Airlangga</b>, kelak memerintah di Jawa Timur.</li>\n<li><b>Sunda (Pajajaran)</b>: berpusat di Pakuan (Bogor). Peristiwa <b>Bubat</b> (1357) antara Sunda dan Majapahit tercatat dalam <i>Kidung Sunda</i>. Raja terkenalnya <b>Sri Baduga Maharaja</b> (Prabu Siliwangi) diabadikan dalam <b>Prasasti Batutulis</b>.</li>\n</ul>\n<p><b>Mengapa Majapahit runtuh?</b> Setelah wafatnya Hayam Wuruk (1389), Majapahit melemah karena:</p>\n<ol>\n<li><b>Perang saudara</b>, terutama <b>Perang Paregreg</b> (1404–1406) antara Wikramawardhana dan Bhre Wirabhumi.</li>\n<li>Tidak ada lagi pemimpin kuat setelah Gajah Mada dan Hayam Wuruk.</li>\n<li>Daerah-daerah bawahan melepaskan diri.</li>\n<li>Berkembangnya bandar-bandar Islam di pesisir, terutama <b>Demak</b>, yang menguasai perdagangan.</li>\n</ol>\n<p>Majapahit berakhir pada awal abad ke-16. Banyak bangsawan dan pendeta kemudian pindah ke Bali, sehingga budaya Hindu-Jawa tetap hidup di sana.</p>",
+      cinta: null },
+    { judul: "G. Candi Jawa Tengah dan Jawa Timur",
+      isi: "<table><thead><tr><th>Ciri</th><th>Candi Jawa Tengah</th><th>Candi Jawa Timur</th></tr></thead><tbody>\n<tr><td>Bentuk</td><td>Tambun (gemuk)</td><td>Ramping dan tinggi</td></tr>\n<tr><td>Atap</td><td>Bertingkat, puncak berupa stupa atau ratna</td><td>Bertingkat, puncak berbentuk kubus</td></tr>\n<tr><td>Bahan</td><td>Umumnya batu andesit</td><td>Banyak memakai bata merah</td></tr>\n<tr><td>Letak candi induk</td><td>Di tengah halaman, dikelilingi candi perwara</td><td>Di belakang halaman</td></tr>\n<tr><td>Relief</td><td>Naturalis (mirip aslinya)</td><td>Pipih seperti wayang kulit</td></tr>\n<tr><td>Contoh</td><td>Borobudur, Prambanan, Mendut, Kalasan</td><td>Penataran, Jago, Singasari, Jawi</td></tr>\n</tbody></table>",
+      cinta: null },
+    { judul: "H. Warisan untuk Indonesia hari ini",
       isi: `<p>Semboyan negara kita, <b>Bhinneka Tunggal Ika</b>, berasal dari <i>Kakawin Sutasoma</i> karya Mpu Tantular pada masa Majapahit. Kalimat lengkapnya <i>"Bhinneka tunggal ika tan hana dharma mangrwa"</i>, artinya berbeda-beda tetapi tetap satu, tidak ada kebenaran yang mendua.</p>
 <p>Cita-cita persatuan Nusantara dalam <b>Sumpah Palapa</b> Gajah Mada juga menjadi inspirasi para pendiri bangsa. Kata "Nusantara" sendiri tercatat dalam naskah masa Majapahit.</p>`,
       cinta: ["Cinta tanah air", "Persatuan Indonesia punya akar sejarah yang panjang. Menjaga persatuan di kelas dan di kampung adalah cara kita meneruskan cita-cita itu."] }
@@ -101,10 +115,22 @@ TAMBAH_BAB({
     ["Pallawa", "Aksara dari India selatan yang dipakai pada prasasti awal"],
     ["Sima", "Tanah yang dibebaskan dari pajak karena dipakai untuk bangunan suci"],
     ["Mahapatih", "Pejabat tertinggi di bawah raja"],
-    ["Maritim", "Berkaitan dengan laut dan pelayaran"]
+    ["Maritim", "Berkaitan dengan laut dan pelayaran"],
+    ["Kasta", "Pembagian golongan masyarakat dalam agama Hindu (catur warna)"],
+    ["Berita asing", "Catatan pengelana atau utusan dari luar negeri tentang suatu wilayah"],
+    ["Perang Paregreg", "Perang saudara Majapahit, 1404–1406"],
+    ["Peristiwa Bubat", "Pertempuran antara Sunda dan Majapahit tahun 1357"],
+    ["Candi perwara", "Candi pendamping di sekitar candi induk"]
   ],
 
   soal: [
+    { q: "Pendeta Tiongkok yang singgah di Jawa sekitar 414 M dan mencatat keadaannya adalah…", o: ["I-Tsing", "Fa-Hien", "Marco Polo", "Ibnu Batutah", "Cheng Ho"], a: 1, l: "C1", p: "Fa-Hien singgah di Jawa (Ye-po-ti) dalam perjalanan pulang dari India." },
+    { q: "Kasta yang terdiri atas pedagang, petani, dan peternak disebut…", o: ["Brahmana", "Ksatria", "Waisya", "Sudra", "Paria"], a: 2, l: "C1", p: "Waisya adalah golongan ekonomi: pedagang, petani, dan peternak." },
+    { s: "Candi Plaosan, sebuah candi Buddha, dibangun atas prakarsa Rakai Pikatan yang beragama Hindu bersama permaisurinya Pramodhawardhani yang beragama Buddha.", q: "Sikap yang tercermin dari fakta tersebut adalah…", o: ["persaingan agama", "toleransi dan kerja sama antarumat beragama", "pemaksaan agama oleh raja", "pemisahan Hindu dan Buddha", "penolakan terhadap budaya asing"], a: 1, l: "C4", p: "Candi Plaosan menjadi bukti toleransi Hindu dan Buddha di Jawa." },
+    { q: "Perang saudara yang melemahkan Majapahit pada 1404–1406 disebut…", o: ["Perang Bubat", "Perang Paregreg", "Perang Pamalayu", "Perang Jawa", "Perang Padri"], a: 1, l: "C1", p: "Perang Paregreg terjadi antara Wikramawardhana dan Bhre Wirabhumi." },
+    { q: "Ciri candi gaya Jawa Timur adalah…", o: ["tambun dan berbahan andesit", "ramping, banyak memakai bata, dan candi induk di belakang halaman", "berpuncak stupa dan relief naturalis", "candi induk di tengah halaman", "selalu bercorak Buddha"], a: 1, l: "C2", p: "Candi Jawa Timur ramping, sering berbahan bata, dan candi induknya di belakang halaman." },
+    { q: "Prasasti Batutulis di Bogor berhubungan dengan Kerajaan…", o: ["Kutai", "Sunda (Pajajaran)", "Sriwijaya", "Kediri", "Melayu"], a: 1, l: "C1", p: "Prasasti Batutulis mengenang Sri Baduga Maharaja, raja Sunda (Pajajaran)." },
+    { q: "Faktor dari luar yang mempercepat runtuhnya Majapahit adalah…", o: ["serangan Mongol", "berkembangnya bandar-bandar Islam di pesisir seperti Demak", "datangnya VOC", "Perjanjian Giyanti", "serangan Portugis ke Jawa"], a: 1, l: "C2", p: "Bandar Islam di pesisir mengambil alih perdagangan sehingga Majapahit kehilangan sumber kekayaan." },
     { q: "Faktor utama yang menyebabkan pengaruh Hindu-Buddha masuk ke Nusantara adalah…", o: ["penaklukan oleh tentara India", "hubungan perdagangan melalui jalur laut", "perpindahan seluruh penduduk India", "ajakan raja-raja Tiongkok", "kedatangan bangsa Eropa"], a: 1, l: "C2", p: "Nusantara berada di jalur perdagangan laut India–Tiongkok, sehingga terjadi perjumpaan budaya melalui pedagang, pendeta, dan pelajar." },
     { q: "Teori yang menyatakan bahwa pengaruh Hindu dibawa oleh para pedagang India adalah teori…", o: ["Brahmana", "Ksatria", "Waisya", "Arus balik", "Sudra"], a: 2, l: "C1", p: "Teori Waisya dikemukakan N.J. Krom: pedagang (kasta waisya) membawa pengaruh Hindu sambil berdagang." },
     { s: "Prasasti-prasasti awal di Nusantara ditulis dengan aksara Pallawa dan bahasa Sanskerta. Pada masa itu, bahasa Sanskerta hanya dikuasai kaum terpelajar, terutama brahmana.", q: "Fakta tersebut paling kuat mendukung teori…", o: ["Waisya", "Ksatria", "Brahmana", "Sudra", "Maritim"], a: 2, l: "C4", p: "Karena prasasti memakai bahasa kaum terpelajar, para ahli menyimpulkan kaum brahmana berperan penting. Inilah inti teori Brahmana (J.C. van Leur)." },

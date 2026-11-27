@@ -9,7 +9,9 @@ TAMBAH_BAB({
     "Membandingkan corak kehidupan dan hasil budaya tiap zaman",
     "Mengidentifikasi jenis manusia purba dan situs penemuannya di Indonesia",
     "Menganalisis teori asal-usul nenek moyang bangsa Indonesia",
-    "Meneladani nilai Panca Cinta dari kehidupan masa praaksara"
+    "Meneladani nilai Panca Cinta dari kehidupan masa praaksara",
+    "Menjelaskan periodisasi geologi dan kaitannya dengan kehidupan manusia purba",
+    "Mengidentifikasi hasil kebudayaan Pacitan, Ngandong, dan zaman logam"
   ],
 
   video: {
@@ -73,7 +75,13 @@ TAMBAH_BAB({
 <p class="catatan">Catatan ilmiah: penemuan baru terus memperbarui pengetahuan. Misalnya, sebagian peneliti kini meragukan Meganthropus sebagai manusia purba dan menganggapnya kera besar. Ilmu memang terbuka untuk dikoreksi oleh bukti baru.</p>`,
       kartu: true,
       cinta: ["Cinta tanah air", "Situs purba adalah warisan bangsa yang diakui dunia. Menjaganya, tidak merusak dan tidak menjual temuan, adalah bentuk cinta tanah air."] },
-    { judul: "E. Asal-usul nenek moyang bangsa Indonesia",
+    { judul: "E. Periodisasi berdasarkan geologi",
+      isi: "<p>Sebelum membahas manusia, para ahli membagi sejarah bumi berdasarkan lapisan batuan dan fosil yang ditemukan di dalamnya. Pembagian ini disebut <b>periodisasi geologi</b>.</p>\n<table><thead><tr><th>Zaman</th><th>Waktu (perkiraan)</th><th>Ciri utama</th></tr></thead><tbody>\n<tr><td><b>Arkaikum</b> (zaman tertua)</td><td>± 4,5–2,5 miliar tahun lalu</td><td>Kulit bumi masih panas; belum ada kehidupan atau baru kehidupan sangat sederhana</td></tr>\n<tr><td><b>Paleozoikum</b> (zaman primer)</td><td>± 540–250 juta tahun lalu</td><td>Muncul ikan, amfibi, reptil awal, dan tumbuhan paku</td></tr>\n<tr><td><b>Mesozoikum</b> (zaman sekunder)</td><td>± 250–66 juta tahun lalu</td><td>Zaman reptil raksasa (dinosaurus); muncul burung dan mamalia kecil</td></tr>\n<tr><td><b>Neozoikum: Tersier</b></td><td>± 66–2,6 juta tahun lalu</td><td>Mamalia berkembang pesat; muncul kera besar</td></tr>\n<tr><td><b>Neozoikum: Kuarter</b></td><td>± 2,6 juta tahun lalu–sekarang</td><td>Zaman manusia. Terbagi menjadi <b>Pleistosen</b> (Dilluvium, zaman es) dan <b>Holosen</b> (Alluvium, sejak ± 11.700 tahun lalu)</td></tr>\n</tbody></table>\n<p>Manusia purba di Indonesia hidup pada masa <b>Pleistosen</b>. Pada zaman es, permukaan laut turun sehingga Sumatra, Jawa, dan Kalimantan menyatu dengan daratan Asia sebagai <b>Paparan Sunda</b>, sedangkan Papua menyatu dengan Australia sebagai <b>Paparan Sahul</b>. Karena itulah manusia dan hewan dapat berpindah dari daratan Asia ke Nusantara. Fauna di bagian barat Indonesia mirip fauna Asia, dan di bagian timur mirip fauna Australia; batas keduanya dikenal sebagai <b>Garis Wallace</b>.</p>",
+      cinta: ["Cinta lingkungan", "Bumi kita terbentuk dalam waktu yang sangat panjang. Menjaga alam berarti menghormati proses jutaan tahun yang membuat bumi layak dihuni."] },
+    { judul: "F. Kebudayaan Pacitan, Ngandong, dan zaman logam",
+      isi: "<p>Hasil budaya manusia praaksara sering dinamai menurut tempat penemuannya.</p>\n<ul>\n<li><b>Kebudayaan Pacitan</b> (Jawa Timur): alat batu kasar seperti <b>kapak genggam</b> (<i>chopper</i>) dan kapak perimbas. Diteliti oleh von Koenigswald pada 1935. Pendukungnya diduga Pithecanthropus.</li>\n<li><b>Kebudayaan Ngandong</b> (Ngawi, Jawa Timur): <b>alat tulang</b> dan tanduk rusa, serta <b>flakes</b> (alat serpih) dari batu kalsedon. Pendukungnya diduga Homo soloensis.</li>\n<li><b>Kebudayaan Bacson-Hoabinh</b> (Vietnam): asal kebudayaan mesolitikum, misalnya <b>kapak Sumatra</b> (pebble) dan <b>kjokkenmoddinger</b> (sampah dapur kerang) di pantai timur Sumatra.</li>\n<li><b>Kebudayaan Dongson</b> (Vietnam): asal kebudayaan logam di Nusantara.</li>\n</ul>\n<p>Pada <b>zaman logam</b> (masa perundagian), manusia mengenal perunggu dan besi. Benda logamnya antara lain:</p>\n<ul>\n<li><b>Nekara</b>: genderang perunggu besar untuk upacara memanggil hujan, misalnya Nekara Bulan Pejeng di Bali. Nekara kecil dan ramping dari Alor disebut <b>moko</b>, dipakai sebagai mas kawin.</li>\n<li><b>Kapak corong</b> (kapak sepatu) dan <b>candrasa</b> (kapak upacara berhias).</li>\n<li><b>Bejana perunggu</b>, <b>arca perunggu</b>, dan <b>perhiasan</b> seperti gelang, cincin, dan kalung.</li>\n</ul>\n<p>Logam dicetak dengan dua teknik: <b>bivalve</b> (cetakan setangkup dari batu yang dapat dipakai berulang kali) dan <b>a cire perdue</b> (cetakan lilin yang dibungkus tanah liat, lalu lilinnya dilelehkan; cetakan hanya sekali pakai).</p>",
+      cinta: ["Cinta ilmu", "Kemampuan mengolah logam menunjukkan nenek moyang kita cerdas dan kreatif. Kecerdasan itu warisan yang patut kita lanjutkan dengan rajin belajar dan berkarya."] },
+    { judul: "G. Asal-usul nenek moyang bangsa Indonesia",
       isi: `<p>Pendapat yang paling banyak didukung bukti saat ini adalah teori <b>Out of Taiwan</b> (Peter Bellwood). Penutur bahasa Austronesia bergerak dari Taiwan ke Filipina, lalu masuk ke Sulawesi dan Kalimantan sekitar 4.000 tahun lalu, membawa padi, gerabah, dan kapak batu yang diupam halus. Buktinya berasal dari bahasa, arkeologi, dan DNA.</p>
 <p>Sebelum mereka datang, Nusantara sudah dihuni manusia modern yang tiba sekitar 50.000 tahun lalu, leluhur penduduk Papua dan Melanesia. Para pendatang dan penghuni lama kemudian berbaur.</p>
 <p>Teori lain, <b>Out of Sundaland</b> (Stephen Oppenheimer), berpendapat leluhur justru berasal dari Paparan Sunda yang tenggelam akibat naiknya permukaan laut. Buku lama juga menyebut gelombang <b>Proto-Melayu</b> dan <b>Deutro-Melayu</b>; pembagian itu kini dianggap terlalu sederhana, tetapi masih sering muncul dalam soal.</p>`,
@@ -100,11 +108,27 @@ TAMBAH_BAB({
     ["Nekara", "Genderang perunggu berpinggang, dipakai dalam upacara"],
     ["Undagi", "Golongan tukang terampil pada masa perundagian"],
     ["Animisme", "Kepercayaan pada roh nenek moyang"],
-    ["Dinamisme", "Kepercayaan pada kekuatan gaib dalam benda"]
+    ["Dinamisme", "Kepercayaan pada kekuatan gaib dalam benda"],
+    ["Pleistosen", "Kala zaman es pada awal zaman Kuarter, masa hidup manusia purba"],
+    ["Holosen", "Kala sejak ± 11.700 tahun lalu sampai sekarang (Alluvium)"],
+    ["Paparan Sunda", "Daratan yang menyatukan Indonesia barat dengan Asia pada zaman es"],
+    ["Paparan Sahul", "Daratan yang menyatukan Papua dengan Australia pada zaman es"],
+    ["Chopper", "Kapak genggam/perimbas dari kebudayaan Pacitan"],
+    ["Flakes", "Alat serpih dari batu"],
+    ["Moko", "Nekara kecil dari Alor yang dipakai sebagai mas kawin"],
+    ["Bivalve", "Teknik cetak logam dengan cetakan batu setangkup"],
+    ["A cire perdue", "Teknik cetak logam dengan cetakan lilin yang sekali pakai"]
   ],
 
   /* Soal pilihan ganda. a = indeks jawaban benar (0 = A). s = stimulus (opsional). l = level kognitif. */
   soal: [
+    { q: "Manusia purba di Indonesia hidup pada kala…", o: ["Arkaikum", "Paleozoikum", "Mesozoikum", "Pleistosen", "Tersier"], a: 3, l: "C1", p: "Pleistosen (Dilluvium) adalah bagian awal zaman Kuarter, ketika manusia purba hidup dan terjadi zaman es." },
+    { q: "Pada zaman es, Sumatra, Jawa, dan Kalimantan menyatu dengan daratan Asia membentuk…", o: ["Paparan Sahul", "Paparan Sunda", "Garis Wallace", "Lempeng Pasifik", "Dataran Tinggi Dieng"], a: 1, l: "C1", p: "Turunnya permukaan laut membuat Indonesia bagian barat menyatu dengan Asia sebagai Paparan Sunda." },
+    { s: "Pada zaman es, permukaan laut turun hingga lebih dari 100 meter. Selat-selat dangkal di antara Sumatra, Jawa, Kalimantan, dan daratan Asia berubah menjadi daratan.", q: "Kesimpulan yang paling tepat dari kenyataan tersebut adalah…", o: ["manusia purba datang ke Nusantara dengan kapal besar", "hewan dan manusia purba dapat berjalan kaki dari daratan Asia ke Jawa", "Indonesia tidak pernah dihuni manusia purba", "Papua menyatu dengan Asia", "zaman es terjadi pada masa Mesozoikum"], a: 1, l: "C4", p: "Daratan yang menyatu memungkinkan perpindahan manusia dan hewan melalui darat." },
+    { q: "Alat tulang dan tanduk rusa serta alat serpih (flakes) merupakan ciri kebudayaan…", o: ["Pacitan", "Ngandong", "Dongson", "Bacson-Hoabinh", "Bali"], a: 1, l: "C1", p: "Kebudayaan Ngandong di Ngawi menghasilkan alat tulang, tanduk rusa, dan flakes." },
+    { q: "Nekara berukuran kecil dan ramping dari Alor yang dipakai sebagai mas kawin disebut…", o: ["candrasa", "moko", "menhir", "waruga", "dolmen"], a: 1, l: "C1", p: "Moko adalah nekara kecil dari Alor, NTT, yang sampai kini masih bernilai adat." },
+    { q: "Teknik pembuatan benda logam dengan cetakan batu setangkup yang dapat dipakai berulang kali disebut…", o: ["a cire perdue", "bivalve", "tempa", "upam", "serpih"], a: 1, l: "C2", p: "Bivalve memakai dua cetakan yang dapat dipakai lagi, berbeda dengan a cire perdue yang sekali pakai." },
+    { q: "Kebudayaan logam di Nusantara diperkirakan berasal dari kebudayaan…", o: ["Pacitan", "Ngandong", "Dongson di Vietnam", "Mohenjo-daro", "Mesopotamia"], a: 2, l: "C1", p: "Kebudayaan Dongson di Vietnam utara dianggap asal kebudayaan perunggu di Asia Tenggara." },
     { q: "Masa praaksara di Indonesia dianggap berakhir dengan ditemukannya…", o: ["Prasasti Yupa dari Kutai", "Candi Borobudur", "Nekara Bulan Pejeng", "Fosil di Sangiran", "Prasasti Ciaruteun"], a: 0, l: "C1", p: "Prasasti Yupa (abad ke-5 M) adalah bukti tulisan tertua di Indonesia, menandai akhir masa praaksara." },
     { q: "Istilah 'praaksara' dianggap lebih tepat daripada 'prasejarah' karena…", o: ["lebih mudah diucapkan", "manusia tanpa tulisan pun tetap memiliki sejarah", "dipakai oleh ilmuwan Eropa", "masa itu belum ada manusia", "tulisan sudah ada tetapi belum ditemukan"], a: 1, l: "C2", p: "Sejarah adalah kehidupan manusia di masa lalu. Yang belum ada hanyalah tulisan, bukan sejarahnya." },
     { s: "Dalam sebuah galian yang lapisannya tidak terganggu, arkeolog menemukan kapak persegi pada kedalaman 1 meter dan kapak perimbas pada kedalaman 4 meter.", q: "Kesimpulan yang paling tepat dari temuan tersebut adalah…", o: ["Kapak persegi lebih tua daripada kapak perimbas", "Kedua kapak dibuat pada masa yang sama", "Kapak perimbas lebih tua daripada kapak persegi", "Kapak persegi dibawa dari luar negeri", "Umur kapak tidak dapat diperkirakan sama sekali"], a: 2, l: "C4", p: "Menurut hukum superposisi, pada lapisan yang tidak terganggu, lapisan yang lebih dalam lebih tua. Ini juga cocok dengan urutan zaman: perimbas (Paleolitikum) lebih tua dari kapak persegi (Neolitikum)." },

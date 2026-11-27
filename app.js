@@ -591,8 +591,10 @@ ${[['madrasah', 'Nama madrasah'], ['guru', 'Nama guru'], ['nip', 'NIP guru'], ['
 <label><b>Ruang</b><select id="ur" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
 <div><b>Bab</b> <span class="catatan">(boleh lebih dari satu)</span><div id="ub" class="pilih-bab"></div></div>
 <div><b>Jumlah soal pilihan ganda per level</b>
-<div class="row kecil-row"><button class="btn alt kecil-btn" type="button" data-preset="dasar">Dasar</button><button class="btn alt kecil-btn" type="button" data-preset="seimbang">Seimbang</button><button class="btn alt kecil-btn" type="button" data-preset="hots">HOTS</button></div>
+<div class="row kecil-row"><button class="btn alt kecil-btn" type="button" data-preset="asesmenku">ASESMENKU 30-40-30</button><button class="btn alt kecil-btn" type="button" data-preset="dasar">Dasar</button><button class="btn alt kecil-btn" type="button" data-preset="seimbang">Seimbang</button><button class="btn alt kecil-btn" type="button" data-preset="hots">HOTS</button></div>
 <div class="level-grid" id="ul"></div></div>
+<div class="dua"><label><b>PG kompleks</b><input id="upgk" class="isian" type="number" min="0" max="5" value="2"></label><label><b>Benar-salah</b><input id="ubs" class="isian" type="number" min="0" max="5" value="0"></label></div>
+<div class="dua"><label><b>Isian singkat</b><input id="uis" class="isian" type="number" min="0" max="10" value="0"></label><label><b>Menjodohkan</b><input id="ujd" class="isian" type="number" min="0" max="3" value="0"></label></div>
 <div class="dua"><label><b>Soal uraian</b><input id="ue" class="isian" type="number" min="0" max="10" value="2"></label>
 <label><b>Level uraian</b><select id="uel" class="isian"><option value="">Semua level</option><option value="C4,C5,C6" selected>HOTS (C4–C6)</option><option value="C6">C6 saja</option><option value="C1,C2,C3">C1–C3</option></select></label></div>
 <div class="dua"><label><b>Kelas</b><select id="uk" class="isian"><option>X</option><option>XI</option><option>XII</option></select></label><label><b>Semester</b><select id="us" class="isian"><option>Ganjil</option><option>Genap</option></select></label></div>
@@ -1117,7 +1119,7 @@ const RANAH = l => /C[123]/.test(l) ? (l === 'C3' ? 'MOTS' : 'LOTS') : 'HOTS';
 const levelEsai = e => e.l || (/^Rancang|^Buat(lah)?|^Susun(lah)? (sebuah|rencana|usulan)/i.test(e.q) ? 'C6' : /^(Nilai|Bagaimana pendapat|Setujukah|Menurutmu|Apakah .* tepat)/i.test(e.q) ? 'C5' : /^(Jelaskan|Sebutkan|Uraikan) /i.test(e.q) && !/mengapa|kaitkan|bandingkan|hubungan/i.test(e.q) ? 'C2' : 'C4');
 const bankSoal = (kid, ids) => ids.flatMap(id => { const b = isiBab(kid, id); return b ? b.soal.map((q, i) => ({ ...q, l: q.l || 'C1', kid, id, i, bab: b.judul })) : []; });
 const bankEsai = (kid, ids) => ids.flatMap(id => { const b = isiBab(kid, id); return b ? (b.esai || []).map((e, i) => ({ ...e, l: levelEsai(e), kid, id, i, bab: b.judul })) : []; });
-const PRESET = { seimbang: { C1: 4, C2: 4, C3: 4, C4: 3, C5: 3, C6: 2 }, hots: { C1: 2, C2: 2, C3: 3, C4: 5, C5: 4, C6: 4 }, dasar: { C1: 8, C2: 6, C3: 4, C4: 2, C5: 0, C6: 0 } };
+const PRESET = { asesmenku: { C1: 2, C2: 1, C3: 4, C4: 1, C5: 1, C6: 1 }, seimbang: { C1: 4, C2: 4, C3: 4, C4: 3, C5: 3, C6: 2 }, hots: { C1: 2, C2: 2, C3: 3, C4: 5, C5: 4, C6: 4 }, dasar: { C1: 8, C2: 6, C3: 4, C4: 2, C5: 0, C6: 0 } };
 
 function buatUlangan(o) {
   const pg = bankSoal(o.kid, o.bab), es = bankEsai(o.kid, o.bab);
@@ -1126,7 +1128,8 @@ function buatUlangan(o) {
   // urutkan dari mudah ke sukar, atau acak
   const urut = o.acak ? acak(pilih) : pilih;
   const esaiPilih = o.levelEsai.length ? acak(es.filter(e => o.levelEsai.includes(e.l))).slice(0, o.nEsai) : acak(es).slice(0, o.nEsai);
-  return { ...o, pg: urut.map(q => [q.kid, q.id, q.i]), es: esaiPilih.map(e => [e.kid, e.id, e.i]), dibuat: Date.now() };
+  const dipakai = new Set(pilih.map(q => `${q.kid}-${q.id}-${q.i}`));
+  return { ...o, tambah: buatTambahan(o, dipakai), pg: urut.map(q => [q.kid, q.id, q.i]), es: esaiPilih.map(e => [e.kid, e.id, e.i]), dibuat: Date.now() };
 }
 const ambilPG = r => { const b = isiBab(r[0], r[1]), q = b && b.soal[r[2]]; return q ? { ...q, l: q.l || 'C1', bab: b.judul, id: r[1] } : null; };
 const ambilEs = r => { const b = isiBab(r[0], r[1]), e = b && (b.esai || [])[r[2]]; return e ? { ...e, l: levelEsai(e), bab: b.judul, id: r[1] } : null; };
@@ -1135,26 +1138,34 @@ function naskahUlangan(U) {
   const k = cariK(U.kid), mapel = U.kid === 'ski' ? 'Sejarah Kebudayaan Islam' : 'Sejarah';
   const pg = U.pg.map(ambilPG).filter(Boolean), es = U.es.map(ambilEs).filter(Boolean);
   const judulBab = U.bab.map(id => `Bab ${id}. ${isiBab(U.kid, id).judul}`).join('; ');
-  const skorPG = pg.length ? Math.round((U.bobotPG / pg.length) * 100) / 100 : 0, skorEs = es.length ? Math.round(((100 - U.bobotPG) / es.length) * 100) / 100 : 0;
+  const lain = butirLain(U), nLain = lain.pgk.length + lain.bs.length + lain.isian.length + lain.jodoh.length;
+  const nObj = pg.length + nLain, skorPG = nObj ? Math.round((U.bobotPG / nObj) * 100) / 100 : 0, skorEs = es.length ? Math.round(((100 - U.bobotPG) / es.length) * 100) / 100 : 0;
   const B = []; const p = x => B.push({ t: 'p', x }), li = (x, n) => B.push({ t: 'li', x, n }), h2 = x => B.push({ t: 'h2', x }), h3 = x => B.push({ t: 'h3', x });
   B.push({ t: 'judul', x: U.judul || 'ULANGAN HARIAN', sub: `${mapel} · ${k.judul}\n${judulBab}` });
   B.push({ t: 'tabel', kv: true, lebar: [30, 70], rows: [['Madrasah', U.madrasah || '…'], ['Kelas / Semester', `${U.kelas} / ${U.semester}`], ['Waktu', `${U.waktu} menit`], ['Nama', ''], ['No. absen', '']] });
   h3('Petunjuk');
   [`Berdoalah sebelum mengerjakan soal.`, pg.length ? `Pilihlah satu jawaban yang paling tepat untuk soal nomor 1–${pg.length}.` : null, es.length ? `Jawablah soal uraian dengan jelas dan runtut.` : null, 'Kerjakan dengan jujur. Kejujuran adalah bagian dari cinta ilmu.'].filter(Boolean).forEach((x, i) => li(x, i + 1));
   if (pg.length) { h2('A. Pilihan ganda'); pg.forEach((q, i) => { if (q.s) p(`*${q.s}*`); li(q.q, i + 1); q.o.forEach((x, j) => B.push({ t: 'opsi', x: `${huruf(j)}. ${x}` })); }); }
-  if (es.length) { h2(`${pg.length ? 'B' : 'A'}. Uraian`); es.forEach((e, i) => li(e.q, pg.length + i + 1)); }
+  let no = pg.length, bag = pg.length ? 1 : 0; const H = t => h2(`${'ABCDEF'[bag++]}. ${t}`);
+  if (lain.pgk.length) { H('Pilihan ganda kompleks (jawaban benar lebih dari satu)'); lain.pgk.forEach(x => { li(x.teks, ++no); x.opsi.forEach((o, j) => B.push({ t: 'opsi', x: `☐ ${huruf(j)}. ${o}` })); }); }
+  if (lain.bs.length) { H('Benar atau salah'); lain.bs.forEach(x => { li(x.teks, ++no); tabel(B, x.butir.map(([t]) => [t, '']), ['Pernyataan', 'B / S'], [86, 14]); }); }
+  if (lain.isian.length) { H('Isian singkat'); lain.isian.forEach(x => li(x.teks, ++no)); }
+  if (lain.jodoh.length) { H('Menjodohkan'); lain.jodoh.forEach(x => { li(x.teks, ++no); const kanan = acak(x.pasang.map(p => p[1])); x.urutKanan = kanan; tabel(B, x.pasang.map((p, i) => [`${i + 1}. ${p[0]}`, `${huruf(i)}. ${kanan[i]}`]), ['Istilah', 'Pengertian'], [35, 65]); }); }
+  if (es.length) { H('Uraian'); es.forEach(e => li(e.q, ++no)); }
   B.push({ t: 'pb' });
   B.push({ t: 'h1', x: 'KUNCI JAWABAN DAN PEMBAHASAN' });
-  p(`Pedoman penskoran: pilihan ganda ${pg.length} soal × ${skorPG} = ${U.bobotPG}${es.length ? `; uraian ${es.length} soal × ${skorEs} (skor rubrik 1–4 dikonversi: skor ÷ 4 × ${skorEs})` : ''}. Nilai maksimal 100.`);
+  p(`Pedoman penskoran: soal objektif ${nObj} soal × ${skorPG} = ${U.bobotPG}${es.length ? `; uraian ${es.length} soal × ${skorEs} (skor rubrik 1–4 dikonversi: skor ÷ 4 × ${skorEs})` : ''}. Nilai maksimal 100.`);
   if (pg.length) tabel(B, pg.map((q, i) => [String(i + 1), huruf(q.a), q.l, q.p || '']), ['No', 'Kunci', 'Level', 'Pembahasan'], [7, 9, 9, 75]);
-  es.forEach((e, i) => { h3(`Soal ${pg.length + i + 1} (uraian, ${e.l})`); tabel(B, e.rubrik.map(r => { const m = r.match(/^(\d)\s*:\s*(.*)$/); return m ? [m[1], m[2]] : ['', r]; }), ['Skor', 'Kriteria'], [12, 88]); });
+  { let m = pg.length; lain.pgk.forEach(x => p(`**${++m}** (PG kompleks, ${x.l}): ${x.kunci.join(', ')}`)); lain.bs.forEach(x => p(`**${++m}** (benar-salah, ${x.l}): ${x.butir.map((b, i) => `${i + 1}-${b[1]}`).join(', ')}`)); lain.isian.forEach(x => p(`**${++m}** (isian, ${x.l}): ${x.kunci}`)); lain.jodoh.forEach(x => p(`**${++m}** (menjodohkan, ${x.l}): ${x.pasang.map((pp, i) => `${i + 1}-${huruf(x.urutKanan.indexOf(pp[1]))}`).join(', ')}`)); }
+  es.forEach((e, i) => { h3(`Soal ${pg.length + nLain + i + 1} (uraian, ${e.l})`); tabel(B, e.rubrik.map(r => { const m = r.match(/^(\d)\s*:\s*(.*)$/); return m ? [m[1], m[2]] : ['', r]; }), ['Skor', 'Kriteria'], [12, 88]); });
   B.push({ t: 'pb' });
   B.push({ t: 'h1', x: 'KISI-KISI SOAL' });
-  const semua = pg.map((q, i) => [String(i + 1), 'PG', `Bab ${q.id}`, indikator(q), q.l + ' ' + LEVEL[q.l], RANAH(q.l)]).concat(es.map((e, i) => [String(pg.length + i + 1), 'Uraian', `Bab ${e.id}`, indikator(e), e.l + ' ' + LEVEL[e.l], RANAH(e.l)]));
+  const turunan = [...lain.pgk.map(x => ['PG kompleks', x, 'memilih pernyataan yang benar tentang materi']), ...lain.bs.map(x => ['Benar-salah', x, 'menentukan kebenaran pernyataan tentang materi']), ...lain.isian.map(x => ['Isian', x, 'melengkapi pernyataan: ' + x.teks.slice(0, 80)]), ...lain.jodoh.map(x => ['Menjodohkan', x, 'memasangkan istilah dengan pengertiannya'])];
+  const semua = pg.map((q, i) => [String(i + 1), 'PG', `Bab ${q.id}`, indikator(q), q.l + ' ' + LEVEL[q.l], RANAH(q.l)]).concat(turunan.map(([j, x, ind], i) => [String(pg.length + i + 1), j, `Bab ${x.id}`, 'Murid mampu ' + ind, x.l + ' ' + LEVEL[x.l], RANAH(x.l)])).concat(es.map((e, i) => [String(pg.length + nLain + i + 1), 'Uraian', `Bab ${e.id}`, indikator(e), e.l + ' ' + LEVEL[e.l], RANAH(e.l)]));
   tabel(B, semua, ['No', 'Bentuk', 'Materi', 'Indikator soal', 'Level kognitif', 'Ranah'], [6, 9, 9, 46, 18, 12]);
-  const hit = {}; [...pg, ...es].forEach(x => hit[x.l] = (hit[x.l] || 0) + 1);
+  const hit = {}; [...pg, ...turunan.map(t => t[1]), ...es].forEach(x => hit[x.l] = (hit[x.l] || 0) + 1);
   p('**Sebaran level**: ' + Object.keys(LEVEL).filter(l => hit[l]).map(l => `${l} = ${hit[l]}`).join(', ') + `. LOTS ${[...pg, ...es].filter(x => RANAH(x.l) === 'LOTS').length}, MOTS ${[...pg, ...es].filter(x => RANAH(x.l) === 'MOTS').length}, HOTS ${[...pg, ...es].filter(x => RANAH(x.l) === 'HOTS').length}.`);
-  return { blok: B, nama: `Ulangan Harian ${mapel} Kelas ${U.kelas} ${U.bab.map(x => 'Bab ' + x).join(' ')}`, pg, es };
+  return { blok: B, nama: `Ulangan Harian ${mapel} Kelas ${U.kelas} ${U.bab.map(x => 'Bab ' + x).join(' ')}`, pg, es, lain, skorEs };
 }
 function tabel(B, rows, head, lebar) { B.push({ t: 'tabel', rows, head, lebar }); }
 const KATA_KERJA = { C1: 'menyebutkan', C2: 'menjelaskan', C3: 'menerapkan konsep tentang', C4: 'menganalisis', C5: 'menilai', C6: 'merancang' };
@@ -1187,9 +1198,9 @@ function halamanSoal() {
   const U = S.get('ulanganTerakhir', null); if (!U || !cariK(U.kid)) { location.hash = '#guru'; return; }
   const N = naskahUlangan(U);
   app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><a class="balik gelap" href="#guru">Panel Guru</a><h1>Soal ulangan siap</h1>
-<p><b>${N.pg.length}</b> soal pilihan ganda dan <b>${N.es.length}</b> soal uraian. Periksa naskahnya di bawah sebelum dipakai.</p>
+<p><b>${N.pg.length}</b> pilihan ganda${N.lain.pgk.length ? `, <b>${N.lain.pgk.length}</b> PG kompleks` : ''}${N.lain.bs.length ? `, <b>${N.lain.bs.length}</b> benar-salah` : ''}${N.lain.isian.length ? `, <b>${N.lain.isian.length}</b> isian` : ''}${N.lain.jodoh.length ? `, <b>${N.lain.jodoh.length}</b> menjodohkan` : ''}, dan <b>${N.es.length}</b> uraian. Periksa naskahnya di bawah sebelum dipakai.</p>
 <div class="box"><h2 style="margin-top:0">Masukkan ke ASESMENKU</h2>
-<label><b>Format teks</b><select id="sg" class="isian"><option value="ringkas">Bernomor + kunci (umum)</option><option value="lengkap">Bernomor + kunci + level + pembahasan</option><option value="aiken">Aiken (ANSWER: B), untuk impor kuis</option></select></label>
+<label><b>Format teks</b><select id="sg" class="isian"><option value="asesmenku">Format ASESMENKU</option><option value="ringkas">Bernomor + kunci (umum)</option><option value="lengkap">Bernomor + kunci + level + pembahasan</option><option value="aiken">Aiken (ANSWER: B), untuk impor kuis</option></select></label>
 <textarea id="st" class="isian teks-soal" rows="10" readonly></textarea>
 <div class="row"><button class="btn" type="button" id="ssalin">Salin semua soal</button><button class="btn alt" type="button" id="scsv">Unduh Excel (.csv)</button></div>
 <p class="catatan">File .csv dapat dibuka di Excel atau Google Sheets. Kolomnya: No, Jenis, Stimulus, Pertanyaan, A–E, Kunci, Level, Ranah, Bab, Pembahasan.</p></div>
@@ -1198,7 +1209,7 @@ function halamanSoal() {
 <p class="catatan">Untuk PDF: pada jendela cetak, pilih <b>Simpan sebagai PDF</b>.</p></div></div></section>
 <section class="pad"><div class="wrap"><article class="modul-dok">${modulHTML(N)}</article></div></section>`;
   const sg = document.getElementById('sg'), st = document.getElementById('st');
-  sg.value = S.get('gayaSoal', 'ringkas'); const isi = () => { st.value = teksUlangan(N, sg.value); S.set('gayaSoal', sg.value); }; sg.onchange = isi; isi();
+  sg.value = S.get('gayaSoal', 'asesmenku'); const isi = () => { st.value = sg.value === 'asesmenku' ? teksAsesmenku(N) : teksUlangan(N, sg.value); S.set('gayaSoal', sg.value); }; sg.onchange = isi; isi();
   document.getElementById('ssalin').onclick = async e => { try { await navigator.clipboard.writeText(st.value); e.target.textContent = 'Tersalin. Tempel di ASESMENKU'; } catch { st.select(); document.execCommand('copy'); e.target.textContent = 'Tersalin'; } };
   document.getElementById('scsv').onclick = () => unduhBlob(new Blob([csvUlangan(N)], { type: 'text/csv;charset=utf-8' }), namaBerkas(N.nama) + '.csv');
   document.getElementById('sword').onclick = () => unduhBlob(docxDari(N), namaBerkas(N.nama) + '.docx');
@@ -1225,12 +1236,12 @@ function pasangSoalForm() {
   const babDipilih = () => [...ub.querySelectorAll('input:checked')].map(x => +x.value);
   const hitung = () => {
     const bank = bankSoal(ur.value, babDipilih()), ada = {}; bank.forEach(q => ada[q.l] = (ada[q.l] || 0) + 1);
-    ul.querySelectorAll('input').forEach(x => { const n = ada[x.dataset.l] || 0; x.max = n; x.closest('label').querySelector('small').textContent = `tersedia ${n}`; if (+x.value > n) x.value = n; });
-    const tot = [...ul.querySelectorAll('input')].reduce((s, x) => s + (+x.value || 0), 0), es = bankEsai(ur.value, babDipilih()).length;
+    ul.querySelectorAll('input').forEach(x => { const n = ada[x.dataset.l] || 0; x.max = n; x.closest('label').querySelector('small').textContent = `tersedia ${n}`; x.classList.toggle('kurang', +x.value > n); });
+    const tot = [...ul.querySelectorAll('input')].reduce((s, x) => s + Math.min(+x.value || 0, +x.max), 0), es = bankEsai(ur.value, babDipilih()).length;
     info.textContent = babDipilih().length ? `Total ${tot} soal pilihan ganda. Bank soal: ${bank.length} pilihan ganda, ${es} uraian.` : 'Pilih minimal satu bab.';
   };
   const isiBabU = () => { ub.innerHTML = tersedia(cariK(ur.value)).map((d, i) => `<label class="cek"><input type="checkbox" value="${d.id}" ${i === 0 ? 'checked' : ''}> Bab ${d.id}. ${esc(d.judul)}</label>`).join(''); ub.onchange = hitung; hitung(); };
-  ul.innerHTML = Object.entries(LEVEL).map(([l, n]) => `<label><b>${l}</b> <span>${n}</span><input class="isian" type="number" min="0" data-l="${l}" value="${PRESET.seimbang[l]}"><small></small></label>`).join('');
+  ul.innerHTML = Object.entries(LEVEL).map(([l, n]) => `<label><b>${l}</b> <span>${n}</span><input class="isian" type="number" min="0" data-l="${l}" value="${PRESET.asesmenku[l]}"><small></small></label>`).join('');
   ul.oninput = hitung;
   app.querySelectorAll('[data-preset]').forEach(b => b.onclick = () => { const P = PRESET[b.dataset.preset]; ul.querySelectorAll('input').forEach(x => x.value = P[x.dataset.l]); hitung(); });
   ur.onchange = isiBabU; isiBabU();
@@ -1238,10 +1249,49 @@ function pasangSoalForm() {
     const bab = babDipilih(); if (!bab.length) { info.textContent = 'Pilih minimal satu bab.'; return; }
     const jumlah = {}; ul.querySelectorAll('input').forEach(x => jumlah[x.dataset.l] = Math.min(+x.value || 0, +x.max));
     const idg = idGuru(), uel = document.getElementById('uel').value;
-    const U = buatUlangan({ kid: ur.value, bab, jumlah, nEsai: +document.getElementById('ue').value || 0, levelEsai: uel ? uel.split(',') : [], acak: document.getElementById('ua').checked, waktu: +document.getElementById('uw').value || 90, bobotPG: Math.min(100, Math.max(0, +document.getElementById('ubb').value || 70)), madrasah: idg.madrasah, kelas: document.getElementById('uk').value, semester: document.getElementById('us').value, judul: document.getElementById('uj').value.trim() || 'ULANGAN HARIAN' });
-    if (!U.es.length) U.bobotPG = 100; if (!U.pg.length) U.bobotPG = 0;
+    const U = buatUlangan({ kid: ur.value, bab, jumlah, nEsai: +document.getElementById('ue').value || 0, nPGK: +document.getElementById('upgk').value || 0, nBS: +document.getElementById('ubs').value || 0, nIsian: +document.getElementById('uis').value || 0, nJodoh: +document.getElementById('ujd').value || 0, levelEsai: uel ? uel.split(',') : [], acak: document.getElementById('ua').checked, waktu: +document.getElementById('uw').value || 90, bobotPG: Math.min(100, Math.max(0, +document.getElementById('ubb').value || 70)), madrasah: idg.madrasah, kelas: document.getElementById('uk').value, semester: document.getElementById('us').value, judul: document.getElementById('uj').value.trim() || 'ULANGAN HARIAN' });
+    const T = U.tambah, nObj = U.pg.length + T.pgk.length + T.bs.length + T.isian.length + T.jodoh.length; if (!U.es.length) U.bobotPG = 100; if (!nObj) U.bobotPG = 0;
     S.set('ulanganTerakhir', U); location.hash = '#guru-soal';
   };
+}
+
+/* ---- butir turunan untuk format ASESMENKU: PGK, benar-salah, isian, menjodohkan ---- */
+const NEGASI = /kecuali|bukan|tidak termasuk|salah|tidak tepat|keliru/i;
+const layakPernyataan = q => /^C[123]$/.test(q.l || 'C1') && /…$/.test(q.q) && !q.s && !NEGASI.test(q.q) && q.q.length < 140 && !q.o.some(x => /semua|tidak ada/i.test(x));
+const kalimatDari = (q, j) => { const t = q.q.replace(/\s*…$/, '').trim(); return `${t} ${q.o[j]}`.replace(/\s+/g, ' ').replace(/[.\s]*$/, '.'); };
+const salahAcak = q => { const s = [0, 1, 2, 3, 4].filter(j => j !== q.a); return s[Math.floor(Math.random() * s.length)]; };
+function buatTambahan(o, dipakai) {
+  const pg = bankSoal(o.kid, o.bab).filter(q => !dipakai.has(`${q.kid}-${q.id}-${q.i}`) && layakPernyataan(q));
+  const kolam = acak(pg); let k = 0; const ambil = () => kolam[k++];
+  const ref = (q, benar) => [q.kid, q.id, q.i, benar ? 1 : 0, benar ? q.a : salahAcak(q)];
+  const pgk = [], bs = [], isian = [], jodoh = [];
+  for (let n = 0; n < (o.nPGK || 0); n++) { const qs = [ambil(), ambil(), ambil(), ambil(), ambil()].filter(Boolean); if (qs.length < 5) break; const nb = 2 + Math.floor(Math.random() * 2); const pola = acak(qs.map((_, i) => i < nb)); pgk.push(qs.map((q, i) => ref(q, pola[i]))); }
+  for (let n = 0; n < (o.nBS || 0); n++) { const qs = [ambil(), ambil(), ambil(), ambil()].filter(Boolean); if (qs.length < 4) break; const pola = acak([true, true, false, false]); bs.push(qs.map((q, i) => ref(q, pola[i]))); }
+  for (let n = 0; n < (o.nIsian || 0); n++) { const q = kolam.slice(k).find(x => /^C[12]$/.test(x.l) && x.o[x.a].split(' ').length <= 5); if (!q) break; kolam.splice(kolam.indexOf(q), 1); isian.push([q.kid, q.id, q.i]); }
+  const gl = acak(o.bab.flatMap(id => (isiBab(o.kid, id).glosarium || []).map((g, i) => [o.kid, id, i])).filter(r => isiBab(r[0], r[1]).glosarium[r[2]][1].length < 90));
+  for (let n = 0; n < (o.nJodoh || 0); n++) { const s = gl.splice(0, 4); if (s.length < 4) break; jodoh.push(s); }
+  return { pgk, bs, isian, jodoh };
+}
+const ambilRef = r => { const b = isiBab(r[0], r[1]); const q = b && b.soal[r[2]]; return q ? { q, l: q.l || 'C1', id: r[1], benar: !!r[3], teks: kalimatDari(q, r[4]) } : null; };
+function butirLain(U) {
+  const T = U.tambah || { pgk: [], bs: [], isian: [], jodoh: [] };
+  const lv = xs => { const o = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6']; return o[Math.max(...xs.map(x => o.indexOf(x)))]; };
+  return {
+    pgk: T.pgk.map(g => { const it = g.map(ambilRef).filter(Boolean); return { teks: 'Perhatikan pernyataan-pernyataan berikut. Manakah pernyataan yang benar?', opsi: it.map(x => x.teks), kunci: it.map((x, i) => x.benar ? huruf(i) : null).filter(Boolean), l: lv(it.map(x => x.l)), id: it[0].id }; }),
+    bs: T.bs.map(g => { const it = g.map(ambilRef).filter(Boolean); return { teks: 'Tentukan benar atau salah.', butir: it.map(x => [x.teks, x.benar ? 'B' : 'S']), l: lv(it.map(x => x.l)), id: it[0].id }; }),
+    isian: T.isian.map(r => { const q = isiBab(r[0], r[1]).soal[r[2]]; return { teks: q.q.replace(/\s*…$/, ' ....'), kunci: q.o[q.a], l: q.l || 'C1', id: r[1] }; }),
+    jodoh: T.jodoh.map(g => ({ teks: 'Pasangkan istilah berikut dengan pengertiannya yang tepat.', pasang: g.map(r => isiBab(r[0], r[1]).glosarium[r[2]]), l: 'C2', id: g[0][1] }))
+  };
+}
+function teksAsesmenku(N) {
+  const out = []; let n = 0; const L = N.lain;
+  if (N.pg.length) { out.push('[PG]'); N.pg.forEach(q => { out.push(`${++n}. ${q.s ? q.s + ' ' : ''}${q.q}`); q.o.forEach((x, j) => out.push(`${huruf(j)}. ${x}`)); out.push(`Kunci: ${huruf(q.a)}`, `Pembahasan: ${kalimat(q.p || '-', 1)}`, ''); }); }
+  if (L.pgk.length) { out.push('[PGK]'); L.pgk.forEach(x => { out.push(`${++n}. ${x.teks} (pilih lebih dari satu jawaban)`); x.opsi.forEach((o, j) => out.push(`${huruf(j)}. ${o}`)); out.push(`Kunci: ${x.kunci.join(', ')}`, ''); }); }
+  if (L.bs.length) { out.push('[BS]'); L.bs.forEach(x => { out.push(`${++n}. ${x.teks}`); x.butir.forEach(([t, k]) => out.push(`- ${t} | ${k}`)); out.push(''); }); }
+  if (L.isian.length) { out.push('[ISIAN]'); L.isian.forEach(x => { out.push(`${++n}. ${x.teks}`, `Kunci: ${x.kunci}`, ''); }); }
+  if (L.jodoh.length) { out.push('[JODOH]'); L.jodoh.forEach(x => { out.push(`${++n}. ${x.teks}`); x.pasang.forEach(([a, b]) => out.push(`- ${a} = ${b}`)); out.push(''); }); }
+  if (N.es.length) { out.push('[URAIAN]'); N.es.forEach(e => { const top = (e.rubrik.find(r => /^4\s*:/.test(r)) || e.rubrik[0] || '').replace(/^\d\s*:\s*/, ''); out.push(`${++n}. ${e.q}`, `Kunci: ${top.charAt(0).toUpperCase() + top.slice(1)}`, `Skor: ${N.skorEs ? Math.round(N.skorEs) : 10}`, ''); }); }
+  return out.join('\n').trim();
 }
 
 /* ---------- router ---------- */

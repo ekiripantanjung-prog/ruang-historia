@@ -470,3 +470,4 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
   #cetak-slide .cs-hal{page:slide;width:1280px;height:720px;overflow:hidden;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   #cetak-slide .cs-hal:last-child{break-after:auto}
 }
+.level-grid input.kurang{border-color:#c0392b;color:#c0392b}

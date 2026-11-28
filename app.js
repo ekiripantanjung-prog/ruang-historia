@@ -2080,7 +2080,7 @@ function pasangMuncul(root) {
   if (!animAktif() || !('IntersectionObserver' in window)) return;
   if (pengamat) pengamat.disconnect();
   pengamat = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('muncul'); pengamat.unobserve(e.target); } }), { rootMargin: '0px 0px -6% 0px', threshold: .05 });
-  const el = [...root.querySelectorAll(PILIH_MUNCUL)].filter(x => !x.closest('.sticky, .pr-panggung, .cs-hal, .muncul-siap'));
+  const el = [...root.querySelectorAll(PILIH_MUNCUL)].filter(x => !x.closest('.sticky, .pr-panggung, .cs-hal, .muncul-siap, .polaroid, .hero-visual, .logo-besar'));
   el.forEach((x, i) => { x.classList.add('muncul-siap'); x.style.setProperty('--d', `${Math.min(i, 8) * 55}ms`); pengamat.observe(x); });
 }
 // transisi halaman + muncul, setiap kali isi halaman diganti

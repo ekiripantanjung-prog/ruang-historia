@@ -10,7 +10,7 @@ const tersedia = k => modeSekolah() && k.id === 'ski' ? [] : k.bab.filter(d => i
 /* mode jenis satuan pendidikan: madrasah (Kemenag, KBC) atau sekolah umum (Kemendikdasmen, Kurikulum Merdeka + Pembelajaran Mendalam) */
 function modeSekolah() { let j = ''; try { j = JSON.parse(localStorage.getItem('historia-jenjang')) || ''; if (!j) j = (JSON.parse(localStorage.getItem('historia-kelas')) || {}).jenjang || ''; } catch (e) {} return j === 'sekolah'; }
 const SAT = () => modeSekolah() ? { nama: 'sekolah', Nama: 'Sekolah', kepala: 'Kepala Sekolah' } : { nama: 'madrasah', Nama: 'Madrasah', kepala: 'Kepala Madrasah' };
-const DPL_CINTA = { 'cinta allah dan rasul-nya': 'Keimanan dan ketakwaan terhadap Tuhan YME', 'cinta ilmu': 'Penalaran kritis', 'cinta lingkungan': 'Kewargaan: peduli lingkungan', 'cinta diri dan sesama': 'Kolaborasi dan kepedulian', 'cinta tanah air': 'Kewargaan' };
+const DPL_CINTA = { 'cinta kepada allah dan rasul-nya': 'Keimanan dan ketakwaan terhadap Tuhan YME', 'cinta allah dan rasul-nya': 'Keimanan dan ketakwaan terhadap Tuhan YME', 'cinta ilmu': 'Penalaran kritis', 'cinta lingkungan': 'Kewargaan: peduli lingkungan', 'cinta diri dan sesama': 'Kolaborasi dan kepedulian', 'cinta tanah air': 'Kewargaan' };
 const labelCinta = c => modeSekolah() ? (DPL_CINTA[String(c).toLowerCase()] || 'Nilai karakter') : c;
 
 /* ---------- penyimpanan nilai (hanya di perangkat ini) ---------- */
@@ -975,7 +975,11 @@ async function susunSlide(kid, id) {
   const pem = C.find(x => x.s.besar); if (pem && sisaG[0]) pem.s.foto = sisaG.shift();
   sisaG.slice(0, 1).forEach(g => tambah({ t: 'foto', ...g }, 7));
   if (b.glosarium && b.glosarium.length) tambah({ t: 'istilah', judul: 'Istilah penting', item: b.glosarium.slice(0, 6) }, 8);
-  if (cinta.length) tambah({ t: 'cinta', judul: modeSekolah() ? 'Refleksi nilai' : 'Refleksi Panca Cinta', item: cinta.slice(0, 2) }, 5);
+  if (cinta.length) {
+    const umum = c2 => !/allah|rasul|al-qur|qs |surah|nabi|hadis|ibadah/i.test(c2.join(' '));
+    const pilihC = modeSekolah() ? [...cinta.filter(umum), ...cinta.filter(c2 => !umum(c2))] : cinta;
+    tambah({ t: 'cinta', judul: modeSekolah() ? 'Refleksi profil lulusan' : 'Refleksi Panca Cinta', item: pilihC.slice(0, 2).map(c2 => [labelCinta(c2[0]), c2[1]]) }, 2);
+  }
   const diskusi = [...esai.filter(q => q !== pemantik).map(q => ({ s: '', q })), ...tanya.slice(1).map(q => ({ s: q.s, q: q.q }))].slice(0, 2);
   if (diskusi.length) tambah({ t: 'diskusi', judul: 'Mari berdiskusi', item: diskusi }, 2);
   tambah({ t: 'penutup', judul: 'Tugas mandiri', kid, id, kkm: c.kkm, url: `${alamatDasar()}#${kid}-${id}`, babJudul: b.judul }, 0);

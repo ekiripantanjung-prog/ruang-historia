@@ -190,7 +190,7 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 .polaroid figcaption{font-size:11px;line-height:1.2;padding:6px 2px 8px;font-weight:600}
 .p1{left:-6%;top:6%;--rot:-8deg;transform:rotate(-8deg)}
 .p2{right:-6%;top:28%;--rot:7deg;transform:rotate(7deg)}
-.p3{left:8%;bottom:-4%;--rot:4deg;transform:rotate(4deg);width:32%}
+.p3{left:8%;bottom:6%;--rot:4deg;transform:rotate(4deg);width:32%}
 .polaroid{animation:polMasuk .9s cubic-bezier(.2,.8,.2,1) both,polApung 6s ease-in-out 1s infinite;z-index:2}
 .p2{animation-delay:.15s,1.6s;animation-duration:.9s,7s}.p3{animation-delay:.3s,2.2s;animation-duration:.9s,6.5s}
 @keyframes polMasuk{from{opacity:0;transform:translateY(40px) rotate(calc(var(--rot) * 3)) scale(.8)}to{opacity:1;transform:rotate(var(--rot))}}

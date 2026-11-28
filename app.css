@@ -634,3 +634,4 @@ body.cetak-kartu #cetak-kartu{display:grid;grid-template-columns:repeat(3,1fr);g
 .sl-visual .v-cat{font-size:18px}.sl-visual .v-sumber,.sl-visual .v-satuan{font-size:15px}
 .sl-visual .v-piramida b{font-size:22px}.sl-visual .v-piramida small{font-size:16px}
 .sl-visual .v-grid{grid-template-columns:repeat(3,1fr)}.sl-visual .v-grid b{font-size:21px}.sl-visual .v-grid span{font-size:18px}
+.pin-baris{display:flex;gap:8px;align-items:stretch}.pin-baris .isian{flex:1}.pin-baris .btn{padding:0 16px;font-size:20px}

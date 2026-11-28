@@ -1486,12 +1486,12 @@ function susunPanduan() {
   h3('2. Bergabung dengan kelas');
   langkah(['Buka **tautan kelas** atau pindai **kode QR** yang dibagikan guru. Cukup sekali.', 'Bila guru memakai rekap nilai, masukkan **kode siswa** 6 huruf dari guru. Nama dan kelasmu akan muncul.', 'Jangan berikan kode siswamu kepada teman, karena nilai yang masuk tercatat atas namamu.']);
   h3('3. Belajar setiap bab (babak)');
-  langkah(['Di Beranda, pilih ruang (Sejarah Indonesia, Sejarah Dunia, atau SKI), lalu pilih bab yang terbuka.', 'Baca **Materi**, lihat **Jejak sejarah** (foto arsip), dan tonton **Video**.', 'Catat poin penting di buku catatan. Centang daftar kesiapan, lalu kerjakan **Kuis**.', 'Bila nilaimu mencapai **KKM**, kamu mendapat bintang dan babak berikutnya terbuka. Bila belum, pelajari lagi materinya lalu ulangi kuis.', 'Bab yang belum dibuka guru bertanda **Belum dibuka guru**. Tunggu sampai guru membukanya di kelas.']);
+  langkah(['Di Beranda, pilih ruang (Sejarah Indonesia, Sejarah Dunia, atau SKI), lalu pilih bab yang terbuka.', 'Baca **Materi**, lihat **Jejak sejarah** (foto arsip), dan tonton **Video**.', 'Catat poin penting di buku catatan. Centang daftar kesiapan, lalu kerjakan **Kuis**.', 'Bila nilaimu mencapai **KKM**, kamu mendapat **Historia Star** ⭐ dan babak berikutnya terbuka. Bila belum, pelajari lagi materinya lalu ulangi kuis.', 'Bab yang belum dibuka guru bertanda **Belum dibuka guru**. Tunggu sampai guru membukanya di kelas.']);
   h3('4. Nilai dan ujian');
   poin(['Menu **Nilaiku** menampilkan semua nilai dan koleksi **Historia Star** ⭐ milikmu. Historia Star didapat dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3) dan dari guru bila kamu menang challenge atau game di kelas. Historia Star diubah menjadi **nilai tambah** sesuai aturan guru.', 'Ujian akhir tiap ruang terbuka setelah babak-babaknya selesai.', 'Bila mengerjakan kuis tanpa internet, nilai disimpan di HP dan terkirim otomatis ke guru saat HP tersambung internet lagi.', '**Ganti HP?** Buka tautan kelas di HP baru lalu masukkan kode siswamu. Nilai dan babak yang sudah terbuka kembali otomatis dari rekap guru.']);
 
   h2('Bagian B. Panduan untuk guru');
-  h3('1. Masuk Panel Guru');
+  h3('1. Masuk Ruang Guru');
   langkah(['Ketuk menu **Guru** (ikon topi toga; di HP ada di menu bawah). Setelah masuk, tampil **Ruang Guru** berisi kotak-kotak menu: Presentasi, Modul Ajar, Soal Ulangan, Kelas & Babak, Daftar Siswa, Rekap Nilai, Akun & PIN, dan Buku Panduan. Ketuk kotak yang diperlukan; tombol **← Ruang Guru** membawa kembali.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
   h3('2. Presentasi kelas (PowerPoint dan PDF)');
   langkah(['Di Ruang Guru, buka menu **Presentasi**, pilih ruang dan bab.', 'Tekan **Tampilkan presentasi** untuk mengajar langsung dari aplikasi (geser atau tombol panah untuk pindah slide).', 'Tekan **Unduh PowerPoint** untuk file yang dapat diedit, atau **Unduh PDF** lalu pilih **Simpan sebagai PDF** pada jendela cetak.']);
@@ -1503,12 +1503,22 @@ function susunPanduan() {
   langkah(['Di Ruang Guru, buka menu **Kelas & Babak**, isi nama kelas dan KKM, lalu aktifkan mode babak.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
   h3('6. Rekap nilai di Google Sheets (dipasang sekali)');
   langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Ruang Guru, buka menu **Rekap Nilai**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di menu **Rekap Nilai**, lalu tekan **Uji sambungan**.', 'Buka menu **Daftar Siswa**: ketik nama kelas, pilih file daftar siswa (Excel, Word, atau PDF), periksa daftar nama, lalu tekan **Kirim ke Google Sheets**. Kode siswa dibuat otomatis. Tekan **Cetak kartu kode** untuk membagikan kode kepada siswa, atau **Salin daftar kode untuk WA**. Bila diminta memperbarui kode Apps Script, ikuti 4 langkah yang tampil di layar.', 'Buat tautan kelas di menu **Kelas & Babak**. Sejak itu nilai kuis dan ujian masuk otomatis.']);
-  h3('7. Membuka bab baru dan membaca analisis');
+  h3('7. Memasukkan daftar siswa');
+  langkah(['Buka menu **Daftar Siswa**, lalu ketik **nama kelas** (misalnya XI D), persis sama dengan nama kelas di tautan kelas.', '**Cara 1, dari file:** tekan **Pilih file** dan pilih daftar siswa (Excel, Word, atau PDF ketikan). Bila satu file Excel berisi beberapa sheet kelas, semua kelas terbaca sekaligus.', '**Cara 2, tempel:** blok nama-nama siswa di Excel, Word, atau WA, salin (Ctrl+C), tekan **Tempel / ketik daftar nama**, lalu tempel (Ctrl+V). Nomor, NIS, dan L/P dibuang otomatis.', 'Periksa daftar nama yang muncul, lalu tekan **Kirim ke Google Sheets**. Kode siswa dibuat otomatis.', 'Tekan **Cetak kartu kode** (kartu kecil untuk digunting) atau **Salin daftar kode untuk WA**, lalu bagikan kepada siswa.']);
+  h3('8. Membuka bab baru dan membaca analisis');
   poin(['Setiap mulai mengajar bab baru, buka lembar **Pengaturan** di Google Sheets dan ubah angka **Buka sampai bab** untuk kelas itu. KKM per kelas juga diatur di sana.', 'Lembar **Rekap** berisi nilai tertinggi setiap siswa per bab (merah bila di bawah KKM).', 'Lembar **Analisis** berisi rata-rata, persentase ketuntasan, siswa yang perlu remedial, siswa yang belum mengerjakan, dan soal yang paling sulit.']);
-  h3('8. Historia Star dan nilai tambah');
+  h3('9. Historia Star dan nilai tambah');
   poin(['Siswa mengoleksi **Historia Star** ⭐ dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3).', 'Guru memberi Historia Star tambahan kepada pemenang challenge, game, atau metode ajar di kelas: buka menu **Historia Star**, pilih kelas, ketuk nama siswa, pilih jumlah bintang dan alasannya, lalu tekan **Beri Historia Star**. Salah pilih? Tekan **Batalkan**.', 'Tekan **Tayangkan papan peringkat** untuk menampilkan 10 besar kelas di proyektor.', 'Di **Konversi ke nilai tambah**, atur nilai 1 ⭐ (misalnya 1 poin) dan batas maksimalnya (misalnya 10 poin). Hasilnya tercatat di lembar **Nilai Tambah** pada Google Sheets untuk diolah bersama nilai lainnya.', 'Siswa melihat total Historia Star dan nilai tambahnya di menu **Nilaiku**.']);
-  h3('9. Tahun ajaran baru');
+  h3('10. Tahun ajaran baru');
   poin(['Menu **Ruang Historia → Hapus data satu kelas**: menghapus data satu kelas saja.', 'Menu **Ruang Historia → Tahun ajaran baru**: file lama disimpan sebagai arsip di Google Drive, lalu nilai dikosongkan. Daftar siswa boleh dihapus atau disimpan. Alamat aplikasi web tidak berubah.']);
+
+  h3('11. Memperbarui kode Apps Script (bila ada fitur baru)');
+  p('Beberapa fitur baru memerlukan kode Apps Script terbaru. Bila aplikasi meminta, atau setelah pengembang mengumumkan fitur baru, lakukan langkah berikut. Data di Google Sheets tidak berubah dan alamat /exec tetap sama.');
+  langkah(['Buka menu **Daftar Siswa** → **Perbarui kode Apps Script**, lalu tekan **Salin kode Apps Script**.', 'Di Google Sheets, buka **Ekstensi → Apps Script**. Tekan Ctrl+A, Delete, lalu Ctrl+V, dan klik ikon disket (Simpan).', 'Tekan **Terapkan → Kelola deployment**, klik ikon pensil, pilih **Versi: Versi baru**, lalu **Terapkan**.']);
+  h3('12. Ganti HP atau laptop guru');
+  poin(['Nilai, daftar siswa, kode, Historia Star, dan pengaturan kelas tersimpan di Google Sheets, jadi **tidak hilang**.', 'Di perangkat baru: masuk dengan PIN, lalu tempel lagi alamat /exec di menu **Rekap Nilai** (ambil dari Apps Script → Terapkan → Kelola deployment → Salin).', 'Isi **Kunci guru** (menu Daftar Siswa → Perbarui kode Apps Script) sama dengan perangkat lama agar impor siswa dan Historia Star bisa dipakai. Simpan Kunci guru di catatan pribadi. Bila lupa, ulangi langkah nomor 11 dari perangkat baru.', 'Tautan kelas yang sudah dibagikan kepada siswa tetap berlaku.']);
+  h3('13. Berbagi aplikasi dengan guru lain');
+  poin(['Pengembang membuka menu **Bagikan ke Guru**, menulis nama guru, lalu menekan **Buat kode aktivasi** dan mengirim pesan yang muncul.', 'Guru baru membuka menu Guru → **Guru baru, atau lupa PIN?**, mengisi nama dan kode aktivasi, lalu membuat PIN sendiri.', 'Setiap guru memakai Google Sheets miliknya sendiri, sehingga data tidak tercampur.']);
 
   h2('Bagian C. Pertanyaan yang sering muncul');
   B.push({ t: 'tabel', head: ['Masalah', 'Penyelesaian'], lebar: [35, 65], rows: [
@@ -1518,7 +1528,11 @@ function susunPanduan() {
     ['Guru lupa PIN', 'Pilih "Guru baru, atau lupa PIN?" dan pakai kode aktivasi yang sama untuk membuat PIN baru.'],
     ['Soal dari berkas tidak terbaca rapi di ASESMENKU', 'Pakai berkas "Word untuk ASESMENKU" (bukan naskah cetak), dan jangan menyunting susunan barisnya. Naskah cetak hanya untuk dibagikan kepada siswa.'],
     ['Tampilan masih versi lama', 'Tutup aplikasi lalu buka lagi saat tersambung internet. Pembaruan terpasang otomatis.'],
-    ['Siswa lupa kode siswa', 'Lihat kolom Kode di lembar Siswa pada Google Sheets.']] });
+    ['Siswa lupa kode siswa', 'Lihat kolom Kode di lembar Siswa pada Google Sheets.'],
+    ['Siswa ganti HP', 'Buka tautan kelas di HP baru dan masukkan kode siswa. Nilai, babak, dan Historia Star kembali otomatis.'],
+    ['Muncul pesan "Kode Apps Script perlu diperbarui"', 'Ikuti Bagian B nomor 11 (Memperbarui kode Apps Script).'],
+    ['Nama siswa tidak terbaca dari PDF', 'PDF hasil foto atau pindaian tidak dapat dibaca. Gunakan Excel atau Word, atau salin-tempel nama dengan tombol Tempel / ketik daftar nama.'],
+    ['Tanda "Google Sheets belum tersambung" di Ruang Guru', 'Buka menu Rekap Nilai, tempel alamat /exec, lalu tekan Uji sambungan.']] });
 
   h2('Bagian D. Hak cipta dan ketentuan penggunaan');
   p('**Ruang Historia** dibuat dan dikembangkan oleh **Eki Ripan Junapratama Rahmatullah, S.Pd., M.Pd., Gr.** (Eki Ripan J.R. Tanjung), Guru Sejarah MAN 1 Belitung. Seluruh rancangan aplikasi, materi, soal, video, desain, dan logo merupakan ciptaan pembuat dan dilindungi Undang-Undang Nomor 28 Tahun 2014 tentang Hak Cipta.');

@@ -33,6 +33,76 @@ const IKON = {
 const kepala = i => { const h = i * 2.2, w = 7 - i; return `<svg viewBox="0 0 200 100" aria-hidden="true"><path d="M60 98 q-4 -38 10 -56 q16 -22 48 -20 q34 4 38 40 q2 22 -4 36Z" fill="#c9a27c" stroke="#3b2618" stroke-width="2"/><path d="M72 ${46 - h} q30 -${16 + h} 70 -4" stroke="#3b2618" stroke-width="${w}" fill="none" stroke-linecap="round"/><circle cx="118" cy="58" r="4" fill="#3b2618"/><path d="M150 66 q8 4 4 12" stroke="#3b2618" stroke-width="2" fill="none"/></svg>`; };
 
 /* ---------- menu atas ---------- */
+/* ---------- ikon garis (24×24) ---------- */
+const IKON_UI = {
+  rumah: '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/>',
+  bintang: '<path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+  jam: '<path d="M7 3h10M7 21h10"/><path d="M8 3c0 4 8 5 8 9s-8 5-8 9M16 3c0 4-8 5-8 9s8 5 8 9"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
+  topi: '<path d="m2.5 9 9.5-4.5L21.5 9 12 13.5z"/><path d="M6.5 11v4.5c1.5 1.6 3.4 2.4 5.5 2.4s4-.8 5.5-2.4V11"/><path d="M21.5 9v5"/>',
+  layar: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/><path d="m10 8 4 2-4 2z"/>',
+  buku: '<path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5c-.8 0-1.5-.7-1.5-1.5z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5c.8 0 1.5-.7 1.5-1.5z"/><path d="M6.5 8h2.5M6.5 11h2.5M15.5 8H18M15.5 11H18"/>',
+  ceklis: '<rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="m7.5 8.5 1.5 1.5 2.5-2.5M7.5 14.5 9 16l2.5-2.5"/><path d="M13.5 9h3M13.5 15h3"/>',
+  bendera: '<path d="M5 21V4"/><path d="M5 4.5c3-1.5 5 1.5 8 0s4-1 6-.5v8c-2-.5-3-1-6 .5s-5-1.5-8 0"/>',
+  orang: '<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.6c2.3-.2 4 1.2 4.5 4.4"/>',
+  grafik: '<path d="M4 20h16"/><rect x="6" y="11" width="3" height="7" rx="1"/><rect x="11" y="7" width="3" height="11" rx="1"/><rect x="16" y="13" width="3" height="5" rx="1"/>',
+  tambahorang: '<circle cx="10" cy="8" r="3.2"/><path d="M4 19.5c.6-3.2 3-5 6-5 1.4 0 2.6.3 3.6 1"/><path d="M18 13v6M15 16h6"/>',
+  kunci: '<circle cx="8" cy="15" r="3.5"/><path d="m10.5 12.5 8-8M15.5 7.5l2 2M17.5 5.5l2 2"/>',
+  tanya: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.6v.3M12 17v.3"/>',
+  keluar: '<path d="M14 4h4.5c.8 0 1.5.7 1.5 1.5v13c0 .8-.7 1.5-1.5 1.5H14"/><path d="M10 8l-4 4 4 4M6 12h10"/>',
+  putar: '<circle cx="12" cy="12" r="9"/><path d="m10 8.5 5.5 3.5-5.5 3.5z"/>',
+  pena: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>',
+  kamus: '<path d="M6 4h12v16H6.5A1.5 1.5 0 0 1 5 18.5v-13C5 4.7 5.7 4 6.5 4z"/><path d="M5 17.5c0-.8.7-1.5 1.5-1.5H18"/><path d="M9 8h6M9 11h4"/>',
+  kilat: '<path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/>',
+  panah: '<path d="M15 6l-6 6 6 6"/>',
+  roket: '<path d="M12 3c3 2 4.5 5 4.5 9L14 15h-4l-2.5-3c0-4 1.5-7 4.5-9z"/><circle cx="12" cy="9" r="1.6"/><path d="M10 15l-1.5 4L12 17.5 15.5 19 14 15"/>',
+  timbangan: '<path d="M12 4v16M7 20h10M5 7h14"/><path d="m5 7-2.5 6h5zM19 7l-2.5 6h5z"/>',
+  otak: '<path d="M9.5 4.5A2.5 2.5 0 0 0 7 7a2.5 2.5 0 0 0-2 4 2.5 2.5 0 0 0 1 4 2.5 2.5 0 0 0 3.5 3V4.5zM14.5 4.5A2.5 2.5 0 0 1 17 7a2.5 2.5 0 0 1 2 4 2.5 2.5 0 0 1-1 4 2.5 2.5 0 0 1-3.5 3V4.5z"/>',
+  daftar: '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/>'
+};
+const ikon = (n, c = '') => `<svg class="ik ${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IKON_UI[n] || ''}</svg>`;
+const PAKET = {
+  asesmenku: { nama: 'Format ASESMENKU', ket: '10 PG, 2 PG kompleks, 2 uraian · 30-40-30', ikon: 'roket', pg: { C1: 2, C2: 1, C3: 4, C4: 1, C5: 1, C6: 1 }, lain: { upgk: 2, ubs: 0, uis: 0, ujd: 0, ue: 2, uel: 'C4,C5,C6' } },
+  singkat: { nama: 'Kuis singkat', ket: '10 PG dasar (C1–C3), tanpa uraian', ikon: 'kilat', pg: { C1: 4, C2: 3, C3: 3, C4: 0, C5: 0, C6: 0 }, lain: { upgk: 0, ubs: 0, uis: 0, ujd: 0, ue: 0, uel: '' } },
+  seimbang: { nama: 'Ulangan lengkap', ket: '20 PG seimbang + aneka jenis + 2 uraian', ikon: 'timbangan', pg: { C1: 4, C2: 4, C3: 4, C4: 3, C5: 3, C6: 2 }, lain: { upgk: 2, ubs: 1, uis: 2, ujd: 1, ue: 2, uel: 'C4,C5,C6' } },
+  hots: { nama: 'HOTS', ket: '20 PG berpikir tingkat tinggi + 2 uraian C6', ikon: 'otak', pg: { C1: 2, C2: 2, C3: 3, C4: 5, C5: 4, C6: 4 }, lain: { upgk: 2, ubs: 0, uis: 0, ujd: 0, ue: 2, uel: 'C6' } }
+};
+
+/* menu guru: kartu-kartu fitur */
+const MENU_GURU = [
+  ['presentasi', 'Presentasi', 'Slide siap tayang, PowerPoint & PDF', 'layar', '#3B5BA9'],
+  ['modul', 'Modul Ajar', 'KBC + Pembelajaran Mendalam, Word & PDF', 'buku', '#2E7D5B'],
+  ['soal', 'Soal Ulangan', 'C1–C6, siap masuk ASESMENKU', 'ceklis', '#B5532A'],
+  ['kelas', 'Kelas & Babak', 'Tautan kelas, KKM, kunci bab', 'bendera', '#7A4E9E'],
+  ['siswa', 'Daftar Siswa', 'Impor nama & kode siswa', 'orang', '#1F7A8C'],
+  ['rekap', 'Rekap Nilai', 'Google Sheets & analisis', 'grafik', '#A8842A'],
+  ['bagikan', 'Bagikan ke Guru', 'Kode aktivasi guru lain', 'tambahorang', '#C0475B'],
+  ['akun', 'Akun & PIN', 'Ganti PIN, keluar mode guru', 'kunci', '#5A6275'],
+  ['#panduan', 'Buku Panduan', 'Cara pakai, bisa diunduh PDF', 'tanya', '#2B3A67']
+];
+function sapa() { const j = new Date().getHours(); return j < 11 ? 'Selamat pagi' : j < 15 ? 'Selamat siang' : j < 18 ? 'Selamat sore' : 'Selamat malam'; }
+function tataPanelGuru(sub) {
+  const kotak = [...app.querySelectorAll('[data-bagian]')], c = { ...konfig() }; c.rekap = c.rekap || S.get('rekapUji', '');
+  const ada = id => id.startsWith('#') || kotak.some(k => k.dataset.bagian === id);
+  const menu = MENU_GURU.filter(m => ada(m[0]));
+  const nama = S.get('pemilik') !== false ? 'Pak Eki' : (S.get('namaGuru', '') || 'Bapak/Ibu Guru').replace(/,.*$/, '');
+  const hero = app.querySelector('.hero');
+  if (!sub || !kotak.some(k => k.dataset.bagian === sub)) {
+    kotak.forEach(k => k.hidden = true);
+    hero.innerHTML = `<div class="wrap"><p class="sapa">${sapa()},</p><h1>${esc(nama)} 👋</h1><p>Mau menyiapkan apa hari ini?</p>
+<div class="status-guru"><span class="chip ${c.rekap ? 'ok' : ''}">${ikon('grafik')} ${c.rekap ? 'Google Sheets tersambung' : 'Google Sheets belum tersambung'}</span><span class="chip ${c.nama ? 'ok' : ''}">${ikon('bendera')} ${c.nama ? `Kelas aktif: ${esc(c.nama)} · KKM ${c.kkm}` : 'Belum ada tautan kelas'}</span></div></div>`;
+    const grid = document.createElement('div'); grid.className = 'menu-guru';
+    grid.innerHTML = menu.map(([id, judul, ket, ik, w]) => `<a class="ubin" href="${id.startsWith('#') ? id : '#guru/' + id}" style="--w:${w}"><span class="ubin-ik">${ikon(ik)}</span><b>${judul}</b><small>${ket}</small></a>`).join('');
+    app.querySelector('.guru-wrap').prepend(grid);
+  } else {
+    kotak.forEach(k => k.hidden = k.dataset.bagian !== sub);
+    const m = MENU_GURU.find(x => x[0] === sub);
+    hero.classList.add('hero-kecil'); hero.style.setProperty('--w', m[4]);
+    hero.innerHTML = `<div class="wrap"><a class="balik" href="#guru">${ikon('panah')} Ruang Guru</a><div class="judul-bagian"><span class="ubin-ik">${ikon(m[3])}</span><div><h1>${m[1]}</h1><p>${m[2]}</p></div></div></div>`;
+    app.querySelector('.guru-wrap').classList.add('satu');
+  }
+}
+
 const tandaiMenu = v => document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.dataset.v === v));
 let pasang = null;
 let DAFTAR_GAMBAR = null;
@@ -205,11 +275,11 @@ function bab(kid, id, tab) {
     app.innerHTML = `<section class="babhead pad" style="--c:${d.warna}"><div class="wrap">${atas}<small>Bab ${id}</small><h1>${esc(d.judul)}</h1><p>${esc(d.ringkas)}</p></div></section><section class="pad"><div class="wrap"><div class="box"><h3>Segera hadir</h3><p>Materi, video, dan soal bab ini sedang disusun.</p><a class="btn" href="#${kid}">Kembali ke ${esc(k.judul)}</a></div></div></section>`;
     return;
   }
-  const T = [['materi', 'Materi'], ['video', 'Video'], ['kuis', 'Kuis'], ['esai', 'Uraian'], ['istilah', 'Istilah']];
+  const T = [['materi', 'Materi', 'buku'], ['video', 'Video', 'putar'], ['kuis', 'Kuis', 'ceklis'], ['esai', 'Uraian', 'pena'], ['istilah', 'Istilah', 'kamus']];
   tab = tab || 'materi';
   app.innerHTML = `<section class="babhead pad" style="--c:${d.warna}"><div class="wrap">${atas}
 <small>Bab ${id} · ${esc(d.masa)}</small><h1>${esc(b.judul)}</h1><p>${esc(b.sub)}</p>
-<div class="seg" role="tablist">${T.map(t => `<button role="tab" type="button" data-t="${t[0]}" aria-selected="${t[0] === tab}">${t[1]}</button>`).join('')}</div>
+<div class="seg" role="tablist">${T.map(t => `<button role="tab" type="button" data-t="${t[0]}" aria-selected="${t[0] === tab}">${ikon(t[2])}<span>${t[1]}</span></button>`).join('')}</div>
 </div></section><section class="pad"><div class="wrap" id="isi"></div></section>`;
   const isi = document.getElementById('isi');
   const tampil = t => {
@@ -554,7 +624,7 @@ const bacaKelas = s => JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g,
 async function qrSVG(teks, ukuran = 220) { await muatSkrip('lib/qrcode.js'); const q = qrcode(0, 'M'); q.addData(teks); q.make(); const n = q.getModuleCount(), c = ukuran / (n + 8); let p = ''; for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) p += `M${((k + 4) * c).toFixed(2)} ${((r + 4) * c).toFixed(2)}h${c.toFixed(2)}v${c.toFixed(2)}h-${c.toFixed(2)}z`; return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${ukuran} ${ukuran}" width="${ukuran}" height="${ukuran}" role="img" aria-label="Kode QR"><rect width="100%" height="100%" fill="#fff"/><path d="${p}" fill="#111"/></svg>`; }
 async function qrPNG(teks, ukuran = 600) { const svg = await qrSVG(teks, ukuran); const img = new Image(); img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); await img.decode(); const cv = document.createElement('canvas'); cv.width = cv.height = ukuran; cv.getContext('2d').drawImage(img, 0, 0); return cv.toDataURL('image/png'); }
 
-function panelGuru() {
+function panelGuru(sub = '') {
   tandaiMenu('guru');
   if (!modeGuru()) {
     app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:520px"><h1>Panel Guru</h1>
@@ -574,12 +644,12 @@ function panelGuru() {
       const nama = document.getElementById('anama').value.trim(), kode = document.getElementById('akode').value, p1 = document.getElementById('apin1').value.trim(), p2 = document.getElementById('apin2').value.trim();
       if (normKode(kode) !== normKode(await kodeAktivasi(nama))) { ps.textContent = 'Nama atau kode aktivasi tidak cocok. Periksa penulisan nama dan kodenya.'; return; }
       if (p1.length < 4 || p1 !== p2) { ps.textContent = 'PIN minimal 4 angka dan kedua isian harus sama.'; return; }
-      S.set('pinSaya', await sha256('ruang-historia-saya:' + p1)); S.set('namaGuru', nama); S.set('pemilik', false); S.set('guru', true); panelGuru();
+      S.set('pinSaya', await sha256('ruang-historia-saya:' + p1)); S.set('namaGuru', nama); S.set('pemilik', false); S.set('guru', true); panelGuru(sub);
     });
     document.getElementById('fpin').addEventListener('submit', async e => {
       e.preventDefault();
       const v = document.getElementById('pin').value.trim(), pemilik = PG.pin && await sha256('ruang-historia:' + v) === PG.pin, saya = S.get('pinSaya', null) && await sha256('ruang-historia-saya:' + v) === S.get('pinSaya');
-      if (pemilik || saya) { if (pemilik) S.set('pemilik', true); S.set('guru', true); panelGuru(); } else document.getElementById('pesanpin').textContent = 'PIN salah. Coba lagi.';
+      if (pemilik || saya) { if (pemilik) S.set('pemilik', true); S.set('guru', true); panelGuru(sub); } else document.getElementById('pesanpin').textContent = 'PIN salah. Coba lagi.';
     });
     return;
   }
@@ -587,13 +657,13 @@ function panelGuru() {
   const opsiBab = kid => tersedia(cariK(kid)).map(d => `<option value="${d.id}">Bab ${d.id}. ${esc(d.judul)}</option>`).join('');
   app.innerHTML = `<section class="hero pad"><div class="wrap"><h1>Panel Guru</h1><p>${S.get('namaGuru', '') && !S.get('pemilik') ? `Selamat datang, ${esc(S.get('namaGuru').replace(/\.$/, ''))}. ` : ''}Mode guru aktif di perangkat ini: semua babak terbuka untuk Bapak/Ibu. <a href="#panduan" style="color:inherit"><b>Buku panduan</b></a></p></div></section>
 <section class="pad"><div class="wrap guru-wrap">
-<div class="box guru-kartu"><h2>1. Presentasi kelas</h2><p>Slide dibuat otomatis dari materi bab: tujuan, materi, garis waktu, tokoh, foto arsip, istilah, refleksi Panca Cinta, dan pertanyaan diskusi.</p>
+<div class="box guru-kartu" data-bagian="presentasi"><h2>Presentasi kelas</h2><p>Slide dibuat otomatis dari materi bab: tujuan, materi, garis waktu, tokoh, foto arsip, istilah, refleksi Panca Cinta, dan pertanyaan diskusi.</p>
 <label><b>Ruang</b><select id="pr" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
 <label><b>Bab</b><select id="pb" class="isian"></select></label>
 <div class="row"><button class="btn" type="button" id="tampil">Tampilkan presentasi</button><button class="btn alt" type="button" id="unduh">Unduh PowerPoint (.pptx)</button><button class="btn alt" type="button" id="unduhpdf">Unduh PDF</button></div>
 <p class="catatan" id="pesanppt">File PowerPoint dapat diedit di Microsoft PowerPoint, Google Slides, atau WPS. Untuk PDF, pilih <b>Simpan sebagai PDF</b> pada jendela cetak.</p></div>
 
-<div class="box guru-kartu"><h2>2. Modul ajar</h2><p>Modul ajar Pembelajaran Mendalam berbasis Kurikulum Berbasis Cinta, disusun dari materi bab: identifikasi, desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, dan glosarium.</p>
+<div class="box guru-kartu" data-bagian="modul"><h2>Modul ajar</h2><p>Modul ajar Pembelajaran Mendalam berbasis Kurikulum Berbasis Cinta, disusun dari materi bab: identifikasi, desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, dan glosarium.</p>
 <label><b>Ruang</b><select id="mr" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
 <label><b>Bab</b><select id="mb" class="isian"></select></label>
 <label><b>Model pembelajaran</b><select id="mm" class="isian"></select></label>
@@ -606,25 +676,29 @@ function panelGuru() {
 ${[['madrasah', 'Nama madrasah'], ['guru', 'Nama guru'], ['nip', 'NIP guru'], ['kepala', 'Nama kepala madrasah'], ['nipKepala', 'NIP kepala madrasah'], ['tempat', 'Tempat penandatanganan'], ['tahun', 'Tahun pelajaran'], ['menitJp', 'Menit per JP']].map(([k, l]) => `<label><b>${l}</b><input class="isian" data-id="${k}" value="${esc(idGuru()[k])}"></label>`).join('')}</details>
 <div class="row"><button class="btn" type="button" id="mbuat">Buat modul ajar</button></div></div>
 
-<div class="box guru-kartu"><h2>3. Soal ulangan harian</h2><p>Pilih bab dan jumlah soal untuk setiap level kognitif. Hasilnya dapat disalin ke ASESMENKU, diunduh sebagai Excel, atau dicetak lengkap dengan kunci dan kisi-kisi.</p>
+<div class="box guru-kartu" data-bagian="soal"><h2>Soal ulangan harian</h2>
+<div class="langkah-no"><span>1</span><b>Pilih materi</b></div>
 <label><b>Ruang</b><select id="ur" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
 <div><b>Bab</b> <span class="catatan">(boleh lebih dari satu)</span><div id="ub" class="pilih-bab"></div></div>
+<div class="langkah-no"><span>2</span><b>Pilih paket soal</b></div>
+<div class="paket" id="upaket">${Object.entries(PAKET).map(([k, v], i) => `<button type="button" class="paket-btn" data-paket="${k}" aria-pressed="${i === 0}"><span class="paket-ik">${ikon(v.ikon)}</span><b>${v.nama}</b><small>${v.ket}</small></button>`).join('')}</div>
+<div class="dua"><label><b>Kelas</b><select id="uk" class="isian"><option>X</option><option selected>XI</option><option>XII</option></select></label><label><b>Semester</b><select id="us" class="isian"><option>Ganjil</option><option>Genap</option></select></label></div>
+<p class="catatan" id="uinfo"></p>
+<div class="langkah-no"><span>3</span><b>Buat</b></div>
+<div class="row"><button class="btn besar" type="button" id="ubuat">${ikon('kilat')} Buat soal sekarang</button></div>
+<details class="lanjutan"><summary>Atur sendiri (jumlah per level, jenis soal, waktu)</summary>
 <div><b>Jumlah soal pilihan ganda per level</b>
-<div class="row kecil-row"><button class="btn alt kecil-btn" type="button" data-preset="asesmenku">ASESMENKU 30-40-30</button><button class="btn alt kecil-btn" type="button" data-preset="dasar">Dasar</button><button class="btn alt kecil-btn" type="button" data-preset="seimbang">Seimbang</button><button class="btn alt kecil-btn" type="button" data-preset="hots">HOTS</button></div>
 <div class="level-grid" id="ul"></div></div>
 <div class="dua"><label><b>PG kompleks</b><input id="upgk" class="isian" type="number" min="0" max="5" value="2"></label><label><b>Benar-salah</b><input id="ubs" class="isian" type="number" min="0" max="5" value="0"></label></div>
 <div class="dua"><label><b>Isian singkat</b><input id="uis" class="isian" type="number" min="0" max="10" value="0"></label><label><b>Menjodohkan</b><input id="ujd" class="isian" type="number" min="0" max="3" value="0"></label></div>
 <div class="dua"><label><b>Soal uraian</b><input id="ue" class="isian" type="number" min="0" max="10" value="2"></label>
 <label><b>Level uraian</b><select id="uel" class="isian"><option value="">Semua level</option><option value="C4,C5,C6" selected>HOTS (C4–C6)</option><option value="C6">C6 saja</option><option value="C1,C2,C3">C1–C3</option></select></label></div>
-<div class="dua"><label><b>Kelas</b><select id="uk" class="isian"><option>X</option><option>XI</option><option>XII</option></select></label><label><b>Semester</b><select id="us" class="isian"><option>Ganjil</option><option>Genap</option></select></label></div>
 <label><b>Judul naskah</b><input id="uj" class="isian" value="ULANGAN HARIAN"></label>
 <div class="dua"><label><b>Waktu (menit)</b><input id="uw" class="isian" type="number" min="10" value="90"></label>
 <label><b>Bobot pilihan ganda (%)</b><input id="ubb" class="isian" type="number" min="0" max="100" value="70"></label></div>
-<label class="cek"><input type="checkbox" id="ua"> Acak urutan soal (bila tidak dicentang: urut dari C1 ke C6)</label>
-<p class="catatan" id="uinfo"></p>
-<div class="row"><button class="btn" type="button" id="ubuat">Buat soal</button></div></div>
+<label class="cek"><input type="checkbox" id="ua"> Acak urutan soal (bila tidak dicentang: urut dari C1 ke C6)</label></details></div>
 
-<div class="box guru-kartu"><h2>4. Pengaturan babak untuk kelas</h2>
+<div class="box guru-kartu" data-bagian="kelas"><h2>Pengaturan babak untuk kelas</h2>
 <p>Mode babak: siswa harus membaca, mencatat, lalu lulus kuis (nilai ≥ KKM) untuk membuka bab berikutnya. Pengaturan dibagikan lewat <b>tautan kelas</b> atau kode QR; setiap kelas boleh berbeda.</p>
 <label><b>Nama kelas</b><input id="gk" class="isian" placeholder="contoh: X-1" value="${esc(c.nama || '')}"></label>
 <label class="cek"><input type="checkbox" id="gm" ${c.modeBabak ? 'checked' : ''}> Aktifkan mode babak (bab terkunci berurutan)</label>
@@ -634,22 +708,24 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <div class="row"><button class="btn" type="button" id="buat">Buat tautan kelas</button></div>
 <div id="hasilkelas"></div></div>
 
-<div class="box guru-kartu"><h2>5. Rekap nilai dan analisis (Google Sheets)</h2>
+<div class="box guru-kartu" data-bagian="rekap"><h2>Rekap nilai dan analisis (Google Sheets)</h2>
 <p>Nilai kuis dan ujian siswa terkirim otomatis ke Google Sheets milik Bapak/Ibu, lengkap dengan lembar <b>Rekap</b> dan <b>Analisis</b> (ketuntasan, siswa yang perlu remedial, dan soal yang paling sulit).</p>
+${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} Google Sheets sudah tersambung. Buka file Google Sheets Bapak/Ibu untuk melihat lembar <b>Rekap</b> dan <b>Analisis</b>.</p>` : ''}
+<details class="lanjutan" ${(c.rekap || S.get('rekapUji', '')) ? '' : 'open'}><summary>Cara memasang (sekali saja)</summary>
 <ol class="langkah-rekap">
 <li>Buka <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> di Chrome, beri nama <i>Rekap Ruang Historia</i>.</li>
 <li>Di HP: menu ⋮ Chrome → centang <b>Situs desktop</b>. Lalu pilih menu <b>Ekstensi → Apps Script</b>.</li>
 <li>Hapus isi editor, tempel kode dari tombol <b>Salin kode</b> di bawah, lalu tekan ikon Simpan.</li>
 <li>Pilih fungsi <b>siapkan</b>, tekan <b>Jalankan</b>, lalu berikan izin (Lanjutan → Buka proyek).</li>
 <li><b>Terapkan → Deployment baru</b> → jenis <b>Aplikasi web</b>; Jalankan sebagai: <b>Saya</b>; Akses: <b>Siapa saja</b> → Terapkan. Salin alamat aplikasi web.</li>
-<li>Tempel alamat itu di kotak di bawah, tekan <b>Uji sambungan</b>, lalu buat tautan kelas (bagian 4).</li>
+<li>Tempel alamat itu di kotak di bawah, tekan <b>Uji sambungan</b>, lalu buat tautan kelas di menu <b>Kelas &amp; Babak</b>.</li>
 <li>Masukkan daftar siswa dengan <b>Impor daftar siswa</b> di bawah (dari file Excel, Word, atau PDF). Kode siswa dibuat otomatis.</li>
 <li>Setiap kali mulai mengajar bab baru, buka lembar <b>Pengaturan</b> dan ubah angka <b>Buka sampai bab</b> untuk kelas itu (misalnya 1 menjadi 2). KKM per kelas juga diatur di sana.</li>
-</ol>
+</ol></details>
 <div class="row"><button class="btn alt" type="button" id="salinkode">Salin kode Apps Script</button></div>
-<label><b>Alamat aplikasi web (dari langkah 5)</b><input id="gr" class="isian" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(c.rekap || '')}"></label>
+<label><b>Alamat aplikasi web</b> (berakhiran /exec)<input id="gr" class="isian" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(c.rekap || S.get('rekapUji', ''))}"></label>
 <div class="row"><button class="btn alt" type="button" id="ujirekap">Uji sambungan</button></div><p class="catatan" id="pesanrekap"></p>
-<h3 style="margin-top:22px">Impor daftar siswa</h3>
+</div><div class="box guru-kartu" data-bagian="siswa"><h2>Impor daftar siswa</h2><p class="catatan" id="isbelum"></p>
 <p>Pilih file daftar siswa per kelas. Bisa Excel, Word, atau PDF. Nama siswa akan masuk otomatis ke Google Sheets, lengkap dengan kodenya.</p>
 <label><b>1. Nama kelas</b> (tulis persis, misalnya XI D)<input id="isk" class="isian" placeholder="XI D"></label>
 <label><b>2. Pilih file daftar siswa</b><input id="isf" class="isian" type="file" accept=".xlsx,.xls,.csv,.ods,.docx,.pdf,.txt"></label>
@@ -666,14 +742,14 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <li>Kembali ke sini dan tekan <b>Kirim ke Google Sheets</b> lagi.</li></ol>
 <label><b>Kunci guru</b> <span class="catatan">(terisi otomatis; isi sama di laptop dan HP bila memakai dua perangkat)</span><input id="istoken" class="isian"></label></details></div>
 
-${S.get('pemilik') ? `<div class="box guru-kartu"><h2>Bagikan ke guru lain</h2><p>Buat kode aktivasi untuk setiap guru. Dengan kode itu, guru membuat PIN sendiri, sehingga PIN Bapak tidak perlu dibagikan. Kode hanya berlaku untuk nama yang ditulis.</p>
+${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagikan ke guru lain</h2><p>Buat kode aktivasi untuk setiap guru. Dengan kode itu, guru membuat PIN sendiri, sehingga PIN Bapak tidak perlu dibagikan. Kode hanya berlaku untuk nama yang ditulis.</p>
 <label><b>Nama guru</b><input id="bnama" class="isian" placeholder="contoh: Rina Marlina, S.Pd."></label>
 <div class="row"><button class="btn" type="button" id="bbuat">Buat kode aktivasi</button></div><div id="bhasil"></div></div>` : ''}
-<div class="box guru-kartu"><h2>Ganti PIN</h2><p>Ganti PIN guru untuk perangkat ini.</p>
+<div class="box guru-kartu" data-bagian="akun"><h2>Ganti PIN</h2><p>Ganti PIN guru untuk perangkat ini.</p>
 <label><b>PIN baru</b> (minimal 4 angka)<input id="gp1" class="isian" type="password" inputmode="numeric"></label><label><b>Ulangi PIN baru</b><input id="gp2" class="isian" type="password" inputmode="numeric"></label>
 <div class="row"><button class="btn alt" type="button" id="gpsimpan">Simpan PIN</button></div><p class="catatan" id="gppesan">${S.get('pemilik') ? 'PIN utama pengembang (di file pengaturan) tetap berlaku di semua perangkat.' : ''}</p></div>
 
-<div class="box guru-kartu"><h2>6. Lainnya</h2><ul>
+<div class="box guru-kartu" data-bagian="akun"><h2>Lainnya</h2><ul>
 <li><a href="#panduan">Buku panduan penggunaan</a> (dapat diunduh sebagai PDF).</li>
 <li>Tambah foto atau ilustrasi sendiri: lihat panduan di halaman <a href="#tentang">Tentang</a>.</li>
 <li>Rekap nilai: siswa dapat menunjukkan halaman <a href="#nilai">Nilaiku</a> di perangkatnya.</li></ul>
@@ -689,7 +765,8 @@ ${S.get('pemilik') ? `<div class="box guru-kartu"><h2>Bagikan ke guru lain</h2><
     t.disabled = false;
   });
   document.getElementById('unduhpdf').addEventListener('click', async e => { const t = e.target, pesan = document.getElementById('pesanppt'); t.disabled = true; pesan.textContent = 'Menyiapkan PDF…'; try { await cetakSlide(pr.value, +pb.value); pesan.textContent = 'Pilih "Simpan sebagai PDF" pada jendela cetak.'; } catch (err) { console.error(err); pesan.textContent = 'Gagal menyiapkan PDF. Coba lagi.'; } t.disabled = false; });
-  pasangModulForm(); pasangSoalForm(); pasangImporSiswa();
+  pasangModulForm(); pasangSoalForm(); pasangImporSiswa(); tataPanelGuru(sub);
+  if (!document.getElementById('gr').value.trim()) document.getElementById('isbelum').innerHTML = `${ikon('info')} Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a> agar nama bisa dikirim. Tanpa itu, gunakan tombol <b>Salin untuk ditempel manual</b>.`;
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
     const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka, rekap: document.getElementById('gr').value.trim() };
@@ -698,7 +775,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu"><h2>Bagikan ke guru lain</h2><
     document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
   });
   document.getElementById('salinkode').addEventListener('click', async ev => { try { const t = (await fetch('alat/rekap-google-sheets.gs', { cache: 'no-cache' }).then(r => r.text())).replace('__TOKEN_GURU__', (document.getElementById('istoken') || {}).value || tokenRekap()); await navigator.clipboard.writeText(t); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; } catch { ev.target.textContent = 'Gagal menyalin. Coba lagi'; } });
-  document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Sekarang buat tautan kelas di bagian 4.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
+  document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); if (r.ok) S.set('rekapUji', u); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Langkah berikutnya: menu Daftar Siswa, lalu Kelas & Babak.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
   document.getElementById('keluar').addEventListener('click', () => { S.set('guru', false); location.hash = '#beranda'; });
   document.getElementById('gpsimpan').onclick = async () => { const a1 = document.getElementById('gp1').value.trim(), a2 = document.getElementById('gp2').value.trim(), ps = document.getElementById('gppesan'); if (a1.length < 4 || a1 !== a2) { ps.textContent = 'PIN minimal 4 angka dan kedua isian harus sama.'; return; } S.set('pinSaya', await sha256('ruang-historia-saya:' + a1)); ps.textContent = 'PIN baru tersimpan untuk perangkat ini.'; document.getElementById('gp1').value = document.getElementById('gp2').value = ''; };
   const bb = document.getElementById('bbuat');
@@ -1141,7 +1218,7 @@ function halamanModul() {
   if (!modeGuru()) { location.hash = '#guru'; return; }
   const o = S.get('modulTerakhir', null); if (!o || !isiBab(o.kid, o.id)) { location.hash = '#guru'; return; }
   const M = susunModul(o);
-  app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><a class="balik gelap" href="#guru">Panel Guru</a><h1>Modul ajar siap</h1>
+  app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><a class="balik gelap" href="#guru/modul">Modul Ajar</a><h1>Modul ajar siap</h1>
 <p>Periksa pratinjau di bawah, lalu unduh. Dokumen Word dapat diedit di Microsoft Word, WPS, atau Google Dokumen.</p>
 <div class="row"><button class="btn" type="button" id="mword">Unduh Word (.docx)</button><button class="btn alt" type="button" id="mpdf">Unduh PDF</button></div>
 <p class="catatan">Untuk PDF: pada jendela cetak, pilih <b>Simpan sebagai PDF</b>.</p></div></section>
@@ -1258,7 +1335,7 @@ function halamanSoal() {
   if (!modeGuru()) { location.hash = '#guru'; return; }
   const U = S.get('ulanganTerakhir', null); if (!U || !cariK(U.kid)) { location.hash = '#guru'; return; }
   const N = naskahUlangan(U);
-  app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><a class="balik gelap" href="#guru">Panel Guru</a><h1>Soal ulangan siap</h1>
+  app.innerHTML = `<section class="pad no-cetak"><div class="wrap" style="max-width:900px"><a class="balik gelap" href="#guru/soal">Soal Ulangan</a><h1>Soal ulangan siap</h1>
 <p><b>${N.pg.length}</b> pilihan ganda${N.lain.pgk.length ? `, <b>${N.lain.pgk.length}</b> PG kompleks` : ''}${N.lain.bs.length ? `, <b>${N.lain.bs.length}</b> benar-salah` : ''}${N.lain.isian.length ? `, <b>${N.lain.isian.length}</b> isian` : ''}${N.lain.jodoh.length ? `, <b>${N.lain.jodoh.length}</b> menjodohkan` : ''}, dan <b>${N.es.length}</b> uraian. Periksa naskahnya di bawah sebelum dipakai.</p>
 <div class="box"><h2 style="margin-top:0">Masukkan ke ASESMENKU</h2>
 <label><b>Format teks</b><select id="sg" class="isian"><option value="asesmenku">Format ASESMENKU</option><option value="ringkas">Bernomor + kunci (umum)</option><option value="lengkap">Bernomor + kunci + level + pembahasan</option><option value="aiken">Aiken (ANSWER: B), untuk impor kuis</option></select></label>
@@ -1306,13 +1383,14 @@ function pasangSoalForm() {
     const bank = bankSoal(ur.value, babDipilih()), ada = {}; bank.forEach(q => ada[q.l] = (ada[q.l] || 0) + 1);
     ul.querySelectorAll('input').forEach(x => { const n = ada[x.dataset.l] || 0; x.max = n; x.closest('label').querySelector('small').textContent = `tersedia ${n}`; x.classList.toggle('kurang', +x.value > n); });
     const tot = [...ul.querySelectorAll('input')].reduce((s, x) => s + Math.min(+x.value || 0, +x.max), 0), es = bankEsai(ur.value, babDipilih()).length;
-    info.textContent = babDipilih().length ? `Total ${tot} soal pilihan ganda. Bank soal: ${bank.length} pilihan ganda, ${es} uraian.` : 'Pilih minimal satu bab.';
+    const lain = ['upgk', 'ubs', 'uis', 'ujd', 'ue'].reduce((s, id) => s + (+(document.getElementById(id) || {}).value || 0), 0); info.innerHTML = babDipilih().length ? `Akan dibuat sekitar <b>${tot + lain}</b> soal (${tot} pilihan ganda + ${lain} soal lain).${[...ul.querySelectorAll('input.kurang')].length ? ' Beberapa level kekurangan soal; tambahkan bab agar jumlahnya penuh.' : ''}` : 'Centang minimal satu bab.';
   };
   const isiBabU = () => { ub.innerHTML = tersedia(cariK(ur.value)).map((d, i) => `<label class="cek"><input type="checkbox" value="${d.id}" ${i === 0 ? 'checked' : ''}> Bab ${d.id}. ${esc(d.judul)}</label>`).join(''); ub.onchange = hitung; hitung(); };
   ul.innerHTML = Object.entries(LEVEL).map(([l, n]) => `<label><b>${l}</b> <span>${n}</span><input class="isian" type="number" min="0" data-l="${l}" value="${PRESET.asesmenku[l]}"><small></small></label>`).join('');
-  ul.oninput = hitung;
-  app.querySelectorAll('[data-preset]').forEach(b => b.onclick = () => { const P = PRESET[b.dataset.preset]; ul.querySelectorAll('input').forEach(x => x.value = P[x.dataset.l]); hitung(); });
-  ur.onchange = isiBabU; isiBabU();
+  ul.oninput = hitung; app.querySelector('.lanjutan').oninput = hitung;
+  const pakaiPaket = k => { const P = PAKET[k]; app.querySelectorAll('.paket-btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.paket === k)); ul.querySelectorAll('input').forEach(x => x.value = P.pg[x.dataset.l]); Object.entries(P.lain).forEach(([id, v]) => { const el = document.getElementById(id); if (el) el.value = v; }); hitung(); };
+  app.querySelectorAll('.paket-btn').forEach(b => b.onclick = () => pakaiPaket(b.dataset.paket));
+  ur.onchange = isiBabU; isiBabU(); pakaiPaket(Object.keys(PAKET)[0]);
   document.getElementById('ubuat').onclick = () => {
     const bab = babDipilih(); if (!bab.length) { info.textContent = 'Pilih minimal satu bab.'; return; }
     const jumlah = {}; ul.querySelectorAll('input').forEach(x => jumlah[x.dataset.l] = Math.min(+x.value || 0, +x.max));
@@ -1384,17 +1462,17 @@ function susunPanduan() {
 
   h2('Bagian B. Panduan untuk guru');
   h3('1. Masuk Panel Guru');
-  langkah(['Ketuk menu **Guru** di bagian atas.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
+  langkah(['Ketuk menu **Guru** (ikon topi toga; di HP ada di menu bawah). Setelah masuk, tampil **Ruang Guru** berisi kotak-kotak menu: Presentasi, Modul Ajar, Soal Ulangan, Kelas & Babak, Daftar Siswa, Rekap Nilai, Akun & PIN, dan Buku Panduan. Ketuk kotak yang diperlukan; tombol **← Ruang Guru** membawa kembali.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
   h3('2. Presentasi kelas (PowerPoint dan PDF)');
-  langkah(['Pada bagian **1. Presentasi kelas**, pilih ruang dan bab.', 'Tekan **Tampilkan presentasi** untuk mengajar langsung dari aplikasi (geser atau tombol panah untuk pindah slide).', 'Tekan **Unduh PowerPoint** untuk file yang dapat diedit, atau **Unduh PDF** lalu pilih **Simpan sebagai PDF** pada jendela cetak.']);
+  langkah(['Di Ruang Guru, buka menu **Presentasi**, pilih ruang dan bab.', 'Tekan **Tampilkan presentasi** untuk mengajar langsung dari aplikasi (geser atau tombol panah untuk pindah slide).', 'Tekan **Unduh PowerPoint** untuk file yang dapat diedit, atau **Unduh PDF** lalu pilih **Simpan sebagai PDF** pada jendela cetak.']);
   h3('3. Modul ajar (Word dan PDF)');
-  langkah(['Pada bagian **2. Modul ajar**, pilih ruang dan bab. Model pembelajaran yang cocok dipilihkan otomatis beserta alasannya; boleh diganti.', 'Atur kelas, semester, jumlah pertemuan, dan JP. Lengkapi identitas madrasah, nama guru, NIP, dan kepala madrasah.', 'Tekan **Buat modul ajar**, periksa pratinjau, lalu **Unduh Word** (dapat diedit) atau **Unduh PDF**.', 'Modul memuat identitas, identifikasi (DPL dan Panca Cinta), desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, contoh soal, dan glosarium. Sesuaikan Capaian Pembelajaran dengan dokumen CP yang berlaku.']);
+  langkah(['Di Ruang Guru, buka menu **Modul Ajar**, pilih ruang dan bab. Model pembelajaran yang cocok dipilihkan otomatis beserta alasannya; boleh diganti.', 'Atur kelas, semester, jumlah pertemuan, dan JP. Lengkapi identitas madrasah, nama guru, NIP, dan kepala madrasah.', 'Tekan **Buat modul ajar**, periksa pratinjau, lalu **Unduh Word** (dapat diedit) atau **Unduh PDF**.', 'Modul memuat identitas, identifikasi (DPL dan Panca Cinta), desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, contoh soal, dan glosarium. Sesuaikan Capaian Pembelajaran dengan dokumen CP yang berlaku.']);
   h3('4. Soal ulangan harian dan ASESMENKU');
-  langkah(['Pada bagian **3. Soal ulangan harian**, pilih ruang dan satu atau beberapa bab.', 'Isi jumlah soal pilihan ganda untuk setiap level **C1–C6**, atau tekan tombol cepat **ASESMENKU 30-40-30**, **Dasar**, **Seimbang**, atau **HOTS**. Angka merah berarti stok soal level itu kurang; tambahkan bab.', 'Isi jumlah PG kompleks, benar-salah, isian, menjodohkan, dan uraian, lalu tekan **Buat soal**.', 'Masukkan ke ASESMENKU dengan salah satu cara: (a) pilih **Format ASESMENKU**, tekan **Salin semua soal**, lalu di ASESMENKU pilih **Tempel banyak soal**; atau (b) tekan **Word untuk ASESMENKU** atau **PDF untuk ASESMENKU**, lalu di ASESMENKU buka paket soal → **Impor Word/PDF** dan pilih berkas tadi. Cara Word paling disarankan. Jangan ubah susunan baris berkas itu (misalnya baris "Kunci:").', 'Semua jenis soal terbawa lengkap dengan kuncinya: pilihan ganda, PG kompleks, benar-salah, isian, menjodohkan, dan uraian. Periksa pratinjau di ASESMENKU sebelum menekan Tambahkan.', 'Naskah lengkap dengan kunci, pembahasan, pedoman penskoran, dan kisi-kisi dapat diunduh sebagai Word atau PDF. Tersedia juga file Excel (.csv). Tekan **Acak ulang soal** untuk paket soal yang berbeda.']);
+  langkah(['Di Ruang Guru, buka menu **Soal Ulangan**, lalu pilih ruang dan satu atau beberapa bab.', 'Pilih paket soal: **Format ASESMENKU**, **Kuis singkat**, **Ulangan lengkap**, atau **HOTS**, lalu tekan **Buat soal sekarang**.', 'Ingin mengatur sendiri jumlah soal per level C1–C6 dan jenis soalnya? Buka **Atur sendiri**. Angka merah berarti stok soal level itu kurang; tambahkan bab.', 'Masukkan ke ASESMENKU dengan salah satu cara: (a) pilih **Format ASESMENKU**, tekan **Salin semua soal**, lalu di ASESMENKU pilih **Tempel banyak soal**; atau (b) tekan **Word untuk ASESMENKU** atau **PDF untuk ASESMENKU**, lalu di ASESMENKU buka paket soal → **Impor Word/PDF** dan pilih berkas tadi. Cara Word paling disarankan. Jangan ubah susunan baris berkas itu (misalnya baris "Kunci:").', 'Semua jenis soal terbawa lengkap dengan kuncinya: pilihan ganda, PG kompleks, benar-salah, isian, menjodohkan, dan uraian. Periksa pratinjau di ASESMENKU sebelum menekan Tambahkan.', 'Naskah lengkap dengan kunci, pembahasan, pedoman penskoran, dan kisi-kisi dapat diunduh sebagai Word atau PDF. Tersedia juga file Excel (.csv). Tekan **Acak ulang soal** untuk paket soal yang berbeda.']);
   h3('5. Mode babak dan tautan kelas');
-  langkah(['Pada bagian **4. Pengaturan babak**, isi nama kelas dan KKM, lalu aktifkan mode babak.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
+  langkah(['Di Ruang Guru, buka menu **Kelas & Babak**, isi nama kelas dan KKM, lalu aktifkan mode babak.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
   h3('6. Rekap nilai di Google Sheets (dipasang sekali)');
-  langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Panel Guru bagian **5**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di Panel Guru bagian 5, lalu tekan **Uji sambungan**.', 'Di Panel Guru bagian 5, **Impor daftar siswa**: ketik nama kelas, pilih file daftar siswa (Excel, Word, atau PDF), periksa daftar nama, lalu tekan **Kirim ke Google Sheets**. Kode siswa dibuat otomatis. Tekan **Cetak kartu kode** untuk membagikan kode kepada siswa, atau **Salin daftar kode untuk WA**. Bila diminta memperbarui kode Apps Script, ikuti 4 langkah yang tampil di layar.', 'Buat tautan kelas (bagian 4). Sejak itu nilai kuis dan ujian masuk otomatis.']);
+  langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Ruang Guru, buka menu **Rekap Nilai**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di menu **Rekap Nilai**, lalu tekan **Uji sambungan**.', 'Buka menu **Daftar Siswa**: ketik nama kelas, pilih file daftar siswa (Excel, Word, atau PDF), periksa daftar nama, lalu tekan **Kirim ke Google Sheets**. Kode siswa dibuat otomatis. Tekan **Cetak kartu kode** untuk membagikan kode kepada siswa, atau **Salin daftar kode untuk WA**. Bila diminta memperbarui kode Apps Script, ikuti 4 langkah yang tampil di layar.', 'Buat tautan kelas di menu **Kelas & Babak**. Sejak itu nilai kuis dan ujian masuk otomatis.']);
   h3('7. Membuka bab baru dan membaca analisis');
   poin(['Setiap mulai mengajar bab baru, buka lembar **Pengaturan** di Google Sheets dan ubah angka **Buka sampai bab** untuk kelas itu. KKM per kelas juga diatur di sana.', 'Lembar **Rekap** berisi nilai tertinggi setiap siswa per bab (merah bila di bawah KKM).', 'Lembar **Analisis** berisi rata-rata, persentase ketuntasan, siswa yang perlu remedial, siswa yang belum mengerjakan, dan soal yang paling sulit.']);
   h3('8. Tahun ajaran baru');
@@ -1556,13 +1634,14 @@ function rute() {
   else if (h === 'nilai') nilai();
   else if (h === 'tentang') tentang();
   else if (h === 'logo') filosofi();
-  else if (h === 'guru') panelGuru();
+  else if (h === 'guru' || h.startsWith('guru/')) panelGuru(h.split('/')[1] || '');
   else if (h === 'guru-modul') halamanModul();
   else if (h === 'guru-soal') halamanSoal();
   else if (h === 'panduan') panduan();
   else beranda();
   window.scrollTo(0, 0);
 }
+document.querySelectorAll('.tabs a').forEach(a => { const n = { beranda: 'rumah', nilai: 'bintang', logo: 'jam', tentang: 'info', guru: 'topi' }[a.dataset.v]; if (n && !a.querySelector('svg')) a.innerHTML = ikon(n) + `<span>${a.textContent}</span>`; });
 window.addEventListener('hashchange', rute);
 rute();
 

@@ -643,12 +643,27 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <li>Pilih fungsi <b>siapkan</b>, tekan <b>Jalankan</b>, lalu berikan izin (Lanjutan → Buka proyek).</li>
 <li><b>Terapkan → Deployment baru</b> → jenis <b>Aplikasi web</b>; Jalankan sebagai: <b>Saya</b>; Akses: <b>Siapa saja</b> → Terapkan. Salin alamat aplikasi web.</li>
 <li>Tempel alamat itu di kotak di bawah, tekan <b>Uji sambungan</b>, lalu buat tautan kelas (bagian 4).</li>
-<li>Di Google Sheets, isi lembar <b>Siswa</b> (Kelas, No, Nama; bisa disalin dari Excel), lalu menu <b>Ruang Historia → Buat kode siswa</b>. Bagikan kodenya kepada siswa.</li>
+<li>Masukkan daftar siswa dengan <b>Impor daftar siswa</b> di bawah (dari file Excel, Word, atau PDF). Kode siswa dibuat otomatis.</li>
 <li>Setiap kali mulai mengajar bab baru, buka lembar <b>Pengaturan</b> dan ubah angka <b>Buka sampai bab</b> untuk kelas itu (misalnya 1 menjadi 2). KKM per kelas juga diatur di sana.</li>
 </ol>
 <div class="row"><button class="btn alt" type="button" id="salinkode">Salin kode Apps Script</button></div>
 <label><b>Alamat aplikasi web (dari langkah 5)</b><input id="gr" class="isian" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(c.rekap || '')}"></label>
-<div class="row"><button class="btn alt" type="button" id="ujirekap">Uji sambungan</button></div><p class="catatan" id="pesanrekap"></p></div>
+<div class="row"><button class="btn alt" type="button" id="ujirekap">Uji sambungan</button></div><p class="catatan" id="pesanrekap"></p>
+<h3 style="margin-top:22px">Impor daftar siswa</h3>
+<p>Pilih file daftar siswa per kelas. Bisa Excel, Word, atau PDF. Nama siswa akan masuk otomatis ke Google Sheets, lengkap dengan kodenya.</p>
+<label><b>1. Nama kelas</b> (tulis persis, misalnya XI D)<input id="isk" class="isian" placeholder="XI D"></label>
+<label><b>2. Pilih file daftar siswa</b><input id="isf" class="isian" type="file" accept=".xlsx,.xls,.csv,.ods,.docx,.pdf,.txt"></label>
+<p class="catatan">Tidak punya file? <button class="tautan" type="button" id="isketik">Ketik atau tempel nama saja</button></p>
+<p class="catatan" id="isp"></p>
+<textarea id="ist" class="isian" rows="12" hidden></textarea>
+<div id="islanjut" hidden><div class="row"><button class="btn" type="button" id="iskirim">3. Kirim ke Google Sheets</button><button class="btn alt" type="button" id="istsv">Salin untuk ditempel manual</button></div></div>
+<div id="ish"></div>
+<details class="box" id="isperbarui"><summary><b>Perbarui kode Apps Script</b> (sekali saja, bila diminta)</summary><ol>
+<li>Tekan <b>Salin kode Apps Script</b> di atas.</li>
+<li>Di Apps Script: hapus semua isi editor (Ctrl+A, Delete), tempel (Ctrl+V), lalu Simpan.</li>
+<li>Tekan <b>Terapkan → Kelola deployment</b>, klik ikon pensil, pada <b>Versi</b> pilih <b>Versi baru</b>, lalu <b>Terapkan</b>. Alamat /exec tetap sama.</li>
+<li>Kembali ke sini dan tekan <b>Kirim ke Google Sheets</b> lagi.</li></ol>
+<label><b>Kunci guru</b> <span class="catatan">(terisi otomatis; isi sama di laptop dan HP bila memakai dua perangkat)</span><input id="istoken" class="isian"></label></details></div>
 
 ${S.get('pemilik') ? `<div class="box guru-kartu"><h2>Bagikan ke guru lain</h2><p>Buat kode aktivasi untuk setiap guru. Dengan kode itu, guru membuat PIN sendiri, sehingga PIN Bapak tidak perlu dibagikan. Kode hanya berlaku untuk nama yang ditulis.</p>
 <label><b>Nama guru</b><input id="bnama" class="isian" placeholder="contoh: Rina Marlina, S.Pd."></label>
@@ -673,7 +688,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu"><h2>Bagikan ke guru lain</h2><
     t.disabled = false;
   });
   document.getElementById('unduhpdf').addEventListener('click', async e => { const t = e.target, pesan = document.getElementById('pesanppt'); t.disabled = true; pesan.textContent = 'Menyiapkan PDF…'; try { await cetakSlide(pr.value, +pb.value); pesan.textContent = 'Pilih "Simpan sebagai PDF" pada jendela cetak.'; } catch (err) { console.error(err); pesan.textContent = 'Gagal menyiapkan PDF. Coba lagi.'; } t.disabled = false; });
-  pasangModulForm(); pasangSoalForm();
+  pasangModulForm(); pasangSoalForm(); pasangImporSiswa();
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
     const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka, rekap: document.getElementById('gr').value.trim() };
@@ -681,7 +696,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu"><h2>Bagikan ke guru lain</h2><
     document.getElementById('hasilkelas').innerHTML = `<div class="tautan-kelas"><div>${await qrSVG(url, 200)}</div><div><p><b>Tautan kelas ${esc(o.nama || '')}</b>: mode babak ${o.modeBabak ? 'aktif' : 'mati'}, KKM ${o.kkm}, rekap nilai ${o.rekap ? 'aktif' : 'tidak dipakai'}.</p><input class="isian" readonly value="${esc(url)}"><div class="row"><button class="btn" type="button" id="salin">Salin tautan</button></div><p class="catatan">Bagikan tautan ini di grup kelas, atau tampilkan kode QR-nya di proyektor. Siswa cukup membukanya sekali dari HP masing-masing.</p></div></div>`;
     document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
   });
-  document.getElementById('salinkode').addEventListener('click', async ev => { try { const t = await fetch('alat/rekap-google-sheets.gs').then(r => r.text()); await navigator.clipboard.writeText(t); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; } catch { ev.target.textContent = 'Gagal menyalin. Coba lagi'; } });
+  document.getElementById('salinkode').addEventListener('click', async ev => { try { const t = (await fetch('alat/rekap-google-sheets.gs', { cache: 'no-cache' }).then(r => r.text())).replace('__TOKEN_GURU__', (document.getElementById('istoken') || {}).value || tokenRekap()); await navigator.clipboard.writeText(t); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; } catch { ev.target.textContent = 'Gagal menyalin. Coba lagi'; } });
   document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Sekarang buat tautan kelas di bagian 4.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
   document.getElementById('keluar').addEventListener('click', () => { S.set('guru', false); location.hash = '#beranda'; });
   document.getElementById('gpsimpan').onclick = async () => { const a1 = document.getElementById('gp1').value.trim(), a2 = document.getElementById('gp2').value.trim(), ps = document.getElementById('gppesan'); if (a1.length < 4 || a1 !== a2) { ps.textContent = 'PIN minimal 4 angka dan kedua isian harus sama.'; return; } S.set('pinSaya', await sha256('ruang-historia-saya:' + a1)); ps.textContent = 'PIN baru tersimpan untuk perangkat ini.'; document.getElementById('gp1').value = document.getElementById('gp2').value = ''; };
@@ -1378,7 +1393,7 @@ function susunPanduan() {
   h3('5. Mode babak dan tautan kelas');
   langkah(['Pada bagian **4. Pengaturan babak**, isi nama kelas dan KKM, lalu aktifkan mode babak.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
   h3('6. Rekap nilai di Google Sheets (dipasang sekali)');
-  langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Panel Guru bagian **5**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di Panel Guru bagian 5, lalu tekan **Uji sambungan**.', 'Isi lembar **Siswa** (Kelas, No, Nama), lalu menu **Ruang Historia → Buat kode siswa**. Bagikan kode kepada setiap siswa.', 'Buat tautan kelas (bagian 4). Sejak itu nilai kuis dan ujian masuk otomatis.']);
+  langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Panel Guru bagian **5**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di Panel Guru bagian 5, lalu tekan **Uji sambungan**.', 'Di Panel Guru bagian 5, **Impor daftar siswa**: ketik nama kelas, pilih file daftar siswa (Excel, Word, atau PDF), periksa daftar nama, lalu tekan **Kirim ke Google Sheets**. Kode siswa dibuat otomatis. Tekan **Cetak kartu kode** untuk membagikan kode kepada siswa, atau **Salin daftar kode untuk WA**. Bila diminta memperbarui kode Apps Script, ikuti 4 langkah yang tampil di layar.', 'Buat tautan kelas (bagian 4). Sejak itu nilai kuis dan ujian masuk otomatis.']);
   h3('7. Membuka bab baru dan membaca analisis');
   poin(['Setiap mulai mengajar bab baru, buka lembar **Pengaturan** di Google Sheets dan ubah angka **Buka sampai bab** untuk kelas itu. KKM per kelas juga diatur di sana.', 'Lembar **Rekap** berisi nilai tertinggi setiap siswa per bab (merah bila di bawah KKM).', 'Lembar **Analisis** berisi rata-rata, persentase ketuntasan, siswa yang perlu remedial, siswa yang belum mengerjakan, dan soal yang paling sulit.']);
   h3('8. Tahun ajaran baru');
@@ -1412,6 +1427,115 @@ function panduan() {
 <section class="pad"><div class="wrap"><article class="modul-dok">${modulHTML(M)}</article></div></section>`;
   document.getElementById('pword').onclick = () => unduhBlob(docxDari(M), M.nama + '.docx');
   document.getElementById('ppdf').onclick = () => { const t = document.title; document.title = M.nama; document.body.classList.add('cetak-modul'); setTimeout(() => { print(); document.body.classList.remove('cetak-modul'); document.title = t; }, 50); };
+}
+
+/* ---------- IMPOR DAFTAR SISWA (Excel / Word / PDF) ---------- */
+const tokenRekap = () => { let t = S.get('tokenRekap', ''); if (!t) { const a = new Uint8Array(18); crypto.getRandomValues(a); t = [...a].map(x => HURUF_KODE[x % HURUF_KODE.length]).join(''); S.set('tokenRekap', t); } return t; };
+const KATA_KEPALA = /^(no\.?|nomor|nama( siswa| peserta didik| lengkap)?|nis|nisn|kelas|rombel|jenis kelamin|l\/p|jk|keterangan|ttd|tanda tangan|daftar.*|tahun.*|semester.*|wali kelas.*|mengetahui.*|kepala.*|nip.*|jumlah.*|madrasah.*|sekolah.*|kementerian.*|alamat.*|agama|tempat.*|tanggal.*)$/i;
+function bersihNama(s) {
+  let t = String(s ?? '').replace(/\s+/g, ' ').trim();
+  t = t.replace(/^\d+\s*[.)]?\s*/, '');                         // nomor urut
+  t = t.split(' ').filter(w => !/\d/.test(w)).join(' ');          // NIS/NISN/angka
+  t = t.replace(/\s+(L|P|LK|PR|Laki-laki|Laki laki|Perempuan)$/i, '').replace(/[|;]+/g, ' ').trim();
+  if (t.length < 3 || t.length > 70 || !/[A-Za-z]{2}/.test(t) || KATA_KEPALA.test(t)) return '';
+  return t;
+}
+const judulNama = t => t === t.toUpperCase() ? t.toLowerCase().replace(/(^|[\s.-])\S/g, m => m.toUpperCase()) : t;
+// baris tabel -> {kelas: [nama]}
+function dariBaris(rows, kelasDefault) {
+  rows = rows.map(r => (r || []).map(x => String(x ?? '').trim()));
+  let h = -1, cN = -1, cK = -1;
+  for (let i = 0; i < Math.min(rows.length, 20) && h < 0; i++) rows[i].forEach((x, j) => { if (/^nama/i.test(x) && cN < 0) { cN = j; h = i; } });
+  if (h >= 0) rows[h].forEach((x, j) => { if (/^(kelas|rombel)/i.test(x)) cK = j; });
+  if (cN < 0) { const skor = []; rows.forEach(r => r.forEach((x, j) => { if (bersihNama(x) && /\s/.test(x)) skor[j] = (skor[j] || 0) + 1; })); cN = skor.reduce((b, v, j) => v > (skor[b] || 0) ? j : b, 0); }
+  const out = {};
+  rows.slice(h + 1).forEach(r => { const n = bersihNama(r[cN]); if (!n) return; const k = (cK >= 0 && r[cK]) || kelasDefault; (out[k] = out[k] || []).push(judulNama(n)); });
+  return out;
+}
+function dariTeks(teks, kelasDefault) {
+  const nama = teks.split(/\n/).map(bersihNama).filter(Boolean).map(judulNama);
+  return nama.length ? { [kelasDefault]: nama } : {};
+}
+async function bacaDaftarSiswa(file, kelasDefault) {
+  const ext = (file.name.split('.').pop() || '').toLowerCase(), buf = await file.arrayBuffer();
+  if (['xlsx', 'xls', 'csv', 'ods'].includes(ext)) {
+    await muatSkrip('lib/xlsx.core.min.js');
+    const wb = XLSX.read(buf, { type: 'array' }), out = {};
+    const lembar = wb.SheetNames.map(n => [n, dariBaris(XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '' }), kelasDefault)]).filter(([, o]) => Object.keys(o).length);
+    lembar.forEach(([n, o]) => Object.entries(o).forEach(([k, v]) => { const kk = lembar.length > 1 && k === kelasDefault ? n.trim() : k; out[kk] = (out[kk] || []).concat(v); }));
+    return out;
+  }
+  if (ext === 'docx') {
+    await muatSkrip('lib/mammoth.browser.min.js');
+    const html = (await mammoth.convertToHtml({ arrayBuffer: buf })).value, dom = new DOMParser().parseFromString(html, 'text/html');
+    const tb = [...dom.querySelectorAll('table')];
+    if (tb.length) { const out = {}; tb.forEach(t => Object.entries(dariBaris([...t.rows].map(r => [...r.cells].map(c => c.textContent)), kelasDefault)).forEach(([k, v]) => out[k] = (out[k] || []).concat(v))); if (Object.keys(out).length) return out; }
+    return dariTeks(dom.body.innerText || dom.body.textContent, kelasDefault);
+  }
+  if (ext === 'pdf') {
+    await muatSkrip('lib/pdf.min.js'); pdfjsLib.GlobalWorkerOptions.workerSrc = 'lib/pdf.worker.min.js';
+    const doc = await pdfjsLib.getDocument({ data: buf }).promise, baris = [];
+    for (let i = 1; i <= doc.numPages; i++) {
+      const items = (await (await doc.getPage(i)).getTextContent()).items.filter(it => it.str.trim());
+      const grup = []; items.forEach(it => { const y = it.transform[5], x = it.transform[4]; let g = grup.find(g => Math.abs(g.y - y) < 3); if (!g) grup.push(g = { y, sel: [] }); g.sel.push([x, it.str]); });
+      grup.sort((a, b) => b.y - a.y).forEach(g => baris.push(g.sel.sort((a, b) => a[0] - b[0]).map(s => s[1].trim()).filter(Boolean)));
+    }
+    const o = dariBaris(baris, kelasDefault);
+    if (Object.keys(o).length) return o;
+    return dariTeks(baris.map(r => r.join(' ')).join('\n'), kelasDefault);
+  }
+  if (ext === 'txt') return dariTeks(new TextDecoder().decode(buf), kelasDefault);
+  throw new Error('format');
+}
+const kelompokKeTeks = o => Object.entries(o).map(([k, v]) => `# ${k}\n` + v.join('\n')).join('\n\n');
+const teksKeKelompok = (t, kDef) => { const o = {}; let k = kDef; t.split('\n').forEach(l => { l = l.trim(); if (!l) return; const m = l.match(/^#\s*(.+)$/); if (m) { k = m[1].trim(); return; } (o[k] = o[k] || []).push(l.replace(/^\d+\s*[.)]?\s*/, '')); }); return o; };
+
+function pasangImporSiswa() {
+  const f = document.getElementById('isf'), kel = document.getElementById('isk'), ta = document.getElementById('ist'), ps = document.getElementById('isp'), hasilEl = document.getElementById('ish');
+  const tampil = o => { const n = Object.values(o).reduce((s, v) => s + v.length, 0); ta.value = kelompokKeTeks(o); ta.hidden = false; document.getElementById('islanjut').hidden = !n; ps.innerHTML = n ? `Terbaca <b>${n}</b> nama dalam <b>${Object.keys(o).length}</b> kelas. Periksa daftar di bawah: hapus baris yang bukan nama, perbaiki yang salah. Baris berawalan <b>#</b> adalah nama kelas.` : 'Tidak ada nama yang terbaca. Pastikan berkas berisi kolom <b>Nama</b>, atau ketik/tempel nama di kotak di bawah (satu nama per baris).'; if (!n) { ta.hidden = false; ta.value = `# ${kel.value.trim() || 'XI D'}\n`; document.getElementById('islanjut').hidden = false; } };
+  f.onchange = async () => {
+    const file = f.files[0]; if (!file) return;
+    const kD = kel.value.trim() || 'Kelas'; ps.textContent = 'Membaca berkas…';
+    try { tampil(await bacaDaftarSiswa(file, kD)); } catch (e) { console.error(e); ps.innerHTML = 'Berkas tidak bisa dibaca. Gunakan Excel (.xlsx/.xls/.csv), Word (.docx), atau PDF yang berisi teks (bukan hasil foto/pindai).'; }
+  };
+  document.getElementById('isketik').onclick = () => { ta.hidden = false; document.getElementById('islanjut').hidden = false; if (!ta.value) ta.value = `# ${kel.value.trim() || 'XI D'}\n`; ta.focus(); };
+  document.getElementById('istsv').onclick = async ev => {
+    const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas');
+    const tsv = Object.entries(o).flatMap(([k, v]) => v.map((n, i) => `${k}\t${i + 1}\t${n}`)).join('\n');
+    try { await navigator.clipboard.writeText(tsv); ev.target.textContent = 'Tersalin. Klik sel A2 di lembar Siswa, lalu Ctrl+V'; } catch { ev.target.textContent = 'Gagal menyalin'; }
+  };
+  document.getElementById('iskirim').onclick = async () => {
+    const url = document.getElementById('gr').value.trim();
+    if (!/\/exec$/.test(url)) { ps.textContent = 'Isi dulu alamat aplikasi web di atas, lalu tekan Uji sambungan.'; return; }
+    const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas'), semua = [];
+    ps.textContent = 'Mengirim ke Google Sheets…';
+    try {
+      for (const [k, v] of Object.entries(o)) for (let i = 0; i < v.length; i += 40) {
+        const r = await fetch(`${url}?aksi=siswa&token=${encodeURIComponent(tokenRekap())}&data=${encodeURIComponent(JSON.stringify({ kelas: k, nama: v.slice(i, i + 40) }))}`).then(x => x.json());
+        if (!r.ok) throw new Error(r.pesan || 'gagal');
+        r.siswa.forEach(s => semua.push([k, ...s]));
+      }
+    } catch (e) {
+      ps.innerHTML = /token|tidak dikenal/i.test(e.message) ? `<b>Kode Apps Script perlu diperbarui sekali.</b> Ikuti 4 langkah di kotak <b>Perbarui kode Apps Script</b> di bawah, lalu tekan Kirim lagi.` : 'Gagal mengirim. Periksa internet dan alamat aplikasi web, lalu coba lagi.';
+      document.getElementById('isperbarui').open = true; return;
+    }
+    S.set('kodeSiswaTerakhir', semua);
+    ps.innerHTML = `Berhasil. <b>${semua.length}</b> siswa sudah masuk ke lembar Siswa, lengkap dengan kodenya.`;
+    hasilEl.innerHTML = `<table class="md-tabel"><thead><tr><th>Kelas</th><th>No</th><th>Nama</th><th>Kode</th></tr></thead><tbody>${semua.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td><b>${esc(r[3])}</b></td></tr>`).join('')}</tbody></table>
+<div class="row"><button class="btn" type="button" id="iskartu">Cetak kartu kode (PDF)</button><button class="btn alt" type="button" id="iswa">Salin daftar kode untuk WA</button></div>`;
+    document.getElementById('iskartu').onclick = () => cetakKartu(semua);
+    document.getElementById('iswa').onclick = async ev => { const k = konfig(); const t = Object.entries(semua.reduce((o, r) => ((o[r[0]] = o[r[0]] || []).push(r), o), {})).map(([kk, rs]) => `*Kode Ruang Historia kelas ${kk}*\n` + rs.map(r => `${r[1]}. ${r[2]}: ${r[3]}`).join('\n')).join('\n\n') + `\n\nBuka tautan kelas dari guru, lalu masukkan kodemu. Jangan berikan kode kepada teman.`; try { await navigator.clipboard.writeText(t); ev.target.textContent = 'Tersalin. Tempel di WA'; } catch {} };
+  };
+  document.getElementById('istoken').value = tokenRekap();
+  document.getElementById('istoken').onchange = e => { const v = e.target.value.trim(); if (v) S.set('tokenRekap', v); };
+}
+function cetakKartu(rows) {
+  let w = document.getElementById('cetak-kartu'); if (w) w.remove();
+  w = document.createElement('div'); w.id = 'cetak-kartu';
+  w.innerHTML = rows.map(r => `<div class="kartu"><div class="k-atas">RUANG HISTORIA · Kelas ${esc(r[0])}</div><div class="k-nama">${esc(r[2])}</div><div class="k-kode">${esc(r[3])}</div><div class="k-cara">Buka tautan kelas dari guru, lalu masukkan kode ini. Jangan berikan kepada teman.</div></div>`).join('');
+  document.body.append(w);
+  const t = document.title; document.title = 'Kartu kode siswa Ruang Historia'; document.body.classList.add('cetak-kartu');
+  setTimeout(() => { print(); document.body.classList.remove('cetak-kartu'); document.title = t; w.remove(); }, 80);
 }
 
 /* ---------- router ---------- */

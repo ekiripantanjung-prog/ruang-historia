@@ -476,3 +476,12 @@ details.rub summary{cursor:pointer;font-weight:700;color:var(--accent)}
 #cetak-as .as-baris{white-space:pre;overflow:visible}
 @page asesmenku{size:A4 landscape;margin:10mm}
 @media print{body.cetak-as>*:not(#cetak-as){display:none!important}body.cetak-as #cetak-as{position:static;page:asesmenku}}
+.tautan{background:none;border:0;padding:0;color:inherit;text-decoration:underline;font:inherit;cursor:pointer}
+#cetak-kartu{display:none}
+@media print{body.cetak-kartu>*:not(#cetak-kartu){display:none!important}
+body.cetak-kartu #cetak-kartu{display:grid;grid-template-columns:repeat(3,1fr);gap:0;font-family:Arial,sans-serif;color:#000}
+#cetak-kartu .kartu{border:1px dashed #888;padding:10px 12px;break-inside:avoid;height:46mm;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between}
+#cetak-kartu .k-atas{font-size:8pt;font-weight:700;color:#2B3A67;letter-spacing:.04em}
+#cetak-kartu .k-nama{font-size:11pt;font-weight:700}
+#cetak-kartu .k-kode{font:700 22pt/1 "Courier New",monospace;letter-spacing:.12em}
+#cetak-kartu .k-cara{font-size:7pt;color:#333}}

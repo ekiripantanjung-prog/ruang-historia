@@ -21,6 +21,9 @@ const LEMBAR_ANALISIS = 'Analisis';
 const LEMBAR_ATUR = 'Pengaturan';
 const RUANG = [['Sejarah Indonesia', 'indonesia'], ['Sejarah Dunia', 'dunia'], ['SKI', 'ski']];
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+// Kunci rahasia guru: diisi otomatis saat kode disalin dari Panel Guru. Jangan dibagikan.
+const TOKEN_GURU = '__TOKEN_GURU__';
+const VERSI = 2;
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('Ruang Historia')
@@ -84,7 +87,8 @@ function doGet(e) {
   const kunci = LockService.getScriptLock();
   try {
     kunci.waitLock(20000);
-    if (p.aksi === 'cek') return keluar({ ok: true, nama: SpreadsheetApp.getActiveSpreadsheet().getName() });
+    if (p.aksi === 'cek') return keluar({ ok: true, nama: SpreadsheetApp.getActiveSpreadsheet().getName(), versi: VERSI, impor: TOKEN_GURU.indexOf('__') !== 0 && p.token === TOKEN_GURU });
+    if (p.aksi === 'siswa') return keluar(imporSiswa(p));
     if (p.aksi === 'masuk') return keluar(masuk(p.kode));
     if (p.aksi === 'atur') return keluar(bacaPengaturan(p.kode));
     if (p.aksi === 'nilai') return keluar(simpanNilai(p));
@@ -322,3 +326,36 @@ function tahunAjaranBaru() {
   const props = PropertiesService.getDocumentProperties(); Object.keys(props.getProperties()).filter(k => k.indexOf('kkm_') === 0).forEach(k => props.deleteProperty(k));
   ui.alert('Selesai.\n\nArsip tersimpan di Google Drive dengan nama:\n"' + arsip.getName() + '"\n\nFile ini sudah kosong dan siap dipakai tahun ajaran baru. Alamat aplikasi web dan tautan kelas tetap sama.' + (siswaJuga === ui.Button.YES ? '\n\nIsi daftar siswa baru di lembar Siswa, lalu pilih menu Buat kode siswa.' : '\n\nJangan lupa ubah nama kelas di lembar Siswa dan Pengaturan bila siswa naik kelas.'));
 }
+
+
+/* ---------- IMPOR DAFTAR SISWA DARI PANEL GURU ---------- */
+/** Menambah siswa satu kelas (data: {kelas, nama:[...]}) lalu mengembalikan kode mereka. Hanya untuk guru (perlu token). */
+function imporSiswa(p) {
+  if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
+  const d = JSON.parse(p.data || '{}'), kelas = String(d.kelas || '').trim().slice(0, 40);
+  const nama = (d.nama || []).map(x => String(x).replace(/\s+/g, ' ').trim().slice(0, 80)).filter(Boolean);
+  if (!kelas || !nama.length) return { ok: false, pesan: 'Nama kelas atau daftar nama kosong.' };
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(LEMBAR_SISWA); if (!sh) { siapkanDiam(); sh = ss.getSheetByName(LEMBAR_SISWA); }
+  const n = Math.max(0, sh.getLastRow() - 1);
+  const data = n ? sh.getRange(2, 1, n, 4).getValues() : [];
+  const ada = new Set(data.map(r => String(r[3]).trim().toUpperCase()).filter(Boolean));
+  const kunciNama = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+  const dikelas = data.filter(r => String(r[0]).trim() === kelas);
+  let no = dikelas.reduce((m, r) => Math.max(m, +r[1] || 0), 0), baru = 0;
+  const hasil = [];
+  nama.forEach(nm => {
+    let r = dikelas.find(x => kunciNama(x[2]) === kunciNama(nm));
+    if (!r) {
+      let k; do { k = Array.from({ length: 6 }, () => HURUF_KODE[Math.floor(Math.random() * HURUF_KODE.length)]).join(''); } while (ada.has(k));
+      ada.add(k); r = [kelas, ++no, nm, k]; sh.appendRow(r); dikelas.push(r); baru++;
+    } else if (!String(r[3]).trim()) {
+      let k; do { k = Array.from({ length: 6 }, () => HURUF_KODE[Math.floor(Math.random() * HURUF_KODE.length)]).join(''); } while (ada.has(k));
+      ada.add(k); r[3] = k; const i = data.indexOf(r); if (i >= 0) sh.getRange(i + 2, 4).setValue(k);
+    }
+    hasil.push([r[1], r[2], r[3]]);
+  });
+  isiKelasPengaturan([kelas]);
+  return { ok: true, kelas: kelas, baru: baru, siswa: hasil };
+}
+function siapkanDiam() { try { siapkan(); } catch (e) {} }

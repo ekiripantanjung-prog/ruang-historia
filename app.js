@@ -1525,8 +1525,8 @@ function susunPanduan() {
   h2('Bagian A. Panduan untuk siswa');
   h3('1. Membuka dan memasang aplikasi');
   langkah([`Buka **${url}** di Chrome (HP Android atau laptop) atau Safari (iPhone).`, 'Di HP Android: ketuk menu titik tiga di kanan atas, lalu **Tambahkan ke layar utama** atau **Instal aplikasi**. Di iPhone: ketuk tombol Bagikan lalu **Tambahkan ke Layar Utama**. Di laptop: klik ikon instal di ujung kanan kolom alamat.', 'Ikon **Ruang Historia** muncul di layar. Buka aplikasi dari ikon itu.']);
-  h3('2. Bergabung dengan kelas');
-  langkah(['Buka **tautan kelas** atau pindai **kode QR** yang dibagikan guru. Cukup sekali.', 'Bila guru memakai rekap nilai, masukkan **kode siswa** 6 huruf dari guru. Nama dan kelasmu akan muncul.', 'Jangan berikan kode siswamu kepada teman, karena nilai yang masuk tercatat atas namamu.']);
+  h3('2. Bergabung dengan kelas (cukup sekali)');
+  langkah(['Buka **link kelas** yang dibagikan guru di grup WA kelasmu (atau pindai kode QR-nya). Ruang Historia terbuka dan langsung mengenali kelasmu.', 'Setelah membuka link kelas, **pasang aplikasinya** di HP (lihat nomor 1). Urutannya: buka link kelas dulu, baru pasang.', 'Saat **pertama kali mengerjakan kuis**, ketik **kode siswa** 6 huruf dari kartu yang dibagikan guru. Namamu dan kelasmu akan muncul. Kode cukup diketik sekali.', 'Jangan berikan kode siswamu kepada teman, karena nilai dan Historia Star yang masuk tercatat atas namamu.', 'Ganti HP? Buka link kelas lagi di HP baru dan ketik kode yang sama; nilai dan bintangmu kembali.']);
   h3('3. Belajar setiap bab (babak)');
   langkah(['Di Beranda, pilih ruang (Sejarah Indonesia, Sejarah Dunia, atau SKI), lalu pilih bab yang terbuka.', 'Baca **Materi**, lihat **Jejak sejarah** (foto arsip), dan tonton **Video**.', 'Catat poin penting di buku catatan. Centang daftar kesiapan, lalu kerjakan **Kuis**.', 'Bila nilaimu mencapai **KKM**, kamu mendapat **Historia Star** ⭐ dan babak berikutnya terbuka. Bila belum, pelajari lagi materinya lalu ulangi kuis.', 'Bab yang belum dibuka guru bertanda **Belum dibuka guru**. Tunggu sampai guru membukanya di kelas.']);
   h3('4. Nilai dan ujian');
@@ -1535,6 +1535,15 @@ function susunPanduan() {
   h2('Bagian B. Panduan untuk guru');
   h3('1. Masuk Ruang Guru');
   langkah(['Ketuk menu **Guru** (ikon topi toga; di HP ada di menu bawah). Setelah masuk, tampil **Ruang Guru** berisi kotak-kotak menu: Presentasi, Modul Ajar, Soal Ulangan, Kelas & Babak, Daftar Siswa, Rekap Nilai, Nilai Tambah ⭐, Historia Star, Tahun Ajaran Baru, Akun & PIN, dan Buku Panduan. Ketuk kotak yang diperlukan; tombol **← Ruang Guru** membawa kembali.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
+  h3('Mengenal tiga macam kode');
+  B.push({ t: 'tabel', head: ['Kode', 'Contoh', 'Untuk siapa dan apa gunanya'], lebar: [22, 22, 56], rows: [
+    ['PIN guru', '200694', 'Untuk guru membuka Ruang Guru. Jangan diberikan kepada siswa.'],
+    ['Kunci guru', 'F4FK89NQ…', 'Kode rahasia yang menghubungkan Ruang Historia dengan Google Sheets guru. Terisi otomatis; hanya perlu diisi bila memakai perangkat lain (simpan di catatan pribadi).'],
+    ['Kode siswa', 'KZUYF2', 'Satu kode untuk setiap siswa, dibagikan lewat kartu kode. Diketik siswa sekali saat pertama mengerjakan kuis, agar nilai dan Historia Star masuk atas namanya.']] });
+  h3('Link biasa dan link kelas');
+  poin(['**Link biasa** (alamat Ruang Historia): siswa bisa belajar, tetapi nilainya tidak masuk ke Google Sheets guru dan bab tidak dikunci sesuai pengaturan guru.', '**Link kelas** (dibuat di menu **Kelas & Babak**): membawa nama kelas, KKM, mode babak, dan sambungan ke Google Sheets guru. Buat satu link untuk setiap kelas, lalu bagikan ke grup WA kelas itu.']);
+  h3('Hari pertama memakai Ruang Historia di kelas');
+  langkah(['Pastikan daftar siswa sudah dimasukkan (menu **Daftar Siswa**) dan kartu kode sudah dicetak.', 'Buat **link kelas** di menu **Kelas & Babak**, lalu kirim ke grup WA kelas.', 'Bagikan **kartu kode siswa** kepada setiap siswa.', 'Minta siswa membuka link kelas, memasang aplikasinya, lalu mengerjakan kuis Bab 1 dan mengetik kode siswanya saat diminta.', 'Cek lembar **Rekap** di Google Sheets: nama dan nilai siswa mulai masuk.']);
   h3('2. Presentasi kelas (PowerPoint dan PDF)');
   langkah(['Di Ruang Guru, buka menu **Presentasi**, pilih ruang dan bab.', 'Tekan **Tampilkan presentasi** untuk mengajar langsung dari aplikasi (geser atau tombol panah untuk pindah slide).', 'Tekan **Unduh PowerPoint** untuk file yang dapat diedit, atau **Unduh PDF** lalu pilih **Simpan sebagai PDF** pada jendela cetak.']);
   h3('3. Modul ajar (Word dan PDF)');

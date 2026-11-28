@@ -58,6 +58,7 @@ const IKON_UI = {
   roket: '<path d="M12 3c3 2 4.5 5 4.5 9L14 15h-4l-2.5-3c0-4 1.5-7 4.5-9z"/><circle cx="12" cy="9" r="1.6"/><path d="M10 15l-1.5 4L12 17.5 15.5 19 14 15"/>',
   timbangan: '<path d="M12 4v16M7 20h10M5 7h14"/><path d="m5 7-2.5 6h5zM19 7l-2.5 6h5z"/>',
   otak: '<path d="M9.5 4.5A2.5 2.5 0 0 0 7 7a2.5 2.5 0 0 0-2 4 2.5 2.5 0 0 0 1 4 2.5 2.5 0 0 0 3.5 3V4.5zM14.5 4.5A2.5 2.5 0 0 1 17 7a2.5 2.5 0 0 1 2 4 2.5 2.5 0 0 1-1 4 2.5 2.5 0 0 1-3.5 3V4.5z"/>',
+  kalender: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/>',
   daftar: '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/>'
 };
 const ikon = (n, c = '') => `<svg class="ik ${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IKON_UI[n] || ''}</svg>`;
@@ -78,6 +79,7 @@ const MENU_GURU = [
   ['rekap', 'Rekap Nilai', 'Google Sheets & analisis', 'grafik', '#A8842A'],
   ['star', 'Historia Star', 'Beri bintang pemenang challenge', 'bintang', '#D99A00'],
   ['bagikan', 'Bagikan ke Guru', 'Kode aktivasi guru lain', 'tambahorang', '#C0475B'],
+  ['tahun', 'Tahun Ajaran Baru', 'Arsipkan data lama, mulai baru', 'kalender', '#3E7C6B'],
   ['akun', 'Akun & PIN', 'Ganti PIN, keluar mode guru', 'kunci', '#5A6275'],
   ['#panduan', 'Buku Panduan', 'Cara pakai, bisa diunduh PDF', 'tanya', '#2B3A67']
 ];
@@ -775,6 +777,15 @@ ${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} G
 ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagikan ke guru lain</h2><p>Buat kode aktivasi untuk setiap guru. Dengan kode itu, guru membuat PIN sendiri, sehingga PIN Bapak tidak perlu dibagikan. Kode hanya berlaku untuk nama yang ditulis.</p>
 <label><b>Nama guru</b><input id="bnama" class="isian" placeholder="contoh: Rina Marlina, S.Pd."></label>
 <div class="row"><button class="btn" type="button" id="bbuat">Buat kode aktivasi</button></div><div id="bhasil"></div></div>` : ''}
+<div class="box guru-kartu" data-bagian="tahun"><h2>Tahun ajaran baru</h2>
+<p>Pakai menu ini <b>sekali setiap awal tahun ajaran</b>. Semua nilai, rekap, dan Historia Star tahun lalu disimpan sebagai <b>arsip</b> di Google Drive Bapak/Ibu, lalu rekap dikosongkan dan siap dipakai lagi.</p>
+<div class="langkah-no"><span>1</span><b>Tahun ajaran yang akan diarsipkan</b></div>
+<input id="tbl" class="isian" value="${(() => { const d = new Date(), y = d.getFullYear(), m = d.getMonth(); return m === 6 || m === 7 ? `${y - 1}-${y}` : m >= 8 ? `${y}-${y + 1}` : `${y - 1}-${y}`; })()}">
+<div class="langkah-no"><span>2</span><b>Daftar siswa</b></div>
+<label class="cek"><input type="checkbox" id="tbs" checked> Hapus juga daftar siswa lama (centang bila akan memasukkan daftar siswa baru)</label>
+<div class="langkah-no"><span>3</span><b>Arsipkan</b></div>
+<div class="row"><button class="btn besar" type="button" id="tbgo">${ikon('kalender')} Arsipkan & mulai tahun ajaran baru</button></div>
+<div class="pesan-impor" id="tbp" role="status" aria-live="polite"></div></div>
 <div class="box guru-kartu" data-bagian="akun"><h2>Ganti PIN</h2><p>Ganti PIN guru untuk perangkat ini.</p>
 <label><b>PIN baru</b> (minimal 4 angka)<input id="gp1" class="isian" type="password" inputmode="numeric"></label><label><b>Ulangi PIN baru</b><input id="gp2" class="isian" type="password" inputmode="numeric"></label>
 <div class="row"><button class="btn alt" type="button" id="gpsimpan">Simpan PIN</button></div><p class="catatan" id="gppesan">${S.get('pemilik') ? 'PIN utama pengembang (di file pengaturan) tetap berlaku di semua perangkat.' : ''}</p></div>
@@ -795,7 +806,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
     t.disabled = false;
   });
   document.getElementById('unduhpdf').addEventListener('click', async e => { const t = e.target, pesan = document.getElementById('pesanppt'); t.disabled = true; pesan.textContent = 'Menyiapkan PDF…'; try { await cetakSlide(pr.value, +pb.value); pesan.textContent = 'Pilih "Simpan sebagai PDF" pada jendela cetak.'; } catch (err) { console.error(err); pesan.textContent = 'Gagal menyiapkan PDF. Coba lagi.'; } t.disabled = false; });
-  pasangModulForm(); pasangSoalForm(); pasangImporSiswa(); tataPanelGuru(sub); if (sub === 'star') pasangStar();
+  pasangModulForm(); pasangSoalForm(); pasangImporSiswa(); tataPanelGuru(sub); if (sub === 'star') pasangStar(); if (sub === 'tahun') pasangTahunBaru();
   if (!document.getElementById('gr').value.trim()) document.getElementById('isbelum').innerHTML = `${ikon('info')} Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a> agar nama bisa dikirim. Tanpa itu, gunakan tombol <b>Salin untuk ditempel manual</b>.`;
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
@@ -1511,7 +1522,7 @@ function susunPanduan() {
   h3('9. Historia Star dan nilai tambah');
   poin(['Siswa mengoleksi **Historia Star** ⭐ dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3).', 'Guru memberi Historia Star tambahan kepada pemenang challenge, game, atau metode ajar di kelas: buka menu **Historia Star**, pilih kelas, ketuk nama siswa, pilih jumlah bintang dan alasannya, lalu tekan **Beri Historia Star**. Salah pilih? Tekan **Batalkan**.', 'Tekan **Tayangkan papan peringkat** untuk menampilkan 10 besar kelas di proyektor.', 'Di **Konversi ke nilai tambah**, atur nilai 1 ⭐ (misalnya 1 poin) dan batas maksimalnya (misalnya 10 poin). Hasilnya tercatat di lembar **Nilai Tambah** pada Google Sheets untuk diolah bersama nilai lainnya.', 'Siswa melihat total Historia Star dan nilai tambahnya di menu **Nilaiku**.']);
   h3('10. Tahun ajaran baru');
-  poin(['Menu **Ruang Historia → Hapus data satu kelas**: menghapus data satu kelas saja.', 'Menu **Ruang Historia → Tahun ajaran baru**: file lama disimpan sebagai arsip di Google Drive, lalu nilai dikosongkan. Daftar siswa boleh dihapus atau disimpan. Alamat aplikasi web tidak berubah.']);
+  poin(['**Cara termudah:** di Ruang Guru buka menu **Tahun Ajaran Baru**, lalu tekan **Arsipkan & mulai tahun ajaran baru** (dua kali). Arsip tersimpan di Google Drive dan bisa dibuka atau diunduh sebagai Excel dari tombol yang muncul. Lanjutkan dengan memasukkan daftar siswa baru dan membuat tautan kelas baru.', 'Menu **Ruang Historia → Hapus data satu kelas** (di Google Sheets): menghapus data satu kelas saja.', 'Menu **Ruang Historia → Tahun ajaran baru** (di Google Sheets) melakukan hal yang sama: file lama disimpan sebagai arsip di Google Drive, lalu nilai dikosongkan. Daftar siswa boleh dihapus atau disimpan. Alamat aplikasi web tidak berubah.']);
 
   h3('11. Memperbarui kode Apps Script (bila ada fitur baru)');
   p('Beberapa fitur baru memerlukan kode Apps Script terbaru. Bila aplikasi meminta, atau setelah pengembang mengumumkan fitur baru, lakukan langkah berikut. Data di Google Sheets tidak berubah dan alamat /exec tetap sama.');
@@ -1729,6 +1740,27 @@ function pasangStar() {
   document.getElementById('stsimpan').onclick = async () => { const kp = document.getElementById('stkp'); kp.textContent = 'Menyimpan…'; try { const r = await panggil('aturStar', `&poin=${encodeURIComponent(document.getElementById('stpoin').value)}&maks=${encodeURIComponent(document.getElementById('stmaks').value)}`); kp.textContent = `Tersimpan: 1 ⭐ = ${r.poin} poin${r.maks > 0 ? `, maksimal ${r.maks} poin` : ', tanpa batas'}. Lembar Nilai Tambah di Google Sheets sudah diperbarui.`; if (sel.value) muatKelas(sel.value); } catch (e) { gagal(e); kp.textContent = ''; } };
   document.getElementById('stpapan').onclick = () => { if (data && data.siswa) tayangPapan(data); };
   mulai();
+}
+function pasangTahunBaru() {
+  const btn = document.getElementById('tbgo'), ps = document.getElementById('tbp');
+  btn.onclick = async () => {
+    const url = document.getElementById('gr').value.trim();
+    if (!/\/exec$/.test(url)) { ps.innerHTML = `Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a>.`; return; }
+    if (!btn.dataset.yakin) { btn.dataset.yakin = 1; btn.innerHTML = `${ikon('kalender')} Yakin? Tekan sekali lagi`; ps.innerHTML = 'Data tahun lalu akan <b>disalin sebagai arsip</b> terlebih dahulu, lalu rekap dikosongkan. Tekan tombol sekali lagi untuk melanjutkan.'; return; }
+    btn.disabled = true; ps.textContent = 'Menyimpan arsip dan mengosongkan rekap… (sekitar 10–30 detik)';
+    try {
+      const r = await fetch(`${url}?aksi=tahunBaru&token=${encodeURIComponent(tokenRekap())}&label=${encodeURIComponent(document.getElementById('tbl').value.trim())}&hapusSiswa=${document.getElementById('tbs').checked ? 1 : 0}`).then(x => x.json());
+      if (!r.ok) throw new Error(r.pesan || 'gagal');
+      const k = S.get('kelas', {}); if (k && k.nama) S.set('kelas', { ...k, nama: '' });
+      ps.innerHTML = `✅ <b>Selesai.</b> Arsip tersimpan di Google Drive dengan nama <b>${esc(r.nama)}</b>.
+<div class="row" style="margin-top:10px"><a class="btn" href="${esc(r.url)}" target="_blank" rel="noopener">Buka arsip</a><a class="btn alt" href="${esc(r.unduh)}" target="_blank" rel="noopener">Unduh arsip (Excel)</a></div>
+<p style="margin:12px 0 4px"><b>Langkah berikutnya:</b></p><div class="row"><a class="btn alt" href="#guru/siswa">${ikon('orang')} Masukkan daftar siswa baru</a><a class="btn alt" href="#guru/kelas">${ikon('bendera')} Buat tautan kelas baru</a></div>`;
+      btn.hidden = true;
+    } catch (e) {
+      const m = String(e.message || e); btn.disabled = false; delete btn.dataset.yakin; btn.innerHTML = `${ikon('kalender')} Arsipkan & mulai tahun ajaran baru`;
+      ps.innerHTML = /tidak dikenal|token/i.test(m) ? `<b>Kode Apps Script perlu diperbarui</b> untuk fitur ini. Buka <a href="#guru/siswa">Daftar Siswa</a> → <b>Perbarui kode Apps Script</b> dan ikuti langkahnya, lalu kembali ke sini.` : `<b>Gagal.</b> Periksa internet lalu coba lagi. <small class="catatan">(${esc(m.slice(0, 120))})</small>`;
+    }
+  };
 }
 function tayangPapan(d) {
   const urut = [...d.siswa].sort((a, b) => b.total - a.total || a.no - b.no), top = urut.slice(0, 10);

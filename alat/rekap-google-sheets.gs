@@ -23,7 +23,7 @@ const RUANG = [['Sejarah Indonesia', 'indonesia'], ['Sejarah Dunia', 'dunia'], [
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 // Kunci rahasia guru: diisi otomatis saat kode disalin dari Panel Guru. Jangan dibagikan.
 const TOKEN_GURU = '__TOKEN_GURU__';
-const VERSI = 4;
+const VERSI = 5;
 const LEMBAR_STAR = 'Historia Star';
 const LEMBAR_TAMBAH = 'Nilai Tambah';
 
@@ -95,6 +95,7 @@ function doGet(e) {
     if (p.aksi === 'beriStar') return keluar(beriStar(p));
     if (p.aksi === 'batalStar') return keluar(batalStar(p));
     if (p.aksi === 'aturStar') return keluar(aturStar(p));
+    if (p.aksi === 'tahunBaru') return keluar(tahunBaruDariAplikasi(p));
     if (p.aksi === 'masuk') return keluar(masuk(p.kode));
     if (p.aksi === 'atur') return keluar(bacaPengaturan(p.kode));
     if (p.aksi === 'nilai') return keluar(simpanNilai(p));
@@ -316,22 +317,14 @@ function hapusKelas() {
 /** Menyimpan salinan file sebagai arsip, lalu mengosongkan data untuk tahun ajaran baru. */
 function tahunAjaranBaru() {
   const ui = SpreadsheetApp.getUi(), ss = SpreadsheetApp.getActiveSpreadsheet();
-  const t = new Date(), y = t.getFullYear(), lalu = t.getMonth() >= 6 ? (y - 1) + '-' + y : (y - 2) + '-' + (y - 1);
+  const t = new Date(), y = t.getFullYear(), m = t.getMonth(), lalu = m === 6 || m === 7 ? (y - 1) + '-' + y : m >= 8 ? y + '-' + (y + 1) : (y - 1) + '-' + y;
   const r = ui.prompt('Tahun ajaran baru', 'File ini akan disalin sebagai arsip, lalu semua nilai dikosongkan.\nNama tahun ajaran yang diarsipkan:', ui.ButtonSet.OK_CANCEL);
   if (r.getSelectedButton() !== ui.Button.OK) return;
   const label = r.getResponseText().trim() || lalu;
   const siswaJuga = ui.alert('Daftar siswa', 'Hapus juga daftar siswa dan kodenya?\n\nYA = hapus (isi siswa baru nanti)\nTIDAK = simpan daftar siswa (misalnya bila siswanya sama, hanya naik kelas)', ui.ButtonSet.YES_NO_CANCEL);
   if (siswaJuga === ui.Button.CANCEL || siswaJuga === ui.Button.CLOSE) return;
-  const arsip = ss.copy('Arsip ' + ss.getName() + ' ' + label);
-  const kosongkan = nama => { const sh = ss.getSheetByName(nama); if (sh && sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, sh.getMaxColumns()).clearContent().setBackground(null); };
-  [LEMBAR_NILAI, LEMBAR_BUTIR, LEMBAR_STAR].forEach(kosongkan);
-  const rek = ss.getSheetByName(LEMBAR_REKAP);
-  if (rek) { kosongkan(LEMBAR_REKAP); if (rek.getMaxColumns() > 3) rek.getRange(1, 4, 1, rek.getMaxColumns() - 3).clearContent().setBackground(null); }
-  const an = ss.getSheetByName(LEMBAR_ANALISIS); if (an && an.getLastRow() > 1) an.getRange(2, 1, an.getLastRow() - 1, an.getMaxColumns()).clear();
-  if (siswaJuga === ui.Button.YES) { kosongkan(LEMBAR_SISWA); kosongkan(LEMBAR_ATUR); }
-  else { const at = ss.getSheetByName(LEMBAR_ATUR); if (at && at.getLastRow() > 1) at.getRange(2, 2, at.getLastRow() - 1, RUANG.length).setValue(1); }
-  const props = PropertiesService.getDocumentProperties(); Object.keys(props.getProperties()).filter(k => k.indexOf('kkm_') === 0).forEach(k => props.deleteProperty(k));
-  ui.alert('Selesai.\n\nArsip tersimpan di Google Drive dengan nama:\n"' + arsip.getName() + '"\n\nFile ini sudah kosong dan siap dipakai tahun ajaran baru. Alamat aplikasi web dan tautan kelas tetap sama.' + (siswaJuga === ui.Button.YES ? '\n\nIsi daftar siswa baru di lembar Siswa, lalu pilih menu Buat kode siswa.' : '\n\nJangan lupa ubah nama kelas di lembar Siswa dan Pengaturan bila siswa naik kelas.'));
+  const arsip = arsipkanDanKosongkan(label, siswaJuga === ui.Button.YES);
+  ui.alert('Selesai.\n\nArsip tersimpan di Google Drive dengan nama:\n"' + arsip.nama + '"\n\nFile ini sudah kosong dan siap dipakai tahun ajaran baru. Alamat aplikasi web dan tautan kelas tetap sama.' + (siswaJuga === ui.Button.YES ? '\n\nMasukkan daftar siswa baru dari Ruang Guru > Daftar Siswa.' : '\n\nJangan lupa ubah nama kelas di lembar Siswa dan Pengaturan bila siswa naik kelas.'));
 }
 
 
@@ -480,4 +473,26 @@ function perbaruiNilaiTambah() {
   if (baris.length) sh.getRange(2, 1, baris.length, 7).setValues(baris);
   sh.getRange(1, 9).setValue('Aturan: 1 Historia Star = ' + a.poin + ' poin' + (a.maks > 0 ? ', maksimal ' + a.maks + ' poin' : ', tanpa batas') + '. Ubah aturan dari Ruang Guru > Historia Star.').setFontStyle('italic');
   sh.setFrozenRows(1); [80, 50, 240, 110, 110, 140, 110].forEach((w, i) => sh.setColumnWidth(i + 1, w));
+}
+
+
+/* ---------- TAHUN AJARAN BARU DARI APLIKASI ---------- */
+/** Menyalin file sebagai arsip, lalu mengosongkan nilai (dan daftar siswa bila diminta). */
+function arsipkanDanKosongkan(label, hapusSiswa) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const arsip = ss.copy('Arsip ' + ss.getName() + ' ' + label);
+  const kosongkan = nama => { const sh = ss.getSheetByName(nama); if (sh && sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, sh.getMaxColumns()).clearContent().setBackground(null); };
+  [LEMBAR_NILAI, LEMBAR_BUTIR, LEMBAR_STAR, LEMBAR_TAMBAH].forEach(kosongkan);
+  const rek = ss.getSheetByName(LEMBAR_REKAP);
+  if (rek) { kosongkan(LEMBAR_REKAP); if (rek.getMaxColumns() > 3) rek.getRange(1, 4, 1, rek.getMaxColumns() - 3).clearContent().setBackground(null); }
+  const an = ss.getSheetByName(LEMBAR_ANALISIS); if (an && an.getLastRow() > 1) an.getRange(2, 1, an.getLastRow() - 1, an.getMaxColumns()).clear();
+  if (hapusSiswa) { kosongkan(LEMBAR_SISWA); kosongkan(LEMBAR_ATUR); }
+  else { const at = ss.getSheetByName(LEMBAR_ATUR); if (at && at.getLastRow() > 1) at.getRange(2, 2, at.getLastRow() - 1, RUANG.length).setValue(1); }
+  const props = PropertiesService.getDocumentProperties(); Object.keys(props.getProperties()).filter(k => k.indexOf('kkm_') === 0).forEach(k => props.deleteProperty(k));
+  return { nama: arsip.getName(), url: arsip.getUrl(), unduh: 'https://docs.google.com/spreadsheets/d/' + arsip.getId() + '/export?format=xlsx' };
+}
+function tahunBaruDariAplikasi(p) {
+  if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
+  const label = String(p.label || '').replace(/[^\w\/\- ]/g, '').slice(0, 20) || String(new Date().getFullYear());
+  return Object.assign({ ok: true }, arsipkanDanKosongkan(label, p.hapusSiswa === '1'));
 }

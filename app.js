@@ -78,7 +78,7 @@ const MENU_GURU = [
   ['kelas', 'Kelas & Babak', 'Tautan kelas, KKM, kunci bab', 'bendera', '#7A4E9E'],
   ['siswa', 'Daftar Siswa', 'Impor nama & kode siswa', 'orang', '#1F7A8C'],
   ['rekap', 'Rekap Nilai', 'Google Sheets & analisis', 'grafik', '#A8842A'],
-  ['olah', 'Olah Nilai', 'ASESMENKU + kuis + ⭐ → EVIDENKU → RDM', 'olah', '#2F6FB0'],
+  ['olah', 'Nilai Tambah ⭐', 'Kirim nilai tambah ke EVIDENKU', 'olah', '#2F6FB0'],
   ['star', 'Historia Star', 'Beri bintang pemenang challenge', 'bintang', '#D99A00'],
   ['bagikan', 'Bagikan ke Guru', 'Kode aktivasi guru lain', 'tambahorang', '#C0475B'],
   ['tahun', 'Tahun Ajaran Baru', 'Arsipkan data lama, mulai baru', 'kalender', '#3E7C6B'],
@@ -779,11 +779,17 @@ ${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} G
 ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagikan ke guru lain</h2><p>Buat kode aktivasi untuk setiap guru. Dengan kode itu, guru membuat PIN sendiri, sehingga PIN Bapak tidak perlu dibagikan. Kode hanya berlaku untuk nama yang ditulis.</p>
 <label><b>Nama guru</b><input id="bnama" class="isian" placeholder="contoh: Rina Marlina, S.Pd."></label>
 <div class="row"><button class="btn" type="button" id="bbuat">Buat kode aktivasi</button></div><div id="bhasil"></div></div>` : ''}
-<div class="box guru-kartu" data-bagian="olah"><h2>Olah nilai</h2>
-<p>Gabungkan <b>nilai ulangan ASESMENKU</b>, <b>nilai kuis Ruang Historia</b>, dan <b>nilai tambah Historia Star</b> menjadi satu nilai akhir, lalu kirim ke <b>EVIDENKU</b>. Dari EVIDENKU, nilai masuk ke template <b>RDM</b> lewat menu <b>Nilai → Template RDM</b>.</p>
+<div class="box guru-kartu" data-bagian="olah"><h2>Nilai tambah</h2>
+<div class="alur">${[['ceklis', 'ASESMENKU', 'Ulangan → Kirim ke EVIDENKU'], ['bintang', 'Ruang Historia', 'Kirim nilai tambah ⭐'], ['grafik', 'EVIDENKU', 'Ditambahkan ke nilai UH'], ['kalender', 'RDM', 'Nilai → Template RDM']].map(([i, j, k], n) => `<div class="alur-i"><span class="ubin-ik">${ikon(i)}</span><b>${j}</b><small>${k}</small></div>${n < 3 ? '<span class="alur-p">→</span>' : ''}`).join('')}</div>
 <div class="langkah-no"><span>1</span><b>Pilih kelas</b></div>
 <select id="olk" class="isian"></select>
-<div class="langkah-no"><span>2</span><b>Pilih komponen nilai</b></div>
+<div id="olstb"></div>
+<div class="langkah-no"><span>2</span><b>Kirim</b></div>
+<div class="row"><button class="btn besar" type="button" id="olkirimstar">${ikon('bintang')} Kirim nilai tambah ⭐ ke EVIDENKU</button></div>
+<p class="catatan">Di EVIDENKU, pilih penilaian yang akan ditambah (misalnya <b>UH Bab 4</b> yang dikirim dari ASESMENKU), lalu tekan <b>Tambahkan</b>. Mengirim ulang akan mengganti nilai tambah lama, bukan menambah dua kali.</p>
+<div class="pesan-impor" id="olsp" role="status" aria-live="polite"></div>
+<details class="lanjutan"><summary>Cara lain: gabungkan sendiri (file Excel ASESMENKU + kuis Ruang Historia)</summary>
+<div class="langkah-no"><span>a</span><b>Pilih komponen nilai</b></div>
 <div class="komp"><label class="cek"><input type="checkbox" id="oluh"> <b>Nilai ulangan dari ASESMENKU</b></label>
 <p class="catatan">Di ASESMENKU buka hasil ulangan kelas ini → tekan <b>⬇️ Excel</b>, lalu pilih file itu di sini.</p>
 <input id="olf" class="isian" type="file" accept=".csv,.xlsx,.xls"><p class="catatan" id="olfp"></p>
@@ -793,13 +799,13 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
 <label class="cek"><input type="checkbox" id="olnol" checked> Bab yang belum dikerjakan dihitung 0</label>
 <label>Bobot (%)<input id="olbk" class="isian" type="number" min="0" max="100" value="30"></label></div>
 <div class="komp"><label class="cek"><input type="checkbox" id="olstar" checked> <b>Tambahkan nilai tambah Historia Star</b> ⭐</label><p class="catatan" id="olaturstar"></p></div>
-<div class="langkah-no"><span>3</span><b>Periksa hasil</b></div>
+<div class="langkah-no"><span>b</span><b>Periksa hasil</b></div>
 <div id="oltb"></div>
 <div id="olaksi" hidden>
 <div class="dua"><label><b>Judul penilaian</b><input id="olj" class="isian" placeholder="contoh: UH Bab 4 Kolonialisme"></label><label><b>Jenis di EVIDENKU</b><select id="oljn" class="isian"><option>Ulangan harian</option><option>Tugas</option><option>Proyek</option><option>Praktik</option><option>Kerja kelompok</option></select></label></div>
-<div class="langkah-no"><span>4</span><b>Kirim</b></div>
-<div class="row"><button class="btn besar" type="button" id="olevk">${ikon('olah')} Kirim ke EVIDENKU</button><button class="btn alt" type="button" id="olcsv">Unduh Excel</button><button class="btn alt" type="button" id="olsalin">Salin nilai (urut absen)</button></div></div>
-<div class="pesan-impor" id="olp" role="status" aria-live="polite"></div></div>
+<div class="langkah-no"><span>c</span><b>Kirim</b></div>
+<div class="row"><button class="btn" type="button" id="olevk">${ikon('olah')} Kirim nilai gabungan ke EVIDENKU</button><button class="btn alt" type="button" id="olcsv">Unduh Excel</button><button class="btn alt" type="button" id="olsalin">Salin nilai (urut absen)</button></div></div>
+<div class="pesan-impor" id="olp" role="status" aria-live="polite"></div></details></div>
 <div class="box guru-kartu" data-bagian="tahun"><h2>Tahun ajaran baru</h2>
 <p>Pakai menu ini <b>sekali setiap awal tahun ajaran</b>. Semua nilai, rekap, dan Historia Star tahun lalu disimpan sebagai <b>arsip</b> di Google Drive Bapak/Ibu, lalu rekap dikosongkan dan siap dipakai lagi.</p>
 <div class="langkah-no"><span>1</span><b>Tahun ajaran yang akan diarsipkan</b></div>
@@ -1528,7 +1534,7 @@ function susunPanduan() {
 
   h2('Bagian B. Panduan untuk guru');
   h3('1. Masuk Ruang Guru');
-  langkah(['Ketuk menu **Guru** (ikon topi toga; di HP ada di menu bawah). Setelah masuk, tampil **Ruang Guru** berisi kotak-kotak menu: Presentasi, Modul Ajar, Soal Ulangan, Kelas & Babak, Daftar Siswa, Rekap Nilai, Olah Nilai, Historia Star, Tahun Ajaran Baru, Akun & PIN, dan Buku Panduan. Ketuk kotak yang diperlukan; tombol **← Ruang Guru** membawa kembali.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
+  langkah(['Ketuk menu **Guru** (ikon topi toga; di HP ada di menu bawah). Setelah masuk, tampil **Ruang Guru** berisi kotak-kotak menu: Presentasi, Modul Ajar, Soal Ulangan, Kelas & Babak, Daftar Siswa, Rekap Nilai, Nilai Tambah ⭐, Historia Star, Tahun Ajaran Baru, Akun & PIN, dan Buku Panduan. Ketuk kotak yang diperlukan; tombol **← Ruang Guru** membawa kembali.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
   h3('2. Presentasi kelas (PowerPoint dan PDF)');
   langkah(['Di Ruang Guru, buka menu **Presentasi**, pilih ruang dan bab.', 'Tekan **Tampilkan presentasi** untuk mengajar langsung dari aplikasi (geser atau tombol panah untuk pindah slide).', 'Tekan **Unduh PowerPoint** untuk file yang dapat diedit, atau **Unduh PDF** lalu pilih **Simpan sebagai PDF** pada jendela cetak.']);
   h3('3. Modul ajar (Word dan PDF)');
@@ -1545,8 +1551,8 @@ function susunPanduan() {
   poin(['Setiap mulai mengajar bab baru, buka lembar **Pengaturan** di Google Sheets dan ubah angka **Buka sampai bab** untuk kelas itu. KKM per kelas juga diatur di sana.', 'Lembar **Rekap** berisi nilai tertinggi setiap siswa per bab (merah bila di bawah KKM).', 'Lembar **Analisis** berisi rata-rata, persentase ketuntasan, siswa yang perlu remedial, siswa yang belum mengerjakan, dan soal yang paling sulit.']);
   h3('9. Historia Star dan nilai tambah');
   poin(['Siswa mengoleksi **Historia Star** ⭐ dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3).', 'Guru memberi Historia Star tambahan kepada pemenang challenge, game, atau metode ajar di kelas: buka menu **Historia Star**, pilih kelas, ketuk nama siswa, pilih jumlah bintang dan alasannya, lalu tekan **Beri Historia Star**. Salah pilih? Tekan **Batalkan**.', 'Tekan **Tayangkan papan peringkat** untuk menampilkan 10 besar kelas di proyektor.', 'Di **Konversi ke nilai tambah**, atur nilai 1 ⭐ (misalnya 1 poin) dan batas maksimalnya (misalnya 10 poin). Hasilnya tercatat di lembar **Nilai Tambah** pada Google Sheets untuk diolah bersama nilai lainnya.', 'Siswa melihat total Historia Star dan nilai tambahnya di menu **Nilaiku**.']);
-  h3('10. Olah nilai ke EVIDENKU dan RDM');
-  langkah(['Di ASESMENKU, buka hasil ulangan harian kelas itu, lalu tekan **⬇️ Excel** untuk mengunduh rekapnya.', 'Di Ruang Guru, buka menu **Olah Nilai** dan pilih kelas.', 'Centang komponen nilai: **Nilai ulangan dari ASESMENKU** (pilih file rekap tadi), **Nilai kuis Ruang Historia** (centang babnya), dan **nilai tambah Historia Star**. Atur bobot bila memakai ulangan dan kuis sekaligus (misalnya 70% dan 30%).', 'Periksa tabel nilai akhir. Nilai dibulatkan dan paling tinggi 100.', 'Isi judul penilaian, lalu tekan **Kirim ke EVIDENKU**. EVIDENKU terbuka dan mencocokkan nama siswa; periksa lalu tekan **Simpan ke Nilai**.', 'Di EVIDENKU, buka **Nilai → Template RDM**, pilih file template nilai dari RDM, lalu unduh hasilnya dan unggah ke RDM.']);
+  h3('10. Nilai tambah ke EVIDENKU dan RDM');
+  langkah(['Setelah ulangan harian di ASESMENKU, tekan **Kirim ke EVIDENKU** seperti biasa, lalu simpan di EVIDENKU.', 'Di Ruang Guru, buka menu **Nilai Tambah ⭐**, pilih kelas, lalu tekan **Kirim nilai tambah ⭐ ke EVIDENKU**.', 'EVIDENKU terbuka. Pilih penilaian yang akan ditambah (misalnya UH Bab 4), periksa tabel nilai lama, tambahan, dan nilai baru, lalu tekan **Tambahkan**. Nilai paling tinggi 100. Mengirim ulang mengganti nilai tambah lama (tidak dobel); tombol **Batalkan nilai tambah** mengembalikan nilai semula.', 'Di EVIDENKU, buka **Nilai → Template RDM**, pilih file template nilai dari RDM, unduh hasilnya, lalu unggah ke RDM.', 'Cara lain (bila perlu): di menu Nilai Tambah ⭐ buka **Cara lain: gabungkan sendiri** untuk menggabungkan file Excel ASESMENKU, nilai kuis Ruang Historia, dan nilai tambah menjadi satu nilai sebelum dikirim.']);
   h3('11. Tahun ajaran baru');
   poin(['**Cara termudah:** di Ruang Guru buka menu **Tahun Ajaran Baru**, lalu tekan **Arsipkan & mulai tahun ajaran baru** (dua kali). Arsip tersimpan di Google Drive dan bisa dibuka atau diunduh sebagai Excel dari tombol yang muncul. Lanjutkan dengan memasukkan daftar siswa baru dan membuat tautan kelas baru.', 'Menu **Ruang Historia → Hapus data satu kelas** (di Google Sheets): menghapus data satu kelas saja.', 'Menu **Ruang Historia → Tahun ajaran baru** (di Google Sheets) melakukan hal yang sama: file lama disimpan sebagai arsip di Google Drive, lalu nilai dikosongkan. Daftar siswa boleh dihapus atau disimpan. Alamat aplikasi web tidak berubah.']);
 
@@ -1818,7 +1824,7 @@ function pasangOlah() {
   const ps = document.getElementById('olp'), sel = document.getElementById('olk'), url = () => document.getElementById('gr').value.trim();
   let D = null, uh = null;
   const panggil = async (aksi, ekstra = '') => { const r = await fetch(`${url()}?aksi=${aksi}&token=${encodeURIComponent(tokenRekap())}${ekstra}`).then(x => x.json()); if (!r.ok) throw new Error(r.pesan || 'gagal'); return r; };
-  const gagal = e => { const m = String(e.message || e); ps.innerHTML = /token|tidak dikenal/i.test(m) ? `<b>Kode Apps Script perlu diperbarui</b> untuk fitur ini. Buka <a href="#guru/siswa">Daftar Siswa</a> → <b>Perbarui kode Apps Script</b>, ikuti langkahnya, lalu kembali ke sini.` : `<b>Tidak dapat terhubung ke Google Sheets.</b> Periksa internet lalu coba lagi.`; };
+  const gagal = e => { console.error(e); const m = String(e.message || e); document.getElementById('olsp').innerHTML = ps.innerHTML = /token|tidak dikenal/i.test(m) ? `<b>Kode Apps Script perlu diperbarui</b> untuk fitur ini. Buka <a href="#guru/siswa">Daftar Siswa</a> → <b>Perbarui kode Apps Script</b>, ikuti langkahnya, lalu kembali ke sini.` : /fetch|network|json/i.test(m) ? `<b>Tidak dapat terhubung ke Google Sheets.</b> Periksa internet lalu coba lagi.` : `<b>Terjadi kesalahan.</b> <small class="catatan">${esc(m.slice(0, 140))}</small>`; };
   const cek = id => document.getElementById(id).checked, angka = id => +document.getElementById(id).value || 0;
   const hitung = () => {
     if (!D) return [];
@@ -1834,6 +1840,17 @@ function pasangOlah() {
       return { ...s, uh: u, kuis, tambah, akhir };
     });
   };
+  const gambarStar = () => {
+    const el = document.getElementById('olstb'); if (!D) { el.innerHTML = ''; return; }
+    el.innerHTML = `<p class="catatan">Aturan: 1 ⭐ = ${D.konversi.poin} poin${D.konversi.maks > 0 ? `, maksimal ${D.konversi.maks}` : ''} (ubah di menu <a href="#guru/star">Historia Star</a>).</p><div style="overflow-x:auto;max-height:46vh"><table class="md-tabel"><thead><tr><th>No</th><th>Nama</th><th>Historia Star</th><th>Nilai tambah</th></tr></thead><tbody>${D.siswa.map(s => `<tr><td>${esc(s.no)}</td><td>${esc(s.nama)}</td><td>⭐ ${s.star}</td><td><b>+${s.poin}</b></td></tr>`).join('')}</tbody></table></div>`;
+  };
+  const kirimEvk = items => { const json = new TextEncoder().encode(JSON.stringify(items)); let bin = ''; json.forEach(b => bin += String.fromCharCode(b)); window.open(`${EVK_URL}#ruanghistoria=${btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')}`, '_blank', 'noopener'); };
+  document.getElementById('olkirimstar').onclick = () => {
+    const sp = document.getElementById('olsp'); if (!D) return;
+    const rows = D.siswa.map(s => ({ nama: s.nama, nilai: s.poin, star: s.star }));
+    kirimEvk([{ id: 'rh-star-' + Date.now(), tambah: true, judul: `Nilai tambah Historia Star ${D.kelas}`, kelas: D.kelas, aturan: `1 ⭐ = ${D.konversi.poin} poin${D.konversi.maks > 0 ? `, maks ${D.konversi.maks}` : ''}`, rows }]);
+    sp.innerHTML = `EVIDENKU dibuka di tab baru. Di sana pilih <b>penilaian</b> yang akan ditambah (misalnya UH dari ASESMENKU), periksa tabelnya, lalu tekan <b>Tambahkan</b>.`;
+  };
   const gambar = () => {
     const H = hitung(), tb = document.getElementById('oltb'); if (!H.length) { tb.innerHTML = ''; return; }
     const kosong = H.filter(r => r.akhir === null).length;
@@ -1848,14 +1865,14 @@ function pasangOlah() {
       const bab = D.kolom.filter(x => / Bab \d+$/.test(x));
       document.getElementById('olbab').innerHTML = bab.length ? bab.map(x => `<label class="cek"><input type="checkbox" value="${esc(x)}"> ${esc(x)}</label>`).join('') : '<span class="catatan">Belum ada nilai kuis Ruang Historia di kelas ini.</span>';
       document.getElementById('olaturstar').textContent = `Aturan saat ini: 1 ⭐ = ${D.konversi.poin} poin${D.konversi.maks > 0 ? `, maksimal ${D.konversi.maks}` : ''} (ubah di menu Historia Star).`;
-      ps.textContent = `${D.siswa.length} siswa kelas ${k}. Pilih komponen nilai di bawah.`; gambar();
+      ps.textContent = `${D.siswa.length} siswa kelas ${k}.`; gambar(); gambarStar();
     } catch (e) { gagal(e); }
   };
   (async () => {
     if (!/\/exec$/.test(url())) { ps.innerHTML = `Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a>.`; return; }
     try { const r = await panggil('star'); sel.innerHTML = r.daftarKelas.map(k => `<option>${esc(k)}</option>`).join(''); if (!r.daftarKelas.length) { ps.innerHTML = 'Belum ada kelas. Isi daftar siswa dulu di menu <a href="#guru/siswa">Daftar Siswa</a>.'; return; } const ingat = S.get('kelasOlah', ''); if (r.daftarKelas.includes(ingat)) sel.value = ingat; muat(sel.value); } catch (e) { gagal(e); }
   })();
-  sel.onchange = () => { uh = null; document.getElementById('olf').value = ''; document.getElementById('olfp').textContent = ''; muat(sel.value); };
+  sel.onchange = () => { uh = null; document.getElementById('olstb').innerHTML = ''; document.getElementById('olf').value = ''; document.getElementById('olfp').textContent = ''; muat(sel.value); };
   document.getElementById('olf').onchange = async e => {
     const f = e.target.files[0], fp = document.getElementById('olfp'); if (!f) return;
     try { uh = await bacaRekapAsesmen(f); const cocok = D ? D.siswa.filter(s => uh[kunciNama(s.nama)] !== undefined).length : 0; fp.innerHTML = `✅ Terbaca ${Object.keys(uh).length} nilai; <b>${cocok}</b> cocok dengan nama siswa kelas ini.`; document.getElementById('oluh').checked = true; if (!document.getElementById('olj').value) document.getElementById('olj').value = f.name.replace(/^rekap-/, '').replace(/-\d+\.(csv|xlsx?)$/i, '').replace(/[-_]+/g, ' ') + (cek('olstar') ? ' + Historia Star' : ''); gambar(); }
@@ -1865,10 +1882,7 @@ function pasangOlah() {
   document.querySelector('[data-bagian="olah"]').addEventListener('input', e => { if (/^olb[uk]$/.test(e.target.id)) gambar(); });
   const paket = () => { const H = hitung().filter(r => r.akhir !== null), d = new Date(); return { id: 'rh-' + Date.now(), judul: document.getElementById('olj').value.trim() || `Nilai harian ${D.kelas}`, mapel: '', kelas: D.kelas, tgl: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`, jenis: document.getElementById('oljn').value, mode: 'Ruang Historia', kktp: D.kkm || 75, rows: H.map(r => ({ nama: r.nama, nilai: r.akhir })) }; };
   document.getElementById('olevk').onclick = () => {
-    const it = paket(), json = new TextEncoder().encode(JSON.stringify([it]));
-    let bin = ''; json.forEach(b => bin += String.fromCharCode(b));
-    const kode = btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-    window.open(`${EVK_URL}#ruanghistoria=${kode}`, '_blank', 'noopener');
+    const it = paket(); kirimEvk([it]);
     ps.innerHTML = `EVIDENKU dibuka di tab baru dengan <b>${it.rows.length} nilai</b>. Di sana periksa kecocokan nama, lalu tekan <b>Simpan ke Nilai</b>.`;
   };
   document.getElementById('olsalin').onclick = async ev => { const H = hitung(); try { await navigator.clipboard.writeText(H.map(r => r.akhir ?? '').join('\n')); ev.target.textContent = 'Tersalin (urut absen)'; } catch {} };

@@ -546,3 +546,32 @@ body.cetak-kartu #cetak-kartu{display:grid;grid-template-columns:repeat(3,1fr);g
 .status-ok{display:flex;gap:8px;align-items:flex-start;background:#e6f4ec;color:#1d5b3a;border-radius:12px;padding:10px 12px}
 .status-ok .ik{margin-top:3px}
 @media (max-width:720px){.paket{grid-template-columns:1fr 1fr}.paket-btn{padding:12px}.paket-btn b{font-size:15px}}
+
+/* Historia Star */
+.kartu-star{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:20px;margin:10px 0 16px;background:linear-gradient(135deg,#2B3A67,#1B2547);color:#fff;box-shadow:0 10px 26px -14px #1B2547}
+.kartu-star b{display:block;font-size:18px}.kartu-star small{color:#d6dcf2;font-size:14px;line-height:1.4;display:block}
+.ks-angka{flex:none;display:flex;flex-direction:column;align-items:center;font:800 30px/1.1 "Archivo Black",sans-serif;color:#FFD15C;background:#ffffff14;border-radius:16px;padding:10px 14px;min-width:84px}
+.ks-angka small{font:700 12px/1.2 "Source Sans 3",sans-serif;color:#bff0d2;margin-top:4px;white-space:nowrap}
+.st-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:8px}
+.st-siswa{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;border:2px solid var(--line);background:var(--card)}
+.st-siswa[aria-pressed=true]{border-color:#D99A00;background:#FFF5D6;box-shadow:0 0 0 3px #D99A0033}
+.st-no{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--line);font-size:13px;font-weight:700}
+.st-siswa[aria-pressed=true] .st-no{background:#D99A00;color:#fff}
+.st-nama{flex:1;font-weight:600;line-height:1.25}
+.st-jml{flex:none;font-weight:800;color:#9a6c00;text-align:right;display:flex;flex-direction:column;font-size:14px}
+.st-jml small{color:#1d7a4a;font-size:11px}
+[data-jml][aria-pressed=true]{background:#D99A00;color:#fff;border-color:#D99A00}
+.papan-star{position:fixed;inset:0;z-index:100;overflow:auto;background:radial-gradient(circle at 50% 0%,#3b4f8f,#141a33 70%);color:#fff;display:flex;justify-content:center;padding:4vh 4vw;outline:none}
+.ps-isi{width:min(960px,100%);text-align:center;position:relative}
+.ps-tutup{position:absolute;right:0;top:0;all:unset;cursor:pointer;font-size:26px;padding:6px 12px;border-radius:10px;background:#ffffff1a}
+.ps-label{letter-spacing:.2em;color:#FFD15C;font-weight:700;font-size:14px;margin:0}
+.papan-star h1{font-size:clamp(30px,5vw,56px);margin:6px 0 24px;color:#fff}
+.ps-podium{display:flex;justify-content:center;align-items:flex-end;gap:14px;margin-bottom:24px}
+.ps-p{display:flex;flex-direction:column;align-items:center;gap:4px;width:min(240px,30%)}
+.ps-p b{font-size:clamp(15px,2vw,22px);line-height:1.2}.ps-p span{color:#FFD15C;font-weight:800;font-size:clamp(16px,2.2vw,24px)}
+.ps-medali{font-size:clamp(34px,5vw,58px)}
+.ps-tiang{width:100%;border-radius:14px 14px 0 0;background:linear-gradient(#FFD15C,#D99A00);color:#5a3d00;font:800 30px "Archivo Black",sans-serif;display:grid;place-items:center}
+.ps-1 .ps-tiang{height:150px}.ps-2 .ps-tiang{height:110px;background:linear-gradient(#e8ecf5,#aab3c9)}.ps-3 .ps-tiang{height:80px;background:linear-gradient(#f0b27a,#b8733a)}
+.ps-daftar{max-width:600px;margin:0 auto;text-align:left;padding-left:2em;font-size:clamp(16px,1.8vw,21px)}
+.ps-daftar li{padding:6px 0;border-bottom:1px solid #ffffff1f}.ps-daftar li span{display:inline-block;width:75%}.ps-daftar b{color:#FFD15C}
+.ps-ket{color:#c9d1ec;font-size:14px;margin:20px auto 0}

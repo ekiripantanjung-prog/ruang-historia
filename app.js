@@ -76,6 +76,7 @@ const MENU_GURU = [
   ['kelas', 'Kelas & Babak', 'Tautan kelas, KKM, kunci bab', 'bendera', '#7A4E9E'],
   ['siswa', 'Daftar Siswa', 'Impor nama & kode siswa', 'orang', '#1F7A8C'],
   ['rekap', 'Rekap Nilai', 'Google Sheets & analisis', 'grafik', '#A8842A'],
+  ['star', 'Historia Star', 'Beri bintang pemenang challenge', 'bintang', '#D99A00'],
   ['bagikan', 'Bagikan ke Guru', 'Kode aktivasi guru lain', 'tambahorang', '#C0475B'],
   ['akun', 'Akun & PIN', 'Ganti PIN, keluar mode guru', 'kunci', '#5A6275'],
   ['#panduan', 'Buku Panduan', 'Cara pakai, bisa diunduh PDF', 'tanya', '#2B3A67']
@@ -454,7 +455,7 @@ function nilai() {
   }).join('');
   const s = siswaAktif(), c = konfig(), antre = S.get('antrean', []).length;
   const identitas = c.rekap ? (s ? `<div class="box identitas"><div><b>${esc(s.nama)}</b><br><small>Kelas ${esc(s.kelas)} · kode ${esc(s.kode)}</small></div><div><small>${antre ? `${antre} nilai menunggu dikirim (perlu internet)` : 'Semua nilai sudah terkirim ke guru'}</small><br><button class="btn alt" type="button" id="keluarsiswa">Keluar</button></div></div>` : formMasuk()) : '';
-  app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Nilaiku</h1>${identitas}<p>Nilai juga tersimpan di perangkat ini. KKM yang dipakai: ${c.kkm}${c.nama ? ` (kelas ${esc(c.nama)})` : ''}.</p>${blok}
+  app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Nilaiku</h1><div class="kartu-star"><div class="ks-angka">⭐ ${starSaya()}${poinTambah(starSaya()) !== null ? `<small>+${poinTambah(starSaya())} nilai tambah</small>` : ''}</div><div><b>Historia Star kamu</b><small>${starKuisSaya()} dari kuis tiap babak${S.get('starGuru', 0) ? ` + ${S.get('starGuru', 0)} dari guru` : ''}. Raih ⭐ dengan lulus KKM (1), nilai ≥ 90 (2), atau nilai 100 (3), dan menangkan challenge di kelas!</small></div></div>${identitas}<p>Nilai juga tersimpan di perangkat ini. KKM yang dipakai: ${c.kkm}${c.nama ? ` (kelas ${esc(c.nama)})` : ''}.</p>${blok}
 <button class="btn alt" type="button" id="hapus" style="margin-top:12px">Hapus semua nilai</button></div></section>`;
   pasangMasuk(app, nilai);
   const ks = document.getElementById('keluarsiswa'); if (ks) ks.addEventListener('click', e => { if (!e.target.dataset.yakin) { e.target.dataset.yakin = 1; e.target.textContent = 'Yakin keluar? Tekan lagi'; return; } S.set('siswa', null); S.set('atur', null); nilai(); });
@@ -548,7 +549,7 @@ const babakAktif = () => konfig().modeBabak && !modeGuru();
 const nilaiBab = (kid, id) => (S.get('nilai', {})[`${kid}-bab${id}`] || {}).terbaik || 0;
 const lulusBab = (kid, id) => nilaiBab(kid, id) >= konfig().kkm;
 const jumlahBintang = v => v >= 100 ? 3 : v >= 90 ? 2 : v >= konfig().kkm ? 1 : 0;
-const bintangHTML = n => `<span class="bintang" aria-label="${n} dari 3 bintang">${[1, 2, 3].map(k => `<i class="${k <= n ? 'on' : ''}">★</i>`).join('')}</span>`;
+const bintangHTML = n => `<span class="bintang" aria-label="${n} dari 3 Historia Star" title="Historia Star">${[1, 2, 3].map(k => `<i class="${k <= n ? 'on' : ''}">★</i>`).join('')}</span>`;
 const babSebelum = (kid, id) => { const a = tersedia(cariK(kid)), i = a.findIndex(d => d.id === id); return i > 0 ? a[i - 1] : null; };
 const babBerikut = (kid, id) => { const a = tersedia(cariK(kid)), i = a.findIndex(d => d.id === id); return i >= 0 && i < a.length - 1 ? a[i + 1] : null; };
 const batasGuru = kid => { const at = S.get('atur', null); return konfig().rekap && siswaAktif() && at && at.batas && kid in at.batas ? at.batas[kid] : null; };
@@ -593,7 +594,7 @@ function pasangMasuk(akar, setelah) {
     tb.disabled = true; pesan.textContent = 'Memeriksa kode…';
     try {
       const r = await fetch(`${konfig().rekap}?aksi=masuk&kode=${encodeURIComponent(kode)}`).then(x => x.json());
-      if (r.ok) { S.set('siswa', { kode, nama: r.nama, kelas: r.kelas, no: r.no }); pulihkanNilai(r.riwayat); await ambilAtur(); setelah(); }
+      if (r.ok) { S.set('siswa', { kode, nama: r.nama, kelas: r.kelas, no: r.no }); pulihkanNilai(r.riwayat); if (typeof r.star === 'number') S.set('starGuru', r.star); if (r.konversi) S.set('konversiStar', r.konversi); await ambilAtur(); setelah(); }
       else pesan.textContent = r.pesan || 'Kode tidak dikenal.';
     } catch { pesan.textContent = 'Tidak dapat terhubung. Periksa internet, lalu coba lagi.'; }
     tb.disabled = false;
@@ -618,7 +619,7 @@ function kirimNilai(o) {
 let aturTerakhir = 0;
 async function ambilAtur() {
   const s = siswaAktif(), url = konfig().rekap; if (!s || !url || !navigator.onLine || Date.now() - aturTerakhir < 20000) return; aturTerakhir = Date.now();
-  try { const r = await fetch(`${url}?aksi=atur&kode=${encodeURIComponent(s.kode)}`).then(x => x.json()); if (r.ok) { const baru = { batas: r.batas || {}, kkm: r.kkm || null }, lama = S.get('atur', null); S.set('atur', baru); if (JSON.stringify(lama) !== JSON.stringify(baru) && !/kuis|ujian|guru|slide/.test(location.hash)) rute(); } } catch {}
+  try { const r = await fetch(`${url}?aksi=atur&kode=${encodeURIComponent(s.kode)}`).then(x => x.json()); if (r.ok) { if (typeof r.star === 'number') S.set('starGuru', r.star); if (r.konversi) S.set('konversiStar', r.konversi); const baru = { batas: r.batas || {}, kkm: r.kkm || null }, lama = S.get('atur', null); S.set('atur', baru); if (JSON.stringify(lama) !== JSON.stringify(baru) && !/kuis|ujian|guru|slide/.test(location.hash)) rute(); } } catch {}
 }
 addEventListener('online', () => { kirimAntrean(); ambilAtur(); });
 setTimeout(ambilAtur, 1500);
@@ -754,6 +755,22 @@ ${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} G
 <li>Kembali ke sini dan tekan <b>Kirim ke Google Sheets</b> lagi.</li></ol>
 <label><b>Kunci guru</b> <span class="catatan">(terisi otomatis; isi sama di laptop dan HP bila memakai dua perangkat)</span><input id="istoken" class="isian"></label></details></div>
 
+<div class="box guru-kartu" data-bagian="star"><h2>Historia Star</h2>
+<p>Beri <b>Historia Star</b> ⭐ kepada siswa yang menang challenge, game, atau metode ajar di kelas. Bintang tercatat di Google Sheets (lembar <b>Historia Star</b>) dan ikut terhitung di Nilaiku siswa, bersama bintang dari kuis.</p>
+<label><b>Kelas</b><select id="stk" class="isian"></select></label>
+<div class="langkah-no"><span>1</span><b>Ketuk nama siswa yang menang</b></div>
+<div id="stl" class="st-grid"></div>
+<div class="langkah-no"><span>2</span><b>Berapa bintang, dan untuk apa?</b></div>
+<div class="row kecil-row">${[1, 2, 3].map(n => `<button type="button" class="btn alt kecil-btn" data-jml="${n}" aria-pressed="${n === 1}">⭐ ${n}</button>`).join('')}</div>
+<div class="row kecil-row">${ALASAN_STAR.map(x => `<button type="button" class="btn alt kecil-btn" data-alasan="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+<label><b>Alasan</b><input id="sta" class="isian" placeholder="contoh: Menang challenge Jigsaw Bab 4"></label>
+<div class="langkah-no"><span>3</span><b>Kirim</b></div>
+<div class="row"><button class="btn besar" type="button" id="stberi">${ikon('bintang')} Beri Historia Star</button><button class="btn alt" type="button" id="stpapan">${ikon('grafik')} Tayangkan papan peringkat</button></div>
+<p class="catatan" id="stp"></p>
+<details class="lanjutan" id="stkonv"><summary>Konversi ke nilai tambah</summary>
+<p>Historia Star diubah menjadi <b>nilai tambah</b> dan tercatat di lembar <b>Nilai Tambah</b> pada Google Sheets, untuk diolah bersama nilai lainnya (misalnya ditambahkan ke nilai harian atau sikap).</p>
+<div class="dua"><label><b>1 ⭐ bernilai (poin)</b><input id="stpoin" class="isian" type="number" min="0" max="10" step="0.5" value="1"></label><label><b>Maksimal nilai tambah</b> <span class="catatan">(0 = tanpa batas)</span><input id="stmaks" class="isian" type="number" min="0" max="100" value="10"></label></div>
+<div class="row"><button class="btn alt" type="button" id="stsimpan">Simpan aturan</button></div><p class="catatan" id="stkp"></p></details></div>
 ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagikan ke guru lain</h2><p>Buat kode aktivasi untuk setiap guru. Dengan kode itu, guru membuat PIN sendiri, sehingga PIN Bapak tidak perlu dibagikan. Kode hanya berlaku untuk nama yang ditulis.</p>
 <label><b>Nama guru</b><input id="bnama" class="isian" placeholder="contoh: Rina Marlina, S.Pd."></label>
 <div class="row"><button class="btn" type="button" id="bbuat">Buat kode aktivasi</button></div><div id="bhasil"></div></div>` : ''}
@@ -777,7 +794,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
     t.disabled = false;
   });
   document.getElementById('unduhpdf').addEventListener('click', async e => { const t = e.target, pesan = document.getElementById('pesanppt'); t.disabled = true; pesan.textContent = 'Menyiapkan PDF…'; try { await cetakSlide(pr.value, +pb.value); pesan.textContent = 'Pilih "Simpan sebagai PDF" pada jendela cetak.'; } catch (err) { console.error(err); pesan.textContent = 'Gagal menyiapkan PDF. Coba lagi.'; } t.disabled = false; });
-  pasangModulForm(); pasangSoalForm(); pasangImporSiswa(); tataPanelGuru(sub);
+  pasangModulForm(); pasangSoalForm(); pasangImporSiswa(); tataPanelGuru(sub); if (sub === 'star') pasangStar();
   if (!document.getElementById('gr').value.trim()) document.getElementById('isbelum').innerHTML = `${ikon('info')} Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a> agar nama bisa dikirim. Tanpa itu, gunakan tombol <b>Salin untuk ditempel manual</b>.`;
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
@@ -1471,7 +1488,7 @@ function susunPanduan() {
   h3('3. Belajar setiap bab (babak)');
   langkah(['Di Beranda, pilih ruang (Sejarah Indonesia, Sejarah Dunia, atau SKI), lalu pilih bab yang terbuka.', 'Baca **Materi**, lihat **Jejak sejarah** (foto arsip), dan tonton **Video**.', 'Catat poin penting di buku catatan. Centang daftar kesiapan, lalu kerjakan **Kuis**.', 'Bila nilaimu mencapai **KKM**, kamu mendapat bintang dan babak berikutnya terbuka. Bila belum, pelajari lagi materinya lalu ulangi kuis.', 'Bab yang belum dibuka guru bertanda **Belum dibuka guru**. Tunggu sampai guru membukanya di kelas.']);
   h3('4. Nilai dan ujian');
-  poin(['Menu **Nilaiku** menampilkan semua nilai dan bintangmu. Tunjukkan halaman ini bila guru memintanya.', 'Ujian akhir tiap ruang terbuka setelah babak-babaknya selesai.', 'Bila mengerjakan kuis tanpa internet, nilai disimpan di HP dan terkirim otomatis ke guru saat HP tersambung internet lagi.', '**Ganti HP?** Buka tautan kelas di HP baru lalu masukkan kode siswamu. Nilai dan babak yang sudah terbuka kembali otomatis dari rekap guru.']);
+  poin(['Menu **Nilaiku** menampilkan semua nilai dan koleksi **Historia Star** ⭐ milikmu. Historia Star didapat dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3) dan dari guru bila kamu menang challenge atau game di kelas. Historia Star diubah menjadi **nilai tambah** sesuai aturan guru.', 'Ujian akhir tiap ruang terbuka setelah babak-babaknya selesai.', 'Bila mengerjakan kuis tanpa internet, nilai disimpan di HP dan terkirim otomatis ke guru saat HP tersambung internet lagi.', '**Ganti HP?** Buka tautan kelas di HP baru lalu masukkan kode siswamu. Nilai dan babak yang sudah terbuka kembali otomatis dari rekap guru.']);
 
   h2('Bagian B. Panduan untuk guru');
   h3('1. Masuk Panel Guru');
@@ -1488,7 +1505,9 @@ function susunPanduan() {
   langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Ruang Guru, buka menu **Rekap Nilai**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di menu **Rekap Nilai**, lalu tekan **Uji sambungan**.', 'Buka menu **Daftar Siswa**: ketik nama kelas, pilih file daftar siswa (Excel, Word, atau PDF), periksa daftar nama, lalu tekan **Kirim ke Google Sheets**. Kode siswa dibuat otomatis. Tekan **Cetak kartu kode** untuk membagikan kode kepada siswa, atau **Salin daftar kode untuk WA**. Bila diminta memperbarui kode Apps Script, ikuti 4 langkah yang tampil di layar.', 'Buat tautan kelas di menu **Kelas & Babak**. Sejak itu nilai kuis dan ujian masuk otomatis.']);
   h3('7. Membuka bab baru dan membaca analisis');
   poin(['Setiap mulai mengajar bab baru, buka lembar **Pengaturan** di Google Sheets dan ubah angka **Buka sampai bab** untuk kelas itu. KKM per kelas juga diatur di sana.', 'Lembar **Rekap** berisi nilai tertinggi setiap siswa per bab (merah bila di bawah KKM).', 'Lembar **Analisis** berisi rata-rata, persentase ketuntasan, siswa yang perlu remedial, siswa yang belum mengerjakan, dan soal yang paling sulit.']);
-  h3('8. Tahun ajaran baru');
+  h3('8. Historia Star dan nilai tambah');
+  poin(['Siswa mengoleksi **Historia Star** ⭐ dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3).', 'Guru memberi Historia Star tambahan kepada pemenang challenge, game, atau metode ajar di kelas: buka menu **Historia Star**, pilih kelas, ketuk nama siswa, pilih jumlah bintang dan alasannya, lalu tekan **Beri Historia Star**. Salah pilih? Tekan **Batalkan**.', 'Tekan **Tayangkan papan peringkat** untuk menampilkan 10 besar kelas di proyektor.', 'Di **Konversi ke nilai tambah**, atur nilai 1 ⭐ (misalnya 1 poin) dan batas maksimalnya (misalnya 10 poin). Hasilnya tercatat di lembar **Nilai Tambah** pada Google Sheets untuk diolah bersama nilai lainnya.', 'Siswa melihat total Historia Star dan nilai tambahnya di menu **Nilaiku**.']);
+  h3('9. Tahun ajaran baru');
   poin(['Menu **Ruang Historia → Hapus data satu kelas**: menghapus data satu kelas saja.', 'Menu **Ruang Historia → Tahun ajaran baru**: file lama disimpan sebagai arsip di Google Drive, lalu nilai dikosongkan. Daftar siswa boleh dihapus atau disimpan. Alamat aplikasi web tidak berubah.']);
 
   h2('Bagian C. Pertanyaan yang sering muncul');
@@ -1631,6 +1650,57 @@ function cetakKartu(rows) {
   document.body.append(w);
   const t = document.title; document.title = 'Kartu kode siswa Ruang Historia'; document.body.classList.add('cetak-kartu');
   setTimeout(() => { print(); document.body.classList.remove('cetak-kartu'); document.title = t; w.remove(); }, 80);
+}
+
+/* ---------- HISTORIA STAR ---------- */
+const starKuisSaya = () => Object.entries(S.get('nilai', {})).filter(([k]) => /-bab\d+$/.test(k)).reduce((s, [, v]) => s + jumlahBintang(v.terbaik || 0), 0);
+const starSaya = () => starKuisSaya() + (S.get('starGuru', 0) || 0);
+const poinTambah = n => { const a = S.get('konversiStar', null); if (!a) return null; const v = n * a.poin; return Math.round((a.maks > 0 ? Math.min(v, a.maks) : v) * 10) / 10; };
+const ALASAN_STAR = ['Menang challenge kelas', 'Menang game HISTORIA PLAY!', 'Presentasi terbaik', 'Aktif berdiskusi', 'Membantu teman'];
+function pasangStar() {
+  const kotak = app.querySelector('[data-bagian="star"]'); if (!kotak) return;
+  const url = () => document.getElementById('gr').value.trim(), sel = document.getElementById('stk'), daftar = document.getElementById('stl'), ps = document.getElementById('stp');
+  let data = null, pilih = new Set(), jumlah = 1, terakhir = null;
+  const panggil = async (aksi, ekstra = '') => { const r = await fetch(`${url()}?aksi=${aksi}&token=${encodeURIComponent(tokenRekap())}${ekstra}`).then(x => x.json()); if (!r.ok) throw new Error(r.pesan || 'gagal'); return r; };
+  const gagal = e => { ps.innerHTML = /token|tidak dikenal/i.test(e.message) ? `Kode Apps Script perlu diperbarui sekali. Buka menu <a href="#guru/siswa">Daftar Siswa</a> → <b>Perbarui kode Apps Script</b>, ikuti 4 langkahnya, lalu kembali ke sini.` : 'Tidak dapat terhubung ke Google Sheets. Periksa internet, lalu coba lagi.'; };
+  const gambar = () => {
+    if (!data || !data.siswa) { daftar.innerHTML = ''; return; }
+    const urut = [...data.siswa].sort((a, b) => a.no - b.no);
+    daftar.innerHTML = urut.map(s => `<button type="button" class="st-siswa" data-nama="${esc(s.nama)}" aria-pressed="${pilih.has(s.nama)}"><span class="st-no">${esc(s.no)}</span><span class="st-nama">${esc(s.nama)}</span><span class="st-jml">⭐ ${s.total}${s.poin !== undefined ? `<small>+${s.poin}</small>` : ''}</span></button>`).join('');
+    document.getElementById('stberi').innerHTML = `${ikon('bintang')} Beri ${jumlah} Historia Star${pilih.size ? ` ke ${pilih.size} siswa` : ''}`;
+  };
+  const muatKelas = async k => { ps.textContent = 'Memuat daftar siswa…'; try { data = await panggil('star', `&kelas=${encodeURIComponent(k)}`); if (data.konversi) { document.getElementById('stpoin').value = data.konversi.poin; document.getElementById('stmaks').value = data.konversi.maks; } pilih.clear(); ps.textContent = data.siswa.length ? 'Ketuk nama siswa yang menang (boleh lebih dari satu), lalu tekan tombol Beri.' : 'Belum ada siswa di kelas ini. Isi dulu lewat menu Daftar Siswa.'; S.set('kelasStar', k); gambar(); } catch (e) { gagal(e); } };
+  const mulai = async () => {
+    if (!/\/exec$/.test(url())) { ps.innerHTML = `Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a>.`; return; }
+    try { const r = await panggil('star'); sel.innerHTML = r.daftarKelas.map(k => `<option>${esc(k)}</option>`).join(''); if (!r.daftarKelas.length) { ps.innerHTML = 'Belum ada kelas. Isi daftar siswa dulu di menu <a href="#guru/siswa">Daftar Siswa</a>.'; return; } const ingat = S.get('kelasStar', ''); if (r.daftarKelas.includes(ingat)) sel.value = ingat; muatKelas(sel.value); } catch (e) { gagal(e); }
+  };
+  sel.onchange = () => muatKelas(sel.value);
+  daftar.onclick = e => { const b = e.target.closest('.st-siswa'); if (!b) return; const n = b.dataset.nama; pilih.has(n) ? pilih.delete(n) : pilih.add(n); gambar(); };
+  kotak.querySelectorAll('[data-jml]').forEach(b => b.onclick = () => { jumlah = +b.dataset.jml; kotak.querySelectorAll('[data-jml]').forEach(x => x.setAttribute('aria-pressed', x === b)); gambar(); });
+  kotak.querySelectorAll('[data-alasan]').forEach(b => b.onclick = () => { document.getElementById('sta').value = b.dataset.alasan; });
+  document.getElementById('stberi').onclick = async () => {
+    if (!pilih.size) { ps.textContent = 'Ketuk dulu nama siswa yang akan diberi bintang.'; return; }
+    const id = 'S' + Date.now(), nama = [...pilih], alasan = document.getElementById('sta').value.trim() || 'Historia Star dari guru';
+    ps.textContent = 'Mengirim…';
+    try { data = await panggil('beriStar', `&data=${encodeURIComponent(JSON.stringify({ kelas: sel.value, nama, jumlah, alasan, id }))}`); terakhir = { id, kelas: sel.value, n: nama.length }; pilih.clear(); gambar();
+      ps.innerHTML = `🎉 ${nama.length} siswa mendapat ${jumlah} Historia Star (${esc(alasan)}). <button class="tautan" type="button" id="stbatal">Batalkan</button>`;
+      document.getElementById('stbatal').onclick = async () => { try { data = await panggil('batalStar', `&id=${terakhir.id}&kelas=${encodeURIComponent(terakhir.kelas)}`); gambar(); ps.textContent = 'Pemberian bintang terakhir dibatalkan.'; } catch (e) { gagal(e); } };
+    } catch (e) { gagal(e); }
+  };
+  document.getElementById('stsimpan').onclick = async () => { const kp = document.getElementById('stkp'); kp.textContent = 'Menyimpan…'; try { const r = await panggil('aturStar', `&poin=${encodeURIComponent(document.getElementById('stpoin').value)}&maks=${encodeURIComponent(document.getElementById('stmaks').value)}`); kp.textContent = `Tersimpan: 1 ⭐ = ${r.poin} poin${r.maks > 0 ? `, maksimal ${r.maks} poin` : ', tanpa batas'}. Lembar Nilai Tambah di Google Sheets sudah diperbarui.`; if (sel.value) muatKelas(sel.value); } catch (e) { gagal(e); kp.textContent = ''; } };
+  document.getElementById('stpapan').onclick = () => { if (data && data.siswa) tayangPapan(data); };
+  mulai();
+}
+function tayangPapan(d) {
+  const urut = [...d.siswa].sort((a, b) => b.total - a.total || a.no - b.no), top = urut.slice(0, 10);
+  const el = document.createElement('div'); el.className = 'papan-star'; el.tabIndex = -1;
+  el.innerHTML = `<div class="ps-isi"><button class="ps-tutup" type="button" aria-label="Tutup">✕</button><p class="ps-label">RUANG HISTORIA · KELAS ${esc(d.kelas)}</p><h1>⭐ Papan Historia Star</h1>
+<div class="ps-podium">${[1, 0, 2].map(i => top[i] ? `<div class="ps-p ps-${i + 1}"><div class="ps-medali">${['🥇', '🥈', '🥉'][i]}</div><b>${esc(top[i].nama)}</b><span>⭐ ${top[i].total}</span><div class="ps-tiang">${i + 1}</div></div>` : '').join('')}</div>
+<ol class="ps-daftar" start="4">${top.slice(3).map(s => `<li><span>${esc(s.nama)}</span><b>⭐ ${s.total}</b></li>`).join('')}</ol>
+<p class="ps-ket">Historia Star = bintang dari kuis tiap babak + bintang dari guru untuk pemenang challenge di kelas.</p></div>`;
+  document.body.append(el); el.focus();
+  const tutup = () => el.remove(); el.querySelector('.ps-tutup').onclick = tutup; el.addEventListener('keydown', e => { if (e.key === 'Escape') tutup(); });
+  if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
 }
 
 /* ---------- router ---------- */

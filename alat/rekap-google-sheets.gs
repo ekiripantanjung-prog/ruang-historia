@@ -23,7 +23,9 @@ const RUANG = [['Sejarah Indonesia', 'indonesia'], ['Sejarah Dunia', 'dunia'], [
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 // Kunci rahasia guru: diisi otomatis saat kode disalin dari Panel Guru. Jangan dibagikan.
 const TOKEN_GURU = '__TOKEN_GURU__';
-const VERSI = 3;
+const VERSI = 4;
+const LEMBAR_STAR = 'Historia Star';
+const LEMBAR_TAMBAH = 'Nilai Tambah';
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('Ruang Historia')
@@ -89,6 +91,10 @@ function doGet(e) {
     kunci.waitLock(20000);
     if (p.aksi === 'cek') return keluar({ ok: true, nama: SpreadsheetApp.getActiveSpreadsheet().getName(), versi: VERSI, impor: TOKEN_GURU.indexOf('__') !== 0 && p.token === TOKEN_GURU });
     if (p.aksi === 'siswa') return keluar(imporSiswa(p));
+    if (p.aksi === 'star') return keluar(papanStar(p));
+    if (p.aksi === 'beriStar') return keluar(beriStar(p));
+    if (p.aksi === 'batalStar') return keluar(batalStar(p));
+    if (p.aksi === 'aturStar') return keluar(aturStar(p));
     if (p.aksi === 'masuk') return keluar(masuk(p.kode));
     if (p.aksi === 'atur') return keluar(bacaPengaturan(p.kode));
     if (p.aksi === 'nilai') return keluar(simpanNilai(p));
@@ -149,12 +155,12 @@ function bacaPengaturan(kode) {
   if (!r) return { ok: true, batas: {} };
   const batas = {};
   RUANG.forEach((ru, i) => { const v = r[i + 1]; if (v !== '' && v !== null) batas[ru[1]] = Number(v) || 0; });
-  return { ok: true, kelas: s.kelas, batas: batas, kkm: Number(r[RUANG.length + 1]) || null };
+  return { ok: true, kelas: s.kelas, batas: batas, kkm: Number(r[RUANG.length + 1]) || null, star: bonusStar(s.kelas)[s.nama] || 0, konversi: aturanStar() };
 }
 
 function masuk(kode) {
   const s = cariSiswa(kode);
-  return s ? { ok: true, nama: s.nama, kelas: s.kelas, no: s.no, riwayat: riwayatSiswa(s) } : { ok: false, pesan: 'Kode tidak dikenal. Periksa lagi kodemu atau tanyakan kepada guru.' };
+  return s ? { ok: true, nama: s.nama, kelas: s.kelas, no: s.no, riwayat: riwayatSiswa(s), star: bonusStar(s.kelas)[s.nama] || 0, konversi: aturanStar() } : { ok: false, pesan: 'Kode tidak dikenal. Periksa lagi kodemu atau tanyakan kepada guru.' };
 }
 
 function simpanNilai(p) {
@@ -281,12 +287,13 @@ function perbaruiAnalisis(diam) {
   });
   an.setFrozenRows(1);
   if (diam !== true) { try { SpreadsheetApp.getUi().alert('Analisis sudah diperbarui. Lihat lembar Analisis.'); } catch (e) {} }
+  try { perbaruiNilaiTambah(); } catch (e) {}
 }
 
 
 /* ---------- HAPUS DATA DAN TAHUN AJARAN BARU ---------- */
 // lembar dan nomor kolom "Kelas" di dalamnya
-const KOLOM_KELAS = [[LEMBAR_SISWA, 1], [LEMBAR_NILAI, 2], [LEMBAR_REKAP, 1], [LEMBAR_BUTIR, 2], [LEMBAR_ATUR, 1]];
+const KOLOM_KELAS = [[LEMBAR_SISWA, 1], [LEMBAR_NILAI, 2], [LEMBAR_REKAP, 1], [LEMBAR_BUTIR, 2], [LEMBAR_ATUR, 1], [LEMBAR_STAR, 2]];
 
 /** Menghapus semua baris milik satu kelas (siswa, nilai, rekap, butir soal, pengaturan). */
 function hapusKelas() {
@@ -317,7 +324,7 @@ function tahunAjaranBaru() {
   if (siswaJuga === ui.Button.CANCEL || siswaJuga === ui.Button.CLOSE) return;
   const arsip = ss.copy('Arsip ' + ss.getName() + ' ' + label);
   const kosongkan = nama => { const sh = ss.getSheetByName(nama); if (sh && sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, sh.getMaxColumns()).clearContent().setBackground(null); };
-  [LEMBAR_NILAI, LEMBAR_BUTIR].forEach(kosongkan);
+  [LEMBAR_NILAI, LEMBAR_BUTIR, LEMBAR_STAR].forEach(kosongkan);
   const rek = ss.getSheetByName(LEMBAR_REKAP);
   if (rek) { kosongkan(LEMBAR_REKAP); if (rek.getMaxColumns() > 3) rek.getRange(1, 4, 1, rek.getMaxColumns() - 3).clearContent().setBackground(null); }
   const an = ss.getSheetByName(LEMBAR_ANALISIS); if (an && an.getLastRow() > 1) an.getRange(2, 1, an.getLastRow() - 1, an.getMaxColumns()).clear();
@@ -371,4 +378,106 @@ function riwayatSiswa(s) {
   if (!r) return {};
   for (let c = 3; c < judul.length; c++) if (judul[c] && r[c] !== '' && !isNaN(Number(r[c]))) out[judul[c]] = Number(r[c]);
   return out;
+}
+
+
+/* ---------- HISTORIA STAR ---------- */
+// Bintang dari kuis: 1 bila nilai bab >= KKM, 2 bila >= 90, 3 bila 100. Bintang dari guru dicatat di lembar "Historia Star".
+function lembarStar() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(LEMBAR_STAR);
+  if (!sh) {
+    sh = ss.insertSheet(LEMBAR_STAR);
+    sh.getRange(1, 1, 1, 7).setValues([['Tanggal', 'Kelas', 'No', 'Nama', 'Jumlah', 'Alasan', 'ID']]).setFontWeight('bold').setBackground('#E0A100').setFontColor('#FFFFFF');
+    sh.setFrozenRows(1); [150, 80, 50, 240, 70, 260, 90].forEach((w, i) => sh.setColumnWidth(i + 1, w));
+  }
+  return sh;
+}
+function bonusStar(kelas) {
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_STAR), out = {};
+  if (!sh || sh.getLastRow() < 2) return out;
+  sh.getRange(2, 1, sh.getLastRow() - 1, 5).getValues().forEach(r => { if (String(r[1]).trim() === kelas) out[r[3]] = (out[r[3]] || 0) + (Number(r[4]) || 0); });
+  return out;
+}
+function kkmKelas(kelas) {
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_ATUR);
+  if (sh && sh.getLastRow() > 1) { const r = sh.getRange(2, 1, sh.getLastRow() - 1, RUANG.length + 2).getValues().find(x => String(x[0]).trim() === kelas); if (r && Number(r[RUANG.length + 1])) return Number(r[RUANG.length + 1]); }
+  return Number(PropertiesService.getDocumentProperties().getProperty('kkm_' + kelas)) || 75;
+}
+function starKuis(kelas) {
+  const rek = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_REKAP), out = {};
+  if (!rek || rek.getLastRow() < 2 || rek.getLastColumn() < 4) return out;
+  const kkm = kkmKelas(kelas), data = rek.getRange(1, 1, rek.getLastRow(), rek.getLastColumn()).getValues(), judul = data[0].map(String);
+  data.slice(1).forEach(r => {
+    if (String(r[0]).trim() !== kelas) return;
+    let n = 0;
+    for (let c = 3; c < judul.length; c++) if (/ Bab \d+$/.test(judul[c]) && r[c] !== '') { const v = Number(r[c]); n += v >= 100 ? 3 : v >= 90 ? 2 : v >= kkm ? 1 : 0; }
+    out[r[2]] = n;
+  });
+  return out;
+}
+/** Daftar siswa satu kelas beserta Historia Star-nya (khusus guru). Tanpa kelas: daftar nama kelas. */
+function papanStar(p) {
+  if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_SISWA);
+  const data = sh && sh.getLastRow() > 1 ? sh.getRange(2, 1, sh.getLastRow() - 1, 3).getValues() : [];
+  const daftarKelas = Array.from(new Set(data.map(r => String(r[0]).trim()).filter(Boolean)));
+  const kelas = String(p.kelas || '').trim();
+  if (!kelas) return { ok: true, daftarKelas: daftarKelas };
+  const kuis = starKuis(kelas), bonus = bonusStar(kelas);
+  const siswa = data.filter(r => String(r[0]).trim() === kelas).map(r => ({ no: r[1], nama: r[2], kuis: kuis[r[2]] || 0, guru: bonus[r[2]] || 0 }))
+    .map(s => Object.assign(s, { total: s.kuis + s.guru, poin: poinStar(s.kuis + s.guru) }));
+  return { ok: true, daftarKelas: daftarKelas, kelas: kelas, siswa: siswa, konversi: aturanStar() };
+}
+/** Memberi Historia Star kepada beberapa siswa sekaligus. data: {kelas, nama:[...], jumlah, alasan, id} */
+function beriStar(p) {
+  if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
+  const d = JSON.parse(p.data || '{}'), kelas = String(d.kelas || '').trim(), jumlah = Math.max(-5, Math.min(10, Math.round(Number(d.jumlah) || 1)));
+  const sis = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_SISWA).getRange(2, 1, Math.max(1, SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_SISWA).getLastRow() - 1), 3).getValues();
+  const sh = lembarStar(), id = String(d.id || Date.now()), kini = new Date();
+  (d.nama || []).forEach(nm => { const r = sis.find(x => String(x[0]).trim() === kelas && String(x[2]) === nm); if (r) sh.appendRow([kini, kelas, r[1], r[2], jumlah, String(d.alasan || '').slice(0, 120), id]); });
+  try { perbaruiNilaiTambah(); } catch (e) {}
+  return papanStar({ token: p.token, kelas: kelas });
+}
+/** Membatalkan pemberian bintang terakhir (berdasarkan ID kiriman). */
+function batalStar(p) {
+  if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
+  const sh = lembarStar(), id = String(p.id || '');
+  for (let i = sh.getLastRow(); i >= 2; i--) if (String(sh.getRange(i, 7).getValue()) === id) sh.deleteRow(i);
+  try { perbaruiNilaiTambah(); } catch (e) {}
+  return papanStar({ token: p.token, kelas: p.kelas });
+}
+
+
+/* ---------- KONVERSI HISTORIA STAR KE NILAI TAMBAH ---------- */
+function aturanStar() {
+  const pr = PropertiesService.getDocumentProperties();
+  return { poin: Number(pr.getProperty('star_poin')) || 1, maks: pr.getProperty('star_maks') === null ? 10 : Number(pr.getProperty('star_maks')) };
+}
+function poinStar(n) { const a = aturanStar(); const v = n * a.poin; return Math.round((a.maks > 0 ? Math.min(v, a.maks) : v) * 10) / 10; }
+function aturStar(p) {
+  if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
+  const pr = PropertiesService.getDocumentProperties();
+  pr.setProperty('star_poin', String(Math.max(0, Math.min(10, Number(p.poin) || 1))));
+  pr.setProperty('star_maks', String(Math.max(0, Math.min(100, Number(p.maks) || 0))));
+  try { perbaruiNilaiTambah(); } catch (e) {}
+  return Object.assign({ ok: true }, aturanStar());
+}
+/** Lembar "Nilai Tambah": total Historia Star tiap siswa dan nilai tambahnya, untuk diolah bersama nilai lain. */
+function perbaruiNilaiTambah() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet(), sis = ss.getSheetByName(LEMBAR_SISWA);
+  if (!sis || sis.getLastRow() < 2) return;
+  let sh = ss.getSheetByName(LEMBAR_TAMBAH); if (!sh) sh = ss.insertSheet(LEMBAR_TAMBAH);
+  const a = aturanStar();
+  const data = sis.getRange(2, 1, sis.getLastRow() - 1, 3).getValues().filter(r => String(r[2]).trim());
+  const cache = {}, baris = data.map(r => {
+    const k = String(r[0]).trim(); if (!cache[k]) cache[k] = { kuis: starKuis(k), guru: bonusStar(k) };
+    const kuis = cache[k].kuis[r[2]] || 0, guru = cache[k].guru[r[2]] || 0;
+    return [k, r[1], r[2], kuis, guru, kuis + guru, poinStar(kuis + guru)];
+  });
+  sh.clear();
+  sh.getRange(1, 1, 1, 7).setValues([['Kelas', 'No', 'Nama', 'Star dari kuis', 'Star dari guru', 'Total Historia Star', 'Nilai tambah']]).setFontWeight('bold').setBackground('#E0A100').setFontColor('#FFFFFF');
+  if (baris.length) sh.getRange(2, 1, baris.length, 7).setValues(baris);
+  sh.getRange(1, 9).setValue('Aturan: 1 Historia Star = ' + a.poin + ' poin' + (a.maks > 0 ? ', maksimal ' + a.maks + ' poin' : ', tanpa batas') + '. Ubah aturan dari Ruang Guru > Historia Star.').setFontStyle('italic');
+  sh.setFrozenRows(1); [80, 50, 240, 110, 110, 140, 110].forEach((w, i) => sh.setColumnWidth(i + 1, w));
 }

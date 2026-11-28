@@ -575,3 +575,6 @@ body.cetak-kartu #cetak-kartu{display:grid;grid-template-columns:repeat(3,1fr);g
 .ps-daftar{max-width:600px;margin:0 auto;text-align:left;padding-left:2em;font-size:clamp(16px,1.8vw,21px)}
 .ps-daftar li{padding:6px 0;border-bottom:1px solid #ffffff1f}.ps-daftar li span{display:inline-block;width:75%}.ps-daftar b{color:#FFD15C}
 .ps-ket{color:#c9d1ec;font-size:14px;margin:20px auto 0}
+.pilih-kelas{border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0;background:var(--card)}
+.kls-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:4px 10px;margin-top:6px}
+.kls-grid small{color:var(--muted,#6b5848)}

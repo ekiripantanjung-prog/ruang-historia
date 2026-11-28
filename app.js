@@ -745,6 +745,7 @@ ${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} G
 <p style="margin:4px 0"><b>atau</b></p><div class="row"><button class="btn alt" type="button" id="isketik">Tempel / ketik daftar nama</button></div>
 <p class="catatan">Salin kolom nama dari Excel, Word, atau WA (blok lalu Ctrl+C), klik tombol di atas, lalu tempel (Ctrl+V) di kotak yang muncul. Nomor, NIS, dan L/P dibuang otomatis.</p>
 <p class="catatan" id="isp"></p>
+<div id="iskls" class="pilih-kelas" hidden></div>
 <textarea id="ist" class="isian" rows="12" hidden></textarea>
 <div id="islanjut" hidden><div class="row"><button class="btn" type="button" id="iskirim">3. Kirim ke Google Sheets</button><button class="btn alt" type="button" id="istsv">Salin untuk ditempel manual</button></div></div>
 <div id="ish"></div>
@@ -1556,9 +1557,10 @@ function panduan() {
 
 /* ---------- IMPOR DAFTAR SISWA (Excel / Word / PDF) ---------- */
 const tokenRekap = () => { let t = S.get('tokenRekap', ''); if (!t) { const a = new Uint8Array(18); crypto.getRandomValues(a); t = [...a].map(x => HURUF_KODE[x % HURUF_KODE.length]).join(''); S.set('tokenRekap', t); } return t; };
-const KATA_KEPALA = /^(no\.?|nomor|nama( siswa| peserta didik| lengkap)?|nis|nisn|kelas|rombel|jenis kelamin|l\/p|jk|keterangan|ttd|tanda tangan|daftar.*|tahun.*|semester.*|wali kelas.*|mengetahui.*|kepala.*|nip.*|jumlah.*|madrasah.*|sekolah.*|kementerian.*|alamat.*|agama|tempat.*|tanggal.*)$/i;
+const KATA_KEPALA = /^(no\.?|nomor|nama( siswa| peserta didik| lengkap)?|nis|nisn|kelas|rombel|jenis kelamin|l\/p|jk|keterangan|ttd|tanda tangan|daftar.*|tahun.*|semester.*|wali kelas.*|mengetahui.*|kepala.*|nip.*|jumlah.*|madrasah.*|sekolah.*|kementerian.*|alamat.*|agama|tempat.*|tanggal.*|laki-laki|laki laki|perempuan|l|p|peserta didik.*|siswa.*|total.*|wali.*|peminatan.*)$/i;
 function bersihNama(s) {
   let t = String(s ?? '').replace(/\s+/g, ' ').trim();
+  if (/^[:=]/.test(t) || /,\s*(S\.|Drs|Dra|Dr|M\.|ST|SE|SH|SKM|Amd|A\.Md)/.test(t) || /^(Drs|Dra|Dr|H|Hj)\.\s/.test(t)) return '';
   t = t.replace(/^\d+\s*[.)]?\s*/, '');                         // nomor urut
   t = t.split(' ').filter(w => !/\d/.test(w)).join(' ');          // NIS/NISN/angka
   t = t.replace(/\s+(L|P|LK|PR|Laki-laki|Laki laki|Perempuan)$/i, '').replace(/[|;]+/g, ' ').trim();
@@ -1573,8 +1575,16 @@ function dariBaris(rows, kelasDefault) {
   for (let i = 0; i < Math.min(rows.length, 20) && h < 0; i++) rows[i].forEach((x, j) => { if (/^nama/i.test(x) && cN < 0) { cN = j; h = i; } });
   if (h >= 0) rows[h].forEach((x, j) => { if (/^(kelas|rombel)/i.test(x)) cK = j; });
   if (cN < 0) { const skor = []; rows.forEach(r => r.forEach((x, j) => { if (bersihNama(x) && /\s/.test(x)) skor[j] = (skor[j] || 0) + 1; })); cN = skor.reduce((b, v, j) => v > (skor[b] || 0) ? j : b, 0); }
-  const out = {};
-  rows.slice(h + 1).forEach(r => { const n = bersihNama(r[cN]); if (!n) return; const k = (cK >= 0 && r[cK]) || kelasDefault; (out[k] = out[k] || []).push(judulNama(n)); });
+  const out = {}; let kini = kelasDefault, mulai = false;
+  rows.forEach((r, i) => {
+    // judul kelas di dalam sheet, misalnya "KELAS XI A" (banyak kelas ditumpuk dalam satu sheet)
+    const jd = r.map(x => x.match(/^kelas\s*[:.]?\s+((?:XII|XI|X|IX|VIII|VII|1[0-2])\b[\s.\-]*[A-Z0-9]{0,4}(?:[\s.\-]*\d{1,2})?)\s*$/i)).find(Boolean);
+    if (jd) { kini = jd[1].replace(/[\s.\-]+/g, ' ').trim().toUpperCase(); return; }
+    if (i <= h) { if (i === h) mulai = true; return; }
+    if (r.some(x => /^(wali\s*kelas|jumlah|total|keterangan|mengetahui|kepala|peminatan)/i.test(x))) return;
+    if (!mulai) return;
+    const n = bersihNama(r[cN]); if (!n) return; const k = (cK >= 0 && r[cK]) || kini; (out[k] = out[k] || []).push(judulNama(n));
+  });
   return out;
 }
 function dariTeks(teks, kelasDefault) {
@@ -1618,7 +1628,14 @@ const teksKeKelompok = (t, kDef) => { const o = {}; let k = kDef; t.split('\n').
 
 function pasangImporSiswa() {
   const f = document.getElementById('isf'), kel = document.getElementById('isk'), ta = document.getElementById('ist'), ps = document.getElementById('isp'), hasilEl = document.getElementById('ish');
-  const tampil = o => { const n = Object.values(o).reduce((s, v) => s + v.length, 0); ta.value = kelompokKeTeks(o); ta.hidden = false; document.getElementById('islanjut').hidden = !n; ps.innerHTML = n ? `Terbaca <b>${n}</b> nama dalam <b>${Object.keys(o).length}</b> kelas. Periksa daftar di bawah: hapus baris yang bukan nama, perbaiki yang salah. Baris berawalan <b>#</b> adalah nama kelas.` : 'Tidak ada nama yang terbaca. Pastikan berkas berisi kolom <b>Nama</b>, atau ketik/tempel nama di kotak di bawah (satu nama per baris).'; if (!n) { ta.hidden = false; ta.value = `# ${kel.value.trim() || 'XI D'}\n`; document.getElementById('islanjut').hidden = false; } };
+  const kls = document.getElementById('iskls'); let hasilBaca = {};
+  const pakaiPilihan = () => { const dipilih = new Set([...kls.querySelectorAll('input:checked')].map(x => x.value)); const o = Object.fromEntries(Object.entries(hasilBaca).filter(([k]) => dipilih.has(k))); const n = Object.values(o).reduce((s, v) => s + v.length, 0); ta.value = kelompokKeTeks(o); ps.innerHTML = `Dipilih <b>${n}</b> siswa dari <b>${Object.keys(o).length}</b> kelas. Periksa daftar di bawah (baris berawalan <b>#</b> adalah nama kelas), lalu tekan <b>Kirim ke Google Sheets</b>.`; document.getElementById('islanjut').hidden = !n; };
+  const tampil = o => { hasilBaca = o; const kk = Object.keys(o);
+    if (kk.length > 1) { kls.hidden = false; kls.innerHTML = `<b>Kelas yang Bapak/Ibu ajar</b> <span class="catatan">(hapus centang kelas yang tidak diajar)</span><div class="row kecil-row"><button type="button" class="btn alt kecil-btn" data-semua="1">Pilih semua</button><button type="button" class="btn alt kecil-btn" data-semua="0">Kosongkan</button></div><div class="kls-grid">${kk.map(k => `<label class="cek"><input type="checkbox" value="${esc(k)}" checked> ${esc(k)} <small>(${o[k].length})</small></label>`).join('')}</div>`;
+      kls.onchange = pakaiPilihan; kls.querySelectorAll('[data-semua]').forEach(b => b.onclick = () => { kls.querySelectorAll('input').forEach(x => x.checked = b.dataset.semua === '1'); pakaiPilihan(); });
+      ta.hidden = false; pakaiPilihan(); return; }
+    kls.hidden = true;
+    const n = Object.values(o).reduce((s, v) => s + v.length, 0); ta.value = kelompokKeTeks(o); ta.hidden = false; document.getElementById('islanjut').hidden = !n; ps.innerHTML = n ? `Terbaca <b>${n}</b> nama dalam <b>${Object.keys(o).length}</b> kelas. Periksa daftar di bawah: hapus baris yang bukan nama, perbaiki yang salah. Baris berawalan <b>#</b> adalah nama kelas.` : 'Tidak ada nama yang terbaca. Pastikan berkas berisi kolom <b>Nama</b>, atau ketik/tempel nama di kotak di bawah (satu nama per baris).'; if (!n) { ta.hidden = false; ta.value = `# ${kel.value.trim() || 'XI D'}\n`; document.getElementById('islanjut').hidden = false; } };
   f.onchange = async () => {
     const file = f.files[0]; if (!file) return;
     const kD = kel.value.trim() || 'Kelas'; ps.textContent = 'Membaca berkas…';
@@ -1637,8 +1654,10 @@ function pasangImporSiswa() {
     if (!/\/exec$/.test(url)) { ps.textContent = 'Isi dulu alamat aplikasi web di atas, lalu tekan Uji sambungan.'; return; }
     const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas'), semua = [];
     ps.textContent = 'Mengirim ke Google Sheets…';
+    const totalKirim = Object.values(o).reduce((s, v) => s + v.length, 0); let terkirim = 0;
     try {
       for (const [k, v] of Object.entries(o)) for (let i = 0; i < v.length; i += 40) {
+        ps.innerHTML = `Mengirim kelas <b>${esc(k)}</b>… (${terkirim} dari ${totalKirim} siswa). Mohon tunggu, jangan tutup halaman ini.`; terkirim += v.slice(i, i + 40).length;
         const r = await fetch(`${url}?aksi=siswa&token=${encodeURIComponent(tokenRekap())}&data=${encodeURIComponent(JSON.stringify({ kelas: k, nama: v.slice(i, i + 40) }))}`).then(x => x.json());
         if (!r.ok) throw new Error(r.pesan || 'gagal');
         r.siswa.forEach(s => semua.push([k, ...s]));

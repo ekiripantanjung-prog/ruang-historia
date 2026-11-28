@@ -752,7 +752,7 @@ ${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} G
 <p class="pesan-impor" id="isp" role="status" aria-live="polite"></p>
 <div id="ish"></div>
 <details class="box" id="isperbarui"><summary><b>Perbarui kode Apps Script</b> (sekali saja, bila diminta)</summary><ol>
-<li>Tekan <b>Salin kode Apps Script</b> di atas.</li>
+<li>Tekan tombol ini: <button class="btn alt kecil-btn" type="button" id="salinkode2">Salin kode Apps Script</button></li>
 <li>Di Apps Script: hapus semua isi editor (Ctrl+A, Delete), tempel (Ctrl+V), lalu Simpan.</li>
 <li>Tekan <b>Terapkan → Kelola deployment</b>, klik ikon pensil, pada <b>Versi</b> pilih <b>Versi baru</b>, lalu <b>Terapkan</b>. Alamat /exec tetap sama.</li>
 <li>Kembali ke sini dan tekan <b>Kirim ke Google Sheets</b> lagi.</li></ol>
@@ -815,6 +815,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
     document.getElementById('hasilkelas').innerHTML = `<div class="tautan-kelas"><div>${await qrSVG(url, 200)}</div><div><p><b>Tautan kelas ${esc(o.nama || '')}</b>: mode babak ${o.modeBabak ? 'aktif' : 'mati'}, KKM ${o.kkm}, rekap nilai ${o.rekap ? 'aktif' : 'tidak dipakai'}.</p><input class="isian" readonly value="${esc(url)}"><div class="row"><button class="btn" type="button" id="salin">Salin tautan</button></div><p class="catatan">Bagikan tautan ini di grup kelas, atau tampilkan kode QR-nya di proyektor. Siswa cukup membukanya sekali dari HP masing-masing.</p></div></div>`;
     document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
   });
+  document.getElementById('salinkode2').addEventListener('click', ev => { document.getElementById('salinkode').click(); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; });
   document.getElementById('salinkode').addEventListener('click', async ev => { try { const t = (await fetch('alat/rekap-google-sheets.gs', { cache: 'no-cache' }).then(r => r.text())).replace('__TOKEN_GURU__', (document.getElementById('istoken') || {}).value || tokenRekap()); await navigator.clipboard.writeText(t); ev.target.textContent = 'Kode tersalin. Tempel di Apps Script'; } catch { ev.target.textContent = 'Gagal menyalin. Coba lagi'; } });
   document.getElementById('gr').addEventListener('change', e => { const u = e.target.value.trim(); if (/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) S.set('rekapUji', u); });
   document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); if (r.ok) S.set('rekapUji', u); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Langkah berikutnya: menu Daftar Siswa, lalu Kelas & Babak.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });

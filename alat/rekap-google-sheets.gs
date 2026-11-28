@@ -23,7 +23,7 @@ const RUANG = [['Sejarah Indonesia', 'indonesia'], ['Sejarah Dunia', 'dunia'], [
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 // Kunci rahasia guru: diisi otomatis saat kode disalin dari Panel Guru. Jangan dibagikan.
 const TOKEN_GURU = '__TOKEN_GURU__';
-const VERSI = 2;
+const VERSI = 3;
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('Ruang Historia')
@@ -154,7 +154,7 @@ function bacaPengaturan(kode) {
 
 function masuk(kode) {
   const s = cariSiswa(kode);
-  return s ? { ok: true, nama: s.nama, kelas: s.kelas, no: s.no } : { ok: false, pesan: 'Kode tidak dikenal. Periksa lagi kodemu atau tanyakan kepada guru.' };
+  return s ? { ok: true, nama: s.nama, kelas: s.kelas, no: s.no, riwayat: riwayatSiswa(s) } : { ok: false, pesan: 'Kode tidak dikenal. Periksa lagi kodemu atau tanyakan kepada guru.' };
 }
 
 function simpanNilai(p) {
@@ -359,3 +359,16 @@ function imporSiswa(p) {
   return { ok: true, kelas: kelas, baru: baru, siswa: hasil };
 }
 function siapkanDiam() { try { siapkan(); } catch (e) {} }
+
+
+/* ---------- PULIHKAN NILAI SAAT SISWA GANTI HP ---------- */
+/** Nilai terbaik seorang siswa per kolom rekap, misalnya {"Indonesia Bab 4": 85}. */
+function riwayatSiswa(s) {
+  const rek = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEMBAR_REKAP);
+  if (!rek || rek.getLastRow() < 2 || rek.getLastColumn() < 4) return {};
+  const data = rek.getRange(1, 1, rek.getLastRow(), rek.getLastColumn()).getValues(), judul = data[0].map(String), out = {};
+  const r = data.slice(1).find(x => String(x[0]) === s.kelas && String(x[2]) === s.nama);
+  if (!r) return {};
+  for (let c = 3; c < judul.length; c++) if (judul[c] && r[c] !== '' && !isNaN(Number(r[c]))) out[judul[c]] = Number(r[c]);
+  return out;
+}

@@ -574,6 +574,18 @@ const siswaAktif = () => S.get('siswa', null);
 const perluMasuk = () => !!konfig().rekap && !siswaAktif() && !modeGuru();
 const NAMA_KOLOM = { indonesia: 'Indonesia', dunia: 'Dunia', ski: 'SKI' };
 const formMasuk = () => `<form class="box masuk" data-masuk><h3>Masuk dengan kode siswa</h3><p>Gurumu memakai rekap nilai. Masukkan kode siswa (6 huruf/angka) dari guru supaya nilaimu tercatat.</p><input class="isian" name="kode" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="contoh: 2FDX8S" required><p class="catatan pesan-masuk"></p><button class="btn" type="submit">Masuk</button></form>`;
+/* nilai dari Google Sheets dikembalikan ke perangkat (misalnya siswa ganti HP) */
+function pulihkanNilai(riwayat) {
+  if (!riwayat || typeof riwayat !== 'object') return 0;
+  const balik = Object.fromEntries(Object.entries(NAMA_KOLOM).map(([k, v]) => [v, k])), n = S.get('nilai', {}); let jml = 0;
+  Object.entries(riwayat).forEach(([kol, v]) => {
+    const m = String(kol).match(/^(.+?) (?:Bab (\d+)|(Ujian))$/); const kid = m && balik[m[1]]; if (!kid) return;
+    const kunci = m[3] ? `${kid}-ujian` : `${kid}-bab${m[2]}`, nilai = Math.max(0, Math.min(100, Math.round(+v || 0)));
+    const lama = n[kunci] || { terbaik: 0, kali: 0 };
+    if (nilai > lama.terbaik) { n[kunci] = { ...lama, terbaik: nilai, terakhir: lama.terakhir ?? nilai, kali: Math.max(1, lama.kali || 0), tgl: lama.tgl || 'dipulihkan' }; jml++; }
+  });
+  S.set('nilai', n); return jml;
+}
 function pasangMasuk(akar, setelah) {
   akar.querySelectorAll('[data-masuk]').forEach(f => f.addEventListener('submit', async e => {
     e.preventDefault();
@@ -581,7 +593,7 @@ function pasangMasuk(akar, setelah) {
     tb.disabled = true; pesan.textContent = 'Memeriksa kode…';
     try {
       const r = await fetch(`${konfig().rekap}?aksi=masuk&kode=${encodeURIComponent(kode)}`).then(x => x.json());
-      if (r.ok) { S.set('siswa', { kode, nama: r.nama, kelas: r.kelas, no: r.no }); await ambilAtur(); setelah(); }
+      if (r.ok) { S.set('siswa', { kode, nama: r.nama, kelas: r.kelas, no: r.no }); pulihkanNilai(r.riwayat); await ambilAtur(); setelah(); }
       else pesan.textContent = r.pesan || 'Kode tidak dikenal.';
     } catch { pesan.textContent = 'Tidak dapat terhubung. Periksa internet, lalu coba lagi.'; }
     tb.disabled = false;
@@ -1459,7 +1471,7 @@ function susunPanduan() {
   h3('3. Belajar setiap bab (babak)');
   langkah(['Di Beranda, pilih ruang (Sejarah Indonesia, Sejarah Dunia, atau SKI), lalu pilih bab yang terbuka.', 'Baca **Materi**, lihat **Jejak sejarah** (foto arsip), dan tonton **Video**.', 'Catat poin penting di buku catatan. Centang daftar kesiapan, lalu kerjakan **Kuis**.', 'Bila nilaimu mencapai **KKM**, kamu mendapat bintang dan babak berikutnya terbuka. Bila belum, pelajari lagi materinya lalu ulangi kuis.', 'Bab yang belum dibuka guru bertanda **Belum dibuka guru**. Tunggu sampai guru membukanya di kelas.']);
   h3('4. Nilai dan ujian');
-  poin(['Menu **Nilaiku** menampilkan semua nilai dan bintangmu. Tunjukkan halaman ini bila guru memintanya.', 'Ujian akhir tiap ruang terbuka setelah babak-babaknya selesai.', 'Bila mengerjakan kuis tanpa internet, nilai disimpan di HP dan terkirim otomatis ke guru saat HP tersambung internet lagi.']);
+  poin(['Menu **Nilaiku** menampilkan semua nilai dan bintangmu. Tunjukkan halaman ini bila guru memintanya.', 'Ujian akhir tiap ruang terbuka setelah babak-babaknya selesai.', 'Bila mengerjakan kuis tanpa internet, nilai disimpan di HP dan terkirim otomatis ke guru saat HP tersambung internet lagi.', '**Ganti HP?** Buka tautan kelas di HP baru lalu masukkan kode siswamu. Nilai dan babak yang sudah terbuka kembali otomatis dari rekap guru.']);
 
   h2('Bagian B. Panduan untuk guru');
   h3('1. Masuk Panel Guru');

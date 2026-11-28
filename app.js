@@ -2098,7 +2098,7 @@ function rayakanHasil() {
   if (v >= konfig().kkm || naik) setTimeout(() => konfeti(baru ? 140 : 80), 500);
   if (baru) setTimeout(() => toast(`<span class="gembok-anim">🔓</span><b>Babak baru terbuka!</b>`), 900);
   const st = starSaya(); if (starSebelum !== null && st > starSebelum) { const tambah = st - starSebelum; setTimeout(() => { bintangTerbang(h, tambah); toast(`<b>+${tambah} Historia Star ⭐</b>`); }, baru ? 3300 : 1300);
-    if (levelDari(st) > levelDari(starSebelum)) setTimeout(() => { konfeti(150); toast(`<span style="font-size:28px">${JENJANG_STAR[levelDari(st)][2]}</span><b>Naik level: ${JENJANG_STAR[levelDari(st)][1]}!</b>`); }, baru ? 4600 : 2700); }
+    if (levelDari(st) > levelDari(starSebelum)) { S.set('levelLihat', levelDari(st)); } if (levelDari(st) > levelDari(starSebelum)) setTimeout(() => { konfeti(150); toast(`<span style="font-size:28px">${JENJANG_STAR[levelDari(st)][2]}</span><b>Naik level: ${JENJANG_STAR[levelDari(st)][1]}!</b>`); }, baru ? 4600 : 2700); }
   starSebelum = st;
 }
 window.addEventListener('hashchange', rute);

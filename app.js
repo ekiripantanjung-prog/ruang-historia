@@ -926,73 +926,77 @@ const runsDari = node => { const out = []; const jalan = (n, b, i) => { n.childN
 const teksDari = runs => runs.map(r => r.text).join('');
 const kata = s => s.split(/\s+/).filter(Boolean).length;
 async function susunSlide(kid, id) {
-  const k = cariK(kid), d = k.bab.find(x => x.id === id), b = isiBab(kid, id), c = konfig();
-  const sl = [{ t: 'judul', ruang: k.judul, bab: id, judul: b.judul, sub: b.sub, masa: d.masa }];
-  sl.push({ t: 'poin', judul: 'Tujuan pembelajaran', item: b.tujuan.map(x => ({ runs: [{ text: x }], li: true })) });
-  const cinta = [];
-  for (const s of b.bagian) {
+  // Ringkas: paling banyak 15 slide. Setiap bagian materi menjadi satu slide berisi 3–4 poin kunci.
+  const k = cariK(kid), d = k.bab.find(x => x.id === id), b = isiBab(kid, id), c = konfig(), MAKS = 15;
+  const kalimat1 = (runs, maks = 26) => { const out = []; let n = 0; for (const r of runs) { const m = r.text.match(/^[\s\S]*?[.!?](?=\s|$)/); const potong = m && n + kata(m[0]) >= 6 ? m[0] : r.text; let w = potong.split(/(\s+)/); const sisa = maks - n; const kt = w.filter(x => x.trim()).length; if (kt > sisa) { let c2 = 0; w = w.filter(x => { if (x.trim()) c2++; return c2 <= sisa; }); out.push({ ...r, text: w.join('').replace(/[,;:\s]+$/, '') + '…' }); return out; } out.push({ ...r, text: potong }); n += kt; if (potong !== r.text) return out; } return out; };
+  // pecah paragraf menjadi kalimat utuh (runs tetap membawa huruf tebal); kalimat > 34 kata dilewati bila ada pilihan lain
+  const pecah = runs => { const out = []; let cur = [];
+    runs.forEach(r => { const bag = r.text.split(/(?<=[.!?]["”)]?)\s+(?=[A-Z0-9"“(])/); bag.forEach((x, j) => { if (x) cur.push({ ...r, text: x + (j < bag.length - 1 ? '' : '') }); if (j < bag.length - 1) { out.push(cur); cur = []; } }); });
+    if (cur.length) out.push(cur);
+    return out.map(rs => { rs[0] = { ...rs[0], text: rs[0].text.replace(/^\s+/, '') }; return rs; }).filter(rs => kata(teksDari(rs)) >= 4); };
+  const C = []; // { s: slide, p: prioritas (makin kecil makin penting) }
+  const tambah = (s, p) => C.push({ s, p });
+  tambah({ t: 'judul', ruang: k.judul, bab: id, judul: b.judul, sub: b.sub, masa: d.masa }, 0);
+  const tanya = acak(b.soal.filter(q => /C[456]/.test(q.l || '') && /\?\s*$/.test(q.q || ''))), esai = (b.esai || []).map(e => e.q).filter(Boolean);
+  const pemantik = tanya[0] ? tanya[0].q : esai[0];
+  if (pemantik) tambah({ t: 'diskusi', judul: 'Pertanyaan pemantik', besar: true, item: [{ s: '', q: pemantik }] }, 2);
+  tambah({ t: 'poin', judul: 'Tujuan pembelajaran', item: b.tujuan.slice(0, 3).map(x => ({ runs: kalimat1([{ text: x }], 24), li: true })) }, 1);
+  const cinta = []; let adaTabel = false, adaRute = false;
+  b.bagian.forEach((s, bi) => {
     const doc = new DOMParser().parseFromString(`<div>${s.isi}</div>`, 'text/html').body.firstChild;
-    let cur = null, sub = '';
-    const tutup = () => { if (cur && cur.item.length) sl.push(cur); cur = null; };
-    const baru = () => { cur = { t: 'poin', judul: s.judul, sub, item: [] }; };
-    const tambahItem = it => { if (!cur) baru(); const w = cur.item.reduce((a, x) => a + kata(teksDari(x.runs)), 0); if (cur.item.length >= 6 || (cur.item.length && w + kata(teksDari(it.runs)) > 90)) { tutup(); baru(); } cur.item.push(it); };
-    let rute = null;
+    const item = [];
     for (const el of doc.children) {
-      const tag = el.tagName;
-      if (!el.classList.contains('rute') && rute) { sl.push(rute); rute = null; }
-      if (tag === 'P') {
-        const runs = runsDari(el); if (!runs.length) continue;
-        if (kata(teksDari(runs)) > 80) { teksDari(runs).match(/[^.!?]+[.!?]+["”)]?\s*|[^.!?]+$/g).forEach(k2 => tambahItem({ runs: [{ text: k2.trim() }], catatan: el.classList.contains('catatan') })); }
-        else tambahItem({ runs, catatan: el.classList.contains('catatan') });
-      } else if (tag === 'UL' || tag === 'OL') {
-        [...el.children].forEach((li, n) => tambahItem({ runs: runsDari(li), li: true, no: tag === 'OL' ? n + 1 : 0 }));
-      } else if (tag === 'H3') { tutup(); sub = el.textContent.trim(); }
-      else if (tag === 'TABLE') {
-        tutup();
-        const head = [...el.querySelectorAll('thead th')].map(x => x.textContent.trim()), rows = [...el.querySelectorAll('tbody tr')].map(tr => [...tr.children].map(x => x.textContent.trim()));
-        const per = rows.reduce((a, r) => a + r.join(' ').length, 0) / Math.max(1, rows.length) > 140 ? 3 : 6;
-        for (let i = 0; i < rows.length; i += per) sl.push({ t: 'tabel', judul: s.judul, sub, head, rows: rows.slice(i, i + per), lanjut: i > 0 });
-      } else if (el.classList.contains('rute')) {
-        tutup(); if (!rute || rute.item.length >= 4) { if (rute) sl.push(rute); rute = { t: 'rute', judul: s.judul, item: [] }; }
-        rute.item.push({ nama: el.querySelector('b').textContent, warna: (el.getAttribute('style') || '').match(/#[0-9a-f]{6}/i)?.[0] || '#2B3A67', langkah: [...el.querySelectorAll('li')].map(x => x.textContent.trim()) });
-      }
+      if (el.tagName === 'P' && !el.classList.contains('catatan')) { pecah(runsDari(el)).forEach(r => item.push({ runs: r, li: true })); }
+      else if (el.tagName === 'UL' || el.tagName === 'OL') [...el.children].forEach(li => item.push({ runs: kalimat1(runsDari(li), 22), li: true }));
+      else if (el.tagName === 'TABLE' && !adaTabel) { adaTabel = true; const head = [...el.querySelectorAll('thead th')].map(x => x.textContent.trim()), rows = [...el.querySelectorAll('tbody tr')].slice(0, 5).map(tr => [...tr.children].map(x => x.textContent.trim().split(/(?<=[.!?])\s/)[0])); C.push({ s: { t: 'tabel', judul: s.judul, head, rows }, p: 6, bi }); }
+      else if (el.classList.contains('rute') && !adaRute) { adaRute = true; const r = { t: 'rute', judul: s.judul, item: [...doc.querySelectorAll('.rute')].slice(0, 4).map(x => ({ nama: x.querySelector('b').textContent, warna: (x.getAttribute('style') || '').match(/#[0-9a-f]{6}/i)?.[0] || '#2B3A67', langkah: [...x.querySelectorAll('li')].slice(0, 3).map(y => y.textContent.trim()) })) }; C.push({ s: r, p: 6, bi }); }
     }
-    if (rute) sl.push(rute);
-    tutup();
-    (b.visual || []).filter(v => v.bagian === b.bagian.indexOf(s)).forEach(v => sl.push({ t: 'visual', judul: v.judul, v }));
-    if (s.kartu && b.kartu) for (let i = 0; i < b.kartu.length; i += 3) sl.push({ t: 'tokoh', judul: 'Tokoh penting', item: b.kartu.slice(i, i + 3) });
+    // pilih 4 poin: utamakan yang memuat istilah tebal, tetap urut
+    const skor = item.map((it, i) => { const n = kata(teksDari(it.runs)); return { i, v: (it.runs.some(r => r.b) ? 2 : 0) + (i === 0 ? 1.5 : 0) - (n > 34 ? 3 : n > 26 ? 1 : 0) }; });
+    item.forEach(it => { if (kata(teksDari(it.runs)) > 34) it.runs = kalimat1(it.runs, 30); });
+    const ambil = skor.sort((a, b2) => b2.v - a.v || a.i - b2.i).slice(0, 4).map(x => x.i).sort((a, b2) => a - b2).map(i => item[i]);
+    if (ambil.length) C.push({ s: { t: 'poin', judul: s.judul, item: ambil }, p: 1, bi });
+    const v = (b.visual || []).find(v2 => v2.bagian === bi); if (v) C.push({ s: { t: 'visual', judul: v.judul, v }, p: 4, bi });
     if (s.cinta) cinta.push(s.cinta);
-  }
-  // gabungkan slide teks yang terlalu pendek dengan slide di dekatnya
-  const kataSl = s => s.item.reduce((x, it) => x + kata(teksDari(it.runs)), 0);
-  for (let i = 0; i < sl.length; i++) {
-    const s = sl[i]; if (s.t !== 'poin' || i < 2 || kataSl(s) >= 30) continue;
-    const nx = sl[i + 1], pv = sl[i - 1];
-    if (nx && (nx.t === 'tabel' || nx.t === 'rute') && nx.judul === s.judul && !nx.pengantar) { nx.pengantar = s.item.map(it => teksDari(it.runs)).join(' '); sl.splice(i--, 1); }
-    else if (pv && pv.t === 'poin' && pv.judul === s.judul && pv.item.length + s.item.length <= 7 && kataSl(pv) + kataSl(s) <= 110) { pv.item.push(...s.item); sl.splice(i--, 1); }
-  }
+  });
   if (b.jelajah && b.jelajah.lapisan) {
-    const L = b.jelajah.mode === 'waktu' ? b.jelajah.lapisan : b.jelajah.lapisan.slice().reverse();
-    for (let i = 0; i < L.length; i += 5) sl.push({ t: 'waktu', judul: b.jelajah.mode === 'waktu' ? 'Garis waktu' : 'Lapisan zaman', item: L.slice(i, i + 5).map(x => ({ th: x.th || '', n: x.n, t: x.t, ket: x.ket, c: x.c })) });
+    const L0 = b.jelajah.mode === 'waktu' ? b.jelajah.lapisan : b.jelajah.lapisan.slice().reverse();
+    const L = L0.length <= 5 ? L0 : [0, 1, 2, 3, 4].map(i => L0[Math.round(i * (L0.length - 1) / 4)]);
+    tambah({ t: 'waktu', judul: b.jelajah.mode === 'waktu' ? 'Garis waktu' : 'Lapisan zaman', item: L.map(x => ({ th: x.th || '', n: x.n, t: x.t, ket: x.ket, c: x.c })) }, 3);
   }
-  if (b.kartu && !b.bagian.some(s => s.kartu)) for (let i = 0; i < b.kartu.length; i += 3) sl.push({ t: 'tokoh', judul: 'Tokoh penting', item: b.kartu.slice(i, i + 3) });
-  const G = (await ambilGambar())[`${kid}-${id}`] || [];
-  G.slice(0, 8).forEach(g => sl.push({ t: 'foto', judul: g.judul, ket: g.ket, file: g.file, kredit: g.guru ? 'Koleksi guru' : `${pembuat(g.pembuat)}${g.lisensi || ''} · Wikimedia Commons` }));
-  if (b.glosarium) for (let i = 0; i < b.glosarium.length; i += 8) sl.push({ t: 'istilah', judul: 'Istilah penting', item: b.glosarium.slice(i, i + 8) });
-  if (cinta.length) sl.push({ t: 'cinta', judul: modeSekolah() ? 'Refleksi nilai' : 'Refleksi Panca Cinta', item: cinta.slice(0, 3) });
-  const hots = acak(b.soal.filter(q => /C[456]/.test(q.l || ''))).slice(0, 3);
-  if (hots.length) sl.push({ t: 'diskusi', judul: 'Mari berdiskusi', item: hots.map(q => ({ s: q.s, q: q.q })) });
-  if (b.esai && b.esai.length) sl.push({ t: 'poin', judul: 'Pertanyaan uraian', item: b.esai.map(e => ({ runs: [{ text: e.q }], li: true })) });
-  sl.push({ t: 'penutup', judul: 'Tugas mandiri', kid, id, kkm: c.kkm, url: `${alamatDasar()}#${kid}-${id}`, babJudul: b.judul });
+  if (b.kartu && b.kartu.length) tambah({ t: 'tokoh', judul: 'Tokoh penting', item: b.kartu.slice(0, 3) }, 3);
+  const G = ((await ambilGambar())[`${kid}-${id}`] || []).map(g => ({ judul: g.judul, ket: g.ket, file: g.file, kredit: g.guru ? 'Koleksi guru' : `${pembuat(g.pembuat)}${g.lisensi || ''} · Wikimedia Commons` }));
+  // pasangkan foto paling relevan ke setiap slide materi (kecocokan kata), sisanya ke pemantik / slide foto
+  const tok = s2 => new Set(String(s2).toLowerCase().replace(/<[^>]+>/g, ' ').match(/[a-z]{4,}/g) || []);
+  const materi = C.filter(x => x.bi !== undefined && x.s.t === 'poin'), pakai = new Set();
+  const nilai = materi.map(x => { const T = tok(b.bagian[x.bi].judul + ' ' + b.bagian[x.bi].isi); return G.map(g => [...tok(g.judul + ' ' + (g.ket || ''))].filter(w => T.has(w)).length); });
+  for (let r = 0; r < materi.length; r++) { let best = null; materi.forEach((x, mi) => { if (x.s.foto) return; G.forEach((g, gi) => { if (pakai.has(gi)) return; const v = nilai[mi][gi]; if (!best || v > best.v) best = { v, mi, gi }; }); }); if (!best) break; materi[best.mi].s.foto = G[best.gi]; pakai.add(best.gi); }
+  const sisaG = G.filter((g, i) => !pakai.has(i));
+  const pem = C.find(x => x.s.besar); if (pem && sisaG[0]) pem.s.foto = sisaG.shift();
+  sisaG.slice(0, 1).forEach(g => tambah({ t: 'foto', ...g }, 7));
+  if (b.glosarium && b.glosarium.length) tambah({ t: 'istilah', judul: 'Istilah penting', item: b.glosarium.slice(0, 6) }, 8);
+  if (cinta.length) tambah({ t: 'cinta', judul: modeSekolah() ? 'Refleksi nilai' : 'Refleksi Panca Cinta', item: cinta.slice(0, 2) }, 5);
+  const diskusi = [...esai.filter(q => q !== pemantik).map(q => ({ s: '', q })), ...tanya.slice(1).map(q => ({ s: q.s, q: q.q }))].slice(0, 2);
+  if (diskusi.length) tambah({ t: 'diskusi', judul: 'Mari berdiskusi', item: diskusi }, 2);
+  tambah({ t: 'penutup', judul: 'Tugas mandiri', kid, id, kkm: c.kkm, url: `${alamatDasar()}#${kid}-${id}`, babJudul: b.judul }, 0);
+  // buang yang kurang penting sampai muat; urutan slide tetap
+  while (C.length > MAKS) { let j = 0; C.forEach((x, i) => { if (x.p >= C[j].p) j = i; }); C.splice(j, 1); }
+  // susun urutan: pembuka, materi (dengan tabel/rute/visual di bagiannya), garis waktu, tokoh, foto, istilah, refleksi, diskusi, penutup
+  const urut = ['judul', 'diskusi0', 'poin0', 'materi', 'waktu', 'tokoh', 'foto', 'istilah', 'cinta', 'diskusi', 'penutup'];
+  const kunci = x => x.bi !== undefined ? 'materi' : x.s.judul === 'Pertanyaan pemantik' ? 'diskusi0' : x.s.judul === 'Tujuan pembelajaran' ? 'poin0' : x.s.t;
+  const sl = C.map((x, i) => ({ x, i })).sort((a, z) => urut.indexOf(kunci(a.x)) - urut.indexOf(kunci(z.x)) || a.i - z.i).map(o => o.x.s);
   return { sl, warna: d.warna, b, k };
 }
 
 /* ---------- PRESENTASI LAYAR PENUH ---------- */
 const runsHTML = runs => runs.map(r => { let t = esc(r.text); if (r.b) t = `<b>${t}</b>`; if (r.i) t = `<i>${t}</i>`; return t; }).join('');
+function pasVisual(root) { root.querySelectorAll('.sl-visual').forEach(v => { const c = v.firstElementChild; if (!c) return; for (const z of [1.3, 1.2, 1.1, 1]) { c.style.zoom = z; if (v.scrollHeight <= v.clientHeight + 1) break; } }); }
 function slideHTML(s, w, total, n, qr) {
   const kaki = `<div class="sl-kaki"><span>Ruang Historia</span><span>${n} / ${total}</span></div>`;
   const head = `<div class="sl-pita"></div><h2 class="sl-judul">${esc(s.judul)}</h2>${s.sub ? `<p class="sl-sub">${esc(s.sub)}</p>` : ''}`;
   if (s.t === 'judul') return `<div class="sl sl-cover"><div class="sl-cover-isi"><small>${esc(s.ruang)} · Bab ${s.bab} · ${esc(s.masa)}</small><h1>${esc(s.judul)}</h1><p>${esc(s.sub)}</p></div><img src="icons/logo.svg" alt="" class="sl-logo">${kaki}</div>`;
+  const huruf = (s.judul.match(/^([A-Z])\.\s/) || [])[1];
+  if (s.t === 'poin' && s.item.length <= 4) { const w2 = s.item.reduce((a, x) => a + kata(teksDari(x.runs)), 0), n2 = s.item.length; return `<div class="sl ${s.foto ? 'sl-dgfoto' : ''}">${s.foto ? `<figure class="sl-fig"><img src="${esc(s.foto.file)}" alt="${esc(s.foto.judul)}"><figcaption><b>${esc(s.foto.judul)}</b> · ${esc(s.foto.kredit)}</figcaption></figure>` : ''}${head}${!s.foto && huruf ? `<span class="sl-huruf">${huruf}</span>` : s.judul === 'Tujuan pembelajaran' ? '<span class="sl-huruf">🎯</span>' : ''}<div class="sl-kartu k${n2} ${w2 > 80 ? 'padat' : w2 < 35 ? 'lega' : ''}">${s.item.map((x, i) => `<div><span class="no">${i + 1}</span><p>${runsHTML(x.runs)}</p></div>`).join('')}</div>${kaki}</div>`; }
   if (s.t === 'poin') { const w2 = s.item.reduce((a, x) => a + kata(teksDari(x.runs)), 0); return `<div class="sl">${head}<ul class="sl-poin ${w2 > 70 ? 'kecil' : ''}">${s.item.map(x => `<li class="${x.li ? 'li' : 'p'} ${x.catatan ? 'cat' : ''}">${x.no ? `<i>${x.no}.</i> ` : ''}${runsHTML(x.runs)}</li>`).join('')}</ul>${kaki}</div>`; }
   const peng = s.pengantar ? `<p class="sl-pengantar">${esc(s.pengantar)}</p>` : '';
   if (s.t === 'tabel') return `<div class="sl">${head}${peng}<div class="sl-tabel"><table>${s.head.length ? `<thead><tr>${s.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>` : ''}<tbody>${s.rows.map(r => `<tr>${r.map(x => `<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${kaki}</div>`;
@@ -1003,7 +1007,9 @@ function slideHTML(s, w, total, n, qr) {
   if (s.t === 'foto') return `<div class="sl sl-foto"><img src="${esc(s.file)}" alt="${esc(s.judul)}"><div class="sl-foto-ket"><b>${esc(s.judul)}</b>${s.ket ? `<p>${esc(s.ket)}</p>` : ''}<small>${esc(s.kredit)}</small></div>${kaki}</div>`;
   if (s.t === 'istilah') return `<div class="sl">${head}<dl class="sl-istilah">${s.item.map(g => `<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join('')}</dl>${kaki}</div>`;
   if (s.t === 'cinta') return `<div class="sl">${head}<div class="sl-cinta">${s.item.map(x => `<div><b>${esc(x[0])}</b><p>${esc(x[1])}</p></div>`).join('')}</div>${kaki}</div>`;
-  if (s.t === 'diskusi') return `<div class="sl">${head}<ol class="sl-diskusi">${s.item.map(x => `<li>${x.s ? `<p class="stim">${esc(x.s)}</p>` : ''}<p>${esc(x.q)}</p></li>`).join('')}</ol>${kaki}</div>`;
+  if (s.t === 'diskusi' && s.besar) return `<div class="sl sl-pemantik ${s.foto ? 'sl-dgfoto' : ''}">${s.foto ? `<figure class="sl-fig"><img src="${esc(s.foto.file)}" alt="${esc(s.foto.judul)}"><figcaption><b>${esc(s.foto.judul)}</b> · ${esc(s.foto.kredit)}</figcaption></figure>` : ''}${head}<div class="sl-tanya"><span>?</span><p>${esc(s.item[0].q)}</p></div><p class="sl-ajak">Pikirkan sejenak, lalu sampaikan dugaanmu. Kita temukan jawabannya bersama dalam materi hari ini.</p>${kaki}</div>`;
+  if (s.t === 'diskusi') return `<div class="sl">${head}<span class="sl-huruf">💬</span><div class="sl-kartu k${s.item.length === 2 ? 1 : s.item.length} lega">${s.item.map((x, i) => `<div><span class="no">${i + 1}</span><p>${x.s ? `<small class="stim">${esc(x.s)}</small>` : ''}${esc(x.q)}</p></div>`).join('')}</div>${kaki}</div>`;
+  if (s.t === 'diskusi-lama') return `<div class="sl">${head}<ol class="sl-diskusi">${s.item.map(x => `<li>${x.s ? `<p class="stim">${esc(x.s)}</p>` : ''}<p>${esc(x.q)}</p></li>`).join('')}</ol>${kaki}</div>`;
   if (s.t === 'penutup') return `<div class="sl sl-penutup">${head}<div class="sl-tugas"><ol><li>Buka <b>Ruang Historia</b>, Bab ${s.id}: ${esc(s.babJudul)}.</li><li>Baca seluruh materi dan tonton videonya.</li><li>Catat poin-poin penting di buku catatan.</li><li>Kerjakan kuis sampai nilai minimal <b>${s.kkm}</b> untuk membuka babak berikutnya.</li></ol><div class="sl-qr">${qr || ''}<small>Pindai untuk membuka bab ini</small></div></div>${kaki}</div>`;
   return '';
 }
@@ -1018,7 +1024,7 @@ async function presentasi(kid, id) {
 <div class="pr-kendali"><a class="btn alt" href="#guru">Tutup</a><button class="btn alt" type="button" id="pk">‹</button><span id="pn"></span><button class="btn alt" type="button" id="pl">›</button><button class="btn alt" type="button" id="pf">Layar penuh</button><button class="btn" type="button" id="pu">Unduh .pptx</button></div></div>`;
   const pr = app.querySelector('.presenter'), prs = document.getElementById('prs');
   const ukur = () => { const p = app.querySelector('.pr-panggung'); if (!p) return; const sk = Math.min(p.clientWidth / 1280, p.clientHeight / 720); prs.style.transform = `scale(${sk})`; };
-  const tampil = () => { prs.innerHTML = slideHTML(sl[i], warna, sl.length, i + 1, qr); document.getElementById('pn').textContent = `${i + 1} / ${sl.length}`; ukur(); };
+  const tampil = () => { prs.innerHTML = slideHTML(sl[i], warna, sl.length, i + 1, qr); pasVisual(prs); document.getElementById('pn').textContent = `${i + 1} / ${sl.length}`; ukur(); };
   const geser = n => { i = Math.max(0, Math.min(sl.length - 1, i + n)); tampil(); };
   document.getElementById('pk').onclick = () => geser(-1); document.getElementById('pl').onclick = () => geser(1);
   document.getElementById('pf').onclick = () => { document.fullscreenElement ? document.exitFullscreen() : pr.requestFullscreen?.(); };
@@ -1042,7 +1048,7 @@ async function unduhPPT(kid, id) {
   const W = 13.333, H = 7.5, C = hex(warna), NILA = '2B3A67', EMAS = 'E0B04A', TINTA = '2A1D14', LEMBUT = '6B5848', F = 'Calibri', FJ = 'Arial Black';
   const logo = await keData('icons/icon-192.png').catch(() => null);
   const dasar = (s, n) => { s.background = { color: 'FFFFFF' }; s.addShape(p.ShapeType.rect, { x: 0, y: 0, w: W, h: 0.18, fill: { color: C }, line: { color: C } }); s.addText(`Ruang Historia · ${k.judul} · Bab ${id}`, { x: 0.5, y: H - 0.45, w: 9, h: 0.3, fontFace: F, fontSize: 10, color: '8A7B6E' }); s.addText(`${n} / ${sl.length}`, { x: W - 1.7, y: H - 0.45, w: 1.2, h: 0.3, fontFace: F, fontSize: 10, color: '8A7B6E', align: 'right' }); };
-  const judul = (s, x) => { s.addText(x.judul, { x: 0.5, y: 0.4, w: W - 1, h: 0.75, fontFace: FJ, fontSize: 26, color: TINTA, fit: 'shrink' }); if (x.sub) s.addText(x.sub, { x: 0.5, y: 1.1, w: W - 1, h: 0.4, fontFace: F, fontSize: 15, color: C, bold: true }); return x.sub ? 1.6 : 1.35; };
+  const judul = (s, x) => { s.addText(x.judul, { x: 0.5, y: 0.4, w: W - 1 - (x.foto ? 4.4 : 0), h: 0.75, fontFace: FJ, fontSize: 26, color: TINTA, fit: 'shrink' }); if (x.sub) s.addText(x.sub, { x: 0.5, y: 1.1, w: W - 1, h: 0.4, fontFace: F, fontSize: 15, color: C, bold: true }); return x.sub ? 1.6 : 1.35; };
   for (let n = 0; n < sl.length; n++) {
     const x = sl[n], s = p.addSlide();
     if (x.t === 'judul') {
@@ -1063,10 +1069,21 @@ async function unduhPPT(kid, id) {
       s.addText(x.kredit, { x: 9, y: 5.6, w: 3.9, h: 1.1, fontFace: F, fontSize: 10, color: LEMBUT, valign: 'bottom' });
       continue;
     }
+    const FW = x.foto ? 4.4 : 0;
+    if (x.foto) { try { const im = await keData(x.foto.file); s.addImage({ data: im.data, x: W - FW + 0.1, y: 0.18, w: FW - 0.1, h: H - 0.18, sizing: { type: 'cover', w: FW - 0.1, h: H - 0.18 } }); s.addShape(p.ShapeType.rect, { x: W - FW + 0.1, y: H - 0.75, w: FW - 0.1, h: 0.75, fill: { color: '000000', transparency: 35 }, line: { color: '000000', transparency: 100 } }); s.addText(`${x.foto.judul} · ${x.foto.kredit}`, { x: W - FW + 0.2, y: H - 0.73, w: FW - 0.3, h: 0.7, fontFace: F, fontSize: 10, color: 'FFFFFF', valign: 'middle', fit: 'shrink' }); } catch {} }
     let y0 = judul(s, x);
     if (x.pengantar) { s.addText(x.pengantar, { x: 0.5, y: y0, w: W - 1, h: 0.7, fontFace: F, fontSize: 15, color: LEMBUT, valign: 'top', fit: 'shrink' }); y0 += 0.75; }
     const hT = H - 0.6 - y0;
-    if (x.t === 'poin') {
+    if ((x.t === 'poin' && x.item.length <= 4) || (x.t === 'diskusi' && !x.besar)) {
+      const it2 = x.t === 'poin' ? x.item.map(it => it.runs) : x.item.map(q => [{ text: q.q }]), n2 = it2.length, kol = n2 === 4 && !FW ? 2 : 1, bar = Math.ceil(n2 / kol);
+      const gw = FW ? 0.18 : 0.25, lw = (W - 1 - FW - gw * (kol - 1)) / kol, th = (hT - 0.1 - gw * (bar - 1)) / bar, w2 = it2.reduce((a, r) => a + kata(teksDari(r)), 0), fs = kol === 2 || FW ? (w2 > 80 ? 14 : w2 > 45 ? 16 : 18) : (w2 > 80 ? 17 : w2 > 45 ? 19 : 22);
+      it2.forEach((runs, i) => { const xx = 0.5 + (i % kol) * (lw + gw), yy = y0 + Math.floor(i / kol) * (th + gw);
+        s.addShape(p.ShapeType.roundRect, { x: xx, y: yy, w: lw, h: th, fill: { color: 'F6F1EA' }, line: { color: 'E6DDD4' }, rectRadius: 0.12 });
+        s.addShape(p.ShapeType.rect, { x: xx, y: yy + 0.12, w: 0.1, h: th - 0.24, fill: { color: C }, line: { color: C } });
+        s.addShape(p.ShapeType.ellipse, { x: xx + 0.3, y: yy + th / 2 - 0.27, w: 0.54, h: 0.54, fill: { color: C }, line: { color: C } });
+        s.addText(String(i + 1), { x: xx + 0.3, y: yy + th / 2 - 0.27, w: 0.54, h: 0.54, fontFace: FJ, fontSize: 16, color: 'FFFFFF', align: 'center', valign: 'middle' });
+        s.addText(runs.map(r => ({ text: r.text, options: { bold: r.b, italic: r.i, color: TINTA } })), { x: xx + 1.05, y: yy + 0.08, w: lw - 1.25, h: th - 0.16, fontFace: F, fontSize: fs, valign: 'middle', fit: 'shrink' }); });
+    } else if (x.t === 'poin') {
       const w2 = x.item.reduce((a, it) => a + kata(teksDari(it.runs)), 0), fs = w2 > 75 ? 16 : w2 > 50 ? 18 : 20;
       const teks = x.item.flatMap((it, n) => { const tanda = it.li ? (it.no ? `${it.no}.  ` : '•  ') : ''; const rr = it.runs.map((r, j) => ({ text: r.text, options: { bold: r.b, italic: r.i || it.catatan, color: it.catatan ? LEMBUT : TINTA, breakLine: j === it.runs.length - 1 && n < x.item.length - 1, paraSpaceAfter: 10 } })); if (tanda) rr.unshift({ text: tanda, options: { bold: true, color: C } }); return rr; });
       s.addText(teks, { x: 0.6, y: y0, w: W - 1.2, h: hT, fontFace: F, fontSize: fs, valign: 'top', fit: 'shrink' });
@@ -1110,6 +1127,9 @@ async function unduhPPT(kid, id) {
       kol.forEach((col, ci) => s.addText(col.flatMap(g => [{ text: g[0], options: { bold: true, color: C, fontSize: 16, breakLine: true } }, { text: g[1], options: { color: TINTA, fontSize: 14, breakLine: true, paraSpaceAfter: 10 } }]), { x: 0.6 + ci * 6.2, y: y0, w: 5.9, h: hT, fontFace: F, valign: 'top', fit: 'shrink' }));
     } else if (x.t === 'cinta') {
       s.addText(x.item.flatMap(c2 => [{ text: c2[0], options: { bold: true, color: C, fontSize: 18, breakLine: true } }, { text: c2[1], options: { color: TINTA, fontSize: 16, breakLine: true, paraSpaceAfter: 14 } }]), { x: 0.6, y: y0, w: W - 1.2, h: hT, fontFace: F, valign: 'top', fit: 'shrink' });
+    } else if (x.t === 'diskusi' && x.besar) {
+      s.addText(x.item[0].q, { x: 0.8, y: y0 + 0.4, w: 11.7 - FW, h: 2.8, fontFace: F, fontSize: 30, bold: true, color: TINTA, valign: 'middle' });
+      s.addText('Pikirkan sejenak, lalu sampaikan dugaanmu. Kita temukan jawabannya bersama dalam materi hari ini.', { x: 0.8, y: y0 + 3.4, w: 11.7 - FW, h: 0.6, fontFace: F, fontSize: 16, italic: true, color: LEMBUT });
     } else if (x.t === 'diskusi') {
       s.addText(x.item.flatMap((q, i) => [...(q.s ? [{ text: q.s, options: { italic: true, color: LEMBUT, fontSize: 14, breakLine: true } }] : []), { text: `${i + 1}. ${q.q}`, options: { bold: true, color: TINTA, fontSize: 17, breakLine: true, paraSpaceAfter: 14 } }]), { x: 0.6, y: y0, w: W - 1.2, h: hT, fontFace: F, valign: 'top', fit: 'shrink' });
     } else if (x.t === 'penutup') {
@@ -1378,6 +1398,7 @@ async function cetakSlide(kid, id) {
   let wadah = document.getElementById('cetak-slide'); if (wadah) wadah.remove();
   wadah = document.createElement('div'); wadah.id = 'cetak-slide'; wadah.style.setProperty('--c', warna);
   wadah.innerHTML = sl.map((s, i) => `<div class="cs-hal">${slideHTML(s, warna, sl.length, i + 1, qr)}</div>`).join('');
+  pasVisual(wadah);
   document.body.append(wadah);
   await Promise.all([...wadah.querySelectorAll('img')].map(im => im.complete ? 1 : new Promise(r => { im.onload = im.onerror = r; })));
   const t = document.title; document.title = namaBerkas(`Ruang Historia - ${cariK(kid).judul} Bab ${id} ${isiBab(kid, id).judul}`);

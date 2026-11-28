@@ -40,6 +40,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "grid", "judul": "Enam tuntutan Reformasi 1998", "item": [["1", "Adili Soeharto dan kroni-kroninya"], ["2", "Amandemen UUD 1945"], ["3", "Hapuskan dwifungsi ABRI"], ["4", "Otonomi daerah seluas-luasnya"], ["5", "Tegakkan supremasi hukum"], ["6", "Pemerintahan bersih dari KKN"]]},
+    {"bagian": 3, "t": "grafik", "judul": "Jumlah partai politik nasional peserta pemilu", "satuan": "partai", "data": [["1999", 48], ["2004", 24], ["2009", 38], ["2014", 12], ["2019", 16], ["2024", 18]], "sumber": "Data KPU. Partai lokal Aceh tidak dihitung.", "catatan": "Setelah Reformasi, rakyat bebas mendirikan partai; ambang batas parlemen kemudian menyaring jumlahnya."}
+  ],
   bagian: [
     { judul: "A. Enam agenda Reformasi",
       isi: `<p>Gerakan mahasiswa 1998 membawa enam tuntutan utama:</p>

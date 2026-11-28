@@ -42,6 +42,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 4, "t": "grid", "judul": "Organisasi Islam di Indonesia", "item": [["Muhammadiyah", "1912, Yogyakarta; K.H. Ahmad Dahlan"], ["Al-Irsyad", "1914, Jakarta"], ["Persatuan Islam (Persis)", "1923, Bandung"], ["Nahdlatul Ulama", "1926, Surabaya; K.H. Hasyim Asy'ari"], ["Al-Washliyah", "1930, Medan"], ["Persatuan Tarbiyah Islamiyah", "1928, Sumatra Barat"]]}
+  ],
   bagian: [
     { judul: "A. Mengapa pembaruan diperlukan?",
       isi: `<p>Sejak abad ke-18, dunia Islam mengalami <b>kemunduran</b>: tertinggal dalam ilmu dan teknologi, sebagian besar wilayahnya dijajah bangsa Eropa, dan sebagian umat terjebak dalam taklid buta serta praktik yang menyimpang dari ajaran Islam.</p>

@@ -48,6 +48,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "banding", "judul": "Tiga kerajaan besar Islam", "kolom": [["Turki Usmani", "#8a2a2a", ["1299–1922", "Pusat: Istanbul", "Sultan terkenal: Muhammad al-Fatih, Sulaiman al-Qanuni"]], ["Safawi", "#2f6a5a", ["1501–1736", "Pusat: Tabriz, lalu Isfahan", "Sultan terkenal: Syah Abbas I"]], ["Mughal", "#6a4a8a", ["1526–1857", "Pusat: Delhi dan Agra", "Sultan terkenal: Akbar, Syah Jahan (Taj Mahal)"]]]}
+  ],
   bagian: [
     { judul: "A. Tiga kerajaan, tiga wilayah",
       isi: `<p>Setelah Baghdad jatuh (1258), dunia Islam bangkit kembali melalui tiga kerajaan besar:</p>

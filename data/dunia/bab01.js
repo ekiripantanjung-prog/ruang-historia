@@ -34,6 +34,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "banding", "judul": "Empat peradaban lembah sungai", "kolom": [["Mesopotamia", "#8a5a2a", ["Sungai Tigris dan Efrat", "Tulisan paku", "Ziggurat; Hukum Hammurabi"]], ["Mesir Kuno", "#b08a2a", ["Sungai Nil", "Tulisan hieroglif", "Piramida; kalender 365 hari"]], ["Lembah Indus", "#2f6a5a", ["Sungai Indus", "Harappa dan Mohenjo-daro", "Tata kota dan saluran air teratur"]], ["Tiongkok Kuno", "#8a2a2a", ["Sungai Huang He", "Aksara Tiongkok", "Sutra, kertas, dan Tembok Besar"]]]}
+  ],
   bagian: [
     { judul: "A. Mengapa di lembah sungai?",
       isi: `<p>Peradaban adalah tahap kehidupan manusia yang sudah maju: ada kota, pemerintahan, tulisan, pembagian kerja, dan kepercayaan yang teratur. Empat peradaban tertua dunia lahir di <b>lembah sungai</b> karena:</p>

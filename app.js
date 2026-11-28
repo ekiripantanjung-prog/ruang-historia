@@ -311,17 +311,41 @@ function bab(kid, id, tab) {
   tampil(tab);
 }
 
+/* diagram & infografis materi */
+function visualHTML(v) {
+  const kepala = `<figcaption>${ikon(v.t === 'grafik' ? 'grafik' : v.t === 'banding' ? 'timbangan' : v.t === 'piramida' ? 'daftar' : 'olah')} ${esc(v.judul)}</figcaption>`;
+  let isi = '';
+  if (v.t === 'alur') isi = `<ol class="v-alur">${v.item.map(([j, k]) => `<li><b>${esc(j)}</b><span>${esc(k)}</span></li>`).join('')}</ol>`;
+  else if (v.t === 'sebab') isi = `<div class="v-sebab"><div class="v-kol"><small>Sebab</small>${v.sebab.map(x => `<div class="v-kotak">${esc(x)}</div>`).join('')}</div><div class="v-panah">➜</div><div class="v-inti">${esc(v.inti)}</div><div class="v-panah">➜</div><div class="v-kol"><small>Akibat</small>${v.akibat.map(x => `<div class="v-kotak akibat">${esc(x)}</div>`).join('')}</div></div>`;
+  else if (v.t === 'banding') isi = `<div class="v-banding" style="--n:${v.kolom.length}">${v.kolom.map(([j, w, p]) => `<div class="v-bkol" style="--w:${w}"><b>${esc(j)}</b><ul>${p.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>`;
+  else if (v.t === 'grafik') { const m = Math.max(...v.data.map(d => d[1])); isi = `<div class="v-grafik" role="img" aria-label="${esc(v.judul)}: ${v.data.map(d => `${d[0]} ${d[1]} ${v.satuan}`).join(', ')}">${v.data.map(([l, n]) => `<div class="v-bar"><span class="v-lbl">${esc(l)}</span><span class="v-batang"><i style="width:${Math.max(4, n / m * 100)}%"></i></span><b>${String(n).replace('.', ',')}${v.satuan === '%' ? '%' : ''}</b></div>`).join('')}<p class="v-satuan">${v.satuan === '%' ? 'Persentase suara' : 'Satuan: ' + esc(v.satuan)}</p></div>${v.catatan ? `<p class="v-cat">${esc(v.catatan)}</p>` : ''}<p class="v-sumber">Sumber: ${esc(v.sumber)}</p>`; }
+  else if (v.t === 'piramida') isi = `<div class="v-piramida">${v.lapis.map(([j, k], i) => `<div style="--i:${i};--n:${v.lapis.length}"><b>${esc(j)}</b><small>${esc(k)}</small></div>`).join('')}</div>${v.catatan ? `<p class="v-cat">${esc(v.catatan)}</p>` : ''}`;
+  else if (v.t === 'grid') isi = `<div class="v-grid">${v.item.map(([j, k]) => `<div><b>${esc(j)}</b><span>${esc(k)}</span></div>`).join('')}</div>`;
+  return `<figure class="visual v-${v.t}-wrap">${kepala}${isi}</figure>`;
+}
 function materi(b) {
   const j = b.jelajah;
   return `<div class="box"><h3>Tujuan pembelajaran</h3><ol class="tujuan">${b.tujuan.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div><div id="galeri"></div>
 ${j ? `<h2>${esc(j.judul)}</h2><div class="dig"><div><div class="strata ${j.mode === 'waktu' ? 'waktu' : ''}" id="strata">${j.mode === 'waktu' ? '' : `<div class="sky">${esc(j.atas)}</div><div class="grass"></div>`}${j.lapisan.map((x, k) => `<button class="layer" type="button" data-k="${k}" aria-pressed="false" style="background-color:${x.c}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span>${x.ikon ? `<svg viewBox="0 0 100 52" aria-hidden="true">${IKON[x.ikon] || ''}</svg>` : (j.mode === 'waktu' ? `<em class="thn">${esc(x.th || '')}</em>` : '')}</button>`).join('')}</div><div class="depth">${j.mode === 'waktu' ? '<span>lebih awal</span><span>lebih akhir</span>' : '<span>lebih muda</span><span>lebih tua, lebih dalam</span>'}</div></div><aside class="panel" id="panel" aria-live="polite"></aside></div>${j.catatan ? `<p class="catatan">${esc(j.catatan)}</p>` : ''}` : ''}
-${b.bagian.map(s => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi.replace(/<table/g, '<div class="tabel"><table').replace(/<\/table>/g, '</table></div>')}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>Refleksi ${esc(s.cinta[0].replace(/^Cinta/, 'cinta'))}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
+${b.bagian.map((s, bi) => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi.replace(/<table/g, '<div class="tabel"><table').replace(/<\/table>/g, '</table></div>')}${(b.visual || []).filter(v => v.bagian === bi).map(visualHTML).join('')}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>Refleksi ${esc(s.cinta[0].replace(/^Cinta/, 'cinta'))}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
 <div class="box row" style="justify-content:space-between"><span>Sudah selesai membaca? Uji pemahamanmu.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
 }
 /* Foto bersejarah dari Wikimedia Commons (lihat alat/cari_gambar.py) */
 const pembuat = t => { t = (t || '').replace(/(Unknown author|Unknown)+/gi, 'Pembuat tidak diketahui').replace(/(Pembuat tidak diketahui)(\s*\1)+/g, '$1').trim(); return t ? t.slice(0, 80) + ' · ' : ''; };
+/* foto tokoh dari foto yang ditambahkan guru (gambar/guru.json), dicocokkan dengan nama tokoh */
+const KATA_TOKOH = ['soekarno', 'hatta', 'soeharto', 'habibie', 'abdurrahman wahid', 'megawati', 'yudhoyono', 'joko widodo', 'prabowo'];
+function fotoTokoh(nama) {
+  const n = nama.toLowerCase(), kunci = KATA_TOKOH.find(k => new RegExp(`(^|[^a-z])${k.replace(/ /g, '\\s+')}($|[^a-z])`).test(n)); if (!kunci || !DAFTAR_GAMBAR) return null;
+  const pola = new RegExp(`(^|[^a-z])${kunci.replace(/ /g, '\\s+')}($|[^a-z])`);
+  const cocok = []; for (const L of Object.values(DAFTAR_GAMBAR)) for (const g of L) if (g.guru && g.file && pola.test(String(g.judul || g.ket || '').toLowerCase())) cocok.push(g);
+  return cocok.sort((x, y) => /presiden ke-/i.test(y.judul || '') - /presiden ke-/i.test(x.judul || ''))[0] || null;
+  return null;
+}
+function pasangFotoTokoh() {
+  document.querySelectorAll('.cards .flip').forEach(b => { const nm = (b.querySelector('.face b') || {}).textContent || '', g = fotoTokoh(nm), m = b.querySelector('.mono'); if (g && m) m.outerHTML = `<img class="foto-tokoh" src="${esc(g.file)}" alt="${esc(nm)}" loading="lazy">`; });
+}
 async function pasangGaleri(kid, id) {
-  await ambilGambar();
+  await ambilGambar(); pasangFotoTokoh();
   const L = DAFTAR_GAMBAR[`${kid}-${id}`], el = document.getElementById('galeri');
   if (!el || !L || !L.length) return;
   const sumber = g => g.guru ? `<small class="dari-guru">Ditambahkan guru</small>` : `<small>${esc(pembuat(g.pembuat))}${esc(g.lisensi || '')} · <a href="${esc(g.halaman)}" target="_blank" rel="noopener">sumber</a></small>`;
@@ -908,6 +932,7 @@ async function susunSlide(kid, id) {
     }
     if (rute) sl.push(rute);
     tutup();
+    (b.visual || []).filter(v => v.bagian === b.bagian.indexOf(s)).forEach(v => sl.push({ t: 'visual', judul: v.judul, v }));
     if (s.kartu && b.kartu) for (let i = 0; i < b.kartu.length; i += 3) sl.push({ t: 'tokoh', judul: 'Tokoh penting', item: b.kartu.slice(i, i + 3) });
     if (s.cinta) cinta.push(s.cinta);
   }
@@ -946,6 +971,7 @@ function slideHTML(s, w, total, n, qr) {
   if (s.t === 'tabel') return `<div class="sl">${head}${peng}<div class="sl-tabel"><table>${s.head.length ? `<thead><tr>${s.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>` : ''}<tbody>${s.rows.map(r => `<tr>${r.map(x => `<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${kaki}</div>`;
   if (s.t === 'rute') return `<div class="sl">${head}${peng}<div class="sl-rute">${s.item.map(r => `<div style="--c:${r.warna}"><b>${esc(r.nama)}</b><p>${r.langkah.map(esc).join(' <span>→</span> ')}</p></div>`).join('')}</div>${kaki}</div>`;
   if (s.t === 'waktu') return `<div class="sl">${head}<div class="sl-waktu">${s.item.map(x => `<div style="--c:${x.c || w}"><span class="th">${esc(x.th)}</span><b>${esc(x.n)}</b><small>${esc(x.t || '')}</small><p>${esc(x.ket || '')}</p></div>`).join('')}</div>${kaki}</div>`;
+  if (s.t === 'visual') return `<div class="sl">${head}<div class="sl-visual">${visualHTML(s.v)}</div>${kaki}</div>`;
   if (s.t === 'tokoh') return `<div class="sl">${head}<div class="sl-tokoh">${s.item.map(x => `<div><b>${esc(x.nama)}</b><small>${esc(x.info)}</small><p>${esc(x.isi)}</p></div>`).join('')}</div>${kaki}</div>`;
   if (s.t === 'foto') return `<div class="sl sl-foto"><img src="${esc(s.file)}" alt="${esc(s.judul)}"><div class="sl-foto-ket"><b>${esc(s.judul)}</b>${s.ket ? `<p>${esc(s.ket)}</p>` : ''}<small>${esc(s.kredit)}</small></div>${kaki}</div>`;
   if (s.t === 'istilah') return `<div class="sl">${head}<dl class="sl-istilah">${s.item.map(g => `<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join('')}</dl>${kaki}</div>`;
@@ -1023,6 +1049,25 @@ async function unduhPPT(kid, id) {
       if (x.head.length) rows.push(x.head.map(h => ({ text: h, options: { bold: true, color: 'FFFFFF', fill: { color: C } } })));
       x.rows.forEach((r, i) => rows.push(r.map(c2 => ({ text: c2, options: { fill: { color: i % 2 ? 'F6F1EA' : 'FFFFFF' } } }))));
       s.addTable(rows, { x: 0.5, y: y0, w: W - 1, fontFace: F, fontSize: fs, color: TINTA, border: { type: 'solid', pt: 0.75, color: 'D8CFC4' }, valign: 'top', margin: 0.06 });
+    } else if (x.t === 'visual') {
+      const v = x.v, kecil = { fontFace: F, color: TINTA, valign: 'top', fit: 'shrink' };
+      if (v.t === 'grafik') {
+        s.addChart(p.ChartType.bar, [{ name: v.satuan, labels: v.data.map(d => String(d[0])), values: v.data.map(d => d[1]) }], { x: 0.6, y: y0, w: W - 1.2, h: hT - 0.9, barDir: 'bar', chartColors: [C], showValue: true, dataLabelFontSize: 14, catAxisLabelFontSize: 14, valAxisHidden: true, valGridLine: { style: 'none' }, catAxisOrientation: 'maxMin' });
+        s.addText(`${v.catatan ? v.catatan + ' ' : ''}Sumber: ${v.sumber}`, { x: 0.6, y: H - 1.4, w: W - 1.2, h: 0.75, fontSize: 12, ...kecil, color: LEMBUT });
+      } else if (v.t === 'banding') {
+        const n = v.kolom.length, lb = (W - 1 - (n - 1) * 0.2) / n;
+        v.kolom.forEach(([j, w, pts], i) => { const xx = 0.5 + i * (lb + 0.2); s.addShape(p.ShapeType.rect, { x: xx, y: y0, w: lb, h: 0.1, fill: { color: hex(w) }, line: { color: hex(w) } }); s.addText([{ text: j, options: { bold: true, color: hex(w), fontSize: 18, breakLine: true } }, ...pts.map(t => ({ text: t, options: { bullet: true, fontSize: 15, breakLine: true, paraSpaceBefore: 4 } }))], { x: xx, y: y0 + 0.15, w: lb, h: hT - 0.3, ...kecil }); });
+      } else if (v.t === 'sebab') {
+        const lb = (W - 1.6) / 3;
+        s.addText([{ text: 'SEBAB', options: { bold: true, color: LEMBUT, fontSize: 12, breakLine: true } }, ...v.sebab.map(t => ({ text: t, options: { bullet: true, fontSize: 15, breakLine: true } }))], { x: 0.5, y: y0, w: lb, h: hT - 0.2, ...kecil });
+        s.addShape(p.ShapeType.roundRect, { x: 0.8 + lb, y: y0 + hT / 2 - 0.8, w: lb, h: 1.6, fill: { color: C }, line: { color: C }, rectRadius: 0.15 });
+        s.addText(v.inti, { x: 0.85 + lb, y: y0 + hT / 2 - 0.8, w: lb - 0.1, h: 1.6, fontFace: F, fontSize: 17, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', fit: 'shrink' });
+        s.addText([{ text: 'AKIBAT', options: { bold: true, color: LEMBUT, fontSize: 12, breakLine: true } }, ...v.akibat.map(t => ({ text: t, options: { bullet: true, fontSize: 15, breakLine: true } }))], { x: 1.1 + 2 * lb, y: y0, w: lb, h: hT - 0.2, ...kecil });
+      } else {
+        const it = v.t === 'piramida' ? v.lapis : v.item, n = it.length, per = v.t === 'alur' ? Math.min(n, 4) : Math.min(n, 3), baris = Math.ceil(n / per), lb = (W - 1 - (per - 1) * 0.15) / per, tg = (hT - 0.2 - (baris - 1) * 0.15) / baris;
+        it.forEach(([j, k], i) => { const xx = 0.5 + (i % per) * (lb + 0.15), yy = y0 + Math.floor(i / per) * (tg + 0.15); s.addShape(p.ShapeType.roundRect, { x: xx, y: yy, w: lb, h: tg, fill: { color: 'F6F1EA' }, line: { color: 'E6DDD4' }, rectRadius: 0.1 }); s.addText([{ text: (v.t === 'alur' ? `${i + 1}. ` : '') + j, options: { bold: true, color: C, fontSize: 16, breakLine: true } }, { text: k, options: { fontSize: 14 } }], { x: xx + 0.1, y: yy + 0.05, w: lb - 0.2, h: tg - 0.1, ...kecil }); });
+        if (v.catatan) s.addText(v.catatan, { x: 0.5, y: H - 1.0, w: W - 1, h: 0.4, fontSize: 12, ...kecil, color: LEMBUT });
+      }
     } else if (x.t === 'rute') {
       const tinggi = Math.min(1.35, hT / x.item.length);
       x.item.forEach((r, i) => { const y = y0 + i * tinggi; s.addShape(p.ShapeType.rect, { x: 0.5, y, w: 0.12, h: tinggi - 0.15, fill: { color: hex(r.warna) }, line: { color: hex(r.warna) } }); s.addText(r.nama, { x: 0.75, y, w: 3, h: 0.4, fontFace: F, fontSize: 18, bold: true, color: hex(r.warna) }); s.addText(r.langkah.join('  →  '), { x: 0.75, y: y + 0.4, w: W - 1.4, h: tinggi - 0.55, fontFace: F, fontSize: 15, color: TINTA, valign: 'top', fit: 'shrink' }); });

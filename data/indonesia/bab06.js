@@ -53,6 +53,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "banding", "judul": "Dua strategi perjuangan organisasi pergerakan", "kolom": [["Kooperatif", "#2f6a5a", ["Mau bekerja sama dengan pemerintah kolonial", "Memperjuangkan nasib rakyat lewat Volksraad", "Contoh: Budi Utomo, Parindra"]], ["Nonkooperatif", "#8a2a2a", ["Menolak bekerja sama dengan pemerintah kolonial", "Menuntut kemerdekaan secara tegas", "Contoh: Perhimpunan Indonesia, PNI"]]]}
+  ],
   bagian: [
     { judul: "A. Mengapa pergerakan nasional lahir?",
       isi: `<p>Pada awal abad ke-20, cara berjuang berubah. Dari perang senjata per daerah menjadi perjuangan lewat <b>organisasi modern</b>. Pendorongnya:</p>

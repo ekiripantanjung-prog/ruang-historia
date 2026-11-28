@@ -42,6 +42,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "grid", "judul": "Ilmuwan masa keemasan Islam", "item": [["Al-Khawarizmi", "Matematika: aljabar dan algoritma"], ["Ibnu Sina", "Kedokteran: Al-Qanun fi ath-Thibb"], ["Ar-Razi", "Kedokteran dan kimia"], ["Al-Kindi", "Filsafat dan ilmu pengetahuan"], ["Al-Farabi", "Filsafat dan musik"], ["Baitul Hikmah", "Pusat penerjemahan dan ilmu di Baghdad"]]}
+  ],
   bagian: [
     { judul: "A. Berdiri dan berpusat di Baghdad",
       isi: `<p>Dinasti Abbasiyah berdiri pada 750 M setelah mengalahkan Umayyah. Khalifah kedua, <b>Abu Ja'far al-Mansur</b>, membangun <b>Baghdad</b> (762 M) di tepi Sungai Tigris. Letaknya strategis di jalur dagang antara Timur dan Barat.</p>

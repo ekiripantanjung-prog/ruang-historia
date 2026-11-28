@@ -48,6 +48,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "grafik", "judul": "Perolehan suara Golkar pada pemilu Orde Baru", "satuan": "%", "data": [["1971", 62.8], ["1977", 62.1], ["1982", 64.3], ["1987", 73.2], ["1992", 68.1], ["1997", 74.5]], "sumber": "Hasil resmi pemilu 1971–1997.", "catatan": "Golkar selalu menang besar; sejak 1973 partai lain disederhanakan menjadi PPP dan PDI."},
+    {"bagian": 4, "t": "sebab", "judul": "Runtuhnya Orde Baru", "sebab": ["Krisis moneter 1997: rupiah anjlok", "Harga naik dan banyak PHK", "Praktik KKN", "Demonstrasi mahasiswa dan Tragedi Trisakti (12 Mei 1998)"], "inti": "Presiden Soeharto berhenti, 21 Mei 1998", "akibat": ["B.J. Habibie menjadi presiden", "Dimulainya masa Reformasi"]}
+  ],
   bagian: [
     { judul: "A. Stabilitas politik",
       isi: `<p>Orde Baru menempatkan <b>stabilitas</b> sebagai syarat pembangunan. Kebijakannya antara lain:</p>

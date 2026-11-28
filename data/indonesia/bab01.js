@@ -45,6 +45,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 4, "t": "alur", "judul": "Periodisasi bumi berdasarkan geologi", "item": [["Arkaikum", "± 2.500 juta tahun lalu; kerak bumi masih panas, belum ada kehidupan"], ["Paleozoikum", "Kehidupan awal: makhluk bersel satu, ikan, amfibi"], ["Mesozoikum", "Zaman reptil raksasa seperti dinosaurus"], ["Neozoikum: Tersier", "Mamalia berkembang"], ["Neozoikum: Kuarter", "Manusia muncul; terbagi Pleistosen dan Holosen"]]},
+    {"bagian": 5, "t": "alur", "judul": "Perkembangan teknologi masa praaksara", "item": [["Paleolitikum", "Kapak perimbas, alat serpih; berburu dan meramu"], ["Mesolitikum", "Kjokkenmoddinger dan abris sous roche; mulai semi-menetap"], ["Neolitikum", "Kapak persegi dan lonjong diasah halus; bercocok tanam"], ["Megalitikum", "Menhir, dolmen, punden berundak untuk pemujaan"], ["Perundagian", "Nekara, moko, kapak corong dari logam"]]}
+  ],
   bagian: [
     { judul: "A. Apa itu praaksara?",
       isi: `<p><b>Praaksara</b> berasal dari kata <i>pra</i> (sebelum) dan <i>aksara</i> (tulisan). Masa praaksara adalah masa ketika manusia belum mengenal tulisan. Istilah lamanya "prasejarah", tetapi istilah itu kurang tepat: manusia yang belum menulis pun tetap punya sejarah.</p>

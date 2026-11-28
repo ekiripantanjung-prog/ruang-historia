@@ -44,6 +44,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "grid", "judul": "Enam saluran islamisasi di Nusantara", "item": [["Perdagangan", "Pedagang Muslim berdagang sambil berdakwah"], ["Perkawinan", "Pedagang Muslim menikah dengan penduduk setempat"], ["Pendidikan", "Pesantren dan pengajian melahirkan ulama"], ["Tasawuf", "Ajaran sufi yang mudah diterima masyarakat"], ["Kesenian", "Wayang, gamelan, dan tembang sebagai media dakwah"], ["Politik", "Raja yang masuk Islam diikuti rakyatnya"]]}
+  ],
   bagian: [
     { judul: "A. Kapan dan dari mana Islam datang?",
       isi: `<p>Islam masuk ke Nusantara melalui jalur perdagangan yang sama dengan masa Hindu-Buddha. Para ahli mengajukan beberapa teori:</p>

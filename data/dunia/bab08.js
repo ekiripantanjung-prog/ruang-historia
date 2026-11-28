@@ -45,6 +45,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "banding", "judul": "Dua blok dalam Perang Dingin", "kolom": [["Blok Barat", "#3a6a8a", ["Dipimpin Amerika Serikat", "Liberalisme dan kapitalisme", "Pakta militer NATO (1949)"]], ["Blok Timur", "#8a2a2a", ["Dipimpin Uni Soviet", "Komunisme dan ekonomi terpusat", "Pakta Warsawa (1955)"]], ["Non-Blok", "#2f6a5a", ["Tidak memihak blok mana pun", "Diprakarsai antara lain Indonesia (KTT Beograd 1961)", "Politik bebas aktif"]]]}
+  ],
   bagian: [
     { judul: "A. Dua blok yang bersaing",
       isi: `<table><thead><tr><th>Blok Barat</th><th>Blok Timur</th></tr></thead><tbody>

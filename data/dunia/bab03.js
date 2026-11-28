@@ -45,6 +45,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "piramida", "judul": "Susunan masyarakat feodal Eropa", "lapis": [["Raja", "pemilik seluruh tanah"], ["Bangsawan (tuan tanah)", "menerima tanah dari raja"], ["Ksatria", "berperang untuk bangsawan"], ["Petani (serf)", "menggarap tanah, mendapat perlindungan"]], "catatan": "Gereja juga berpengaruh sangat besar dalam kehidupan Eropa Abad Pertengahan."}
+  ],
   bagian: [
     { judul: "A. Eropa Abad Pertengahan",
       isi: `<p>Setelah Romawi Barat runtuh, Eropa Barat terpecah menjadi banyak kerajaan kecil. Kehidupan diatur oleh <b>feodalisme</b>:</p>

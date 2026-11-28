@@ -43,6 +43,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 2, "t": "alur", "judul": "Perkembangan lembaga pendidikan Islam", "item": [["Langgar dan surau", "Belajar mengaji dan dasar-dasar agama"], ["Pesantren", "Santri tinggal bersama kiai, mengkaji kitab"], ["Madrasah", "Sistem kelas dan mata pelajaran umum"], ["Perguruan tinggi Islam", "IAIN, UIN, dan universitas Islam lainnya"]]}
+  ],
   bagian: [
     { judul: "A. Ciri Islam di Nusantara",
       isi: `<p>Islam masuk ke Nusantara melalui perdagangan, perkawinan, pendidikan, tasawuf, dan kesenian, secara <b>damai</b> dan <b>bertahap</b>. Karena itu Islam di Nusantara memiliki ciri:</p>

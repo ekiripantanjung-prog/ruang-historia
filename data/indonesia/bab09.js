@@ -49,6 +49,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "grafik", "judul": "Hasil Pemilu 1955 untuk DPR: empat partai terbesar", "satuan": "kursi", "data": [["PNI", 57], ["Masyumi", 57], ["NU", 45], ["PKI", 39]], "sumber": "Hasil resmi Pemilu 1955 (257 kursi DPR yang diperebutkan).", "catatan": "Tidak ada partai yang menang mutlak, sehingga kabinet harus dibentuk dari gabungan partai dan mudah jatuh."},
+    {"bagian": 2, "t": "banding", "judul": "Demokrasi Liberal dan Demokrasi Terpimpin", "kolom": [["Demokrasi Liberal (1950–1959)", "#3a6a8a", ["Sistem parlementer; kabinet bertanggung jawab kepada parlemen", "Banyak partai, kabinet sering berganti", "Berakhir dengan Dekret Presiden 5 Juli 1959"]], ["Demokrasi Terpimpin (1959–1965)", "#8a4a2a", ["Kekuasaan terpusat pada presiden", "Nasakom; DPR hasil pemilu dibubarkan (1960)", "Berakhir setelah Peristiwa 1965 dan Supersemar"]]]}
+  ],
   bagian: [
     { judul: "A. Demokrasi Liberal (1950–1959)",
       isi: `<p>Setelah RIS dibubarkan, Indonesia kembali menjadi <b>negara kesatuan</b> pada 17 Agustus 1950 dengan <b>UUD Sementara 1950</b>. Sistemnya parlementer: perdana menteri memimpin kabinet, presiden sebagai kepala negara. Masa ini memiliki sisi terang dan sisi gelap:</p>

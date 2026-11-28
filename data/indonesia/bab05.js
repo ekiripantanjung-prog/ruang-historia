@@ -43,6 +43,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 5, "t": "sebab", "judul": "Mengapa perlawanan daerah belum berhasil?", "sebab": ["Bersifat kedaerahan, belum bersatu", "Sangat bergantung pada pemimpin", "Senjata kalah modern", "Politik adu domba (devide et impera)"], "inti": "Perlawanan dapat dipatahkan Belanda", "akibat": ["Muncul kesadaran perlunya persatuan", "Perjuangan berganti cara: organisasi pergerakan nasional"]}
+  ],
   bagian: [
     { judul: "A. Mengapa rakyat melawan?",
       isi: `<ul>

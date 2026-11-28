@@ -67,6 +67,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "banding", "judul": "Tiga istilah yang sering tertukar", "kolom": [["Kolonialisme", "#7a4e2a", ["Penguasaan wilayah lain secara langsung", "Membangun koloni dan pemerintahan", "Contoh: Belanda menguasai Nusantara"]], ["Imperialisme", "#6a4a8a", ["Paham memperluas kekuasaan dan pengaruh", "Bisa lewat politik, ekonomi, budaya, atau militer", "Kolonialisme adalah salah satu wujudnya"]], ["Merkantilisme", "#2f6a5a", ["Paham ekonomi: kekayaan negara diukur dari emas dan perak", "Ekspor diperbanyak, impor dibatasi", "Mendorong pencarian bahan baku dan pasar baru"]]]},
+    {"bagian": 2, "t": "sebab", "judul": "Mengapa bangsa Eropa menjelajahi samudra?", "sebab": ["Jatuhnya Konstantinopel (1453)", "Semangat 3G: Gold, Glory, Gospel", "Renaisans dan berkembangnya ilmu", "Kompas, peta, dan kapal karavel", "Kisah perjalanan Marco Polo"], "inti": "Penjelajahan samudra (abad ke-15–16)", "akibat": ["Ditemukan jalur laut ke Asia dan Amerika", "Bangsa Eropa tiba di Nusantara", "Lahirnya kolonialisme dan imperialisme"]}
+  ],
   bagian: [
     { judul: "A. Memahami istilah: kolonialisme, imperialisme, dan merkantilisme",
       isi: `<p>Tiga istilah ini sering muncul bersama, tetapi maknanya berbeda.</p>

@@ -46,6 +46,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "banding", "judul": "Dua sisi globalisasi", "kolom": [["Peluang", "#2f6a5a", ["Informasi dan ilmu mudah diakses", "Perdagangan dan lapangan kerja baru", "Kerja sama antarbangsa"]], ["Tantangan", "#8a2a2a", ["Hoaks dan informasi palsu", "Lunturnya budaya lokal", "Persaingan yang makin ketat"]]]}
+  ],
   bagian: [
     { judul: "A. Globalisasi",
       isi: `<p><b>Globalisasi</b> adalah proses makin terhubungnya manusia di seluruh dunia dalam ekonomi, budaya, informasi, dan politik. Pendorongnya: kemajuan transportasi, internet, perdagangan bebas, dan perusahaan multinasional.</p>

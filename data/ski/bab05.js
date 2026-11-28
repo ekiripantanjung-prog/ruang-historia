@@ -39,6 +39,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "alur", "judul": "Perjalanan Islam di Andalusia", "item": [["711", "Thariq bin Ziyad menyeberang ke Spanyol"], ["756", "Abdurrahman ad-Dakhil mendirikan Umayyah Andalusia"], ["929", "Abdurrahman III bergelar khalifah; masa keemasan Cordoba"], ["1031", "Terpecah menjadi kerajaan-kerajaan kecil (Muluk ath-Thawaif)"], ["1492", "Granada, kerajaan Islam terakhir, jatuh"]]}
+  ],
   bagian: [
     { judul: "A. Masuk dan berkembangnya Islam di Andalusia",
       isi: `<p><b>Andalusia</b> (al-Andalus) adalah sebutan untuk wilayah Islam di Semenanjung Iberia, kini Spanyol dan Portugal. Islam masuk pada 711 M melalui pasukan <b>Thariq bin Ziyad</b>. Pemerintahan Islam berlangsung hampir <b>delapan abad</b>, melalui beberapa periode yang dapat kamu jelajahi di garis waktu di atas.</p>`,

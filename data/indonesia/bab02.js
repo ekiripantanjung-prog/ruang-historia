@@ -47,6 +47,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "sebab", "judul": "Masuknya pengaruh Hindu-Buddha", "sebab": ["Perdagangan India–Nusantara yang ramai", "Kedatangan pedagang, brahmana, dan biksu", "Letak Nusantara di jalur Selat Malaka"], "inti": "Pengaruh Hindu-Buddha masuk ke Nusantara", "akibat": ["Lahir kerajaan: Kutai, Tarumanegara, Sriwijaya, Mataram Kuno, Majapahit", "Aksara Pallawa dan bahasa Sanskerta", "Candi, arca, dan karya sastra", "Sistem pemerintahan kerajaan"]},
+    {"bagian": 4, "t": "piramida", "judul": "Pembagian kasta dalam masyarakat Hindu", "lapis": [["Brahmana", "pemuka agama"], ["Ksatria", "raja, bangsawan, prajurit"], ["Waisya", "pedagang, petani, peternak"], ["Sudra", "pekerja dan pelayan"]], "catatan": "Di Nusantara, pembagian kasta tidak seketat di India."}
+  ],
   bagian: [
     { judul: "A. Jalur perdagangan membawa pengaruh baru",
       isi: `<p>Sejak awal Masehi, kepulauan Nusantara berada di <b>jalur perdagangan laut</b> antara India dan Tiongkok. Selat Malaka menjadi "jalan raya" kapal dagang. Pedagang Nusantara berlayar ke India, dan pedagang serta pendeta India datang ke Nusantara. Dari perjumpaan inilah agama Hindu dan Buddha, aksara Pallawa, dan bahasa Sanskerta masuk.</p>

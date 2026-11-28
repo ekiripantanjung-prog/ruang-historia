@@ -52,6 +52,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 3, "t": "alur", "judul": "Jalan diplomasi mempertahankan kemerdekaan", "item": [["Linggarjati", "Disepakati November 1946; Belanda mengakui RI atas Jawa, Sumatra, Madura"], ["Agresi Militer I", "Juli 1947"], ["Renville", "Januari 1948; wilayah RI makin sempit"], ["Agresi Militer II", "Desember 1948; Yogyakarta diduduki"], ["Roem-Royen", "Mei 1949; pemimpin RI kembali ke Yogyakarta"], ["KMB", "Agustus–November 1949 di Den Haag"], ["Pengakuan kedaulatan", "27 Desember 1949"]]}
+  ],
   bagian: [
     { judul: "A. Detik-detik Proklamasi",
       isi: `<p>Ketika Jepang menyerah pada 15 Agustus 1945, terjadi perbedaan pendapat. <b>Golongan muda</b> ingin kemerdekaan segera diumumkan tanpa melibatkan PPKI yang dianggap bentukan Jepang. <b>Golongan tua</b> ingin menunggu dan memakai PPKI agar tidak terjadi pertumpahan darah. Perbedaan ini berujung pada <b>Peristiwa Rengasdengklok</b> (16 Agustus).</p>

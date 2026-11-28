@@ -45,6 +45,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "grid", "judul": "Wajah nasionalisme di Asia", "item": [["Jepang", "Restorasi Meiji: modernisasi agar tidak dijajah"], ["India", "Gandhi: perlawanan tanpa kekerasan dan swadeshi"], ["Tiongkok", "Sun Yat-sen mendirikan republik (1912)"], ["Turki", "Mustafa Kemal mendirikan republik (1923)"], ["Filipina", "José Rizal membangkitkan kesadaran lewat novel"], ["Indonesia", "Organisasi pergerakan, Sumpah Pemuda, Proklamasi"]]}
+  ],
   bagian: [
     { judul: "A. Imperialisme kuno dan modern",
       isi: `<table><thead><tr><th>Imperialisme kuno</th><th>Imperialisme modern</th></tr></thead><tbody>

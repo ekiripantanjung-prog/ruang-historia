@@ -45,6 +45,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "sebab", "judul": "Sebab Perang Dunia I", "sebab": ["Nasionalisme yang berlebihan", "Militerisme dan perlombaan senjata", "Sistem aliansi yang saling berhadapan", "Persaingan imperialisme"], "inti": "Perang Dunia I (1914–1918), dipicu pembunuhan Franz Ferdinand di Sarajevo, 28 Juni 1914", "akibat": ["Runtuhnya kekaisaran Jerman, Austria-Hungaria, Rusia, dan Usmani", "Perjanjian Versailles (1919)", "Berdirinya Liga Bangsa-Bangsa"]},
+    {"bagian": 4, "t": "grafik", "judul": "Perkiraan korban jiwa dua perang dunia", "satuan": "juta jiwa", "data": [["Perang Dunia I", 17], ["Perang Dunia II", 75]], "sumber": "Perkiraan para sejarawan; angka pastinya berbeda-beda (PD I sekitar 15–20 juta, PD II sekitar 70–85 juta).", "catatan": "Sebagian besar korban Perang Dunia II adalah warga sipil."}
+  ],
   bagian: [
     { judul: "A. Perang Dunia I (1914–1918)",
       isi: `<h4>Sebab umum</h4>

@@ -33,6 +33,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "grafik", "judul": "Lama masa kepemimpinan Khulafaur Rasyidin", "satuan": "tahun", "data": [["Abu Bakar (632–634)", 2], ["Umar (634–644)", 10], ["Utsman (644–656)", 12], ["Ali (656–661)", 5]], "sumber": "Tahun Masehi menurut buku sejarah Islam pada umumnya.", "catatan": ""}
+  ],
   bagian: [
     { judul: "A. Musyawarah memilih pemimpin",
       isi: `<p>Setelah Rasulullah wafat (632 M), umat Islam memilih pemimpin melalui cara yang berbeda-beda, tetapi semuanya melibatkan <b>musyawarah</b> dan <b>baiat</b>:</p>

@@ -45,6 +45,10 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "banding", "judul": "Janji propaganda Jepang dan kenyataannya", "kolom": [["Janji propaganda", "#3a6a8a", ["Jepang \"saudara tua\" bangsa Asia", "Gerakan 3A: Jepang pemimpin, pelindung, dan cahaya Asia", "Akan membebaskan Asia dari penjajahan Barat"]], ["Kenyataan", "#8a2a2a", ["Rakyat dipaksa menjadi romusha", "Hasil panen wajib diserahkan; kelaparan", "Kebebasan berorganisasi dan pers dikekang"]]]},
+    {"bagian": 6, "t": "alur", "judul": "Dari persiapan sampai negara berdiri", "item": [["BPUPKI", "Sidang I (29 Mei–1 Juni 1945): dasar negara; Sidang II (10–17 Juli): rancangan UUD"], ["PPKI", "Dibentuk 7 Agustus 1945, diketuai Ir. Soekarno"], ["Proklamasi", "17 Agustus 1945"], ["Sidang PPKI", "18 Agustus 1945: mengesahkan UUD 1945, memilih presiden dan wakil presiden"]]}
+  ],
   bagian: [
     { judul: "A. Dari saudara tua menjadi penjajah baru",
       isi: `<p>Jepang datang dengan propaganda <b>Gerakan 3A</b>: Jepang Pemimpin Asia, Jepang Pelindung Asia, Jepang Cahaya Asia. Jepang menyebut dirinya "saudara tua" yang membebaskan Asia dari penjajahan Barat. Beberapa kebijakan awal disambut baik: bendera Merah Putih boleh dikibarkan sebentar, lagu Indonesia Raya boleh dinyanyikan, dan bahasa Belanda dilarang.</p>

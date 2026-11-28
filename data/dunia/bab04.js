@@ -42,6 +42,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "alur", "judul": "Eropa memasuki zaman modern", "item": [["Abad Pertengahan", "Kehidupan berpusat pada gereja dan sistem feodal"], ["Renaisans", "Abad ke-14–16: kelahiran kembali seni dan ilmu; humanisme"], ["Penjelajahan samudra", "Akhir abad ke-15: jalur laut ke Asia dan Amerika"], ["Reformasi Gereja", "1517: Martin Luther; lahir Protestan"], ["Revolusi ilmu", "Copernicus, Galileo, Newton: metode ilmiah"]]}
+  ],
   bagian: [
     { judul: "A. Renaisans dan humanisme",
       isi: `<p><b>Renaisans</b> (kelahiran kembali) adalah gerakan menghidupkan kembali ilmu dan seni Yunani-Romawi yang dimulai di Italia pada abad ke-14. Pahamnya disebut <b>humanisme</b>: manusia dihargai karena akal dan kemampuannya.</p>

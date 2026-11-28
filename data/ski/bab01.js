@@ -53,6 +53,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 1, "t": "banding", "judul": "Dua periode dakwah Rasulullah", "kolom": [["Periode Mekkah (± 13 tahun)", "#8a5a2a", ["Fokus: tauhid dan akhlak", "Sembunyi-sembunyi, lalu terang-terangan", "Banyak tekanan; hijrah ke Habasyah"]], ["Periode Madinah (± 10 tahun)", "#2f6a5a", ["Fokus: membangun masyarakat dan negara", "Masjid Nabawi, persaudaraan, Piagam Madinah", "Diakhiri Fathu Makkah dan Haji Wada"]]]}
+  ],
   bagian: [
     { judul: "A. Masyarakat Arab sebelum Islam",
       isi: `<p>Masa sebelum Islam disebut <b>zaman jahiliah</b>, bukan karena masyarakatnya bodoh dalam ilmu dunia (mereka pandai bersyair dan berdagang), tetapi karena jauh dari petunjuk tauhid dan akhlak mulia: menyembah berhala, membanggakan suku, merendahkan perempuan, dan berperang karena masalah kecil.</p>

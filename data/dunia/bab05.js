@@ -42,6 +42,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 2, "t": "banding", "judul": "Dua revolusi yang mengubah dunia", "kolom": [["Revolusi Amerika (1775–1783)", "#3a6a8a", ["Koloni Inggris menolak pajak tanpa perwakilan", "Deklarasi Kemerdekaan 4 Juli 1776", "Lahir Amerika Serikat dengan konstitusi republik"]], ["Revolusi Prancis (1789–1799)", "#8a2a2a", ["Rakyat menentang monarki absolut dan ketidakadilan", "Penyerbuan Bastille 14 Juli 1789", "Semboyan liberté, égalité, fraternité"]]]}
+  ],
   bagian: [
     { judul: "A. Pencerahan: akal untuk menilai kekuasaan",
       isi: `<p>Pada abad ke-18, para pemikir Eropa mengajak memakai <b>akal</b> untuk menilai pemerintahan:</p>

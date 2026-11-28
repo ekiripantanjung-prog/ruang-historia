@@ -39,6 +39,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 4, "t": "sebab", "judul": "Mengapa Dinasti Umayyah runtuh?", "sebab": ["Perebutan kekuasaan di keluarga khalifah", "Gaya hidup mewah sebagian khalifah", "Fanatisme kesukuan Arab dan non-Arab", "Ketidakpuasan golongan yang merasa diperlakukan tidak adil", "Gerakan Bani Abbas"], "inti": "Dinasti Umayyah runtuh (750 M)", "akibat": ["Berdiri Dinasti Abbasiyah", "Abdurrahman ad-Dakhil mendirikan Umayyah di Andalusia (756 M)"]}
+  ],
   bagian: [
     { judul: "A. Berdirinya Dinasti Umayyah",
       isi: `<p>Setelah wafatnya Ali bin Abi Thalib (661 M), <b>Muawiyah bin Abi Sufyan</b> menjadi khalifah dan memindahkan pusat pemerintahan ke <b>Damaskus</b>. Perubahan terbesar: kepemimpinan menjadi <b>turun-temurun</b>, tidak lagi melalui musyawarah seperti masa Khulafaur Rasyidin.</p>

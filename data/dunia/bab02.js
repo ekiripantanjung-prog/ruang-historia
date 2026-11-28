@@ -42,6 +42,9 @@ TAMBAH_BAB({
     ]
   },
 
+  visual: [
+    {"bagian": 0, "t": "banding", "judul": "Athena dan Sparta", "kolom": [["Athena", "#3a6a8a", ["Demokrasi langsung (warga laki-laki dewasa)", "Mengutamakan filsafat, seni, dan perdagangan", "Pusat ilmu dan budaya Yunani"]], ["Sparta", "#8a2a2a", ["Oligarki militer", "Anak laki-laki dilatih menjadi prajurit sejak kecil", "Kekuatan darat terkuat di Yunani"]]]}
+  ],
   bagian: [
     { judul: "A. Yunani: negara-kota dan demokrasi",
       isi: `<p>Yunani terdiri atas pegunungan dan pulau, sehingga penduduknya hidup dalam <b>polis</b> (negara-kota) yang berdiri sendiri. Dua polis paling terkenal:</p>

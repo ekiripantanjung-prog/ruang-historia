@@ -23,7 +23,7 @@ const RUANG = [['Sejarah Indonesia', 'indonesia'], ['Sejarah Dunia', 'dunia'], [
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 // Kunci rahasia guru: diisi otomatis saat kode disalin dari Panel Guru. Jangan dibagikan.
 const TOKEN_GURU = '__TOKEN_GURU__';
-const VERSI = 5;
+const VERSI = 6;
 const LEMBAR_STAR = 'Historia Star';
 const LEMBAR_TAMBAH = 'Nilai Tambah';
 
@@ -96,6 +96,7 @@ function doGet(e) {
     if (p.aksi === 'batalStar') return keluar(batalStar(p));
     if (p.aksi === 'aturStar') return keluar(aturStar(p));
     if (p.aksi === 'tahunBaru') return keluar(tahunBaruDariAplikasi(p));
+    if (p.aksi === 'olah') return keluar(dataOlahNilai(p));
     if (p.aksi === 'masuk') return keluar(masuk(p.kode));
     if (p.aksi === 'atur') return keluar(bacaPengaturan(p.kode));
     if (p.aksi === 'nilai') return keluar(simpanNilai(p));
@@ -495,4 +496,23 @@ function tahunBaruDariAplikasi(p) {
   if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
   const label = String(p.label || '').replace(/[^\w\/\- ]/g, '').slice(0, 20) || String(new Date().getFullYear());
   return Object.assign({ ok: true }, arsipkanDanKosongkan(label, p.hapusSiswa === '1'));
+}
+
+
+/* ---------- OLAH NILAI: data satu kelas untuk diolah di aplikasi ---------- */
+function dataOlahNilai(p) {
+  if (TOKEN_GURU.indexOf('__') === 0 || p.token !== TOKEN_GURU) return { ok: false, pesan: 'token' };
+  const ss = SpreadsheetApp.getActiveSpreadsheet(), kelas = String(p.kelas || '').trim();
+  const sis = ss.getSheetByName(LEMBAR_SISWA), rek = ss.getSheetByName(LEMBAR_REKAP);
+  const daftar = sis && sis.getLastRow() > 1 ? sis.getRange(2, 1, sis.getLastRow() - 1, 3).getValues().filter(r => String(r[0]).trim() === kelas) : [];
+  let judul = [], data = [];
+  if (rek && rek.getLastRow() > 1 && rek.getLastColumn() > 3) { const v = rek.getRange(1, 1, rek.getLastRow(), rek.getLastColumn()).getValues(); judul = v[0].map(String); data = v.slice(1); }
+  const kolom = judul.slice(3).filter(Boolean), kuis = starKuis(kelas), bonus = bonusStar(kelas);
+  const siswa = daftar.map(r => {
+    const baris = data.find(x => String(x[0]).trim() === kelas && String(x[2]) === String(r[2])), nilai = {};
+    if (baris) kolom.forEach(k => { const c = judul.indexOf(k); if (baris[c] !== '' && !isNaN(Number(baris[c]))) nilai[k] = Number(baris[c]); });
+    const star = (kuis[r[2]] || 0) + (bonus[r[2]] || 0);
+    return { no: r[1], nama: r[2], nilai: nilai, star: star, poin: poinStar(star) };
+  });
+  return { ok: true, kelas: kelas, kolom: kolom, siswa: siswa, konversi: aturanStar(), kkm: kkmKelas(kelas) };
 }

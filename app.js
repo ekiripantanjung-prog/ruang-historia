@@ -6,7 +6,12 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 const huruf = i => 'ABCDE'[i];
 const cariK = id => K.find(k => k.id === id);
 const isiBab = (kid, id) => (B[kid] || {})[id];
-const tersedia = k => k.bab.filter(d => isiBab(k.id, d.id));
+const tersedia = k => modeSekolah() && k.id === 'ski' ? [] : k.bab.filter(d => isiBab(k.id, d.id));
+/* mode jenis satuan pendidikan: madrasah (Kemenag, KBC) atau sekolah umum (Kemendikdasmen, Kurikulum Merdeka + Pembelajaran Mendalam) */
+function modeSekolah() { let j = ''; try { j = JSON.parse(localStorage.getItem('historia-jenjang')) || ''; if (!j) j = (JSON.parse(localStorage.getItem('historia-kelas')) || {}).jenjang || ''; } catch (e) {} return j === 'sekolah'; }
+const SAT = () => modeSekolah() ? { nama: 'sekolah', Nama: 'Sekolah', kepala: 'Kepala Sekolah' } : { nama: 'madrasah', Nama: 'Madrasah', kepala: 'Kepala Madrasah' };
+const DPL_CINTA = { 'cinta allah dan rasul-nya': 'Keimanan dan ketakwaan terhadap Tuhan YME', 'cinta ilmu': 'Penalaran kritis', 'cinta lingkungan': 'Kewargaan: peduli lingkungan', 'cinta diri dan sesama': 'Kolaborasi dan kepedulian', 'cinta tanah air': 'Kewargaan' };
+const labelCinta = c => modeSekolah() ? (DPL_CINTA[String(c).toLowerCase()] || 'Nilai karakter') : c;
 
 /* ---------- penyimpanan nilai (hanya di perangkat ini) ---------- */
 const S = {
@@ -73,7 +78,7 @@ const PAKET = {
 /* menu guru: kartu-kartu fitur */
 const MENU_GURU = [
   ['presentasi', 'Presentasi', 'Slide siap tayang, PowerPoint & PDF', 'layar', '#3B5BA9'],
-  ['modul', 'Modul Ajar', 'KBC + Pembelajaran Mendalam, Word & PDF', 'buku', '#2E7D5B'],
+  ['modul', 'Modul Ajar', 'Pembelajaran Mendalam, Word & PDF', 'buku', '#2E7D5B'],
   ['soal', 'Soal Ulangan', 'C1–C6, siap masuk ASESMENKU', 'ceklis', '#B5532A'],
   ['kelas', 'Kelas & Babak', 'Tautan kelas, KKM, kunci bab', 'bendera', '#7A4E9E'],
   ['siswa', 'Daftar Siswa', 'Impor nama & kode siswa', 'orang', '#1F7A8C'],
@@ -95,7 +100,7 @@ function tataPanelGuru(sub) {
   if (!sub || !kotak.some(k => k.dataset.bagian === sub)) {
     kotak.forEach(k => k.hidden = true);
     hero.innerHTML = `<div class="wrap"><p class="sapa">${sapa()},</p><h1>${esc(nama)} 👋</h1><p>Mau menyiapkan apa hari ini?</p>
-<div class="status-guru"><span class="chip ${c.rekap ? 'ok' : ''}">${ikon('grafik')} ${c.rekap ? 'Google Sheets tersambung' : 'Google Sheets belum tersambung'}</span><span class="chip ${c.nama ? 'ok' : ''}">${ikon('bendera')} ${c.nama ? `Kelas aktif: ${esc(c.nama)} · KKM ${c.kkm}` : 'Belum ada tautan kelas'}</span></div></div>`;
+<div class="status-guru"><span class="chip ok">${ikon('topi')} ${modeSekolah() ? 'Sekolah umum · Kurikulum Merdeka' : 'Madrasah · Kurikulum Berbasis Cinta'}</span><span class="chip ${c.rekap ? 'ok' : ''}">${ikon('grafik')} ${c.rekap ? 'Google Sheets tersambung' : 'Google Sheets belum tersambung'}</span><span class="chip ${c.nama ? 'ok' : ''}">${ikon('bendera')} ${c.nama ? `Kelas aktif: ${esc(c.nama)} · KKM ${c.kkm}` : 'Belum ada tautan kelas'}</span></div></div>`;
     const grid = document.createElement('div'); grid.className = 'menu-guru';
     grid.innerHTML = menu.map(([id, judul, ket, ik, w]) => `<a class="ubin" href="${id.startsWith('#') ? id : '#guru/' + id}" style="--w:${w}"><span class="ubin-ik">${ikon(ik)}</span><b>${judul}</b><small>${ket}</small></a>`).join('');
     app.querySelector('.guru-wrap').prepend(grid);
@@ -150,7 +155,7 @@ function beranda() {
     <p class="alis">Aplikasi belajar sejarah · MA · SMA · SMK</p>
     <h1>Ruang <em>Historia</em></h1>
     <p class="slogan">Menyusuri jejak masa lalu, merawat cinta untuk masa depan.</p>
-    <p class="sampul-p">Materi ringkas, video, foto arsip asli, kuis berpembahasan, dan ujian akhir, diperkaya nilai Panca Cinta Kurikulum Berbasis Cinta.</p>
+    <p class="sampul-p">Materi ringkas, video, foto arsip asli, kuis berpembahasan, dan ujian akhir, ${modeSekolah() ? 'diperkaya refleksi nilai dan Profil Lulusan pembelajaran mendalam.' : 'diperkaya nilai Panca Cinta Kurikulum Berbasis Cinta.'}</p>
     <div class="row">
       <a class="btn emas" href="#ruang-pilih">Masuk ruang belajar</a>
       ${tb ? `<a class="btn kaca" href="#${t[0]}-${t[1]}">Lanjutkan: Bab ${tb.id} ${esc(tb.judul)}</a>` : ''}
@@ -175,7 +180,7 @@ function beranda() {
 <section class="pad" id="ruang-pilih"><div class="wrap">
   <p class="alis gelap">Pilih ruang</p>
   <h2 class="judul-besar">Tiga ruang, satu perjalanan</h2>
-  <div class="ruang-grid">${K.map(k => { const ada = tersedia(k).length, sel = k.bab.filter(d => n[`${k.id}-bab${d.id}`]).length;
+  <div class="ruang-grid">${K.filter(k => !(modeSekolah() && k.id === 'ski')).map(k => { const ada = tersedia(k).length, sel = k.bab.filter(d => n[`${k.id}-bab${d.id}`]).length;
     return `<a class="kamar" href="#${k.id}" style="--c:${k.warna}">
       <span class="lengkung" data-sampul="${k.id}"><span class="lengkung-tirai"></span><span class="lengkung-label">${esc(k.awal)} — ${esc(k.akhir)}</span></span>
       <span class="kamar-isi"><b>${esc(k.judul)}</b><span>${esc(k.ringkas)}</span>
@@ -327,7 +332,7 @@ function materi(b) {
   const j = b.jelajah;
   return `<div class="box"><h3>Tujuan pembelajaran</h3><ol class="tujuan">${b.tujuan.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div><div id="galeri"></div>
 ${j ? `<h2>${esc(j.judul)}</h2><div class="dig"><div><div class="strata ${j.mode === 'waktu' ? 'waktu' : ''}" id="strata">${j.mode === 'waktu' ? '' : `<div class="sky">${esc(j.atas)}</div><div class="grass"></div>`}${j.lapisan.map((x, k) => `<button class="layer" type="button" data-k="${k}" aria-pressed="false" style="background-color:${x.c}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span>${x.ikon ? `<svg viewBox="0 0 100 52" aria-hidden="true">${IKON[x.ikon] || ''}</svg>` : (j.mode === 'waktu' ? `<em class="thn">${esc(x.th || '')}</em>` : '')}</button>`).join('')}</div><div class="depth">${j.mode === 'waktu' ? '<span>lebih awal</span><span>lebih akhir</span>' : '<span>lebih muda</span><span>lebih tua, lebih dalam</span>'}</div></div><aside class="panel" id="panel" aria-live="polite"></aside></div>${j.catatan ? `<p class="catatan">${esc(j.catatan)}</p>` : ''}` : ''}
-${b.bagian.map((s, bi) => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi.replace(/<table/g, '<div class="tabel"><table').replace(/<\/table>/g, '</table></div>')}${(b.visual || []).filter(v => v.bagian === bi).map(visualHTML).join('')}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>Refleksi ${esc(s.cinta[0].replace(/^Cinta/, 'cinta'))}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
+${b.bagian.map((s, bi) => `<h2 style="margin-top:28px">${esc(s.judul)}</h2>${s.isi.replace(/<table/g, '<div class="tabel"><table').replace(/<\/table>/g, '</table></div>')}${(b.visual || []).filter(v => v.bagian === bi).map(visualHTML).join('')}${s.kartu ? kartu(b) : ''}${s.cinta ? `<div class="cinta"><b>${modeSekolah() ? `Refleksi (${esc(labelCinta(s.cinta[0]))})` : `Refleksi ${esc(s.cinta[0].replace(/^Cinta/, 'cinta'))}`}.</b> ${esc(s.cinta[1])}</div>` : ''}`).join('')}
 <div class="box row" style="justify-content:space-between"><span>Sudah selesai membaca? Uji pemahamanmu.</span><button class="btn" type="button" data-ke="kuis">Kerjakan kuis</button></div>`;
 }
 /* Foto bersejarah dari Wikimedia Commons (lihat alat/cari_gambar.py) */
@@ -680,6 +685,7 @@ ${S.get('sambungTunda', null) ? '<p class="status-ok">📱 Masukkan PIN guru unt
 <p class="catatan">Kode aktivasi diberikan oleh pengembang Ruang Historia untuk setiap guru. Setelah aktif, Bapak/Ibu membuat PIN sendiri untuk perangkat ini.</p>
 <form id="fakt"><label><b>Nama guru</b> (tulis persis seperti saat menerima kode)<input id="anama" class="isian" required autocomplete="name"></label>
 <label><b>Kode aktivasi</b><input id="akode" class="isian" required autocomplete="off" placeholder="RH-XXXX-XXXX" style="text-transform:uppercase"></label>
+<label><b>Saya mengajar di</b><select id="ajenjang" class="isian"><option value="madrasah">Madrasah (Kemenag) · Kurikulum Berbasis Cinta</option><option value="sekolah">Sekolah umum (Kemendikdasmen) · Kurikulum Merdeka</option></select></label>
 <label><b>Buat PIN baru</b> (minimal 4 angka)<input id="apin1" class="isian" type="password" inputmode="numeric" minlength="4" required></label>
 <label><b>Ulangi PIN baru</b><input id="apin2" class="isian" type="password" inputmode="numeric" minlength="4" required></label>
 <p class="catatan" id="pesanakt"></p><button class="btn" type="submit">Aktifkan</button></form></details>
@@ -689,7 +695,7 @@ ${S.get('sambungTunda', null) ? '<p class="status-ok">📱 Masukkan PIN guru unt
       const nama = document.getElementById('anama').value.trim(), kode = document.getElementById('akode').value, p1 = normPin(document.getElementById('apin1').value), p2 = normPin(document.getElementById('apin2').value);
       if (normKode(kode) !== normKode(await kodeAktivasi(nama))) { ps.textContent = 'Nama atau kode aktivasi tidak cocok. Periksa penulisan nama dan kodenya.'; return; }
       if (p1.length < 4 || p1 !== p2) { ps.textContent = 'PIN minimal 4 angka dan kedua isian harus sama.'; return; }
-      S.set('pinSaya', await sha256('ruang-historia-saya:' + p1)); S.set('namaGuru', nama); S.set('pemilik', false); S.set('guru', true); panelGuru(sub);
+      S.set('pinSaya', await sha256('ruang-historia-saya:' + p1)); S.set('namaGuru', nama); S.set('jenjang', document.getElementById('ajenjang').value === 'sekolah' ? 'sekolah' : 'madrasah'); S.set('pemilik', false); S.set('guru', true); panelGuru(sub);
     });
     document.getElementById('lihatpin').onclick = () => { const i = document.getElementById('pin'); i.type = i.type === 'password' ? 'text' : 'password'; };
     document.getElementById('fpin').addEventListener('submit', async e => {
@@ -709,7 +715,7 @@ ${S.get('sambungTunda', null) ? '<p class="status-ok">📱 Masukkan PIN guru unt
 <div class="row"><button class="btn" type="button" id="tampil">Tampilkan presentasi</button><button class="btn alt" type="button" id="unduh">Unduh PowerPoint (.pptx)</button><button class="btn alt" type="button" id="unduhpdf">Unduh PDF</button></div>
 <p class="catatan" id="pesanppt">File PowerPoint dapat diedit di Microsoft PowerPoint, Google Slides, atau WPS. Untuk PDF, pilih <b>Simpan sebagai PDF</b> pada jendela cetak.</p></div>
 
-<div class="box guru-kartu" data-bagian="modul"><h2>Modul ajar</h2><p>Modul ajar Pembelajaran Mendalam berbasis Kurikulum Berbasis Cinta, disusun dari materi bab: identifikasi, desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, dan glosarium.</p>
+<div class="box guru-kartu" data-bagian="modul"><h2>Modul ajar</h2><p>Modul ajar Pembelajaran Mendalam${modeSekolah() ? ' (Kurikulum Merdeka)' : ' berbasis Kurikulum Berbasis Cinta'}, disusun dari materi bab: identifikasi, desain pembelajaran, langkah kegiatan sesuai sintaks model, asesmen, LKPD, rubrik, dan glosarium.</p>
 <label><b>Ruang</b><select id="mr" class="isian">${K.filter(k => tersedia(k).length).map(k => `<option value="${k.id}">${esc(k.judul)}</option>`).join('')}</select></label>
 <label><b>Bab</b><select id="mb" class="isian"></select></label>
 <label><b>Model pembelajaran</b><select id="mm" class="isian"></select></label>
@@ -718,8 +724,8 @@ ${S.get('sambungTunda', null) ? '<p class="status-ok">📱 Masukkan PIN guru unt
 <label><b>Semester</b><select id="ms" class="isian"><option>Ganjil</option><option>Genap</option></select></label></div>
 <div class="dua"><label><b>Jumlah pertemuan</b><select id="mp" class="isian"><option>1</option><option selected>2</option><option>3</option></select></label>
 <label><b>JP per pertemuan</b><input id="mj" class="isian" type="number" min="1" max="6" value="2"></label></div>
-<details><summary><b>Identitas madrasah dan guru</b></summary>
-${[['madrasah', 'Nama madrasah'], ['guru', 'Nama guru'], ['nip', 'NIP guru'], ['kepala', 'Nama kepala madrasah'], ['nipKepala', 'NIP kepala madrasah'], ['tempat', 'Tempat penandatanganan'], ['tahun', 'Tahun pelajaran'], ['menitJp', 'Menit per JP']].map(([k, l]) => `<label><b>${l}</b><input class="isian" data-id="${k}" value="${esc(idGuru()[k])}"></label>`).join('')}</details>
+<details><summary><b>Identitas ${SAT().nama} dan guru</b></summary>
+${[['madrasah', 'Nama ' + SAT().nama], ['guru', 'Nama guru'], ['nip', 'NIP guru'], ['kepala', 'Nama ' + SAT().kepala.toLowerCase()], ['nipKepala', 'NIP ' + SAT().kepala.toLowerCase()], ['tempat', 'Tempat penandatanganan'], ['tahun', 'Tahun pelajaran'], ['menitJp', 'Menit per JP']].map(([k, l]) => `<label><b>${l}</b><input class="isian" data-id="${k}" value="${esc(idGuru()[k])}"></label>`).join('')}</details>
 <div class="row"><button class="btn" type="button" id="mbuat">Buat modul ajar</button></div></div>
 
 <div class="box guru-kartu" data-bagian="soal"><h2>Soal ulangan harian</h2>
@@ -847,6 +853,10 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
 <div class="langkah-no"><span>3</span><b>Arsipkan</b></div>
 <div class="row"><button class="btn besar" type="button" id="tbgo">${ikon('kalender')} Arsipkan & mulai tahun ajaran baru</button></div>
 <div class="pesan-impor" id="tbp" role="status" aria-live="polite"></div></div>
+<div class="box guru-kartu" data-bagian="akun"><h2>Jenis sekolah dan kurikulum</h2>
+<p>Menentukan istilah dan isi modul ajar, refleksi materi, dan ruang yang tampil. Mode <b>Sekolah umum</b> memakai Kurikulum Merdeka dengan pendekatan pembelajaran mendalam (Permendikdasmen Nomor 13 Tahun 2025) dan menyembunyikan ruang SKI; mode <b>Madrasah</b> memakai Kurikulum Berbasis Cinta Kemenag.</p>
+${`<label><b>Saya mengajar di</b><select id="jjg" class="isian"><option value="madrasah"${modeSekolah() ? '' : ' selected'}>Madrasah (Kemenag) · Kurikulum Berbasis Cinta</option><option value="sekolah"${modeSekolah() ? ' selected' : ''}>Sekolah umum (Kemendikdasmen) · Kurikulum Merdeka</option></select></label>`}
+<div class="row"><button class="btn alt" type="button" id="jjgsimpan">Simpan</button></div><p class="catatan" id="jjgp">Siswa mengikuti mode ini lewat tautan kelas yang dibuat sesudahnya.</p></div>
 <div class="box guru-kartu" data-bagian="akun"><h2>Ganti PIN</h2><p>Ganti PIN guru untuk perangkat ini.</p>
 <label><b>PIN baru</b> (minimal 4 angka)<input id="gp1" class="isian" type="password" inputmode="numeric"></label><label><b>Ulangi PIN baru</b><input id="gp2" class="isian" type="password" inputmode="numeric"></label>
 <div class="row"><button class="btn alt" type="button" id="gpsimpan">Simpan PIN</button></div><p class="catatan" id="gppesan">${S.get('pemilik') ? 'PIN utama pengembang (di file pengaturan) tetap berlaku di semua perangkat.' : ''}</p></div>
@@ -871,7 +881,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
   if (!document.getElementById('gr').value.trim()) document.getElementById('isbelum').innerHTML = `${ikon('info')} Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a> agar nama bisa dikirim. Tanpa itu, gunakan tombol <b>Salin untuk ditempel manual</b>.`;
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
-    const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka, rekap: document.getElementById('gr').value.trim() };
+    const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka, rekap: document.getElementById('gr').value.trim(), jenjang: modeSekolah() ? 'sekolah' : '' };
     const url = `${alamatDasar()}#kelas=${kodeKelas(o)}`;
     document.getElementById('hasilkelas').innerHTML = `<div class="tautan-kelas"><div>${await qrSVG(url, 200)}</div><div><p><b>Tautan kelas ${esc(o.nama || '')}</b>: mode babak ${o.modeBabak ? 'aktif' : 'mati'}, KKM ${o.kkm}, rekap nilai ${o.rekap ? 'aktif' : 'tidak dipakai'}.</p><input class="isian" readonly value="${esc(url)}"><div class="row"><button class="btn" type="button" id="salin">Salin tautan</button></div><p class="catatan">Bagikan tautan ini di grup kelas, atau tampilkan kode QR-nya di proyektor. Siswa cukup membukanya sekali dari HP masing-masing.</p></div></div>`;
     document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
@@ -888,6 +898,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
   };
   document.getElementById('ujirekap').addEventListener('click', async () => { const u = document.getElementById('gr').value.trim(), ps = document.getElementById('pesanrekap'); if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(u)) { ps.textContent = 'Alamat belum benar. Alamatnya diawali https://script.google.com/macros/s/ dan diakhiri /exec'; return; } ps.textContent = 'Menghubungi Google Sheets…'; try { const r = await fetch(u + '?aksi=cek').then(x => x.json()); if (r.ok) S.set('rekapUji', u); ps.textContent = r.ok ? `Tersambung ke "${r.nama}". Langkah berikutnya: menu Daftar Siswa, lalu Kelas & Babak.` : 'Tersambung, tetapi ada masalah: ' + (r.pesan || ''); } catch { ps.textContent = 'Belum tersambung. Pastikan Akses diatur ke "Siapa saja", lalu coba lagi.'; } });
   document.getElementById('keluar').addEventListener('click', () => { S.set('guru', false); location.hash = '#beranda'; });
+  document.getElementById('jjgsimpan').onclick = () => { S.set('jenjang', document.getElementById('jjg').value); document.getElementById('jjgp').innerHTML = `Tersimpan: <b>${modeSekolah() ? 'Sekolah umum · Kurikulum Merdeka' : 'Madrasah · Kurikulum Berbasis Cinta'}</b>. Buat ulang tautan kelas agar siswa ikut mode ini.`; };
   document.getElementById('gpsimpan').onclick = async () => { const a1 = document.getElementById('gp1').value.trim(), a2 = document.getElementById('gp2').value.trim(), ps = document.getElementById('gppesan'); if (a1.length < 4 || a1 !== a2) { ps.textContent = 'PIN minimal 4 angka dan kedua isian harus sama.'; return; } S.set('pinSaya', await sha256('ruang-historia-saya:' + a1)); ps.textContent = 'PIN baru tersimpan untuk perangkat ini.'; document.getElementById('gp1').value = document.getElementById('gp2').value = ''; };
   const bb = document.getElementById('bbuat');
   if (bb) bb.onclick = async () => { const nama = document.getElementById('bnama').value.trim(); if (!nama) return; const kode = await kodeAktivasi(nama), url = alamatDasar();
@@ -899,7 +910,7 @@ ${S.get('pemilik') ? `<div class="box guru-kartu" data-bagian="bagikan"><h2>Bagi
 function terapkanKelas(kode) {
   try {
     const o = bacaKelas(kode);
-    S.set('kelas', { nama: String(o.nama || '').slice(0, 40), modeBabak: !!o.modeBabak, kkm: Math.min(100, Math.max(0, +o.kkm || 75)), buka: o.buka || {}, rekap: /^https:\/\/script\.google\.com\//.test(o.rekap || '') ? o.rekap : '' });
+    S.set('kelas', { nama: String(o.nama || '').slice(0, 40), modeBabak: !!o.modeBabak, kkm: Math.min(100, Math.max(0, +o.kkm || 75)), buka: o.buka || {}, rekap: /^https:\/\/script\.google\.com\//.test(o.rekap || '') ? o.rekap : '', jenjang: o.jenjang === 'sekolah' ? 'sekolah' : '' });
     app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:600px"><div class="box"><h1>Selamat datang${o.nama ? ` di kelas ${esc(o.nama)}` : ''}!</h1>
 <p>Pengaturan dari gurumu sudah diterapkan: ${o.modeBabak ? `<b>mode babak aktif</b> dengan KKM <b>${o.kkm}</b>. Setiap bab adalah satu babak: baca materinya, catat di buku catatan, lalu lulus kuis untuk membuka babak berikutnya.` : 'semua bab terbuka.'}</p>
 ${o.rekap ? `<p>Gurumu juga memakai <b>rekap nilai</b>. Masukkan kode siswa dari gurumu:</p>${formMasuk()}` : ''}
@@ -967,7 +978,7 @@ async function susunSlide(kid, id) {
   const G = (await ambilGambar())[`${kid}-${id}`] || [];
   G.slice(0, 8).forEach(g => sl.push({ t: 'foto', judul: g.judul, ket: g.ket, file: g.file, kredit: g.guru ? 'Koleksi guru' : `${pembuat(g.pembuat)}${g.lisensi || ''} · Wikimedia Commons` }));
   if (b.glosarium) for (let i = 0; i < b.glosarium.length; i += 8) sl.push({ t: 'istilah', judul: 'Istilah penting', item: b.glosarium.slice(i, i + 8) });
-  if (cinta.length) sl.push({ t: 'cinta', judul: 'Refleksi Panca Cinta', item: cinta.slice(0, 3) });
+  if (cinta.length) sl.push({ t: 'cinta', judul: modeSekolah() ? 'Refleksi nilai' : 'Refleksi Panca Cinta', item: cinta.slice(0, 3) });
   const hots = acak(b.soal.filter(q => /C[456]/.test(q.l || ''))).slice(0, 3);
   if (hots.length) sl.push({ t: 'diskusi', judul: 'Mari berdiskusi', item: hots.map(q => ({ s: q.s, q: q.q })) });
   if (b.esai && b.esai.length) sl.push({ t: 'poin', judul: 'Pertanyaan uraian', item: b.esai.map(e => ({ runs: [{ text: e.q }], li: true })) });
@@ -1151,9 +1162,9 @@ function susunModul(o) {
   const h1 = x => B.push({ t: 'h1', x }), h2 = x => B.push({ t: 'h2', x }), h3 = x => B.push({ t: 'h3', x }), p = (x, al) => B.push({ t: 'p', x, al }), li = (x, n) => B.push({ t: 'li', x, n }), tabel = (rows, head, lebar) => B.push({ t: 'tabel', rows, head, lebar });
   const kv = rows => B.push({ t: 'tabel', rows, kv: true, lebar: [32, 68] });
 
-  B.push({ t: 'judul', x: 'MODUL AJAR', sub: `Pembelajaran Mendalam Berbasis Cinta (KBC)\n${mapel} · ${b.judul}` });
+  B.push({ t: 'judul', x: 'MODUL AJAR', sub: `${modeSekolah() ? 'Kurikulum Merdeka · Pembelajaran Mendalam' : 'Pembelajaran Mendalam Berbasis Cinta (KBC)'}\n${mapel} · ${b.judul}` });
   h2('A. Identitas Modul');
-  kv([['Nama Madrasah', o.madrasah || '…'], ['Nama Penyusun', o.guru || '…'], ['Mata Pelajaran', mapel], ['Fase / Kelas / Semester', `${fase} / ${o.kelas} / ${o.semester}`], ['Materi Pokok', `${k.judul}, Bab ${o.id}: ${b.judul}`], ['Alokasi Waktu', `${P} pertemuan × ${o.jp} JP × ${o.menitJp} menit`], ['Tahun Pelajaran', o.tahun]]);
+  kv([['Nama ' + SAT().Nama, o.madrasah || '…'], ['Nama Penyusun', o.guru || '…'], ['Mata Pelajaran', mapel], ['Fase / Kelas / Semester', `${fase} / ${o.kelas} / ${o.semester}`], ['Materi Pokok', `${k.judul}, Bab ${o.id}: ${b.judul}`], ['Alokasi Waktu', `${P} pertemuan × ${o.jp} JP × ${o.menitJp} menit`], ['Tahun Pelajaran', o.tahun]]);
 
   h2('B. Identifikasi');
   h3('1. Kesiapan murid');
@@ -1162,8 +1173,9 @@ function susunModul(o) {
   p(`Materi ${b.judul.toLowerCase()} bersifat ${/1|2|3/.test(String(o.id)) && o.kid !== 'ski' ? 'konseptual dan faktual' : 'faktual, kronologis, dan analitis'}: murid perlu memahami fakta dan urutan peristiwa, lalu menganalisis sebab-akibat serta maknanya bagi kehidupan sekarang. Cakupan materi: ${sub.join('; ')}.`);
   h3('3. Dimensi Profil Lulusan');
   dpl.forEach(x => li(x));
-  h3('4. Topik Panca Cinta dan materi insersi KBC');
-  if (cinta.length) cinta.forEach(c => li(`**${c[0]}**: ${c[1]}`)); else li('**Cinta tanah air**: menghargai perjuangan dan warisan sejarah bangsa.');
+  if (modeSekolah()) { h3('4. Nilai yang ditumbuhkan'); if (cinta.length) cinta.forEach(c => li(`**${labelCinta(c[0])}**: ${c[1]}`)); else li('**Kewargaan**: menghargai perjuangan dan warisan sejarah bangsa.'); }
+  else { h3('4. Topik Panca Cinta dan materi insersi KBC');
+  if (cinta.length) cinta.forEach(c => li(`**${c[0]}**: ${c[1]}`)); else li('**Cinta tanah air**: menghargai perjuangan dan warisan sejarah bangsa.'); }
 
   h2('C. Desain Pembelajaran');
   h3('1. Capaian Pembelajaran');
@@ -1173,11 +1185,11 @@ function susunModul(o) {
   h3('3. Tujuan Pembelajaran');
   b.tujuan.forEach((t, i) => li(t, i + 1));
   h3('4. Praktik pedagogis');
-  kv([['Pendekatan', 'Pembelajaran Mendalam (berkesadaran, bermakna, menggembirakan) terintegrasi Kurikulum Berbasis Cinta'], ['Model', M.nama], ['Metode', M.metode.join(', ')], ['Alasan pemilihan model', `Model ini dipilih karena ${M.alasan}`]]);
+  kv([['Pendekatan', 'Pembelajaran Mendalam (berkesadaran, bermakna, menggembirakan)' + (modeSekolah() ? '' : ' terintegrasi Kurikulum Berbasis Cinta')], ['Model', M.nama], ['Metode', M.metode.join(', ')], ['Alasan pemilihan model', `Model ini dipilih karena ${M.alasan}`]]);
   h3('5. Kemitraan pembelajaran');
-  p('Orang tua mendampingi murid membaca materi di rumah; pustakawan madrasah menyediakan buku pendukung; bila memungkinkan, museum atau situs sejarah setempat dijadikan sumber belajar.');
+  p('Orang tua mendampingi murid membaca materi di rumah; pustakawan ${SAT().nama} menyediakan buku pendukung; bila memungkinkan, museum atau situs sejarah setempat dijadikan sumber belajar.');
   h3('6. Lingkungan pembelajaran');
-  kv([['Ruang fisik', 'Kelas ditata berkelompok (4–5 murid), dinding untuk menempel hasil karya (galeri)'], ['Ruang virtual', `Aplikasi Ruang Historia (${url})`], ['Budaya belajar', 'Saling menghargai pendapat, jujur, tabayun (memeriksa sumber), dan gotong royong']]);
+  kv([['Ruang fisik', 'Kelas ditata berkelompok (4–5 murid), dinding untuk menempel hasil karya (galeri)'], ['Ruang virtual', `Aplikasi Ruang Historia (${url})`], ['Budaya belajar', modeSekolah() ? 'Saling menghargai pendapat, jujur, memeriksa kebenaran sumber, dan gotong royong' : 'Saling menghargai pendapat, jujur, tabayun (memeriksa sumber), dan gotong royong']]);
   h3('7. Pemanfaatan digital');
   li(`Materi, video, foto arsip, dan kuis interaktif di aplikasi Ruang Historia (Bab ${o.id}).`);
   li('Presentasi kelas yang dibuat dari Panel Guru Ruang Historia.');
@@ -1202,11 +1214,11 @@ function susunModul(o) {
     merefleksi: () => {
       const s = M.sintaks.merefleksi, L = [];
       L.push([s[0], [o.model === 'jigsaw' ? `Murid mengerjakan kuis individu Bab ${o.id} di Ruang Historia (KKM ${kkm}); kelompok dengan peningkatan terbaik mendapat penghargaan.` : 'Guru dan murid mengecek kembali hasil kerja dengan sumber sejarah; meluruskan miskonsepsi.', 'Murid menuliskan satu hal baru yang dipelajari dan satu pertanyaan yang masih tersisa.']]);
-      if (s[1]) L.push([s[1], [`Refleksi Panca Cinta: ${cinta[0] ? cinta[0][1] : 'apa makna peristiwa ini bagi sikap kita sebagai warga bangsa?'}`, 'Murid menuliskan komitmen sikap yang akan dipraktikkan dalam kehidupan sehari-hari.']]);
+      if (s[1]) L.push([s[1], [`${modeSekolah() ? 'Refleksi nilai' : 'Refleksi Panca Cinta'}: ${cinta[0] ? cinta[0][1] : 'apa makna peristiwa ini bagi sikap kita sebagai warga bangsa?'}`, 'Murid menuliskan komitmen sikap yang akan dipraktikkan dalam kehidupan sehari-hari.']]);
       return L;
     }
   };
-  const awal = (n) => [`Guru membuka dengan salam dan doa bersama (cinta Allah dan Rasul-Nya), lalu mengecek kehadiran dan kesiapan murid.`, n === 1 ? `Apersepsi: mengaitkan materi dengan ${babSebelum(o.kid, o.id) ? `Bab ${babSebelum(o.kid, o.id).id} (${babSebelum(o.kid, o.id).judul})` : 'pengalaman murid'} dan dengan catatan murid dari Ruang Historia.` : 'Guru mengulas singkat kegiatan pertemuan sebelumnya.', n === 1 ? 'Guru menyampaikan tujuan pembelajaran dan manfaatnya bagi kehidupan.' : 'Guru menyampaikan target kegiatan hari ini.'];
+  const awal = (n) => [`Guru membuka dengan salam dan ${modeSekolah() ? 'berdoa menurut agama dan kepercayaan masing-masing' : 'doa bersama (cinta Allah dan Rasul-Nya)'}, lalu mengecek kehadiran dan kesiapan murid.`, n === 1 ? `Apersepsi: mengaitkan materi dengan ${babSebelum(o.kid, o.id) ? `Bab ${babSebelum(o.kid, o.id).id} (${babSebelum(o.kid, o.id).judul})` : 'pengalaman murid'} dan dengan catatan murid dari Ruang Historia.` : 'Guru mengulas singkat kegiatan pertemuan sebelumnya.', n === 1 ? 'Guru menyampaikan tujuan pembelajaran dan manfaatnya bagi kehidupan.' : 'Guru menyampaikan target kegiatan hari ini.'];
   const tutup = (n, akhir) => ['Murid bersama guru menyimpulkan pembelajaran.', akhir ? `Tindak lanjut: murid menyelesaikan kuis Bab ${o.id} di Ruang Historia (KKM ${kkm}) dan membaca bab berikutnya.` : 'Guru menyampaikan rencana kegiatan pertemuan berikutnya.', 'Pembelajaran ditutup dengan doa dan salam.'];
   const urutan = P === 1 ? [['memahami', 'mengaplikasi', 'merefleksi']] : P === 2 ? [['memahami', 'mengaplikasi'], ['merefleksi']] : [['memahami'], ['mengaplikasi'], ['merefleksi']];
   urutan.forEach((fs, i) => {
@@ -1258,9 +1270,9 @@ function susunModul(o) {
   tabel((b.glosarium || []).map(g => [g[0], g[1]]), ['Istilah', 'Arti'], [28, 72]);
   h2('Lampiran 5. Daftar pustaka');
   li(`Ruang Historia: aplikasi belajar sejarah interaktif. ${HAK}. ${url}`);
-  li(`Buku teks ${mapel} kelas ${o.kelas} yang digunakan di madrasah.`);
+  li(`Buku teks ${mapel} kelas ${o.kelas} yang digunakan di ${SAT().nama}.`);
   li('Wikimedia Commons: sumber foto arsip berlisensi terbuka (keterangan pembuat dan lisensi tercantum di aplikasi).');
-  li('Keputusan Direktur Jenderal Pendidikan Islam Nomor 6077 Tahun 2025 tentang Panduan Kurikulum Berbasis Cinta.');
+  if (modeSekolah()) li('Peraturan Menteri Pendidikan Dasar dan Menengah Nomor 13 Tahun 2025 tentang Perubahan atas Permendikbudristek Nomor 12 Tahun 2024 tentang Kurikulum.'); else li('Keputusan Direktur Jenderal Pendidikan Islam Nomor 6077 Tahun 2025 tentang Panduan Kurikulum Berbasis Cinta.');
   return { blok: B, nama: `Modul Ajar ${mapel} Kelas ${o.kelas} Bab ${o.id} ${b.judul}` };
 }
 
@@ -1280,7 +1292,7 @@ function modulHTML(M) {
     else if (x.t === 'li') { const jenis = x.n ? 'ol' : 'ul'; if (ol !== jenis) { tutupList(); html += `<${jenis}>`; ol = jenis; } html += `<li ${x.n ? `value="${x.n}"` : ''}>${mdHTML(x.x)}</li>`; }
     else if (x.t === 'opsi') html += `<div class="md-opsi">${esc(x.x)}</div>`;
     else if (x.t === 'tabel') html += `<table class="md-tabel ${x.kv ? 'kv' : ''}">${x.lebar ? `<colgroup>${x.lebar.map(w => `<col style="width:${w}%">`).join('')}</colgroup>` : ''}${x.head ? `<thead><tr>${x.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>` : ''}<tbody>${x.rows.map(r => `<tr>${r.map((c, j) => `<td>${x.kv && j === 0 ? `<b>${esc(c)}</b>` : mdHTML(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-    else if (x.t === 'ttd') html += `<table class="md-ttd"><tr><td>Mengetahui,<br>Kepala Madrasah<br><br><br><br><b>${esc(x.kepala)}</b><br>NIP. ${esc(x.nipKepala)}</td><td>${esc(x.tempat)}, ${esc(x.tgl)}<br>Guru Mata Pelajaran<br><br><br><br><b>${esc(x.guru)}</b><br>NIP. ${esc(x.nipGuru)}</td></tr></table>`;
+    else if (x.t === 'ttd') html += `<table class="md-ttd"><tr><td>Mengetahui,<br>${SAT().kepala}<br><br><br><br><b>${esc(x.kepala)}</b><br>NIP. ${esc(x.nipKepala)}</td><td>${esc(x.tempat)}, ${esc(x.tgl)}<br>Guru Mata Pelajaran<br><br><br><br><b>${esc(x.guru)}</b><br>NIP. ${esc(x.nipGuru)}</td></tr></table>`;
     else if (x.t === 'pb') html += '<div class="md-pb"></div>';
   }
   tutupList();
@@ -1320,7 +1332,7 @@ function docxDari(M) {
     else if (x.t === 'opsi') body += par(x.x, { ind: 851, gantung: 0, sesudah: 20 });
     else if (x.t === 'pb') body += '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
     else if (x.t === 'tabel' || x.t === 'ttd') {
-      const rows = x.t === 'ttd' ? [[`Mengetahui,\nKepala Madrasah\n\n\n\n**${x.kepala}**\nNIP. ${x.nipKepala}`, `${x.tempat}, ${x.tgl}\nGuru Mata Pelajaran\n\n\n\n**${x.guru}**\nNIP. ${x.nipGuru}`]] : x.rows;
+      const rows = x.t === 'ttd' ? [[`Mengetahui,\n${SAT().kepala}\n\n\n\n**${x.kepala}**\nNIP. ${x.nipKepala}`, `${x.tempat}, ${x.tgl}\nGuru Mata Pelajaran\n\n\n\n**${x.guru}**\nNIP. ${x.nipGuru}`]] : x.rows;
       const kol = (x.head || rows[0]).length, lebar = (x.lebar || Array(kol).fill(100 / kol)).map(w => Math.round(w / 100 * lebarTotal));
       const garis = x.t === 'ttd' ? '<w:tblBorders><w:top w:val="nil"/><w:left w:val="nil"/><w:bottom w:val="nil"/><w:right w:val="nil"/><w:insideH w:val="nil"/><w:insideV w:val="nil"/></w:tblBorders>' : '<w:tblBorders><w:top w:val="single" w:sz="4" w:color="BFB6AA"/><w:left w:val="single" w:sz="4" w:color="BFB6AA"/><w:bottom w:val="single" w:sz="4" w:color="BFB6AA"/><w:right w:val="single" w:sz="4" w:color="BFB6AA"/><w:insideH w:val="single" w:sz="4" w:color="BFB6AA"/><w:insideV w:val="single" w:sz="4" w:color="BFB6AA"/></w:tblBorders>';
       body += `<w:tbl><w:tblPr><w:tblW w:w="${lebarTotal}" w:type="dxa"/>${garis}<w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="40" w:type="dxa"/><w:left w:w="80" w:type="dxa"/><w:bottom w:w="40" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${lebar.map(w => `<w:gridCol w:w="${w}"/>`).join('')}</w:tblGrid>`;
@@ -1401,7 +1413,7 @@ function naskahUlangan(U) {
   const nObj = pg.length + nLain, skorPG = nObj ? Math.round((U.bobotPG / nObj) * 100) / 100 : 0, skorEs = es.length ? Math.round(((100 - U.bobotPG) / es.length) * 100) / 100 : 0;
   const B = []; const p = x => B.push({ t: 'p', x }), li = (x, n) => B.push({ t: 'li', x, n }), h2 = x => B.push({ t: 'h2', x }), h3 = x => B.push({ t: 'h3', x });
   B.push({ t: 'judul', x: U.judul || 'ULANGAN HARIAN', sub: `${mapel} · ${k.judul}\n${judulBab}` });
-  B.push({ t: 'tabel', kv: true, lebar: [30, 70], rows: [['Madrasah', U.madrasah || '…'], ['Kelas / Semester', `${U.kelas} / ${U.semester}`], ['Waktu', `${U.waktu} menit`], ['Nama', ''], ['No. absen', '']] });
+  B.push({ t: 'tabel', kv: true, lebar: [30, 70], rows: [[SAT().Nama, U.madrasah || '…'], ['Kelas / Semester', `${U.kelas} / ${U.semester}`], ['Waktu', `${U.waktu} menit`], ['Nama', ''], ['No. absen', '']] });
   h3('Petunjuk');
   [`Berdoalah sebelum mengerjakan soal.`, pg.length ? `Pilihlah satu jawaban yang paling tepat untuk soal nomor 1–${pg.length}.` : null, es.length ? `Jawablah soal uraian dengan jelas dan runtut.` : null, 'Kerjakan dengan jujur. Kejujuran adalah bagian dari cinta ilmu.'].filter(Boolean).forEach((x, i) => li(x, i + 1));
   if (pg.length) { h2('A. Pilihan ganda'); pg.forEach((q, i) => { if (q.s) p(`*${q.s}*`); li(q.q, i + 1); q.o.forEach((x, j) => B.push({ t: 'opsi', x: `${huruf(j)}. ${x}` })); }); }
@@ -1595,6 +1607,8 @@ function susunPanduan() {
   h2('Bagian B. Panduan untuk guru');
   h3('1. Masuk Ruang Guru');
   langkah(['Ketuk menu **Guru** (ikon topi toga; di HP ada di menu bawah). Setelah masuk, tampil **Ruang Guru** berisi kotak-kotak menu: Presentasi, Modul Ajar, Soal Ulangan, Kelas & Babak, Daftar Siswa, Rekap Nilai, Bintang Historia, Historia Star, Tahun Ajaran Baru, Akun & PIN, dan Buku Panduan. Ketuk kotak yang diperlukan; tombol **← Ruang Guru** membawa kembali.', '**Guru baru:** pilih **Guru baru, atau lupa PIN?**, isi nama dan **kode aktivasi** dari pengembang, lalu buat PIN sendiri. Langkah ini juga dipakai bila lupa PIN.', 'Berikutnya, cukup masukkan PIN Bapak/Ibu. PIN dapat diganti di bagian **Ganti PIN**.', 'Jangan bagikan PIN atau kode aktivasi kepada siswa, karena mode guru membuka semua bab.']);
+  h3('Madrasah atau sekolah umum');
+  poin(['Ruang Historia dapat dipakai guru sejarah di **madrasah** (Kemenag, Kurikulum Berbasis Cinta) maupun **sekolah umum** (Kemendikdasmen, Kurikulum Merdeka dengan pendekatan pembelajaran mendalam sesuai Permendikdasmen Nomor 13 Tahun 2025).', 'Pilih jenisnya saat aktivasi guru baru, atau di menu **Akun & PIN → Jenis sekolah dan kurikulum**.', 'Mode **sekolah umum**: modul ajar memakai istilah sekolah dan kepala sekolah tanpa Panca Cinta dan materi insersi KBC, refleksi materi dikaitkan dengan dimensi Profil Lulusan, doa pembuka menurut agama masing-masing, dan ruang SKI disembunyikan.', 'Setelah mengganti mode, buat ulang tautan kelas agar perangkat siswa ikut menyesuaikan.']);
   h3('Mengenal tiga macam kode');
   B.push({ t: 'tabel', head: ['Kode', 'Contoh', 'Untuk siapa dan apa gunanya'], lebar: [22, 22, 56], rows: [
     ['PIN guru', '200694', 'Untuk guru membuka Ruang Guru. Jangan diberikan kepada siswa.'],

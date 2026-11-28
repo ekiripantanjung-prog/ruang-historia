@@ -715,3 +715,4 @@ html.tanpa-anim .muncul-siap{opacity:1;transform:none}
 .timer{font-variant-numeric:tabular-nums;font-weight:800;padding:2px 10px;border-radius:20px;transition:background .3s,color .3s}
 .timer.mepet{background:#fde7b8;color:#8a4b00}
 .timer.kritis{background:#C8402F;color:#fff;animation:rhDenyut .5s ease infinite}
+.lc-isi small b{display:inline;font:inherit;font-weight:800}

@@ -653,7 +653,8 @@ ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buk
 <p>Pilih file daftar siswa per kelas. Bisa Excel, Word, atau PDF. Nama siswa akan masuk otomatis ke Google Sheets, lengkap dengan kodenya.</p>
 <label><b>1. Nama kelas</b> (tulis persis, misalnya XI D)<input id="isk" class="isian" placeholder="XI D"></label>
 <label><b>2. Pilih file daftar siswa</b><input id="isf" class="isian" type="file" accept=".xlsx,.xls,.csv,.ods,.docx,.pdf,.txt"></label>
-<p class="catatan">Tidak punya file? <button class="tautan" type="button" id="isketik">Ketik atau tempel nama saja</button></p>
+<p style="margin:4px 0"><b>atau</b></p><div class="row"><button class="btn alt" type="button" id="isketik">Tempel / ketik daftar nama</button></div>
+<p class="catatan">Salin kolom nama dari Excel, Word, atau WA (blok lalu Ctrl+C), klik tombol di atas, lalu tempel (Ctrl+V) di kotak yang muncul. Nomor, NIS, dan L/P dibuang otomatis.</p>
 <p class="catatan" id="isp"></p>
 <textarea id="ist" class="isian" rows="12" hidden></textarea>
 <div id="islanjut" hidden><div class="row"><button class="btn" type="button" id="iskirim">3. Kirim ke Google Sheets</button><button class="btn alt" type="button" id="istsv">Salin untuk ditempel manual</button></div></div>
@@ -1488,7 +1489,8 @@ async function bacaDaftarSiswa(file, kelasDefault) {
   throw new Error('format');
 }
 const kelompokKeTeks = o => Object.entries(o).map(([k, v]) => `# ${k}\n` + v.join('\n')).join('\n\n');
-const teksKeKelompok = (t, kDef) => { const o = {}; let k = kDef; t.split('\n').forEach(l => { l = l.trim(); if (!l) return; const m = l.match(/^#\s*(.+)$/); if (m) { k = m[1].trim(); return; } (o[k] = o[k] || []).push(l.replace(/^\d+\s*[.)]?\s*/, '')); }); return o; };
+const namaDariBaris = l => { const sel = l.split(/\t|\s{3,}| \| /).map(bersihNama).filter(Boolean); return sel.length ? judulNama(sel.sort((a, b) => b.replace(/[^A-Za-z]/g, '').length - a.replace(/[^A-Za-z]/g, '').length)[0]) : ''; };
+const teksKeKelompok = (t, kDef) => { const o = {}; let k = kDef; t.split('\n').forEach(l => { l = l.trim(); if (!l) return; const m = l.match(/^#\s*(.+)$/); if (m) { k = m[1].trim(); return; } const n = namaDariBaris(l); if (n) (o[k] = o[k] || []).push(n); }); return o; };
 
 function pasangImporSiswa() {
   const f = document.getElementById('isf'), kel = document.getElementById('isk'), ta = document.getElementById('ist'), ps = document.getElementById('isp'), hasilEl = document.getElementById('ish');
@@ -1498,7 +1500,9 @@ function pasangImporSiswa() {
     const kD = kel.value.trim() || 'Kelas'; ps.textContent = 'Membaca berkas…';
     try { tampil(await bacaDaftarSiswa(file, kD)); } catch (e) { console.error(e); ps.innerHTML = 'Berkas tidak bisa dibaca. Gunakan Excel (.xlsx/.xls/.csv), Word (.docx), atau PDF yang berisi teks (bukan hasil foto/pindai).'; }
   };
-  document.getElementById('isketik').onclick = () => { ta.hidden = false; document.getElementById('islanjut').hidden = false; if (!ta.value) ta.value = `# ${kel.value.trim() || 'XI D'}\n`; ta.focus(); };
+  document.getElementById('isketik').onclick = () => { ta.hidden = false; document.getElementById('islanjut').hidden = false; if (!ta.value) ta.value = `# ${kel.value.trim() || 'XI D'}\n`; ps.innerHTML = 'Tempel (Ctrl+V) atau ketik nama di kotak ini, satu nama per baris. Baris pertama yang berawalan <b>#</b> adalah nama kelas.'; ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); };
+  ta.addEventListener('paste', () => setTimeout(() => { const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas'), n = Object.values(o).reduce((s, v) => s + v.length, 0); ta.value = kelompokKeTeks(o); ps.innerHTML = `Terbaca <b>${n}</b> nama. Periksa sebentar, lalu tekan <b>Kirim ke Google Sheets</b>.`; }, 0));
+  kel.addEventListener('change', () => { if (ta.value.startsWith('# ')) ta.value = ta.value.replace(/^# .*/, `# ${kel.value.trim()}`); });
   document.getElementById('istsv').onclick = async ev => {
     const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas');
     const tsv = Object.entries(o).flatMap(([k, v]) => v.map((n, i) => `${k}\t${i + 1}\t${n}`)).join('\n');

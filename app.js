@@ -747,7 +747,7 @@ ${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} G
 <p class="catatan" id="isp"></p>
 <div id="iskls" class="pilih-kelas" hidden></div>
 <textarea id="ist" class="isian" rows="12" hidden></textarea>
-<div id="islanjut" hidden><div class="row"><button class="btn" type="button" id="iskirim">3. Kirim ke Google Sheets</button><button class="btn alt" type="button" id="istsv">Salin untuk ditempel manual</button></div></div>
+<div id="islanjut" hidden><div class="row"><button class="btn" type="button" id="iskirim">3. Kirim ke Google Sheets</button><button class="btn alt" type="button" id="iskosong">Kosongkan</button><button class="btn alt" type="button" id="istsv">Salin untuk ditempel manual</button></div></div>
 <div id="ish"></div>
 <details class="box" id="isperbarui"><summary><b>Perbarui kode Apps Script</b> (sekali saja, bila diminta)</summary><ol>
 <li>Tekan <b>Salin kode Apps Script</b> di atas.</li>
@@ -1644,6 +1644,7 @@ function pasangImporSiswa() {
   document.getElementById('isketik').onclick = () => { ta.hidden = false; document.getElementById('islanjut').hidden = false; if (!ta.value) ta.value = `# ${kel.value.trim() || 'XI D'}\n`; ps.innerHTML = 'Tempel (Ctrl+V) atau ketik nama di kotak ini, satu nama per baris. Baris pertama yang berawalan <b>#</b> adalah nama kelas.'; ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); };
   ta.addEventListener('paste', () => setTimeout(() => { const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas'), n = Object.values(o).reduce((s, v) => s + v.length, 0); ta.value = kelompokKeTeks(o); ps.innerHTML = `Terbaca <b>${n}</b> nama. Periksa sebentar, lalu tekan <b>Kirim ke Google Sheets</b>.`; }, 0));
   kel.addEventListener('change', () => { if (ta.value.startsWith('# ')) ta.value = ta.value.replace(/^# .*/, `# ${kel.value.trim()}`); });
+  document.getElementById('iskosong').onclick = () => { f.value = ''; ta.value = ''; ta.hidden = true; kls.hidden = true; kls.innerHTML = ''; hasilBaca = {}; hasilEl.innerHTML = ''; document.getElementById('islanjut').hidden = true; ps.innerHTML = 'Sudah dikosongkan. Silakan pilih file lain atau tempel nama lagi. <small class="catatan">(Siswa yang sudah terlanjur terkirim ke Google Sheets dihapus lewat menu <b>Ruang Historia → Hapus data satu kelas</b> di Google Sheets.)</small>'; };
   document.getElementById('istsv').onclick = async ev => {
     const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas');
     const tsv = Object.entries(o).flatMap(([k, v]) => v.map((n, i) => `${k}\t${i + 1}\t${n}`)).join('\n');
@@ -1651,7 +1652,7 @@ function pasangImporSiswa() {
   };
   document.getElementById('iskirim').onclick = async () => {
     const url = document.getElementById('gr').value.trim();
-    if (!/\/exec$/.test(url)) { ps.textContent = 'Isi dulu alamat aplikasi web di atas, lalu tekan Uji sambungan.'; return; }
+    if (!/\/exec$/.test(url)) { ps.innerHTML = `<b>Alamat Google Sheets belum diisi.</b> Buka menu <a href="#guru/rekap">Rekap Nilai</a>, tempel alamat /exec, tekan <b>Uji sambungan</b>, lalu kembali ke sini.`; return; }
     const o = teksKeKelompok(ta.value, kel.value.trim() || 'Kelas'), semua = [];
     ps.textContent = 'Mengirim ke Google Sheets…';
     const totalKirim = Object.values(o).reduce((s, v) => s + v.length, 0); let terkirim = 0;
@@ -1663,8 +1664,13 @@ function pasangImporSiswa() {
         r.siswa.forEach(s => semua.push([k, ...s]));
       }
     } catch (e) {
-      ps.innerHTML = /token|tidak dikenal/i.test(e.message) ? `<b>Kode Apps Script perlu diperbarui sekali.</b> Ikuti 4 langkah di kotak <b>Perbarui kode Apps Script</b> di bawah, lalu tekan Kirim lagi.` : 'Gagal mengirim. Periksa internet dan alamat aplikasi web, lalu coba lagi.';
-      document.getElementById('isperbarui').open = true; return;
+      const m = String(e.message || e);
+      ps.innerHTML = /tidak dikenal/i.test(m) ? `<b>Versi baru Apps Script belum aktif.</b> Di Apps Script: <b>Terapkan → Kelola deployment → ikon pensil → Versi: Versi baru → Terapkan</b>, lalu tekan Kirim lagi.`
+        : /token/i.test(m) ? `<b>Kunci guru tidak cocok</b> dengan kode di Apps Script. Ikuti langkah di kotak <b>Perbarui kode Apps Script</b> di bawah (salin kode dari perangkat ini, tempel, simpan, lalu Versi baru), kemudian tekan Kirim lagi.`
+        : /fetch|network|load failed|json/i.test(m) ? `<b>Tidak bisa menghubungi Google Sheets.</b> Periksa internet. Bila internet lancar, pastikan pada Apps Script → Terapkan → Kelola deployment, akses diatur ke <b>Siapa saja</b>.`
+        : `<b>Gagal mengirim.</b> Coba lagi sebentar lagi.`;
+      ps.innerHTML += `<br><small class="catatan">Keterangan teknis: ${esc(m.slice(0, 160))}${terkirim ? ` · ${semua.length} siswa sempat terkirim` : ''}</small>`;
+      document.getElementById('isperbarui').open = /token|tidak dikenal/i.test(m); return;
     }
     S.set('kodeSiswaTerakhir', semua);
     ps.innerHTML = `Berhasil. <b>${semua.length}</b> siswa sudah masuk ke lembar Siswa, lengkap dengan kodenya.`;

@@ -799,6 +799,7 @@ ${(c.rekap || S.get('rekapUji', '')) ? `<p class="status-ok">${ikon('grafik')} G
 
 <div class="box guru-kartu" data-bagian="star"><h2>Historia Star</h2>
 <p>Beri <b>Historia Star</b> ⭐ kepada siswa yang menang challenge, game, atau metode ajar di kelas. Bintang tercatat di Google Sheets (lembar <b>Historia Star</b>) dan ikut terhitung di Nilaiku siswa, bersama bintang dari kuis.</p>
+<div id="sthp"></div>
 <label><b>Kelas</b><select id="stk" class="isian"></select></label>
 <div class="langkah-no"><span>1</span><b>Ketuk nama siswa yang menang</b></div>
 <div id="stl" class="st-grid"></div>
@@ -1633,7 +1634,7 @@ function susunPanduan() {
   h3('8. Membuka bab baru dan membaca analisis');
   poin(['Setiap mulai mengajar bab baru, buka lembar **Pengaturan** di Google Sheets dan ubah angka **Buka sampai bab** untuk kelas itu. KKM per kelas juga diatur di sana.', 'Lembar **Rekap** berisi nilai tertinggi setiap siswa per bab (merah bila di bawah KKM).', 'Lembar **Analisis** berisi rata-rata, persentase ketuntasan, siswa yang perlu remedial, siswa yang belum mengerjakan, dan soal yang paling sulit.']);
   h3('9. Historia Star dan nilai tambah');
-  poin(['Siswa mengoleksi **Historia Star** ⭐ dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3).', 'Guru memberi Historia Star tambahan kepada pemenang challenge, game, atau metode ajar di kelas: buka menu **Historia Star**, pilih kelas, ketuk nama siswa, pilih jumlah bintang dan alasannya, lalu tekan **Beri Historia Star**. Salah pilih? Tekan **Batalkan**.', 'Tekan **Tayangkan papan peringkat** untuk menampilkan 10 besar kelas di proyektor.', 'Di **Konversi ke nilai tambah**, atur nilai 1 ⭐ (misalnya 1 poin) dan batas maksimalnya (misalnya 10 poin). Hasilnya tercatat di lembar **Nilai Tambah** pada Google Sheets untuk diolah bersama nilai lainnya.', 'Siswa melihat total Historia Star dan nilai tambahnya di menu **Nilaiku**.']);
+  poin(['Siswa mengoleksi **Historia Star** ⭐ dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3).', 'Guru memberi Historia Star tambahan kepada pemenang challenge, game, atau metode ajar di kelas: buka menu **Historia Star**, pilih kelas, ketuk nama siswa, pilih jumlah bintang dan alasannya, lalu tekan **Beri Historia Star**. Salah pilih? Tekan **Batalkan**.', '**Dari HISTORIA PLAY!** Setelah Kelas Live selesai, di layar Hasil akhir tekan **⭐ Beri Historia Star di Ruang Historia**. Ruang Historia terbuka di menu Historia Star dengan daftar juara. Pilih kelasnya, lalu pilih **Juara 1**, **Juara 1–3**, atau **Semua peserta**. Nama yang cocok dengan daftar siswa langsung ditandai; nama yang belum cocok (misalnya nama panggilan) ketuk sendiri. Periksa, lalu tekan **Beri**.', 'Tekan **Tayangkan papan peringkat** untuk menampilkan 10 besar kelas di proyektor.', 'Di **Konversi ke nilai tambah**, atur nilai 1 ⭐ (misalnya 1 poin) dan batas maksimalnya (misalnya 10 poin). Hasilnya tercatat di lembar **Nilai Tambah** pada Google Sheets untuk diolah bersama nilai lainnya.', 'Siswa melihat total Historia Star dan nilai tambahnya di menu **Nilaiku**.']);
   h3('10. Bintang Historia (nilai tambah) ke EVIDENKU dan RDM');
   langkah(['Setelah ulangan harian di ASESMENKU, tekan **Kirim ke EVIDENKU** seperti biasa, lalu simpan di EVIDENKU.', 'Di Ruang Guru, buka menu **Bintang Historia**, pilih kelas, lalu tekan **Kirim Bintang Historia ke EVIDENKU**. Bintang Historia adalah nilai tambah dari koleksi Historia Star siswa.', 'EVIDENKU terbuka. Pilih penilaian yang akan ditambah (misalnya UH Bab 4), periksa tabel nilai lama, tambahan, dan nilai baru, lalu tekan **Tambahkan**. Nilai paling tinggi 100. Mengirim ulang mengganti nilai tambah lama (tidak dobel); tombol **Batalkan nilai tambah** mengembalikan nilai semula.', 'Di EVIDENKU, buka **Nilai → Template RDM**, pilih file template nilai dari RDM, unduh hasilnya, lalu unggah ke RDM.', 'Cara lain (bila perlu): di menu Bintang Historia buka **Cara lain: gabungkan sendiri** untuk menggabungkan file Excel ASESMENKU, nilai kuis Ruang Historia, dan nilai tambah menjadi satu nilai sebelum dikirim.']);
   h3('11. Tahun ajaran baru');
@@ -1834,11 +1835,31 @@ function pasangStar() {
     daftar.innerHTML = urut.map(s => `<button type="button" class="st-siswa" data-nama="${esc(s.nama)}" aria-pressed="${pilih.has(s.nama)}"><span class="st-no">${esc(s.no)}</span><span class="st-nama">${esc(s.nama)}</span><span class="st-jml">⭐ ${s.total}${s.poin !== undefined ? `<small>+${s.poin}</small>` : ''}</span></button>`).join('');
     document.getElementById('stberi').innerHTML = `${ikon('bintang')} Beri ${jumlah} Historia Star${pilih.size ? ` ke ${pilih.size} siswa` : ''}`;
   };
-  const muatKelas = async k => { ps.textContent = 'Memuat daftar siswa…'; try { data = await panggil('star', `&kelas=${encodeURIComponent(k)}`); if (data.konversi) { document.getElementById('stpoin').value = data.konversi.poin; document.getElementById('stmaks').value = data.konversi.maks; } pilih.clear(); ps.textContent = data.siswa.length ? 'Ketuk nama siswa yang menang (boleh lebih dari satu), lalu tekan tombol Beri.' : 'Belum ada siswa di kelas ini. Isi dulu lewat menu Daftar Siswa.'; S.set('kelasStar', k); gambar(); } catch (e) { gagal(e); } };
+  const muatKelas = async k => { ps.textContent = 'Memuat daftar siswa…'; try { data = await panggil('star', `&kelas=${encodeURIComponent(k)}`); if (data.konversi) { document.getElementById('stpoin').value = data.konversi.poin; document.getElementById('stmaks').value = data.konversi.maks; } pilih.clear(); ps.textContent = data.siswa.length ? 'Ketuk nama siswa yang menang (boleh lebih dari satu), lalu tekan tombol Beri.' : 'Belum ada siswa di kelas ini. Isi dulu lewat menu Daftar Siswa.'; S.set('kelasStar', k); gambar(); tampilHP(); } catch (e) { gagal(e); } };
   const mulai = async () => {
     if (!/\/exec$/.test(url())) { ps.innerHTML = `Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a>.`; return; }
     try { const r = await panggil('star'); sel.innerHTML = r.daftarKelas.map(k => `<option>${esc(k)}</option>`).join(''); if (!r.daftarKelas.length) { ps.innerHTML = 'Belum ada kelas. Isi daftar siswa dulu di menu <a href="#guru/siswa">Daftar Siswa</a>.'; return; } const ingat = S.get('kelasStar', ''); if (r.daftarKelas.includes(ingat)) sel.value = ingat; muatKelas(sel.value); } catch (e) { gagal(e); }
   };
+  let hpJuara = 3;
+  const normN = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(w => w.length > 1 && !/^(x|xi|xii|ipa|ips|mipa|kelas)$/.test(w));
+  const cocokkan = n => { const k = normN(n); if (!k.length || !data || !data.siswa) return []; return data.siswa.filter(s => { const w = normN(s.nama); return k.every(x => w.some(y => y.startsWith(x))); }); };
+  const tampilHP = () => {
+    const kir = S.get('hpKiriman', null), box = document.getElementById('sthp'); if (!box) return;
+    if (!kir) { box.innerHTML = ''; return; }
+    const ambil = kir.peringkat.slice(0, hpJuara === 99 ? 99 : hpJuara);
+    const hasil = ambil.map(p => ({ p, m: cocokkan(p.n) }));
+    if (data && data.siswa) { pilih.clear(); hasil.forEach(h => { if (h.m.length === 1) pilih.add(h.m[0].nama); }); gambar(); }
+    const sisa = hasil.filter(h => h.m.length !== 1);
+    box.innerHTML = `<div class="hp-kiriman"><p><b>🎮 Hasil HISTORIA PLAY!</b>${kir.topik ? ` · ${esc(kir.topik)}` : ''}${kir.tgl ? ` · ${esc(kir.tgl)}` : ''}</p>
+<ol>${kir.peringkat.slice(0, 5).map(p => `<li>${esc(p.n)} <small>(${p.s} poin)</small></li>`).join('')}</ol>
+<div class="row kecil-row"><span>Beri bintang untuk:</span>${[[1, 'Juara 1'], [3, 'Juara 1–3'], [99, 'Semua peserta']].map(([v, l]) => `<button type="button" class="btn alt kecil-btn" data-hpj="${v}" aria-pressed="${hpJuara === v}">${l}</button>`).join('')}</div>
+<p class="catatan">${data && data.siswa ? `${pilih.size} nama sudah otomatis ditandai di daftar kelas ${esc(sel.value)}.${sisa.length ? ` Belum cocok: <b>${sisa.map(h => esc(h.p.n)).join(', ')}</b>. Ketuk namanya sendiri di daftar, atau ganti kelas bila mereka dari kelas lain.` : ''} Periksa, lalu tekan <b>Beri</b>.` : 'Pilih kelasnya dulu.'}</p>
+<button class="tautan" type="button" id="hpbuang">Abaikan hasil ini</button></div>`;
+    box.querySelectorAll('[data-hpj]').forEach(b => b.onclick = () => { hpJuara = +b.dataset.hpj; tampilHP(); });
+    document.getElementById('hpbuang').onclick = () => { S.set('hpKiriman', null); pilih.clear(); gambar(); tampilHP(); };
+    const al = document.getElementById('sta'); if (al && !al.value) al.value = `Juara HISTORIA PLAY!${kir.topik ? ' · ' + kir.topik : ''}`.slice(0, 90);
+  };
+  tampilHP();
   sel.onchange = () => muatKelas(sel.value);
   daftar.onclick = e => { const b = e.target.closest('.st-siswa'); if (!b) return; const n = b.dataset.nama; pilih.has(n) ? pilih.delete(n) : pilih.add(n); gambar(); };
   kotak.querySelectorAll('[data-jml]').forEach(b => b.onclick = () => { jumlah = +b.dataset.jml; kotak.querySelectorAll('[data-jml]').forEach(x => x.setAttribute('aria-pressed', x === b)); gambar(); });
@@ -1847,7 +1868,7 @@ function pasangStar() {
     if (!pilih.size) { ps.textContent = 'Ketuk dulu nama siswa yang akan diberi bintang.'; return; }
     const id = 'S' + Date.now(), nama = [...pilih], alasan = document.getElementById('sta').value.trim() || 'Historia Star dari guru';
     ps.textContent = 'Mengirim…';
-    try { data = await panggil('beriStar', `&data=${encodeURIComponent(JSON.stringify({ kelas: sel.value, nama, jumlah, alasan, id }))}`); terakhir = { id, kelas: sel.value, n: nama.length }; pilih.clear(); gambar();
+    try { data = await panggil('beriStar', `&data=${encodeURIComponent(JSON.stringify({ kelas: sel.value, nama, jumlah, alasan, id }))}`); terakhir = { id, kelas: sel.value, n: nama.length }; pilih.clear(); gambar(); if (S.get('hpKiriman', null)) { S.set('hpKiriman', null); tampilHP(); }
       ps.innerHTML = `🎉 ${nama.length} siswa mendapat ${jumlah} Historia Star (${esc(alasan)}). <button class="tautan" type="button" id="stbatal">Batalkan</button>`;
       document.getElementById('stbatal').onclick = async () => { try { data = await panggil('batalStar', `&id=${terakhir.id}&kelas=${encodeURIComponent(terakhir.kelas)}`); gambar(); ps.textContent = 'Pemberian bintang terakhir dibatalkan.'; } catch (e) { gagal(e); } };
     } catch (e) { gagal(e); }
@@ -1978,6 +1999,7 @@ function rute() {
   const h = (location.hash || '#beranda').slice(1);
   let m;
   if (h.startsWith('kelas=')) return terapkanKelas(h.slice(6));
+  if (h.startsWith('historiaplay=')) { try { const b = h.slice(13).replace(/-/g, '+').replace(/_/g, '/'); const o = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b + '==='.slice((b.length + 3) % 4)), c => c.charCodeAt(0)))); if (Array.isArray(o.peringkat) && o.peringkat.length) S.set('hpKiriman', { topik: String(o.topik || '').slice(0, 80), kode: String(o.kode || ''), tgl: String(o.tgl || ''), peringkat: o.peringkat.slice(0, 60).map((x, i) => ({ n: String(x.n || '').slice(0, 40), s: +x.s || 0, r: +x.r || i + 1 })) }); } catch (e) {} location.replace('#guru/star'); return; }
   if (h.startsWith('sambung=')) { try { const b = h.slice(8).replace(/-/g, '+').replace(/_/g, '/'); const o = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b + '==='.slice((b.length + 3) % 4)), c => c.charCodeAt(0)))); if (/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(o.r) && o.t) S.set('sambungTunda', o); } catch {} history.replaceState(null, '', location.pathname + '#guru'); return panelGuru(); }
   if ((m = h.match(/^([a-z]+)-(\d+)-slide$/)) && cariK(m[1])) presentasi(m[1], +m[2]);
   else if ((m = h.match(/^([a-z]+)-(\d+)-kuis$/)) && cariK(m[1])) kuis(m[1], +m[2]);

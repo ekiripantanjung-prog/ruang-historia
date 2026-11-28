@@ -663,3 +663,55 @@ body.cetak-kartu #cetak-kartu{display:grid;grid-template-columns:repeat(3,1fr);g
 .sl-dgfoto .sl-kartu>div{padding:10px 20px;gap:16px}.sl-dgfoto .sl-kartu .no{width:44px;height:44px;font-size:20px}
 .sl-dgfoto .sl-kaki{right:510px}
 .sl-pemantik.sl-dgfoto .sl-tanya{margin:30px 500px 0 0;flex-direction:column;align-items:flex-start;gap:20px}.sl-pemantik.sl-dgfoto .sl-tanya span{width:100px;height:100px;font-size:70px}.sl-pemantik.sl-dgfoto .sl-tanya p{font-size:32px}.sl-pemantik.sl-dgfoto .sl-ajak{margin:24px 500px 0 0}
+
+/* ---------- ANIMASI & TRANSISI ---------- */
+@keyframes rhMasuk{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes rhPop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+@keyframes rhGetar{0%,100%{transform:none}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+@keyframes rhKilau{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok,#3E8E5E) 55%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+@keyframes rhJatuh{0%{transform:translate(0,-10vh) rotate(0)}100%{transform:translate(var(--x),110vh) rotate(var(--r))}}
+@keyframes rhTerbang{0%{transform:translate(-50%,-50%) scale(.4);opacity:0}15%{transform:translate(-50%,-50%) scale(1.6);opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.6);opacity:.2}}
+@keyframes rhDenyut{0%,100%{transform:scale(1)}40%{transform:scale(1.25)}}
+@keyframes rhTumbuhX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes rhTumbuhY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes rhGembok{0%{transform:rotate(0)}30%{transform:rotate(-18deg)}60%{transform:rotate(12deg) scale(1.2)}100%{transform:rotate(0)}}
+@keyframes rhToast{from{opacity:0;transform:translate(-50%,20px) scale(.9)}to{opacity:1;transform:translate(-50%,0)}}
+#app.masuk{animation:rhMasuk .38s cubic-bezier(.2,.8,.2,1)}
+.muncul-siap{opacity:0;transform:translateY(22px);transition:opacity .55s ease var(--d,0ms),transform .6s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
+.muncul-siap.muncul{opacity:1;transform:none}
+.btn,.opt,.card,.layer,.tabs a,button{transition:transform .15s ease,box-shadow .2s ease,background-color .2s,filter .2s}
+.btn:active,.opt:active,button:active,.tabs a:active{transform:scale(.95)}
+@media(hover:hover){.card:hover,.grid>a:hover{transform:translateY(-4px);box-shadow:0 12px 26px -12px #0004}.btn:hover{transform:translateY(-2px)}}
+.opt.benar{animation:rhPop .4s ease,rhKilau .9s ease .1s}
+.opt.salah{animation:rhGetar .45s ease}
+.why{animation:rhMasuk .35s ease}
+.hasil{animation:rhPop .6s cubic-bezier(.2,.8,.2,1)}
+.box.naik .bintang i.on{display:inline-block;animation:rhPop .5s cubic-bezier(.2,.8,.2,1) both}
+.box.naik .bintang i.on:nth-child(2){animation-delay:.25s}.box.naik .bintang i.on:nth-child(3){animation-delay:.5s}
+.box.naik.baru{animation:rhPop .6s ease .3s both}
+.gembok-besar svg,.gembok-anim{display:inline-block;animation:rhGembok 1.2s ease .3s}
+.konfeti{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.konfeti i{position:absolute;top:0;animation:rhJatuh linear forwards}
+.bintang-terbang{position:fixed;z-index:9999;font-size:30px;pointer-events:none;animation:rhTerbang 1.4s cubic-bezier(.5,0,.3,1) both}
+.tabs a.denyut{animation:rhDenyut .6s ease 2}
+.toast-anim{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:9998;background:#2a1d14;color:#fff;padding:12px 22px;border-radius:40px;box-shadow:0 12px 30px -8px #0008;display:flex;gap:10px;align-items:center;font-size:17px;animation:rhToast .4s cubic-bezier(.2,.8,.2,1);transition:opacity .5s,transform .5s;white-space:nowrap}
+.toast-anim.pergi{opacity:0;transform:translate(-50%,20px)}
+.bilah-baca{position:fixed;left:0;right:0;top:0;height:4px;z-index:60;pointer-events:none}
+.bilah-baca i{display:block;height:100%;width:0;background:linear-gradient(90deg,#E0B04A,#C8402F);border-radius:0 3px 3px 0;transition:width .1s linear}
+.lencana{display:flex;gap:16px;align-items:center;margin:14px 0;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,#2B3A67,#3d4f8a);color:#fff}
+.lc-ikon{font-size:44px;line-height:1;flex:none;width:64px;height:64px;display:grid;place-items:center;border-radius:50%;background:#ffffff1f;animation:rhPop .7s cubic-bezier(.2,.8,.2,1) .2s both}
+.lc-isi{flex:1}.lc-isi b{display:block;font-family:"Archivo Black",sans-serif;font-weight:400;font-size:21px}.lc-isi small{opacity:.85}
+.lc-bar{height:10px;border-radius:10px;background:#ffffff26;margin:8px 0 6px;overflow:hidden}
+.lc-bar i{display:block;height:100%;width:var(--p);background:linear-gradient(90deg,#E0B04A,#f3c66c);border-radius:10px;transform-origin:left;animation:rhTumbuhX 1.2s cubic-bezier(.2,.8,.2,1) .4s both}
+.muncul .v-batang i,.muncul.v-batang i{transform-origin:left;animation:rhTumbuhX 1.1s cubic-bezier(.2,.8,.2,1) .15s both}
+.muncul .v-alur li,.muncul.v-alur li{animation:rhMasuk .5s ease both}
+.muncul .v-alur li:nth-child(2),.muncul.v-alur li:nth-child(2){animation-delay:.12s}.muncul .v-alur li:nth-child(3),.muncul.v-alur li:nth-child(3){animation-delay:.24s}.muncul .v-alur li:nth-child(4),.muncul.v-alur li:nth-child(4){animation-delay:.36s}.muncul .v-alur li:nth-child(5),.muncul.v-alur li:nth-child(5){animation-delay:.48s}.muncul .v-alur li:nth-child(n+6),.muncul.v-alur li:nth-child(n+6){animation-delay:.6s}
+.strata.muncul .layer{animation:rhMasuk .5s ease both}
+.strata.muncul .layer:nth-child(2){animation-delay:.08s}.strata.muncul .layer:nth-child(3){animation-delay:.16s}.strata.muncul .layer:nth-child(4){animation-delay:.24s}.strata.muncul .layer:nth-child(5){animation-delay:.32s}.strata.muncul .layer:nth-child(n+6){animation-delay:.4s}
+html.tanpa-anim *,html.tanpa-anim *::before,html.tanpa-anim *::after{animation:none!important;transition:none!important}
+html.tanpa-anim .muncul-siap{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.muncul-siap{opacity:1!important;transform:none!important}}
+
+.timer{font-variant-numeric:tabular-nums;font-weight:800;padding:2px 10px;border-radius:20px;transition:background .3s,color .3s}
+.timer.mepet{background:#fde7b8;color:#8a4b00}
+.timer.kritis{background:#C8402F;color:#fff;animation:rhDenyut .5s ease infinite}

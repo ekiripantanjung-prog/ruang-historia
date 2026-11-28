@@ -396,7 +396,7 @@ function jalankan(list, o) {
   let i = 0, selesai = false, sisa = o.menit ? o.menit * 60 : 0;
   app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><div class="sticky"><div class="row" style="justify-content:space-between"><b>${esc(o.judul)}</b><span class="timer" id="tm"></span></div><div class="prog"><i id="pg" style="width:0"></i></div></div><div id="qq"></div></div></section>`;
   const qq = document.getElementById('qq'), pg = document.getElementById('pg'), tm = document.getElementById('tm');
-  const waktu = () => { tm.textContent = o.menit ? `${String(Math.floor(sisa / 60)).padStart(2, '0')}:${String(sisa % 60).padStart(2, '0')}` : `${jawab.filter(x => x !== null).length}/${list.length} dijawab`; };
+  const waktu = () => { tm.classList.toggle('mepet', !!o.menit && sisa <= 60); tm.classList.toggle('kritis', !!o.menit && sisa <= 10); tm.textContent = (o.menit ? '⏱️ ' : '') + o.menit ? `${String(Math.floor(sisa / 60)).padStart(2, '0')}:${String(sisa % 60).padStart(2, '0')}` : `${jawab.filter(x => x !== null).length}/${list.length} dijawab`; };
   if (o.menit) jam = setInterval(() => { sisa--; waktu(); if (sisa <= 0) akhiri(); }, 1000);
   const gambar = () => {
     const q = list[i], j = jawab[i], latihan = o.mode === 'latihan', buka = latihan && j !== null;
@@ -418,7 +418,7 @@ ${o.mode === 'ujian' ? `<div class="row" style="margin-top:16px;gap:6px">${list.
     if (e.target.id === 'end') { const kosong = jawab.filter(x => x === null).length; if (o.mode === 'ujian' && kosong && !e.target.dataset.yakin) { e.target.dataset.yakin = 1; e.target.textContent = `${kosong} soal belum dijawab. Tekan lagi untuk mengumpulkan`; return; } akhiri(); }
   });
   function akhiri() {
-    if (selesai) return; selesai = true; clearInterval(jam);
+    if (selesai) return; selesai = true; clearInterval(jam); try { starSebelum = starSaya(); } catch (e) {}
     const skor = list.reduce((s, q, k) => s + (jawab[k] === q.a ? 1 : 0), 0);
     const nilai = simpanNilai(o.kunci, skor, list.length);
     let infoKirim = '';
@@ -426,13 +426,13 @@ ${o.mode === 'ujian' ? `<div class="row" style="margin-top:16px;gap:6px">${list.
       o.kirim({ nilai, benar: skor, total: list.length, butir: list.map((q, k) => ({ no: k + 1, q: q.q.slice(0, 220), b: jawab[k] === q.a ? 1 : 0 })) });
       infoKirim = `<p class="catatan kirim-info">${navigator.onLine ? 'Nilai dikirim ke rekap guru.' : 'Belum ada internet. Nilai akan dikirim otomatis saat tersambung.'}</p>`;
     }
-    const kkm = konfig().kkm, pesan = nilai >= 90 ? 'Luar biasa! Pemahamanmu sangat baik.' : nilai >= kkm ? 'Bagus, sudah tuntas. Pelajari lagi soal yang salah.' : 'Belum tuntas. Baca ulang materinya, lalu coba lagi.';
+    const habis = !!o.menit && sisa <= 0, kkm = konfig().kkm, pesan = (habis ? '⏱️ Waktu habis! Soal yang belum dijawab dihitung salah. ' : '') + (nilai >= 90 ? 'Luar biasa! Pemahamanmu sangat baik.' : nilai >= kkm ? 'Bagus, sudah tuntas. Pelajari lagi soal yang salah.' : 'Belum tuntas. Baca ulang materinya, lalu coba lagi.');
     document.querySelector('.sticky').remove();
     qq.innerHTML = `<div class="hasil"><big>${nilai}</big>${skor} benar dari ${list.length} soal<p style="margin:8px auto 0;color:#fff">${pesan}</p></div>
 ${infoKirim}${o.setelah ? o.setelah(nilai) : ''}<div class="row" style="margin-bottom:20px"><button class="btn" type="button" id="ulang">Ulangi</button><a class="btn alt" href="${o.balik}">Kembali</a></div>
 <h2>Pembahasan</h2>${list.map((q, k) => `<div class="q" style="margin-bottom:12px"><span class="lv">${q.bab ? 'Bab ' + q.bab : ''}</span>${q.s ? `<div class="stim">${esc(q.s)}</div>` : ''}<div class="tanya">${k + 1}. ${esc(q.q)}</div><p style="margin:0">Jawabanmu: <b style="color:${jawab[k] === q.a ? 'var(--ok)' : 'var(--bad)'}">${jawab[k] === null ? 'kosong' : huruf(jawab[k]) + '. ' + esc(q.o[jawab[k]])}</b>${jawab[k] === q.a ? '' : `<br>Kunci: <b>${huruf(q.a)}. ${esc(q.o[q.a])}</b>`}</p><div class="why">${esc(q.p)}</div></div>`).join('')}`;
     document.getElementById('ulang').addEventListener('click', () => o.ulang());
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); setTimeout(() => { try { rayakanHasil(); } catch (e) {} }, 60);
   }
   gambar();
 }
@@ -440,7 +440,7 @@ const acak = a => { a = a.slice(); for (let k = a.length - 1; k > 0; k--) { cons
 function kuis(id) {
   tandaiMenu('');
   const b = B[id]; if (!b) return bab(id);
-  jalankan(b.soal, { mode: 'latihan', judul: `Kuis Bab ${id}. ${b.judul}`, kunci: 'bab' + id, balik: `#bab-${id}`, ulang: () => kuis(id) });
+  jalankan(b.soal, { mode: 'latihan', menit: modeGuru() ? 0 : Math.ceil(b.soal.length * (+konfig().waktu || 0)), judul: `Kuis Bab ${id}. ${b.judul}`, kunci: 'bab' + id, balik: `#bab-${id}`, ulang: () => kuis(id) });
 }
 
 function kuis(kid, id) {
@@ -449,7 +449,7 @@ function kuis(kid, id) {
   if (!terbuka(kid, id)) return terkunci(kid, id);
   if ((babakAktif() && !siapKuis(kid, id)) || perluMasuk()) { history.replaceState(null, '', `#${kid}-${id}`); return bab(kid, id, 'kuis'); }
   const sudahLulus = lulusBab(kid, id);
-  jalankan(b.soal, { mode: 'latihan', judul: `Kuis Bab ${id}. ${b.judul}`, kunci: `${kid}-bab${id}`, balik: `#${kid}-${id}`, ulang: () => kuis(kid, id),
+  jalankan(b.soal, { mode: 'latihan', menit: modeGuru() ? 0 : Math.ceil(b.soal.length * (+konfig().waktu || 0)), judul: `Kuis Bab ${id}. ${b.judul}`, kunci: `${kid}-bab${id}`, balik: `#${kid}-${id}`, ulang: () => kuis(kid, id),
     kirim: r => kirimNilai({ kolom: `${NAMA_KOLOM[kid] || kid} Bab ${id}`, judul: b.judul, jenis: 'kuis', ...r }),
     setelah: v => { if (!babakAktif()) return ''; const c = konfig(), nx = babBerikut(kid, id);
       if (v >= c.kkm) return `<div class="box naik ${sudahLulus ? '' : 'baru'}"><div>${bintangHTML(jumlahBintang(nilaiBab(kid, id)))}</div><b>${sudahLulus ? `Babak ${id} sudah lulus.` : `Selamat, Babak ${id} lulus!`}</b><p>${nx ? `Babak ${nx.id}: ${esc(nx.judul)} ${sudahLulus ? 'sudah' : 'kini'} terbuka.` : 'Semua babak di ruang ini sudah kamu selesaikan. Ujian akhir terbuka!'}</p><a class="btn" href="${nx ? `#${kid}-${nx.id}` : `#${kid}-ujian`}">${nx ? `Lanjut ke Babak ${nx.id}` : 'Ke ujian akhir'}</a></div>`;
@@ -488,9 +488,11 @@ function nilai() {
   }).join('');
   const s = siswaAktif(), c = konfig(), antre = S.get('antrean', []).length;
   const identitas = c.rekap ? (s ? `<div class="box identitas"><div><b>${esc(s.nama)}</b><br><small>Kelas ${esc(s.kelas)} · kode ${esc(s.kode)}</small></div><div><small>${antre ? `${antre} nilai menunggu dikirim (perlu internet)` : 'Semua nilai sudah terkirim ke guru'}</small><br><button class="btn alt" type="button" id="keluarsiswa">Keluar</button></div></div>` : formMasuk()) : '';
-  app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Nilaiku</h1><div class="kartu-star"><div class="ks-angka">⭐ ${starSaya()}${poinTambah(starSaya()) !== null ? `<small>+${poinTambah(starSaya())} Bintang Historia</small>` : ''}</div><div><b>Historia Star kamu</b><small>${starKuisSaya()} dari kuis tiap babak${S.get('starGuru', 0) ? ` + ${S.get('starGuru', 0)} dari guru` : ''}. Raih ⭐ dengan lulus KKM (1), nilai ≥ 90 (2), atau nilai 100 (3), dan menangkan challenge di kelas!</small></div></div>${identitas}<p>Nilai juga tersimpan di perangkat ini. KKM yang dipakai: ${c.kkm}${c.nama ? ` (kelas ${esc(c.nama)})` : ''}.</p>${blok}
+  app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Nilaiku</h1><div class="kartu-star"><div class="ks-angka">⭐ <span id="ksn">${starSaya()}</span>${poinTambah(starSaya()) !== null ? `<small>+${poinTambah(starSaya())} Bintang Historia</small>` : ''}</div><div><b>Historia Star kamu</b><small>${starKuisSaya()} dari kuis tiap babak${S.get('starGuru', 0) ? ` + ${S.get('starGuru', 0)} dari guru` : ''}. Raih ⭐ dengan lulus KKM (1), nilai ≥ 90 (2), atau nilai 100 (3), dan menangkan challenge di kelas!</small></div></div>${identitas}<p>Nilai juga tersimpan di perangkat ini. KKM yang dipakai: ${c.kkm}${c.nama ? ` (kelas ${esc(c.nama)})` : ''}.</p>${blok}
 <button class="btn alt" type="button" id="hapus" style="margin-top:12px">Hapus semua nilai</button></div></section>`;
   pasangMasuk(app, nilai);
+  { const ks = document.querySelector('.kartu-star'); if (ks) ks.insertAdjacentHTML('afterend', lencanaHTML(starSaya())); hitungNaik(document.getElementById('ksn'), starSaya());
+    const lv = levelDari(starSaya()), lama = S.get('levelLihat', 0); if (lv > lama) setTimeout(() => { konfeti(140); toast(`<span style="font-size:28px">${JENJANG_STAR[lv][2]}</span><b>Naik level: ${JENJANG_STAR[lv][1]}!</b>`); }, 500); S.set('levelLihat', lv); }
   const ks = document.getElementById('keluarsiswa'); if (ks) ks.addEventListener('click', e => { if (!e.target.dataset.yakin) { e.target.dataset.yakin = 1; e.target.textContent = 'Yakin keluar? Tekan lagi'; return; } S.set('siswa', null); S.set('atur', null); nilai(); });
   if (antre) kirimAntrean().then(() => { if (document.querySelector('.identitas') && !S.get('antrean', []).length) nilai(); });
   document.getElementById('hapus').addEventListener('click', e => { if (!e.target.dataset.yakin) { e.target.dataset.yakin = 1; e.target.textContent = 'Yakin? Tekan sekali lagi'; return; } S.set('nilai', {}); nilai(); });
@@ -500,6 +502,7 @@ function tentang() {
   tandaiMenu('tentang'); clearInterval(jam);
   app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:780px"><h1>Tentang Ruang Historia</h1>
 <p><a class="btn" href="#panduan">Buku panduan penggunaan (PDF)</a></p>
+<p><button class="btn alt" type="button" id="tgl-anim">${animAktif() ? '✨ Animasi: Hidup' : '⏸️ Animasi: Mati'}</button> <small class="catatan" style="border:0;padding:0">Matikan bila HP terasa lambat.</small></p>
 <p>Ruang Historia adalah aplikasi belajar sejarah interaktif untuk madrasah aliyah dan sekolah menengah. Setiap "ruang" berisi satu mata pelajaran: Sejarah Indonesia, Sejarah Dunia, dan Sejarah Kebudayaan Islam, dan ruang lain dapat ditambahkan. Materinya diperkaya nilai Panca Cinta dalam Kurikulum Berbasis Cinta Kementerian Agama: cinta kepada Allah dan Rasul-Nya, cinta ilmu, cinta diri dan sesama, cinta lingkungan, serta cinta tanah air.</p>
 <h3>Cara belajar yang disarankan</h3><ol><li>Pilih ruang, lalu buka bab.</li><li>Baca materi dan jelajahi gambar interaktifnya.</li><li>Tonton video bab.</li><li>Kerjakan kuis sampai nilai minimal 70.</li><li>Kerjakan soal uraian dan diskusikan refleksi Panca Cinta di kelas.</li><li>Setelah beberapa bab, coba ujian akhir.</li></ol>
 <h3>Rujukan utama</h3><ul><li>Buku teks Sejarah Indonesia dan Sejarah tingkat SMA/MA, Kementerian Pendidikan RI.</li><li>Buku Sejarah Kebudayaan Islam Madrasah Aliyah, Kementerian Agama RI.</li><li>Kementerian Agama RI (2025). <i>Panduan Kurikulum Berbasis Cinta di Madrasah</i>.</li><li>Soejono, R.P. dan Leirissa, R.Z. (ed.). <i>Sejarah Nasional Indonesia</i>. Balai Pustaka.</li><li>Ricklefs, M.C. <i>Sejarah Indonesia Modern</i>.</li><li>Azra, Azyumardi. <i>Jaringan Ulama Timur Tengah dan Kepulauan Nusantara Abad XVII dan XVIII</i>.</li><li>Bellwood, P. <i>Prehistory of the Indo-Malaysian Archipelago</i>. ANU Press.</li><li>Artikel ilmiah penanggalan situs purba: Sutikna dkk. (2016), Rizal dkk. (2020), Oktaviana dkk. (2024), jurnal <i>Nature</i>.</li></ul>
@@ -522,6 +525,7 @@ function tentang() {
 <p class="catatan">Tulisan setelah <code>--</code> menjadi keterangan atau sumber. Untuk menghapus, buka filenya di GitHub lalu pilih Delete file.</p>
 </details>
 <p class="catatan">Guru dapat menambah atau mengubah materi dan soal pada folder <code>data/</code>.</p></div></section>`;
+  document.getElementById('tgl-anim').onclick = () => { S.set('animasi', !animAktif()); terapkanAnim(); tentang(); };
 }
 
 /* ---------- FILOSOFI LOGO ---------- */
@@ -576,7 +580,7 @@ function filosofi() {
 
 /* ---------- PENGATURAN KELAS, MODE GURU, DAN BABAK ---------- */
 const PG = window.PENGATURAN || { modeBabak: true, kkm: 75 };
-const konfig = () => { const c = { modeBabak: PG.modeBabak, kkm: PG.kkm, buka: {}, nama: '', rekap: PG.rekap || '', ...S.get('kelas', {}) }; if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(c.rekap || '')) c.rekap = ''; const at = S.get('atur', null); if (c.rekap && at && at.kkm) c.kkm = at.kkm; c.kkm = Math.min(100, Math.max(0, +c.kkm || 75)); return c; };
+const konfig = () => { const c = { modeBabak: PG.modeBabak, kkm: PG.kkm, waktu: 1, buka: {}, nama: '', rekap: PG.rekap || '', ...S.get('kelas', {}) }; if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(c.rekap || '')) c.rekap = ''; const at = S.get('atur', null); if (c.rekap && at && at.kkm) c.kkm = at.kkm; c.kkm = Math.min(100, Math.max(0, +c.kkm || 75)); return c; };
 const modeGuru = () => !!S.get('guru', false);
 const babakAktif = () => konfig().modeBabak && !modeGuru();
 const nilaiBab = (kid, id) => (S.get('nilai', {})[`${kid}-bab${id}`] || {}).terbaik || 0;
@@ -755,6 +759,7 @@ ${[['madrasah', 'Nama ' + SAT().nama], ['guru', 'Nama guru'], ['nip', 'NIP guru'
 <label><b>Nama kelas</b><input id="gk" class="isian" placeholder="contoh: X-1" value="${esc(c.nama || '')}"></label>
 <label class="cek"><input type="checkbox" id="gm" ${c.modeBabak ? 'checked' : ''}> Aktifkan mode babak (bab terkunci berurutan)</label>
 <label><b>KKM kuis</b><input id="gn" class="isian" type="number" min="0" max="100" value="${c.kkm}"></label>
+<label><b>Waktu kuis per soal</b><select id="gw" class="isian">${[[0, 'Tanpa batas waktu'], [0.5, '30 detik per soal'], [1, '1 menit per soal'], [1.5, '1,5 menit per soal'], [2, '2 menit per soal']].map(([v, l]) => `<option value="${v}" ${+c.waktu === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
 <details><summary><b>Buka paksa bab tertentu</b> (opsional)</summary><p class="catatan">Bab sampai nomor ini langsung terbuka untuk seluruh kelas, misalnya bila sudah dibahas di kelas. Isi 0 bila tidak perlu.</p>
 ${K.filter(k => tersedia(k).length).map(k => `<label><b>${esc(k.judul)}</b>: buka sampai Bab <input class="isian kecil" type="number" min="0" max="${k.bab.length}" data-buka="${k.id}" value="${(c.buka || {})[k.id] || 0}"></label>`).join('')}</details>
 <div class="row"><button class="btn" type="button" id="buat">Buat tautan kelas</button></div>
@@ -882,7 +887,7 @@ ${`<label><b>Saya mengajar di</b><select id="jjg" class="isian"><option value="m
   if (!document.getElementById('gr').value.trim()) document.getElementById('isbelum').innerHTML = `${ikon('info')} Sambungkan Google Sheets dulu di menu <a href="#guru/rekap">Rekap Nilai</a> agar nama bisa dikirim. Tanpa itu, gunakan tombol <b>Salin untuk ditempel manual</b>.`;
   document.getElementById('buat').addEventListener('click', async () => {
     const buka = {}; app.querySelectorAll('[data-buka]').forEach(x => { if (+x.value > 0) buka[x.dataset.buka] = +x.value; });
-    const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, buka, rekap: document.getElementById('gr').value.trim(), jenjang: modeSekolah() ? 'sekolah' : '' };
+    const o = { nama: document.getElementById('gk').value.trim(), modeBabak: document.getElementById('gm').checked, kkm: +document.getElementById('gn').value || 75, waktu: +document.getElementById('gw').value, buka, rekap: document.getElementById('gr').value.trim(), jenjang: modeSekolah() ? 'sekolah' : '' };
     const url = `${alamatDasar()}#kelas=${kodeKelas(o)}`;
     document.getElementById('hasilkelas').innerHTML = `<div class="tautan-kelas"><div>${await qrSVG(url, 200)}</div><div><p><b>Tautan kelas ${esc(o.nama || '')}</b>: mode babak ${o.modeBabak ? 'aktif' : 'mati'}, KKM ${o.kkm}, rekap nilai ${o.rekap ? 'aktif' : 'tidak dipakai'}.</p><input class="isian" readonly value="${esc(url)}"><div class="row"><button class="btn" type="button" id="salin">Salin tautan</button></div><p class="catatan">Bagikan tautan ini di grup kelas, atau tampilkan kode QR-nya di proyektor. Siswa cukup membukanya sekali dari HP masing-masing.</p></div></div>`;
     document.getElementById('salin').addEventListener('click', async ev => { try { await navigator.clipboard.writeText(url); ev.target.textContent = 'Tersalin'; } catch { app.querySelector('.tautan-kelas input').select(); } });
@@ -911,7 +916,7 @@ ${`<label><b>Saya mengajar di</b><select id="jjg" class="isian"><option value="m
 function terapkanKelas(kode) {
   try {
     const o = bacaKelas(kode);
-    S.set('kelas', { nama: String(o.nama || '').slice(0, 40), modeBabak: !!o.modeBabak, kkm: Math.min(100, Math.max(0, +o.kkm || 75)), buka: o.buka || {}, rekap: /^https:\/\/script\.google\.com\//.test(o.rekap || '') ? o.rekap : '', jenjang: o.jenjang === 'sekolah' ? 'sekolah' : '' });
+    S.set('kelas', { nama: String(o.nama || '').slice(0, 40), modeBabak: !!o.modeBabak, kkm: Math.min(100, Math.max(0, +o.kkm || 75)), waktu: [0, 0.5, 1, 1.5, 2].includes(+o.waktu) ? +o.waktu : 1, buka: o.buka || {}, rekap: /^https:\/\/script\.google\.com\//.test(o.rekap || '') ? o.rekap : '', jenjang: o.jenjang === 'sekolah' ? 'sekolah' : '' });
     app.innerHTML = `<section class="pad"><div class="wrap" style="max-width:600px"><div class="box"><h1>Selamat datang${o.nama ? ` di kelas ${esc(o.nama)}` : ''}!</h1>
 <p>Pengaturan dari gurumu sudah diterapkan: ${o.modeBabak ? `<b>mode babak aktif</b> dengan KKM <b>${o.kkm}</b>. Setiap bab adalah satu babak: baca materinya, catat di buku catatan, lalu lulus kuis untuk membuka babak berikutnya.` : 'semua bab terbuka.'}</p>
 ${o.rekap ? `<p>Gurumu juga memakai <b>rekap nilai</b>. Masukkan kode siswa dari gurumu:</p>${formMasuk()}` : ''}
@@ -1628,6 +1633,7 @@ function susunPanduan() {
   h3('3. Belajar setiap bab (babak)');
   langkah(['Di Beranda, pilih ruang (Sejarah Indonesia, Sejarah Dunia, atau SKI), lalu pilih bab yang terbuka.', 'Baca **Materi**, lihat **Jejak sejarah** (foto arsip), dan tonton **Video**.', 'Catat poin penting di buku catatan. Centang daftar kesiapan, lalu kerjakan **Kuis**.', 'Bila nilaimu mencapai **KKM**, kamu mendapat **Historia Star** ⭐ dan babak berikutnya terbuka. Bila belum, pelajari lagi materinya lalu ulangi kuis.', 'Bab yang belum dibuka guru bertanda **Belum dibuka guru**. Tunggu sampai guru membukanya di kelas.']);
   h3('4. Nilai dan ujian');
+  poin(['Kuis tiap bab memakai **batas waktu** dari gurumu. Sisa waktu tampil di kanan atas, berubah kuning saat tinggal 1 menit dan merah berkedip saat tinggal 10 detik.', 'Saat lulus kuis, babak baru terbuka, atau Historia Star bertambah, akan muncul **perayaan** (konfeti dan bintang terbang). Di Nilaiku ada **lencana level**: Pemula Sejarah 🌱, Penjelajah Waktu 🧭, Pemburu Arsip 📜, Sejarawan Muda 🎓, Penjaga Ingatan Bangsa 🛡️, sampai Legenda Historia 👑.', 'Bila HP terasa lambat, matikan animasi di menu **Tentang** → **Animasi: Hidup/Mati**.']);
   poin(['Menu **Nilaiku** menampilkan semua nilai dan koleksi **Historia Star** ⭐ milikmu. Historia Star didapat dari kuis tiap babak (lulus KKM = 1, nilai ≥ 90 = 2, nilai 100 = 3) dan dari guru bila kamu menang challenge atau game di kelas. Historia Star diubah menjadi **nilai tambah** sesuai aturan guru.', 'Ujian akhir tiap ruang terbuka setelah babak-babaknya selesai.', 'Bila mengerjakan kuis tanpa internet, nilai disimpan di HP dan terkirim otomatis ke guru saat HP tersambung internet lagi.', '**Ganti HP?** Buka tautan kelas di HP baru lalu masukkan kode siswamu. Nilai dan babak yang sudah terbuka kembali otomatis dari rekap guru.']);
 
   h2('Bagian B. Panduan untuk guru');
@@ -1651,7 +1657,7 @@ function susunPanduan() {
   h3('4. Soal ulangan harian dan ASESMENKU');
   langkah(['Di Ruang Guru, buka menu **Soal Ulangan**, lalu pilih ruang dan satu atau beberapa bab.', 'Pilih paket soal: **Format ASESMENKU**, **Kuis singkat**, **Ulangan lengkap**, atau **HOTS**, lalu tekan **Buat soal sekarang**.', 'Ingin mengatur sendiri jumlah soal per level C1–C6 dan jenis soalnya? Buka **Atur sendiri**. Angka merah berarti stok soal level itu kurang; tambahkan bab.', 'Masukkan ke ASESMENKU dengan salah satu cara: (a) pilih **Format ASESMENKU**, tekan **Salin semua soal**, lalu di ASESMENKU pilih **Tempel banyak soal**; atau (b) tekan **Word untuk ASESMENKU** atau **PDF untuk ASESMENKU**, lalu di ASESMENKU buka paket soal → **Impor Word/PDF** dan pilih berkas tadi. Cara Word paling disarankan. Jangan ubah susunan baris berkas itu (misalnya baris "Kunci:").', 'Semua jenis soal terbawa lengkap dengan kuncinya: pilihan ganda, PG kompleks, benar-salah, isian, menjodohkan, dan uraian. Periksa pratinjau di ASESMENKU sebelum menekan Tambahkan.', 'Naskah lengkap dengan kunci, pembahasan, pedoman penskoran, dan kisi-kisi dapat diunduh sebagai Word atau PDF. Tersedia juga file Excel (.csv). Tekan **Acak ulang soal** untuk paket soal yang berbeda.']);
   h3('5. Mode babak dan tautan kelas');
-  langkah(['Di Ruang Guru, buka menu **Kelas & Babak**, isi nama kelas dan KKM, lalu aktifkan mode babak.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
+  langkah(['Di Ruang Guru, buka menu **Kelas & Babak**, isi nama kelas dan KKM, pilih **Waktu kuis per soal** (tanpa batas, 30 detik, 1 menit, 1,5 menit, atau 2 menit; bawaan 1 menit), lalu aktifkan mode babak. Bila waktu habis, kuis terkumpul otomatis dan soal yang belum dijawab dihitung salah.', 'Tekan **Buat tautan kelas**, lalu bagikan tautan atau kode QR ke grup kelas.', 'Setiap kelas boleh memiliki pengaturan sendiri. Buat tautan terpisah untuk tiap kelas.']);
   h3('6. Rekap nilai di Google Sheets (dipasang sekali)');
   langkah(['Di laptop, buka **sheets.new** dan beri nama file **Rekap Ruang Historia**.', 'Di Ruang Guru, buka menu **Rekap Nilai**, tekan **Salin kode Apps Script**.', 'Di Google Sheets: menu **Ekstensi → Apps Script**. Hapus isi editor, tempel kode, lalu Simpan.', 'Pilih fungsi **siapkan**, tekan **Jalankan**, lalu berikan izin (Lanjutan → Buka proyek → Izinkan).', 'Tekan **Terapkan → Deployment baru → Aplikasi web**. Jalankan sebagai: **Saya**; akses: **Siapa saja**. Salin alamat yang berakhiran **/exec**.', 'Tempel alamat itu di menu **Rekap Nilai**, lalu tekan **Uji sambungan**.', 'Buka menu **Daftar Siswa**: ketik nama kelas, pilih file daftar siswa (Excel, Word, atau PDF), periksa daftar nama, lalu tekan **Kirim ke Google Sheets**. Kode siswa dibuat otomatis. Tekan **Cetak kartu kode** untuk membagikan kode kepada siswa, atau **Salin daftar kode untuk WA**. Bila diminta memperbarui kode Apps Script, ikuti 4 langkah yang tampil di layar.', 'Buat tautan kelas di menu **Kelas & Babak**. Sejak itu nilai kuis dan ujian masuk otomatis.']);
   h3('7. Memasukkan daftar siswa');
@@ -2042,6 +2048,59 @@ function rute() {
   window.scrollTo(0, 0);
 }
 document.querySelectorAll('.tabs a').forEach(a => { const n = { beranda: 'rumah', nilai: 'bintang', logo: 'jam', tentang: 'info', guru: 'topi' }[a.dataset.v]; if (n && !a.querySelector('svg')) a.innerHTML = ikon(n) + `<span>${a.textContent}</span>`; });
+/* ---------- ANIMASI & TRANSISI ---------- */
+const animAktif = () => S.get('animasi', true) !== false && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+const terapkanAnim = () => document.documentElement.classList.toggle('tanpa-anim', !animAktif());
+terapkanAnim();
+function konfeti(n = 90) {
+  if (!animAktif()) return;
+  const w = document.createElement('div'); w.className = 'konfeti'; const warna = ['#E0B04A', '#C8402F', '#2B3A67', '#3E8E5E', '#7B4FA0', '#F28C28'];
+  for (let i = 0; i < n; i++) { const c = document.createElement('i'); const x = Math.random() * 100, d = 1.6 + Math.random() * 1.6; c.style.cssText = `left:${x}vw;background:${warna[i % warna.length]};animation-duration:${d}s;animation-delay:${Math.random() * .35}s;--x:${(Math.random() - .5) * 40}vw;--r:${Math.random() * 900 - 450}deg;width:${6 + Math.random() * 7}px;height:${8 + Math.random() * 10}px;border-radius:${Math.random() < .3 ? '50%' : '2px'}`; w.appendChild(c); }
+  document.body.appendChild(w); setTimeout(() => w.remove(), 3600);
+}
+function hitungNaik(el, ke, ms = 900) {
+  if (!el) return; if (!animAktif()) { el.textContent = ke; return; }
+  const t0 = performance.now(); const f = t => { const p = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(ke * e); if (p < 1) requestAnimationFrame(f); }; requestAnimationFrame(f);
+}
+function bintangTerbang(dari, n) {
+  const tuju = document.querySelector('.tabs a[data-v="nilai"]'); if (!dari || !tuju || !animAktif()) return;
+  const a = dari.getBoundingClientRect(), b = tuju.getBoundingClientRect();
+  for (let i = 0; i < Math.min(n, 6); i++) { const s = document.createElement('span'); s.className = 'bintang-terbang'; s.textContent = '⭐'; s.style.cssText = `left:${a.left + a.width / 2}px;top:${a.top + a.height / 2}px;--dx:${b.left + b.width / 2 - a.left - a.width / 2}px;--dy:${b.top + b.height / 2 - a.top - a.height / 2}px;animation-delay:${i * .18}s`; document.body.appendChild(s); setTimeout(() => s.remove(), 1600 + i * 180); }
+  setTimeout(() => { tuju.classList.remove('denyut'); void tuju.offsetWidth; tuju.classList.add('denyut'); }, 1100);
+}
+function toast(html) { const d = document.createElement('div'); d.className = 'toast-anim'; d.innerHTML = html; document.body.appendChild(d); setTimeout(() => d.classList.add('pergi'), 2600); setTimeout(() => d.remove(), 3200); }
+const JENJANG_STAR = [[0, 'Pemula Sejarah', '🌱'], [3, 'Penjelajah Waktu', '🧭'], [10, 'Pemburu Arsip', '📜'], [20, 'Sejarawan Muda', '🎓'], [35, 'Penjaga Ingatan Bangsa', '🛡️'], [50, 'Legenda Historia', '👑']];
+const levelDari = n => { let k = 0; JENJANG_STAR.forEach((l, i) => { if (n >= l[0]) k = i; }); return k; };
+function lencanaHTML(n) { const k = levelDari(n), L = JENJANG_STAR[k], nx = JENJANG_STAR[k + 1], p = nx ? Math.round((n - L[0]) / (nx[0] - L[0]) * 100) : 100;
+  return `<div class="lencana"><div class="lc-ikon">${L[2]}</div><div class="lc-isi"><small>Level ${k + 1} dari ${JENJANG_STAR.length}</small><b>${L[1]}</b><div class="lc-bar"><i style="--p:${p}%"></i></div><small>${nx ? `${nx[0] - n} ⭐ lagi menuju <b>${nx[1]}</b> ${nx[2]}` : 'Level tertinggi. Kamu legenda!'}</small></div></div>`; }
+// muncul saat digulir
+const PILIH_MUNCUL = '.wrap > h1, .wrap > h2, .wrap > p, .wrap > .grid > *, .card, .bagian, .wrap > .box, figure, .v-wrap, .visual, .kartu-star, .lencana, .strata, table, .q, .menu-guru > *, .kel-grid > *, .wrap > ol > li, .wrap > ul > li, .fitur > *, .v-alur, .v-grafik, .v-batang, .v-bar';
+let pengamat = null;
+function pasangMuncul(root) {
+  if (!animAktif() || !('IntersectionObserver' in window)) return;
+  if (pengamat) pengamat.disconnect();
+  pengamat = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('muncul'); pengamat.unobserve(e.target); } }), { rootMargin: '0px 0px -6% 0px', threshold: .05 });
+  const el = [...root.querySelectorAll(PILIH_MUNCUL)].filter(x => !x.closest('.sticky, .pr-panggung, .cs-hal, .muncul-siap'));
+  el.forEach((x, i) => { x.classList.add('muncul-siap'); x.style.setProperty('--d', `${Math.min(i, 8) * 55}ms`); pengamat.observe(x); });
+}
+// transisi halaman + muncul, setiap kali isi halaman diganti
+new MutationObserver(() => { if (!animAktif()) return; app.classList.remove('masuk'); void app.offsetWidth; app.classList.add('masuk'); requestAnimationFrame(() => pasangMuncul(app)); }).observe(app, { childList: true });
+// bilah kemajuan baca di halaman bab
+const bilahBaca = document.createElement('div'); bilahBaca.className = 'bilah-baca'; bilahBaca.innerHTML = '<i></i>'; document.body.appendChild(bilahBaca);
+const ukurBaca = () => { const aktif = /^#[a-z]+-\d+$/.test(location.hash); bilahBaca.hidden = !aktif; if (!aktif) return; const h = document.documentElement, mx = h.scrollHeight - innerHeight; bilahBaca.firstChild.style.width = `${mx > 0 ? Math.min(100, scrollY / mx * 100) : 0}%`; };
+addEventListener('scroll', ukurBaca, { passive: true }); addEventListener('hashchange', () => setTimeout(ukurBaca, 60));
+// momen kemenangan setelah kuis
+let starSebelum = null;
+function rayakanHasil() {
+  const h = document.querySelector('.hasil big'); if (!h) return;
+  const v = +h.textContent; hitungNaik(h, v, 1100);
+  const naik = document.querySelector('.box.naik'), baru = document.querySelector('.box.naik.baru');
+  if (v >= konfig().kkm || naik) setTimeout(() => konfeti(baru ? 140 : 80), 500);
+  if (baru) setTimeout(() => toast(`<span class="gembok-anim">🔓</span><b>Babak baru terbuka!</b>`), 900);
+  const st = starSaya(); if (starSebelum !== null && st > starSebelum) { const tambah = st - starSebelum; setTimeout(() => { bintangTerbang(h, tambah); toast(`<b>+${tambah} Historia Star ⭐</b>`); }, baru ? 3300 : 1300);
+    if (levelDari(st) > levelDari(starSebelum)) setTimeout(() => { konfeti(150); toast(`<span style="font-size:28px">${JENJANG_STAR[levelDari(st)][2]}</span><b>Naik level: ${JENJANG_STAR[levelDari(st)][1]}!</b>`); }, baru ? 4600 : 2700); }
+  starSebelum = st;
+}
 window.addEventListener('hashchange', rute);
 rute();
 
